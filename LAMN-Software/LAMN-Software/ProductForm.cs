@@ -16,12 +16,150 @@ namespace LAMN_Software
         //mouse coords which are needed for GUI drag bar functionality
         public Point mouseLocation;
 
+        StockHandler SH;
         public ProductForm()
         {
             InitializeComponent();
+            SH = new StockHandler();
+            FillStockListBox();
         }
 
+        //onClick for add stock button. Will direct to stock add page
+        private void btnAddStock_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStockAdd;
+            btnStockAdd_ConfirmEdit.Visible = false;
+            btnStockAdd_ConfirmAdd.Visible = true;
+            tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_TotalSold.Enabled = false;
+        }
 
+        //onClick for confirming the add product
+        private void btnStockAdd_ConfirmAdd_Click(object sender, EventArgs e)
+        {
+            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            if (SH.AddProduct(tbxStockAdd_ProductName.Text,
+                Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
+                Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
+                tbxStockAdd_StoreLocation.Text,
+                lblStockAdd_WarehouseLocation.Text,
+                Convert.ToDouble(tbxStockAdd_Cost.Text), 
+                Convert.ToDouble(tbxStockAdd_Sell.Text), 
+                Convert.ToInt32(tbxStockAdd_MinimumStock.Text), 
+                tbxStockAdd_AddInfo.Text) == null)
+            {
+                FillStockListBox();
+                MessageBox.Show("Item added succesfully");
+                return;
+            }
+            MessageBox.Show(SH.AddProduct(tbxStockAdd_ProductName.Text,
+                Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
+                Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
+                tbxStockAdd_StoreLocation.Text,
+                lblStockAdd_WarehouseLocation.Text,
+                Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text).Message);
+        }
+
+        //onClick for edit stock button. Will take selected.
+        private void btnEditStock_Click(object sender, EventArgs e)
+        {
+            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            Product p = (Product)lbxAllStock.SelectedItem;
+            tcNavigator.SelectedTab = tpStockAdd;
+            btnStockAdd_ConfirmAdd.Visible = false;
+            btnStockAdd_ConfirmEdit.Visible = true;
+            tbxStockAdd_ID.Text = $"{p.Id}";
+            tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_ProductName.Text = p.Name;
+            tbxStockAdd_WarehouseQuantity.Text = $"{p.QuantityWH}";
+            tbxStockAdd_WarehouseLocation.Text = $"{p.LocationWH}";
+            tbxStockAdd_StoreQuantity.Text = $"{p.QuantityS}";
+            tbxStockAdd_StoreLocation.Text = $"{p.LocationS}";
+            tbxStockAdd_Cost.Text = $"{p.CostPrice}";
+            tbxStockAdd_Cost.Enabled = false;
+            tbxStockAdd_Sell.Text = $"{p.SellPrice}";
+            tbxStockAdd_Sell.Enabled = false;
+            tbxStockAdd_MinimumStock.Text = $"{p.MinimumStockRequired}";
+            tbxStockAdd_AddInfo.Text = p.AddInformation;
+            tbxStockAdd_TotalSold.Text = $"{p.TotalSold}";
+            tbxStockAdd_TotalSold.Enabled = false;
+        }
+
+        //onclick for confirming edit
+        private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
+        {
+            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            if (SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text),
+               tbxStockAdd_ProductName.Text,
+               Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
+               Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
+               tbxStockAdd_StoreLocation.Text,
+               lblStockAdd_WarehouseLocation.Text,
+               Convert.ToInt32(tbxStockAdd_MinimumStock.Text),
+               tbxStockAdd_AddInfo.Text) == null)
+            {
+                FillStockListBox();
+                MessageBox.Show("Item edited succesfully");
+                return;
+            }
+            MessageBox.Show(SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text),
+               tbxStockAdd_ProductName.Text,
+               Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
+               Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
+               tbxStockAdd_StoreLocation.Text,
+               lblStockAdd_WarehouseLocation.Text,
+               Convert.ToInt32(tbxStockAdd_MinimumStock.Text),
+               tbxStockAdd_AddInfo.Text).Message);
+        }
+
+        private void btnDeleteStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnSearchStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+        
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            tpStock.Focus();
+        }
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tpSchedules.Focus();
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tpEmployees.Focus();
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            tpStatistics.Focus();
+        }
+
+        public void FillStockListBox()
+        {
+            lbxAllStock.Items.Clear();
+            if (SH.GetAllStockFromDB() == null)
+            {
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    lbxAllStock.Items.Add(p);
+                }
+            }
+            else
+            {
+                MessageBox.Show(SH.GetAllStockFromDB().Message);
+            }
+
+        }
+        //DESIGN
 
         //'X' icon used to close current form
         private void lblClose_Click(object sender, EventArgs e)
@@ -68,44 +206,6 @@ namespace LAMN_Software
             }
         }
 
-        private void btnAddStock_Click(object sender, EventArgs e)
-        {
-            tpStockAdd.Focus();
-        }
 
-        private void btnEditStock_Click(object sender, EventArgs e)
-        {
-            // code goes here
-        }
-
-        private void btnDeleteStock_Click(object sender, EventArgs e)
-        {
-            // code goes here
-        }
-
-        private void btnSearchStock_Click(object sender, EventArgs e)
-        {
-            // code goes here
-        }
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            tpStock.Focus();
-        }
-
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            tpSchedules.Focus();
-        }
-
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            tpEmployees.Focus();
-        }
-
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            tpStatistics.Focus();
-        }
     }
 }

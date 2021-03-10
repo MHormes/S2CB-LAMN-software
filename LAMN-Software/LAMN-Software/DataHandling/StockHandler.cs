@@ -63,13 +63,13 @@ namespace LAMN_Software
         }
 
         //method for adding new products. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception AddProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
+        public Exception AddProduct(string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO product VALUES(@name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
+                    string sql = "INSERT INTO product(Name, QuantityS, QuantityWH, LocationS, LocationWH, CostPrice, SellPrice, MinimumStock, AddInformation, TotalSold) VALUES (@name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -96,13 +96,13 @@ namespace LAMN_Software
         }
 
         //method to change properties of a product in the DB
-        public Exception ChangeProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, int totalSold, string addInformation)
+        public Exception ChangeProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, int minimumStockRequired, string addInformation)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE product SET Name=@name, QuantityS=@quantityS, QuantityWH=@quantityWH, LocationS=@locationS, LocationWH=@locationWH, CostPrice=@costPrice, SellPrice@sellprice, MinimumStock=@minStock, AddInformation=@addInf);";
+                    string sql = "UPDATE product SET Name=@name, QuantityS=@quantityS, QuantityWH=@quantityWH, LocationS=@locationS, LocationWH=@locationWH, MinimumStock=@minStock, AddInformation=@addInf WHERE ID=@id;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -112,8 +112,6 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
                     cmd.Parameters.AddWithValue("@locationS", locationS);
                     cmd.Parameters.AddWithValue("@locationWH", locationWH);
-                    cmd.Parameters.AddWithValue("@costPrice", costPrice);
-                    cmd.Parameters.AddWithValue("@sellPrice", sellPrice);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
                     cmd.Parameters.AddWithValue("@addInf", addInformation);
                     cmd.Prepare();

@@ -145,6 +145,8 @@ namespace LAMN_Software
 
         private void button_login_Click(object sender, EventArgs e)
         {
+            ProductForm pf = new ProductForm();
+            pf.ShowDialog();
             //code needs to be added
         }
     }
