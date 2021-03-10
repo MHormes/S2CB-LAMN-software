@@ -21,6 +21,8 @@ namespace LAMN_Software
             InitializeComponent();
         }
 
+
+
         //'X' icon used to close current form
         private void lblClose_Click(object sender, EventArgs e)
         {
@@ -65,6 +67,25 @@ namespace LAMN_Software
                                                           pnlBackground.ClientSize.Height - borderThickness));
             }
         }
-        
+
+        private void btnAddStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnEditStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnDeleteStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnSearchStock_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
     }
 }
