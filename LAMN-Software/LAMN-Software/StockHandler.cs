@@ -15,7 +15,7 @@ namespace LAMN_Software
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
         //method to get all the stock items from the DB
-        public bool GetAllStockFromDB()
+        public Exception GetAllStockFromDB()
         {
             allStock = new List<Product>();
             try
@@ -32,11 +32,11 @@ namespace LAMN_Software
                         allStock.Add(new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), dr[4].ToString(), dr[5].ToString(), Convert.ToDouble(dr[6]), Convert.ToDouble(dr[7]), Convert.ToInt32(dr[8]), dr[9].ToString(), Convert.ToInt32(dr[10])));
                     }
                 }
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                return false;
+                return ex;
             }
         }
 
@@ -55,7 +55,7 @@ namespace LAMN_Software
 
         public List<Product> GetAllProducts()
         {
-            if (GetAllStockFromDB())
+            if (GetAllStockFromDB() == null)
             {
                 return this.allStock;
             }
@@ -63,17 +63,16 @@ namespace LAMN_Software
         }
 
         //method for adding new products. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public bool AddProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
+        public Exception AddProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO product VALUES(@id, @name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
+                    string sql = "INSERT INTO product VALUES(@name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
-                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
@@ -88,25 +87,49 @@ namespace LAMN_Software
 
                     cmd.ExecuteNonQuery();
                 }
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                return false;
+                return ex;
             }
         }
 
         //method to change properties of a product in the DB
-        public bool ChangeProduct(int id, string name, int quantityS, int quantityW, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, int totalSold, string addInformation)
+        public Exception ChangeProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, int totalSold, string addInformation)
         {
-            //update given info in DB for product with id.
-            GetAllStockFromDB();
-            return true;
-            //return false if DB connection failed
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET Name=@name, QuantityS=@quantityS, QuantityWH=@quantityWH, LocationS=@locationS, LocationWH=@locationWH, CostPrice=@costPrice, SellPrice@sellprice, MinimumStock=@minStock, AddInformation=@addInf);";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@quantityS", quantityS);
+                    cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
+                    cmd.Parameters.AddWithValue("@locationS", locationS);
+                    cmd.Parameters.AddWithValue("@locationWH", locationWH);
+                    cmd.Parameters.AddWithValue("@costPrice", costPrice);
+                    cmd.Parameters.AddWithValue("@sellPrice", sellPrice);
+                    cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
+                    cmd.Parameters.AddWithValue("@addInf", addInformation);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
         }
 
         //method to delete a product from the DB
-        public bool DeleteProduct(Product product)
+        public Exception DeleteProduct(Product product)
         {
             try
             {
@@ -120,11 +143,11 @@ namespace LAMN_Software
 
                     cmd.ExecuteNonQuery();
                 }
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                return false;
+                return ex;
             }
         }
 
