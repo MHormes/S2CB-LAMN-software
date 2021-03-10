@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LAMN_Software
 {
@@ -15,7 +11,7 @@ namespace LAMN_Software
         private int phoneNumber;
         private int iceNumber;
         private ICERelation iceRelationship;
-        private jobPosition position;
+        private JobPosition position;
         private DateTime contractEnding;
         private string addInformation;
 
@@ -25,7 +21,7 @@ namespace LAMN_Software
             set { bsn = value; }
         }
 
-        public Employee(string firstName, string secondName, int bsn, DateTime dateOfBirth, int phoneNumber, int iceNumber, ICERelation iceRelationship, jobPosition position, DateTime contractEnding, string addInformation)
+        public Employee(string firstName, string secondName, int bsn, DateTime dateOfBirth, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation)
         {
             this.firstName = firstName;
             this.secondName = secondName;
