@@ -70,7 +70,7 @@ namespace LAMN_Software
 
         private void btnAddStock_Click(object sender, EventArgs e)
         {
-            // code goes here
+            tpStockAdd.Focus();
         }
 
         private void btnEditStock_Click(object sender, EventArgs e)
@@ -86,6 +86,26 @@ namespace LAMN_Software
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
             // code goes here
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            tpStock.Focus();
+        }
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tpSchedules.Focus();
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tpEmployees.Focus();
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            tpStatistics.Focus();
         }
     }
 }

@@ -49,10 +49,24 @@ namespace LAMN_Software
             this.btnDeleteStock = new System.Windows.Forms.Button();
             this.tbxSearchStock = new System.Windows.Forms.TextBox();
             this.btnSearchStock = new System.Windows.Forms.Button();
+            this.tpStockAdd = new System.Windows.Forms.TabPage();
+            this.lblStockAdd_StockName = new System.Windows.Forms.Label();
+            this.tbxStockAdd_StockName = new System.Windows.Forms.TextBox();
+            this.lblStockAdd_WarehouseQuantity = new System.Windows.Forms.Label();
+            this.tbxStockAdd_WarehouseQuantity = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblStockAdd_WarehouseLocation = new System.Windows.Forms.Label();
+            this.tbxStockAdd_WarehouseLocation = new System.Windows.Forms.TextBox();
+            this.lblStockAdd_Warehouse = new System.Windows.Forms.Label();
+            this.lblStockAdd_Store = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlBar.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
+            this.tpStockAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -130,6 +144,7 @@ namespace LAMN_Software
             this.tcNavigator.Controls.Add(this.tpSchedules);
             this.tcNavigator.Controls.Add(this.tpEmployees);
             this.tcNavigator.Controls.Add(this.tpStatistics);
+            this.tcNavigator.Controls.Add(this.tpStockAdd);
             this.tcNavigator.Location = new System.Drawing.Point(11, 182);
             this.tcNavigator.Name = "tcNavigator";
             this.tcNavigator.SelectedIndex = 0;
@@ -165,42 +180,46 @@ namespace LAMN_Software
             // btnStock
             // 
             this.btnStock.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStock.Location = new System.Drawing.Point(355, 78);
+            this.btnStock.Location = new System.Drawing.Point(465, 75);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(263, 125);
             this.btnStock.TabIndex = 10;
             this.btnStock.Text = "Stock";
             this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnSchedules
             // 
             this.btnSchedules.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnSchedules.Location = new System.Drawing.Point(624, 78);
+            this.btnSchedules.Location = new System.Drawing.Point(734, 75);
             this.btnSchedules.Name = "btnSchedules";
             this.btnSchedules.Size = new System.Drawing.Size(263, 125);
             this.btnSchedules.TabIndex = 10;
             this.btnSchedules.Text = "Schedules";
             this.btnSchedules.UseVisualStyleBackColor = true;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
             // 
             // btnEmployees
             // 
             this.btnEmployees.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnEmployees.Location = new System.Drawing.Point(893, 78);
+            this.btnEmployees.Location = new System.Drawing.Point(1003, 75);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(263, 125);
             this.btnEmployees.TabIndex = 10;
             this.btnEmployees.Text = "Employees";
             this.btnEmployees.UseVisualStyleBackColor = true;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnStatistics
             // 
             this.btnStatistics.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStatistics.Location = new System.Drawing.Point(1162, 78);
+            this.btnStatistics.Location = new System.Drawing.Point(1272, 75);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(263, 125);
             this.btnStatistics.TabIndex = 10;
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // tpEmployees
             // 
@@ -284,6 +303,140 @@ namespace LAMN_Software
             this.btnSearchStock.UseVisualStyleBackColor = true;
             this.btnSearchStock.Click += new System.EventHandler(this.btnSearchStock_Click);
             // 
+            // tpStockAdd
+            // 
+            this.tpStockAdd.Controls.Add(this.tbxStockAdd_WarehouseLocation);
+            this.tpStockAdd.Controls.Add(this.textBox3);
+            this.tpStockAdd.Controls.Add(this.lblStockAdd_Store);
+            this.tpStockAdd.Controls.Add(this.lblStockAdd_Warehouse);
+            this.tpStockAdd.Controls.Add(this.lblStockAdd_WarehouseLocation);
+            this.tpStockAdd.Controls.Add(this.textBox2);
+            this.tpStockAdd.Controls.Add(this.label3);
+            this.tpStockAdd.Controls.Add(this.label2);
+            this.tpStockAdd.Controls.Add(this.tbxStockAdd_WarehouseQuantity);
+            this.tpStockAdd.Controls.Add(this.lblStockAdd_WarehouseQuantity);
+            this.tpStockAdd.Controls.Add(this.tbxStockAdd_StockName);
+            this.tpStockAdd.Controls.Add(this.lblStockAdd_StockName);
+            this.tpStockAdd.Location = new System.Drawing.Point(10, 40);
+            this.tpStockAdd.Name = "tpStockAdd";
+            this.tpStockAdd.Padding = new System.Windows.Forms.Padding(3);
+            this.tpStockAdd.Size = new System.Drawing.Size(1660, 752);
+            this.tpStockAdd.TabIndex = 4;
+            this.tpStockAdd.Text = "StockAdd";
+            this.tpStockAdd.UseVisualStyleBackColor = true;
+            // 
+            // lblStockAdd_StockName
+            // 
+            this.lblStockAdd_StockName.AutoSize = true;
+            this.lblStockAdd_StockName.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblStockAdd_StockName.Location = new System.Drawing.Point(87, 102);
+            this.lblStockAdd_StockName.Name = "lblStockAdd_StockName";
+            this.lblStockAdd_StockName.Size = new System.Drawing.Size(242, 47);
+            this.lblStockAdd_StockName.TabIndex = 0;
+            this.lblStockAdd_StockName.Text = "Stock name";
+            // 
+            // tbxStockAdd_StockName
+            // 
+            this.tbxStockAdd_StockName.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxStockAdd_StockName.Location = new System.Drawing.Point(510, 102);
+            this.tbxStockAdd_StockName.Name = "tbxStockAdd_StockName";
+            this.tbxStockAdd_StockName.Size = new System.Drawing.Size(234, 56);
+            this.tbxStockAdd_StockName.TabIndex = 1;
+            // 
+            // lblStockAdd_WarehouseQuantity
+            // 
+            this.lblStockAdd_WarehouseQuantity.AutoSize = true;
+            this.lblStockAdd_WarehouseQuantity.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblStockAdd_WarehouseQuantity.Location = new System.Drawing.Point(87, 234);
+            this.lblStockAdd_WarehouseQuantity.Name = "lblStockAdd_WarehouseQuantity";
+            this.lblStockAdd_WarehouseQuantity.Size = new System.Drawing.Size(401, 47);
+            this.lblStockAdd_WarehouseQuantity.TabIndex = 0;
+            this.lblStockAdd_WarehouseQuantity.Text = "Warehouse Quantity";
+            // 
+            // tbxStockAdd_WarehouseQuantity
+            // 
+            this.tbxStockAdd_WarehouseQuantity.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxStockAdd_WarehouseQuantity.Location = new System.Drawing.Point(510, 231);
+            this.tbxStockAdd_WarehouseQuantity.Name = "tbxStockAdd_WarehouseQuantity";
+            this.tbxStockAdd_WarehouseQuantity.Size = new System.Drawing.Size(234, 56);
+            this.tbxStockAdd_WarehouseQuantity.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F);
+            this.label2.Location = new System.Drawing.Point(87, 468);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(289, 47);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Store Quantity";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Arial", 14F);
+            this.textBox2.Location = new System.Drawing.Point(510, 465);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(234, 56);
+            this.textBox2.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F);
+            this.label3.Location = new System.Drawing.Point(87, 530);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 47);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Store Location ";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Arial", 14F);
+            this.textBox3.Location = new System.Drawing.Point(510, 527);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(234, 56);
+            this.textBox3.TabIndex = 1;
+            // 
+            // lblStockAdd_WarehouseLocation
+            // 
+            this.lblStockAdd_WarehouseLocation.AutoSize = true;
+            this.lblStockAdd_WarehouseLocation.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblStockAdd_WarehouseLocation.Location = new System.Drawing.Point(87, 296);
+            this.lblStockAdd_WarehouseLocation.Name = "lblStockAdd_WarehouseLocation";
+            this.lblStockAdd_WarehouseLocation.Size = new System.Drawing.Size(414, 47);
+            this.lblStockAdd_WarehouseLocation.TabIndex = 0;
+            this.lblStockAdd_WarehouseLocation.Text = "Warehouse Location ";
+            // 
+            // tbxStockAdd_WarehouseLocation
+            // 
+            this.tbxStockAdd_WarehouseLocation.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxStockAdd_WarehouseLocation.Location = new System.Drawing.Point(510, 293);
+            this.tbxStockAdd_WarehouseLocation.Name = "tbxStockAdd_WarehouseLocation";
+            this.tbxStockAdd_WarehouseLocation.Size = new System.Drawing.Size(234, 56);
+            this.tbxStockAdd_WarehouseLocation.TabIndex = 1;
+            // 
+            // lblStockAdd_Warehouse
+            // 
+            this.lblStockAdd_Warehouse.AutoSize = true;
+            this.lblStockAdd_Warehouse.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockAdd_Warehouse.ForeColor = System.Drawing.Color.Silver;
+            this.lblStockAdd_Warehouse.Location = new System.Drawing.Point(110, 190);
+            this.lblStockAdd_Warehouse.Name = "lblStockAdd_Warehouse";
+            this.lblStockAdd_Warehouse.Size = new System.Drawing.Size(167, 35);
+            this.lblStockAdd_Warehouse.TabIndex = 0;
+            this.lblStockAdd_Warehouse.Text = "Warehouse";
+            // 
+            // lblStockAdd_Store
+            // 
+            this.lblStockAdd_Store.AutoSize = true;
+            this.lblStockAdd_Store.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockAdd_Store.ForeColor = System.Drawing.Color.Silver;
+            this.lblStockAdd_Store.Location = new System.Drawing.Point(110, 413);
+            this.lblStockAdd_Store.Name = "lblStockAdd_Store";
+            this.lblStockAdd_Store.Size = new System.Drawing.Size(85, 35);
+            this.lblStockAdd_Store.TabIndex = 0;
+            this.lblStockAdd_Store.Text = "Store";
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -300,6 +453,8 @@ namespace LAMN_Software
             this.tcNavigator.ResumeLayout(false);
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
+            this.tpStockAdd.ResumeLayout(false);
+            this.tpStockAdd.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -326,5 +481,18 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnEditStock;
         private System.Windows.Forms.Button btnSearchStock;
         private System.Windows.Forms.Button btnAddStock;
+        private System.Windows.Forms.TabPage tpStockAdd;
+        private System.Windows.Forms.TextBox tbxStockAdd_StockName;
+        private System.Windows.Forms.Label lblStockAdd_StockName;
+        private System.Windows.Forms.TextBox tbxStockAdd_WarehouseQuantity;
+        private System.Windows.Forms.Label lblStockAdd_WarehouseQuantity;
+        private System.Windows.Forms.TextBox tbxStockAdd_WarehouseLocation;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblStockAdd_Store;
+        private System.Windows.Forms.Label lblStockAdd_Warehouse;
+        private System.Windows.Forms.Label lblStockAdd_WarehouseLocation;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
