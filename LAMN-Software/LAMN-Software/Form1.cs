@@ -17,7 +17,8 @@ namespace LAMN_Software
         //CODE FOR THE VISUAL DESIGN.
         //mouse coords which are needed for GUI drag bar functionality
         public Point mouseLocation;
-        
+
+        LoginHandler loginHandler;
 
         public Form1()
         {
@@ -145,9 +146,59 @@ namespace LAMN_Software
 
         private void button_login_Click(object sender, EventArgs e)
         {
-            ProductForm pf = new ProductForm();
-            pf.ShowDialog();
-            //code needs to be added
+            //copy of the login list
+            List<Login> logins = new List<Login>();
+            loginHandler = new LoginHandler();
+
+            logins = loginHandler.GetAllLogin();
+            int index = -1;
+
+            /////////////////////////easy access
+            ProductForm pf1 = new ProductForm();
+            pf1.ShowDialog();
+            return;
+
+
+            //for every login, username checked. if i find it, i save the index of the element
+            foreach (Login login in logins)
+            {
+                if (textBox_accountName.Text == login.getUsername())
+                    index = logins.IndexOf(login);
+            }
+
+            //not found!
+            if(index == -1)
+            {
+                errorNotFound();
+                return;
+            }
+
+            //check if password is correct
+            if (textBox_accountPassword.Text == logins.ElementAt(index).getPassword())
+            {
+                ProductForm pf = new ProductForm();
+                pf.ShowDialog();
+            }
+            //wrong password
+            else
+            {
+                errorPassword();
+                return;
+            }
+        }
+
+        //username not found
+        private void errorNotFound()
+        {
+            MessageBox.Show("The account doesn't exist. Please retry.");
+            return;
+        }
+
+        //wrong password
+        private void errorPassword()
+        {
+            MessageBox.Show("Wrong password. Please retry.");
+            return;
         }
     }
 }
