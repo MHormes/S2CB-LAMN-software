@@ -27,10 +27,23 @@ namespace LAMN_Software
         //onClick for add stock button. Will direct to stock add page
         private void btnAddStock_Click(object sender, EventArgs e)
         {
+            //Go to page and disable correct button
             tcNavigator.SelectedTab = tpStockAdd;
             btnStockAdd_ConfirmEdit.Visible = false;
             btnStockAdd_ConfirmAdd.Visible = true;
+            //clear all fields/disable
+            tbxStockAdd_ID.Text = "";
             tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_ProductName.Text = "";
+            tbxStockAdd_WarehouseQuantity.Text = "";
+            tbxStockAdd_WarehouseLocation.Text = "";
+            tbxStockAdd_StoreQuantity.Text = "";
+            tbxStockAdd_StoreLocation.Text = "";
+            tbxStockAdd_Cost.Text = "";
+            tbxStockAdd_Sell.Text = "";
+            tbxStockAdd_MinimumStock.Text = "";
+            tbxStockAdd_AddInfo.Text = "";
+            tbxStockAdd_TotalSold.Text = "";
             tbxStockAdd_TotalSold.Enabled = false;
         }
 
