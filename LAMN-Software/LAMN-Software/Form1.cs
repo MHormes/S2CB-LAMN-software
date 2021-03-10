@@ -17,6 +17,7 @@ namespace LAMN_Software
         //CODE FOR THE VISUAL DESIGN.
         //mouse coords which are needed for GUI drag bar functionality
         public Point mouseLocation;
+        
 
         public Form1()
         {
@@ -140,6 +141,11 @@ namespace LAMN_Software
         private void textBox_defocus_KeyDown(object sender, KeyEventArgs e)
         {
             textBox_accountName.Focus();
+        }
+
+        private void button_login_Click(object sender, EventArgs e)
+        {
+            //code needs to be added
         }
     }
 }

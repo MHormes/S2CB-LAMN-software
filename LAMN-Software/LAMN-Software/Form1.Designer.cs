@@ -34,12 +34,12 @@
             this.label_loginTitle = new System.Windows.Forms.Label();
             this.textBox_accountName = new System.Windows.Forms.TextBox();
             this.pnlBackground = new System.Windows.Forms.Panel();
+            this.lblTV = new System.Windows.Forms.Label();
             this.textBox_defocus = new System.Windows.Forms.TextBox();
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
             this.lblMB = new System.Windows.Forms.Label();
-            this.lblTV = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlBar.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +56,7 @@
             this.button_login.TabStop = false;
             this.button_login.Text = "Login";
             this.button_login.UseVisualStyleBackColor = true;
+            this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
             // textBox_accountPassword
             // 
@@ -118,10 +119,22 @@
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(1120, 959);
+            this.pnlBackground.Size = new System.Drawing.Size(1120, 968);
             this.pnlBackground.TabIndex = 8;
             this.pnlBackground.Click += new System.EventHandler(this.pnlBackground_Click);
             this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
+            // 
+            // lblTV
+            // 
+            this.lblTV.BackColor = System.Drawing.Color.Transparent;
+            this.lblTV.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
+            this.lblTV.ForeColor = System.Drawing.Color.White;
+            this.lblTV.Image = ((System.Drawing.Image)(resources.GetObject("lblTV.Image")));
+            this.lblTV.Location = new System.Drawing.Point(644, 169);
+            this.lblTV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblTV.Name = "lblTV";
+            this.lblTV.Size = new System.Drawing.Size(144, 133);
+            this.lblTV.TabIndex = 10;
             // 
             // textBox_defocus
             // 
@@ -185,18 +198,6 @@
             this.lblMB.Size = new System.Drawing.Size(394, 208);
             this.lblMB.TabIndex = 9;
             this.lblMB.Text = "MB";
-            // 
-            // lblTV
-            // 
-            this.lblTV.BackColor = System.Drawing.Color.Transparent;
-            this.lblTV.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
-            this.lblTV.ForeColor = System.Drawing.Color.White;
-            this.lblTV.Image = ((System.Drawing.Image)(resources.GetObject("lblTV.Image")));
-            this.lblTV.Location = new System.Drawing.Point(644, 169);
-            this.lblTV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblTV.Name = "lblTV";
-            this.lblTV.Size = new System.Drawing.Size(144, 133);
-            this.lblTV.TabIndex = 10;
             // 
             // Form1
             // 
