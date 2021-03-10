@@ -78,6 +78,7 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
+            this.btnBackToStockPage = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
@@ -287,6 +288,7 @@ namespace LAMN_Software
             // 
             // tpStockAdd
             // 
+            this.tpStockAdd.Controls.Add(this.btnBackToStockPage);
             this.tpStockAdd.Controls.Add(this.btnStockAdd_ConfirmEdit);
             this.tpStockAdd.Controls.Add(this.btnStockAdd_ConfirmAdd);
             this.tpStockAdd.Controls.Add(this.tbxStockAdd_TotalSold);
@@ -667,6 +669,18 @@ namespace LAMN_Software
             this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+            // btnBackToStockPage
+            // 
+            this.btnBackToStockPage.Font = new System.Drawing.Font("Arial", 13F);
+            this.btnBackToStockPage.Location = new System.Drawing.Point(17, 287);
+            this.btnBackToStockPage.Margin = new System.Windows.Forms.Padding(1);
+            this.btnBackToStockPage.Name = "btnBackToStockPage";
+            this.btnBackToStockPage.Size = new System.Drawing.Size(158, 35);
+            this.btnBackToStockPage.TabIndex = 20;
+            this.btnBackToStockPage.Text = "<- Back to Stock";
+            this.btnBackToStockPage.UseVisualStyleBackColor = true;
+            this.btnBackToStockPage.Click += new System.EventHandler(this.btnBackToStockPage_click);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,5 +755,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnStockAdd_ConfirmAdd;
         private System.Windows.Forms.Button btnStockAdd_ConfirmEdit;
+        private System.Windows.Forms.Button btnBackToStockPage;
     }
 }

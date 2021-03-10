@@ -13,8 +13,6 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
-        //mouse coords which are needed for GUI drag bar functionality
-        public Point mouseLocation;
 
         StockHandler SH;
         public ProductForm()
@@ -22,6 +20,14 @@ namespace LAMN_Software
             InitializeComponent();
             SH = new StockHandler();
             FillStockListBox();
+        }
+
+        //STOCK MANAGEMENT
+
+        //Navigation Stock button click
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
         }
 
         //onClick for add stock button. Will direct to stock add page
@@ -73,6 +79,7 @@ namespace LAMN_Software
             btnStockAdd_ConfirmAdd.Visible = false;
             btnStockAdd_ConfirmEdit.Visible = true;
             //fill in all fields/disable
+            //IMPLEMENT NO SELECTED ITEM EXCEPTION
             tbxStockAdd_ID.Text = $"{p.Id}";
             tbxStockAdd_ID.Enabled = false;
             tbxStockAdd_ProductName.Text = p.Name;
@@ -105,6 +112,7 @@ namespace LAMN_Software
             MessageBox.Show(update.Message);
         }
 
+        //onclick for delete button. Opens new tab for quitting reason
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
 
@@ -125,30 +133,18 @@ namespace LAMN_Software
 
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
-            // code goes here
+            lbxAllStock.Items.Clear();
+            string searchName = tbxSearchStock.Text.ToLower();
+            foreach(Product p in SH.GetAllProducts())
+            {
+                if (p.Name.ToLower().Contains(searchName))
+                {
+                    lbxAllStock.Items.Add(p);
+                }
+            }
         }
 
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStock;
-        }
-
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpSchedules;
-        }
-
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpEmployees;
-        }
-
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStatistics;
-        }
-
+        //method for updateing/filling listbox for stock items
         public void FillStockListBox()
         {
             lbxAllStock.Items.Clear();
@@ -165,7 +161,27 @@ namespace LAMN_Software
             }
 
         }
+
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedules;
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpEmployees;
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatistics;
+        }
+
         //DESIGN
+
+        //mouse coords which are needed for GUI drag bar functionality
+        public Point mouseLocation;
 
         //'X' icon used to close current form
         private void lblClose_Click(object sender, EventArgs e)
@@ -212,6 +228,9 @@ namespace LAMN_Software
             }
         }
 
-
+        private void btnBackToStockPage_click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
+        }
     }
 }
