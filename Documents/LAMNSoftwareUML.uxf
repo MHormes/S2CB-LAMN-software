@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1507</x>
+      <y>847</y>
+      <w>385</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+LoginHandler
+--
+TryForLogin(username: string, password: string): bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1111</x>
+      <y>869</y>
+      <w>231</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>LoginScreen
+--
+First form when opening app.
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1991</x>
+      <y>473</y>
+      <w>550</w>
+      <h>319</h>
+    </coordinates>
+    <panel_attributes>Employee
+--
+-firstName: string
+-secondName: string
+-userName: string
+-bsn: int
+-dateOfBirth: DateTime
+-phoneNumber: int
+-email: string
+-iceNumber: int
+-iceRelationship: ICERelation
+-position: jobPosition
+-contractEnding: DateTime
+-addInformation: string
+--
++Employee(*1)
++Bsn {get; set;}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1331</x>
+      <y>869</y>
+      <w>198</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2310</x>
+      <y>858</y>
+      <w>231</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+ICERelation
+--
+PARTNER
+FATHER
+MOTHER
+BROTHER
+SISTER
+UNCLE
+AUNT
+COUSIN
+FRIEND
+OTHER</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2046</x>
+      <y>957</y>
+      <w>231</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+JobPosition
+--
+MANAGER
+HR
+SALES
+DEPOT
+SECURITY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2134</x>
+      <y>781</y>
+      <w>198</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>160.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1980</x>
+      <y>110</y>
+      <w>561</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>EmployeeHandler
+--
++allEmployees: Employee[]
+--
++GetAllEmployees(): void
++GetEmployee(bsn: int): Employee
++ChangeEmployee(*2): bool
++DeleteEmployee(employee Employee): bool
++AddEmployee(*1): bool
+//statistics or so????</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2123</x>
+      <y>308</y>
+      <w>44</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1991</x>
+      <y>0</y>
+      <w>1694</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>*1 = firstName: string, secondName: string, userName: string, bsn: int, dateOfBirth: DateTime, email: string, phoneNumber: int, iceNumber: int, iceRelationship: ICERelation, position: jobPosition, contractEnding: DateTime, addInformation: string
+*2 = bsn: int, email: string, phoneNumber: int, iceNumber: int, iceRelationship: ICERelation, position: jobPosition, contractEnding: DateTime, addInformation: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1210</x>
+      <y>110</y>
+      <w>561</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>StockHandler
+--
++allStock: Product[]
+--
++GetAllStockFromDB(): void
++GetProduct(id: int): Product
++ChangeProduct(*4): bool
++DeleteProduct(product Product): bool
++AddProduct(*1): bool
+//statistics or so????
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1210</x>
+      <y>473</y>
+      <w>561</w>
+      <h>319</h>
+    </coordinates>
+    <panel_attributes>Product
+--
+-id: int
+-name: string
+-quantityS: int
+-quantityWH: int
+-locationS: string
+-locationWH: string
+-costPrice: double
+-sellPrice: double
+-minimumStockRequired: int
+-addInformation: string
+-totalSold: int
+--
++Product(*3)
++Id {get; set;}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>638</x>
+      <y>0</y>
+      <w>1331</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>*3 = id: int, name: string, quantityS: int, quantityWH: int, locationS: string, locationWH: string, costPrice: double, sellPrice: double, minimumStockRequired: int, totalSold: int, addInformation: string
+*4 = id: int, name: string, quantityS: int, quantityWH: int, locationS: string, locationWH: string, costPrice: double, sellPrice: double, minimumStockRequired: int, addInformation: string
+*5 = week: int, day: Day, employee: Employee, timeSlot: enum</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1441</x>
+      <y>297</y>
+      <w>44</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2002</x>
+      <y>781</y>
+      <w>66</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>40.0;220.0;10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>165</y>
+      <w>561</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>ScheduleHandler
+--
++allStock: Product[]
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>517</y>
+      <w>561</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Schedule
+--
+-week: int
+-day: Day
+-empoloyee: Employee
+-timeSlot: TimeSlot
+--
+Schedule(*5)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>671</x>
+      <y>363</y>
+      <w>44</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>913</x>
+      <y>1199</y>
+      <w>363</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Employees
+--
+FirstName - Varchar(25)
+SecondName - Varchar(25)
+UserName - Varchar(25)
+BSN - int (10)
+DateOfBirth - date
+PhoneNumber - int(10)
+Email - Varchar(100)
+ICEnumber - int(10)
+ICErelation - Varchar(25)
+Position - Varchar(25)
+ContractEnding - date
+AddInformation - Varchar(500)
+QuittingReason - NULL - Varchar(255)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>319</x>
+      <y>1529</y>
+      <w>363</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>Schedules
+--
+Week - int(10)
+Day - Varchar(25)
+Employee - Varchar(25)
+TimeSlot - Varchar(25)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>319</x>
+      <y>1265</y>
+      <w>231</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>LoginDetails
+--
+Username - Varchar(25)
+Password - Varchar(25)
+Email - Varchar(100)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>1276</y>
+      <w>396</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Primary Key = Username</panel_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>924</x>
+      <y>1562</y>
+      <w>363</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>Products
+--
+ID - int()
+Name - Varchar(100)
+QuantitiyS - int(10)
+QuantityWH - int(10)
+LocationS - Varchar(25)
+LocationHR - Varchar(25)
+CostPrice - double(10)
+SellPrice - double(10)
+MinimumStock - int(10)
+addInformation - Varchar(500)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>671</x>
+      <y>1287</y>
+      <w>330</w>
+      <h>374</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Primary Key = Username</panel_attributes>
+    <additional_attributes>10.0;320.0;120.0;320.0;120.0;10.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>803</x>
+      <y>880</y>
+      <w>231</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Day
+--
+MONDAY
+TUESDAY
+WEDNESDAY
+THURDAY
+FRIDAY
+SATURDAY
+SUNDAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>429</x>
+      <y>880</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+TimeSlot
+--
+08:00-12:00
+12:00-16:00
+16:00-20:00</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>726</y>
+      <w>242</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;90.0;200.0;90.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>737</x>
+      <y>814</y>
+      <w>209</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>170.0;60.0;170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
