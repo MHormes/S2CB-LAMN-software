@@ -76,12 +76,19 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
-                    cmd.Parameters.AddWithValue("@locationS", locationS);
-                    cmd.Parameters.AddWithValue("@locationWH", locationWH);
+                    if (locationS != "")
+                    { cmd.Parameters.AddWithValue("@locationS", locationS); }
+                    else
+                    { cmd.Parameters.AddWithValue("@LocatioS", ""); }
+                    if (locationWH != "")
+                    { cmd.Parameters.AddWithValue("@LocationWH", locationWH); }
+                    else { cmd.Parameters.AddWithValue("@LocationWH", ""); }
                     cmd.Parameters.AddWithValue("@costPrice", costPrice);
                     cmd.Parameters.AddWithValue("@sellPrice", sellPrice);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
-                    cmd.Parameters.AddWithValue("@addInf", addInformation);
+                    if (addInformation != "")
+                    { cmd.Parameters.AddWithValue("@addInf", addInformation); }
+                    else { cmd.Parameters.AddWithValue("@addinf", ""); }
                     cmd.Parameters.AddWithValue("@totalSold", 0);
                     cmd.Prepare();
 

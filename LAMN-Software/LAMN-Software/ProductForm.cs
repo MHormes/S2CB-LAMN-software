@@ -37,37 +37,29 @@ namespace LAMN_Software
         //onClick for confirming the add product
         private void btnStockAdd_ConfirmAdd_Click(object sender, EventArgs e)
         {
+            //method to call for adding
+            var add = SH.AddProduct(tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
             //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
-            if (SH.AddProduct(tbxStockAdd_ProductName.Text,
-                Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
-                Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
-                tbxStockAdd_StoreLocation.Text,
-                lblStockAdd_WarehouseLocation.Text,
-                Convert.ToDouble(tbxStockAdd_Cost.Text), 
-                Convert.ToDouble(tbxStockAdd_Sell.Text), 
-                Convert.ToInt32(tbxStockAdd_MinimumStock.Text), 
-                tbxStockAdd_AddInfo.Text) == null)
+            if (add == null)
             {
                 FillStockListBox();
                 MessageBox.Show("Item added succesfully");
                 return;
             }
-            MessageBox.Show(SH.AddProduct(tbxStockAdd_ProductName.Text,
-                Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
-                Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
-                tbxStockAdd_StoreLocation.Text,
-                lblStockAdd_WarehouseLocation.Text,
-                Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text).Message);
+            MessageBox.Show(add.Message);
         }
 
         //onClick for edit stock button. Will take selected.
         private void btnEditStock_Click(object sender, EventArgs e)
         {
-            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            //IMPLEMENT NO SELECTED ITEM EXCEPTION
+            //save object
             Product p = (Product)lbxAllStock.SelectedItem;
+            //Go to page and disable correct button
             tcNavigator.SelectedTab = tpStockAdd;
             btnStockAdd_ConfirmAdd.Visible = false;
             btnStockAdd_ConfirmEdit.Visible = true;
+            //fill in all fields/disable
             tbxStockAdd_ID.Text = $"{p.Id}";
             tbxStockAdd_ID.Enabled = false;
             tbxStockAdd_ProductName.Text = p.Name;
@@ -88,59 +80,60 @@ namespace LAMN_Software
         //onclick for confirming edit
         private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
+            //method to call for changing
+            var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
             //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
-            if (SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text),
-               tbxStockAdd_ProductName.Text,
-               Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
-               Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
-               tbxStockAdd_StoreLocation.Text,
-               lblStockAdd_WarehouseLocation.Text,
-               Convert.ToInt32(tbxStockAdd_MinimumStock.Text),
-               tbxStockAdd_AddInfo.Text) == null)
+            if (update == null)
             {
                 FillStockListBox();
                 MessageBox.Show("Item edited succesfully");
                 return;
             }
-            MessageBox.Show(SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text),
-               tbxStockAdd_ProductName.Text,
-               Convert.ToInt32(tbxStockAdd_StoreQuantity.Text),
-               Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text),
-               tbxStockAdd_StoreLocation.Text,
-               lblStockAdd_WarehouseLocation.Text,
-               Convert.ToInt32(tbxStockAdd_MinimumStock.Text),
-               tbxStockAdd_AddInfo.Text).Message);
+            MessageBox.Show(update.Message);
         }
 
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
-            // code goes here
+
+            //IMPLEMENT NO ITEM SELECTED EXCEPTION
+            Product p = (Product)lbxAllStock.SelectedItem;
+            //method to call for deleting
+            var delete = SH.DeleteProduct(p);
+            //Implement popup for quitting reason
+            if (delete == null)
+            {
+                FillStockListBox();
+                MessageBox.Show("Product sucessfully deleted");
+                return;
+            }
+            MessageBox.Show(delete.Message);
+
         }
 
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
             // code goes here
         }
-        
+
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            tpStock.Focus();
+            tcNavigator.SelectedTab = tpStock;
         }
 
         private void btnSchedules_Click(object sender, EventArgs e)
         {
-            tpSchedules.Focus();
+            tcNavigator.SelectedTab = tpSchedules;
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
         {
-            tpEmployees.Focus();
+            tcNavigator.SelectedTab = tpEmployees;
         }
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            tpStatistics.Focus();
+            tcNavigator.SelectedTab = tpStatistics;
         }
 
         public void FillStockListBox()
