@@ -92,10 +92,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataHandling\LoginHandler.cs" />
+    <Compile Include="DBHandling\LoginHandler.cs" />
     <Compile Include="ENUMS\Day.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="DataHandling\EmployeeHandler.cs" />
+    <Compile Include="DataClasses\Employee.cs" />
+    <Compile Include="DBHandling\EmployeeHandler.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +104,8 @@
     </Compile>
     <Compile Include="ENUMS\ICERelation.cs" />
     <Compile Include="ENUMS\JobPosition.cs" />
-    <Compile Include="Login.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="DataClasses\Login.cs" />
+    <Compile Include="DataClasses\Product.cs" />
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataHandling\StockHandler.cs" />
+    <Compile Include="DBHandling\StockHandler.cs" />
     <Compile Include="ENUMS\TimeSlot.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

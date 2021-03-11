@@ -20,6 +20,9 @@ namespace LAMN_Software
             InitializeComponent();
             SH = new StockHandler();
             FillStockListBox();
+
+            //Method to enable buttons based on indicator
+
         }
 
         //STOCK MANAGEMENT
