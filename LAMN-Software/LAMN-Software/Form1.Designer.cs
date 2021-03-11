@@ -48,7 +48,7 @@
             // 
             this.button_login.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.button_login.Location = new System.Drawing.Point(498, 750);
+            this.button_login.Location = new System.Drawing.Point(469, 730);
             this.button_login.Margin = new System.Windows.Forms.Padding(5);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(215, 63);
@@ -62,7 +62,7 @@
             // 
             this.textBox_accountPassword.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_accountPassword.ForeColor = System.Drawing.Color.Gray;
-            this.textBox_accountPassword.Location = new System.Drawing.Point(358, 575);
+            this.textBox_accountPassword.Location = new System.Drawing.Point(343, 575);
             this.textBox_accountPassword.Margin = new System.Windows.Forms.Padding(5);
             this.textBox_accountPassword.Name = "textBox_accountPassword";
             this.textBox_accountPassword.Size = new System.Drawing.Size(487, 70);
@@ -79,7 +79,7 @@
             this.label_loginTitle.BackColor = System.Drawing.Color.Transparent;
             this.label_loginTitle.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_loginTitle.ForeColor = System.Drawing.Color.White;
-            this.label_loginTitle.Location = new System.Drawing.Point(356, 302);
+            this.label_loginTitle.Location = new System.Drawing.Point(341, 302);
             this.label_loginTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label_loginTitle.Name = "label_loginTitle";
             this.label_loginTitle.Size = new System.Drawing.Size(432, 75);
@@ -90,7 +90,7 @@
             // 
             this.textBox_accountName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_accountName.ForeColor = System.Drawing.Color.Gray;
-            this.textBox_accountName.Location = new System.Drawing.Point(358, 465);
+            this.textBox_accountName.Location = new System.Drawing.Point(343, 465);
             this.textBox_accountName.Margin = new System.Windows.Forms.Padding(50);
             this.textBox_accountName.Name = "textBox_accountName";
             this.textBox_accountName.Size = new System.Drawing.Size(487, 70);
@@ -119,7 +119,7 @@
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(1120, 968);
+            this.pnlBackground.Size = new System.Drawing.Size(1120, 971);
             this.pnlBackground.TabIndex = 8;
             this.pnlBackground.Click += new System.EventHandler(this.pnlBackground_Click);
             this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
@@ -130,7 +130,7 @@
             this.lblTV.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
             this.lblTV.ForeColor = System.Drawing.Color.White;
             this.lblTV.Image = ((System.Drawing.Image)(resources.GetObject("lblTV.Image")));
-            this.lblTV.Location = new System.Drawing.Point(644, 169);
+            this.lblTV.Location = new System.Drawing.Point(629, 169);
             this.lblTV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTV.Name = "lblTV";
             this.lblTV.Size = new System.Drawing.Size(144, 133);
@@ -192,7 +192,7 @@
             this.lblMB.BackColor = System.Drawing.Color.Transparent;
             this.lblMB.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
             this.lblMB.ForeColor = System.Drawing.Color.White;
-            this.lblMB.Location = new System.Drawing.Point(319, 121);
+            this.lblMB.Location = new System.Drawing.Point(304, 121);
             this.lblMB.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMB.Name = "lblMB";
             this.lblMB.Size = new System.Drawing.Size(394, 208);
@@ -203,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 958);
+            this.ClientSize = new System.Drawing.Size(1115, 971);
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";

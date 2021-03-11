@@ -259,5 +259,25 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpStock;
         }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnEditEmployee_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnSearchEmployee_Click(object sender, EventArgs e)
+        {
+            // here too
+        }
     }
 }
