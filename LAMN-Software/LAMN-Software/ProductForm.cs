@@ -13,8 +13,6 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
-        //mouse coords which are needed for GUI drag bar functionality
-        public Point mouseLocation;
 
         StockHandler SH;
         public ProductForm()
@@ -22,6 +20,17 @@ namespace LAMN_Software
             InitializeComponent();
             SH = new StockHandler();
             FillStockListBox();
+
+            //Method to enable buttons based on indicator
+
+        }
+
+        //STOCK MANAGEMENT
+
+        //Navigation Stock button click
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
         }
 
         //onClick for add stock button. Will direct to stock add page
@@ -40,7 +49,9 @@ namespace LAMN_Software
             tbxStockAdd_StoreQuantity.Text = "";
             tbxStockAdd_StoreLocation.Text = "";
             tbxStockAdd_Cost.Text = "";
+            tbxStockAdd_Cost.Enabled = true;
             tbxStockAdd_Sell.Text = "";
+            tbxStockAdd_Sell.Enabled = true;
             tbxStockAdd_MinimumStock.Text = "";
             tbxStockAdd_AddInfo.Text = "";
             tbxStockAdd_TotalSold.Text = "";
@@ -50,23 +61,35 @@ namespace LAMN_Software
         //onClick for confirming the add product
         private void btnStockAdd_ConfirmAdd_Click(object sender, EventArgs e)
         {
-            //method to call for adding
-            var add = SH.AddProduct(tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
-            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
-            if (add == null)
+            try
             {
-                FillStockListBox();
-                MessageBox.Show("Item added succesfully");
-                return;
+                //method to call for adding
+                var add = SH.AddProduct(tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+
+                if (add == null)
+                {
+                    FillStockListBox();
+                    MessageBox.Show("Item added succesfully");
+                    return;
+                }
+                MessageBox.Show(add.Message);
             }
-            MessageBox.Show(add.Message);
+            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //onClick for edit stock button. Will take selected.
         private void btnEditStock_Click(object sender, EventArgs e)
         {
-            //IMPLEMENT NO SELECTED ITEM EXCEPTION
             //save object
+            if (lbxAllStock.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a product to edit");
+                return;
+            }
             Product p = (Product)lbxAllStock.SelectedItem;
             //Go to page and disable correct button
             tcNavigator.SelectedTab = tpStockAdd;
@@ -93,26 +116,37 @@ namespace LAMN_Software
         //onclick for confirming edit
         private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
-            //method to call for changing
-            var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
-            //IMPLEMENT EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
-            if (update == null)
+            try
             {
-                FillStockListBox();
-                MessageBox.Show("Item edited succesfully");
-                return;
+                //method to call for changing
+                var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+
+                if (update == null)
+                {
+                    FillStockListBox();
+                    MessageBox.Show("Item edited succesfully");
+                    return;
+                }
+                MessageBox.Show(update.Message);
             }
-            MessageBox.Show(update.Message);
+            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        //onclick for delete button. Opens new tab for quitting reason
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
-
-            //IMPLEMENT NO ITEM SELECTED EXCEPTION
+            if (lbxAllStock.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a product to delete");
+                return;
+            }
             Product p = (Product)lbxAllStock.SelectedItem;
             //method to call for deleting
             var delete = SH.DeleteProduct(p);
-            //Implement popup for quitting reason
             if (delete == null)
             {
                 FillStockListBox();
@@ -123,32 +157,21 @@ namespace LAMN_Software
 
         }
 
+        //onClick for search button. Shows all matching products
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
-            // code goes here
+            lbxAllStock.Items.Clear();
+            string searchName = tbxSearchStock.Text.ToLower();
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if (p.Name.ToLower().Contains(searchName))
+                {
+                    lbxAllStock.Items.Add(p);
+                }
+            }
         }
 
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStock;
-        }
-
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpSchedules;
-        }
-
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpEmployees;
-        }
-
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStatistics;
-        }
-
+        //method for updateing/filling listbox for stock items
         public void FillStockListBox()
         {
             lbxAllStock.Items.Clear();
@@ -165,7 +188,27 @@ namespace LAMN_Software
             }
 
         }
+
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedules;
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpEmployees;
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatistics;
+        }
+
         //DESIGN
+
+        //mouse coords which are needed for GUI drag bar functionality
+        public Point mouseLocation;
 
         //'X' icon used to close current form
         private void lblClose_Click(object sender, EventArgs e)
@@ -212,6 +255,9 @@ namespace LAMN_Software
             }
         }
 
-
+        private void btnBackToStockPage_click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
+        }
     }
 }

@@ -13,17 +13,76 @@ namespace LAMN_Software
 {
     public partial class Form1 : Form
     {
-
-        //CODE FOR THE VISUAL DESIGN.
-        //mouse coords which are needed for GUI drag bar functionality
-        public Point mouseLocation;
-        
+        LoginHandler loginHandler;
+        static int index;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void button_login_Click(object sender, EventArgs e)
+        {
+            //copy of the login list
+            List<Login> logins = new List<Login>();
+            loginHandler = new LoginHandler();
+
+            logins = loginHandler.GetAllLogin();
+            index = -1;
+
+            /////////////////////////easy access
+            ProductForm pf1 = new ProductForm();
+            pf1.ShowDialog();
+            return;
+
+
+            //for every login, username checked. if i find it, i save the index of the element
+            foreach (Login login in logins)
+            {
+                if (textBox_accountName.Text == login.getUsername())
+                    index = logins.IndexOf(login);
+            }
+
+            //not found!
+            if (index == -1)
+            {
+                errorNotFound();
+                return;
+            }
+
+            //check if password is correct
+            if (textBox_accountPassword.Text == logins.ElementAt(index).getPassword())
+            {
+                ProductForm pf = new ProductForm();
+                pf.ShowDialog();
+            }
+            //wrong password
+            else
+            {
+                errorPassword();
+                return;
+            }
+        }
+
+        //username not found
+        private void errorNotFound()
+        {
+            MessageBox.Show("The account doesn't exist. Please retry.");
+            return;
+        }
+
+        //wrong password
+        private void errorPassword()
+        {
+            MessageBox.Show("Wrong password. Please retry.");
+            return;
+        }
+
+
+        //CODE FOR THE VISUAL DESIGN.
+
+        //mouse coords which are needed for GUI drag bar functionality
+        public Point mouseLocation;
 
         //updates mouse position when the panel is clicked
         private void pnlDragBar_MouseDown(object sender, MouseEventArgs e)
@@ -141,13 +200,6 @@ namespace LAMN_Software
         private void textBox_defocus_KeyDown(object sender, KeyEventArgs e)
         {
             textBox_accountName.Focus();
-        }
-
-        private void button_login_Click(object sender, EventArgs e)
-        {
-            ProductForm pf = new ProductForm();
-            pf.ShowDialog();
-            //code needs to be added
         }
     }
 }
