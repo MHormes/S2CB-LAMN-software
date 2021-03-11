@@ -30,10 +30,12 @@ namespace LAMN_Software
             logins = loginHandler.GetAllLogin();
             index = -1;
 
-            /////////////////////////easy access
+            /*/////////////////////////easy access
             ProductForm pf1 = new ProductForm();
+            this.Hide();
             pf1.ShowDialog();
-            return;
+            this.Close();
+            return;*/
 
 
             //for every login, username checked. if i find it, i save the index of the element
@@ -54,7 +56,10 @@ namespace LAMN_Software
             if (textBox_accountPassword.Text == logins.ElementAt(index).getPassword())
             {
                 ProductForm pf = new ProductForm();
+                this.Hide();
                 pf.ShowDialog();
+                this.Close();
+
             }
             //wrong password
             else
