@@ -195,7 +195,7 @@ namespace LAMN_Software
         public void FillEmployeeListBox()
         {
             lbxAllEmployees.Items.Clear();
-            if (EH.GetAllEmployeesFromDB() != null)
+            if (EH.GetAllEmployeesFromDB() == null)
             {
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
