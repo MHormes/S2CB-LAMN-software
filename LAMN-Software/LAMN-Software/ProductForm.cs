@@ -15,11 +15,14 @@ namespace LAMN_Software
     {
 
         StockHandler SH;
+        EmployeeHandler EH;
         public ProductForm()
         {
             InitializeComponent();
             SH = new StockHandler();
+            EH = new EmployeeHandler();
             FillStockListBox();
+            FillEmployeeListBox();
 
             //Method to enable buttons based on indicator
 
@@ -185,6 +188,23 @@ namespace LAMN_Software
             else
             {
                 MessageBox.Show(SH.GetAllStockFromDB().Message);
+            }
+
+        }
+
+        public void FillEmployeeListBox()
+        {
+            lbxAllEmployees.Items.Clear();
+            if (EH.GetAllEmployeesFromDB() != null)
+            {
+                foreach (Employee employee in EH.GetAllEmployees())
+                {
+                    lbxAllEmployees.Items.Add(employee);
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
 
         }
