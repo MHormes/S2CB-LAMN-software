@@ -36,6 +36,12 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpStock;
         }
 
+        //Back to stock button in edit/add page
+        private void btnBackToStockPage_click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
+        }
+
         //onClick for add stock button. Will direct to stock add page
         private void btnAddStock_Click(object sender, EventArgs e)
         {
@@ -192,6 +198,13 @@ namespace LAMN_Software
 
         }
 
+
+        //EMPLOYEE MANAGEMENT
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpEmployees;
+        }
+
         public void FillEmployeeListBox()
         {
             lbxAllEmployees.Items.Clear();
@@ -210,15 +223,15 @@ namespace LAMN_Software
         }
 
 
+        //SCHEDULES
+
+        //Navigation button to schedule page
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedules;
         }
 
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpEmployees;
-        }
+        
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
@@ -275,10 +288,7 @@ namespace LAMN_Software
             }
         }
 
-        private void btnBackToStockPage_click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStock;
-        }
+        
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
