@@ -18,6 +18,8 @@ namespace LAMN_Software
         public string AddInformation { get; set; }
         public string QuittingReason { get; set; }
 
+        private string fullName;
+
 
         public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittinReason)
         {
@@ -34,11 +36,17 @@ namespace LAMN_Software
             ContractEnding = contractEnding;
             AddInformation = addInformation;
             QuittingReason = quittinReason;
+            fullName = FirstName + " " + SecondName;
         }
 
         public override string ToString()
         {
             return $"{FirstName} {SecondName}. BSN:{Bsn}. Position:{Position.ToString()}";
+        }
+
+        public string GetFullName()
+        {
+            return fullName;
         }
     }
 }
