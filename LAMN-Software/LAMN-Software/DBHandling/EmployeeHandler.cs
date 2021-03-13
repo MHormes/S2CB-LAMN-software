@@ -68,7 +68,7 @@ namespace LAMN_Software
                         else if (relationReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[3]), Convert.ToInt32(dr[4]), Convert.ToInt32(dr[5]), ice, position, Convert.ToDateTime(dr[8]), dr[9].ToString(), dr[10].ToString()));
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, Convert.ToDateTime(dr[10]), dr[11].ToString(), dr[12].ToString()));
                     }
                 }
                 return null;
@@ -80,7 +80,7 @@ namespace LAMN_Software
         }
 
         //method to get a specific product from the list
-        public Employee GetEmployee(int bsn)
+        public Employee GetEmployee(string bsn)
         {
             foreach (Employee employee in allEmployees)
             {
