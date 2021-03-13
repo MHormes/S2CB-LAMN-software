@@ -292,7 +292,14 @@ namespace LAMN_Software
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            // code goes here
+            tcNavigator.SelectedTab = tpEmployeeAdd;
+            tbxEmployeeAdd_FirstName.Text = "";
+            tbxEmployeeAdd_SecondName.Text = "";
+            tbxEmployeeAdd_BSN.Text = "";
+            tbxEmployeeAdd_ICENumber.Text = "";
+            tbxEmployeeAdd_AdditonalInfo.Text = "";
+            cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
+            cbxEmployeeAdd_Position.SelectedIndex = -1;
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
