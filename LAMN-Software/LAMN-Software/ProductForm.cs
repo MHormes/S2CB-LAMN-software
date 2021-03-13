@@ -199,7 +199,7 @@ namespace LAMN_Software
             {
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
-                    lbxAllEmployees.Items.Add(employee);
+                    lbxAllEmployees.Items.Add(employee.ToString());
                 }
             }
             else
