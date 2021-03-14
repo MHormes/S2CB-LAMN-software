@@ -4,41 +4,49 @@ namespace LAMN_Software
 {
     public class Employee
     {
-        private string firstName;
-        private string secondName;
-        private string username;
-        private int bsn;
-        private DateTime dateOfBirth;
-        private int phoneNumber;
-        private string email;
-        private int iceNumber;
-        private ICERelation iceRelationship;
-        private JobPosition position;
-        private DateTime contractEnding;
-        private string addInformation;
-        private string quittingReason;
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string Username { get; set; }
+        public string Bsn { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string IceNumber { get; set; }
+        public ICERelation IceRelationship { get; set; }
+        public JobPosition Position { get; set; }
+        public DateTime ContractEnding { get; set; }
+        public string AddInformation { get; set; }
+        public string QuittingReason { get; set; }
 
-        public int Bsn
+        private string fullName;
+
+
+        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittinReason)
         {
-            get { return bsn; }
-            set { bsn = value; }
+            FirstName = firstName;
+            SecondName = secondName;
+            Username = username;
+            Bsn = bsn;
+            DateOfBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            IceNumber = iceNumber;
+            IceRelationship = iceRelationship;
+            Position = position;
+            ContractEnding = contractEnding;
+            AddInformation = addInformation;
+            QuittingReason = quittinReason;
+            fullName = FirstName + " " + SecondName;
         }
 
-        public Employee(string firstName, string secondName, string username, int bsn, DateTime dateOfBirth, int phoneNumber, string email, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
+        public override string ToString()
         {
-            this.firstName = firstName;
-            this.secondName = secondName;
-            this.username = username;
-            this.bsn = bsn;
-            this.dateOfBirth = dateOfBirth;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-            this.iceNumber = iceNumber;
-            this.iceRelationship = iceRelationship;
-            this.position = position;
-            this.contractEnding = contractEnding;
-            this.addInformation = addInformation;
-            this.quittingReason = quittingReason;
+            return $"{FirstName} {SecondName}. BSN:{Bsn}. Position:{Position.ToString()}";
+        }
+
+        public string GetFullName()
+        {
+            return fullName;
         }
     }
 }

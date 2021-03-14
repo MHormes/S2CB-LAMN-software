@@ -15,11 +15,14 @@ namespace LAMN_Software
     {
 
         StockHandler SH;
+        EmployeeHandler EH;
         public ProductForm()
         {
             InitializeComponent();
             SH = new StockHandler();
+            EH = new EmployeeHandler();
             FillStockListBox();
+            FillEmployeeListBox();
 
             //Method to enable buttons based on indicator
 
@@ -29,6 +32,12 @@ namespace LAMN_Software
 
         //Navigation Stock button click
         private void btnStock_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
+        }
+
+        //Back to stock button in edit/add page
+        private void btnBackToStockPage_click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStock;
         }
@@ -190,20 +199,47 @@ namespace LAMN_Software
         }
 
 
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpSchedules;
-        }
-
+        //EMPLOYEE MANAGEMENT
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
         }
 
+        public void FillEmployeeListBox()
+        {
+            lbxAllEmployees.Items.Clear();
+            if (EH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee employee in EH.GetAllEmployees())
+                {
+                    lbxAllEmployees.Items.Add(employee);
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
+            }
+
+        }
+
+
+        //SCHEDULES
+
+        //Navigation button to schedule page
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedules;
+        }
+
+
+        
+
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
         }
+
+
 
         //DESIGN
 
@@ -255,9 +291,57 @@ namespace LAMN_Software
             }
         }
 
-        private void btnBackToStockPage_click(object sender, EventArgs e)
+        
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpStock;
+            tcNavigator.SelectedTab = tpEmployeeAdd;
+            tbxEmployeeAdd_FirstName.Text = "";
+            tbxEmployeeAdd_SecondName.Text = "";
+            tbxEmployeeAdd_BSN.Text = "";
+            tbxEmployeeAdd_ICENumber.Text = "";
+            tbxEmployeeAdd_AdditonalInfo.Text = "";
+            cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
+            cbxEmployeeAdd_Position.SelectedIndex = -1;
+        }
+
+        private void btnEditEmployee_Click(object sender, EventArgs e)
+        {
+            // code goes here
+        }
+
+        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            if (lbxAllEmployees.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an employee to delete");
+                return;
+            }
+            List<Employee> employees = EH.GetAllEmployees();
+
+            Employee employee = (Employee)lbxAllEmployees.SelectedItem;
+            //method to call for deleting
+            var delete = EH.DeleteProduct(employee);
+            if (delete == null)
+            {
+                FillEmployeeListBox();
+                MessageBox.Show("Employee sucessfully deleted");
+                return;
+            }
+            MessageBox.Show(delete.Message);
+        }
+
+        private void btnSearchEmployee_Click(object sender, EventArgs e)
+        {
+            lbxAllEmployees.Items.Clear();
+            string searchName = tbxSearchEmployee.Text.ToLower();
+            foreach (Employee employee in EH.GetAllEmployees())
+            {
+                if (employee.GetFullName().ToLower().Contains(searchName))
+                {
+                    lbxAllEmployees.Items.Add(employee);
+                }
+            }
         }
     }
 }

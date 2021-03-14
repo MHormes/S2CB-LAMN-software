@@ -11,16 +11,14 @@ namespace LAMN_Software
 {
     public class EmployeeHandler
     {
-
         List<Employee> allEmployees;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
 
-        //method to get all employees from the database
-        public Exception GetAllEmployees()
+        //method to get all the stock items from the DB
+        public Exception GetAllEmployeesFromDB()
         {
             allEmployees = new List<Employee>();
-
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -32,7 +30,45 @@ namespace LAMN_Software
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), Convert.ToInt32(dr[5]), dr[6].ToString(), Convert.ToInt32(dr[7]), (ICERelation)Enum.Parse(typeof(ICERelation), dr[8].ToString()), (JobPosition)Enum.Parse(typeof(JobPosition), dr[9].ToString()), Convert.ToDateTime(dr[10]), dr[11].ToString(), dr[12].ToString()));
+                        ICERelation ice = ICERelation.OTHER;
+                        JobPosition position = JobPosition.MANAGER;
+
+                        string relationReturn = dr[8].ToString();
+                        string positionReturn = dr[9].ToString();
+
+                        if (relationReturn == "PARTNER")
+                            ice = ICERelation.PARTNER;
+                        else if (relationReturn == "FATHER")
+                            ice = ICERelation.FATHER;
+                        else if (relationReturn == "MOTHER")
+                            ice = ICERelation.MOTHER;
+                        else if (relationReturn == "BROTHER")
+                            ice = ICERelation.BROTHER;
+                        else if (relationReturn == "SISTER")
+                            ice = ICERelation.SISTER;
+                        else if (relationReturn == "UNCLE")
+                            ice = ICERelation.UNCLE;
+                        else if (relationReturn == "AUNT")
+                            ice = ICERelation.AUNT;
+                        else if (relationReturn == "COUSIN")
+                            ice = ICERelation.COUSIN;
+                        else if (relationReturn == "FRIEND")
+                            ice = ICERelation.FRIEND;
+                        else if (relationReturn == "OTHER")
+                            ice = ICERelation.OTHER;
+
+                        if (positionReturn == "MANAGER")
+                            position = JobPosition.MANAGER;
+                        else if (relationReturn == "HR")
+                            position = JobPosition.HR;
+                        else if (relationReturn == "SALES")
+                            position = JobPosition.SALES;
+                        else if (relationReturn == "DEPOT")
+                            position = JobPosition.DEPOT;
+                        else if (relationReturn == "SECURITY")
+                            position = JobPosition.SECURITY;
+
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, Convert.ToDateTime(dr[10]), dr[11].ToString(), dr[12].ToString()));
                     }
                 }
                 return null;
@@ -43,26 +79,60 @@ namespace LAMN_Software
             }
         }
 
-        //method to change properties of an employee in the database
-        public Exception ChangeEmployee(int bsn, int phoneNumber, string email, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation)
+        //method to get a specific product from the list
+        public Employee GetEmployee(string bsn)
+        {
+            foreach (Employee employee in allEmployees)
+            {
+                if (employee.Bsn == bsn)
+                {
+                    return employee;
+                }
+            }
+            return null;
+        }
+
+        public List<Employee> GetAllEmployees()
+        {
+            if (GetAllEmployeesFromDB() == null)
+            {
+                return this.allEmployees;
+            }
+            return null;
+        }
+
+        //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
+        public Exception AddEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employee SET PhoneNumber=@phoneNumber, Email=@email, ICErelation=@iceRelationship, Position=@position, ContractEnding=@contractEnding, AddInformation=@addInformation WHERE BSN=@bsn;";
+                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, ContractEnding, AddInformation, QuittingReason) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @contractEnding, @addInformation, @quittingReason);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@secondName", secondName);
+                    cmd.Parameters.AddWithValue("@userName", userName);
                     cmd.Parameters.AddWithValue("@bsn", bsn);
+                    cmd.Parameters.AddWithValue("@dateOfBirth", dateOfBirth);
                     cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
                     cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@iceRelationship", iceRelationship);
+                    cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
+                    cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
                     cmd.Parameters.AddWithValue("@position", position);
                     cmd.Parameters.AddWithValue("@contractEnding", contractEnding);
-                    cmd.Parameters.AddWithValue("@addInf", addInformation);
-                    cmd.Prepare();
 
+                    if (!string.IsNullOrWhiteSpace(addInformation))
+                    { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
+                    else { cmd.Parameters.AddWithValue("@addInformation", null); }
+
+                    if (!string.IsNullOrWhiteSpace(quittingReason))
+                    { cmd.Parameters.AddWithValue("@quittingReason", quittingReason); }
+                    else { cmd.Parameters.AddWithValue("@quittingReason", null); }
+
+                    cmd.Prepare();
                     cmd.ExecuteNonQuery();
                 }
                 return null;
@@ -73,8 +143,53 @@ namespace LAMN_Software
             }
         }
 
-        //method to delete an employee from the database
-        public Exception DeleteEmployee(Employee employee)
+
+        //method for change an employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
+        public Exception ChangeEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET FirstName=@firstName, SecondName=@secondName, UserName=@userName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, Email=@email, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, ContractEnding=@contractEnding, AddInformation=@addInformation, QuittingReason=@quittingReason WHERE BSN=@bsn;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@secondName", secondName);
+                    cmd.Parameters.AddWithValue("@userName", userName);
+                    cmd.Parameters.AddWithValue("@bsn", bsn);
+                    cmd.Parameters.AddWithValue("@dateOfBirth", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
+                    cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
+                    cmd.Parameters.AddWithValue("@position", position);
+                    cmd.Parameters.AddWithValue("@contractEnding", contractEnding);
+
+                    if (!string.IsNullOrWhiteSpace(addInformation))
+                    { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
+                    else { cmd.Parameters.AddWithValue("@addInformation", null); }
+
+                    if (!string.IsNullOrWhiteSpace(quittingReason))
+                    { cmd.Parameters.AddWithValue("@quittingReason", quittingReason); }
+                    else { cmd.Parameters.AddWithValue("@quittingReason", null); }
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
+
+        //method to delete an employee product from the DB
+        public Exception DeleteProduct(Employee employee)
         {
             try
             {
@@ -95,108 +210,5 @@ namespace LAMN_Software
                 return ex;
             }
         }
-
-        //method to add new employees to the database
-        public Exception AddEmployee(string firstName, string secondName, string username, int bsn, DateTime dateOfBirth, int phoneNumber, string email, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICENumber, ICErelation, Position, ContractEnding, AddInformation, QuittingReason) VALUES (@firstName, @secondName, @username, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelationship, @position, @contractEnding, @addInformation, @quittingReason);";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    cmd.Parameters.AddWithValue("@firstName", firstName);
-                    cmd.Parameters.AddWithValue("@secondName", secondName);
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@bsn", bsn);
-                    cmd.Parameters.AddWithValue("@dateOfBirth", dateOfBirth);
-                    cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
-                    cmd.Parameters.AddWithValue("@iceRelationship", iceRelationship);
-                    cmd.Parameters.AddWithValue("@position", position);
-                    if (contractEnding != null)
-                    {
-                        cmd.Parameters.AddWithValue("@contractEnding", contractEnding);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@contractEnding", "");
-                    }
-                    if (addInformation != "")
-                    {
-                        cmd.Parameters.AddWithValue("@addInformation", addInformation);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@addInformation", "");
-                    }
-                    if (quittingReason != "")
-                    {
-                        cmd.Parameters.AddWithValue("@quittingReason", quittingReason);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@quittingReason", "");
-                    }
-                    
-                    cmd.Prepare();
-
-                    cmd.ExecuteNonQuery();
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return ex;
-            }
-        }
-
-
-
-        //List<Employee> GetAllEmployees()
-        //{
-        //    return allEmployees;
-        //}
-
-        //Employee GetEmployee(int bsn)
-        //{
-        //    Employee employee = null;
-        //    foreach (Employee e in allEmployees)
-        //    {
-        //        if (e.Bsn == bsn)
-        //            employee = e;
-        //    }
-        //    return employee;
-        //}
-
-
-        //bool DeleteEmployee(Employee employee)
-        //{
-        //    int index = -1;
-        //    foreach (Employee e in allEmployees)
-        //    {
-        //        if (e.Bsn == employee.Bsn)
-        //            index = allEmployees.IndexOf(e);
-
-        //    }
-
-        //    if (index != -1)
-        //    {
-        //        allEmployees.RemoveAt(index);
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
-        //bool AddEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation)
-        //{
-        //    Employee employee = new Employee(firstName, secondName, bsn, dateOfBirth, phoneNumber, iceNumber, iceRelationship, position, contractEnding, addInformation);
-        //    allEmployees.Add(employee);
-        //    return true;
-        //}
     }
 }

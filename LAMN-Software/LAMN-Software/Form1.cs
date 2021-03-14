@@ -30,20 +30,24 @@ namespace LAMN_Software
             logins = loginHandler.GetAllLogin();
             index = -1;
 
-            /*/////////////////////////easy access
+            /////////////////////////easy access
             ProductForm pf1 = new ProductForm();
             this.Hide();
             pf1.ShowDialog();
             this.Close();
-            return;*/
+            return;
 
-
-            //for every login, username checked. if i find it, i save the index of the element
-            foreach (Login login in logins)
+            //IMPLEMENT DB CONNECTION CHECK!!
+            if (logins != null)
             {
-                if (textBox_accountName.Text == login.getUsername())
-                    index = logins.IndexOf(login);
+                //for every login, username checked. if i find it, i save the index of the element
+                foreach (Login login in logins)
+                {
+                    if (textBox_accountName.Text == login.getUsername())
+                        index = logins.IndexOf(login);
+                }
             }
+            else { MessageBox.Show("login unsuccesfull"); }
 
             //not found!
             if (index == -1)
