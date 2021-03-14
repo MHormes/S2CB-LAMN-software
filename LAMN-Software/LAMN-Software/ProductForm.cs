@@ -295,7 +295,14 @@ namespace LAMN_Software
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            // code goes here
+            tcNavigator.SelectedTab = tpEmployeeAdd;
+            tbxEmployeeAdd_FirstName.Text = "";
+            tbxEmployeeAdd_SecondName.Text = "";
+            tbxEmployeeAdd_BSN.Text = "";
+            tbxEmployeeAdd_ICENumber.Text = "";
+            tbxEmployeeAdd_AdditonalInfo.Text = "";
+            cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
+            cbxEmployeeAdd_Position.SelectedIndex = -1;
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
@@ -305,12 +312,36 @@ namespace LAMN_Software
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
-            // code goes here
+            if (lbxAllEmployees.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an employee to delete");
+                return;
+            }
+            List<Employee> employees = EH.GetAllEmployees();
+
+            Employee employee = (Employee)lbxAllEmployees.SelectedItem;
+            //method to call for deleting
+            var delete = EH.DeleteProduct(employee);
+            if (delete == null)
+            {
+                FillEmployeeListBox();
+                MessageBox.Show("Employee sucessfully deleted");
+                return;
+            }
+            MessageBox.Show(delete.Message);
         }
 
         private void btnSearchEmployee_Click(object sender, EventArgs e)
         {
-            // here too
+            lbxAllEmployees.Items.Clear();
+            string searchName = tbxSearchEmployee.Text.ToLower();
+            foreach (Employee employee in EH.GetAllEmployees())
+            {
+                if (employee.GetFullName().ToLower().Contains(searchName))
+                {
+                    lbxAllEmployees.Items.Add(employee);
+                }
+            }
         }
     }
 }
