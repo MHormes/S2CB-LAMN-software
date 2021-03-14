@@ -212,7 +212,7 @@ namespace LAMN_Software
             {
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
-                    lbxAllEmployees.Items.Add(employee.ToString());
+                    lbxAllEmployees.Items.Add(employee);
                 }
             }
             else
@@ -231,12 +231,15 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpSchedules;
         }
 
+
         
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
         }
+
+
 
         //DESIGN
 
