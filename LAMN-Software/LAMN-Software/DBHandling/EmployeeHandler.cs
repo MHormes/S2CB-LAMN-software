@@ -102,7 +102,7 @@ namespace LAMN_Software
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception AddEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
+        public Exception AddEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
         {
             try
             {
