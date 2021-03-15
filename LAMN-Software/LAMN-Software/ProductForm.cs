@@ -200,6 +200,7 @@ namespace LAMN_Software
 
 
         //EMPLOYEE MANAGEMENT
+
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
@@ -297,6 +298,8 @@ namespace LAMN_Software
             //}
 
         }
+
+
         //SCHEDULES
 
         //Navigation button to schedule page
@@ -306,13 +309,11 @@ namespace LAMN_Software
         }
 
 
-        
-
+        //STATISTICS
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
         }
-
 
 
         //DESIGN
