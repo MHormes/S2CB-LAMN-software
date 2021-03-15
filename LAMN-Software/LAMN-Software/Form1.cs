@@ -210,5 +210,14 @@ namespace LAMN_Software
         {
             textBox_accountName.Focus();
         }
+
+        private void btnDevAccess_Click(object sender, EventArgs e)
+        {
+            ProductForm pf1 = new ProductForm();
+            this.Hide();
+            pf1.ShowDialog();
+            this.Close();
+            return;
+        }
     }
 }
