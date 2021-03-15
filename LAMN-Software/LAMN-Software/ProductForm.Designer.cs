@@ -449,7 +449,7 @@ namespace LAMN_Software
             // btnStockAdd_ConfirmEdit
             // 
             this.btnStockAdd_ConfirmEdit.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStockAdd_ConfirmEdit.Location = new System.Drawing.Point(1430, 684);
+            this.btnStockAdd_ConfirmEdit.Location = new System.Drawing.Point(1410, 684);
             this.btnStockAdd_ConfirmEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockAdd_ConfirmEdit.Name = "btnStockAdd_ConfirmEdit";
             this.btnStockAdd_ConfirmEdit.Size = new System.Drawing.Size(422, 83);
