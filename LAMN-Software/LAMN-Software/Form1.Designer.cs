@@ -39,6 +39,7 @@
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
+            this.btnDevAccess = new System.Windows.Forms.Button();
             this.lblMB = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlBar.SuspendLayout();
@@ -110,6 +111,7 @@
             this.pnlBackground.Controls.Add(this.label_loginTitle);
             this.pnlBackground.Controls.Add(this.textBox_defocus);
             this.pnlBackground.Controls.Add(this.pnlBar);
+            this.pnlBackground.Controls.Add(this.btnDevAccess);
             this.pnlBackground.Controls.Add(this.button_login);
             this.pnlBackground.Controls.Add(this.textBox_accountPassword);
             this.pnlBackground.Controls.Add(this.textBox_accountName);
@@ -187,6 +189,21 @@
             this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+            // btnDevAccess
+            // 
+            this.btnDevAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDevAccess.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDevAccess.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnDevAccess.Location = new System.Drawing.Point(854, 732);
+            this.btnDevAccess.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDevAccess.Name = "btnDevAccess";
+            this.btnDevAccess.Size = new System.Drawing.Size(246, 63);
+            this.btnDevAccess.TabIndex = 0;
+            this.btnDevAccess.TabStop = false;
+            this.btnDevAccess.Text = "Dev access";
+            this.btnDevAccess.UseVisualStyleBackColor = true;
+            this.btnDevAccess.Click += new System.EventHandler(this.btnDevAccess_Click);
+            // 
             // lblMB
             // 
             this.lblMB.BackColor = System.Drawing.Color.Transparent;
@@ -228,6 +245,7 @@
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Label lblMB;
         private System.Windows.Forms.Label lblTV;
+        private System.Windows.Forms.Button btnDevAccess;
     }
 }
 
