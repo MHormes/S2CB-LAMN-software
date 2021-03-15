@@ -14,13 +14,13 @@ namespace LAMN_Software.DataClasses
         public Day Day
         { get; set; }
 
-        public Employee Employee
+        public string Employee
         { get; set; }
 
         public TimeSlot TimeSlot
         { get; set; }
 
-        public Schedule(int week, Day day, Employee employee, TimeSlot timeSlot)
+        public Schedule(int week, Day day, string employee, TimeSlot timeSlot)
         {
             Week = week;
             Day = day;
