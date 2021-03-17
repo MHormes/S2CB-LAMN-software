@@ -20,8 +20,7 @@ namespace LAMN_Software
 
         private string fullName;
 
-
-        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittinReason)
+        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation)
         {
             FirstName = firstName;
             SecondName = secondName;
@@ -33,9 +32,7 @@ namespace LAMN_Software
             IceNumber = iceNumber;
             IceRelationship = iceRelationship;
             Position = position;
-            ContractEnding = contractEnding;
             AddInformation = addInformation;
-            QuittingReason = quittinReason;
             fullName = FirstName + " " + SecondName;
         }
 

@@ -68,7 +68,7 @@ namespace LAMN_Software
                         else if (relationReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, Convert.ToDateTime(dr[10]), dr[11].ToString(), dr[12].ToString()));
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[11].ToString()));
                     }
                 }
                 return null;
@@ -79,7 +79,7 @@ namespace LAMN_Software
             }
         }
 
-        //method to get a specific product from the list
+        //method to get a specific employee from the list
         public Employee GetEmployee(string bsn)
         {
             foreach (Employee employee in allEmployees)
@@ -102,13 +102,13 @@ namespace LAMN_Software
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception AddEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason) //remove quitting reason
+        public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation) 
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, ContractEnding, AddInformation, QuittingReason) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @contractEnding, @addInformation, @quittingReason);";
+                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -122,15 +122,10 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
                     cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
                     cmd.Parameters.AddWithValue("@position", position);
-                    cmd.Parameters.AddWithValue("@contractEnding", contractEnding);
 
                     if (!string.IsNullOrWhiteSpace(addInformation))
                     { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
                     else { cmd.Parameters.AddWithValue("@addInformation", null); }
-
-                    if (!string.IsNullOrWhiteSpace(quittingReason))
-                    { cmd.Parameters.AddWithValue("@quittingReason", quittingReason); }
-                    else { cmd.Parameters.AddWithValue("@quittingReason", null); }
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
@@ -145,35 +140,28 @@ namespace LAMN_Software
 
 
         //method for change an employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception ChangeEmployee(string firstName, string secondName, string userName, int bsn, DateTime dateOfBirth, string email, int phoneNumber, int iceNumber, ICERelation iceRelationship, JobPosition position, DateTime contractEnding, string addInformation, string quittingReason)
+        public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE product SET FirstName=@firstName, SecondName=@secondName, UserName=@userName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, Email=@email, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, ContractEnding=@contractEnding, AddInformation=@addInformation, QuittingReason=@quittingReason WHERE BSN=@bsn;";
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@firstName", firstName);
                     cmd.Parameters.AddWithValue("@secondName", secondName);
-                    cmd.Parameters.AddWithValue("@userName", userName);
                     cmd.Parameters.AddWithValue("@bsn", bsn);
                     cmd.Parameters.AddWithValue("@dateOfBirth", dateOfBirth);
                     cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
-                    cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
                     cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
                     cmd.Parameters.AddWithValue("@position", position);
-                    cmd.Parameters.AddWithValue("@contractEnding", contractEnding);
 
                     if (!string.IsNullOrWhiteSpace(addInformation))
                     { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
                     else { cmd.Parameters.AddWithValue("@addInformation", null); }
-
-                    if (!string.IsNullOrWhiteSpace(quittingReason))
-                    { cmd.Parameters.AddWithValue("@quittingReason", quittingReason); }
-                    else { cmd.Parameters.AddWithValue("@quittingReason", null); }
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
