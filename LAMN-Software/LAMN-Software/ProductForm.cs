@@ -22,7 +22,7 @@ namespace LAMN_Software
             SH = new StockHandler();
             EH = new EmployeeHandler();
             FillStockListBox();
-            FillEmployeeListBox();
+                FillEmployeeListBox();
 
             //Method to enable buttons based on indicator
 
