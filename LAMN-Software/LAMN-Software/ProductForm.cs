@@ -34,6 +34,12 @@ namespace LAMN_Software
         private void btnStock_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStock;
+            btnStock.BackColor = Color.Gray; // -
+        //    btnStock.ForeColor = Color.White;
+        //    btnStock.FlatAppearance.BorderSize = 0;
+            btnSchedules.BackColor = Color.Gainsboro;
+            btnStatistics.BackColor = Color.Gainsboro;
+            btnEmployees.BackColor = Color.Gainsboro;
         }
 
         //Back to stock button in edit/add page
@@ -204,6 +210,11 @@ namespace LAMN_Software
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
+            btnStock.BackColor = Color.Gainsboro;
+            btnSchedules.BackColor = Color.Gainsboro;
+            btnEmployees.BackColor = Color.Gray;  // -
+            btnStatistics.BackColor = Color.Gainsboro;
+            
         }
 
         public void FillEmployeeListBox()
@@ -308,6 +319,10 @@ namespace LAMN_Software
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedules;
+            btnStock.BackColor = Color.Gainsboro;
+            btnSchedules.BackColor = Color.Gray; // -
+            btnStatistics.BackColor = Color.Gainsboro;
+            btnEmployees.BackColor = Color.Gainsboro;
         }
 
 
@@ -315,6 +330,10 @@ namespace LAMN_Software
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
+            btnStock.BackColor = Color.Gainsboro;
+            btnSchedules.BackColor = Color.Gainsboro; 
+            btnStatistics.BackColor = Color.Gray; // -
+            btnEmployees.BackColor = Color.Gainsboro;
         }
 
 
@@ -350,8 +369,8 @@ namespace LAMN_Software
         {
             //creates a color gradient as the background to make the form more visually appealing
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                                                           Color.RoyalBlue,
-                                                           Color.FromArgb(26, 61, 166),
+                                                           Color.FromArgb(84, 50, 168),
+                                                           Color.FromArgb(58, 34, 117),
                                                            90F))
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
@@ -365,6 +384,14 @@ namespace LAMN_Software
                                                           (borderThickness / 2),
                                                           pnlBackground.ClientSize.Width - borderThickness,
                                                           pnlBackground.ClientSize.Height - borderThickness));
+            }
+        }
+
+        private void tbxSearchStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearchStock.PerformClick();
             }
         }
     }

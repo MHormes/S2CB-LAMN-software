@@ -132,67 +132,79 @@ namespace LAMN_Software
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.pnlBackground.MaximumSize = new System.Drawing.Size(1703, 997);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(1703, 997);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(1705, 997);
+            this.pnlBackground.Size = new System.Drawing.Size(1703, 997);
             this.pnlBackground.TabIndex = 9;
+            this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
             // 
             // pnlTabCover
             // 
+            this.pnlTabCover.BackColor = System.Drawing.Color.Transparent;
             this.pnlTabCover.Controls.Add(this.btnStatistics);
             this.pnlTabCover.Controls.Add(this.btnStock);
             this.pnlTabCover.Controls.Add(this.btnEmployees);
             this.pnlTabCover.Controls.Add(this.btnSchedules);
-            this.pnlTabCover.Location = new System.Drawing.Point(3, 74);
+            this.pnlTabCover.Location = new System.Drawing.Point(3, 77);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1653, 158);
+            this.pnlTabCover.Size = new System.Drawing.Size(1695, 192);
             this.pnlTabCover.TabIndex = 11;
             // 
             // btnStatistics
             // 
+            this.btnStatistics.BackColor = System.Drawing.Color.Silver;
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatistics.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStatistics.Location = new System.Drawing.Point(1158, 13);
+            this.btnStatistics.Location = new System.Drawing.Point(1182, 17);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(264, 125);
+            this.btnStatistics.Size = new System.Drawing.Size(264, 158);
             this.btnStatistics.TabIndex = 10;
             this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.UseVisualStyleBackColor = false;
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // btnStock
             // 
+            this.btnStock.BackColor = System.Drawing.Color.Silver;
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStock.Location = new System.Drawing.Point(350, 13);
+            this.btnStock.Location = new System.Drawing.Point(370, 17);
             this.btnStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(264, 125);
+            this.btnStock.Size = new System.Drawing.Size(264, 158);
             this.btnStock.TabIndex = 10;
             this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.UseVisualStyleBackColor = false;
             this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnEmployees
             // 
+            this.btnEmployees.BackColor = System.Drawing.Color.Silver;
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployees.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnEmployees.Location = new System.Drawing.Point(889, 13);
+            this.btnEmployees.Location = new System.Drawing.Point(912, 17);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(264, 125);
+            this.btnEmployees.Size = new System.Drawing.Size(264, 158);
             this.btnEmployees.TabIndex = 10;
             this.btnEmployees.Text = "Employees";
-            this.btnEmployees.UseVisualStyleBackColor = true;
+            this.btnEmployees.UseVisualStyleBackColor = false;
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnSchedules
             // 
+            this.btnSchedules.BackColor = System.Drawing.Color.Silver;
+            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedules.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnSchedules.Location = new System.Drawing.Point(621, 13);
+            this.btnSchedules.Location = new System.Drawing.Point(641, 17);
             this.btnSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(264, 125);
+            this.btnSchedules.Size = new System.Drawing.Size(264, 158);
             this.btnSchedules.TabIndex = 10;
             this.btnSchedules.Text = "Schedules";
-            this.btnSchedules.UseVisualStyleBackColor = true;
+            this.btnSchedules.UseVisualStyleBackColor = false;
             this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
             // 
             // tcNavigator
@@ -203,11 +215,11 @@ namespace LAMN_Software
             this.tcNavigator.Controls.Add(this.tpStatistics);
             this.tcNavigator.Controls.Add(this.tpStockAdd);
             this.tcNavigator.Controls.Add(this.tpEmployeeAdd);
-            this.tcNavigator.Location = new System.Drawing.Point(5, 197);
+            this.tcNavigator.Location = new System.Drawing.Point(27, 216);
             this.tcNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.tcNavigator.Name = "tcNavigator";
             this.tcNavigator.SelectedIndex = 0;
-            this.tcNavigator.Size = new System.Drawing.Size(1680, 788);
+            this.tcNavigator.Size = new System.Drawing.Size(1641, 749);
             this.tcNavigator.TabIndex = 9;
             // 
             // tpStock
@@ -222,7 +234,7 @@ namespace LAMN_Software
             this.tpStock.Margin = new System.Windows.Forms.Padding(2);
             this.tpStock.Name = "tpStock";
             this.tpStock.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStock.Size = new System.Drawing.Size(1660, 738);
+            this.tpStock.Size = new System.Drawing.Size(1621, 699);
             this.tpStock.TabIndex = 0;
             this.tpStock.Text = "Stock";
             this.tpStock.UseVisualStyleBackColor = true;
@@ -236,6 +248,7 @@ namespace LAMN_Software
             this.tbxSearchStock.Size = new System.Drawing.Size(368, 59);
             this.tbxSearchStock.TabIndex = 11;
             this.tbxSearchStock.TabStop = false;
+            this.tbxSearchStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearchStock_KeyPress);
             // 
             // lbxAllStock
             // 
@@ -1077,11 +1090,14 @@ namespace LAMN_Software
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1703, 997);
             this.ControlBox = false;
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(1703, 997);
+            this.MinimumSize = new System.Drawing.Size(1703, 997);
             this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
