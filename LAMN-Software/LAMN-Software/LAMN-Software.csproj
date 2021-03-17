@@ -108,6 +108,9 @@
     <Compile Include="ENUMS\JobPosition.cs" />
     <Compile Include="DataClasses\Login.cs" />
     <Compile Include="DataClasses\Product.cs" />
+    <Compile Include="GUI\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>

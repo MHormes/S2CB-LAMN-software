@@ -13,6 +13,11 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
+        // used for visual distinction
+        bool stockClicked = true;
+        bool scheduleClicked = false;
+        bool employeesClicked = false;
+        bool statisticsClicked = false;
 
         StockHandler SH;
         EmployeeHandler EH;
@@ -22,7 +27,7 @@ namespace LAMN_Software
             SH = new StockHandler();
             EH = new EmployeeHandler();
             FillStockListBox();
-            FillEmployeeListBox();
+                FillEmployeeListBox();
 
             //Method to enable buttons based on indicator
 
@@ -33,7 +38,18 @@ namespace LAMN_Software
         //Navigation Stock button click
         private void btnStock_Click(object sender, EventArgs e)
         {
+            // Changes tab
             tcNavigator.SelectedTab = tpStock;
+
+            btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.White;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
         //Back to stock button in edit/add page
@@ -204,6 +220,15 @@ namespace LAMN_Software
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.White;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
         public void FillEmployeeListBox()
@@ -308,6 +333,15 @@ namespace LAMN_Software
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedules;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.White;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
 
@@ -315,6 +349,15 @@ namespace LAMN_Software
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.White;
         }
 
 
@@ -350,8 +393,8 @@ namespace LAMN_Software
         {
             //creates a color gradient as the background to make the form more visually appealing
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                                                           Color.RoyalBlue,
-                                                           Color.FromArgb(26, 61, 166),
+                                                           Color.FromArgb(84, 50, 168),
+                                                           Color.FromArgb(58, 34, 117),
                                                            90F))
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
@@ -365,6 +408,14 @@ namespace LAMN_Software
                                                           (borderThickness / 2),
                                                           pnlBackground.ClientSize.Width - borderThickness,
                                                           pnlBackground.ClientSize.Height - borderThickness));
+            }
+        }
+
+        private void tbxSearchStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearchStock.PerformClick();
             }
         }
     }

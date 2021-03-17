@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button_login = new System.Windows.Forms.Button();
             this.textBox_accountPassword = new System.Windows.Forms.TextBox();
             this.label_loginTitle = new System.Windows.Forms.Label();
             this.textBox_accountName = new System.Windows.Forms.TextBox();
             this.pnlBackground = new System.Windows.Forms.Panel();
-            this.lblTV = new System.Windows.Forms.Label();
             this.textBox_defocus = new System.Windows.Forms.TextBox();
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
@@ -48,7 +46,7 @@
             // button_login
             // 
             this.button_login.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_login.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.button_login.ForeColor = System.Drawing.Color.Indigo;
             this.button_login.Location = new System.Drawing.Point(469, 730);
             this.button_login.Margin = new System.Windows.Forms.Padding(5);
             this.button_login.Name = "button_login";
@@ -80,10 +78,10 @@
             this.label_loginTitle.BackColor = System.Drawing.Color.Transparent;
             this.label_loginTitle.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_loginTitle.ForeColor = System.Drawing.Color.White;
-            this.label_loginTitle.Location = new System.Drawing.Point(341, 302);
+            this.label_loginTitle.Location = new System.Drawing.Point(349, 335);
             this.label_loginTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label_loginTitle.Name = "label_loginTitle";
-            this.label_loginTitle.Size = new System.Drawing.Size(432, 75);
+            this.label_loginTitle.Size = new System.Drawing.Size(517, 62);
             this.label_loginTitle.TabIndex = 0;
             this.label_loginTitle.Text = "Media Bazaar";
             // 
@@ -107,7 +105,6 @@
             // 
             this.pnlBackground.BackColor = System.Drawing.Color.Gray;
             this.pnlBackground.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlBackground.Controls.Add(this.lblTV);
             this.pnlBackground.Controls.Add(this.label_loginTitle);
             this.pnlBackground.Controls.Add(this.textBox_defocus);
             this.pnlBackground.Controls.Add(this.pnlBar);
@@ -120,23 +117,13 @@
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlBackground.MaximumSize = new System.Drawing.Size(1120, 971);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(1120, 971);
             this.pnlBackground.Name = "pnlBackground";
             this.pnlBackground.Size = new System.Drawing.Size(1120, 971);
             this.pnlBackground.TabIndex = 8;
             this.pnlBackground.Click += new System.EventHandler(this.pnlBackground_Click);
             this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
-            // 
-            // lblTV
-            // 
-            this.lblTV.BackColor = System.Drawing.Color.Transparent;
-            this.lblTV.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
-            this.lblTV.ForeColor = System.Drawing.Color.White;
-            this.lblTV.Image = ((System.Drawing.Image)(resources.GetObject("lblTV.Image")));
-            this.lblTV.Location = new System.Drawing.Point(629, 169);
-            this.lblTV.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblTV.Name = "lblTV";
-            this.lblTV.Size = new System.Drawing.Size(144, 133);
-            this.lblTV.TabIndex = 10;
             // 
             // textBox_defocus
             // 
@@ -191,28 +178,31 @@
             // 
             // btnDevAccess
             // 
+            this.btnDevAccess.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevAccess.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Indigo;
+            this.btnDevAccess.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Indigo;
             this.btnDevAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDevAccess.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDevAccess.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnDevAccess.Location = new System.Drawing.Point(854, 732);
+            this.btnDevAccess.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevAccess.ForeColor = System.Drawing.Color.BlueViolet;
+            this.btnDevAccess.Location = new System.Drawing.Point(430, 803);
             this.btnDevAccess.Margin = new System.Windows.Forms.Padding(5);
             this.btnDevAccess.Name = "btnDevAccess";
-            this.btnDevAccess.Size = new System.Drawing.Size(246, 63);
+            this.btnDevAccess.Size = new System.Drawing.Size(285, 63);
             this.btnDevAccess.TabIndex = 0;
             this.btnDevAccess.TabStop = false;
             this.btnDevAccess.Text = "Dev access";
-            this.btnDevAccess.UseVisualStyleBackColor = true;
+            this.btnDevAccess.UseVisualStyleBackColor = false;
             this.btnDevAccess.Click += new System.EventHandler(this.btnDevAccess_Click);
             // 
             // lblMB
             // 
             this.lblMB.BackColor = System.Drawing.Color.Transparent;
-            this.lblMB.Font = new System.Drawing.Font("Arial Black", 55F, System.Drawing.FontStyle.Bold);
+            this.lblMB.Font = new System.Drawing.Font("Arial Black", 75F, System.Drawing.FontStyle.Bold);
             this.lblMB.ForeColor = System.Drawing.Color.White;
-            this.lblMB.Location = new System.Drawing.Point(304, 121);
+            this.lblMB.Location = new System.Drawing.Point(309, 114);
             this.lblMB.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMB.Name = "lblMB";
-            this.lblMB.Size = new System.Drawing.Size(394, 208);
+            this.lblMB.Size = new System.Drawing.Size(574, 256);
             this.lblMB.TabIndex = 9;
             this.lblMB.Text = "MB";
             // 
@@ -220,9 +210,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 971);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1120, 971);
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1120, 971);
+            this.MinimumSize = new System.Drawing.Size(1120, 971);
             this.Name = "Form1";
             this.Text = "Form1";
             this.pnlBackground.ResumeLayout(false);
@@ -244,7 +237,6 @@
         private System.Windows.Forms.Panel pnlDragBar;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Label lblMB;
-        private System.Windows.Forms.Label lblTV;
         private System.Windows.Forms.Button btnDevAccess;
     }
 }
