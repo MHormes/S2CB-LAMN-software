@@ -30,7 +30,7 @@ namespace LAMN_Software.DataClasses
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        allSchedules.Add(new Schedule(Convert.ToInt32(dr[0]), (Day)dr[1], dr[2].ToString(), (TimeSlot)dr[3])));
+                        allSchedules.Add(new Schedule(Convert.ToInt32(dr[0]), (Day)dr[1], dr[2].ToString(), (TimeSlot)dr[3]));
                     }
                 }
                 return null;
