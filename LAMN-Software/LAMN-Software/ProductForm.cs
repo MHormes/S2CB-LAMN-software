@@ -40,6 +40,16 @@ namespace LAMN_Software
         {
             // Changes tab
             tcNavigator.SelectedTab = tpStock;
+
+            btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.White;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
         //Back to stock button in edit/add page
@@ -210,11 +220,15 @@ namespace LAMN_Software
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-          /*  btnStock.BackColor = Color.Gainsboro;
-            btnSchedules.BackColor = Color.Gainsboro;
-            btnEmployees.BackColor = Color.Gray;  // -
-            btnStatistics.BackColor = Color.Gainsboro; */
-            
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.White;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
         public void FillEmployeeListBox()
@@ -319,10 +333,15 @@ namespace LAMN_Software
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedules;
-         /*   btnStock.BackColor = Color.Gainsboro;
-            btnSchedules.BackColor = Color.Gray; // -
-            btnStatistics.BackColor = Color.Gainsboro;
-            btnEmployees.BackColor = Color.Gainsboro;*/
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.White;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
         }
 
 
@@ -330,10 +349,15 @@ namespace LAMN_Software
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
-           /* btnStock.BackColor = Color.Gainsboro;
-            btnSchedules.BackColor = Color.Gainsboro; 
-            btnStatistics.BackColor = Color.Gray; // -
-            btnEmployees.BackColor = Color.Gainsboro; */
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.White;
         }
 
 
@@ -393,11 +417,6 @@ namespace LAMN_Software
             {
                 btnSearchStock.PerformClick();
             }
-        }
-
-        private void pnlStockSelected_Paint(object sender, PaintEventArgs e)
-        {
-            
         }
     }
 }
