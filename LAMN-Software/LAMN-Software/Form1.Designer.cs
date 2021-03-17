@@ -179,13 +179,15 @@
             // btnDevAccess
             // 
             this.btnDevAccess.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevAccess.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Indigo;
+            this.btnDevAccess.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Indigo;
             this.btnDevAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDevAccess.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDevAccess.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnDevAccess.Location = new System.Drawing.Point(770, 768);
+            this.btnDevAccess.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevAccess.ForeColor = System.Drawing.Color.BlueViolet;
+            this.btnDevAccess.Location = new System.Drawing.Point(430, 803);
             this.btnDevAccess.Margin = new System.Windows.Forms.Padding(5);
             this.btnDevAccess.Name = "btnDevAccess";
-            this.btnDevAccess.Size = new System.Drawing.Size(246, 63);
+            this.btnDevAccess.Size = new System.Drawing.Size(285, 63);
             this.btnDevAccess.TabIndex = 0;
             this.btnDevAccess.TabStop = false;
             this.btnDevAccess.Text = "Dev access";

@@ -13,6 +13,11 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
+        // used for visual distinction
+        bool stockClicked = true;
+        bool scheduleClicked = false;
+        bool employeesClicked = false;
+        bool statisticsClicked = false;
 
         StockHandler SH;
         EmployeeHandler EH;
@@ -33,13 +38,8 @@ namespace LAMN_Software
         //Navigation Stock button click
         private void btnStock_Click(object sender, EventArgs e)
         {
+            // Changes tab
             tcNavigator.SelectedTab = tpStock;
-            btnStock.BackColor = Color.Gray; // -
-        //    btnStock.ForeColor = Color.White;
-        //    btnStock.FlatAppearance.BorderSize = 0;
-            btnSchedules.BackColor = Color.Gainsboro;
-            btnStatistics.BackColor = Color.Gainsboro;
-            btnEmployees.BackColor = Color.Gainsboro;
         }
 
         //Back to stock button in edit/add page
@@ -210,10 +210,10 @@ namespace LAMN_Software
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-            btnStock.BackColor = Color.Gainsboro;
+          /*  btnStock.BackColor = Color.Gainsboro;
             btnSchedules.BackColor = Color.Gainsboro;
             btnEmployees.BackColor = Color.Gray;  // -
-            btnStatistics.BackColor = Color.Gainsboro;
+            btnStatistics.BackColor = Color.Gainsboro; */
             
         }
 
@@ -319,10 +319,10 @@ namespace LAMN_Software
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedules;
-            btnStock.BackColor = Color.Gainsboro;
+         /*   btnStock.BackColor = Color.Gainsboro;
             btnSchedules.BackColor = Color.Gray; // -
             btnStatistics.BackColor = Color.Gainsboro;
-            btnEmployees.BackColor = Color.Gainsboro;
+            btnEmployees.BackColor = Color.Gainsboro;*/
         }
 
 
@@ -330,10 +330,10 @@ namespace LAMN_Software
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
-            btnStock.BackColor = Color.Gainsboro;
+           /* btnStock.BackColor = Color.Gainsboro;
             btnSchedules.BackColor = Color.Gainsboro; 
             btnStatistics.BackColor = Color.Gray; // -
-            btnEmployees.BackColor = Color.Gainsboro;
+            btnEmployees.BackColor = Color.Gainsboro; */
         }
 
 
@@ -393,6 +393,11 @@ namespace LAMN_Software
             {
                 btnSearchStock.PerformClick();
             }
+        }
+
+        private void pnlStockSelected_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

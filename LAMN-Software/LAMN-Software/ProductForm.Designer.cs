@@ -32,7 +32,6 @@ namespace LAMN_Software
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.btnStatistics = new System.Windows.Forms.Button();
-            this.btnStock = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnSchedules = new System.Windows.Forms.Button();
             this.tcNavigator = new System.Windows.Forms.TabControl();
@@ -110,6 +109,7 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
+            this.btnStock = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.tcNavigator.SuspendLayout();
@@ -142,52 +142,46 @@ namespace LAMN_Software
             // pnlTabCover
             // 
             this.pnlTabCover.BackColor = System.Drawing.Color.Transparent;
-            this.pnlTabCover.Controls.Add(this.btnStatistics);
             this.pnlTabCover.Controls.Add(this.btnStock);
+            this.pnlTabCover.Controls.Add(this.btnStatistics);
             this.pnlTabCover.Controls.Add(this.btnEmployees);
             this.pnlTabCover.Controls.Add(this.btnSchedules);
-            this.pnlTabCover.Location = new System.Drawing.Point(3, 77);
+            this.pnlTabCover.Location = new System.Drawing.Point(3, 67);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1695, 192);
+            this.pnlTabCover.Size = new System.Drawing.Size(1695, 193);
             this.pnlTabCover.TabIndex = 11;
             // 
             // btnStatistics
             // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Silver;
+            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStatistics.Location = new System.Drawing.Point(1182, 17);
+            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(1303, 22);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(264, 158);
+            this.btnStatistics.Size = new System.Drawing.Size(294, 141);
             this.btnStatistics.TabIndex = 10;
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.UseVisualStyleBackColor = false;
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
-            // btnStock
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Silver;
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnStock.Location = new System.Drawing.Point(370, 17);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(264, 158);
-            this.btnStock.TabIndex = 10;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            // 
             // btnEmployees
             // 
-            this.btnEmployees.BackColor = System.Drawing.Color.Silver;
+            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnEmployees.Location = new System.Drawing.Point(912, 17);
+            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Location = new System.Drawing.Point(954, 22);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(264, 158);
+            this.btnEmployees.Size = new System.Drawing.Size(336, 141);
             this.btnEmployees.TabIndex = 10;
             this.btnEmployees.Text = "Employees";
             this.btnEmployees.UseVisualStyleBackColor = false;
@@ -195,13 +189,17 @@ namespace LAMN_Software
             // 
             // btnSchedules
             // 
-            this.btnSchedules.BackColor = System.Drawing.Color.Silver;
+            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
+            this.btnSchedules.FlatAppearance.BorderSize = 0;
+            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedules.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnSchedules.Location = new System.Drawing.Point(641, 17);
+            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.ForeColor = System.Drawing.Color.White;
+            this.btnSchedules.Location = new System.Drawing.Point(609, 22);
             this.btnSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(264, 158);
+            this.btnSchedules.Size = new System.Drawing.Size(341, 141);
             this.btnSchedules.TabIndex = 10;
             this.btnSchedules.Text = "Schedules";
             this.btnSchedules.UseVisualStyleBackColor = false;
@@ -315,7 +313,7 @@ namespace LAMN_Software
             this.tpSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.tpSchedules.Name = "tpSchedules";
             this.tpSchedules.Padding = new System.Windows.Forms.Padding(2);
-            this.tpSchedules.Size = new System.Drawing.Size(1660, 738);
+            this.tpSchedules.Size = new System.Drawing.Size(1621, 699);
             this.tpSchedules.TabIndex = 1;
             this.tpSchedules.Text = "Schedules";
             this.tpSchedules.UseVisualStyleBackColor = true;
@@ -332,7 +330,7 @@ namespace LAMN_Software
             this.tpEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.tpEmployees.Name = "tpEmployees";
             this.tpEmployees.Padding = new System.Windows.Forms.Padding(2);
-            this.tpEmployees.Size = new System.Drawing.Size(1660, 738);
+            this.tpEmployees.Size = new System.Drawing.Size(1621, 699);
             this.tpEmployees.TabIndex = 2;
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
@@ -412,7 +410,7 @@ namespace LAMN_Software
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.tpStatistics.Name = "tpStatistics";
             this.tpStatistics.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStatistics.Size = new System.Drawing.Size(1660, 738);
+            this.tpStatistics.Size = new System.Drawing.Size(1621, 699);
             this.tpStatistics.TabIndex = 3;
             this.tpStatistics.Text = "Statistics";
             this.tpStatistics.UseVisualStyleBackColor = true;
@@ -452,7 +450,7 @@ namespace LAMN_Software
             this.tpStockAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tpStockAdd.Name = "tpStockAdd";
             this.tpStockAdd.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStockAdd.Size = new System.Drawing.Size(1660, 738);
+            this.tpStockAdd.Size = new System.Drawing.Size(1621, 699);
             this.tpStockAdd.TabIndex = 4;
             this.tpStockAdd.Text = "StockAdd";
             this.tpStockAdd.UseVisualStyleBackColor = true;
@@ -790,7 +788,7 @@ namespace LAMN_Software
             this.tpEmployeeAdd.Location = new System.Drawing.Point(10, 40);
             this.tpEmployeeAdd.Name = "tpEmployeeAdd";
             this.tpEmployeeAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEmployeeAdd.Size = new System.Drawing.Size(1660, 738);
+            this.tpEmployeeAdd.Size = new System.Drawing.Size(1621, 699);
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
             this.tpEmployeeAdd.UseVisualStyleBackColor = true;
@@ -1086,6 +1084,24 @@ namespace LAMN_Software
             this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.ForeColor = System.Drawing.Color.White;
+            this.btnStock.Location = new System.Drawing.Point(325, 22);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(280, 141);
+            this.btnStock.TabIndex = 10;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -1130,7 +1146,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnStatistics;
         private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnSchedules;
-        private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.TabPage tpEmployees;
         private System.Windows.Forms.TabPage tpStatistics;
         private System.Windows.Forms.TextBox tbxSearchStock;
@@ -1200,5 +1215,6 @@ namespace LAMN_Software
         private System.Windows.Forms.ComboBox cbxEmployeeAdd_Position;
         private System.Windows.Forms.Button btnEmployeeAdd_Confirm;
         private System.Windows.Forms.Panel pnlTabCover;
+        private System.Windows.Forms.Button btnStock;
     }
 }
