@@ -117,11 +117,42 @@ namespace LAMN_Software
             this.btnStatistics = new System.Windows.Forms.Button();
             this.gpnlEmployees = new LAMN_Software.GradientPanel();
             this.btnEmployees = new System.Windows.Forms.Button();
+            this.gradientPanel4 = new LAMN_Software.GradientPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.gradientPanel3 = new LAMN_Software.GradientPanel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.gradientPanel2 = new LAMN_Software.GradientPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.gradientPanel1 = new LAMN_Software.GradientPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblProfitValue = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gradientPanel5 = new LAMN_Software.GradientPanel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.gradientPanel6 = new LAMN_Software.GradientPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.lbxGraph = new System.Windows.Forms.ListBox();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
             this.tpEmployees.SuspendLayout();
+            this.tpStatistics.SuspendLayout();
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
             this.pnlBar.SuspendLayout();
@@ -129,6 +160,12 @@ namespace LAMN_Software
             this.gpnlStock.SuspendLayout();
             this.gpnlStatistics.SuspendLayout();
             this.gpnlEmployees.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
+            this.gradientPanel3.SuspendLayout();
+            this.gradientPanel2.SuspendLayout();
+            this.gradientPanel1.SuspendLayout();
+            this.gradientPanel5.SuspendLayout();
+            this.gradientPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -161,7 +198,7 @@ namespace LAMN_Software
             this.pnlTabCover.Controls.Add(this.gpnlEmployees);
             this.pnlTabCover.Location = new System.Drawing.Point(3, 67);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1695, 189);
+            this.pnlTabCover.Size = new System.Drawing.Size(1695, 153);
             this.pnlTabCover.TabIndex = 11;
             // 
             // tcNavigator
@@ -176,7 +213,7 @@ namespace LAMN_Software
             this.tcNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.tcNavigator.Name = "tcNavigator";
             this.tcNavigator.SelectedIndex = 0;
-            this.tcNavigator.Size = new System.Drawing.Size(1650, 765);
+            this.tcNavigator.Size = new System.Drawing.Size(1650, 750);
             this.tcNavigator.TabIndex = 9;
             // 
             // tpStock
@@ -191,7 +228,7 @@ namespace LAMN_Software
             this.tpStock.Margin = new System.Windows.Forms.Padding(2);
             this.tpStock.Name = "tpStock";
             this.tpStock.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStock.Size = new System.Drawing.Size(1630, 715);
+            this.tpStock.Size = new System.Drawing.Size(1630, 700);
             this.tpStock.TabIndex = 0;
             this.tpStock.Text = "Stock";
             this.tpStock.UseVisualStyleBackColor = true;
@@ -272,7 +309,7 @@ namespace LAMN_Software
             this.tpSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.tpSchedules.Name = "tpSchedules";
             this.tpSchedules.Padding = new System.Windows.Forms.Padding(2);
-            this.tpSchedules.Size = new System.Drawing.Size(1630, 715);
+            this.tpSchedules.Size = new System.Drawing.Size(1630, 700);
             this.tpSchedules.TabIndex = 1;
             this.tpSchedules.Text = "Schedules";
             this.tpSchedules.UseVisualStyleBackColor = true;
@@ -289,7 +326,7 @@ namespace LAMN_Software
             this.tpEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.tpEmployees.Name = "tpEmployees";
             this.tpEmployees.Padding = new System.Windows.Forms.Padding(2);
-            this.tpEmployees.Size = new System.Drawing.Size(1630, 715);
+            this.tpEmployees.Size = new System.Drawing.Size(1630, 700);
             this.tpEmployees.TabIndex = 2;
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
@@ -365,11 +402,21 @@ namespace LAMN_Software
             // 
             // tpStatistics
             // 
+            this.tpStatistics.Controls.Add(this.lbxGraph);
+            this.tpStatistics.Controls.Add(this.comboBox3);
+            this.tpStatistics.Controls.Add(this.comboBox2);
+            this.tpStatistics.Controls.Add(this.comboBox1);
+            this.tpStatistics.Controls.Add(this.gradientPanel4);
+            this.tpStatistics.Controls.Add(this.gradientPanel3);
+            this.tpStatistics.Controls.Add(this.gradientPanel2);
+            this.tpStatistics.Controls.Add(this.gradientPanel6);
+            this.tpStatistics.Controls.Add(this.gradientPanel5);
+            this.tpStatistics.Controls.Add(this.gradientPanel1);
             this.tpStatistics.Location = new System.Drawing.Point(10, 40);
             this.tpStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.tpStatistics.Name = "tpStatistics";
             this.tpStatistics.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStatistics.Size = new System.Drawing.Size(1630, 715);
+            this.tpStatistics.Size = new System.Drawing.Size(1630, 700);
             this.tpStatistics.TabIndex = 3;
             this.tpStatistics.Text = "Statistics";
             this.tpStatistics.UseVisualStyleBackColor = true;
@@ -409,7 +456,7 @@ namespace LAMN_Software
             this.tpStockAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tpStockAdd.Name = "tpStockAdd";
             this.tpStockAdd.Padding = new System.Windows.Forms.Padding(2);
-            this.tpStockAdd.Size = new System.Drawing.Size(1630, 715);
+            this.tpStockAdd.Size = new System.Drawing.Size(1630, 700);
             this.tpStockAdd.TabIndex = 4;
             this.tpStockAdd.Text = "StockAdd";
             this.tpStockAdd.UseVisualStyleBackColor = true;
@@ -748,7 +795,7 @@ namespace LAMN_Software
             this.tpEmployeeAdd.Location = new System.Drawing.Point(10, 40);
             this.tpEmployeeAdd.Name = "tpEmployeeAdd";
             this.tpEmployeeAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEmployeeAdd.Size = new System.Drawing.Size(1630, 715);
+            this.tpEmployeeAdd.Size = new System.Drawing.Size(1630, 700);
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
             this.tpEmployeeAdd.UseVisualStyleBackColor = true;
@@ -1193,6 +1240,356 @@ namespace LAMN_Software
             this.btnEmployees.UseVisualStyleBackColor = false;
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel4.Controls.Add(this.label22);
+            this.gradientPanel4.Controls.Add(this.label23);
+            this.gradientPanel4.Controls.Add(this.label24);
+            this.gradientPanel4.Controls.Add(this.label25);
+            this.gradientPanel4.Location = new System.Drawing.Point(1115, 63);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(374, 193);
+            this.gradientPanel4.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(230, 158);
+            this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(140, 25);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "INCREASE";
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(282, 114);
+            this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(102, 48);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "0%";
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(5, 70);
+            this.label24.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(165, 68);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "0";
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label25.Location = new System.Drawing.Point(5, 9);
+            this.label25.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(383, 50);
+            this.label25.TabIndex = 15;
+            this.label25.Text = "Number of sales";
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel3.Controls.Add(this.label18);
+            this.gradientPanel3.Controls.Add(this.label19);
+            this.gradientPanel3.Controls.Add(this.label20);
+            this.gradientPanel3.Controls.Add(this.label21);
+            this.gradientPanel3.Location = new System.Drawing.Point(755, 63);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(344, 193);
+            this.gradientPanel3.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(184, 158);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(140, 25);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "INCREASE";
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(232, 114);
+            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(102, 48);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "0%";
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(5, 70);
+            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(165, 68);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "€000";
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label21.Location = new System.Drawing.Point(5, 9);
+            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(217, 50);
+            this.label21.TabIndex = 15;
+            this.label21.Text = "Costs";
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel2.Controls.Add(this.label14);
+            this.gradientPanel2.Controls.Add(this.label15);
+            this.gradientPanel2.Controls.Add(this.label16);
+            this.gradientPanel2.Controls.Add(this.label17);
+            this.gradientPanel2.Location = new System.Drawing.Point(386, 63);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(350, 193);
+            this.gradientPanel2.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(184, 158);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(140, 25);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "INCREASE";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(232, 114);
+            this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(102, 48);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "0%";
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(5, 70);
+            this.label16.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(156, 68);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "€000";
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label17.Location = new System.Drawing.Point(5, 9);
+            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(217, 50);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Revenue";
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel1.Controls.Add(this.label13);
+            this.gradientPanel1.Controls.Add(this.label12);
+            this.gradientPanel1.Controls.Add(this.lblProfitValue);
+            this.gradientPanel1.Controls.Add(this.label11);
+            this.gradientPanel1.Location = new System.Drawing.Point(38, 63);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(329, 193);
+            this.gradientPanel1.TabIndex = 0;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(184, 158);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(140, 25);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "INCREASE";
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(232, 114);
+            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 48);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "0%";
+            // 
+            // lblProfitValue
+            // 
+            this.lblProfitValue.BackColor = System.Drawing.Color.Transparent;
+            this.lblProfitValue.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.lblProfitValue.ForeColor = System.Drawing.Color.Black;
+            this.lblProfitValue.Location = new System.Drawing.Point(5, 70);
+            this.lblProfitValue.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblProfitValue.Name = "lblProfitValue";
+            this.lblProfitValue.Size = new System.Drawing.Size(161, 68);
+            this.lblProfitValue.TabIndex = 15;
+            this.lblProfitValue.Text = "€000";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(5, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(201, 50);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Profit";
+            // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel5.ColorTop = System.Drawing.Color.Azure;
+            this.gradientPanel5.Controls.Add(this.label28);
+            this.gradientPanel5.Controls.Add(this.label29);
+            this.gradientPanel5.Location = new System.Drawing.Point(38, 275);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(329, 193);
+            this.gradientPanel5.TabIndex = 0;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(3, 133);
+            this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(161, 68);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "Item";
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label29.Location = new System.Drawing.Point(1, 6);
+            this.label29.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(319, 116);
+            this.label29.TabIndex = 15;
+            this.label29.Text = "Most popular stock";
+            // 
+            // gradientPanel6
+            // 
+            this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel6.ColorTop = System.Drawing.Color.Azure;
+            this.gradientPanel6.Controls.Add(this.label26);
+            this.gradientPanel6.Controls.Add(this.label27);
+            this.gradientPanel6.Location = new System.Drawing.Point(38, 486);
+            this.gradientPanel6.Name = "gradientPanel6";
+            this.gradientPanel6.Size = new System.Drawing.Size(329, 193);
+            this.gradientPanel6.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(3, 133);
+            this.label26.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(161, 68);
+            this.label26.TabIndex = 15;
+            this.label26.Text = "Item";
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label27.Location = new System.Drawing.Point(1, 4);
+            this.label27.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(319, 116);
+            this.label27.TabIndex = 15;
+            this.label27.Text = "Least popular stock";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 15F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(458, 358);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(222, 58);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Arial", 15F);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(458, 442);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(222, 58);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Font = new System.Drawing.Font("Arial", 15F);
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(458, 527);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(222, 58);
+            this.comboBox3.TabIndex = 1;
+            // 
+            // lbxGraph
+            // 
+            this.lbxGraph.FormattingEnabled = true;
+            this.lbxGraph.ItemHeight = 22;
+            this.lbxGraph.Location = new System.Drawing.Point(738, 327);
+            this.lbxGraph.Name = "lbxGraph";
+            this.lbxGraph.Size = new System.Drawing.Size(751, 312);
+            this.lbxGraph.TabIndex = 2;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -1215,6 +1612,7 @@ namespace LAMN_Software
             this.tpStock.PerformLayout();
             this.tpEmployees.ResumeLayout(false);
             this.tpEmployees.PerformLayout();
+            this.tpStatistics.ResumeLayout(false);
             this.tpStockAdd.ResumeLayout(false);
             this.tpStockAdd.PerformLayout();
             this.tpEmployeeAdd.ResumeLayout(false);
@@ -1224,6 +1622,12 @@ namespace LAMN_Software
             this.gpnlStock.ResumeLayout(false);
             this.gpnlStatistics.ResumeLayout(false);
             this.gpnlEmployees.ResumeLayout(false);
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel3.ResumeLayout(false);
+            this.gradientPanel2.ResumeLayout(false);
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel5.ResumeLayout(false);
+            this.gradientPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1318,5 +1722,35 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnEmployeeAdd_ConfirmEdit;
         private System.Windows.Forms.Label lblMB;
         private System.Windows.Forms.Label lblMediaBazaar;
+        private GradientPanel gradientPanel1;
+        private System.Windows.Forms.Label label11;
+        private GradientPanel gradientPanel4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private GradientPanel gradientPanel3;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private GradientPanel gradientPanel2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblProfitValue;
+        private GradientPanel gradientPanel5;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ListBox lbxGraph;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private GradientPanel gradientPanel6;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
     }
 }
