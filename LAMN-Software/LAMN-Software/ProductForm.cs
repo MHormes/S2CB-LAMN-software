@@ -28,7 +28,7 @@ namespace LAMN_Software
             EH = new EmployeeHandler();
             FillStockListBox();
             FillEmployeeListBox();
-
+            FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
         }
@@ -358,8 +358,67 @@ namespace LAMN_Software
 
         }
 
+        private void btnBackToEmpPage_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpEmployees;
+            FillEmployeeListBox();
+        }
+
+        private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
+
+                if (update == null)
+                {
+                    FillEmployeeListBox();
+                    MessageBox.Show("Employee edited succesfully");
+                    return;
+                }
+                MessageBox.Show(update.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         //SCHEDULES
+
+        //METHOD FOR FILLING THE SCHEDULES
+        public void FillScheduleGridView()
+        {
+            dgvSchedules.Rows.Clear();
+            if (EH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee employee in EH.GetAllEmployees())
+                {
+                    dgvSchedules.Rows.Add(employee.FirstName, employee.SecondName);
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
+            }
+            schedulesMonday.Items.Add(TimeSlot.MORNING);
+            schedulesMonday.Items.Add(TimeSlot.AFTERNOON);
+            schedulesMonday.Items.Add(TimeSlot.EVENING);
+
+            schedulesTuesday.Items.Add(TimeSlot.MORNING);
+            schedulesTuesday.Items.Add(TimeSlot.AFTERNOON);
+            schedulesTuesday.Items.Add(TimeSlot.EVENING);
+            /*schedulesMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesTuesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesWednesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesThursday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesFriday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesSaturday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesSunday.DataSource = Enum.GetValues(typeof(TimeSlot));*/
+
+        }
 
         //Navigation button to schedule page
         private void btnSchedules_Click(object sender, EventArgs e)
@@ -451,31 +510,5 @@ namespace LAMN_Software
             }
         }
 
-        private void btnBackToEmpPage_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpEmployees;
-            FillEmployeeListBox();
-        }
-
-        private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
-        {
-            
-            try
-            {
-                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
-
-                if (update == null)
-                {
-                    FillEmployeeListBox();
-                    MessageBox.Show("Employee edited succesfully");
-                    return;
-                }
-                MessageBox.Show(update.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
     }
 }
