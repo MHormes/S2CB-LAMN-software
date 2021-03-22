@@ -21,7 +21,7 @@ namespace LAMN_Software.DataClasses
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "SELECT * FROM schedule WHERE Week = @weekNrm";
+                    string sql = "SELECT * FROM schedules WHERE Week = @weekNmr";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -30,7 +30,35 @@ namespace LAMN_Software.DataClasses
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        allSchedules.Add(new Schedule(Convert.ToInt32(dr[0]), (Day)dr[1], dr[2].ToString(), (TimeSlot)dr[3]));
+                        TimeSlot time = TimeSlot.MORNING;
+                        string TimeReturn = dr[3].ToString();
+
+                        if (TimeReturn == "MORNING")
+                            time = TimeSlot.MORNING;
+                        else if (TimeReturn == "AFTERNOON")
+                            time = TimeSlot.AFTERNOON;
+                        else if (TimeReturn == "EVENING")
+                            time = TimeSlot.EVENING;
+
+                        Day day = Day.MONDAY;
+                        string DayReturn = dr[1].ToString();
+
+                        if (DayReturn == "MONDAY")
+                            day = Day.MONDAY;
+                        else if (DayReturn == "TUESDAY")
+                            day = Day.TUESDAY;
+                        else if (DayReturn == "WEDNESDAY")
+                            day = Day.WEDNESDAY;
+                        else if (DayReturn == "THURDAY")
+                            day = Day.THURDAY;
+                        else if (DayReturn == "FRIDAY")
+                            day = Day.FRIDAY;
+                        else if (DayReturn == "SATURDAY")
+                            day = Day.SATURDAY;
+                        else if (DayReturn == "SUNDAY")
+                            day = Day.SUNDAY;
+
+                        allSchedules.Add(new Schedule(Convert.ToInt32(dr[0]), day, dr[2].ToString(), time));
                     }
                 }
                 return null;
@@ -39,6 +67,11 @@ namespace LAMN_Software.DataClasses
             {
                 return ex;
             }
+        }
+
+        public List<Schedule> GetAllSchedules()
+        {
+            return this.allSchedules;
         }
     }
 }

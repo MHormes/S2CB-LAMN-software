@@ -399,7 +399,7 @@ namespace LAMN_Software
             {
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
-                    dgvSchedules.Rows.Add(employee.FirstName, employee.SecondName);
+                    dgvSchedules.Rows.Add(employee);
                 }
             }
             else
@@ -422,7 +422,6 @@ namespace LAMN_Software
             schedulesSaturday.DataSource = Enum.GetValues(typeof(TimeSlot));
             schedulesSunday.ValueType = typeof(TimeSlot);
             schedulesSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
-
         }
 
         //Navigation button to schedule page
@@ -443,8 +442,45 @@ namespace LAMN_Software
         //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
         private void btnSchedulesShowWeek_Click(object sender, EventArgs e)
         {
+            int weekNmr = Convert.ToInt32(Math.Round(nudScheduleWeek.Value));
+            if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
+            {
+                foreach(Schedule schedule in SCH.GetAllSchedules())
+                {
+                    //check for each schedule object if any of the employeeBsn's are the same. 
+                    for(int i = 0; i < EH.GetAllEmployees().Count(); i++)
+                    {
+                        //create temp emp object based on the state of the for loop
+                        Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
+                        if (emp.Bsn == schedule.EmployeeBSN)
+                        {
+                            if (schedule.Day == Day.MONDAY)
+                                dgvSchedules.Rows[i].Cells[1].Value = schedule.TimeSlot;
+                            else if(schedule.Day == Day.TUESDAY)
+                                dgvSchedules.Rows[i].Cells[2].Value = schedule.TimeSlot;
+                            else if (schedule.Day == Day.WEDNESDAY)
+                                dgvSchedules.Rows[i].Cells[3].Value = schedule.TimeSlot;
+                            else if (schedule.Day == Day.THURDAY)
+                                dgvSchedules.Rows[i].Cells[4].Value = schedule.TimeSlot;
+                            else if (schedule.Day == Day.FRIDAY)
+                                dgvSchedules.Rows[i].Cells[5].Value = schedule.TimeSlot;
+                            else if (schedule.Day == Day.SATURDAY)
+                                dgvSchedules.Rows[i].Cells[6].Value = schedule.TimeSlot;
+                            else if (schedule.Day == Day.SUNDAY)
+                                dgvSchedules.Rows[i].Cells[7].Value = schedule.TimeSlot;
 
+                        }
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show(SCH.GetAllSchedulesFromDB(weekNmr).Message);
+            }
         }
+
+
         //STATISTICS
         private void btnStatistics_Click(object sender, EventArgs e)
         {

@@ -33,14 +33,6 @@ namespace LAMN_Software
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.lblMediaBazaar = new System.Windows.Forms.Label();
             this.lblMB = new System.Windows.Forms.Label();
-            this.gpnlSchedules = new LAMN_Software.GradientPanel();
-            this.btnSchedules = new System.Windows.Forms.Button();
-            this.gpnlStock = new LAMN_Software.GradientPanel();
-            this.btnStock = new System.Windows.Forms.Button();
-            this.gpnlStatistics = new LAMN_Software.GradientPanel();
-            this.btnStatistics = new System.Windows.Forms.Button();
-            this.gpnlEmployees = new LAMN_Software.GradientPanel();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.tcNavigator = new System.Windows.Forms.TabControl();
             this.tpStock = new System.Windows.Forms.TabPage();
             this.tbxSearchStock = new System.Windows.Forms.TextBox();
@@ -51,15 +43,6 @@ namespace LAMN_Software
             this.btnAddStock = new System.Windows.Forms.Button();
             this.tpSchedules = new System.Windows.Forms.TabPage();
             this.dgvSchedules = new System.Windows.Forms.DataGridView();
-            this.schedulesFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tpEmployees = new System.Windows.Forms.TabPage();
             this.tbxSearchEmployee = new System.Windows.Forms.TextBox();
             this.lbxAllEmployees = new System.Windows.Forms.ListBox();
@@ -72,32 +55,6 @@ namespace LAMN_Software
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.gradientPanel4 = new LAMN_Software.GradientPanel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.gradientPanel3 = new LAMN_Software.GradientPanel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.gradientPanel2 = new LAMN_Software.GradientPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.gradientPanel6 = new LAMN_Software.GradientPanel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.gradientPanel5 = new LAMN_Software.GradientPanel();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new LAMN_Software.GradientPanel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblProfitValue = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tpStockAdd = new System.Windows.Forms.TabPage();
             this.btnBackToStockPage = new System.Windows.Forms.Button();
             this.btnStockAdd_ConfirmEdit = new System.Windows.Forms.Button();
@@ -158,29 +115,71 @@ namespace LAMN_Software
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
             this.btnSchedulesShowWeek = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudScheduleWeek = new System.Windows.Forms.NumericUpDown();
+            this.gpnlSchedules = new LAMN_Software.GradientPanel();
+            this.btnSchedules = new System.Windows.Forms.Button();
+            this.gpnlStock = new LAMN_Software.GradientPanel();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.gpnlStatistics = new LAMN_Software.GradientPanel();
+            this.btnStatistics = new System.Windows.Forms.Button();
+            this.gpnlEmployees = new LAMN_Software.GradientPanel();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.gradientPanel4 = new LAMN_Software.GradientPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.gradientPanel3 = new LAMN_Software.GradientPanel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.gradientPanel2 = new LAMN_Software.GradientPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.gradientPanel6 = new LAMN_Software.GradientPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.gradientPanel5 = new LAMN_Software.GradientPanel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.gradientPanel1 = new LAMN_Software.GradientPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblProfitValue = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.schedulesFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedulesMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
-            this.gpnlSchedules.SuspendLayout();
-            this.gpnlStock.SuspendLayout();
-            this.gpnlStatistics.SuspendLayout();
-            this.gpnlEmployees.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
             this.tpSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedules)).BeginInit();
             this.tpEmployees.SuspendLayout();
             this.tpStatistics.SuspendLayout();
+            this.tpStockAdd.SuspendLayout();
+            this.tpEmployeeAdd.SuspendLayout();
+            this.pnlBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudScheduleWeek)).BeginInit();
+            this.gpnlSchedules.SuspendLayout();
+            this.gpnlStock.SuspendLayout();
+            this.gpnlStatistics.SuspendLayout();
+            this.gpnlEmployees.SuspendLayout();
             this.gradientPanel4.SuspendLayout();
             this.gradientPanel3.SuspendLayout();
             this.gradientPanel2.SuspendLayout();
             this.gradientPanel6.SuspendLayout();
             this.gradientPanel5.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
-            this.tpStockAdd.SuspendLayout();
-            this.tpEmployeeAdd.SuspendLayout();
-            this.pnlBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -240,122 +239,6 @@ namespace LAMN_Software
             this.lblMB.Size = new System.Drawing.Size(117, 48);
             this.lblMB.TabIndex = 11;
             this.lblMB.Text = "MB";
-            // 
-            // gpnlSchedules
-            // 
-            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlSchedules.Controls.Add(this.btnSchedules);
-            this.gpnlSchedules.Location = new System.Drawing.Point(234, -1);
-            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(1);
-            this.gpnlSchedules.Name = "gpnlSchedules";
-            this.gpnlSchedules.Size = new System.Drawing.Size(149, 87);
-            this.gpnlSchedules.TabIndex = 12;
-            // 
-            // btnSchedules
-            // 
-            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
-            this.btnSchedules.FlatAppearance.BorderSize = 0;
-            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedules.ForeColor = System.Drawing.Color.White;
-            this.btnSchedules.Location = new System.Drawing.Point(1, 10);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(1);
-            this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(147, 63);
-            this.btnSchedules.TabIndex = 10;
-            this.btnSchedules.Text = "Schedules";
-            this.btnSchedules.UseVisualStyleBackColor = false;
-            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
-            // 
-            // gpnlStock
-            // 
-            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStock.Controls.Add(this.btnStock);
-            this.gpnlStock.Location = new System.Drawing.Point(141, 0);
-            this.gpnlStock.Margin = new System.Windows.Forms.Padding(1);
-            this.gpnlStock.Name = "gpnlStock";
-            this.gpnlStock.Size = new System.Drawing.Size(92, 87);
-            this.gpnlStock.TabIndex = 11;
-            // 
-            // btnStock
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Transparent;
-            this.btnStock.FlatAppearance.BorderSize = 0;
-            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.ForeColor = System.Drawing.Color.White;
-            this.btnStock.Location = new System.Drawing.Point(1, 10);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(1);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(91, 63);
-            this.btnStock.TabIndex = 10;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            // 
-            // gpnlStatistics
-            // 
-            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatistics.Controls.Add(this.btnStatistics);
-            this.gpnlStatistics.Location = new System.Drawing.Point(543, 0);
-            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(1);
-            this.gpnlStatistics.Name = "gpnlStatistics";
-            this.gpnlStatistics.Size = new System.Drawing.Size(149, 87);
-            this.gpnlStatistics.TabIndex = 13;
-            // 
-            // btnStatistics
-            // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(1, 10);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(1);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(145, 63);
-            this.btnStatistics.TabIndex = 10;
-            this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.UseVisualStyleBackColor = false;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
-            // 
-            // gpnlEmployees
-            // 
-            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlEmployees.Controls.Add(this.btnEmployees);
-            this.gpnlEmployees.Location = new System.Drawing.Point(385, 0);
-            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(1);
-            this.gpnlEmployees.Name = "gpnlEmployees";
-            this.gpnlEmployees.Size = new System.Drawing.Size(157, 87);
-            this.gpnlEmployees.TabIndex = 12;
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmployees.FlatAppearance.BorderSize = 0;
-            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(-1, 10);
-            this.btnEmployees.Margin = new System.Windows.Forms.Padding(1);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(157, 63);
-            this.btnEmployees.TabIndex = 10;
-            this.btnEmployees.Text = "Employees";
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // tcNavigator
             // 
@@ -461,7 +344,7 @@ namespace LAMN_Software
             // 
             // tpSchedules
             // 
-            this.tpSchedules.Controls.Add(this.numericUpDown1);
+            this.tpSchedules.Controls.Add(this.nudScheduleWeek);
             this.tpSchedules.Controls.Add(this.btnSchedulesShowWeek);
             this.tpSchedules.Controls.Add(this.dgvSchedules);
             this.tpSchedules.Location = new System.Drawing.Point(4, 18);
@@ -479,7 +362,6 @@ namespace LAMN_Software
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSchedules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.schedulesFirstName,
-            this.schedulesSecondName,
             this.schedulesMonday,
             this.schedulesTuesday,
             this.schedulesWednesday,
@@ -492,57 +374,6 @@ namespace LAMN_Software
             this.dgvSchedules.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSchedules.Size = new System.Drawing.Size(699, 242);
             this.dgvSchedules.TabIndex = 13;
-            // 
-            // schedulesFirstName
-            // 
-            this.schedulesFirstName.HeaderText = "First Name";
-            this.schedulesFirstName.Name = "schedulesFirstName";
-            this.schedulesFirstName.ReadOnly = true;
-            // 
-            // schedulesSecondName
-            // 
-            this.schedulesSecondName.HeaderText = "Second Name";
-            this.schedulesSecondName.Name = "schedulesSecondName";
-            this.schedulesSecondName.ReadOnly = true;
-            // 
-            // schedulesMonday
-            // 
-            this.schedulesMonday.HeaderText = "Monday";
-            this.schedulesMonday.Items.AddRange(new object[] {
-            "M",
-            "A",
-            "E"});
-            this.schedulesMonday.Name = "schedulesMonday";
-            // 
-            // schedulesTuesday
-            // 
-            this.schedulesTuesday.HeaderText = "Tuesday";
-            this.schedulesTuesday.Name = "schedulesTuesday";
-            // 
-            // schedulesWednesday
-            // 
-            this.schedulesWednesday.HeaderText = "Wednesday";
-            this.schedulesWednesday.Name = "schedulesWednesday";
-            // 
-            // schedulesThursday
-            // 
-            this.schedulesThursday.HeaderText = "Thursday";
-            this.schedulesThursday.Name = "schedulesThursday";
-            // 
-            // schedulesFriday
-            // 
-            this.schedulesFriday.HeaderText = "Friday";
-            this.schedulesFriday.Name = "schedulesFriday";
-            // 
-            // schedulesSaturday
-            // 
-            this.schedulesSaturday.HeaderText = "Saturday";
-            this.schedulesSaturday.Name = "schedulesSaturday";
-            // 
-            // schedulesSunday
-            // 
-            this.schedulesSunday.HeaderText = "Sunday";
-            this.schedulesSunday.Name = "schedulesSunday";
             // 
             // tpEmployees
             // 
@@ -690,326 +521,6 @@ namespace LAMN_Software
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(97, 31);
             this.comboBox1.TabIndex = 1;
-            // 
-            // gradientPanel4
-            // 
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel4.ColorTop = System.Drawing.Color.Silver;
-            this.gradientPanel4.Controls.Add(this.label22);
-            this.gradientPanel4.Controls.Add(this.label23);
-            this.gradientPanel4.Controls.Add(this.label24);
-            this.gradientPanel4.Controls.Add(this.label25);
-            this.gradientPanel4.Location = new System.Drawing.Point(478, 28);
-            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel4.Name = "gradientPanel4";
-            this.gradientPanel4.Size = new System.Drawing.Size(160, 87);
-            this.gradientPanel4.TabIndex = 0;
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(99, 71);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(60, 11);
-            this.label22.TabIndex = 16;
-            this.label22.Text = "INCREASE";
-            // 
-            // label23
-            // 
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(121, 51);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 22);
-            this.label23.TabIndex = 15;
-            this.label23.Text = "0%";
-            // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(2, 31);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 30);
-            this.label24.TabIndex = 15;
-            this.label24.Text = "0";
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label25.Location = new System.Drawing.Point(2, 4);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(164, 22);
-            this.label25.TabIndex = 15;
-            this.label25.Text = "Number of sales";
-            // 
-            // gradientPanel3
-            // 
-            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel3.ColorTop = System.Drawing.Color.Silver;
-            this.gradientPanel3.Controls.Add(this.label18);
-            this.gradientPanel3.Controls.Add(this.label19);
-            this.gradientPanel3.Controls.Add(this.label20);
-            this.gradientPanel3.Controls.Add(this.label21);
-            this.gradientPanel3.Location = new System.Drawing.Point(324, 28);
-            this.gradientPanel3.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel3.Name = "gradientPanel3";
-            this.gradientPanel3.Size = new System.Drawing.Size(147, 87);
-            this.gradientPanel3.TabIndex = 0;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(79, 71);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 11);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "INCREASE";
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(99, 51);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 22);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "0%";
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(2, 31);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(71, 30);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "€000";
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label21.Location = new System.Drawing.Point(2, 4);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 22);
-            this.label21.TabIndex = 15;
-            this.label21.Text = "Costs";
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel2.ColorTop = System.Drawing.Color.Silver;
-            this.gradientPanel2.Controls.Add(this.label14);
-            this.gradientPanel2.Controls.Add(this.label15);
-            this.gradientPanel2.Controls.Add(this.label16);
-            this.gradientPanel2.Controls.Add(this.label17);
-            this.gradientPanel2.Location = new System.Drawing.Point(165, 28);
-            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(150, 87);
-            this.gradientPanel2.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(79, 71);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 11);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "INCREASE";
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(99, 51);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 22);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "0%";
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(2, 31);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 30);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "€000";
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(2, 4);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(93, 22);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Revenue";
-            // 
-            // gradientPanel6
-            // 
-            this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel6.ColorTop = System.Drawing.Color.Azure;
-            this.gradientPanel6.Controls.Add(this.label26);
-            this.gradientPanel6.Controls.Add(this.label27);
-            this.gradientPanel6.Location = new System.Drawing.Point(16, 218);
-            this.gradientPanel6.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel6.Name = "gradientPanel6";
-            this.gradientPanel6.Size = new System.Drawing.Size(141, 87);
-            this.gradientPanel6.TabIndex = 0;
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(1, 60);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(69, 30);
-            this.label26.TabIndex = 15;
-            this.label26.Text = "Item";
-            // 
-            // label27
-            // 
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label27.Location = new System.Drawing.Point(0, 2);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(137, 52);
-            this.label27.TabIndex = 15;
-            this.label27.Text = "Least popular stock";
-            // 
-            // gradientPanel5
-            // 
-            this.gradientPanel5.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel5.ColorTop = System.Drawing.Color.Azure;
-            this.gradientPanel5.Controls.Add(this.label28);
-            this.gradientPanel5.Controls.Add(this.label29);
-            this.gradientPanel5.Location = new System.Drawing.Point(16, 123);
-            this.gradientPanel5.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel5.Name = "gradientPanel5";
-            this.gradientPanel5.Size = new System.Drawing.Size(141, 87);
-            this.gradientPanel5.TabIndex = 0;
-            // 
-            // label28
-            // 
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(1, 60);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(69, 30);
-            this.label28.TabIndex = 15;
-            this.label28.Text = "Item";
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label29.Location = new System.Drawing.Point(0, 3);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(137, 52);
-            this.label29.TabIndex = 15;
-            this.label29.Text = "Most popular stock";
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.Silver;
-            this.gradientPanel1.Controls.Add(this.label13);
-            this.gradientPanel1.Controls.Add(this.label12);
-            this.gradientPanel1.Controls.Add(this.lblProfitValue);
-            this.gradientPanel1.Controls.Add(this.label11);
-            this.gradientPanel1.Location = new System.Drawing.Point(16, 28);
-            this.gradientPanel1.Margin = new System.Windows.Forms.Padding(1);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(141, 87);
-            this.gradientPanel1.TabIndex = 0;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(79, 71);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 11);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "INCREASE";
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(99, 51);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 22);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "0%";
-            // 
-            // lblProfitValue
-            // 
-            this.lblProfitValue.BackColor = System.Drawing.Color.Transparent;
-            this.lblProfitValue.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.lblProfitValue.ForeColor = System.Drawing.Color.Black;
-            this.lblProfitValue.Location = new System.Drawing.Point(2, 31);
-            this.lblProfitValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProfitValue.Name = "lblProfitValue";
-            this.lblProfitValue.Size = new System.Drawing.Size(69, 30);
-            this.lblProfitValue.TabIndex = 15;
-            this.lblProfitValue.Text = "€000";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(2, 4);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 22);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Profit";
             // 
             // tpStockAdd
             // 
@@ -1709,28 +1220,509 @@ namespace LAMN_Software
             this.btnSchedulesShowWeek.UseVisualStyleBackColor = true;
             this.btnSchedulesShowWeek.Click += new System.EventHandler(this.btnSchedulesShowWeek_Click);
             // 
-            // numericUpDown1
+            // nudScheduleWeek
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numericUpDown1.Location = new System.Drawing.Point(5, 249);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudScheduleWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.nudScheduleWeek.Location = new System.Drawing.Point(5, 249);
+            this.nudScheduleWeek.Maximum = new decimal(new int[] {
             52,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nudScheduleWeek.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudScheduleWeek.Name = "nudScheduleWeek";
+            this.nudScheduleWeek.Size = new System.Drawing.Size(120, 23);
+            this.nudScheduleWeek.TabIndex = 15;
+            this.nudScheduleWeek.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            // 
+            // gpnlSchedules
+            // 
+            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlSchedules.Controls.Add(this.btnSchedules);
+            this.gpnlSchedules.Location = new System.Drawing.Point(234, -1);
+            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(1);
+            this.gpnlSchedules.Name = "gpnlSchedules";
+            this.gpnlSchedules.Size = new System.Drawing.Size(149, 87);
+            this.gpnlSchedules.TabIndex = 12;
+            // 
+            // btnSchedules
+            // 
+            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
+            this.btnSchedules.FlatAppearance.BorderSize = 0;
+            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.ForeColor = System.Drawing.Color.White;
+            this.btnSchedules.Location = new System.Drawing.Point(1, 10);
+            this.btnSchedules.Margin = new System.Windows.Forms.Padding(1);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(147, 63);
+            this.btnSchedules.TabIndex = 10;
+            this.btnSchedules.Text = "Schedules";
+            this.btnSchedules.UseVisualStyleBackColor = false;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
+            // 
+            // gpnlStock
+            // 
+            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlStock.Controls.Add(this.btnStock);
+            this.gpnlStock.Location = new System.Drawing.Point(141, 0);
+            this.gpnlStock.Margin = new System.Windows.Forms.Padding(1);
+            this.gpnlStock.Name = "gpnlStock";
+            this.gpnlStock.Size = new System.Drawing.Size(92, 87);
+            this.gpnlStock.TabIndex = 11;
+            // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.ForeColor = System.Drawing.Color.White;
+            this.btnStock.Location = new System.Drawing.Point(1, 10);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(1);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(91, 63);
+            this.btnStock.TabIndex = 10;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
+            // gpnlStatistics
+            // 
+            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlStatistics.Controls.Add(this.btnStatistics);
+            this.gpnlStatistics.Location = new System.Drawing.Point(543, 0);
+            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(1);
+            this.gpnlStatistics.Name = "gpnlStatistics";
+            this.gpnlStatistics.Size = new System.Drawing.Size(149, 87);
+            this.gpnlStatistics.TabIndex = 13;
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(1, 10);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(1);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(145, 63);
+            this.btnStatistics.TabIndex = 10;
+            this.btnStatistics.Text = "Statistics";
+            this.btnStatistics.UseVisualStyleBackColor = false;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
+            // gpnlEmployees
+            // 
+            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlEmployees.Controls.Add(this.btnEmployees);
+            this.gpnlEmployees.Location = new System.Drawing.Point(385, 0);
+            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(1);
+            this.gpnlEmployees.Name = "gpnlEmployees";
+            this.gpnlEmployees.Size = new System.Drawing.Size(157, 87);
+            this.gpnlEmployees.TabIndex = 12;
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Location = new System.Drawing.Point(-1, 10);
+            this.btnEmployees.Margin = new System.Windows.Forms.Padding(1);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(157, 63);
+            this.btnEmployees.TabIndex = 10;
+            this.btnEmployees.Text = "Employees";
+            this.btnEmployees.UseVisualStyleBackColor = false;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel4.Controls.Add(this.label22);
+            this.gradientPanel4.Controls.Add(this.label23);
+            this.gradientPanel4.Controls.Add(this.label24);
+            this.gradientPanel4.Controls.Add(this.label25);
+            this.gradientPanel4.Location = new System.Drawing.Point(478, 28);
+            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(160, 87);
+            this.gradientPanel4.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(99, 71);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(60, 11);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "INCREASE";
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(121, 51);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 22);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "0%";
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(2, 31);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 30);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "0";
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label25.Location = new System.Drawing.Point(2, 4);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(164, 22);
+            this.label25.TabIndex = 15;
+            this.label25.Text = "Number of sales";
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel3.Controls.Add(this.label18);
+            this.gradientPanel3.Controls.Add(this.label19);
+            this.gradientPanel3.Controls.Add(this.label20);
+            this.gradientPanel3.Controls.Add(this.label21);
+            this.gradientPanel3.Location = new System.Drawing.Point(324, 28);
+            this.gradientPanel3.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(147, 87);
+            this.gradientPanel3.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(79, 71);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(60, 11);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "INCREASE";
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(99, 51);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 22);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "0%";
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(2, 31);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 30);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "€000";
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label21.Location = new System.Drawing.Point(2, 4);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(93, 22);
+            this.label21.TabIndex = 15;
+            this.label21.Text = "Costs";
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel2.Controls.Add(this.label14);
+            this.gradientPanel2.Controls.Add(this.label15);
+            this.gradientPanel2.Controls.Add(this.label16);
+            this.gradientPanel2.Controls.Add(this.label17);
+            this.gradientPanel2.Location = new System.Drawing.Point(165, 28);
+            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(150, 87);
+            this.gradientPanel2.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(79, 71);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 11);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "INCREASE";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(99, 51);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 22);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "0%";
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(2, 31);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 30);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "€000";
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label17.Location = new System.Drawing.Point(2, 4);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(93, 22);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Revenue";
+            // 
+            // gradientPanel6
+            // 
+            this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel6.ColorTop = System.Drawing.Color.Azure;
+            this.gradientPanel6.Controls.Add(this.label26);
+            this.gradientPanel6.Controls.Add(this.label27);
+            this.gradientPanel6.Location = new System.Drawing.Point(16, 218);
+            this.gradientPanel6.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel6.Name = "gradientPanel6";
+            this.gradientPanel6.Size = new System.Drawing.Size(141, 87);
+            this.gradientPanel6.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(1, 60);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(69, 30);
+            this.label26.TabIndex = 15;
+            this.label26.Text = "Item";
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label27.Location = new System.Drawing.Point(0, 2);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(137, 52);
+            this.label27.TabIndex = 15;
+            this.label27.Text = "Least popular stock";
+            // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel5.ColorTop = System.Drawing.Color.Azure;
+            this.gradientPanel5.Controls.Add(this.label28);
+            this.gradientPanel5.Controls.Add(this.label29);
+            this.gradientPanel5.Location = new System.Drawing.Point(16, 123);
+            this.gradientPanel5.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(141, 87);
+            this.gradientPanel5.TabIndex = 0;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(1, 60);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(69, 30);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "Item";
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label29.Location = new System.Drawing.Point(0, 3);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(137, 52);
+            this.label29.TabIndex = 15;
+            this.label29.Text = "Most popular stock";
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel1.Controls.Add(this.label13);
+            this.gradientPanel1.Controls.Add(this.label12);
+            this.gradientPanel1.Controls.Add(this.lblProfitValue);
+            this.gradientPanel1.Controls.Add(this.label11);
+            this.gradientPanel1.Location = new System.Drawing.Point(16, 28);
+            this.gradientPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(141, 87);
+            this.gradientPanel1.TabIndex = 0;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(79, 71);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 11);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "INCREASE";
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(99, 51);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 22);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "0%";
+            // 
+            // lblProfitValue
+            // 
+            this.lblProfitValue.BackColor = System.Drawing.Color.Transparent;
+            this.lblProfitValue.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.lblProfitValue.ForeColor = System.Drawing.Color.Black;
+            this.lblProfitValue.Location = new System.Drawing.Point(2, 31);
+            this.lblProfitValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProfitValue.Name = "lblProfitValue";
+            this.lblProfitValue.Size = new System.Drawing.Size(69, 30);
+            this.lblProfitValue.TabIndex = 15;
+            this.lblProfitValue.Text = "€000";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(2, 4);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 22);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Profit";
+            // 
+            // schedulesFirstName
+            // 
+            this.schedulesFirstName.HeaderText = "First Name";
+            this.schedulesFirstName.Name = "schedulesFirstName";
+            this.schedulesFirstName.ReadOnly = true;
+            // 
+            // schedulesMonday
+            // 
+            this.schedulesMonday.HeaderText = "Monday";
+            this.schedulesMonday.Items.AddRange(new object[] {
+            "M",
+            "A",
+            "E"});
+            this.schedulesMonday.Name = "schedulesMonday";
+            // 
+            // schedulesTuesday
+            // 
+            this.schedulesTuesday.HeaderText = "Tuesday";
+            this.schedulesTuesday.Name = "schedulesTuesday";
+            // 
+            // schedulesWednesday
+            // 
+            this.schedulesWednesday.HeaderText = "Wednesday";
+            this.schedulesWednesday.Name = "schedulesWednesday";
+            // 
+            // schedulesThursday
+            // 
+            this.schedulesThursday.HeaderText = "Thursday";
+            this.schedulesThursday.Name = "schedulesThursday";
+            // 
+            // schedulesFriday
+            // 
+            this.schedulesFriday.HeaderText = "Friday";
+            this.schedulesFriday.Name = "schedulesFriday";
+            // 
+            // schedulesSaturday
+            // 
+            this.schedulesSaturday.HeaderText = "Saturday";
+            this.schedulesSaturday.Name = "schedulesSaturday";
+            // 
+            // schedulesSunday
+            // 
+            this.schedulesSunday.HeaderText = "Sunday";
+            this.schedulesSunday.Name = "schedulesSunday";
             // 
             // ProductForm
             // 
@@ -1749,10 +1741,6 @@ namespace LAMN_Software
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
             this.pnlTabCover.ResumeLayout(false);
-            this.gpnlSchedules.ResumeLayout(false);
-            this.gpnlStock.ResumeLayout(false);
-            this.gpnlStatistics.ResumeLayout(false);
-            this.gpnlEmployees.ResumeLayout(false);
             this.tcNavigator.ResumeLayout(false);
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
@@ -1761,18 +1749,22 @@ namespace LAMN_Software
             this.tpEmployees.ResumeLayout(false);
             this.tpEmployees.PerformLayout();
             this.tpStatistics.ResumeLayout(false);
+            this.tpStockAdd.ResumeLayout(false);
+            this.tpStockAdd.PerformLayout();
+            this.tpEmployeeAdd.ResumeLayout(false);
+            this.tpEmployeeAdd.PerformLayout();
+            this.pnlBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudScheduleWeek)).EndInit();
+            this.gpnlSchedules.ResumeLayout(false);
+            this.gpnlStock.ResumeLayout(false);
+            this.gpnlStatistics.ResumeLayout(false);
+            this.gpnlEmployees.ResumeLayout(false);
             this.gradientPanel4.ResumeLayout(false);
             this.gradientPanel3.ResumeLayout(false);
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel6.ResumeLayout(false);
             this.gradientPanel5.ResumeLayout(false);
             this.gradientPanel1.ResumeLayout(false);
-            this.tpStockAdd.ResumeLayout(false);
-            this.tpStockAdd.PerformLayout();
-            this.tpEmployeeAdd.ResumeLayout(false);
-            this.tpEmployeeAdd.PerformLayout();
-            this.pnlBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1898,8 +1890,9 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.DataGridView dgvSchedules;
+        private System.Windows.Forms.Button btnSchedulesShowWeek;
+        private System.Windows.Forms.NumericUpDown nudScheduleWeek;
         private System.Windows.Forms.DataGridViewTextBoxColumn schedulesFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesSecondName;
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesMonday;
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesTuesday;
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesWednesday;
@@ -1907,7 +1900,5 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesFriday;
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesSaturday;
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesSunday;
-        private System.Windows.Forms.Button btnSchedulesShowWeek;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

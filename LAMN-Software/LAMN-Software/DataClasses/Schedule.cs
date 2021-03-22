@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software.DataClasses
 {
-    class Schedule
+    public class Schedule
     {
         public int Week
         { get; set; }
@@ -14,7 +14,7 @@ namespace LAMN_Software.DataClasses
         public Day Day
         { get; set; }
 
-        public string Employee
+        public string EmployeeBSN
         { get; set; }
 
         public TimeSlot TimeSlot
@@ -24,7 +24,7 @@ namespace LAMN_Software.DataClasses
         {
             Week = week;
             Day = day;
-            Employee = employee;
+            EmployeeBSN = employee;
             TimeSlot = timeSlot;
         }
     }
