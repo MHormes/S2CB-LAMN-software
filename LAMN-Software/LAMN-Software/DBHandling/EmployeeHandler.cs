@@ -59,13 +59,13 @@ namespace LAMN_Software
 
                         if (positionReturn == "MANAGER")
                             position = JobPosition.MANAGER;
-                        else if (relationReturn == "HR")
+                        else if (positionReturn == "HR")
                             position = JobPosition.HR;
-                        else if (relationReturn == "SALES")
+                        else if (positionReturn == "SALES")
                             position = JobPosition.SALES;
-                        else if (relationReturn == "DEPOT")
+                        else if (positionReturn == "DEPOT")
                             position = JobPosition.DEPOT;
-                        else if (relationReturn == "SECURITY")
+                        else if (positionReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
                         allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[11].ToString()));

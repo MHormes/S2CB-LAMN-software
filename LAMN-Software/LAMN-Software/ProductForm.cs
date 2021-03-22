@@ -29,6 +29,7 @@ namespace LAMN_Software
             FillStockListBox();
             FillEmployeeListBox();
 
+            btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
         }
 
@@ -279,7 +280,7 @@ namespace LAMN_Software
             {
                 if (employee.GetFullName().ToLower().Contains(searchName))
                 {
-                    lbxAllEmployees.Items.Add(employee.ToString());
+                    lbxAllEmployees.Items.Add(employee);
                 }
             }
         }
@@ -453,6 +454,7 @@ namespace LAMN_Software
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
+            FillEmployeeListBox();
         }
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)

@@ -12,6 +12,6 @@ namespace LAMN_Software
         HR,
         SALES,
         DEPOT,
-        SECURITY,
+        SECURITY
     }
 }
