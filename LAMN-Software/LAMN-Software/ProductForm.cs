@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LAMN_Software.DataClasses;
 
 namespace LAMN_Software
 {
@@ -21,11 +22,13 @@ namespace LAMN_Software
 
         StockHandler SH;
         EmployeeHandler EH;
+        ScheduleHandler SCH;
         public ProductForm()
         {
             InitializeComponent();
             SH = new StockHandler();
             EH = new EmployeeHandler();
+            SCH = new ScheduleHandler();
             FillStockListBox();
             FillEmployeeListBox();
             FillScheduleGridView();
@@ -403,20 +406,22 @@ namespace LAMN_Software
             {
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
-            schedulesMonday.Items.Add(TimeSlot.MORNING);
-            schedulesMonday.Items.Add(TimeSlot.AFTERNOON);
-            schedulesMonday.Items.Add(TimeSlot.EVENING);
 
-            schedulesTuesday.Items.Add(TimeSlot.MORNING);
-            schedulesTuesday.Items.Add(TimeSlot.AFTERNOON);
-            schedulesTuesday.Items.Add(TimeSlot.EVENING);
-            /*schedulesMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            //Assign correct enum value to comboboxes
+            schedulesMonday.ValueType = typeof(TimeSlot);
+            schedulesMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesTuesday.ValueType = typeof(TimeSlot);
             schedulesTuesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesWednesday.ValueType = typeof(TimeSlot);
             schedulesWednesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesThursday.ValueType = typeof(TimeSlot);
             schedulesThursday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesFriday.ValueType = typeof(TimeSlot);
             schedulesFriday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesSaturday.ValueType = typeof(TimeSlot);
             schedulesSaturday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesSunday.DataSource = Enum.GetValues(typeof(TimeSlot));*/
+            schedulesSunday.ValueType = typeof(TimeSlot);
+            schedulesSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
 
         }
 
@@ -435,7 +440,11 @@ namespace LAMN_Software
             btnStatistics.ForeColor = Color.LightGray;
         }
 
+        //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
+        private void btnSchedulesShowWeek_Click(object sender, EventArgs e)
+        {
 
+        }
         //STATISTICS
         private void btnStatistics_Click(object sender, EventArgs e)
         {
@@ -510,5 +519,6 @@ namespace LAMN_Software
             }
         }
 
+        
     }
 }
