@@ -29,6 +29,7 @@ namespace LAMN_Software
             FillStockListBox();
             FillEmployeeListBox();
 
+            btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
 
         }
