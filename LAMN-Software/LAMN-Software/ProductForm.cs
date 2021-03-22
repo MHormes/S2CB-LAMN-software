@@ -30,7 +30,6 @@ namespace LAMN_Software
             FillEmployeeListBox();
 
             //Method to enable buttons based on indicator
-
         }
 
         //STOCK MANAGEMENT
@@ -187,13 +186,16 @@ namespace LAMN_Software
         {
             lbxAllStock.Items.Clear();
             string searchName = tbxSearchStock.Text.ToLower();
-            foreach (Product p in SH.GetAllProducts())
-            {
-                if (p.Name.ToLower().Contains(searchName))
+           
+                foreach (Product p in SH.GetAllProducts())
                 {
-                    lbxAllStock.Items.Add(p);
+                    if (p.Name.ToLower().Contains(searchName))
+                    {
+                        lbxAllStock.Items.Add(p);
+                    }
                 }
-            }
+            
+            
         }
 
         //method for updateing/filling listbox for stock items
