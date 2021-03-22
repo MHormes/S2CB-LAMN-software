@@ -45,6 +45,30 @@ namespace LAMN_Software
             }
         }
 
+        public Exception AddLoginDetails(string username, string password)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "INSERT INTO logindetails(Username, Password) VALUES (@username, @password);";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
         //get login list
         public List<Login> GetAllLogin()
         {

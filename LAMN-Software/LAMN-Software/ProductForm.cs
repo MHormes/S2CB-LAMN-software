@@ -23,12 +23,14 @@ namespace LAMN_Software
         StockHandler SH;
         EmployeeHandler EH;
         ScheduleHandler SCH;
+        LoginHandler LH;
         public ProductForm()
         {
             InitializeComponent();
             SH = new StockHandler();
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
+            LH = new LoginHandler();
             FillStockListBox();
             FillEmployeeListBox();
             FillScheduleGridView();
@@ -340,16 +342,18 @@ namespace LAMN_Software
         
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-            string username = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_SecondName.Text;
-            string email = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_SecondName.Text + "@mediabazar.nl";
+            string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
+            string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
+            string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
             try
             {
                 var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
-                
+                add = LH.AddLoginDetails(username, password);
+
                 if (add == null)
                 {
                     FillEmployeeListBox();
-                    MessageBox.Show("Employee added succesfully");
+                    MessageBox.Show("Employee added succesfully.");
                     return;
                 }
                 MessageBox.Show(add.Message);
@@ -358,7 +362,6 @@ namespace LAMN_Software
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
