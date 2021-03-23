@@ -517,6 +517,7 @@ namespace LAMN_Software
             //foreach edited combox push to the DB.
             //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
             //Easier syntax but the semantics could be optimalized.
+
         }
 
         //STATISTICS
@@ -620,31 +621,31 @@ namespace LAMN_Software
 
         public void CreateListboxGraph()
         {
-            string prod1 = "";
-            lbxGraph.Items.Clear();
-            lbxGraph.Items.Add("");
-            lbxGraph.Items.Add("");
-            foreach (Product p in SH.GetAllProducts())
-            {
-                if(cbxStats1.SelectedValue == null) // placeholder
-                {
-                    MessageBox.Show("S");
-                    lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
-                    int storeAmount = p.QuantityS / 2;
-                    int warehouseAmount = p.QuantityWH / 2;
-                    for (int i = 0; i < warehouseAmount; i++)
-                    {
-                        prod1 += "▓";
-                    }
-                    for (int i = 0; i < storeAmount; i++)
-                    {
-                        prod1 += "░";
-                    }
-                    prod1 += $" {warehouseAmount} | {storeAmount}";
-                    lbxGraph.Items.Add(prod1);
-                    break;
-                }
-            }
+            //string prod1 = "";
+            //lbxGraph.Items.Clear();
+            //lbxGraph.Items.Add("");
+            //lbxGraph.Items.Add("");
+            //foreach (Product p in SH.GetAllProducts())
+            //{
+            //    if(cbxStats1.SelectedValue == null) // placeholder
+            //    {
+            //        MessageBox.Show("S");
+            //        lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
+            //        int storeAmount = p.QuantityS / 2;
+            //        int warehouseAmount = p.QuantityWH / 2;
+            //        for (int i = 0; i < warehouseAmount; i++)
+            //        {
+            //            prod1 += "▓";
+            //        }
+            //        for (int i = 0; i < storeAmount; i++)
+            //        {
+            //            prod1 += "░";
+            //        }
+            //        prod1 += $" {warehouseAmount} | {storeAmount}";
+            //        lbxGraph.Items.Add(prod1);
+            //        break;
+            //    }
+            //}
             
             
 
