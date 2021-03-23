@@ -31,6 +31,9 @@ namespace LAMN_Software.DataClasses
                     while (dr.Read())
                     {
                         TimeSlot time = TimeSlot.MORNING;
+                        Day day = Day.MONDAY;
+
+                        string DayReturn = dr[1].ToString();
                         string TimeReturn = dr[3].ToString();
 
                         if (TimeReturn == "MORNING")
@@ -40,8 +43,7 @@ namespace LAMN_Software.DataClasses
                         else if (TimeReturn == "EVENING")
                             time = TimeSlot.EVENING;
 
-                        Day day = Day.MONDAY;
-                        string DayReturn = dr[1].ToString();
+                        
 
                         if (DayReturn == "MONDAY")
                             day = Day.MONDAY;
@@ -72,6 +74,32 @@ namespace LAMN_Software.DataClasses
         public List<Schedule> GetAllSchedules()
         {
             return this.allSchedules;
+        }
+
+        public Exception SaveCurrentWeek(int weeknmr, Day day, string empBSN, TimeSlot timeSlot)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "INSERT INTO schedules (Week, Day, EmpBSN, TimeSlot) VALUES (@weeknmr, @day, @empBSN, @timeSlot)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
+                    cmd.Parameters.AddWithValue("@day", day);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Parameters.AddWithValue("@timeSlotr", timeSlot);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
         }
     }
 }

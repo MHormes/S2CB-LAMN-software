@@ -468,6 +468,7 @@ namespace LAMN_Software
         //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
         private void btnSchedulesShowWeek_Click(object sender, EventArgs e)
         {
+            FillScheduleGridView();
             int weekNmr = Convert.ToInt32(Math.Round(nudScheduleWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
@@ -482,19 +483,19 @@ namespace LAMN_Software
                         {
                             if (schedule.Day == Day.MONDAY)
                                 dgvSchedules.Rows[i].Cells[1].Value = schedule.TimeSlot;
-                            else if(schedule.Day == Day.TUESDAY)
+                            else if (schedule.Day == Day.TUESDAY)
                                 dgvSchedules.Rows[i].Cells[2].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.WEDNESDAY)
                                 dgvSchedules.Rows[i].Cells[3].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.THURDAY)
                                 dgvSchedules.Rows[i].Cells[4].Value = schedule.TimeSlot;
+
                             else if (schedule.Day == Day.FRIDAY)
                                 dgvSchedules.Rows[i].Cells[5].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SATURDAY)
                                 dgvSchedules.Rows[i].Cells[6].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SUNDAY)
                                 dgvSchedules.Rows[i].Cells[7].Value = schedule.TimeSlot;
-
                         }
                     }
                     
@@ -506,6 +507,12 @@ namespace LAMN_Software
             }
         }
 
+        private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
+        {
+            //foreach edited combox push to the DB.
+            //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
+            //Easier syntax but the semantics could be optimalized.
+        }
 
         //STATISTICS
         private void btnStatistics_Click(object sender, EventArgs e)
