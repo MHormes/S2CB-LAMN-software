@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace LAMN_Software
 {
@@ -7,7 +8,22 @@ namespace LAMN_Software
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Username { get; set; }
-        public string Bsn { get; set; }
+        public string Bsn
+        {
+            get { return this.Bsn; }
+            set
+            {
+                if (Regex.IsMatch(value, @"^[0-9]{9}$"))
+                {
+                    this.Bsn = value;
+                }
+                else
+                {
+                    throw new IncorrectBSNException(value);
+                }
+            }
+        }
+        
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
