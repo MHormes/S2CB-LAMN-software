@@ -626,8 +626,9 @@ namespace LAMN_Software
             lbxGraph.Items.Add("");
             foreach (Product p in SH.GetAllProducts())
             {
-                if((p.Name).ToString() == cbxStats1.SelectedValue)
+                if(cbxStats1.SelectedValue == null) // placeholder
                 {
+                    MessageBox.Show("S");
                     lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
                     int storeAmount = p.QuantityS / 2;
                     int warehouseAmount = p.QuantityWH / 2;
