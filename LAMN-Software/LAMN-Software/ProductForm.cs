@@ -229,11 +229,18 @@ namespace LAMN_Software
         public void FillStockListBox()
         {
             lbxAllStock.Items.Clear();
+
+            cbxStats1.Items.Clear();
+            cbxStats2.Items.Clear();
+            cbxStats3.Items.Clear();
+
             if (SH.GetAllStockFromDB() == null)
             {
                 foreach (Product p in SH.GetAllProducts())
                 {
                     lbxAllStock.Items.Add(p);
+                    UpdateStatsComboboxes(p.Name);
+                    CreateListboxGraph();
                 }
             }
             else
@@ -592,6 +599,59 @@ namespace LAMN_Software
             this.Hide();
             nextForm.ShowDialog();
             this.Close();
+        }
+
+        private void lblClose_MouseEnter(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.Gray;
+        }
+
+        private void lblClose_MouseLeave(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.White;
+        }
+
+        public void UpdateStatsComboboxes(string name)
+        {
+            cbxStats1.Items.Add(name);
+            cbxStats2.Items.Add(name);
+            cbxStats3.Items.Add(name);
+        }
+
+        public void CreateListboxGraph()
+        {
+            string prod1 = "";
+            lbxGraph.Items.Clear();
+            lbxGraph.Items.Add("");
+            lbxGraph.Items.Add("");
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if((p.Name).ToString() == cbxStats1.SelectedValue)
+                {
+                    lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
+                    int storeAmount = p.QuantityS / 2;
+                    int warehouseAmount = p.QuantityWH / 2;
+                    for (int i = 0; i < warehouseAmount; i++)
+                    {
+                        prod1 += "▓";
+                    }
+                    for (int i = 0; i < storeAmount; i++)
+                    {
+                        prod1 += "░";
+                    }
+                    prod1 += $" {warehouseAmount} | {storeAmount}";
+                    lbxGraph.Items.Add(prod1);
+                    break;
+                }
+            }
+            
+            
+
+        }
+
+        private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CreateListboxGraph();
         }
     }
 }
