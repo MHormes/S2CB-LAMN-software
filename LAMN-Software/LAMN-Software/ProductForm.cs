@@ -24,7 +24,7 @@ namespace LAMN_Software
         EmployeeHandler EH;
         ScheduleHandler SCH;
         LoginHandler LH;
-        public ProductForm()
+        public ProductForm(JobPosition position)
         {
             InitializeComponent();
             SH = new StockHandler();
@@ -36,6 +36,27 @@ namespace LAMN_Software
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
+
+            updateTabWithPosition(position);
+        }
+
+        private void updateTabWithPosition(JobPosition position)
+        {
+            if (position.ToString() == "HR")
+            {
+                tcNavigator.TabPages.Remove(tpStock);
+                tcNavigator.TabPages.Remove(tpStockAdd);
+                tcNavigator.TabPages.Remove(tpStatistics);
+                btnStatistics.Enabled = false;
+                btnStock.Enabled = false;
+            }
+            else if (position.ToString() == "DEPOT")
+            {
+                tcNavigator.TabPages.Remove(tpEmployees);
+                tcNavigator.TabPages.Remove(tpEmployeeAdd);
+                tcNavigator.TabPages.Remove(tpStatistics);
+                btnEmployees.Enabled = false;
+            }
         }
 
         //STOCK MANAGEMENT
@@ -208,11 +229,18 @@ namespace LAMN_Software
         public void FillStockListBox()
         {
             lbxAllStock.Items.Clear();
+
+            cbxStats1.Items.Clear();
+            cbxStats2.Items.Clear();
+            cbxStats3.Items.Clear();
+
             if (SH.GetAllStockFromDB() == null)
             {
                 foreach (Product p in SH.GetAllProducts())
                 {
                     lbxAllStock.Items.Add(p);
+                    UpdateStatsComboboxes(p.Name);
+                    CreateListboxGraph();
                 }
             }
             else
@@ -567,6 +595,66 @@ namespace LAMN_Software
             }
         }
 
-        
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 nextForm = new Form1();
+            this.Hide();
+            nextForm.ShowDialog();
+            this.Close();
+        }
+
+        private void lblClose_MouseEnter(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.Gray;
+        }
+
+        private void lblClose_MouseLeave(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.White;
+        }
+
+        public void UpdateStatsComboboxes(string name)
+        {
+            cbxStats1.Items.Add(name);
+            cbxStats2.Items.Add(name);
+            cbxStats3.Items.Add(name);
+        }
+
+        public void CreateListboxGraph()
+        {
+            string prod1 = "";
+            lbxGraph.Items.Clear();
+            lbxGraph.Items.Add("");
+            lbxGraph.Items.Add("");
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if(cbxStats1.SelectedValue == null) // placeholder
+                {
+                    MessageBox.Show("S");
+                    lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
+                    int storeAmount = p.QuantityS / 2;
+                    int warehouseAmount = p.QuantityWH / 2;
+                    for (int i = 0; i < warehouseAmount; i++)
+                    {
+                        prod1 += "▓";
+                    }
+                    for (int i = 0; i < storeAmount; i++)
+                    {
+                        prod1 += "░";
+                    }
+                    prod1 += $" {warehouseAmount} | {storeAmount}";
+                    lbxGraph.Items.Add(prod1);
+                    break;
+                }
+            }
+            
+            
+
+        }
+
+        private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CreateListboxGraph();
+        }
     }
 }
