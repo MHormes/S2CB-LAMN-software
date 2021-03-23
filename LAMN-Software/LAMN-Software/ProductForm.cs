@@ -342,16 +342,19 @@ namespace LAMN_Software
         
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-            string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
-            string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
-            string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
+            
             try
             {
+                string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
+                string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
+                string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
+
                 var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
-                add = LH.AddLoginDetails(username, password);
+                
 
                 if (add == null)
                 {
+                    add = LH.AddLoginDetails(username, password);
                     FillEmployeeListBox();
                     MessageBox.Show("Employee added succesfully.");
                     return;
@@ -466,7 +469,6 @@ namespace LAMN_Software
                                 dgvSchedules.Rows[i].Cells[3].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.THURDAY)
                                 dgvSchedules.Rows[i].Cells[4].Value = schedule.TimeSlot;
-
                             else if (schedule.Day == Day.FRIDAY)
                                 dgvSchedules.Rows[i].Cells[5].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SATURDAY)
