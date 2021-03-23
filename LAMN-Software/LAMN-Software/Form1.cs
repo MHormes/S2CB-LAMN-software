@@ -14,7 +14,9 @@ namespace LAMN_Software
     public partial class Form1 : Form
     {
         LoginHandler loginHandler;
+        EmployeeHandler employeeHandler;
         static int index;
+        static int employeeIndex;
 
         public Form1()
         {
@@ -25,17 +27,17 @@ namespace LAMN_Software
         {
             //copy of the login list
             List<Login> logins = new List<Login>();
+            List<Employee> employees = new List<Employee>();
+
             loginHandler = new LoginHandler();
+            employeeHandler = new EmployeeHandler();
 
             logins = loginHandler.GetAllLogin();
             index = -1;
 
-            /////////////////////////easy access
-            ProductForm pf1 = new ProductForm();
-            this.Hide();
-            pf1.ShowDialog();
-            this.Close();
-            return;
+            employees = employeeHandler.GetAllEmployees();
+            employeeIndex = -1;
+            JobPosition jobPosition = JobPosition.MANAGER;
 
             //IMPLEMENT DB CONNECTION CHECK!!
             if (logins != null)
@@ -47,19 +49,34 @@ namespace LAMN_Software
                         index = logins.IndexOf(login);
                 }
             }
-            else { MessageBox.Show("login unsuccesfull"); }
+            else { MessageBox.Show("login unsuccesful"); }
 
             //not found!
             if (index == -1)
             {
-                errorNotFound();
+                ErrorNotFound();
                 return;
             }
 
             //check if password is correct
             if (textBox_accountPassword.Text == logins.ElementAt(index).getPassword())
             {
-                ProductForm pf = new ProductForm();
+                foreach(Employee employee in employees)
+                {
+                    if (employee.Username == textBox_accountName.Text)
+                        employeeIndex = employees.IndexOf(employee);
+                }
+
+                if(index != -1)
+                    jobPosition = employees.ElementAt(employeeIndex).Position;
+
+                if((jobPosition.ToString() == "SALES") || (jobPosition.ToString() == "SECURITY"))
+                {
+                    ErrorNotEnoughRequirements();
+                    return;
+                }
+
+                ProductForm pf = new ProductForm(jobPosition);
                 this.Hide();
                 pf.ShowDialog();
                 this.Close();
@@ -68,22 +85,28 @@ namespace LAMN_Software
             //wrong password
             else
             {
-                errorPassword();
+                ErrorPassword();
                 return;
             }
         }
 
         //username not found
-        private void errorNotFound()
+        private void ErrorNotFound()
         {
             MessageBox.Show("The account doesn't exist. Please retry.");
             return;
         }
 
         //wrong password
-        private void errorPassword()
+        private void ErrorPassword()
         {
             MessageBox.Show("Wrong password. Please retry.");
+            return;
+        }
+
+        private void ErrorNotEnoughRequirements()
+        {
+            MessageBox.Show("Sorry, you don't have the requirements to login in this application.");
             return;
         }
 
@@ -213,7 +236,7 @@ namespace LAMN_Software
 
         private void btnDevAccess_Click(object sender, EventArgs e)
         {
-            ProductForm pf1 = new ProductForm();
+            ProductForm pf1 = new ProductForm(JobPosition.MANAGER);
             this.Hide();
             pf1.ShowDialog();
             this.Close();

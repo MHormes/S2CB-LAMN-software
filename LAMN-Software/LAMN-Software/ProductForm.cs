@@ -24,7 +24,7 @@ namespace LAMN_Software
         EmployeeHandler EH;
         ScheduleHandler SCH;
         LoginHandler LH;
-        public ProductForm()
+        public ProductForm(JobPosition position)
         {
             InitializeComponent();
             SH = new StockHandler();
@@ -36,7 +36,30 @@ namespace LAMN_Software
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
+
+            updateTabWithPosition(position);
         }
+
+
+        private void updateTabWithPosition(JobPosition position)
+        {
+            if(position.ToString() == "HR")
+            {
+                tcNavigator.TabPages.Remove(tpStock);
+                tcNavigator.TabPages.Remove(tpStockAdd);
+                tcNavigator.TabPages.Remove(tpStatistics);
+                btnStatistics.Enabled = false;
+                btnStock.Enabled = false;
+            }
+            else if(position.ToString() == "DEPOT")
+            {
+                tcNavigator.TabPages.Remove(tpEmployees);
+                tcNavigator.TabPages.Remove(tpEmployeeAdd);
+                tcNavigator.TabPages.Remove(tpStatistics);
+                btnEmployees.Enabled = false;
+            }
+        }
+
 
         //STOCK MANAGEMENT
 
@@ -558,6 +581,12 @@ namespace LAMN_Software
             }
         }
 
-        
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 nextForm = new Form1();
+            this.Hide();
+            nextForm.ShowDialog();
+            this.Close();
+        }
     }
 }
