@@ -356,6 +356,9 @@ namespace LAMN_Software
             tbxEmployeeAdd_FirstName.Text = $"{emp.FirstName}";
             tbxEmployeeAdd_SecondName.Text = $"{emp.SecondName}";
             tbxEmployeeAdd_BSN.Text = $"{emp.Bsn}";
+            tbxEmployeeAdd_BSN.Enabled = false;
+            dtpEmployeeAdd_DateOfBirth.Value = emp.DateOfBirth;
+            dtpEmployeeAdd_DateOfBirth.Enabled = false;
             tbxEmployeeAdd_PhoneNumber.Text = $"{emp.PhoneNumber}";
             tbxEmployeeAdd_ICENumber.Text = $"{emp.IceNumber}";
             tbxEmployeeAdd_AdditonalInfo.Text = $"{emp.AddInformation}";
