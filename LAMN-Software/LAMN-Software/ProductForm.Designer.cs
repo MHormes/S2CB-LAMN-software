@@ -51,6 +51,7 @@ namespace LAMN_Software
             this.btnSearchStock = new System.Windows.Forms.Button();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.tpSchedules = new System.Windows.Forms.TabPage();
+            this.lblScheduleCurrentWeek = new System.Windows.Forms.Label();
             this.btnScheduleSaveCurrentWeek = new System.Windows.Forms.Button();
             this.nudScheduleWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesShowWeek = new System.Windows.Forms.Button();
@@ -234,6 +235,7 @@ namespace LAMN_Software
             this.btnLogout.TabIndex = 15;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lblMediaBazaar
             // 
@@ -479,6 +481,7 @@ namespace LAMN_Software
             // 
             // tpSchedules
             // 
+            this.tpSchedules.Controls.Add(this.lblScheduleCurrentWeek);
             this.tpSchedules.Controls.Add(this.btnScheduleSaveCurrentWeek);
             this.tpSchedules.Controls.Add(this.nudScheduleWeek);
             this.tpSchedules.Controls.Add(this.btnSchedulesShowWeek);
@@ -491,6 +494,16 @@ namespace LAMN_Software
             this.tpSchedules.TabIndex = 1;
             this.tpSchedules.Text = "Schedules";
             this.tpSchedules.UseVisualStyleBackColor = true;
+            // 
+            // lblScheduleCurrentWeek
+            // 
+            this.lblScheduleCurrentWeek.AutoSize = true;
+            this.lblScheduleCurrentWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblScheduleCurrentWeek.Location = new System.Drawing.Point(5, 5);
+            this.lblScheduleCurrentWeek.Name = "lblScheduleCurrentWeek";
+            this.lblScheduleCurrentWeek.Size = new System.Drawing.Size(179, 20);
+            this.lblScheduleCurrentWeek.TabIndex = 17;
+            this.lblScheduleCurrentWeek.Text = "Currently showing week:";
             // 
             // btnScheduleSaveCurrentWeek
             // 
@@ -550,11 +563,11 @@ namespace LAMN_Software
             this.schedulesFriday,
             this.schedulesSaturday,
             this.schedulesSunday});
-            this.dgvSchedules.Location = new System.Drawing.Point(0, 0);
+            this.dgvSchedules.Location = new System.Drawing.Point(0, 26);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvSchedules.Size = new System.Drawing.Size(1057, 475);
+            this.dgvSchedules.Size = new System.Drawing.Size(1057, 449);
             this.dgvSchedules.TabIndex = 13;
             // 
             // schedulesFirstName
@@ -1805,6 +1818,7 @@ namespace LAMN_Software
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
             this.tpSchedules.ResumeLayout(false);
+            this.tpSchedules.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudScheduleWeek)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedules)).EndInit();
             this.tpEmployees.ResumeLayout(false);
@@ -1958,5 +1972,6 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewComboBoxColumn schedulesSunday;
         private System.Windows.Forms.Button btnScheduleSaveCurrentWeek;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblScheduleCurrentWeek;
     }
 }

@@ -483,7 +483,8 @@ namespace LAMN_Software
             int weekNmr = Convert.ToInt32(Math.Round(nudScheduleWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
-                foreach(Schedule schedule in SCH.GetAllSchedules())
+                lblScheduleCurrentWeek.Text = $"Currently showing week: {weekNmr}";
+                foreach (Schedule schedule in SCH.GetAllSchedules())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
                     for(int i = 0; i < EH.GetAllEmployees().Count(); i++)
@@ -659,5 +660,7 @@ namespace LAMN_Software
         {
             //CreateListboxGraph();
         }
+
+        
     }
 }
