@@ -240,7 +240,7 @@ namespace LAMN_Software
                 {
                     lbxAllStock.Items.Add(p);
                     UpdateStatsComboboxes(p.Name);
-                    CreateListboxGraph();
+                    //CreateListboxGraph();
                 }
             }
             else
@@ -620,7 +620,7 @@ namespace LAMN_Software
             cbxStats3.Items.Add(name);
         }
 
-        public void CreateListboxGraph()
+        /*public void CreateListboxGraph()
         {
             string prod1 = "";
             lbxGraph.Items.Clear();
@@ -650,11 +650,11 @@ namespace LAMN_Software
             
             
 
-        }
+        }*/
 
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
-            CreateListboxGraph();
+            //CreateListboxGraph();
         }
     }
 }
