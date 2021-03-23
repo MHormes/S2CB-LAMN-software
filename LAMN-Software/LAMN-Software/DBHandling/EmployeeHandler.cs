@@ -73,6 +73,10 @@ namespace LAMN_Software
                 }
                 return null;
             }
+            catch(IncorrectBSNException exBSN)
+            {
+                return exBSN;
+            }
             catch (Exception ex)
             {
                 return ex;
