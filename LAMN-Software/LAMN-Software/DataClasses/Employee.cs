@@ -5,22 +5,21 @@ namespace LAMN_Software
 {
     public class Employee
     {
+        private string bsn;
+        private string phoneNumber;
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Username { get; set; }
         public string Bsn
         {
-            get { return this.Bsn; }
+            get { return this.bsn; }
             set
             {
                 if(!Regex.IsMatch(value, @"^[0-9]{9}$"))
                 {
-                    this.Bsn = value;
-                }
-                else
-                {
                     throw new IncorrectBSNException(value);
                 }
+                this.bsn = value;
             }
         }
         
@@ -28,16 +27,13 @@ namespace LAMN_Software
         public string Email { get; set; }
         public string PhoneNumber
         {
-            get { return this.PhoneNumber; }
+            get { return this.phoneNumber; }
             set {
-                if (Regex.IsMatch(value, @"^[0-9]{10}$"))
-                {
-                    this.PhoneNumber = value;
-                }
-                else
+                if (!Regex.IsMatch(value, @"^[0-9]{10}$"))
                 {
                     throw new IncorrectPhoneNumberException(value);
                 }
+                this.phoneNumber = value;
             }
         }
 
