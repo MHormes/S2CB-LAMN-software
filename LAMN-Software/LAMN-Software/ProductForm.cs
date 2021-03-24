@@ -394,6 +394,7 @@ namespace LAMN_Software
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
         }
 

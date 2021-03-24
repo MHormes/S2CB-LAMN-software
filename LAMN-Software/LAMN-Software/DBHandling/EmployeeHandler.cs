@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace LAMN_Software
 {
@@ -114,6 +115,21 @@ namespace LAMN_Software
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation) 
         {
+            if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
+            {
+                throw new IncorrectBSNException(bsn);
+            }
+
+            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(phoneNumber);
+            }
+
+            if (!Regex.IsMatch(iceNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(iceNumber);
+            }
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))

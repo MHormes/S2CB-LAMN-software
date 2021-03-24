@@ -10,32 +10,10 @@ namespace LAMN_Software
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Username { get; set; }
-        public string Bsn
-        {
-            get { return this.bsn; }
-            set
-            {
-                if(!Regex.IsMatch(value, @"^[0-9]{9}$"))
-                {
-                    throw new IncorrectBSNException(value);
-                }
-                this.bsn = value;
-            }
-        }
-        
+        public string Bsn { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber
-        {
-            get { return this.phoneNumber; }
-            set {
-                if (!Regex.IsMatch(value, @"^[0-9]{10}$"))
-                {
-                    throw new IncorrectPhoneNumberException(value);
-                }
-                this.phoneNumber = value;
-            }
-        }
+        public string PhoneNumber { get; set; }
 
         public string IceNumber { get; set; }
         public ICERelation IceRelationship { get; set; }
