@@ -13,7 +13,7 @@ namespace LAMN_Software
             get { return this.Bsn; }
             set
             {
-                if (Regex.IsMatch(value, @"^[0-9]{9}$"))
+                if(!Regex.IsMatch(value, @"^[0-9]{9}$"))
                 {
                     this.Bsn = value;
                 }
