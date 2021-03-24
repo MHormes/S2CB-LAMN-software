@@ -196,7 +196,7 @@ namespace LAMN_Software
             this.pnlBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
-            this.pnlBackground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBackground.MaximumSize = new System.Drawing.Size(1154, 690);
             this.pnlBackground.MinimumSize = new System.Drawing.Size(1154, 690);
             this.pnlBackground.Name = "pnlBackground";
@@ -217,7 +217,7 @@ namespace LAMN_Software
             this.pnlTabCover.Location = new System.Drawing.Point(1, 30);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(1);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1150, 69);
+            this.pnlTabCover.Size = new System.Drawing.Size(1150, 65);
             this.pnlTabCover.TabIndex = 11;
             // 
             // btnLogout
@@ -229,7 +229,7 @@ namespace LAMN_Software
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(1038, 9);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(96, 39);
             this.btnLogout.TabIndex = 15;
@@ -1745,7 +1745,7 @@ namespace LAMN_Software
             this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
-            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_defocus.Name = "textBox_defocus";
             this.textBox_defocus.Size = new System.Drawing.Size(2, 9);
             this.textBox_defocus.TabIndex = 0;
@@ -1758,7 +1758,7 @@ namespace LAMN_Software
             this.pnlBar.Controls.Add(this.lblClose);
             this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBar.Location = new System.Drawing.Point(-1, -1);
-            this.pnlBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBar.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBar.Name = "pnlBar";
             this.pnlBar.Size = new System.Drawing.Size(1154, 32);
             this.pnlBar.TabIndex = 8;
@@ -1769,7 +1769,7 @@ namespace LAMN_Software
             this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlDragBar.Location = new System.Drawing.Point(3, 0);
-            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(2);
             this.pnlDragBar.Name = "pnlDragBar";
             this.pnlDragBar.Size = new System.Drawing.Size(698, 31);
             this.pnlDragBar.TabIndex = 9;
