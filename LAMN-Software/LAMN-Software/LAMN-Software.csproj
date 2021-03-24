@@ -111,8 +111,11 @@
     <Compile Include="GUI\GradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IncorrectBSNException.cs" />
-    <Compile Include="IncorrectPhoneNumberException.cs" />
+    <Compile Include="Exceptions\IncorrectBSNException.cs" />
+    <Compile Include="Exceptions\IncorrectLocationException.cs" />
+    <Compile Include="Exceptions\IncorrectNameException.cs" />
+    <Compile Include="Exceptions\IncorrectPhoneNumberException.cs" />
+    <Compile Include="Exceptions\IncorrectQuantityException.cs" />
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
