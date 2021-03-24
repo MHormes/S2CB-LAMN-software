@@ -88,8 +88,8 @@ namespace LAMN_Software.DataClasses
 
                     cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
                     cmd.Parameters.AddWithValue("@day", day.ToString());
-                    cmd.Parameters.AddWithValue("@empBSN", empBSN.ToString());
-                    cmd.Parameters.AddWithValue("@timeSlotr", timeSlot);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Parameters.AddWithValue("@timeSlot", timeSlot);
                     cmd.Prepare();
 
                     cmd.ExecuteNonQuery();

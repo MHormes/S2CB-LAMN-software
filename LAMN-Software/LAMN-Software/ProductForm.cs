@@ -535,7 +535,11 @@ namespace LAMN_Software
                     {
                         Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
 
-                        string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                        string slot = null;
+                        if(dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        {
+                            slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                        }
 
                         if (col == 1 && !string.IsNullOrEmpty(slot))
                         {
