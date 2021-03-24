@@ -125,7 +125,7 @@ namespace LAMN_Software
                 }
                 MessageBox.Show(add.Message);
             }
-            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -180,7 +180,7 @@ namespace LAMN_Software
                 }
                 MessageBox.Show(update.Message);
             }
-            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

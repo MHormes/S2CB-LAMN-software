@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software
 {
-    class IncorrectNameException : Exception
+    public class IncorrectNameException : Exception
     {
         public IncorrectNameException(string name) : base($"{name} is not in correct format (Only letters accepted)") { }
     }

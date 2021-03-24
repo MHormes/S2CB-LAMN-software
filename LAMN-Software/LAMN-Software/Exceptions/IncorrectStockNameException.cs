@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software.Exceptions
 {
-    class IncorrectStockNameException : Exception
+    public class IncorrectStockNameException : Exception
     {
         public IncorrectStockNameException(string name) : base($"{name} is not in correct format (Only letters and numbers accepted)") { }
     }

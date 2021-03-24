@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software.Exceptions
 {
-    class IncorrectPriceException : Exception
+    public class IncorrectPriceException : Exception
     {
         public IncorrectPriceException(string price) : base($"{price} is not in correct format (1/ 1.40)") { }
     }
