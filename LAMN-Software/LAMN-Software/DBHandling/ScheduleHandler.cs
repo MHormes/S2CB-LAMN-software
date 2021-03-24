@@ -76,7 +76,7 @@ namespace LAMN_Software.DataClasses
             return this.allSchedules;
         }
 
-        public Exception SaveCurrentWeek(int weeknmr, Day day, string empBSN, TimeSlot timeSlot)
+        public Exception SaveCurrentWeek(int weeknmr, Day day, string empBSN, string timeSlot)
         {
             try
             {
@@ -87,10 +87,32 @@ namespace LAMN_Software.DataClasses
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
-                    cmd.Parameters.AddWithValue("@day", day);
-                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Parameters.AddWithValue("@day", day.ToString());
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN.ToString());
                     cmd.Parameters.AddWithValue("@timeSlotr", timeSlot);
                     cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception DeleteWeekSchedule(int weekNmr)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "DELETE FROM schedules WHERE Week = @weekNmr;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weekNmr", weekNmr);
 
                     cmd.ExecuteNonQuery();
                 }
