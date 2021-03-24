@@ -74,15 +74,6 @@ namespace LAMN_Software
                 }
                 return null;
             }
-            catch(IncorrectBSNException exBSN)
-            {
-                return exBSN;
-            }
-
-            catch (IncorrectPhoneNumberException exPhoneNumber)
-            {
-                return exPhoneNumber;
-            }
 
             catch (Exception ex)
             {
@@ -168,6 +159,9 @@ namespace LAMN_Software
                 }
                 return null;
             }
+
+            
+
             catch (Exception ex)
             {
                 return ex;

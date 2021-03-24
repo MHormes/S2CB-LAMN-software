@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software
 {
-    class IncorrectQuantityException : Exception
+    public class IncorrectQuantityException : Exception
     {
         public IncorrectQuantityException(string quantity) : base($"{quantity} is not in correct format (Letters not accepter)") { }
     }
