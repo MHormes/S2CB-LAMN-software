@@ -8,6 +8,6 @@ namespace LAMN_Software
 {
     class IncorrectPhoneNumberException : Exception
     {
-        public IncorrectPhoneNumberException(string bsn) : base($"{bsn} is not in correct format (123456789)") { }
+        public IncorrectPhoneNumberException(string bsn) : base($"{bsn} is not in correct format (1234567891)") { }
     }
 }

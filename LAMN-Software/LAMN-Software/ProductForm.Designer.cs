@@ -808,7 +808,7 @@ namespace LAMN_Software
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(815, 105);
+            this.label1.Location = new System.Drawing.Point(803, 105);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 19);
@@ -820,7 +820,7 @@ namespace LAMN_Software
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(815, 6);
+            this.label4.Location = new System.Drawing.Point(803, 4);
             this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 19);
@@ -912,7 +912,7 @@ namespace LAMN_Software
             this.lblStockAdd_Store.AutoSize = true;
             this.lblStockAdd_Store.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockAdd_Store.ForeColor = System.Drawing.Color.Silver;
-            this.lblStockAdd_Store.Location = new System.Drawing.Point(63, 228);
+            this.lblStockAdd_Store.Location = new System.Drawing.Point(50, 234);
             this.lblStockAdd_Store.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblStockAdd_Store.Name = "lblStockAdd_Store";
             this.lblStockAdd_Store.Size = new System.Drawing.Size(48, 19);
@@ -924,7 +924,7 @@ namespace LAMN_Software
             this.lblStockAdd_Warehouse.AutoSize = true;
             this.lblStockAdd_Warehouse.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockAdd_Warehouse.ForeColor = System.Drawing.Color.Silver;
-            this.lblStockAdd_Warehouse.Location = new System.Drawing.Point(63, 105);
+            this.lblStockAdd_Warehouse.Location = new System.Drawing.Point(50, 105);
             this.lblStockAdd_Warehouse.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblStockAdd_Warehouse.Name = "lblStockAdd_Warehouse";
             this.lblStockAdd_Warehouse.Size = new System.Drawing.Size(93, 19);
@@ -1065,7 +1065,7 @@ namespace LAMN_Software
             this.lblEmployeeAdd_Details.AutoSize = true;
             this.lblEmployeeAdd_Details.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployeeAdd_Details.ForeColor = System.Drawing.Color.Silver;
-            this.lblEmployeeAdd_Details.Location = new System.Drawing.Point(72, 145);
+            this.lblEmployeeAdd_Details.Location = new System.Drawing.Point(50, 148);
             this.lblEmployeeAdd_Details.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblEmployeeAdd_Details.Name = "lblEmployeeAdd_Details";
             this.lblEmployeeAdd_Details.Size = new System.Drawing.Size(58, 19);
@@ -1163,7 +1163,7 @@ namespace LAMN_Software
             this.lblEmployeeAdd_ICE.AutoSize = true;
             this.lblEmployeeAdd_ICE.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployeeAdd_ICE.ForeColor = System.Drawing.Color.Silver;
-            this.lblEmployeeAdd_ICE.Location = new System.Drawing.Point(947, 43);
+            this.lblEmployeeAdd_ICE.Location = new System.Drawing.Point(936, 43);
             this.lblEmployeeAdd_ICE.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblEmployeeAdd_ICE.Name = "lblEmployeeAdd_ICE";
             this.lblEmployeeAdd_ICE.Size = new System.Drawing.Size(174, 19);
@@ -1217,7 +1217,7 @@ namespace LAMN_Software
             this.lblEmployeeAdd_Name.AutoSize = true;
             this.lblEmployeeAdd_Name.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployeeAdd_Name.ForeColor = System.Drawing.Color.Silver;
-            this.lblEmployeeAdd_Name.Location = new System.Drawing.Point(72, 44);
+            this.lblEmployeeAdd_Name.Location = new System.Drawing.Point(50, 43);
             this.lblEmployeeAdd_Name.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblEmployeeAdd_Name.Name = "lblEmployeeAdd_Name";
             this.lblEmployeeAdd_Name.Size = new System.Drawing.Size(51, 19);
