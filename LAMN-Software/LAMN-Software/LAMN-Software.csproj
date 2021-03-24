@@ -112,7 +112,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IncorrectBSNException.cs" />
+    <Compile Include="IncorrectLocationException.cs" />
+    <Compile Include="IncorrectNameException.cs" />
     <Compile Include="IncorrectPhoneNumberException.cs" />
+    <Compile Include="IncorrectQuantityException.cs" />
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
