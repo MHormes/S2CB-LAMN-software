@@ -98,6 +98,8 @@
     <Compile Include="ENUMS\Day.cs" />
     <Compile Include="DataClasses\Employee.cs" />
     <Compile Include="DBHandling\EmployeeHandler.cs" />
+    <Compile Include="Exceptions\IncorrectPriceException.cs" />
+    <Compile Include="Exceptions\IncorrectStockNameException.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
