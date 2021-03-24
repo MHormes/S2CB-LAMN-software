@@ -65,6 +65,11 @@ namespace LAMN_Software
         //method for adding new products. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception AddProduct(string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
+            if (!Regex.IsMatch(name.ToString(), @"[A-z0-9 _]*$"))
+            {
+                throw new IncorrectQuantityException(name.ToString());
+            }
+
             if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
             {
                 throw new IncorrectQuantityException(quantityS.ToString());
@@ -75,14 +80,29 @@ namespace LAMN_Software
                 throw new IncorrectQuantityException(quantityWH.ToString());
             }
 
-            if (!Regex.IsMatch(locationS.ToString(), @"^[A-Z]{2}[-][0-9]{2}$"))
+            if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
             {
-                throw new IncorrectQuantityException(locationS.ToString());
+                throw new IncorrectQuantityException(locationS);
             }
 
-            if (!Regex.IsMatch(locationWH.ToString(), @"^[A-Z]{2}[-][0-9]{2}$"))
+            if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
             {
-                throw new IncorrectQuantityException(locationWH.ToString());
+                throw new IncorrectQuantityException(locationWH);
+            }
+
+            if (!Regex.IsMatch(minimumStockRequired.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(minimumStockRequired.ToString());
+            }
+
+            if (!Regex.IsMatch(costPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            {
+                throw new IncorrectQuantityException(costPrice.ToString());
+            }
+
+            if (!Regex.IsMatch(sellPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            {
+                throw new IncorrectQuantityException(sellPrice.ToString());
             }
 
 

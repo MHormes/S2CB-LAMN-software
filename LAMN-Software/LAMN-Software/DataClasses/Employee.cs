@@ -5,8 +5,6 @@ namespace LAMN_Software
 {
     public class Employee
     {
-        private string bsn;
-        private string phoneNumber;
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Username { get; set; }
