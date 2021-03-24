@@ -130,6 +130,16 @@ namespace LAMN_Software
                 throw new IncorrectPhoneNumberException(iceNumber);
             }
 
+            if (!Regex.IsMatch(firstName, @"^[A-z].$"))
+            {
+                throw new IncorrectNameException(firstName);
+            }
+
+            if (!Regex.IsMatch(secondName, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectNameException(secondName);
+            }
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))

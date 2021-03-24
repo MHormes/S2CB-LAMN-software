@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace LAMN_Software
 {
@@ -64,6 +65,27 @@ namespace LAMN_Software
         //method for adding new products. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception AddProduct(string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
+            if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityS.ToString());
+            }
+
+            if (!Regex.IsMatch(quantityWH.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityWH.ToString());
+            }
+
+            if (!Regex.IsMatch(locationS.ToString(), @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectQuantityException(locationS.ToString());
+            }
+
+            if (!Regex.IsMatch(locationWH.ToString(), @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectQuantityException(locationWH.ToString());
+            }
+
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
