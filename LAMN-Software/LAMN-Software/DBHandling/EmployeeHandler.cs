@@ -77,6 +77,12 @@ namespace LAMN_Software
             {
                 return exBSN;
             }
+
+            catch (IncorrectPhoneNumberException exPhoneNumber)
+            {
+                return exPhoneNumber;
+            }
+
             catch (Exception ex)
             {
                 return ex;

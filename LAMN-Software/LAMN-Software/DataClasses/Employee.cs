@@ -26,7 +26,21 @@ namespace LAMN_Software
         
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber
+        {
+            get { return this.PhoneNumber; }
+            set {
+                if (Regex.IsMatch(value, @"^[0-9]{10}$"))
+                {
+                    this.PhoneNumber = value;
+                }
+                else
+                {
+                    throw new IncorrectPhoneNumberException(value);
+                }
+            }
+        }
+
         public string IceNumber { get; set; }
         public ICERelation IceRelationship { get; set; }
         public JobPosition Position { get; set; }
