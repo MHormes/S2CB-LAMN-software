@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software
 {
-    class IncorrectLocationException
+    public class IncorrectLocationException : Exception
     {
+        public IncorrectLocationException(string location) : base($"{location} is not in correct format (AB-12)") { }
     }
 }

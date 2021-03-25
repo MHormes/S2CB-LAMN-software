@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
+using LAMN_Software.Exceptions;
 
 namespace LAMN_Software
 {
@@ -61,9 +63,48 @@ namespace LAMN_Software
             return null;
         }
 
-        //method for adding new products. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception AddProduct(string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
+            if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
+            {
+                throw new IncorrectStockNameException(name);
+            }
+
+            if (!Regex.IsMatch(quantityWH.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityWH.ToString());
+            }
+
+            if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityS.ToString());
+            }
+
+            if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectLocationException(locationS);
+            }
+
+            if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectLocationException(locationWH);
+            }
+
+            if (!Regex.IsMatch(minimumStockRequired.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(minimumStockRequired.ToString());
+            }
+
+            if (!Regex.IsMatch(costPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            {
+                throw new IncorrectPriceException(costPrice.ToString());
+            }
+
+            if (!Regex.IsMatch(sellPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            {
+                throw new IncorrectPriceException(sellPrice.ToString());
+            }
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -94,6 +135,7 @@ namespace LAMN_Software
                 }
                 return null;
             }
+
             catch (Exception ex)
             {
                 return ex;

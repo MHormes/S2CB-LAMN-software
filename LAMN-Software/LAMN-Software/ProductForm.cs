@@ -47,7 +47,7 @@ namespace LAMN_Software
                 tcNavigator.TabPages.Remove(tpStock);
                 tcNavigator.TabPages.Remove(tpStockAdd);
                 tcNavigator.TabPages.Remove(tpStatistics);
-                btnStatistics.Enabled = false;
+                //btnStatistics.Enabled = false;
                 btnStock.Enabled = false;
             }
             else if (position.ToString() == "DEPOT")
@@ -70,12 +70,12 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
 
             btnStock.ForeColor = Color.White;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.LightGray;
+            //btnStatistics.ForeColor = Color.LightGray;
         }
 
         //Back to stock button in edit/add page
@@ -125,7 +125,7 @@ namespace LAMN_Software
                 }
                 MessageBox.Show(add.Message);
             }
-            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -180,7 +180,7 @@ namespace LAMN_Software
                 }
                 MessageBox.Show(update.Message);
             }
-            //IMPLEMENT SPECIFIC EXCEPTION HANDLING FOR TEXTFIELDS!!!!!
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -259,12 +259,12 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            /*btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);*/
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.White;
-            btnStatistics.ForeColor = Color.LightGray;
+            /*btnStatistics.ForeColor = Color.LightGray;*/
         }
 
         public void FillEmployeeListBox()
@@ -368,7 +368,6 @@ namespace LAMN_Software
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
-
         }
 
         
@@ -469,12 +468,12 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.White;
             btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.LightGray;
+            //btnStatistics.ForeColor = Color.LightGray;
         }
 
         //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
@@ -536,42 +535,41 @@ namespace LAMN_Software
                     {
                         Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
 
-                        if (col == 1 && dgvSchedules.Rows[rows].Cells[col].Value!=null)
+                        string slot = null;
+                        if(dgvSchedules.Rows[rows].Cells[col].Value != null)
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                            slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                        }
+
+                        if (col == 1 && !string.IsNullOrEmpty(slot))
+                        {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
                         }
-                        if (col == 2 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (col == 2 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
                         }
-                        if (col == 3 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (col == 3 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
                         }
-                        if (col == 4 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (col == 4 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
                         }
-                        if (col == 5 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (col == 5 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
                         }
-                        if (col == 6 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (col == 6 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
                         }
-                        else if (col == 7 && dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        else if (col == 7 && !string.IsNullOrEmpty(slot))
                         {
-                            string slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
-                        else { }
+                        
                     }
                 }
             }
@@ -588,12 +586,12 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.White;
+            //btnStatistics.ForeColor = Color.White;
         }
 
 

@@ -74,15 +74,6 @@ namespace LAMN_Software
                 }
                 return null;
             }
-            catch(IncorrectBSNException exBSN)
-            {
-                return exBSN;
-            }
-
-            catch (IncorrectPhoneNumberException exPhoneNumber)
-            {
-                return exPhoneNumber;
-            }
 
             catch (Exception ex)
             {
@@ -130,6 +121,16 @@ namespace LAMN_Software
                 throw new IncorrectPhoneNumberException(iceNumber);
             }
 
+            if (!Regex.IsMatch(firstName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(firstName);
+            }
+
+            if (!Regex.IsMatch(secondName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(secondName);
+            }
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -158,6 +159,9 @@ namespace LAMN_Software
                 }
                 return null;
             }
+
+            
+
             catch (Exception ex)
             {
                 return ex;
@@ -168,6 +172,30 @@ namespace LAMN_Software
         //method for change an employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation)
         {
+            if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
+            {
+                throw new IncorrectBSNException(bsn);
+            }
+
+            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(phoneNumber);
+            }
+
+            if (!Regex.IsMatch(iceNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(iceNumber);
+            }
+
+            if (!Regex.IsMatch(firstName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(firstName);
+            }
+
+            if (!Regex.IsMatch(secondName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(secondName);
+            }
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
