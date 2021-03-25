@@ -368,6 +368,7 @@ namespace LAMN_Software
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
+
         }
 
         
@@ -571,7 +572,6 @@ namespace LAMN_Software
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
                         else { }
-                        
                     }
                 }
             }
