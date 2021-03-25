@@ -39,5 +39,10 @@ namespace LAMN_Software
         {
             return $"{Id}:{Name}. WH:{QuantityWH}/{LocationWH}. S:{QuantityS}/{LocationS}. P:{CostPrice}/{SellPrice}";
         }
+
+        //public override string ToString()
+        //{
+        //    return $"{Id}:{Name}\t WH:{QuantityWH}/{LocationWH}\t S:{QuantityS}/{LocationS}\t Cost/Sell:{CostPrice}/{SellPrice}";
+        //}
     }
 }
