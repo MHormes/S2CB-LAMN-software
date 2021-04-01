@@ -119,6 +119,7 @@
     <Compile Include="Exceptions\IncorrectNameException.cs" />
     <Compile Include="Exceptions\IncorrectPhoneNumberException.cs" />
     <Compile Include="Exceptions\IncorrectQuantityException.cs" />
+    <Compile Include="Exceptions\IncorrectEANException.cs" />
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>

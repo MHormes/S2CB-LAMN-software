@@ -67,7 +67,7 @@ namespace LAMN_Software
         {
             if(!Regex.IsMatch(ean, @"^[0-9]{13}"))
             {
-                //implement exception for EAN!!!!!
+                throw new IncorrectEANException(ean);
             }
             if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
             {
