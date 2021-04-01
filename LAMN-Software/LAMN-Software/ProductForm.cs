@@ -32,17 +32,19 @@ namespace LAMN_Software
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
             LH = new LoginHandler();
-            FillStockListBoxActive();
+            FillStockViewActive();
             FillEmployeeListBox();
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
+            dgvAllStock.Font = new Font("Arial", 11);
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
         }
 
+        //Method to show correct buttons based on the user permission
         private void updateTabWithPosition(JobPosition position)
         {
             if (position.ToString() == "HR")
@@ -95,13 +97,13 @@ namespace LAMN_Software
         {
             if ((string)cbxStockCurrentlyShowing.SelectedItem == "Active")
             {
-                FillStockListBoxActive();
+                FillStockViewActive();
                 btnDeActivateStock.Visible = true;
                 btnStock_ReActivateProduct.Visible = false;
             }
             else
             {
-                FillStockListBoxInActive();
+                FillStockViewInActive();
                 btnDeActivateStock.Visible = false;
                 btnStock_ReActivateProduct.Visible = true;
             }
@@ -144,7 +146,7 @@ namespace LAMN_Software
 
                 if (add == null)
                 {
-                    FillStockListBoxActive();
+                    FillStockViewActive();
                     MessageBox.Show("Item added succesfully");
                     return;
                 }
@@ -161,12 +163,12 @@ namespace LAMN_Software
         private void btnEditStock_Click(object sender, EventArgs e)
         {
             //save object
-            if (lbxAllStock.SelectedIndex == -1)
+            if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select a product to edit");
+                MessageBox.Show("Please select one product to edit");
                 return;
             }
-            Product p = (Product)lbxAllStock.SelectedItem;
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
             //Go to page and disable correct button
             tcNavigator.SelectedTab = tpStockAdd;
             btnStockAdd_ConfirmAdd.Visible = false;
@@ -201,7 +203,7 @@ namespace LAMN_Software
 
                 if (update == null)
                 {
-                    FillStockListBoxActive();
+                    FillStockViewActive();
                     MessageBox.Show("Item edited succesfully");
                     return;
                 }
@@ -217,17 +219,17 @@ namespace LAMN_Software
         //onclick for delete button. Opens new tab for quitting reason
         private void btnDeActivateStock_Click(object sender, EventArgs e)
         {
-            if (lbxAllStock.SelectedIndex == -1)
+            if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select a product to deactivate");
+                MessageBox.Show("Please select one product to deactivate");
                 return;
             }
-            Product p = (Product)lbxAllStock.SelectedItem;
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
             //method to call for deleting
             var deactivate = SH.DeactivateProduct(p);
             if (deactivate == null)
             {
-                FillStockListBoxActive();
+                FillStockViewActive();
                 MessageBox.Show("Product sucessfully deactivated");
                 return;
             }
@@ -236,17 +238,17 @@ namespace LAMN_Software
 
         private void btnStock_ReActivateProduct_Click(object sender, EventArgs e)
         {
-            if (lbxAllStock.SelectedIndex == -1)
+            if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select a product to Activate");
+                MessageBox.Show("Please select one product to Activate");
                 return;
             }
-            Product p = (Product)lbxAllStock.SelectedItem;
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
             //method to call for deleting
             var reactivate = SH.ReactivateProduct(p);
             if (reactivate == null)
             {
-                FillStockListBoxInActive();
+                FillStockViewInActive();
                 MessageBox.Show("Product sucessfully reactivated");
                 return;
             }
@@ -256,14 +258,28 @@ namespace LAMN_Software
         //onClick for search button. Shows all matching products
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
-            lbxAllStock.Items.Clear();
+            dgvAllStock.Rows.Clear();
             string searchName = tbxSearchStock.Text.ToLower();
 
+            int count = 0;
             foreach (Product p in SH.GetAllProducts())
             {
                 if (p.Name.ToLower().Contains(searchName))
                 {
-                    lbxAllStock.Items.Add(p);
+                    dgvAllStock.Rows.Add();
+                    dgvAllStock.Rows[count].Cells[0].Value = p;
+                    dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
+                    dgvAllStock.Rows[count].Cells[2].Value = p.Name;
+                    dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
+                    dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
+                    dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
+                    dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
+                    dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
+                    dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+                    dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
+                    dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
+                    UpdateStatsComboboxes(p.Name);
+                    count++; ;
                 }
             }
 
@@ -271,49 +287,76 @@ namespace LAMN_Software
         }
 
         //method for updateing/filling listbox for stock items that are still active
-        public void FillStockListBoxActive()
+        public void FillStockViewActive()
         {
-            lbxAllStock.Items.Clear();
-
             cbxStats1.Items.Clear();
             cbxStats2.Items.Clear();
             cbxStats3.Items.Clear();
 
+            dgvAllStock.Rows.Clear();
+            //Check if connection is successfull
             if (SH.GetAllStockFromDB() == null)
             {
+                int count = 0;
+                //for each active product add the value to the correct cell
                 foreach (Product p in SH.GetAllProducts())
                 {
-                    if(p.Active == 1)
+                    if (p.Active == 1)
                     {
-                        lbxAllStock.Items.Add(p);
+                        dgvAllStock.Rows.Add();
+                        dgvAllStock.Rows[count].Cells[0].Value = p;
+                        dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
+                        dgvAllStock.Rows[count].Cells[2].Value = p.Name;
+                        dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
+                        dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
+                        dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
+                        dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
+                        dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
+                        dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+                        dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
+                        dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
                         UpdateStatsComboboxes(p.Name);
-                    } 
+                        count++;
+                    }
                 }
             }
             else
             {
                 MessageBox.Show(SH.GetAllStockFromDB().Message);
             }
-
         }
 
         //method for updating/filling listbox for stock items that are inactive
-        public void FillStockListBoxInActive()
+        public void FillStockViewInActive()
         {
-            lbxAllStock.Items.Clear();
-
             cbxStats1.Items.Clear();
             cbxStats2.Items.Clear();
             cbxStats3.Items.Clear();
 
+            dgvAllStock.Rows.Clear();
+            //Check if connection is successfull
             if (SH.GetAllStockFromDB() == null)
             {
+                int count = 0;
+                //for each active product add the value to the correct cell
                 foreach (Product p in SH.GetAllProducts())
                 {
                     if (p.Active == 0)
                     {
-                        lbxAllStock.Items.Add(p);
+                        dgvAllStock.Rows.Add();
+                        dgvAllStock.Rows[count].Cells[0].Value = p;
+                        dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
+                        dgvAllStock.Rows[count].Cells[2].Value = p.Name;
+                        dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
+                        dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
+                        dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
+                        dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
+                        dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
+                        dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+                        dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
+                        dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
                         UpdateStatsComboboxes(p.Name);
+                        count++;
                     }
                 }
             }
