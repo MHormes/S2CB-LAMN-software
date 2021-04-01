@@ -24,6 +24,7 @@ namespace LAMN_Software
         EmployeeHandler EH;
         ScheduleHandler SCH;
         LoginHandler LH;
+
         public ProductForm(JobPosition position)
         {
             InitializeComponent();
@@ -36,7 +37,8 @@ namespace LAMN_Software
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
-
+            cbxStatsType.Items.Add("Stock");
+            cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
         }
 
@@ -47,7 +49,7 @@ namespace LAMN_Software
                 tcNavigator.TabPages.Remove(tpStock);
                 tcNavigator.TabPages.Remove(tpStockAdd);
                 tcNavigator.TabPages.Remove(tpStatistics);
-                //btnStatistics.Enabled = false;
+                btnStatistics.Enabled = false;
                 btnStock.Enabled = false;
             }
             else if (position.ToString() == "DEPOT")
@@ -70,12 +72,15 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
 
             btnStock.ForeColor = Color.White;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.LightGray;
-            //btnStatistics.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
         }
 
         //Back to stock button in edit/add page
@@ -240,7 +245,6 @@ namespace LAMN_Software
                 {
                     lbxAllStock.Items.Add(p);
                     UpdateStatsComboboxes(p.Name);
-                    //CreateListboxGraph();
                 }
             }
             else
@@ -259,12 +263,15 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
-            /*btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);*/
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.White;
-            /*btnStatistics.ForeColor = Color.LightGray;*/
+            btnStatistics.ForeColor = Color.LightGray;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
         }
 
         public void FillEmployeeListBox()
@@ -530,12 +537,15 @@ namespace LAMN_Software
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.White;
             btnEmployees.ForeColor = Color.LightGray;
-            //btnStatistics.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.LightGray;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
         }
 
         //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
@@ -642,20 +652,23 @@ namespace LAMN_Software
         }
 
         //STATISTICS
+
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatistics;
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            //btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
 
             btnStock.ForeColor = Color.LightGray;
             btnSchedules.ForeColor = Color.LightGray;
             btnEmployees.ForeColor = Color.LightGray;
-            //btnStatistics.ForeColor = Color.White;
-        }
+            btnStatistics.ForeColor = Color.White;
 
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+        }
 
         //DESIGN
 
@@ -740,43 +753,83 @@ namespace LAMN_Software
             cbxStats3.Items.Add(name);
         }
 
-        /*public void CreateListboxGraph()
+        public void UpdateStockGraph()
         {
-            //string prod1 = "";
-            //lbxGraph.Items.Clear();
-            //lbxGraph.Items.Add("");
-            //lbxGraph.Items.Add("");
-            //foreach (Product p in SH.GetAllProducts())
-            //{
-            //    if(cbxStats1.SelectedValue == null) // placeholder
-            //    {
-            //        MessageBox.Show("S");
-            //        lbxGraph.Items.Add(cbxStats1.SelectedItem.ToString());
-            //        int storeAmount = p.QuantityS / 2;
-            //        int warehouseAmount = p.QuantityWH / 2;
-            //        for (int i = 0; i < warehouseAmount; i++)
-            //        {
-            //            prod1 += "▓";
-            //        }
-            //        for (int i = 0; i < storeAmount; i++)
-            //        {
-            //            prod1 += "░";
-            //        }
-            //        prod1 += $" {warehouseAmount} | {storeAmount}";
-            //        lbxGraph.Items.Add(prod1);
-            //        break;
-            //    }
-            //}
-            
-            
+            foreach (var series in chartStock.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if(cbxStats1.SelectedIndex > -1)
+                {
+                    if (p.Name.Contains(cbxStats1.SelectedItem.ToString()))
+                    {
+                        this.chartStock.Series["Store Stock Total"].Points.AddXY(p.Name, p.QuantityS);
+                        this.chartStock.Series["Warehouse Stock Total"].Points.AddXY(p.Name, p.QuantityWH);
+                        btnDeselectStatsStock1.Visible = true;
+                    }
+                }
 
-        }*/
+                if (cbxStats2.SelectedIndex > -1)
+                {
+                    if (p.Name.Contains(cbxStats2.SelectedItem.ToString()))
+                    {
+                        this.chartStock.Series["Store Stock Total"].Points.AddXY(p.Name, p.QuantityS);
+                        this.chartStock.Series["Warehouse Stock Total"].Points.AddXY(p.Name, p.QuantityWH);
+                        btnDeselectStatsStock2.Visible = true;
+                    }
+                }
+
+                if (cbxStats3.SelectedIndex > -1)
+                {
+                    if (p.Name.Contains(cbxStats3.SelectedItem.ToString()))
+                    {
+                        this.chartStock.Series["Store Stock Total"].Points.AddXY(p.Name, p.QuantityS);
+                        this.chartStock.Series["Warehouse Stock Total"].Points.AddXY(p.Name, p.QuantityWH);
+                        btnDeselectStatsStock3.Visible = true;
+                    }
+                }
+            }
+        }
 
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
-            //CreateListboxGraph();
+            UpdateStockGraph();
         }
 
-        
+        private void cbxStats2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockGraph();
+        }
+
+        private void cbxStats3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockGraph();
+        }
+
+        private void btnDeselectStatsStock1_Click(object sender, EventArgs e)
+        {
+            cbxStats1.SelectedIndex = -1;
+            cbxStats1.Text = "Stock 1";
+            UpdateStockGraph();
+            btnDeselectStatsStock1.Visible = false;
+        }
+
+        private void btnDeselectStatsStock2_Click(object sender, EventArgs e)
+        {
+            cbxStats2.SelectedIndex = -1;
+            cbxStats2.Text = "Stock 2";
+            UpdateStockGraph();
+            btnDeselectStatsStock2.Visible = false;
+        }
+
+        private void btnDeselectStatsStock3_Click(object sender, EventArgs e)
+        {
+            cbxStats3.SelectedIndex = -1;
+            cbxStats3.Text = "Stock 3";
+            UpdateStockGraph();
+            btnDeselectStatsStock3.Visible = false;
+        }
     }
 }

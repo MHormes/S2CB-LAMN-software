@@ -233,5 +233,13 @@ namespace LAMN_Software
         {
             textBox_accountName.Focus();
         }
+
+        private void btnDevAccess_Click(object sender, EventArgs e)
+        {
+            ProductForm pf = new ProductForm(JobPosition.MANAGER);
+            this.Hide();
+            pf.ShowDialog();
+            this.Close();
+        }
     }
 }
