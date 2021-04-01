@@ -30,7 +30,7 @@ namespace LAMN_Software
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        allStock.Add(new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]), dr[4].ToString(), dr[5].ToString(), Convert.ToDouble(dr[6]), Convert.ToDouble(dr[7]), Convert.ToInt32(dr[8]), dr[9].ToString(), Convert.ToInt32(dr[10])));
+                        allStock.Add(new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString(), dr[6].ToString(), Convert.ToDouble(dr[7]), Convert.ToDouble(dr[8]), Convert.ToInt32(dr[9]), dr[10].ToString(), Convert.ToInt32(dr[11]), Convert.ToInt32(dr[12])));
                     }
                 }
                 return null;
@@ -63,8 +63,12 @@ namespace LAMN_Software
             return null;
         }
 
-        public Exception AddProduct(string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
+        public Exception AddProduct(string ean, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
         {
+            if(!Regex.IsMatch(ean, @"^[0-9]{13}"))
+            {
+                //implement exception for EAN!!!!!
+            }
             if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
             {
                 throw new IncorrectStockNameException(name);
@@ -109,10 +113,11 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO product(Name, QuantityS, QuantityWH, LocationS, LocationWH, CostPrice, SellPrice, MinimumStock, AddInformation, TotalSold) VALUES (@name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
+                    string sql = "INSERT INTO product(EAN, Name, QuantityS, QuantityWH, LocationS, LocationWH, CostPrice, SellPrice, MinimumStock, AddInformation, TotalSold) VALUES (@ean, @name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
+                    cmd.Parameters.AddWithValue("@ean", ean);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
@@ -201,19 +206,17 @@ namespace LAMN_Software
             }
         }
 
-        //method to delete a product from the DB
-        public Exception DeleteProduct(Product product)
+        //method to deactivate a product from the DB
+        public Exception DeactivateProduct(Product product)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "DELETE FROM product WHERE id = @id;";
+                    string sql = "UPDATE product SET Active = 0 WHERE ID = @id;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
-
                     cmd.Parameters.AddWithValue("@id", product.Id);
-
                     cmd.ExecuteNonQuery();
                 }
                 return null;
@@ -224,5 +227,25 @@ namespace LAMN_Software
             }
         }
 
+        //method to reactivate a product from the DB
+        public Exception ReactivateProduct(Product product)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET Active = 1 WHERE ID = @id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@id", product.Id);
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
     }
 }

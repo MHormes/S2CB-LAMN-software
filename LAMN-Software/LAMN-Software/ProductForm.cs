@@ -32,11 +32,12 @@ namespace LAMN_Software
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
             LH = new LoginHandler();
-            FillStockListBox();
+            FillStockListBoxActive();
             FillEmployeeListBox();
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
+            cbxStockCurrentlyShowing.SelectedIndex = 0;
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
@@ -89,6 +90,23 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpStock;
         }
 
+        //Method for selecting active/inactive stock. 
+        private void cbxStockCurrentlyShowing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)cbxStockCurrentlyShowing.SelectedItem == "Active")
+            {
+                FillStockListBoxActive();
+                btnDeActivateStock.Visible = true;
+                btnStock_ReActivateProduct.Visible = false;
+            }
+            else
+            {
+                FillStockListBoxInActive();
+                btnDeActivateStock.Visible = false;
+                btnStock_ReActivateProduct.Visible = true;
+            }
+        }
+
         //onClick for add stock button. Will direct to stock add page
         private void btnAddStock_Click(object sender, EventArgs e)
         {
@@ -99,6 +117,8 @@ namespace LAMN_Software
             //clear all fields/disable
             tbxStockAdd_ID.Text = "";
             tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_EANCode.Text = "";
+            tbxStockAdd_EANCode.Enabled = true;
             tbxStockAdd_ProductName.Text = "";
             tbxStockAdd_WarehouseQuantity.Text = "";
             tbxStockAdd_WarehouseLocation.Text = "";
@@ -120,11 +140,11 @@ namespace LAMN_Software
             try
             {
                 //method to call for adding
-                var add = SH.AddProduct(tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+                var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
 
                 if (add == null)
                 {
-                    FillStockListBox();
+                    FillStockListBoxActive();
                     MessageBox.Show("Item added succesfully");
                     return;
                 }
@@ -154,6 +174,8 @@ namespace LAMN_Software
             //fill in all fields/disable
             tbxStockAdd_ID.Text = $"{p.Id}";
             tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_EANCode.Text = p.Ean;
+            tbxStockAdd_EANCode.Enabled = false;
             tbxStockAdd_ProductName.Text = p.Name;
             tbxStockAdd_WarehouseQuantity.Text = $"{p.QuantityWH}";
             tbxStockAdd_WarehouseLocation.Text = $"{p.LocationWH}";
@@ -169,7 +191,7 @@ namespace LAMN_Software
             tbxStockAdd_TotalSold.Enabled = false;
         }
 
-        //onclick for confirming edit
+        //onclick for confirming edit 
         private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
             try
@@ -179,7 +201,7 @@ namespace LAMN_Software
 
                 if (update == null)
                 {
-                    FillStockListBox();
+                    FillStockListBoxActive();
                     MessageBox.Show("Item edited succesfully");
                     return;
                 }
@@ -193,24 +215,42 @@ namespace LAMN_Software
         }
 
         //onclick for delete button. Opens new tab for quitting reason
-        private void btnDeleteStock_Click(object sender, EventArgs e)
+        private void btnDeActivateStock_Click(object sender, EventArgs e)
         {
             if (lbxAllStock.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select a product to delete");
+                MessageBox.Show("Please select a product to deactivate");
                 return;
             }
             Product p = (Product)lbxAllStock.SelectedItem;
             //method to call for deleting
-            var delete = SH.DeleteProduct(p);
-            if (delete == null)
+            var deactivate = SH.DeactivateProduct(p);
+            if (deactivate == null)
             {
-                FillStockListBox();
-                MessageBox.Show("Product sucessfully deleted");
+                FillStockListBoxActive();
+                MessageBox.Show("Product sucessfully deactivated");
                 return;
             }
-            MessageBox.Show(delete.Message);
+            MessageBox.Show(deactivate.Message);
+        }
 
+        private void btnStock_ReActivateProduct_Click(object sender, EventArgs e)
+        {
+            if (lbxAllStock.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a product to Activate");
+                return;
+            }
+            Product p = (Product)lbxAllStock.SelectedItem;
+            //method to call for deleting
+            var reactivate = SH.ReactivateProduct(p);
+            if (reactivate == null)
+            {
+                FillStockListBoxInActive();
+                MessageBox.Show("Product sucessfully reactivated");
+                return;
+            }
+            MessageBox.Show(reactivate.Message);
         }
 
         //onClick for search button. Shows all matching products
@@ -218,20 +258,20 @@ namespace LAMN_Software
         {
             lbxAllStock.Items.Clear();
             string searchName = tbxSearchStock.Text.ToLower();
-           
-                foreach (Product p in SH.GetAllProducts())
+
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if (p.Name.ToLower().Contains(searchName))
                 {
-                    if (p.Name.ToLower().Contains(searchName))
-                    {
-                        lbxAllStock.Items.Add(p);
-                    }
+                    lbxAllStock.Items.Add(p);
                 }
-            
-            
+            }
+
+
         }
 
-        //method for updateing/filling listbox for stock items
-        public void FillStockListBox()
+        //method for updateing/filling listbox for stock items that are still active
+        public void FillStockListBoxActive()
         {
             lbxAllStock.Items.Clear();
 
@@ -243,8 +283,11 @@ namespace LAMN_Software
             {
                 foreach (Product p in SH.GetAllProducts())
                 {
-                    lbxAllStock.Items.Add(p);
-                    UpdateStatsComboboxes(p.Name);
+                    if(p.Active == 1)
+                    {
+                        lbxAllStock.Items.Add(p);
+                        UpdateStatsComboboxes(p.Name);
+                    } 
                 }
             }
             else
@@ -254,6 +297,31 @@ namespace LAMN_Software
 
         }
 
+        //method for updating/filling listbox for stock items that are inactive
+        public void FillStockListBoxInActive()
+        {
+            lbxAllStock.Items.Clear();
+
+            cbxStats1.Items.Clear();
+            cbxStats2.Items.Clear();
+            cbxStats3.Items.Clear();
+
+            if (SH.GetAllStockFromDB() == null)
+            {
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 0)
+                    {
+                        lbxAllStock.Items.Add(p);
+                        UpdateStatsComboboxes(p.Name);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(SH.GetAllStockFromDB().Message);
+            }
+        }
 
         //EMPLOYEE MANAGEMENT
 
@@ -376,11 +444,11 @@ namespace LAMN_Software
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
 
-            if(emp.Position == JobPosition.MANAGER)
+            if (emp.Position == JobPosition.MANAGER)
             {
                 cbxEmployeeAdd_Position.SelectedIndex = 0;
             }
-            else if(emp.Position == JobPosition.HR)
+            else if (emp.Position == JobPosition.HR)
             {
                 cbxEmployeeAdd_Position.SelectedIndex = 1;
             }
@@ -423,7 +491,7 @@ namespace LAMN_Software
             }
             else if (emp.IceRelationship == ICERelation.AUNT)
             {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex =6;
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
             }
             else if (emp.IceRelationship == ICERelation.COUSIN)
             {
@@ -439,10 +507,10 @@ namespace LAMN_Software
             }
         }
 
-        
+
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
@@ -559,7 +627,7 @@ namespace LAMN_Software
                 foreach (Schedule schedule in SCH.GetAllSchedules())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
-                    for(int i = 0; i < EH.GetAllEmployees().Count(); i++)
+                    for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
                     {
                         //create temp emp object based on the state of the for loop
                         Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
@@ -581,7 +649,7 @@ namespace LAMN_Software
                                 dgvSchedules.Rows[i].Cells[7].Value = schedule.TimeSlot;
                         }
                     }
-                    
+
                 }
             }
             else
@@ -598,7 +666,7 @@ namespace LAMN_Software
 
 
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
-            
+
             try
             {
                 for (int rows = 0; rows < dgvSchedules.Rows.Count; rows++)
@@ -608,7 +676,7 @@ namespace LAMN_Software
                         Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
 
                         string slot = null;
-                        if(dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (dgvSchedules.Rows[rows].Cells[col].Value != null)
                         {
                             slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                         }
@@ -641,7 +709,7 @@ namespace LAMN_Software
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
-                        
+
                     }
                 }
             }
@@ -761,7 +829,7 @@ namespace LAMN_Software
             }
             foreach (Product p in SH.GetAllProducts())
             {
-                if(cbxStats1.SelectedIndex > -1)
+                if (cbxStats1.SelectedIndex > -1)
                 {
                     if (p.Name.Contains(cbxStats1.SelectedItem.ToString()))
                     {
@@ -831,5 +899,7 @@ namespace LAMN_Software
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
         }
+
+        
     }
 }

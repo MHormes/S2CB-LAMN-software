@@ -9,6 +9,7 @@ namespace LAMN_Software
     public class Product
     {
         public int Id{ get; set; }
+        public string Ean { get; set; }
         public string Name{ get; set; }
         public int QuantityS{ get; set; }
         public int QuantityWH{ get; set; }
@@ -19,10 +20,12 @@ namespace LAMN_Software
         public int MinimumStockRequired{ get; set; }
         public string AddInformation{ get; set; }
         public int TotalSold{ get; set; }
+        public int Active { get; set; }
 
-        public Product(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation, int totalSold)
+        public Product(int id, string ean, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation, int totalSold, int active)
         {
             Id = id;
+            Ean = ean;
             Name = name;
             QuantityS = quantityS;
             QuantityWH = quantityWH;
@@ -33,6 +36,7 @@ namespace LAMN_Software
             MinimumStockRequired = minimumStockRequired;
             AddInformation = addInformation;
             TotalSold = totalSold;
+            Active = active;
         }
 
         public override string ToString()
