@@ -717,31 +717,31 @@ namespace LAMN_Software
                             slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                         }
 
-                        if (col == 1 && !string.IsNullOrEmpty(slot))
+                        if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
                         }
-                        if (col == 2 && !string.IsNullOrEmpty(slot))
+                        if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
                         }
-                        if (col == 3 && !string.IsNullOrEmpty(slot))
+                        if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
                         }
-                        if (col == 4 && !string.IsNullOrEmpty(slot))
+                        if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
                         }
-                        if (col == 5 && !string.IsNullOrEmpty(slot))
+                        if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
                         }
-                        if (col == 6 && !string.IsNullOrEmpty(slot))
+                        if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
                         }
-                        else if (col == 7 && !string.IsNullOrEmpty(slot))
+                        else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
@@ -935,7 +935,5 @@ namespace LAMN_Software
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
         }
-
-        
     }
 }
