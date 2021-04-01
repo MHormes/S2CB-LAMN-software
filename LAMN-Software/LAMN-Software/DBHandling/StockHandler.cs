@@ -63,7 +63,7 @@ namespace LAMN_Software
             return null;
         }
 
-        public Exception AddProduct(string ean, string name, int quantityS, int quantityWH, string locationS, string locationWH, double costPrice, double sellPrice, int minimumStockRequired, string addInformation)
+        public Exception AddProduct(string ean, string name, string quantityS, string quantityWH, string locationS, string locationWH, string costPrice, string sellPrice, string minimumStockRequired, string addInformation)
         {
             if(!Regex.IsMatch(ean, @"^[0-9]{13}"))
             {
@@ -74,14 +74,14 @@ namespace LAMN_Software
                 throw new IncorrectStockNameException(name);
             }
 
-            if (!Regex.IsMatch(quantityWH.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(quantityWH.ToString());
+                throw new IncorrectQuantityException(quantityWH);
             }
 
-            if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(quantityS.ToString());
+                throw new IncorrectQuantityException(quantityS);
             }
 
             if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
@@ -94,19 +94,19 @@ namespace LAMN_Software
                 throw new IncorrectLocationException(locationWH);
             }
 
-            if (!Regex.IsMatch(minimumStockRequired.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(minimumStockRequired.ToString());
+                throw new IncorrectQuantityException(minimumStockRequired);
             }
 
-            if (!Regex.IsMatch(costPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            if (!Regex.IsMatch(costPrice, @"^[0-9]*([.][0-9]*)?$"))
             {
-                throw new IncorrectPriceException(costPrice.ToString());
+                throw new IncorrectPriceException(costPrice);
             }
 
-            if (!Regex.IsMatch(sellPrice.ToString(), @"^[0-9]*([.][0-9]*)?$"))
+            if (!Regex.IsMatch(sellPrice, @"^[0-9]*([.][0-9]*)?$"))
             {
-                throw new IncorrectPriceException(sellPrice.ToString());
+                throw new IncorrectPriceException(sellPrice);
             }
 
             try

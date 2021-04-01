@@ -1028,7 +1028,7 @@ namespace LAMN_Software
             // tbxStockAdd_EANCode
             // 
             this.tbxStockAdd_EANCode.Font = new System.Drawing.Font("Arial", 14F);
-            this.tbxStockAdd_EANCode.Location = new System.Drawing.Point(219, 73);
+            this.tbxStockAdd_EANCode.Location = new System.Drawing.Point(219, 46);
             this.tbxStockAdd_EANCode.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_EANCode.Name = "tbxStockAdd_EANCode";
             this.tbxStockAdd_EANCode.Size = new System.Drawing.Size(179, 29);
@@ -1038,7 +1038,7 @@ namespace LAMN_Software
             // 
             this.lblStockAddEAN.AutoSize = true;
             this.lblStockAddEAN.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblStockAddEAN.Location = new System.Drawing.Point(38, 80);
+            this.lblStockAddEAN.Location = new System.Drawing.Point(38, 46);
             this.lblStockAddEAN.Name = "lblStockAddEAN";
             this.lblStockAddEAN.Size = new System.Drawing.Size(101, 22);
             this.lblStockAddEAN.TabIndex = 21;
@@ -1332,7 +1332,7 @@ namespace LAMN_Software
             // tbxStockAdd_ProductName
             // 
             this.tbxStockAdd_ProductName.Font = new System.Drawing.Font("Arial", 14F);
-            this.tbxStockAdd_ProductName.Location = new System.Drawing.Point(219, 46);
+            this.tbxStockAdd_ProductName.Location = new System.Drawing.Point(219, 72);
             this.tbxStockAdd_ProductName.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_ProductName.Name = "tbxStockAdd_ProductName";
             this.tbxStockAdd_ProductName.Size = new System.Drawing.Size(179, 29);
@@ -1342,7 +1342,7 @@ namespace LAMN_Software
             // 
             this.lblProductAdd_StockName.AutoSize = true;
             this.lblProductAdd_StockName.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblProductAdd_StockName.Location = new System.Drawing.Point(37, 46);
+            this.lblProductAdd_StockName.Location = new System.Drawing.Point(37, 75);
             this.lblProductAdd_StockName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductAdd_StockName.Name = "lblProductAdd_StockName";
             this.lblProductAdd_StockName.Size = new System.Drawing.Size(128, 22);
@@ -1707,7 +1707,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximumSize = new System.Drawing.Size(1153, 689);
             this.MinimumSize = new System.Drawing.Size(822, 465);
-            
+           
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();

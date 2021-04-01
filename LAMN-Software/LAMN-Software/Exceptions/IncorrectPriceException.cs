@@ -8,6 +8,6 @@ namespace LAMN_Software.Exceptions
 {
     public class IncorrectPriceException : Exception
     {
-        public IncorrectPriceException(string price) : base($"{price} is not in correct format (only digits in format 1/1.40 accepted)") { }
+        public IncorrectPriceException(string price) : base($"Price: {price} is not in correct format (only digits in format 1/1.40 accepted)") { }
     }
 }

@@ -8,7 +8,7 @@ namespace LAMN_Software
 {
     class IncorrectEANException: Exception
     {
-        public IncorrectEANException(string ean): base($"{ean} is not in correct format (only 13 digit numbers are accepted)")
+        public IncorrectEANException(string ean): base($"EAN code: {ean} is not in correct format (only 13 digit numbers are accepted)")
         {
 
         }

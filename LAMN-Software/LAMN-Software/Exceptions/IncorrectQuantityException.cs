@@ -8,6 +8,6 @@ namespace LAMN_Software
 {
     public class IncorrectQuantityException : Exception
     {
-        public IncorrectQuantityException(string quantity) : base($"{quantity} is not in correct format (Letters not accepted)") { }
+        public IncorrectQuantityException(string quantity) : base($"Quantity: {quantity} is not in correct format (Letters not accepted)") { }
     }
 }

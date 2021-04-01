@@ -14,12 +14,6 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
-        // used for visual distinction
-        bool stockClicked = true;
-        bool scheduleClicked = false;
-        bool employeesClicked = false;
-        bool statisticsClicked = false;
-
         StockHandler SH;
         EmployeeHandler EH;
         ScheduleHandler SCH;
@@ -71,7 +65,6 @@ namespace LAMN_Software
         {
             // Changes tab
             tcNavigator.SelectedTab = tpStock;
-
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
@@ -142,7 +135,7 @@ namespace LAMN_Software
             try
             {
                 //method to call for adding
-                var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+                var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_Cost.Text, tbxStockAdd_Sell.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
 
                 if (add == null)
                 {
