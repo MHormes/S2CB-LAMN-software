@@ -40,6 +40,7 @@ namespace LAMN_Software
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
+            FillEmployeeDGV();
         }
 
         private void updateTabWithPosition(JobPosition position)
@@ -288,7 +289,33 @@ namespace LAMN_Software
             {
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
+        }
 
+        public void FillEmployeeDGV()
+        {
+            dgvEmployees.Rows.Clear();
+            if (EH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee e in EH.GetAllEmployees())
+                {
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dgvEmployees);
+                    newRow.Cells[0].Value = e.FirstName;
+                    newRow.Cells[1].Value = e.SecondName;
+                    newRow.Cells[2].Value = e.Position;
+                    newRow.Cells[3].Value = e.Bsn;
+                    newRow.Cells[4].Value = e.DateOfBirth;
+                    newRow.Cells[5].Value = e.PhoneNumber;
+                    newRow.Cells[6].Value = e.Email;
+                    newRow.Cells[7].Value = e.IceNumber;
+                    newRow.Cells[8].Value = e.IceRelationship;
+                    dgvEmployees.Rows.Add(newRow);
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
+            }
         }
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
@@ -354,6 +381,7 @@ namespace LAMN_Software
             }
             Employee emp = (Employee)lbxAllEmployees.SelectedItem;
 
+
             //buttons
             btnEmployeeAdd_Confirm.Visible = false;
             btnEmployeeAdd_ConfirmEdit.Visible = true;
@@ -392,7 +420,8 @@ namespace LAMN_Software
                 if (add == null)
                 {
                     add = LH.AddLoginDetails(username, password);
-                    FillEmployeeListBox();
+                    //FillEmployeeListBox();
+                    FillEmployeeDGV();
                     MessageBox.Show("Employee added succesfully.");
                     return;
                 }
@@ -408,7 +437,8 @@ namespace LAMN_Software
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-            FillEmployeeListBox();
+            //FillEmployeeListBox();
+            FillEmployeeDGV();
         }
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
