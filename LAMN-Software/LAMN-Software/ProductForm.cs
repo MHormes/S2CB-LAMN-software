@@ -14,12 +14,6 @@ namespace LAMN_Software
 {
     public partial class ProductForm : Form
     {
-        // used for visual distinction
-        bool stockClicked = true;
-        bool scheduleClicked = false;
-        bool employeesClicked = false;
-        bool statisticsClicked = false;
-
         StockHandler SH;
         EmployeeHandler EH;
         ScheduleHandler SCH;
@@ -32,17 +26,20 @@ namespace LAMN_Software
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
             LH = new LoginHandler();
-            FillStockListBox();
+            FillStockViewActive();
             FillEmployeeListBox();
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
+            cbxStockCurrentlyShowing.SelectedIndex = 0;
+            dgvAllStock.Font = new Font("Arial", 11);
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
             FillEmployeeDGV();
         }
 
+        //Method to show correct buttons based on the user permission
         private void updateTabWithPosition(JobPosition position)
         {
             if (position.ToString() == "HR")
@@ -69,7 +66,6 @@ namespace LAMN_Software
         {
             // Changes tab
             tcNavigator.SelectedTab = tpStock;
-
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
@@ -90,6 +86,23 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpStock;
         }
 
+        //Method for selecting active/inactive stock. 
+        private void cbxStockCurrentlyShowing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)cbxStockCurrentlyShowing.SelectedItem == "Active")
+            {
+                FillStockViewActive();
+                btnDeActivateStock.Visible = true;
+                btnStock_ReActivateProduct.Visible = false;
+            }
+            else
+            {
+                FillStockViewInActive();
+                btnDeActivateStock.Visible = false;
+                btnStock_ReActivateProduct.Visible = true;
+            }
+        }
+
         //onClick for add stock button. Will direct to stock add page
         private void btnAddStock_Click(object sender, EventArgs e)
         {
@@ -100,6 +113,8 @@ namespace LAMN_Software
             //clear all fields/disable
             tbxStockAdd_ID.Text = "";
             tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_EANCode.Text = "";
+            tbxStockAdd_EANCode.Enabled = true;
             tbxStockAdd_ProductName.Text = "";
             tbxStockAdd_WarehouseQuantity.Text = "";
             tbxStockAdd_WarehouseLocation.Text = "";
@@ -118,36 +133,28 @@ namespace LAMN_Software
         //onClick for confirming the add product
         private void btnStockAdd_ConfirmAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //method to call for adding
-                var add = SH.AddProduct(tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToDouble(tbxStockAdd_Cost.Text), Convert.ToDouble(tbxStockAdd_Sell.Text), Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+            //method to call for adding
+            var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_Cost.Text, tbxStockAdd_Sell.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
 
-                if (add == null)
-                {
-                    FillStockListBox();
-                    MessageBox.Show("Item added succesfully");
-                    return;
-                }
-                MessageBox.Show(add.Message);
-            }
-
-            catch (Exception ex)
+            if (add == null)
             {
-                MessageBox.Show(ex.Message);
+                FillStockViewActive();
+                MessageBox.Show("Item added succesfully");
+                return;
             }
+            MessageBox.Show(add.Message);
         }
 
         //onClick for edit stock button. Will take selected.
         private void btnEditStock_Click(object sender, EventArgs e)
         {
             //save object
-            if (lbxAllStock.SelectedIndex == -1)
+            if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select a product to edit");
+                MessageBox.Show("Please select one product to edit");
                 return;
             }
-            Product p = (Product)lbxAllStock.SelectedItem;
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
             //Go to page and disable correct button
             tcNavigator.SelectedTab = tpStockAdd;
             btnStockAdd_ConfirmAdd.Visible = false;
@@ -155,6 +162,8 @@ namespace LAMN_Software
             //fill in all fields/disable
             tbxStockAdd_ID.Text = $"{p.Id}";
             tbxStockAdd_ID.Enabled = false;
+            tbxStockAdd_EANCode.Text = p.Ean;
+            tbxStockAdd_EANCode.Enabled = false;
             tbxStockAdd_ProductName.Text = p.Name;
             tbxStockAdd_WarehouseQuantity.Text = $"{p.QuantityWH}";
             tbxStockAdd_WarehouseLocation.Text = $"{p.LocationWH}";
@@ -170,91 +179,153 @@ namespace LAMN_Software
             tbxStockAdd_TotalSold.Enabled = false;
         }
 
-        //onclick for confirming edit
+        //onclick for confirming edit 
         private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //method to call for changing
-                var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+            //method to call for changing
+            var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
 
-                if (update == null)
-                {
-                    FillStockListBox();
-                    MessageBox.Show("Item edited succesfully");
-                    return;
-                }
-                MessageBox.Show(update.Message);
-            }
-
-            catch (Exception ex)
+            if (update == null)
             {
-                MessageBox.Show(ex.Message);
+                FillStockViewActive();
+                MessageBox.Show("Item edited succesfully");
+                return;
             }
+            MessageBox.Show(update.Message);
         }
 
         //onclick for delete button. Opens new tab for quitting reason
-        private void btnDeleteStock_Click(object sender, EventArgs e)
+        private void btnDeActivateStock_Click(object sender, EventArgs e)
         {
-            if (lbxAllStock.SelectedIndex == -1)
+            if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select a product to delete");
+                MessageBox.Show("Please select one product to deactivate");
                 return;
             }
-            Product p = (Product)lbxAllStock.SelectedItem;
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
             //method to call for deleting
-            var delete = SH.DeleteProduct(p);
-            if (delete == null)
+            var deactivate = SH.DeactivateProduct(p);
+            if (deactivate == null)
             {
-                FillStockListBox();
-                MessageBox.Show("Product sucessfully deleted");
+                FillStockViewActive();
+                MessageBox.Show("Product sucessfully deactivated");
                 return;
             }
-            MessageBox.Show(delete.Message);
+            MessageBox.Show(deactivate.Message);
+        }
 
+        private void btnStock_ReActivateProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvAllStock.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select one product to Activate");
+                return;
+            }
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
+            //method to call for deleting
+            var reactivate = SH.ReactivateProduct(p);
+            if (reactivate == null)
+            {
+                FillStockViewInActive();
+                MessageBox.Show("Product sucessfully reactivated");
+                return;
+            }
+            MessageBox.Show(reactivate.Message);
         }
 
         //onClick for search button. Shows all matching products
         private void btnSearchStock_Click(object sender, EventArgs e)
         {
-            lbxAllStock.Items.Clear();
+            dgvAllStock.Rows.Clear();
             string searchName = tbxSearchStock.Text.ToLower();
-           
-                foreach (Product p in SH.GetAllProducts())
+
+            int count = 0;
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if (p.Name.ToLower().Contains(searchName))
                 {
-                    if (p.Name.ToLower().Contains(searchName))
-                    {
-                        lbxAllStock.Items.Add(p);
-                    }
+                    FillDataGridViewStock(p, count);
+                    UpdateStatsComboboxes(p.Name);
+                    count++; ;
                 }
-            
-            
+            }
+
+
         }
 
-        //method for updateing/filling listbox for stock items
-        public void FillStockListBox()
+        //method for updateing/filling listbox for stock items that are still active
+        public void FillStockViewActive()
         {
-            lbxAllStock.Items.Clear();
-
             cbxStats1.Items.Clear();
             cbxStats2.Items.Clear();
             cbxStats3.Items.Clear();
 
+            dgvAllStock.Rows.Clear();
+            //Check if connection is successfull
             if (SH.GetAllStockFromDB() == null)
             {
+                int count = 0;
+                //for each active product add the value to the correct cell
                 foreach (Product p in SH.GetAllProducts())
                 {
-                    lbxAllStock.Items.Add(p);
-                    UpdateStatsComboboxes(p.Name);
+                    if (p.Active == 1)
+                    {
+                        FillDataGridViewStock(p, count);
+                        UpdateStatsComboboxes(p.Name);
+                        count++;
+                    }
                 }
             }
             else
             {
                 MessageBox.Show(SH.GetAllStockFromDB().Message);
             }
-
         }
 
+        //method for updating/filling listbox for stock items that are inactive
+        public void FillStockViewInActive()
+        {
+            cbxStats1.Items.Clear();
+            cbxStats2.Items.Clear();
+            cbxStats3.Items.Clear();
+
+            dgvAllStock.Rows.Clear();
+            //Check if connection is successfull
+            if (SH.GetAllStockFromDB() == null)
+            {
+                int count = 0;
+                //for each active product add the value to the correct cell
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 0)
+                    {
+                        FillDataGridViewStock(p, count);
+                        UpdateStatsComboboxes(p.Name);
+                        count++;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(SH.GetAllStockFromDB().Message);
+            }
+        }
+
+        public void FillDataGridViewStock(Product p, int count)
+        {
+            dgvAllStock.Rows.Add();
+            dgvAllStock.Rows[count].Cells[0].Value = p;
+            dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
+            dgvAllStock.Rows[count].Cells[2].Value = p.Name;
+            dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
+            dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
+            dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
+            dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
+            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
+            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+            dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
+            dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
+        }
 
         //EMPLOYEE MANAGEMENT
 
@@ -403,12 +474,74 @@ namespace LAMN_Software
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
+
+            if (emp.Position == JobPosition.MANAGER)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 0;
+            }
+            else if (emp.Position == JobPosition.HR)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 1;
+            }
+            else if (emp.Position == JobPosition.SALES)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 2;
+            }
+            else if (emp.Position == JobPosition.DEPOT)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 3;
+            }
+            else
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 4;
+            }
+
+            if (emp.IceRelationship == ICERelation.PARTNER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
+            }
+            else if (emp.IceRelationship == ICERelation.FATHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
+            }
+            else if (emp.IceRelationship == ICERelation.MOTHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
+            }
+            else if (emp.IceRelationship == ICERelation.BROTHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
+            }
+            else if (emp.IceRelationship == ICERelation.SISTER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
+            }
+            else if (emp.IceRelationship == ICERelation.UNCLE)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
+            }
+            else if (emp.IceRelationship == ICERelation.AUNT)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
+            }
+            else if (emp.IceRelationship == ICERelation.COUSIN)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
+            }
+            else if (emp.IceRelationship == ICERelation.FRIEND)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
+            }
+            else
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+            }
         }
 
-        
+
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
@@ -527,7 +660,7 @@ namespace LAMN_Software
                 foreach (Schedule schedule in SCH.GetAllSchedules())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
-                    for(int i = 0; i < EH.GetAllEmployees().Count(); i++)
+                    for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
                     {
                         //create temp emp object based on the state of the for loop
                         Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
@@ -549,7 +682,7 @@ namespace LAMN_Software
                                 dgvSchedules.Rows[i].Cells[7].Value = schedule.TimeSlot;
                         }
                     }
-                    
+
                 }
             }
             else
@@ -566,7 +699,7 @@ namespace LAMN_Software
 
 
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
-            
+
             try
             {
                 for (int rows = 0; rows < dgvSchedules.Rows.Count; rows++)
@@ -576,40 +709,40 @@ namespace LAMN_Software
                         Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
 
                         string slot = null;
-                        if(dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (dgvSchedules.Rows[rows].Cells[col].Value != null)
                         {
                             slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
                         }
 
-                        if (col == 1 && !string.IsNullOrEmpty(slot))
+                        if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
                         }
-                        if (col == 2 && !string.IsNullOrEmpty(slot))
+                        if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
                         }
-                        if (col == 3 && !string.IsNullOrEmpty(slot))
+                        if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
                         }
-                        if (col == 4 && !string.IsNullOrEmpty(slot))
+                        if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
                         }
-                        if (col == 5 && !string.IsNullOrEmpty(slot))
+                        if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
                         }
-                        if (col == 6 && !string.IsNullOrEmpty(slot))
+                        if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
                         }
-                        else if (col == 7 && !string.IsNullOrEmpty(slot))
+                        else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
-                        
+
                     }
                 }
             }
@@ -729,7 +862,7 @@ namespace LAMN_Software
             }
             foreach (Product p in SH.GetAllProducts())
             {
-                if(cbxStats1.SelectedIndex > -1)
+                if (cbxStats1.SelectedIndex > -1)
                 {
                     if (p.Name.Contains(cbxStats1.SelectedItem.ToString()))
                     {

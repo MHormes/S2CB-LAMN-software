@@ -8,6 +8,6 @@ namespace LAMN_Software
 {
     public class IncorrectLocationException : Exception
     {
-        public IncorrectLocationException(string location) : base($"{location} is not in correct format (AB-12)") { }
+        public IncorrectLocationException(string location) : base($"Location: {location} is not in correct format (AB-12)") { }
     }
 }

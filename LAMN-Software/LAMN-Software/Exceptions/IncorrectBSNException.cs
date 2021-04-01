@@ -8,6 +8,6 @@ namespace LAMN_Software
 {
     public class IncorrectBSNException: Exception
     {
-        public IncorrectBSNException(string bsn): base($"{bsn} is not in correct format (123456789)") { }
+        public IncorrectBSNException(string bsn): base($"BSN: {bsn} is not in correct format (only 9 digit numbers accepted)") { }
     }
 }

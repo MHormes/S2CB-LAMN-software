@@ -8,6 +8,6 @@ namespace LAMN_Software
 {
     public class IncorrectNameException : Exception
     {
-        public IncorrectNameException(string name) : base($"{name} is not in correct format (Only letters accepted)") { }
+        public IncorrectNameException(string name) : base($"Name: {name} is not in correct format (Only letters accepted)") { }
     }
 }
