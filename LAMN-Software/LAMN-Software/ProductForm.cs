@@ -132,24 +132,16 @@ namespace LAMN_Software
         //onClick for confirming the add product
         private void btnStockAdd_ConfirmAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //method to call for adding
-                var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_Cost.Text, tbxStockAdd_Sell.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
+            //method to call for adding
+            var add = SH.AddProduct(tbxStockAdd_EANCode.Text, tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_Cost.Text, tbxStockAdd_Sell.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
 
-                if (add == null)
-                {
-                    FillStockViewActive();
-                    MessageBox.Show("Item added succesfully");
-                    return;
-                }
-                MessageBox.Show(add.Message);
-            }
-
-            catch (Exception ex)
+            if (add == null)
             {
-                MessageBox.Show(ex.Message);
+                FillStockViewActive();
+                MessageBox.Show("Item added succesfully");
+                return;
             }
+            MessageBox.Show(add.Message);
         }
 
         //onClick for edit stock button. Will take selected.
@@ -189,24 +181,16 @@ namespace LAMN_Software
         //onclick for confirming edit 
         private void btnStockAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //method to call for changing
-                var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, Convert.ToInt32(tbxStockAdd_StoreQuantity.Text), Convert.ToInt32(tbxStockAdd_WarehouseQuantity.Text), tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, Convert.ToInt32(tbxStockAdd_MinimumStock.Text), tbxStockAdd_AddInfo.Text);
+            //method to call for changing
+            var update = SH.ChangeProduct(Convert.ToInt32(tbxStockAdd_ID.Text), tbxStockAdd_ProductName.Text, tbxStockAdd_StoreQuantity.Text, tbxStockAdd_WarehouseQuantity.Text, tbxStockAdd_StoreLocation.Text, tbxStockAdd_WarehouseLocation.Text, tbxStockAdd_MinimumStock.Text, tbxStockAdd_AddInfo.Text);
 
-                if (update == null)
-                {
-                    FillStockViewActive();
-                    MessageBox.Show("Item edited succesfully");
-                    return;
-                }
-                MessageBox.Show(update.Message);
-            }
-
-            catch (Exception ex)
+            if (update == null)
             {
-                MessageBox.Show(ex.Message);
+                FillStockViewActive();
+                MessageBox.Show("Item edited succesfully");
+                return;
             }
+            MessageBox.Show(update.Message);
         }
 
         //onclick for delete button. Opens new tab for quitting reason
@@ -259,18 +243,7 @@ namespace LAMN_Software
             {
                 if (p.Name.ToLower().Contains(searchName))
                 {
-                    dgvAllStock.Rows.Add();
-                    dgvAllStock.Rows[count].Cells[0].Value = p;
-                    dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
-                    dgvAllStock.Rows[count].Cells[2].Value = p.Name;
-                    dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
-                    dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
-                    dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
-                    dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
-                    dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
-                    dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
-                    dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
-                    dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
+                    FillDataGridViewStock(p, count);
                     UpdateStatsComboboxes(p.Name);
                     count++; ;
                 }
@@ -296,18 +269,7 @@ namespace LAMN_Software
                 {
                     if (p.Active == 1)
                     {
-                        dgvAllStock.Rows.Add();
-                        dgvAllStock.Rows[count].Cells[0].Value = p;
-                        dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
-                        dgvAllStock.Rows[count].Cells[2].Value = p.Name;
-                        dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
-                        dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
-                        dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
-                        dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
-                        dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
-                        dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
-                        dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
-                        dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
+                        FillDataGridViewStock(p, count);
                         UpdateStatsComboboxes(p.Name);
                         count++;
                     }
@@ -336,18 +298,7 @@ namespace LAMN_Software
                 {
                     if (p.Active == 0)
                     {
-                        dgvAllStock.Rows.Add();
-                        dgvAllStock.Rows[count].Cells[0].Value = p;
-                        dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
-                        dgvAllStock.Rows[count].Cells[2].Value = p.Name;
-                        dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
-                        dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
-                        dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
-                        dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
-                        dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
-                        dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
-                        dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
-                        dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
+                        FillDataGridViewStock(p, count);
                         UpdateStatsComboboxes(p.Name);
                         count++;
                     }
@@ -357,6 +308,22 @@ namespace LAMN_Software
             {
                 MessageBox.Show(SH.GetAllStockFromDB().Message);
             }
+        }
+
+        public void FillDataGridViewStock(Product p, int count)
+        {
+            dgvAllStock.Rows.Add();
+            dgvAllStock.Rows[count].Cells[0].Value = p;
+            dgvAllStock.Rows[count].Cells[1].Value = p.Ean;
+            dgvAllStock.Rows[count].Cells[2].Value = p.Name;
+            dgvAllStock.Rows[count].Cells[3].Value = p.QuantityS;
+            dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
+            dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
+            dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
+            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
+            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+            dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
+            dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
         }
 
         //EMPLOYEE MANAGEMENT

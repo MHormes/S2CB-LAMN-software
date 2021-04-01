@@ -1032,7 +1032,7 @@ namespace LAMN_Software
             this.tbxStockAdd_EANCode.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_EANCode.Name = "tbxStockAdd_EANCode";
             this.tbxStockAdd_EANCode.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_EANCode.TabIndex = 22;
+            this.tbxStockAdd_EANCode.TabIndex = 1;
             // 
             // lblStockAddEAN
             // 
@@ -1087,7 +1087,7 @@ namespace LAMN_Software
             this.tbxStockAdd_TotalSold.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_TotalSold.Name = "tbxStockAdd_TotalSold";
             this.tbxStockAdd_TotalSold.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_TotalSold.TabIndex = 10;
+            this.tbxStockAdd_TotalSold.TabIndex = 11;
             // 
             // label10
             // 
@@ -1127,7 +1127,7 @@ namespace LAMN_Software
             this.tbxStockAdd_Sell.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_Sell.Name = "tbxStockAdd_Sell";
             this.tbxStockAdd_Sell.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_Sell.TabIndex = 7;
+            this.tbxStockAdd_Sell.TabIndex = 8;
             // 
             // tbxStockAdd_AddInfo
             // 
@@ -1137,7 +1137,7 @@ namespace LAMN_Software
             this.tbxStockAdd_AddInfo.Multiline = true;
             this.tbxStockAdd_AddInfo.Name = "tbxStockAdd_AddInfo";
             this.tbxStockAdd_AddInfo.Size = new System.Drawing.Size(408, 61);
-            this.tbxStockAdd_AddInfo.TabIndex = 9;
+            this.tbxStockAdd_AddInfo.TabIndex = 10;
             // 
             // label1
             // 
@@ -1181,7 +1181,7 @@ namespace LAMN_Software
             this.tbxStockAdd_MinimumStock.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_MinimumStock.Name = "tbxStockAdd_MinimumStock";
             this.tbxStockAdd_MinimumStock.Size = new System.Drawing.Size(210, 29);
-            this.tbxStockAdd_MinimumStock.TabIndex = 8;
+            this.tbxStockAdd_MinimumStock.TabIndex = 9;
             // 
             // label6
             // 
@@ -1212,7 +1212,7 @@ namespace LAMN_Software
             this.tbxStockAdd_Cost.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_Cost.Name = "tbxStockAdd_Cost";
             this.tbxStockAdd_Cost.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_Cost.TabIndex = 6;
+            this.tbxStockAdd_Cost.TabIndex = 7;
             // 
             // label8
             // 
@@ -1232,7 +1232,7 @@ namespace LAMN_Software
             this.tbxStockAdd_WarehouseLocation.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_WarehouseLocation.Name = "tbxStockAdd_WarehouseLocation";
             this.tbxStockAdd_WarehouseLocation.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_WarehouseLocation.TabIndex = 3;
+            this.tbxStockAdd_WarehouseLocation.TabIndex = 4;
             // 
             // tbxStockAdd_StoreLocation
             // 
@@ -1241,7 +1241,7 @@ namespace LAMN_Software
             this.tbxStockAdd_StoreLocation.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_StoreLocation.Name = "tbxStockAdd_StoreLocation";
             this.tbxStockAdd_StoreLocation.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_StoreLocation.TabIndex = 5;
+            this.tbxStockAdd_StoreLocation.TabIndex = 6;
             // 
             // lblStockAdd_Store
             // 
@@ -1285,7 +1285,7 @@ namespace LAMN_Software
             this.tbxStockAdd_StoreQuantity.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_StoreQuantity.Name = "tbxStockAdd_StoreQuantity";
             this.tbxStockAdd_StoreQuantity.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_StoreQuantity.TabIndex = 4;
+            this.tbxStockAdd_StoreQuantity.TabIndex = 5;
             // 
             // label3
             // 
@@ -1316,7 +1316,7 @@ namespace LAMN_Software
             this.tbxStockAdd_WarehouseQuantity.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_WarehouseQuantity.Name = "tbxStockAdd_WarehouseQuantity";
             this.tbxStockAdd_WarehouseQuantity.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_WarehouseQuantity.TabIndex = 2;
+            this.tbxStockAdd_WarehouseQuantity.TabIndex = 3;
             // 
             // lblStockAdd_WarehouseQuantity
             // 
@@ -1336,7 +1336,7 @@ namespace LAMN_Software
             this.tbxStockAdd_ProductName.Margin = new System.Windows.Forms.Padding(1);
             this.tbxStockAdd_ProductName.Name = "tbxStockAdd_ProductName";
             this.tbxStockAdd_ProductName.Size = new System.Drawing.Size(179, 29);
-            this.tbxStockAdd_ProductName.TabIndex = 1;
+            this.tbxStockAdd_ProductName.TabIndex = 2;
             // 
             // lblProductAdd_StockName
             // 
@@ -1707,7 +1707,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximumSize = new System.Drawing.Size(1153, 689);
             this.MinimumSize = new System.Drawing.Size(822, 465);
-           
+            
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();

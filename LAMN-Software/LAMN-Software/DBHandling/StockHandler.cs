@@ -65,7 +65,7 @@ namespace LAMN_Software
 
         public Exception AddProduct(string ean, string name, string quantityS, string quantityWH, string locationS, string locationWH, string costPrice, string sellPrice, string minimumStockRequired, string addInformation)
         {
-            if(!Regex.IsMatch(ean, @"^[0-9]{13}"))
+            if (!Regex.IsMatch(ean, @"^[0-9]{13}"))
             {
                 throw new IncorrectEANException(ean);
             }
@@ -122,7 +122,7 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
                     cmd.Parameters.AddWithValue("@locationS", locationS);
-                    cmd.Parameters.AddWithValue("@locationWH", locationWH); 
+                    cmd.Parameters.AddWithValue("@locationWH", locationWH);
                     cmd.Parameters.AddWithValue("@costPrice", costPrice);
                     cmd.Parameters.AddWithValue("@sellPrice", sellPrice);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
@@ -144,21 +144,21 @@ namespace LAMN_Software
         }
 
         //method to change properties of a product in the DB
-        public Exception ChangeProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, int minimumStockRequired, string addInformation)
+        public Exception ChangeProduct(int id, string name, string quantityS, string quantityWH, string locationS, string locationWH, string minimumStockRequired, string addInformation)
         {
             if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
             {
                 throw new IncorrectStockNameException(name);
             }
 
-            if (!Regex.IsMatch(quantityWH.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(quantityWH.ToString());
+                throw new IncorrectQuantityException(quantityWH);
             }
 
-            if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(quantityS.ToString());
+                throw new IncorrectQuantityException(quantityS);
             }
 
             if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
@@ -171,9 +171,9 @@ namespace LAMN_Software
                 throw new IncorrectLocationException(locationWH);
             }
 
-            if (!Regex.IsMatch(minimumStockRequired.ToString(), @"^[0-9]*$"))
+            if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
             {
-                throw new IncorrectQuantityException(minimumStockRequired.ToString());
+                throw new IncorrectQuantityException(minimumStockRequired);
             }
 
             try
@@ -188,7 +188,7 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
-                    cmd.Parameters.AddWithValue("@locationS", locationS); 
+                    cmd.Parameters.AddWithValue("@locationS", locationS);
                     cmd.Parameters.AddWithValue("@LocationWH", locationWH);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
                     if (string.IsNullOrWhiteSpace(addInformation))
