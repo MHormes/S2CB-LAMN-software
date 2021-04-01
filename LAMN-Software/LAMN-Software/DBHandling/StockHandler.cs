@@ -116,12 +116,8 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
-                    if (!string.IsNullOrWhiteSpace(locationS))
-                    { cmd.Parameters.AddWithValue("@locationS", locationS); }
-                    else{ cmd.Parameters.AddWithValue("@locationS", null); }
-                    if (!string.IsNullOrWhiteSpace(locationWH))
-                    { cmd.Parameters.AddWithValue("@locationWH", locationWH); }
-                    else { cmd.Parameters.AddWithValue("@locationWH", null); }
+                    cmd.Parameters.AddWithValue("@locationS", locationS);
+                    cmd.Parameters.AddWithValue("@locationWH", locationWH); 
                     cmd.Parameters.AddWithValue("@costPrice", costPrice);
                     cmd.Parameters.AddWithValue("@sellPrice", sellPrice);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
@@ -145,6 +141,36 @@ namespace LAMN_Software
         //method to change properties of a product in the DB
         public Exception ChangeProduct(int id, string name, int quantityS, int quantityWH, string locationS, string locationWH, int minimumStockRequired, string addInformation)
         {
+            if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
+            {
+                throw new IncorrectStockNameException(name);
+            }
+
+            if (!Regex.IsMatch(quantityWH.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityWH.ToString());
+            }
+
+            if (!Regex.IsMatch(quantityS.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(quantityS.ToString());
+            }
+
+            if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectLocationException(locationS);
+            }
+
+            if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
+            {
+                throw new IncorrectLocationException(locationWH);
+            }
+
+            if (!Regex.IsMatch(minimumStockRequired.ToString(), @"^[0-9]*$"))
+            {
+                throw new IncorrectQuantityException(minimumStockRequired.ToString());
+            }
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -157,11 +183,8 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@quantityS", quantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", quantityWH);
-                    if (string.IsNullOrWhiteSpace(locationS)){ cmd.Parameters.AddWithValue("@locationS", locationS); }
-                    else{ cmd.Parameters.AddWithValue("@LocationS", null); }
-                    if (string.IsNullOrWhiteSpace(locationWH))
-                    { cmd.Parameters.AddWithValue("@LocationWH", locationWH); }
-                    else { cmd.Parameters.AddWithValue("@LocationWH", null); }
+                    cmd.Parameters.AddWithValue("@locationS", locationS); 
+                    cmd.Parameters.AddWithValue("@LocationWH", locationWH);
                     cmd.Parameters.AddWithValue("@minStock", minimumStockRequired);
                     if (string.IsNullOrWhiteSpace(addInformation))
                     { cmd.Parameters.AddWithValue("@addInf", addInformation); }

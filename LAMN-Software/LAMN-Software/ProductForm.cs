@@ -368,6 +368,68 @@ namespace LAMN_Software
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
+
+            if(emp.Position == JobPosition.MANAGER)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 0;
+            }
+            else if(emp.Position == JobPosition.HR)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 1;
+            }
+            else if (emp.Position == JobPosition.SALES)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 2;
+            }
+            else if (emp.Position == JobPosition.DEPOT)
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 3;
+            }
+            else
+            {
+                cbxEmployeeAdd_Position.SelectedIndex = 4;
+            }
+
+            if (emp.IceRelationship == ICERelation.PARTNER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
+            }
+            else if (emp.IceRelationship == ICERelation.FATHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
+            }
+            else if (emp.IceRelationship == ICERelation.MOTHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
+            }
+            else if (emp.IceRelationship == ICERelation.BROTHER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
+            }
+            else if (emp.IceRelationship == ICERelation.SISTER)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
+            }
+            else if (emp.IceRelationship == ICERelation.UNCLE)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
+            }
+            else if (emp.IceRelationship == ICERelation.AUNT)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex =6;
+            }
+            else if (emp.IceRelationship == ICERelation.COUSIN)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
+            }
+            else if (emp.IceRelationship == ICERelation.FRIEND)
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
+            }
+            else
+            {
+                cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+            }
         }
 
         
