@@ -10,6 +10,7 @@ namespace LAMN_Software
     {
         MORNING,
         AFTERNOON,
-        EVENING
+        EVENING,
+        NO_SHIFT
     }
 }
