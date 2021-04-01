@@ -96,6 +96,12 @@
     <Compile Include="DataClasses\Schedule.cs" />
     <Compile Include="DBHandling\ScheduleHandler.cs" />
     <Compile Include="DBHandling\LoginHandler.cs" />
+    <Compile Include="EmploymentTermination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmploymentTermination.Designer.cs">
+      <DependentUpon>EmploymentTermination.cs</DependentUpon>
+    </Compile>
     <Compile Include="ENUMS\Day.cs" />
     <Compile Include="DataClasses\Employee.cs" />
     <Compile Include="DBHandling\EmployeeHandler.cs" />
@@ -130,6 +136,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBHandling\StockHandler.cs" />
     <Compile Include="ENUMS\TimeSlot.cs" />
+    <EmbeddedResource Include="EmploymentTermination.resx">
+      <DependentUpon>EmploymentTermination.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

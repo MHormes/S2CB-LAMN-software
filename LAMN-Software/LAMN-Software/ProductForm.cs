@@ -27,7 +27,6 @@ namespace LAMN_Software
             SCH = new ScheduleHandler();
             LH = new LoginHandler();
             FillStockViewActive();
-            FillEmployeeListBox();
             FillScheduleGridView();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
@@ -249,8 +248,6 @@ namespace LAMN_Software
                     count++; ;
                 }
             }
-
-
         }
 
         //method for updateing/filling listbox for stock items that are still active
@@ -344,22 +341,8 @@ namespace LAMN_Software
 
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
-        }
 
-        public void FillEmployeeListBox()
-        {
-            lbxAllEmployees.Items.Clear();
-            if (EH.GetAllEmployeesFromDB() == null)
-            {
-                foreach (Employee employee in EH.GetAllEmployees())
-                {
-                    lbxAllEmployees.Items.Add(employee);
-                }
-            }
-            else
-            {
-                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
-            }
+            FillEmployeeDGV();
         }
 
         public void FillEmployeeDGV()
@@ -371,15 +354,17 @@ namespace LAMN_Software
                 {
                     DataGridViewRow newRow = new DataGridViewRow();
                     newRow.CreateCells(dgvEmployees);
-                    newRow.Cells[0].Value = e.FirstName;
-                    newRow.Cells[1].Value = e.SecondName;
-                    newRow.Cells[2].Value = e.Position;
-                    newRow.Cells[3].Value = e.Bsn;
-                    newRow.Cells[4].Value = e.DateOfBirth;
-                    newRow.Cells[5].Value = e.PhoneNumber;
-                    newRow.Cells[6].Value = e.Email;
-                    newRow.Cells[7].Value = e.IceNumber;
-                    newRow.Cells[8].Value = e.IceRelationship;
+                    newRow.Cells[0].Value = e;
+                    newRow.Cells[1].Value = e.FirstName;
+                    newRow.Cells[2].Value = e.SecondName;
+                    newRow.Cells[3].Value = e.Position;
+                    newRow.Cells[4].Value = e.Bsn;
+                    newRow.Cells[5].Value = e.DateOfBirth;
+                    newRow.Cells[6].Value = e.PhoneNumber;
+                    newRow.Cells[7].Value = e.Email;
+                    newRow.Cells[8].Value = e.IceNumber;
+                    newRow.Cells[9].Value = e.IceRelationship;
+                    newRow.Cells[10].Value = e.QuittingReason;
                     dgvEmployees.Rows.Add(newRow);
                 }
             }
@@ -391,34 +376,40 @@ namespace LAMN_Software
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
-            if (lbxAllEmployees.SelectedIndex == -1)
+            if (dgvEmployees.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select an employee to delete");
+                MessageBox.Show("Please select one employee");
                 return;
             }
-            List<Employee> employees = EH.GetAllEmployees();
-            //IMPLEMENT SCREEN FOR QUITTING REASON!!!
-            Employee employee = (Employee)lbxAllEmployees.SelectedItem;
-            //method to call for deleting
-            var delete = EH.DeleteProduct(employee);
-            if (delete == null)
-            {
-                FillEmployeeListBox();
-                MessageBox.Show("Employee sucessfully deleted");
-                return;
-            }
-            MessageBox.Show(delete.Message);
+            Employee emp = (Employee)dgvEmployees.CurrentRow.Cells[0].Value;
+
+            EmploymentTermination et = new EmploymentTermination(emp);
+            et.Show();
         }
 
         private void btnSearchEmployee_Click(object sender, EventArgs e)
         {
-            lbxAllEmployees.Items.Clear();
+
+            dgvEmployees.Rows.Clear();
             string searchName = tbxSearchEmployee.Text.ToLower();
-            foreach (Employee employee in EH.GetAllEmployees())
+
+            foreach (Employee emp in EH.GetAllEmployees())
             {
-                if (employee.GetFullName().ToLower().Contains(searchName))
+                if (emp.GetFullName().ToLower().Contains(searchName))
                 {
-                    lbxAllEmployees.Items.Add(employee);
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dgvEmployees);
+                    newRow.Cells[0].Value = emp;
+                    newRow.Cells[1].Value = emp.FirstName;
+                    newRow.Cells[2].Value = emp.SecondName;
+                    newRow.Cells[3].Value = emp.Position;
+                    newRow.Cells[4].Value = emp.Bsn;
+                    newRow.Cells[5].Value = emp.DateOfBirth;
+                    newRow.Cells[6].Value = emp.PhoneNumber;
+                    newRow.Cells[7].Value = emp.Email;
+                    newRow.Cells[8].Value = emp.IceNumber;
+                    newRow.Cells[9].Value = emp.IceRelationship;
+                    dgvEmployees.Rows.Add(newRow);
                 }
             }
         }
@@ -434,6 +425,7 @@ namespace LAMN_Software
             tbxEmployeeAdd_AdditonalInfo.Text = "";
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
+            tbxEmployeeAdd_BSN.Enabled = true;
 
             //buttons
             btnEmployeeAdd_Confirm.Visible = true;
@@ -445,13 +437,12 @@ namespace LAMN_Software
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
-            if (lbxAllEmployees.SelectedIndex == -1)
+            if (dgvEmployees.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select an employee to edit");
+                MessageBox.Show("Please select one employee to edit");
                 return;
             }
-            Employee emp = (Employee)lbxAllEmployees.SelectedItem;
-
+            Employee emp = (Employee)dgvEmployees.CurrentRow.Cells[0].Value;
 
             //buttons
             btnEmployeeAdd_Confirm.Visible = false;
@@ -548,12 +539,11 @@ namespace LAMN_Software
                 string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
                 string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
 
-                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
+                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "");
 
                 if (add == null)
                 {
                     add = LH.AddLoginDetails(username, password);
-                    //FillEmployeeListBox();
                     FillEmployeeDGV();
                     MessageBox.Show("Employee added succesfully.");
                     return;
@@ -570,7 +560,6 @@ namespace LAMN_Software
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-            //FillEmployeeListBox();
             FillEmployeeDGV();
         }
 
@@ -583,7 +572,7 @@ namespace LAMN_Software
 
                 if (update == null)
                 {
-                    FillEmployeeListBox();
+                    FillEmployeeDGV();
                     MessageBox.Show("Employee edited succesfully");
                     return;
                 }

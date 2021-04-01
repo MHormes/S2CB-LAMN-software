@@ -22,7 +22,7 @@ namespace LAMN_Software
 
         private string fullName;
 
-        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation)
+        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason)
         {
             FirstName = firstName;
             SecondName = secondName;
@@ -36,6 +36,7 @@ namespace LAMN_Software
             Position = position;
             AddInformation = addInformation;
             fullName = FirstName + " " + SecondName;
+            QuittingReason = quittingReason;
         }
 
         public override string ToString()
