@@ -17,6 +17,7 @@ namespace LAMN_Software
         StockHandler SH;
         EmployeeHandler EH;
         ScheduleHandler SCH;
+        ScheduleTemplateHandler SCTH;
         LoginHandler LH;
 
         public ProductForm(JobPosition position)
@@ -25,6 +26,7 @@ namespace LAMN_Software
             SH = new StockHandler();
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
+            SCTH = new ScheduleTemplateHandler();
             LH = new LoginHandler();
             FillStockViewActive();
             FillScheduleGridView();
@@ -741,6 +743,67 @@ namespace LAMN_Software
             }
         }
 
+        private void button_saveAsTemplate_Click(object sender, EventArgs e)
+        {
+            //foreach edited combox push to the DB.
+            //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
+            //Easier syntax but the semantics could be optimalized.
+
+
+            SCTH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
+
+            try
+            {
+                for (int rows = 0; rows < dgvSchedules.Rows.Count; rows++)
+                {
+                    for (int col = 1; col < dgvSchedules.Rows[rows].Cells.Count; col++)
+                    {
+                        Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
+
+                        string slot = null;
+                        if (dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        {
+                            slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                        }
+
+                        if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
+                        }
+                        if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
+                        }
+                        if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
+                        }
+                        if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
+                        }
+                        if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
+                        }
+                        if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
+                        }
+                        else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
+                        {
+                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         //STATISTICS
 
         private void btnStatistics_Click(object sender, EventArgs e)
@@ -920,6 +983,11 @@ namespace LAMN_Software
             cbxStats3.Text = "Stock 3";
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
+        }
+
+        private void button_loadTemplate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
