@@ -733,7 +733,6 @@ namespace LAMN_Software
                         {
                             SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
-
                     }
                 }
             }
@@ -750,7 +749,7 @@ namespace LAMN_Software
             //Easier syntax but the semantics could be optimalized.
 
 
-            SCTH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
+            SCTH.DeleteWeekSchedule();
 
             try
             {
@@ -768,39 +767,76 @@ namespace LAMN_Software
 
                         if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.MONDAY, emp.Bsn, slot);
                         }
                         if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.TUESDAY, emp.Bsn, slot);
                         }
                         if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.WEDNESDAY, emp.Bsn, slot);
                         }
                         if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.THURDAY, emp.Bsn, slot);
                         }
                         if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.FRIDAY, emp.Bsn, slot);
                         }
                         if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.SATURDAY, emp.Bsn, slot);
                         }
                         else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCTH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
+                            SCTH.SaveCurrentWeek(Day.SUNDAY, emp.Bsn, slot);
                         }
-
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button_loadTemplate_Click(object sender, EventArgs e)
+        {
+            if (SCTH.GetWeekScheduleFromDB() == null)
+            {
+                foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
+                {
+                    //check for each schedule object if any of the employeeBsn's are the same. 
+                    for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
+                    {
+                        //create temp emp object based on the state of the for loop
+                        Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
+                        if (emp.Bsn == scheduleTemplate.EmployeeBSN)
+                        {
+                            if (scheduleTemplate.Day == Day.MONDAY)
+                                dgvSchedules.Rows[i].Cells[1].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.TUESDAY)
+                                dgvSchedules.Rows[i].Cells[2].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.WEDNESDAY)
+                                dgvSchedules.Rows[i].Cells[3].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.THURDAY)
+                                dgvSchedules.Rows[i].Cells[4].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.FRIDAY)
+                                dgvSchedules.Rows[i].Cells[5].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.SATURDAY)
+                                dgvSchedules.Rows[i].Cells[6].Value = scheduleTemplate.TimeSlot;
+                            else if (scheduleTemplate.Day == Day.SUNDAY)
+                                dgvSchedules.Rows[i].Cells[7].Value = scheduleTemplate.TimeSlot;
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Template not present in database.");
             }
         }
 
@@ -983,11 +1019,6 @@ namespace LAMN_Software
             cbxStats3.Text = "Stock 3";
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
-        }
-
-        private void button_loadTemplate_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
