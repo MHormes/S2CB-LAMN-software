@@ -363,13 +363,14 @@ namespace LAMN_Software
                         newRow.Cells[1].Value = e.FirstName;
                         newRow.Cells[2].Value = e.SecondName;
                         newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = e.Bsn;
-                        newRow.Cells[5].Value = e.DateOfBirth;
-                        newRow.Cells[6].Value = e.PhoneNumber;
-                        newRow.Cells[7].Value = e.Email;
-                        newRow.Cells[8].Value = e.IceNumber;
-                        newRow.Cells[9].Value = e.IceRelationship;
-                        newRow.Cells[10].Value = e.QuittingReason;
+                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+                        newRow.Cells[5].Value = e.Bsn;
+                        newRow.Cells[6].Value = e.DateOfBirth;
+                        newRow.Cells[7].Value = e.PhoneNumber;
+                        newRow.Cells[8].Value = e.Email;
+                        newRow.Cells[9].Value = e.IceNumber;
+                        newRow.Cells[10].Value = e.IceRelationship;
+                        newRow.Cells[11].Value = e.QuittingReason;
                         dgvEmployees.Rows.Add(newRow);
                     }
                 }
@@ -395,13 +396,14 @@ namespace LAMN_Software
                         newRow.Cells[1].Value = e.FirstName;
                         newRow.Cells[2].Value = e.SecondName;
                         newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = e.Bsn;
-                        newRow.Cells[5].Value = e.DateOfBirth;
-                        newRow.Cells[6].Value = e.PhoneNumber;
-                        newRow.Cells[7].Value = e.Email;
-                        newRow.Cells[8].Value = e.IceNumber;
-                        newRow.Cells[9].Value = e.IceRelationship;
-                        newRow.Cells[10].Value = e.QuittingReason;
+                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+                        newRow.Cells[5].Value = e.Bsn;
+                        newRow.Cells[6].Value = e.DateOfBirth;
+                        newRow.Cells[7].Value = e.PhoneNumber;
+                        newRow.Cells[8].Value = e.Email;
+                        newRow.Cells[9].Value = e.IceNumber;
+                        newRow.Cells[10].Value = e.IceRelationship;
+                        newRow.Cells[11].Value = e.QuittingReason;
                         dgvEmployees.Rows.Add(newRow);
                     }
                 }
@@ -442,12 +444,14 @@ namespace LAMN_Software
                     newRow.Cells[1].Value = emp.FirstName;
                     newRow.Cells[2].Value = emp.SecondName;
                     newRow.Cells[3].Value = emp.Position;
-                    newRow.Cells[4].Value = emp.Bsn;
-                    newRow.Cells[5].Value = emp.DateOfBirth;
-                    newRow.Cells[6].Value = emp.PhoneNumber;
-                    newRow.Cells[7].Value = emp.Email;
-                    newRow.Cells[8].Value = emp.IceNumber;
-                    newRow.Cells[9].Value = emp.IceRelationship;
+                    newRow.Cells[4].Value = String.Format("€{0:0.00}", emp.SalaryPerHour);
+                    newRow.Cells[5].Value = emp.Bsn;
+                    newRow.Cells[6].Value = emp.DateOfBirth;
+                    newRow.Cells[7].Value = emp.PhoneNumber;
+                    newRow.Cells[8].Value = emp.Email;
+                    newRow.Cells[9].Value = emp.IceNumber;
+                    newRow.Cells[10].Value = emp.IceRelationship;
+                    newRow.Cells[11].Value = emp.QuittingReason;
                     dgvEmployees.Rows.Add(newRow);
                 }
             }
@@ -462,6 +466,8 @@ namespace LAMN_Software
             tbxEmployeeAdd_PhoneNumber.Text = "";
             tbxEmployeeAdd_ICENumber.Text = "";
             tbxEmployeeAdd_AdditonalInfo.Text = "";
+            tbxSalary.Text = "";
+            dtpEmployeeAdd_DateOfBirth.Enabled = true;
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
             tbxEmployeeAdd_BSN.Enabled = true;
@@ -498,6 +504,7 @@ namespace LAMN_Software
             tbxEmployeeAdd_PhoneNumber.Text = $"{emp.PhoneNumber}";
             tbxEmployeeAdd_ICENumber.Text = $"{emp.IceNumber}";
             tbxEmployeeAdd_AdditonalInfo.Text = $"{emp.AddInformation}";
+            tbxSalary.Text = $"{emp.SalaryPerHour}";
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
 
@@ -578,7 +585,7 @@ namespace LAMN_Software
                 string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
                 string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
 
-                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "");
+                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "", Convert.ToDouble(tbxSalary.Text));
 
                 if (add == null)
                 {
@@ -608,7 +615,7 @@ namespace LAMN_Software
 
             try
             {
-                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
+                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text));
 
                 if (update == null)
                 {

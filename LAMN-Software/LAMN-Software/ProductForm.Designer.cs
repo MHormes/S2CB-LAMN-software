@@ -29,25 +29,15 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
-            this.gpnlStatsType = new LAMN_Software.GradientPanel();
-            this.cbxStatsType = new System.Windows.Forms.ComboBox();
-            this.gpnlStatistics = new LAMN_Software.GradientPanel();
-            this.btnStatistics = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblMediaBazaar = new System.Windows.Forms.Label();
             this.lblMB = new System.Windows.Forms.Label();
-            this.gpnlSchedules = new LAMN_Software.GradientPanel();
-            this.btnSchedules = new System.Windows.Forms.Button();
-            this.gpnlStock = new LAMN_Software.GradientPanel();
-            this.btnStock = new System.Windows.Forms.Button();
-            this.gpnlEmployees = new LAMN_Software.GradientPanel();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.tcNavigator = new System.Windows.Forms.TabControl();
             this.tpStock = new System.Windows.Forms.TabPage();
             this.dgvAllStock = new System.Windows.Forms.DataGridView();
@@ -87,11 +77,14 @@ namespace LAMN_Software
             this.schedulesSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.schedulesSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tpEmployees = new System.Windows.Forms.TabPage();
+            this.cbxActiveInactiveEmployees = new System.Windows.Forms.ComboBox();
+            this.lblActiveInactiveEmployees = new System.Windows.Forms.Label();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
             this.dgvEmployeeObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSalaryPerHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvBsn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -145,6 +138,8 @@ namespace LAMN_Software
             this.tbxStockAdd_ProductName = new System.Windows.Forms.TextBox();
             this.lblProductAdd_StockName = new System.Windows.Forms.Label();
             this.tpEmployeeAdd = new System.Windows.Forms.TabPage();
+            this.lblSalary = new System.Windows.Forms.Label();
+            this.tbxSalary = new System.Windows.Forms.TextBox();
             this.btnEmployeeAdd_ConfirmEdit = new System.Windows.Forms.Button();
             this.lblEmployeeAdd_Details = new System.Windows.Forms.Label();
             this.cbxEmployeeAdd_Position = new System.Windows.Forms.ComboBox();
@@ -173,15 +168,18 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
-            this.lblActiveInactiveEmployees = new System.Windows.Forms.Label();
-            this.cbxActiveInactiveEmployees = new System.Windows.Forms.ComboBox();
+            this.gpnlStatsType = new LAMN_Software.GradientPanel();
+            this.cbxStatsType = new System.Windows.Forms.ComboBox();
+            this.gpnlStatistics = new LAMN_Software.GradientPanel();
+            this.btnStatistics = new System.Windows.Forms.Button();
+            this.gpnlSchedules = new LAMN_Software.GradientPanel();
+            this.btnSchedules = new System.Windows.Forms.Button();
+            this.gpnlStock = new LAMN_Software.GradientPanel();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.gpnlEmployees = new LAMN_Software.GradientPanel();
+            this.btnEmployees = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
-            this.gpnlStatsType.SuspendLayout();
-            this.gpnlStatistics.SuspendLayout();
-            this.gpnlSchedules.SuspendLayout();
-            this.gpnlStock.SuspendLayout();
-            this.gpnlEmployees.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
@@ -195,6 +193,11 @@ namespace LAMN_Software
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
             this.pnlBar.SuspendLayout();
+            this.gpnlStatsType.SuspendLayout();
+            this.gpnlStatistics.SuspendLayout();
+            this.gpnlSchedules.SuspendLayout();
+            this.gpnlStock.SuspendLayout();
+            this.gpnlEmployees.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -208,7 +211,7 @@ namespace LAMN_Software
             this.pnlBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
-            this.pnlBackground.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(5);
             this.pnlBackground.MaximumSize = new System.Drawing.Size(3074, 1643);
             this.pnlBackground.MinimumSize = new System.Drawing.Size(3074, 1643);
             this.pnlBackground.Name = "pnlBackground";
@@ -233,58 +236,6 @@ namespace LAMN_Software
             this.pnlTabCover.Size = new System.Drawing.Size(3067, 169);
             this.pnlTabCover.TabIndex = 11;
             // 
-            // gpnlStatsType
-            // 
-            this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatsType.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatsType.Controls.Add(this.cbxStatsType);
-            this.gpnlStatsType.Location = new System.Drawing.Point(1867, 0);
-            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gpnlStatsType.Name = "gpnlStatsType";
-            this.gpnlStatsType.Size = new System.Drawing.Size(371, 207);
-            this.gpnlStatsType.TabIndex = 14;
-            this.gpnlStatsType.Visible = false;
-            // 
-            // cbxStatsType
-            // 
-            this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
-            this.cbxStatsType.FormattingEnabled = true;
-            this.cbxStatsType.Location = new System.Drawing.Point(0, 67);
-            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbxStatsType.Name = "cbxStatsType";
-            this.cbxStatsType.Size = new System.Drawing.Size(308, 61);
-            this.cbxStatsType.TabIndex = 0;
-            this.cbxStatsType.Visible = false;
-            // 
-            // gpnlStatistics
-            // 
-            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatistics.Controls.Add(this.btnStatistics);
-            this.gpnlStatistics.Location = new System.Drawing.Point(1448, -2);
-            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gpnlStatistics.Name = "gpnlStatistics";
-            this.gpnlStatistics.Size = new System.Drawing.Size(419, 207);
-            this.gpnlStatistics.TabIndex = 13;
-            // 
-            // btnStatistics
-            // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(-3, 24);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(419, 150);
-            this.btnStatistics.TabIndex = 10;
-            this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.UseVisualStyleBackColor = false;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
-            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
@@ -294,7 +245,7 @@ namespace LAMN_Software
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(2768, 21);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(5);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(256, 93);
             this.btnLogout.TabIndex = 15;
@@ -325,93 +276,6 @@ namespace LAMN_Software
             this.lblMB.Size = new System.Drawing.Size(312, 114);
             this.lblMB.TabIndex = 11;
             this.lblMB.Text = "MB";
-            // 
-            // gpnlSchedules
-            // 
-            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlSchedules.Controls.Add(this.btnSchedules);
-            this.gpnlSchedules.Location = new System.Drawing.Point(624, -2);
-            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gpnlSchedules.Name = "gpnlSchedules";
-            this.gpnlSchedules.Size = new System.Drawing.Size(397, 207);
-            this.gpnlSchedules.TabIndex = 12;
-            // 
-            // btnSchedules
-            // 
-            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
-            this.btnSchedules.FlatAppearance.BorderSize = 0;
-            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedules.ForeColor = System.Drawing.Color.White;
-            this.btnSchedules.Location = new System.Drawing.Point(3, 24);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(392, 150);
-            this.btnSchedules.TabIndex = 10;
-            this.btnSchedules.Text = "Schedules";
-            this.btnSchedules.UseVisualStyleBackColor = false;
-            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
-            // 
-            // gpnlStock
-            // 
-            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStock.Controls.Add(this.btnStock);
-            this.gpnlStock.Location = new System.Drawing.Point(376, 0);
-            this.gpnlStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gpnlStock.Name = "gpnlStock";
-            this.gpnlStock.Size = new System.Drawing.Size(245, 207);
-            this.gpnlStock.TabIndex = 11;
-            // 
-            // btnStock
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Transparent;
-            this.btnStock.FlatAppearance.BorderSize = 0;
-            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.ForeColor = System.Drawing.Color.White;
-            this.btnStock.Location = new System.Drawing.Point(3, 24);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(243, 150);
-            this.btnStock.TabIndex = 10;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            // 
-            // gpnlEmployees
-            // 
-            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlEmployees.Controls.Add(this.btnEmployees);
-            this.gpnlEmployees.Location = new System.Drawing.Point(1027, 0);
-            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gpnlEmployees.Name = "gpnlEmployees";
-            this.gpnlEmployees.Size = new System.Drawing.Size(419, 207);
-            this.gpnlEmployees.TabIndex = 12;
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmployees.FlatAppearance.BorderSize = 0;
-            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(-3, 24);
-            this.btnEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(419, 150);
-            this.btnEmployees.TabIndex = 10;
-            this.btnEmployees.Text = "Employees";
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // tcNavigator
             // 
@@ -861,6 +725,32 @@ namespace LAMN_Software
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
             // 
+            // cbxActiveInactiveEmployees
+            // 
+            this.cbxActiveInactiveEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxActiveInactiveEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.cbxActiveInactiveEmployees.FormattingEnabled = true;
+            this.cbxActiveInactiveEmployees.Items.AddRange(new object[] {
+            "Active",
+            "Terminated"});
+            this.cbxActiveInactiveEmployees.Location = new System.Drawing.Point(985, 9);
+            this.cbxActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cbxActiveInactiveEmployees.Name = "cbxActiveInactiveEmployees";
+            this.cbxActiveInactiveEmployees.Size = new System.Drawing.Size(316, 59);
+            this.cbxActiveInactiveEmployees.TabIndex = 21;
+            this.cbxActiveInactiveEmployees.SelectedIndexChanged += new System.EventHandler(this.cbxActiveInactiveEmployees_SelectedIndexChanged);
+            // 
+            // lblActiveInactiveEmployees
+            // 
+            this.lblActiveInactiveEmployees.AutoSize = true;
+            this.lblActiveInactiveEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lblActiveInactiveEmployees.Location = new System.Drawing.Point(8, 12);
+            this.lblActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblActiveInactiveEmployees.Name = "lblActiveInactiveEmployees";
+            this.lblActiveInactiveEmployees.Size = new System.Drawing.Size(823, 52);
+            this.lblActiveInactiveEmployees.TabIndex = 20;
+            this.lblActiveInactiveEmployees.Text = "Currently showing all employees that are:";
+            // 
             // dgvEmployees
             // 
             this.dgvEmployees.AllowUserToAddRows = false;
@@ -871,6 +761,7 @@ namespace LAMN_Software
             this.dgvFirstName,
             this.dgvSecondName,
             this.dgvPosition,
+            this.dgvSalaryPerHour,
             this.dgvBsn,
             this.dgvDateOfBirth,
             this.dgvPhoneNumber,
@@ -918,6 +809,14 @@ namespace LAMN_Software
             this.dgvPosition.Name = "dgvPosition";
             this.dgvPosition.ReadOnly = true;
             this.dgvPosition.Width = 250;
+            // 
+            // dgvSalaryPerHour
+            // 
+            this.dgvSalaryPerHour.HeaderText = "Salary per hour ";
+            this.dgvSalaryPerHour.MinimumWidth = 12;
+            this.dgvSalaryPerHour.Name = "dgvSalaryPerHour";
+            this.dgvSalaryPerHour.ReadOnly = true;
+            this.dgvSalaryPerHour.Width = 250;
             // 
             // dgvBsn
             // 
@@ -1104,23 +1003,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartStock.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartStock.Legends.Add(legend1);
             this.chartStock.Location = new System.Drawing.Point(405, 200);
             this.chartStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Store Stock Total";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Warehouse Stock Total";
-            series6.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series5);
-            this.chartStock.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Store Stock Total";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Warehouse Stock Total";
+            series2.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series1);
+            this.chartStock.Series.Add(series2);
             this.chartStock.Size = new System.Drawing.Size(1549, 486);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -1515,6 +1414,8 @@ namespace LAMN_Software
             // 
             // tpEmployeeAdd
             // 
+            this.tpEmployeeAdd.Controls.Add(this.lblSalary);
+            this.tpEmployeeAdd.Controls.Add(this.tbxSalary);
             this.tpEmployeeAdd.Controls.Add(this.btnEmployeeAdd_ConfirmEdit);
             this.tpEmployeeAdd.Controls.Add(this.lblEmployeeAdd_Details);
             this.tpEmployeeAdd.Controls.Add(this.cbxEmployeeAdd_Position);
@@ -1547,6 +1448,25 @@ namespace LAMN_Software
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
             this.tpEmployeeAdd.UseVisualStyleBackColor = true;
+            // 
+            // lblSalary
+            // 
+            this.lblSalary.AutoSize = true;
+            this.lblSalary.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblSalary.Location = new System.Drawing.Point(99, 585);
+            this.lblSalary.Name = "lblSalary";
+            this.lblSalary.Size = new System.Drawing.Size(343, 53);
+            this.lblSalary.TabIndex = 54;
+            this.lblSalary.Text = "Salary per hour";
+            // 
+            // tbxSalary
+            // 
+            this.tbxSalary.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxSalary.Location = new System.Drawing.Point(584, 585);
+            this.tbxSalary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxSalary.Name = "tbxSalary";
+            this.tbxSalary.Size = new System.Drawing.Size(620, 61);
+            this.tbxSalary.TabIndex = 53;
             // 
             // btnEmployeeAdd_ConfirmEdit
             // 
@@ -1799,7 +1719,7 @@ namespace LAMN_Software
             this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
-            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(5);
             this.textBox_defocus.Name = "textBox_defocus";
             this.textBox_defocus.Size = new System.Drawing.Size(0, 11);
             this.textBox_defocus.TabIndex = 0;
@@ -1812,7 +1732,7 @@ namespace LAMN_Software
             this.pnlBar.Controls.Add(this.lblClose);
             this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBar.Location = new System.Drawing.Point(-3, -2);
-            this.pnlBar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlBar.Margin = new System.Windows.Forms.Padding(5);
             this.pnlBar.Name = "pnlBar";
             this.pnlBar.Size = new System.Drawing.Size(3077, 76);
             this.pnlBar.TabIndex = 8;
@@ -1823,7 +1743,7 @@ namespace LAMN_Software
             this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlDragBar.Location = new System.Drawing.Point(8, 0);
-            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(5);
             this.pnlDragBar.Name = "pnlDragBar";
             this.pnlDragBar.Size = new System.Drawing.Size(2992, 74);
             this.pnlDragBar.TabIndex = 9;
@@ -1847,31 +1767,144 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
-            // lblActiveInactiveEmployees
+            // gpnlStatsType
             // 
-            this.lblActiveInactiveEmployees.AutoSize = true;
-            this.lblActiveInactiveEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblActiveInactiveEmployees.Location = new System.Drawing.Point(8, 12);
-            this.lblActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblActiveInactiveEmployees.Name = "lblActiveInactiveEmployees";
-            this.lblActiveInactiveEmployees.Size = new System.Drawing.Size(823, 52);
-            this.lblActiveInactiveEmployees.TabIndex = 20;
-            this.lblActiveInactiveEmployees.Text = "Currently showing all employees that are:";
+            this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlStatsType.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlStatsType.Controls.Add(this.cbxStatsType);
+            this.gpnlStatsType.Location = new System.Drawing.Point(1867, 0);
+            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpnlStatsType.Name = "gpnlStatsType";
+            this.gpnlStatsType.Size = new System.Drawing.Size(371, 207);
+            this.gpnlStatsType.TabIndex = 14;
+            this.gpnlStatsType.Visible = false;
             // 
-            // cbxActiveInactiveEmployees
+            // cbxStatsType
             // 
-            this.cbxActiveInactiveEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxActiveInactiveEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.cbxActiveInactiveEmployees.FormattingEnabled = true;
-            this.cbxActiveInactiveEmployees.Items.AddRange(new object[] {
-            "Active",
-            "Terminated"});
-            this.cbxActiveInactiveEmployees.Location = new System.Drawing.Point(838, 12);
-            this.cbxActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.cbxActiveInactiveEmployees.Name = "cbxActiveInactiveEmployees";
-            this.cbxActiveInactiveEmployees.Size = new System.Drawing.Size(316, 59);
-            this.cbxActiveInactiveEmployees.TabIndex = 21;
-            this.cbxActiveInactiveEmployees.SelectedIndexChanged += new System.EventHandler(this.cbxActiveInactiveEmployees_SelectedIndexChanged);
+            this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbxStatsType.FormattingEnabled = true;
+            this.cbxStatsType.Location = new System.Drawing.Point(0, 67);
+            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxStatsType.Name = "cbxStatsType";
+            this.cbxStatsType.Size = new System.Drawing.Size(308, 61);
+            this.cbxStatsType.TabIndex = 0;
+            this.cbxStatsType.Visible = false;
+            // 
+            // gpnlStatistics
+            // 
+            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlStatistics.Controls.Add(this.btnStatistics);
+            this.gpnlStatistics.Location = new System.Drawing.Point(1448, -2);
+            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpnlStatistics.Name = "gpnlStatistics";
+            this.gpnlStatistics.Size = new System.Drawing.Size(419, 207);
+            this.gpnlStatistics.TabIndex = 13;
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(-3, 24);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(419, 150);
+            this.btnStatistics.TabIndex = 10;
+            this.btnStatistics.Text = "Statistics";
+            this.btnStatistics.UseVisualStyleBackColor = false;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
+            // gpnlSchedules
+            // 
+            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlSchedules.Controls.Add(this.btnSchedules);
+            this.gpnlSchedules.Location = new System.Drawing.Point(624, -2);
+            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpnlSchedules.Name = "gpnlSchedules";
+            this.gpnlSchedules.Size = new System.Drawing.Size(397, 207);
+            this.gpnlSchedules.TabIndex = 12;
+            // 
+            // btnSchedules
+            // 
+            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
+            this.btnSchedules.FlatAppearance.BorderSize = 0;
+            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.ForeColor = System.Drawing.Color.White;
+            this.btnSchedules.Location = new System.Drawing.Point(3, 24);
+            this.btnSchedules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(392, 150);
+            this.btnSchedules.TabIndex = 10;
+            this.btnSchedules.Text = "Schedules";
+            this.btnSchedules.UseVisualStyleBackColor = false;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
+            // 
+            // gpnlStock
+            // 
+            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlStock.Controls.Add(this.btnStock);
+            this.gpnlStock.Location = new System.Drawing.Point(376, 0);
+            this.gpnlStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpnlStock.Name = "gpnlStock";
+            this.gpnlStock.Size = new System.Drawing.Size(245, 207);
+            this.gpnlStock.TabIndex = 11;
+            // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.ForeColor = System.Drawing.Color.White;
+            this.btnStock.Location = new System.Drawing.Point(3, 24);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(243, 150);
+            this.btnStock.TabIndex = 10;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
+            // gpnlEmployees
+            // 
+            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.gpnlEmployees.Controls.Add(this.btnEmployees);
+            this.gpnlEmployees.Location = new System.Drawing.Point(1027, 0);
+            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpnlEmployees.Name = "gpnlEmployees";
+            this.gpnlEmployees.Size = new System.Drawing.Size(419, 207);
+            this.gpnlEmployees.TabIndex = 12;
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
+            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Location = new System.Drawing.Point(-3, 24);
+            this.btnEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(419, 150);
+            this.btnEmployees.TabIndex = 10;
+            this.btnEmployees.Text = "Employees";
+            this.btnEmployees.UseVisualStyleBackColor = false;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // ProductForm
             // 
@@ -1889,11 +1922,6 @@ namespace LAMN_Software
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
             this.pnlTabCover.ResumeLayout(false);
-            this.gpnlStatsType.ResumeLayout(false);
-            this.gpnlStatistics.ResumeLayout(false);
-            this.gpnlSchedules.ResumeLayout(false);
-            this.gpnlStock.ResumeLayout(false);
-            this.gpnlEmployees.ResumeLayout(false);
             this.tcNavigator.ResumeLayout(false);
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
@@ -1912,6 +1940,11 @@ namespace LAMN_Software
             this.tpEmployeeAdd.ResumeLayout(false);
             this.tpEmployeeAdd.PerformLayout();
             this.pnlBar.ResumeLayout(false);
+            this.gpnlStatsType.ResumeLayout(false);
+            this.gpnlStatistics.ResumeLayout(false);
+            this.gpnlSchedules.ResumeLayout(false);
+            this.gpnlStock.ResumeLayout(false);
+            this.gpnlEmployees.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2045,10 +2078,17 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn MinimumStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalSold;
         private System.Windows.Forms.DataGridView dgvEmployees;
+        private System.Windows.Forms.Button button_loadTemplate;
+        private System.Windows.Forms.Button button_saveAsTemplate;
+        private System.Windows.Forms.ComboBox cbxActiveInactiveEmployees;
+        private System.Windows.Forms.Label lblActiveInactiveEmployees;
+        private System.Windows.Forms.Label lblSalary;
+        private System.Windows.Forms.TextBox tbxSalary;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmployeeObj;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSecondName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSalaryPerHour;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvBsn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvDateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvPhoneNumber;
@@ -2056,9 +2096,5 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceRelation;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvQuittingReason;
-        private System.Windows.Forms.Button button_loadTemplate;
-        private System.Windows.Forms.Button button_saveAsTemplate;
-        private System.Windows.Forms.ComboBox cbxActiveInactiveEmployees;
-        private System.Windows.Forms.Label lblActiveInactiveEmployees;
     }
 }
