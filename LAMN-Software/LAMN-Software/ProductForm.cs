@@ -30,14 +30,15 @@ namespace LAMN_Software
             LH = new LoginHandler();
             FillStockViewActive();
             FillScheduleGridView();
+            FillActiveEmployees();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
+            cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
-            FillEmployeeDGV();
         }
 
         //Method to show correct buttons based on the user permission
@@ -344,30 +345,33 @@ namespace LAMN_Software
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
 
-            FillEmployeeDGV();
         }
 
-        public void FillEmployeeDGV()
+
+        public void FillActiveEmployees()
         {
             dgvEmployees.Rows.Clear();
             if (EH.GetAllEmployeesFromDB() == null)
             {
                 foreach (Employee e in EH.GetAllEmployees())
                 {
-                    DataGridViewRow newRow = new DataGridViewRow();
-                    newRow.CreateCells(dgvEmployees);
-                    newRow.Cells[0].Value = e;
-                    newRow.Cells[1].Value = e.FirstName;
-                    newRow.Cells[2].Value = e.SecondName;
-                    newRow.Cells[3].Value = e.Position;
-                    newRow.Cells[4].Value = e.Bsn;
-                    newRow.Cells[5].Value = e.DateOfBirth;
-                    newRow.Cells[6].Value = e.PhoneNumber;
-                    newRow.Cells[7].Value = e.Email;
-                    newRow.Cells[8].Value = e.IceNumber;
-                    newRow.Cells[9].Value = e.IceRelationship;
-                    newRow.Cells[10].Value = e.QuittingReason;
-                    dgvEmployees.Rows.Add(newRow);
+                    if(string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                    {
+                        DataGridViewRow newRow = new DataGridViewRow();
+                        newRow.CreateCells(dgvEmployees);
+                        newRow.Cells[0].Value = e;
+                        newRow.Cells[1].Value = e.FirstName;
+                        newRow.Cells[2].Value = e.SecondName;
+                        newRow.Cells[3].Value = e.Position;
+                        newRow.Cells[4].Value = e.Bsn;
+                        newRow.Cells[5].Value = e.DateOfBirth;
+                        newRow.Cells[6].Value = e.PhoneNumber;
+                        newRow.Cells[7].Value = e.Email;
+                        newRow.Cells[8].Value = e.IceNumber;
+                        newRow.Cells[9].Value = e.IceRelationship;
+                        newRow.Cells[10].Value = e.QuittingReason;
+                        dgvEmployees.Rows.Add(newRow);
+                    }
                 }
             }
             else
@@ -375,6 +379,39 @@ namespace LAMN_Software
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
         }
+
+        public void FillTerminatedEmployees()
+        {
+            dgvEmployees.Rows.Clear();
+            if (EH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee e in EH.GetAllEmployees())
+                {
+                    if (!string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                    {
+                        DataGridViewRow newRow = new DataGridViewRow();
+                        newRow.CreateCells(dgvEmployees);
+                        newRow.Cells[0].Value = e;
+                        newRow.Cells[1].Value = e.FirstName;
+                        newRow.Cells[2].Value = e.SecondName;
+                        newRow.Cells[3].Value = e.Position;
+                        newRow.Cells[4].Value = e.Bsn;
+                        newRow.Cells[5].Value = e.DateOfBirth;
+                        newRow.Cells[6].Value = e.PhoneNumber;
+                        newRow.Cells[7].Value = e.Email;
+                        newRow.Cells[8].Value = e.IceNumber;
+                        newRow.Cells[9].Value = e.IceRelationship;
+                        newRow.Cells[10].Value = e.QuittingReason;
+                        dgvEmployees.Rows.Add(newRow);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
+            }
+        }
+
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
@@ -546,7 +583,7 @@ namespace LAMN_Software
                 if (add == null)
                 {
                     add = LH.AddLoginDetails(username, password);
-                    FillEmployeeDGV();
+                    FillActiveEmployees();
                     MessageBox.Show("Employee added succesfully.");
                     return;
                 }
@@ -562,7 +599,8 @@ namespace LAMN_Software
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-            FillEmployeeDGV();
+            FillActiveEmployees();
+            cbxActiveInactiveEmployees.SelectedIndex = 0;
         }
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
@@ -574,7 +612,8 @@ namespace LAMN_Software
 
                 if (update == null)
                 {
-                    FillEmployeeDGV();
+                    FillActiveEmployees();
+                    cbxActiveInactiveEmployees.SelectedIndex = 0;
                     MessageBox.Show("Employee edited succesfully");
                     return;
                 }
@@ -684,9 +723,6 @@ namespace LAMN_Software
 
         private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
         {
-            //foreach edited combox push to the DB.
-            //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
-            //Easier syntax but the semantics could be optimalized.
 
 
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
@@ -1019,6 +1055,20 @@ namespace LAMN_Software
             cbxStats3.Text = "Stock 3";
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
+        }
+
+        private void cbxActiveInactiveEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbxActiveInactiveEmployees.SelectedIndex==0)
+            {
+                btnDeleteEmployee.Visible = true;
+                FillActiveEmployees();
+            }
+            else 
+            {
+                btnDeleteEmployee.Visible = false;
+                FillTerminatedEmployees();
+            }
         }
     }
 }
