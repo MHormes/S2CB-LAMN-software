@@ -48,7 +48,7 @@ namespace LAMN_Software
             {
                 tcNavigator.TabPages.Remove(tpStock);
                 tcNavigator.TabPages.Remove(tpStockAdd);
-                tcNavigator.TabPages.Remove(tpStatistics);
+                tcNavigator.TabPages.Remove(tpStatsStock);
                 btnStatistics.Enabled = false;
                 btnStock.Enabled = false;
             }
@@ -56,7 +56,7 @@ namespace LAMN_Software
             {
                 tcNavigator.TabPages.Remove(tpEmployees);
                 tcNavigator.TabPages.Remove(tpEmployeeAdd);
-                tcNavigator.TabPages.Remove(tpStatistics);
+                tcNavigator.TabPages.Remove(tpStatsStock);
                 btnEmployees.Enabled = false;
             }
         }
@@ -887,7 +887,7 @@ namespace LAMN_Software
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpStatistics;
+            tcNavigator.SelectedTab = tpStatsStock;
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);

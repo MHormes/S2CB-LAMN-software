@@ -96,7 +96,7 @@ namespace LAMN_Software
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.btnSearchEmployee = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.tpStatistics = new System.Windows.Forms.TabPage();
+            this.tpStatsStock = new System.Windows.Forms.TabPage();
             this.btnDeselectStatsStock3 = new System.Windows.Forms.Button();
             this.btnDeselectStatsStock2 = new System.Windows.Forms.Button();
             this.btnDeselectStatsStock1 = new System.Windows.Forms.Button();
@@ -193,7 +193,7 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedules)).BeginInit();
             this.tpEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
-            this.tpStatistics.SuspendLayout();
+            this.tpStatsStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).BeginInit();
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
@@ -421,7 +421,7 @@ namespace LAMN_Software
             this.tcNavigator.Controls.Add(this.tpStock);
             this.tcNavigator.Controls.Add(this.tpSchedules);
             this.tcNavigator.Controls.Add(this.tpEmployees);
-            this.tcNavigator.Controls.Add(this.tpStatistics);
+            this.tcNavigator.Controls.Add(this.tpStatsStock);
             this.tcNavigator.Controls.Add(this.tpStockAdd);
             this.tcNavigator.Controls.Add(this.tpEmployeeAdd);
             this.tcNavigator.Location = new System.Drawing.Point(12, 104);
@@ -970,23 +970,23 @@ namespace LAMN_Software
             this.btnAddEmployee.UseVisualStyleBackColor = true;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
-            // tpStatistics
+            // tpStatsStock
             // 
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock3);
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock2);
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock1);
-            this.tpStatistics.Controls.Add(this.chartStock);
-            this.tpStatistics.Controls.Add(this.cbxStats3);
-            this.tpStatistics.Controls.Add(this.cbxStats2);
-            this.tpStatistics.Controls.Add(this.cbxStats1);
-            this.tpStatistics.Location = new System.Drawing.Point(4, 18);
-            this.tpStatistics.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.tpStatistics.Size = new System.Drawing.Size(1123, 560);
-            this.tpStatistics.TabIndex = 3;
-            this.tpStatistics.Text = "Statistics";
-            this.tpStatistics.UseVisualStyleBackColor = true;
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock3);
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock2);
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock1);
+            this.tpStatsStock.Controls.Add(this.chartStock);
+            this.tpStatsStock.Controls.Add(this.cbxStats3);
+            this.tpStatsStock.Controls.Add(this.cbxStats2);
+            this.tpStatsStock.Controls.Add(this.cbxStats1);
+            this.tpStatsStock.Location = new System.Drawing.Point(10, 42);
+            this.tpStatsStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpStatsStock.Name = "tpStatistics";
+            this.tpStatsStock.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpStatsStock.Size = new System.Drawing.Size(2996, 1336);
+            this.tpStatsStock.TabIndex = 3;
+            this.tpStatsStock.Text = "Statistics";
+            this.tpStatsStock.UseVisualStyleBackColor = true;
             // 
             // btnDeselectStatsStock3
             // 
@@ -1953,7 +1953,7 @@ namespace LAMN_Software
             this.tpEmployees.ResumeLayout(false);
             this.tpEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
-            this.tpStatistics.ResumeLayout(false);
+            this.tpStatsStock.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).EndInit();
             this.tpStockAdd.ResumeLayout(false);
             this.tpStockAdd.PerformLayout();
@@ -1977,7 +1977,7 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnSchedules;
         private System.Windows.Forms.TabPage tpEmployees;
-        private System.Windows.Forms.TabPage tpStatistics;
+        private System.Windows.Forms.TabPage tpStatsStock;
         private System.Windows.Forms.TextBox tbxSearchStock;
         private System.Windows.Forms.Button btnDeActivateStock;
         private System.Windows.Forms.Button btnEditStock;
