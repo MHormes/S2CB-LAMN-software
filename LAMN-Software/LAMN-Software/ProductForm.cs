@@ -248,7 +248,7 @@ namespace LAMN_Software
                 {
                     FillDataGridViewStock(p, count);
                     UpdateStatsComboboxes(p.Name);
-                    count++; ;
+                    count++;
                 }
             }
         }
@@ -578,7 +578,6 @@ namespace LAMN_Software
 
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
@@ -612,7 +611,6 @@ namespace LAMN_Software
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
-
             try
             {
                 var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text));
@@ -730,8 +728,6 @@ namespace LAMN_Software
 
         private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
         {
-
-
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
 
             try
@@ -791,7 +787,6 @@ namespace LAMN_Software
             //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
             //Easier syntax but the semantics could be optimalized.
 
-
             SCTH.DeleteWeekSchedule();
 
             try
@@ -849,6 +844,7 @@ namespace LAMN_Software
         {
             if (SCTH.GetWeekScheduleFromDB() == null)
             {
+                clearGrid();
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
@@ -880,6 +876,20 @@ namespace LAMN_Software
             else
             {
                 MessageBox.Show("Template not present in database.");
+            }
+        }
+
+        private void clearGrid()
+        {
+            for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
+            {
+                dgvSchedules.Rows[i].Cells[1].Value = null;
+                dgvSchedules.Rows[i].Cells[2].Value = null;
+                dgvSchedules.Rows[i].Cells[3].Value = null;
+                dgvSchedules.Rows[i].Cells[4].Value = null;
+                dgvSchedules.Rows[i].Cells[5].Value = null;
+                dgvSchedules.Rows[i].Cells[6].Value = null;
+                dgvSchedules.Rows[i].Cells[7].Value = null;
             }
         }
 
