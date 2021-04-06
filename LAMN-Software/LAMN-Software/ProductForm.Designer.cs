@@ -2020,7 +2020,7 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridView dgvAllStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EAN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityS;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationS;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityWH;
