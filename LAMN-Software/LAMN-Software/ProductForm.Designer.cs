@@ -1870,7 +1870,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximumSize = new System.Drawing.Size(1153, 689);
             this.MinimumSize = new System.Drawing.Size(575, 345);
-            this.Name = "ProductForm";
+            
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
