@@ -69,7 +69,7 @@ namespace LAMN_Software
                         else if (positionReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[11].ToString(), dr[12].ToString(), Convert.ToDouble(dr[13])));
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[11].ToString(), dr[12].ToString()));
                     }
                 }
                 return null;
@@ -104,7 +104,7 @@ namespace LAMN_Software
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, string quittingReason, double salaryPerHour) 
+        public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, string quittingReason) 
         {
             if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
             {
@@ -135,7 +135,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation, QuittingReason, SalaryPerHour) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation, @quittingReason, @salaryPerHour);";
+                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation, QuittingReason) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation, @quittingReason);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -149,7 +149,6 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
                     cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
                     cmd.Parameters.AddWithValue("@position", position);
-                    cmd.Parameters.AddWithValue("@salaryPerHour", salaryPerHour);
 
                     if (!string.IsNullOrWhiteSpace(addInformation))
                     { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
@@ -175,7 +174,7 @@ namespace LAMN_Software
 
 
         //method for change an employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, double salaryPerHour)
+        public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation)
         {
             if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
             {
@@ -201,12 +200,11 @@ namespace LAMN_Software
             {
                 throw new IncorrectNameException(secondName);
             }
-
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation, SalaryPerHour=@salaryPerHour WHERE BSN=@bsn;";
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -218,7 +216,6 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
                     cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
                     cmd.Parameters.AddWithValue("@position", position);
-                    cmd.Parameters.AddWithValue("@salaryPerHour", salaryPerHour);
 
                     if (!string.IsNullOrWhiteSpace(addInformation))
                     { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
