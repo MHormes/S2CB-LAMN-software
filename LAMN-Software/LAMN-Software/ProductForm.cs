@@ -248,7 +248,7 @@ namespace LAMN_Software
                 {
                     FillDataGridViewStock(p, count);
                     UpdateStatsComboboxes(p.Name);
-                    count++; ;
+                    count++;
                 }
             }
         }
