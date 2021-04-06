@@ -30,14 +30,15 @@ namespace LAMN_Software
             LH = new LoginHandler();
             FillStockViewActive();
             FillScheduleGridView();
+            FillActiveEmployees();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
+            cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
             cbxStatsType.Items.Add("Stock");
             cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
-            FillEmployeeDGV();
         }
 
         //Method to show correct buttons based on the user permission
@@ -344,30 +345,34 @@ namespace LAMN_Software
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
 
-            FillEmployeeDGV();
         }
 
-        public void FillEmployeeDGV()
+
+        public void FillActiveEmployees()
         {
             dgvEmployees.Rows.Clear();
             if (EH.GetAllEmployeesFromDB() == null)
             {
                 foreach (Employee e in EH.GetAllEmployees())
                 {
-                    DataGridViewRow newRow = new DataGridViewRow();
-                    newRow.CreateCells(dgvEmployees);
-                    newRow.Cells[0].Value = e;
-                    newRow.Cells[1].Value = e.FirstName;
-                    newRow.Cells[2].Value = e.SecondName;
-                    newRow.Cells[3].Value = e.Position;
-                    newRow.Cells[4].Value = e.Bsn;
-                    newRow.Cells[5].Value = e.DateOfBirth;
-                    newRow.Cells[6].Value = e.PhoneNumber;
-                    newRow.Cells[7].Value = e.Email;
-                    newRow.Cells[8].Value = e.IceNumber;
-                    newRow.Cells[9].Value = e.IceRelationship;
-                    newRow.Cells[10].Value = e.QuittingReason;
-                    dgvEmployees.Rows.Add(newRow);
+                    if(string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                    {
+                        DataGridViewRow newRow = new DataGridViewRow();
+                        newRow.CreateCells(dgvEmployees);
+                        newRow.Cells[0].Value = e;
+                        newRow.Cells[1].Value = e.FirstName;
+                        newRow.Cells[2].Value = e.SecondName;
+                        newRow.Cells[3].Value = e.Position;
+                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+                        newRow.Cells[5].Value = e.Bsn;
+                        newRow.Cells[6].Value = e.DateOfBirth;
+                        newRow.Cells[7].Value = e.PhoneNumber;
+                        newRow.Cells[8].Value = e.Email;
+                        newRow.Cells[9].Value = e.IceNumber;
+                        newRow.Cells[10].Value = e.IceRelationship;
+                        newRow.Cells[11].Value = e.QuittingReason;
+                        dgvEmployees.Rows.Add(newRow);
+                    }
                 }
             }
             else
@@ -375,6 +380,40 @@ namespace LAMN_Software
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
         }
+
+        public void FillTerminatedEmployees()
+        {
+            dgvEmployees.Rows.Clear();
+            if (EH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee e in EH.GetAllEmployees())
+                {
+                    if (!string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                    {
+                        DataGridViewRow newRow = new DataGridViewRow();
+                        newRow.CreateCells(dgvEmployees);
+                        newRow.Cells[0].Value = e;
+                        newRow.Cells[1].Value = e.FirstName;
+                        newRow.Cells[2].Value = e.SecondName;
+                        newRow.Cells[3].Value = e.Position;
+                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+                        newRow.Cells[5].Value = e.Bsn;
+                        newRow.Cells[6].Value = e.DateOfBirth;
+                        newRow.Cells[7].Value = e.PhoneNumber;
+                        newRow.Cells[8].Value = e.Email;
+                        newRow.Cells[9].Value = e.IceNumber;
+                        newRow.Cells[10].Value = e.IceRelationship;
+                        newRow.Cells[11].Value = e.QuittingReason;
+                        dgvEmployees.Rows.Add(newRow);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
+            }
+        }
+
 
         private void btnDeleteEmployee_Click(object sender, EventArgs e)
         {
@@ -405,12 +444,14 @@ namespace LAMN_Software
                     newRow.Cells[1].Value = emp.FirstName;
                     newRow.Cells[2].Value = emp.SecondName;
                     newRow.Cells[3].Value = emp.Position;
-                    newRow.Cells[4].Value = emp.Bsn;
-                    newRow.Cells[5].Value = emp.DateOfBirth;
-                    newRow.Cells[6].Value = emp.PhoneNumber;
-                    newRow.Cells[7].Value = emp.Email;
-                    newRow.Cells[8].Value = emp.IceNumber;
-                    newRow.Cells[9].Value = emp.IceRelationship;
+                    newRow.Cells[4].Value = String.Format("€{0:0.00}", emp.SalaryPerHour);
+                    newRow.Cells[5].Value = emp.Bsn;
+                    newRow.Cells[6].Value = emp.DateOfBirth;
+                    newRow.Cells[7].Value = emp.PhoneNumber;
+                    newRow.Cells[8].Value = emp.Email;
+                    newRow.Cells[9].Value = emp.IceNumber;
+                    newRow.Cells[10].Value = emp.IceRelationship;
+                    newRow.Cells[11].Value = emp.QuittingReason;
                     dgvEmployees.Rows.Add(newRow);
                 }
             }
@@ -425,6 +466,8 @@ namespace LAMN_Software
             tbxEmployeeAdd_PhoneNumber.Text = "";
             tbxEmployeeAdd_ICENumber.Text = "";
             tbxEmployeeAdd_AdditonalInfo.Text = "";
+            tbxSalary.Text = "";
+            dtpEmployeeAdd_DateOfBirth.Enabled = true;
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
             tbxEmployeeAdd_BSN.Enabled = true;
@@ -461,6 +504,7 @@ namespace LAMN_Software
             tbxEmployeeAdd_PhoneNumber.Text = $"{emp.PhoneNumber}";
             tbxEmployeeAdd_ICENumber.Text = $"{emp.IceNumber}";
             tbxEmployeeAdd_AdditonalInfo.Text = $"{emp.AddInformation}";
+            tbxSalary.Text = $"{emp.SalaryPerHour}";
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
 
@@ -541,12 +585,12 @@ namespace LAMN_Software
                 string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
                 string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
 
-                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "");
+                var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "", Convert.ToDouble(tbxSalary.Text));
 
                 if (add == null)
                 {
                     add = LH.AddLoginDetails(username, password);
-                    FillEmployeeDGV();
+                    FillActiveEmployees();
                     MessageBox.Show("Employee added succesfully.");
                     return;
                 }
@@ -562,7 +606,8 @@ namespace LAMN_Software
         private void btnBackToEmpPage_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpEmployees;
-            FillEmployeeDGV();
+            FillActiveEmployees();
+            cbxActiveInactiveEmployees.SelectedIndex = 0;
         }
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
@@ -570,11 +615,12 @@ namespace LAMN_Software
 
             try
             {
-                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text);
+                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text));
 
                 if (update == null)
                 {
-                    FillEmployeeDGV();
+                    FillActiveEmployees();
+                    cbxActiveInactiveEmployees.SelectedIndex = 0;
                     MessageBox.Show("Employee edited succesfully");
                     return;
                 }
@@ -684,9 +730,6 @@ namespace LAMN_Software
 
         private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
         {
-            //foreach edited combox push to the DB.
-            //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
-            //Easier syntax but the semantics could be optimalized.
 
 
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
@@ -1019,6 +1062,20 @@ namespace LAMN_Software
             cbxStats3.Text = "Stock 3";
             UpdateStockGraph();
             btnDeselectStatsStock3.Visible = false;
+        }
+
+        private void cbxActiveInactiveEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbxActiveInactiveEmployees.SelectedIndex==0)
+            {
+                btnDeleteEmployee.Visible = true;
+                FillActiveEmployees();
+            }
+            else 
+            {
+                btnDeleteEmployee.Visible = false;
+                FillTerminatedEmployees();
+            }
         }
     }
 }
