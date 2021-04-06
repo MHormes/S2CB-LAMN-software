@@ -31,13 +31,13 @@ namespace LAMN_Software
             FillStockViewActive();
             FillScheduleGridView();
             FillActiveEmployees();
+            UpdateEmployeePieChart();
+            AdjustColumnWidthStock();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
             cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
-            cbxStatsType.Items.Add("Stock");
-            cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
         }
 
@@ -321,8 +321,8 @@ namespace LAMN_Software
             dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
             dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
             dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
-            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
-            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice; // "‎€" +
+            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice; // "‎€" +
             dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
             dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
         }
@@ -887,7 +887,7 @@ namespace LAMN_Software
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpStatsStock;
+            StatsTypeCheck();
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
@@ -1025,6 +1025,63 @@ namespace LAMN_Software
             }
         }
 
+        public void UpdateEmployeePieChart()
+        {
+            int depotCount = 0;
+            int hrCount = 0;
+            int managerCount = 0;
+            int salesCount = 0;
+            int securityCount = 0;
+
+            foreach (var series in chartEmployees.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                switch (e.Position)
+                {
+                    case JobPosition.DEPOT:
+                        depotCount++;
+                        break;
+                    case JobPosition.HR:
+                        hrCount++;
+                        break;
+                    case JobPosition.MANAGER:
+                        managerCount++;
+                        break;
+                    case JobPosition.SALES:
+                        salesCount++;
+                        break;
+                    case JobPosition.SECURITY:
+                        securityCount++;
+                        break;
+                }
+               
+            }
+            if(depotCount > 0)
+            {
+                this.chartEmployees.Series["Positions"].Points.AddXY("Depot", depotCount);
+            }
+            if (hrCount > 0)
+            {
+                this.chartEmployees.Series["Positions"].Points.AddXY("HR", hrCount);
+            }
+            if (managerCount > 0)
+            {
+                this.chartEmployees.Series["Positions"].Points.AddXY("Manager", managerCount);
+            }
+            if (salesCount > 0)
+            {
+                this.chartEmployees.Series["Positions"].Points.AddXY("Sales", salesCount);
+            }
+            if (securityCount > 0)
+            {
+                this.chartEmployees.Series["Positions"].Points.AddXY("Security", securityCount);
+            }
+        }
+
+
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
             UpdateStockGraph();
@@ -1076,6 +1133,41 @@ namespace LAMN_Software
                 btnDeleteEmployee.Visible = false;
                 FillTerminatedEmployees();
             }
+        }
+
+        public void AdjustColumnWidthStock()
+        {
+            dgvAllStock.RowHeadersWidth = 30;
+            dgvAllStock.Columns[0].Width = 30; // ID
+            dgvAllStock.Columns[1].Width = 120; // EAN
+            dgvAllStock.Columns[2].Width = 130; // Name
+            dgvAllStock.Columns[3].Width = 70; // Quantity in store
+            dgvAllStock.Columns[4].Width = 70; // Location in store
+            dgvAllStock.Columns[5].Width = 80; // Quantity in warehouse
+            dgvAllStock.Columns[6].Width = 80; // Location in warehouse
+            dgvAllStock.Columns[7].Width = 70; // Cost price
+            dgvAllStock.Columns[8].Width = 70; // Sell price
+            dgvAllStock.Columns[9].Width = 70; // Minimum stock
+            dgvAllStock.Columns[10].Width = 70; // Total sold
+        }
+
+        public void StatsTypeCheck()
+        {
+            if (cbxStatsType.SelectedItem.ToString() == "Stock")
+            {
+                tcNavigator.SelectedTab = tpStatsStock;
+                return;
+            }
+            if (cbxStatsType.SelectedItem.ToString() == "Employees")
+            {
+                tcNavigator.SelectedTab = tpStatsEmployee;
+                return;
+            }
+        }
+
+        private void cbxStatsType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           StatsTypeCheck();
         }
     }
 }
