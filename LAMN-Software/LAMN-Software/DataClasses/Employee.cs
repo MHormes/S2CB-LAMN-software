@@ -19,10 +19,11 @@ namespace LAMN_Software
         public DateTime ContractEnding { get; set; }
         public string AddInformation { get; set; }
         public string QuittingReason { get; set; }
+        public double SalaryPerHour { get; set; }
 
         private string fullName;
 
-        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason)
+        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason, double salaryPerHour)
         {
             FirstName = firstName;
             SecondName = secondName;
@@ -37,6 +38,7 @@ namespace LAMN_Software
             AddInformation = addInformation;
             fullName = FirstName + " " + SecondName;
             QuittingReason = quittingReason;
+            SalaryPerHour = salaryPerHour;
         }
 
         public override string ToString()
