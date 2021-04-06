@@ -183,16 +183,6 @@ namespace LAMN_Software
             this.TotalSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpStatsEmployee = new System.Windows.Forms.TabPage();
             this.chartEmployees = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.gpnlStatsType = new LAMN_Software.GradientPanel();
-            this.cbxStatsType = new System.Windows.Forms.ComboBox();
-            this.gpnlStatistics = new LAMN_Software.GradientPanel();
-            this.btnStatistics = new System.Windows.Forms.Button();
-            this.gpnlSchedules = new LAMN_Software.GradientPanel();
-            this.btnSchedules = new System.Windows.Forms.Button();
-            this.gpnlStock = new LAMN_Software.GradientPanel();
-            this.btnStock = new System.Windows.Forms.Button();
-            this.gpnlEmployees = new LAMN_Software.GradientPanel();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
