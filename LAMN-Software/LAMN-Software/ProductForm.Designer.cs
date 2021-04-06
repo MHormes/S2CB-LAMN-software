@@ -934,21 +934,21 @@ namespace LAMN_Software
             // 
             // tpStatsStock
             // 
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock3);
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock2);
-            this.tpStatistics.Controls.Add(this.btnDeselectStatsStock1);
-            this.tpStatistics.Controls.Add(this.chartStock);
-            this.tpStatistics.Controls.Add(this.cbxStats3);
-            this.tpStatistics.Controls.Add(this.cbxStats2);
-            this.tpStatistics.Controls.Add(this.cbxStats1);
-            this.tpStatistics.Location = new System.Drawing.Point(10, 42);
-            this.tpStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpStatistics.Name = "tpStatistics";
-            this.tpStatistics.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpStatistics.Size = new System.Drawing.Size(2996, 1336);
-            this.tpStatistics.TabIndex = 3;
-            this.tpStatistics.Text = "Statistics";
-            this.tpStatistics.UseVisualStyleBackColor = true;
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock3);
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock2);
+            this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock1);
+            this.tpStatsStock.Controls.Add(this.chartStock);
+            this.tpStatsStock.Controls.Add(this.cbxStats3);
+            this.tpStatsStock.Controls.Add(this.cbxStats2);
+            this.tpStatsStock.Controls.Add(this.cbxStats1);
+            this.tpStatsStock.Location = new System.Drawing.Point(10, 42);
+            this.tpStatsStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpStatsStock.Name = "tpStatistics";
+            this.tpStatsStock.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpStatsStock.Size = new System.Drawing.Size(2996, 1336);
+            this.tpStatsStock.TabIndex = 3;
+            this.tpStatsStock.Text = "Statistics";
+            this.tpStatsStock.UseVisualStyleBackColor = true;
             // 
             // btnDeselectStatsStock3
             // 
