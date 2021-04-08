@@ -1,7 +1,0 @@
-const hamburger = document.getElementById('hamburger');
-const navUL = document.getElementById('nav-link');
-
-hamburger.addEventListener('click', () =>{
-    console.log("Test");
-    navUL.classList.toggle('show');
-});
