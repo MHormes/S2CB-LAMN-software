@@ -374,6 +374,7 @@ namespace LAMN_Software
                         dgvEmployees.Rows.Add(newRow);
                     }
                 }
+                UpdateEmployeePieChart();
             }
             else
             {
@@ -1043,51 +1044,56 @@ namespace LAMN_Software
             int salesCount = 0;
             int securityCount = 0;
 
-            foreach (var series in chartEmployees.Series)
+            foreach (var series in chartEmployeesPosition.Series)
             {
                 series.Points.Clear();
             }
             foreach (Employee e in EH.GetAllEmployees())
             {
-                switch (e.Position)
+                if (string.IsNullOrEmpty((e.QuittingReason).ToString()))
                 {
-                    case JobPosition.DEPOT:
-                        depotCount++;
-                        break;
-                    case JobPosition.HR:
-                        hrCount++;
-                        break;
-                    case JobPosition.MANAGER:
-                        managerCount++;
-                        break;
-                    case JobPosition.SALES:
-                        salesCount++;
-                        break;
-                    case JobPosition.SECURITY:
-                        securityCount++;
-                        break;
+                    switch (e.Position)
+                    {
+                        case JobPosition.DEPOT:
+                            depotCount++;
+                            break;
+                        case JobPosition.HR:
+                            hrCount++;
+                            break;
+                        case JobPosition.MANAGER:
+                            managerCount++;
+                            break;
+                        case JobPosition.SALES:
+                            salesCount++;
+                            break;
+                        case JobPosition.SECURITY:
+                            securityCount++;
+                            break;
+                    }
                 }
-               
             }
+
+            int totalCount = depotCount + hrCount + managerCount + salesCount + securityCount;
+
             if(depotCount > 0)
             {
-                this.chartEmployees.Series["Positions"].Points.AddXY("Depot", depotCount);
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Depot\n[{depotCount}/{totalCount}]", depotCount);
             }
             if (hrCount > 0)
             {
-                this.chartEmployees.Series["Positions"].Points.AddXY("HR", hrCount);
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"HR\n[{hrCount}/{totalCount}]", hrCount);
             }
             if (managerCount > 0)
             {
-                this.chartEmployees.Series["Positions"].Points.AddXY("Manager", managerCount);
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Manager\n[{managerCount}/{totalCount}]", managerCount);
             }
             if (salesCount > 0)
             {
-                this.chartEmployees.Series["Positions"].Points.AddXY("Sales", salesCount);
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Sales\n[{salesCount}/{totalCount}]", salesCount);
             }
             if (securityCount > 0)
             {
-                this.chartEmployees.Series["Positions"].Points.AddXY("Security", securityCount);
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Security\n[{securityCount}/{totalCount}]", securityCount);
             }
         }
 
@@ -1150,15 +1156,15 @@ namespace LAMN_Software
             dgvAllStock.RowHeadersWidth = 30;
             dgvAllStock.Columns[0].Width = 30; // ID
             dgvAllStock.Columns[1].Width = 120; // EAN
-            dgvAllStock.Columns[2].Width = 130; // Name
-            dgvAllStock.Columns[3].Width = 70; // Quantity in store
-            dgvAllStock.Columns[4].Width = 70; // Location in store
-            dgvAllStock.Columns[5].Width = 80; // Quantity in warehouse
-            dgvAllStock.Columns[6].Width = 80; // Location in warehouse
-            dgvAllStock.Columns[7].Width = 70; // Cost price
-            dgvAllStock.Columns[8].Width = 70; // Sell price
-            dgvAllStock.Columns[9].Width = 70; // Minimum stock
-            dgvAllStock.Columns[10].Width = 70; // Total sold
+            dgvAllStock.Columns[2].Width = 170; // Name
+            dgvAllStock.Columns[3].Width = 80; // Quantity in store
+            dgvAllStock.Columns[4].Width = 80; // Location in store
+            dgvAllStock.Columns[5].Width = 130; // Quantity in warehouse
+            dgvAllStock.Columns[6].Width = 130; // Location in warehouse
+            dgvAllStock.Columns[7].Width = 60; // Cost price
+            dgvAllStock.Columns[8].Width = 60; // Sell price
+            dgvAllStock.Columns[9].Width = 75; // Minimum stock
+            dgvAllStock.Columns[10].Width = 75; // Total sold
         }
 
         public void StatsTypeCheck()
@@ -1178,6 +1184,25 @@ namespace LAMN_Software
         private void cbxStatsType_SelectedIndexChanged(object sender, EventArgs e)
         {
            StatsTypeCheck();
+        }
+
+        private void btnEmpStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+
+            cbxStatsType.SelectedItem = "Employees";
         }
     }
 }

@@ -29,13 +29,13 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
@@ -54,6 +54,17 @@ namespace LAMN_Software
             this.tcNavigator = new System.Windows.Forms.TabControl();
             this.tpStock = new System.Windows.Forms.TabPage();
             this.dgvAllStock = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinimumStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnStock_ReActivateProduct = new System.Windows.Forms.Button();
             this.cbxStockCurrentlyShowing = new System.Windows.Forms.ComboBox();
             this.lblStockCurrentlyShowing = new System.Windows.Forms.Label();
@@ -166,23 +177,13 @@ namespace LAMN_Software
             this.lblEmployeeAdd_BSN = new System.Windows.Forms.Label();
             this.tbxEmployeeAdd_SecondName = new System.Windows.Forms.TextBox();
             this.lblEmployeeAdd_SecondName = new System.Windows.Forms.Label();
+            this.tpStatsEmployee = new System.Windows.Forms.TabPage();
+            this.chartEmployeesPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBox_defocus = new System.Windows.Forms.TextBox();
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationWH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinimumStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tpStatsEmployee = new System.Windows.Forms.TabPage();
-            this.chartEmployees = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnEmpStats = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -202,14 +203,9 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).BeginInit();
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
-            this.pnlBar.SuspendLayout();
             this.tpStatsEmployee.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployees)).BeginInit();
-            this.gpnlStatsType.SuspendLayout();
-            this.gpnlStatistics.SuspendLayout();
-            this.gpnlSchedules.SuspendLayout();
-            this.gpnlStock.SuspendLayout();
-            this.gpnlEmployees.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).BeginInit();
+            this.pnlBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -253,10 +249,10 @@ namespace LAMN_Software
             this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
             this.gpnlStatsType.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.gpnlStatsType.Controls.Add(this.cbxStatsType);
-            this.gpnlStatsType.Location = new System.Drawing.Point(700, 0);
-            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gpnlStatsType.Location = new System.Drawing.Point(1400, 0);
+            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(2);
             this.gpnlStatsType.Name = "gpnlStatsType";
-            this.gpnlStatsType.Size = new System.Drawing.Size(139, 87);
+            this.gpnlStatsType.Size = new System.Drawing.Size(278, 167);
             this.gpnlStatsType.TabIndex = 14;
             this.gpnlStatsType.Visible = false;
             // 
@@ -264,22 +260,27 @@ namespace LAMN_Software
             // 
             this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
             this.cbxStatsType.FormattingEnabled = true;
-            this.cbxStatsType.Location = new System.Drawing.Point(0, 28);
-            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.cbxStatsType.Items.AddRange(new object[] {
+            "Stock",
+            "Employees"});
+            this.cbxStatsType.Location = new System.Drawing.Point(0, 54);
+            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStatsType.Name = "cbxStatsType";
-            this.cbxStatsType.Size = new System.Drawing.Size(118, 30);
+            this.cbxStatsType.Size = new System.Drawing.Size(232, 50);
             this.cbxStatsType.TabIndex = 0;
+            this.cbxStatsType.Text = "Stock";
             this.cbxStatsType.Visible = false;
+            this.cbxStatsType.SelectedIndexChanged += new System.EventHandler(this.cbxStatsType_SelectedIndexChanged);
             // 
             // gpnlStatistics
             // 
             this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
             this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.gpnlStatistics.Controls.Add(this.btnStatistics);
-            this.gpnlStatistics.Location = new System.Drawing.Point(543, -1);
-            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gpnlStatistics.Location = new System.Drawing.Point(1086, -2);
+            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.gpnlStatistics.Name = "gpnlStatistics";
-            this.gpnlStatistics.Size = new System.Drawing.Size(157, 87);
+            this.gpnlStatistics.Size = new System.Drawing.Size(314, 167);
             this.gpnlStatistics.TabIndex = 13;
             // 
             // btnStatistics
@@ -291,10 +292,10 @@ namespace LAMN_Software
             this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(-1, 10);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnStatistics.Location = new System.Drawing.Point(-2, 19);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(157, 63);
+            this.btnStatistics.Size = new System.Drawing.Size(314, 121);
             this.btnStatistics.TabIndex = 10;
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.UseVisualStyleBackColor = false;
@@ -346,10 +347,10 @@ namespace LAMN_Software
             this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
             this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.gpnlSchedules.Controls.Add(this.btnSchedules);
-            this.gpnlSchedules.Location = new System.Drawing.Point(234, -1);
-            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gpnlSchedules.Location = new System.Drawing.Point(468, -2);
+            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.gpnlSchedules.Name = "gpnlSchedules";
-            this.gpnlSchedules.Size = new System.Drawing.Size(149, 87);
+            this.gpnlSchedules.Size = new System.Drawing.Size(298, 167);
             this.gpnlSchedules.TabIndex = 12;
             // 
             // btnSchedules
@@ -361,10 +362,10 @@ namespace LAMN_Software
             this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedules.ForeColor = System.Drawing.Color.White;
-            this.btnSchedules.Location = new System.Drawing.Point(1, 10);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnSchedules.Location = new System.Drawing.Point(2, 19);
+            this.btnSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(147, 63);
+            this.btnSchedules.Size = new System.Drawing.Size(294, 121);
             this.btnSchedules.TabIndex = 10;
             this.btnSchedules.Text = "Schedules";
             this.btnSchedules.UseVisualStyleBackColor = false;
@@ -375,10 +376,10 @@ namespace LAMN_Software
             this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
             this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.gpnlStock.Controls.Add(this.btnStock);
-            this.gpnlStock.Location = new System.Drawing.Point(141, 0);
-            this.gpnlStock.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gpnlStock.Location = new System.Drawing.Point(282, 0);
+            this.gpnlStock.Margin = new System.Windows.Forms.Padding(2);
             this.gpnlStock.Name = "gpnlStock";
-            this.gpnlStock.Size = new System.Drawing.Size(92, 87);
+            this.gpnlStock.Size = new System.Drawing.Size(184, 167);
             this.gpnlStock.TabIndex = 11;
             // 
             // btnStock
@@ -390,10 +391,10 @@ namespace LAMN_Software
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStock.ForeColor = System.Drawing.Color.White;
-            this.btnStock.Location = new System.Drawing.Point(1, 10);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnStock.Location = new System.Drawing.Point(2, 19);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(91, 63);
+            this.btnStock.Size = new System.Drawing.Size(182, 121);
             this.btnStock.TabIndex = 10;
             this.btnStock.Text = "Stock";
             this.btnStock.UseVisualStyleBackColor = false;
@@ -404,10 +405,10 @@ namespace LAMN_Software
             this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
             this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.gpnlEmployees.Controls.Add(this.btnEmployees);
-            this.gpnlEmployees.Location = new System.Drawing.Point(385, 0);
-            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gpnlEmployees.Location = new System.Drawing.Point(770, 0);
+            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.gpnlEmployees.Name = "gpnlEmployees";
-            this.gpnlEmployees.Size = new System.Drawing.Size(157, 87);
+            this.gpnlEmployees.Size = new System.Drawing.Size(314, 167);
             this.gpnlEmployees.TabIndex = 12;
             // 
             // btnEmployees
@@ -419,10 +420,10 @@ namespace LAMN_Software
             this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(-1, 10);
-            this.btnEmployees.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnEmployees.Location = new System.Drawing.Point(-2, 19);
+            this.btnEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(157, 63);
+            this.btnEmployees.Size = new System.Drawing.Size(314, 121);
             this.btnEmployees.TabIndex = 10;
             this.btnEmployees.Text = "Employees";
             this.btnEmployees.UseVisualStyleBackColor = false;
@@ -488,6 +489,94 @@ namespace LAMN_Software
             this.dgvAllStock.RowHeadersWidth = 102;
             this.dgvAllStock.Size = new System.Drawing.Size(2228, 935);
             this.dgvAllStock.TabIndex = 15;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 12;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 250;
+            // 
+            // EAN
+            // 
+            this.EAN.HeaderText = "EAN";
+            this.EAN.MinimumWidth = 12;
+            this.EAN.Name = "EAN";
+            this.EAN.ReadOnly = true;
+            this.EAN.Width = 250;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Name";
+            this.ProductName.MinimumWidth = 12;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.Width = 250;
+            // 
+            // QuantityS
+            // 
+            this.QuantityS.HeaderText = "Quantity in Store";
+            this.QuantityS.MinimumWidth = 12;
+            this.QuantityS.Name = "QuantityS";
+            this.QuantityS.ReadOnly = true;
+            this.QuantityS.Width = 250;
+            // 
+            // LocationS
+            // 
+            this.LocationS.HeaderText = "Location in Store";
+            this.LocationS.MinimumWidth = 12;
+            this.LocationS.Name = "LocationS";
+            this.LocationS.ReadOnly = true;
+            this.LocationS.Width = 250;
+            // 
+            // QuantityWH
+            // 
+            this.QuantityWH.HeaderText = "Quantity in the warehouse";
+            this.QuantityWH.MinimumWidth = 12;
+            this.QuantityWH.Name = "QuantityWH";
+            this.QuantityWH.ReadOnly = true;
+            this.QuantityWH.Width = 250;
+            // 
+            // LocationWH
+            // 
+            this.LocationWH.HeaderText = "Location in the warehouse";
+            this.LocationWH.MinimumWidth = 12;
+            this.LocationWH.Name = "LocationWH";
+            this.LocationWH.ReadOnly = true;
+            this.LocationWH.Width = 250;
+            // 
+            // CostPrice
+            // 
+            this.CostPrice.HeaderText = "Cost price (€)";
+            this.CostPrice.MinimumWidth = 12;
+            this.CostPrice.Name = "CostPrice";
+            this.CostPrice.ReadOnly = true;
+            this.CostPrice.Width = 250;
+            // 
+            // SellPrice
+            // 
+            this.SellPrice.HeaderText = "Sell price (€)";
+            this.SellPrice.MinimumWidth = 12;
+            this.SellPrice.Name = "SellPrice";
+            this.SellPrice.ReadOnly = true;
+            this.SellPrice.Width = 250;
+            // 
+            // MinimumStock
+            // 
+            this.MinimumStock.HeaderText = "Minimum stock required";
+            this.MinimumStock.MinimumWidth = 12;
+            this.MinimumStock.Name = "MinimumStock";
+            this.MinimumStock.ReadOnly = true;
+            this.MinimumStock.Width = 250;
+            // 
+            // TotalSold
+            // 
+            this.TotalSold.HeaderText = "Total amount sold";
+            this.TotalSold.MinimumWidth = 12;
+            this.TotalSold.Name = "TotalSold";
+            this.TotalSold.ReadOnly = true;
+            this.TotalSold.Width = 250;
             // 
             // btnStock_ReActivateProduct
             // 
@@ -772,6 +861,7 @@ namespace LAMN_Software
             // 
             // tpEmployees
             // 
+            this.tpEmployees.Controls.Add(this.btnEmpStats);
             this.tpEmployees.Controls.Add(this.cbxActiveInactiveEmployees);
             this.tpEmployees.Controls.Add(this.lblActiveInactiveEmployees);
             this.tpEmployees.Controls.Add(this.dgvEmployees);
@@ -951,24 +1041,24 @@ namespace LAMN_Software
             // btnDeleteEmployee
             // 
             this.btnDeleteEmployee.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnDeleteEmployee.Location = new System.Drawing.Point(452, 1006);
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(872, 1006);
             this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteEmployee.Name = "btnDeleteEmployee";
-            this.btnDeleteEmployee.Size = new System.Drawing.Size(356, 67);
+            this.btnDeleteEmployee.Size = new System.Drawing.Size(476, 67);
             this.btnDeleteEmployee.TabIndex = 13;
-            this.btnDeleteEmployee.Text = "🗑️ Terminate selected";
+            this.btnDeleteEmployee.Text = "🗑️ End contract of selected";
             this.btnDeleteEmployee.UseVisualStyleBackColor = true;
             this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
             // 
             // btnEditEmployee
             // 
             this.btnEditEmployee.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnEditEmployee.Location = new System.Drawing.Point(184, 1006);
+            this.btnEditEmployee.Location = new System.Drawing.Point(395, 1006);
             this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditEmployee.Name = "btnEditEmployee";
-            this.btnEditEmployee.Size = new System.Drawing.Size(264, 67);
+            this.btnEditEmployee.Size = new System.Drawing.Size(467, 67);
             this.btnEditEmployee.TabIndex = 14;
-            this.btnEditEmployee.Text = "✎ Edit selected";
+            this.btnEditEmployee.Text = "✎ Edit selected employee";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
             this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
@@ -990,9 +1080,9 @@ namespace LAMN_Software
             this.btnAddEmployee.Location = new System.Drawing.Point(4, 1006);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(174, 67);
+            this.btnAddEmployee.Size = new System.Drawing.Size(381, 67);
             this.btnAddEmployee.TabIndex = 16;
-            this.btnAddEmployee.Text = "+ Add";
+            this.btnAddEmployee.Text = "+ Add new employee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
@@ -1067,23 +1157,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartStock.Legends.Add(legend1);
+            chartArea9.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartStock.Legends.Add(legend9);
             this.chartStock.Location = new System.Drawing.Point(282, 36);
             this.chartStock.Margin = new System.Windows.Forms.Padding(2);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Store Stock Total";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Warehouse Stock Total";
-            series2.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series1);
-            this.chartStock.Series.Add(series2);
+            series13.ChartArea = "ChartArea1";
+            series13.Legend = "Legend1";
+            series13.Name = "Store Stock Total";
+            series14.ChartArea = "ChartArea1";
+            series14.Legend = "Legend1";
+            series14.Name = "Warehouse Stock Total";
+            series14.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series13);
+            this.chartStock.Series.Add(series14);
             this.chartStock.Size = new System.Drawing.Size(1162, 392);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -1806,6 +1896,35 @@ namespace LAMN_Software
             this.lblEmployeeAdd_SecondName.TabIndex = 21;
             this.lblEmployeeAdd_SecondName.Text = "Second name";
             // 
+            // tpStatsEmployee
+            // 
+            this.tpStatsEmployee.Controls.Add(this.chartEmployeesPosition);
+            this.tpStatsEmployee.Location = new System.Drawing.Point(8, 34);
+            this.tpStatsEmployee.Name = "tpStatsEmployee";
+            this.tpStatsEmployee.Padding = new System.Windows.Forms.Padding(3);
+            this.tpStatsEmployee.Size = new System.Drawing.Size(2246, 1077);
+            this.tpStatsEmployee.TabIndex = 6;
+            this.tpStatsEmployee.Text = "StatsEmp";
+            this.tpStatsEmployee.UseVisualStyleBackColor = true;
+            // 
+            // chartEmployeesPosition
+            // 
+            chartArea10.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend10);
+            this.chartEmployeesPosition.Location = new System.Drawing.Point(3, 0);
+            this.chartEmployeesPosition.Name = "chartEmployeesPosition";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series15.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series15.Legend = "Legend1";
+            series15.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series15);
+            this.chartEmployeesPosition.Size = new System.Drawing.Size(977, 757);
+            this.chartEmployeesPosition.TabIndex = 0;
+            this.chartEmployeesPosition.Text = "chart1";
+            // 
             // textBox_defocus
             // 
             this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
@@ -1859,278 +1978,30 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
-            // ID
+            // btnEmpStats
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 12;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 250;
-            // 
-            // EAN
-            // 
-            this.EAN.HeaderText = "EAN";
-            this.EAN.MinimumWidth = 12;
-            this.EAN.Name = "EAN";
-            this.EAN.ReadOnly = true;
-            this.EAN.Width = 250;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "Name";
-            this.ProductName.MinimumWidth = 12;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            this.ProductName.Width = 250;
-            // 
-            // QuantityS
-            // 
-            this.QuantityS.HeaderText = "Quantity in Store";
-            this.QuantityS.MinimumWidth = 12;
-            this.QuantityS.Name = "QuantityS";
-            this.QuantityS.ReadOnly = true;
-            this.QuantityS.Width = 250;
-            // 
-            // LocationS
-            // 
-            this.LocationS.HeaderText = "Location in Store";
-            this.LocationS.MinimumWidth = 12;
-            this.LocationS.Name = "LocationS";
-            this.LocationS.ReadOnly = true;
-            this.LocationS.Width = 250;
-            // 
-            // QuantityWH
-            // 
-            this.QuantityWH.HeaderText = "Quantity in the warehouse";
-            this.QuantityWH.MinimumWidth = 12;
-            this.QuantityWH.Name = "QuantityWH";
-            this.QuantityWH.ReadOnly = true;
-            this.QuantityWH.Width = 250;
-            // 
-            // LocationWH
-            // 
-            this.LocationWH.HeaderText = "Location in the warehouse";
-            this.LocationWH.MinimumWidth = 12;
-            this.LocationWH.Name = "LocationWH";
-            this.LocationWH.ReadOnly = true;
-            this.LocationWH.Width = 250;
-            // 
-            // CostPrice
-            // 
-            this.CostPrice.HeaderText = "Cost price (€)";
-            this.CostPrice.MinimumWidth = 12;
-            this.CostPrice.Name = "CostPrice";
-            this.CostPrice.ReadOnly = true;
-            this.CostPrice.Width = 250;
-            // 
-            // SellPrice
-            // 
-            this.SellPrice.HeaderText = "Sell price (€)";
-            this.SellPrice.MinimumWidth = 12;
-            this.SellPrice.Name = "SellPrice";
-            this.SellPrice.ReadOnly = true;
-            this.SellPrice.Width = 250;
-            // 
-            // MinimumStock
-            // 
-            this.MinimumStock.HeaderText = "Minimum stock required";
-            this.MinimumStock.MinimumWidth = 12;
-            this.MinimumStock.Name = "MinimumStock";
-            this.MinimumStock.ReadOnly = true;
-            this.MinimumStock.Width = 250;
-            // 
-            // TotalSold
-            // 
-            this.TotalSold.HeaderText = "Total amount sold";
-            this.TotalSold.MinimumWidth = 12;
-            this.TotalSold.Name = "TotalSold";
-            this.TotalSold.ReadOnly = true;
-            this.TotalSold.Width = 250;
-            // 
-            // tpStatsEmployee
-            // 
-            this.tpStatsEmployee.Controls.Add(this.chartEmployees);
-            this.tpStatsEmployee.Location = new System.Drawing.Point(8, 34);
-            this.tpStatsEmployee.Name = "tpStatsEmployee";
-            this.tpStatsEmployee.Padding = new System.Windows.Forms.Padding(3);
-            this.tpStatsEmployee.Size = new System.Drawing.Size(2246, 1077);
-            this.tpStatsEmployee.TabIndex = 6;
-            this.tpStatsEmployee.Text = "StatsEmp";
-            this.tpStatsEmployee.UseVisualStyleBackColor = true;
-            // 
-            // chartEmployees
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chartEmployees.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmployees.Legends.Add(legend2);
-            this.chartEmployees.Location = new System.Drawing.Point(3, 0);
-            this.chartEmployees.Name = "chartEmployees";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Positions";
-            this.chartEmployees.Series.Add(series3);
-            this.chartEmployees.Size = new System.Drawing.Size(693, 717);
-            this.chartEmployees.TabIndex = 0;
-            this.chartEmployees.Text = "chart1";
-            // 
-            // gpnlStatsType
-            // 
-            this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatsType.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatsType.Controls.Add(this.cbxStatsType);
-            this.gpnlStatsType.Location = new System.Drawing.Point(1400, 0);
-            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(2);
-            this.gpnlStatsType.Name = "gpnlStatsType";
-            this.gpnlStatsType.Size = new System.Drawing.Size(278, 167);
-            this.gpnlStatsType.TabIndex = 14;
-            this.gpnlStatsType.Visible = false;
-            // 
-            // ProductName
-            // 
-            this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
-            this.cbxStatsType.FormattingEnabled = true;
-            this.cbxStatsType.Items.AddRange(new object[] {
-            "Stock",
-            "Employees"});
-            this.cbxStatsType.Location = new System.Drawing.Point(0, 54);
-            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(2);
-            this.cbxStatsType.Name = "cbxStatsType";
-            this.cbxStatsType.Size = new System.Drawing.Size(232, 50);
-            this.cbxStatsType.TabIndex = 0;
-            this.cbxStatsType.Text = "Stock";
-            this.cbxStatsType.Visible = false;
-            this.cbxStatsType.SelectedIndexChanged += new System.EventHandler(this.cbxStatsType_SelectedIndexChanged);
-            // 
-            // QuantityS
-            // 
-            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatistics.Controls.Add(this.btnStatistics);
-            this.gpnlStatistics.Location = new System.Drawing.Point(1086, -2);
-            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(2);
-            this.gpnlStatistics.Name = "gpnlStatistics";
-            this.gpnlStatistics.Size = new System.Drawing.Size(314, 167);
-            this.gpnlStatistics.TabIndex = 13;
-            // 
-            // LocationS
-            // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(-2, 19);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(2);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(314, 121);
-            this.btnStatistics.TabIndex = 10;
-            this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.UseVisualStyleBackColor = false;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
-            // 
-            // QuantityWH
-            // 
-            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlSchedules.Controls.Add(this.btnSchedules);
-            this.gpnlSchedules.Location = new System.Drawing.Point(468, -2);
-            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(2);
-            this.gpnlSchedules.Name = "gpnlSchedules";
-            this.gpnlSchedules.Size = new System.Drawing.Size(298, 167);
-            this.gpnlSchedules.TabIndex = 12;
-            // 
-            // LocationWH
-            // 
-            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
-            this.btnSchedules.FlatAppearance.BorderSize = 0;
-            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedules.ForeColor = System.Drawing.Color.White;
-            this.btnSchedules.Location = new System.Drawing.Point(2, 19);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(294, 121);
-            this.btnSchedules.TabIndex = 10;
-            this.btnSchedules.Text = "Schedules";
-            this.btnSchedules.UseVisualStyleBackColor = false;
-            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
-            // 
-            // CostPrice
-            // 
-            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStock.Controls.Add(this.btnStock);
-            this.gpnlStock.Location = new System.Drawing.Point(282, 0);
-            this.gpnlStock.Margin = new System.Windows.Forms.Padding(2);
-            this.gpnlStock.Name = "gpnlStock";
-            this.gpnlStock.Size = new System.Drawing.Size(184, 167);
-            this.gpnlStock.TabIndex = 11;
-            // 
-            // SellPrice
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Transparent;
-            this.btnStock.FlatAppearance.BorderSize = 0;
-            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.ForeColor = System.Drawing.Color.White;
-            this.btnStock.Location = new System.Drawing.Point(2, 19);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(2);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(182, 121);
-            this.btnStock.TabIndex = 10;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            // 
-            // MinimumStock
-            // 
-            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlEmployees.Controls.Add(this.btnEmployees);
-            this.gpnlEmployees.Location = new System.Drawing.Point(770, 0);
-            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(2);
-            this.gpnlEmployees.Name = "gpnlEmployees";
-            this.gpnlEmployees.Size = new System.Drawing.Size(314, 167);
-            this.gpnlEmployees.TabIndex = 12;
-            // 
-            // TotalSold
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmployees.FlatAppearance.BorderSize = 0;
-            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(-2, 19);
-            this.btnEmployees.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(314, 121);
-            this.btnEmployees.TabIndex = 10;
-            this.btnEmployees.Text = "Employees";
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
+            this.btnEmpStats.Font = new System.Drawing.Font("Arial", 13F);
+            this.btnEmpStats.Location = new System.Drawing.Point(1445, 1006);
+            this.btnEmpStats.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEmpStats.Name = "btnEmpStats";
+            this.btnEmpStats.Size = new System.Drawing.Size(332, 67);
+            this.btnEmpStats.TabIndex = 22;
+            this.btnEmpStats.Text = "📊 Statistics";
+            this.btnEmpStats.UseVisualStyleBackColor = true;
+            this.btnEmpStats.Click += new System.EventHandler(this.btnEmpStats_Click);
             // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1942, 1315);
+            this.ClientSize = new System.Drawing.Size(2306, 1325);
             this.ControlBox = false;
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(2306, 1325);
-            this.MinimumSize = new System.Drawing.Size(1150, 664);
+            this.MinimumSize = new System.Drawing.Size(2306, 1325);
             this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
@@ -2158,14 +2029,9 @@ namespace LAMN_Software
             this.tpStockAdd.PerformLayout();
             this.tpEmployeeAdd.ResumeLayout(false);
             this.tpEmployeeAdd.PerformLayout();
-            this.pnlBar.ResumeLayout(false);
             this.tpStatsEmployee.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployees)).EndInit();
-            this.gpnlStatsType.ResumeLayout(false);
-            this.gpnlStatistics.ResumeLayout(false);
-            this.gpnlSchedules.ResumeLayout(false);
-            this.gpnlStock.ResumeLayout(false);
-            this.gpnlEmployees.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).EndInit();
+            this.pnlBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2318,6 +2184,7 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn MinimumStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalSold;
         private System.Windows.Forms.TabPage tpStatsEmployee;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployees;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesPosition;
+        private System.Windows.Forms.Button btnEmpStats;
     }
 }
