@@ -31,14 +31,13 @@ namespace LAMN_Software
             FillStockViewActive();
             FillScheduleGridView();
             FillActiveEmployees();
+            UpdateEmployeePieChart();
+            AdjustColumnWidthStock();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
             cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
-            dgvEmployees.Font = new Font("Arial", 11);
-            cbxStatsType.Items.Add("Stock");
-            cbxStatsType.Items.Add("Employees");
             updateTabWithPosition(position);
         }
 
@@ -49,7 +48,7 @@ namespace LAMN_Software
             {
                 tcNavigator.TabPages.Remove(tpStock);
                 tcNavigator.TabPages.Remove(tpStockAdd);
-                tcNavigator.TabPages.Remove(tpStatistics);
+                tcNavigator.TabPages.Remove(tpStatsStock);
                 btnStatistics.Enabled = false;
                 btnStock.Enabled = false;
             }
@@ -57,7 +56,7 @@ namespace LAMN_Software
             {
                 tcNavigator.TabPages.Remove(tpEmployees);
                 tcNavigator.TabPages.Remove(tpEmployeeAdd);
-                tcNavigator.TabPages.Remove(tpStatistics);
+                tcNavigator.TabPages.Remove(tpStatsStock);
                 btnEmployees.Enabled = false;
             }
         }
@@ -249,7 +248,7 @@ namespace LAMN_Software
                 {
                     FillDataGridViewStock(p, count);
                     UpdateStatsComboboxes(p.Name);
-                    count++; ;
+                    count++;
                 }
             }
         }
@@ -322,8 +321,8 @@ namespace LAMN_Software
             dgvAllStock.Rows[count].Cells[4].Value = p.LocationS;
             dgvAllStock.Rows[count].Cells[5].Value = p.QuantityWH;
             dgvAllStock.Rows[count].Cells[6].Value = p.LocationWH;
-            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice;
-            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice;
+            dgvAllStock.Rows[count].Cells[7].Value = p.CostPrice; // "‎€" +
+            dgvAllStock.Rows[count].Cells[8].Value = p.SellPrice; // "‎€" +
             dgvAllStock.Rows[count].Cells[9].Value = p.MinimumStockRequired;
             dgvAllStock.Rows[count].Cells[10].Value = p.TotalSold;
         }
@@ -375,6 +374,7 @@ namespace LAMN_Software
                         dgvEmployees.Rows.Add(newRow);
                     }
                 }
+                UpdateEmployeePieChart();
             }
             else
             {
@@ -579,7 +579,6 @@ namespace LAMN_Software
 
         private void btnEmployeeAdd_Confirm_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
@@ -613,7 +612,6 @@ namespace LAMN_Software
 
         private void btnEmployeeAdd_ConfirmEdit_Click(object sender, EventArgs e)
         {
-
             try
             {
                 var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text));
@@ -731,8 +729,6 @@ namespace LAMN_Software
 
         private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
         {
-
-
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
 
             try
@@ -792,7 +788,6 @@ namespace LAMN_Software
             //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
             //Easier syntax but the semantics could be optimalized.
 
-
             SCTH.DeleteWeekSchedule();
 
             try
@@ -850,6 +845,7 @@ namespace LAMN_Software
         {
             if (SCTH.GetWeekScheduleFromDB() == null)
             {
+                clearGrid();
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
@@ -884,11 +880,25 @@ namespace LAMN_Software
             }
         }
 
+        private void clearGrid()
+        {
+            for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
+            {
+                dgvSchedules.Rows[i].Cells[1].Value = null;
+                dgvSchedules.Rows[i].Cells[2].Value = null;
+                dgvSchedules.Rows[i].Cells[3].Value = null;
+                dgvSchedules.Rows[i].Cells[4].Value = null;
+                dgvSchedules.Rows[i].Cells[5].Value = null;
+                dgvSchedules.Rows[i].Cells[6].Value = null;
+                dgvSchedules.Rows[i].Cells[7].Value = null;
+            }
+        }
+
         //STATISTICS
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpStatistics;
+            StatsTypeCheck();
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
@@ -1026,6 +1036,68 @@ namespace LAMN_Software
             }
         }
 
+        public void UpdateEmployeePieChart()
+        {
+            int depotCount = 0;
+            int hrCount = 0;
+            int managerCount = 0;
+            int salesCount = 0;
+            int securityCount = 0;
+
+            foreach (var series in chartEmployeesPosition.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                {
+                    switch (e.Position)
+                    {
+                        case JobPosition.DEPOT:
+                            depotCount++;
+                            break;
+                        case JobPosition.HR:
+                            hrCount++;
+                            break;
+                        case JobPosition.MANAGER:
+                            managerCount++;
+                            break;
+                        case JobPosition.SALES:
+                            salesCount++;
+                            break;
+                        case JobPosition.SECURITY:
+                            securityCount++;
+                            break;
+                    }
+                }
+            }
+
+            int totalCount = depotCount + hrCount + managerCount + salesCount + securityCount;
+
+            if(depotCount > 0)
+            {
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Depot\n[{depotCount}/{totalCount}]", depotCount);
+            }
+            if (hrCount > 0)
+            {
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"HR\n[{hrCount}/{totalCount}]", hrCount);
+            }
+            if (managerCount > 0)
+            {
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Manager\n[{managerCount}/{totalCount}]", managerCount);
+            }
+            if (salesCount > 0)
+            {
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Sales\n[{salesCount}/{totalCount}]", salesCount);
+            }
+            if (securityCount > 0)
+            {
+                this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Security\n[{securityCount}/{totalCount}]", securityCount);
+            }
+        }
+
+
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
             UpdateStockGraph();
@@ -1077,6 +1149,60 @@ namespace LAMN_Software
                 btnDeleteEmployee.Visible = false;
                 FillTerminatedEmployees();
             }
+        }
+
+        public void AdjustColumnWidthStock()
+        {
+            dgvAllStock.RowHeadersWidth = 30;
+            dgvAllStock.Columns[0].Width = 30; // ID
+            dgvAllStock.Columns[1].Width = 120; // EAN
+            dgvAllStock.Columns[2].Width = 170; // Name
+            dgvAllStock.Columns[3].Width = 80; // Quantity in store
+            dgvAllStock.Columns[4].Width = 80; // Location in store
+            dgvAllStock.Columns[5].Width = 130; // Quantity in warehouse
+            dgvAllStock.Columns[6].Width = 130; // Location in warehouse
+            dgvAllStock.Columns[7].Width = 60; // Cost price
+            dgvAllStock.Columns[8].Width = 60; // Sell price
+            dgvAllStock.Columns[9].Width = 75; // Minimum stock
+            dgvAllStock.Columns[10].Width = 75; // Total sold
+        }
+
+        public void StatsTypeCheck()
+        {
+            if (cbxStatsType.SelectedItem.ToString() == "Stock")
+            {
+                tcNavigator.SelectedTab = tpStatsStock;
+                return;
+            }
+            if (cbxStatsType.SelectedItem.ToString() == "Employees")
+            {
+                tcNavigator.SelectedTab = tpStatsEmployee;
+                return;
+            }
+        }
+
+        private void cbxStatsType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           StatsTypeCheck();
+        }
+
+        private void btnEmpStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+
+            cbxStatsType.SelectedItem = "Employees";
         }
     }
 }
