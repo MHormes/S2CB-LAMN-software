@@ -33,6 +33,8 @@ namespace LAMN_Software
             FillActiveEmployees();
             UpdateEmployeePieChart();
             AdjustColumnWidthStock();
+            AdjustColumnWidthSchedules();
+            AdjustColumnWidthEmployees();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
@@ -50,6 +52,8 @@ namespace LAMN_Software
                 tcNavigator.TabPages.Remove(tpStockAdd);
                 tcNavigator.TabPages.Remove(tpStatsStock);
                 btnStatistics.Enabled = false;
+                btnStockStats.Visible = false;
+                btnEmpStats.Visible = false;
                 btnStock.Enabled = false;
             }
             else if (position.ToString() == "DEPOT")
@@ -57,6 +61,8 @@ namespace LAMN_Software
                 tcNavigator.TabPages.Remove(tpEmployees);
                 tcNavigator.TabPages.Remove(tpEmployeeAdd);
                 tcNavigator.TabPages.Remove(tpStatsStock);
+                btnStockStats.Visible = false;
+                btnEmpStats.Visible = false;
                 btnEmployees.Enabled = false;
             }
         }
@@ -1155,8 +1161,8 @@ namespace LAMN_Software
         {
             dgvAllStock.RowHeadersWidth = 30;
             dgvAllStock.Columns[0].Width = 30; // ID
-            dgvAllStock.Columns[1].Width = 120; // EAN
-            dgvAllStock.Columns[2].Width = 170; // Name
+            dgvAllStock.Columns[1].Width = 115; // EAN
+            dgvAllStock.Columns[2].Width = 247; // Name
             dgvAllStock.Columns[3].Width = 80; // Quantity in store
             dgvAllStock.Columns[4].Width = 80; // Location in store
             dgvAllStock.Columns[5].Width = 130; // Quantity in warehouse
@@ -1165,6 +1171,35 @@ namespace LAMN_Software
             dgvAllStock.Columns[8].Width = 60; // Sell price
             dgvAllStock.Columns[9].Width = 75; // Minimum stock
             dgvAllStock.Columns[10].Width = 75; // Total sold
+        }
+
+        public void AdjustColumnWidthSchedules()
+        {
+            dgvSchedules.RowHeadersWidth = 4;
+            dgvSchedules.Columns[0].Width = 198; // Name
+            dgvSchedules.Columns[1].Width = 130; // M
+            dgvSchedules.Columns[2].Width = 130; // T
+            dgvSchedules.Columns[3].Width = 130; // W
+            dgvSchedules.Columns[4].Width = 130; // T
+            dgvSchedules.Columns[5].Width = 130; // F
+            dgvSchedules.Columns[6].Width = 130; // S
+            dgvSchedules.Columns[7].Width = 130; // S
+        }
+
+        public void AdjustColumnWidthEmployees()
+        {
+            dgvEmployees.RowHeadersWidth = 30;
+            dgvEmployees.Columns[1].Width = 80; // First name
+            dgvEmployees.Columns[2].Width = 90; // Second name
+            dgvEmployees.Columns[3].Width = 65; // Position
+            dgvEmployees.Columns[4].Width = 50; // Salary
+            dgvEmployees.Columns[5].Width = 70; // BSN
+            dgvEmployees.Columns[6].Width = 130; // Date of birth
+            dgvEmployees.Columns[7].Width = 80; // Phone number
+            dgvEmployees.Columns[8].Width = 180; // Email
+            dgvEmployees.Columns[9].Width = 70; // ICE number
+            dgvEmployees.Columns[10].Width = 65; // ICE relation
+            dgvEmployees.Columns[11].Width = 202; // Quiting reason
         }
 
         public void StatsTypeCheck()
@@ -1203,6 +1238,32 @@ namespace LAMN_Software
             gpnlStatsType.Visible = true;
 
             cbxStatsType.SelectedItem = "Employees";
+        }
+
+        private void btnStockStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsStock;
+            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.LightGray;
+            btnEmployees.ForeColor = Color.LightGray;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+
+            cbxStatsType.SelectedItem = "Stock";
+        }
+
+        private void btnStockStatsRandomize_Click(object sender, EventArgs e)
+        {
+            //Random r = new Random();
+            //int rInt = r.Next(0, cbxStats1.Items.Count); //for ints
+            //cbxStats1.SelectedIndex = cbxStats1.SelectedItem[rInt];
         }
     }
 }
