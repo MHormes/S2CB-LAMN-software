@@ -65,52 +65,52 @@ namespace LAMN_Software
 
         public Exception AddProduct(string ean, string name, string quantityS, string quantityWH, string locationS, string locationWH, string costPrice, string sellPrice, string minimumStockRequired, string addInformation)
         {
-            if (!Regex.IsMatch(ean, @"^[0-9]{13}"))
-            {
-                throw new IncorrectEANException(ean);
-            }
-            if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
-            {
-                throw new IncorrectStockNameException(name);
-            }
-
-            if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(quantityWH);
-            }
-
-            if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(quantityS);
-            }
-
-            if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
-            {
-                throw new IncorrectLocationException(locationS);
-            }
-
-            if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
-            {
-                throw new IncorrectLocationException(locationWH);
-            }
-
-            if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(minimumStockRequired);
-            }
-
-            if (!Regex.IsMatch(costPrice, @"^[0-9]*([.][0-9]*)?$"))
-            {
-                throw new IncorrectPriceException(costPrice);
-            }
-
-            if (!Regex.IsMatch(sellPrice, @"^[0-9]*([.][0-9]*)?$"))
-            {
-                throw new IncorrectPriceException(sellPrice);
-            }
-
             try
             {
+                if (!Regex.IsMatch(ean, @"^[0-9]{13}"))
+                {
+                    throw new IncorrectEANException(ean);
+                }
+                if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
+                {
+                    throw new IncorrectStockNameException(name);
+                }
+
+                if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityWH);
+                }
+
+                if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityS);
+                }
+
+                if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
+                {
+                    throw new IncorrectLocationException(locationS);
+                }
+
+                if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
+                {
+                    throw new IncorrectLocationException(locationWH);
+                }
+
+                if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(minimumStockRequired);
+                }
+
+                if (!Regex.IsMatch(costPrice, @"^[0-9]*([.][0-9]*)?$"))
+                {
+                    throw new IncorrectPriceException(costPrice);
+                }
+
+                if (!Regex.IsMatch(sellPrice, @"^[0-9]*([.][0-9]*)?$"))
+                {
+                    throw new IncorrectPriceException(sellPrice);
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     string sql = "INSERT INTO product(EAN, Name, QuantityS, QuantityWH, LocationS, LocationWH, CostPrice, SellPrice, MinimumStock, AddInformation, TotalSold) VALUES (@ean, @name, @quantityS, @quantityWH, @locationS, @locationWH, @costPrice, @sellprice, @minStock, @addInf, @totalSold);";
@@ -136,7 +136,6 @@ namespace LAMN_Software
                 }
                 return null;
             }
-
             catch (Exception ex)
             {
                 return ex;
@@ -146,38 +145,38 @@ namespace LAMN_Software
         //method to change properties of a product in the DB
         public Exception ChangeProduct(int id, string name, string quantityS, string quantityWH, string locationS, string locationWH, string minimumStockRequired, string addInformation)
         {
-            if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
-            {
-                throw new IncorrectStockNameException(name);
-            }
-
-            if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(quantityWH);
-            }
-
-            if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(quantityS);
-            }
-
-            if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
-            {
-                throw new IncorrectLocationException(locationS);
-            }
-
-            if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
-            {
-                throw new IncorrectLocationException(locationWH);
-            }
-
-            if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
-            {
-                throw new IncorrectQuantityException(minimumStockRequired);
-            }
-
             try
             {
+                if (!Regex.IsMatch(name, @"[A-z0-9 _]*$"))
+                {
+                    throw new IncorrectStockNameException(name);
+                }
+
+                if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityWH);
+                }
+
+                if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityS);
+                }
+
+                if (!Regex.IsMatch(locationS, @"^[A-Z]{2}[-][0-9]{2}$"))
+                {
+                    throw new IncorrectLocationException(locationS);
+                }
+
+                if (!Regex.IsMatch(locationWH, @"^[A-Z]{2}[-][0-9]{2}$"))
+                {
+                    throw new IncorrectLocationException(locationWH);
+                }
+
+                if (!Regex.IsMatch(minimumStockRequired, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(minimumStockRequired);
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     string sql = "UPDATE product SET Name=@name, QuantityS=@quantityS, QuantityWH=@quantityWH, LocationS=@locationS, LocationWH=@locationWH, MinimumStock=@minStock, AddInformation=@addInf WHERE ID=@id;";

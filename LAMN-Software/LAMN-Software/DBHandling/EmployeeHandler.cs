@@ -106,33 +106,33 @@ namespace LAMN_Software
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
         public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, string quittingReason, double salaryPerHour) 
         {
-            if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
-            {
-                throw new IncorrectBSNException(bsn);
-            }
-
-            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
-            {
-                throw new IncorrectPhoneNumberException(phoneNumber);
-            }
-
-            if (!Regex.IsMatch(iceNumber, @"^[0-9]{10}$"))
-            {
-                throw new IncorrectPhoneNumberException(iceNumber);
-            }
-
-            if (!Regex.IsMatch(firstName, @"^[A-z]*$"))
-            {
-                throw new IncorrectNameException(firstName);
-            }
-
-            if (!Regex.IsMatch(secondName, @"^[A-z]*$"))
-            {
-                throw new IncorrectNameException(secondName);
-            }
-
             try
             {
+                if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
+                {
+                    throw new IncorrectBSNException(bsn);
+                }
+
+                if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
+                {
+                    throw new IncorrectPhoneNumberException(phoneNumber);
+                }
+
+                if (!Regex.IsMatch(iceNumber, @"^[0-9]{10}$"))
+                {
+                    throw new IncorrectPhoneNumberException(iceNumber);
+                }
+
+                if (!Regex.IsMatch(firstName, @"^[A-z]*$"))
+                {
+                    throw new IncorrectNameException(firstName);
+                }
+
+                if (!Regex.IsMatch(secondName, @"^[A-z]*$"))
+                {
+                    throw new IncorrectNameException(secondName);
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation, QuittingReason, SalaryPerHour) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation, @quittingReason, @salaryPerHour);";
@@ -164,9 +164,6 @@ namespace LAMN_Software
                 }
                 return null;
             }
-
-            
-
             catch (Exception ex)
             {
                 return ex;
