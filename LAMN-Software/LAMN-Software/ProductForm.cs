@@ -350,7 +350,6 @@ namespace LAMN_Software
 
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
-
         }
 
 
@@ -363,21 +362,7 @@ namespace LAMN_Software
                 {
                     if(string.IsNullOrEmpty((e.QuittingReason).ToString()))
                     {
-                        DataGridViewRow newRow = new DataGridViewRow();
-                        newRow.CreateCells(dgvEmployees);
-                        newRow.Cells[0].Value = e;
-                        newRow.Cells[1].Value = e.FirstName;
-                        newRow.Cells[2].Value = e.SecondName;
-                        newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
-                        newRow.Cells[5].Value = e.Bsn;
-                        newRow.Cells[6].Value = e.DateOfBirth;
-                        newRow.Cells[7].Value = e.PhoneNumber;
-                        newRow.Cells[8].Value = e.Email;
-                        newRow.Cells[9].Value = e.IceNumber;
-                        newRow.Cells[10].Value = e.IceRelationship;
-                        newRow.Cells[11].Value = e.QuittingReason;
-                        dgvEmployees.Rows.Add(newRow);
+                        FillEmployeeCells(e);
                     }
                 }
                 UpdateEmployeePieChart();
@@ -397,21 +382,7 @@ namespace LAMN_Software
                 {
                     if (!string.IsNullOrEmpty((e.QuittingReason).ToString()))
                     {
-                        DataGridViewRow newRow = new DataGridViewRow();
-                        newRow.CreateCells(dgvEmployees);
-                        newRow.Cells[0].Value = e;
-                        newRow.Cells[1].Value = e.FirstName;
-                        newRow.Cells[2].Value = e.SecondName;
-                        newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
-                        newRow.Cells[5].Value = e.Bsn;
-                        newRow.Cells[6].Value = e.DateOfBirth;
-                        newRow.Cells[7].Value = e.PhoneNumber;
-                        newRow.Cells[8].Value = e.Email;
-                        newRow.Cells[9].Value = e.IceNumber;
-                        newRow.Cells[10].Value = e.IceRelationship;
-                        newRow.Cells[11].Value = e.QuittingReason;
-                        dgvEmployees.Rows.Add(newRow);
+                        FillEmployeeCells(e);
                     }
                 }
             }
@@ -419,6 +390,25 @@ namespace LAMN_Software
             {
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
+        }
+
+        private void FillEmployeeCells(Employee e)
+        {
+            DataGridViewRow newRow = new DataGridViewRow();
+            newRow.CreateCells(dgvEmployees);
+            newRow.Cells[0].Value = e;
+            newRow.Cells[1].Value = e.FirstName;
+            newRow.Cells[2].Value = e.SecondName;
+            newRow.Cells[3].Value = e.Position;
+            newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+            newRow.Cells[5].Value = e.Bsn;
+            newRow.Cells[6].Value = e.DateOfBirth;
+            newRow.Cells[7].Value = e.PhoneNumber;
+            newRow.Cells[8].Value = e.Email;
+            newRow.Cells[9].Value = e.IceNumber;
+            newRow.Cells[10].Value = e.IceRelationship;
+            newRow.Cells[11].Value = e.QuittingReason;
+            dgvEmployees.Rows.Add(newRow);
         }
 
 
@@ -437,29 +427,28 @@ namespace LAMN_Software
 
         private void btnSearchEmployee_Click(object sender, EventArgs e)
         {
-
             dgvEmployees.Rows.Clear();
             string searchName = tbxSearchEmployee.Text.ToLower();
 
-            foreach (Employee emp in EH.GetAllEmployees())
+            if (cbxActiveInactiveEmployees.SelectedIndex == 0)
             {
-                if (emp.GetFullName().ToLower().Contains(searchName))
+                foreach (Employee emp in EH.GetAllEmployees())
                 {
-                    DataGridViewRow newRow = new DataGridViewRow();
-                    newRow.CreateCells(dgvEmployees);
-                    newRow.Cells[0].Value = emp;
-                    newRow.Cells[1].Value = emp.FirstName;
-                    newRow.Cells[2].Value = emp.SecondName;
-                    newRow.Cells[3].Value = emp.Position;
-                    newRow.Cells[4].Value = String.Format("€{0:0.00}", emp.SalaryPerHour);
-                    newRow.Cells[5].Value = emp.Bsn;
-                    newRow.Cells[6].Value = emp.DateOfBirth;
-                    newRow.Cells[7].Value = emp.PhoneNumber;
-                    newRow.Cells[8].Value = emp.Email;
-                    newRow.Cells[9].Value = emp.IceNumber;
-                    newRow.Cells[10].Value = emp.IceRelationship;
-                    newRow.Cells[11].Value = emp.QuittingReason;
-                    dgvEmployees.Rows.Add(newRow);
+                    if ((emp.GetFullName().ToLower().Contains(searchName)) && (string.IsNullOrEmpty((emp.QuittingReason).ToString())))
+                    {
+                        FillEmployeeCells(emp);
+                    }
+                }
+            }
+
+            else if (cbxActiveInactiveEmployees.SelectedIndex == 1)
+            {
+                foreach (Employee emp in EH.GetAllEmployees())
+                {
+                    if ((emp.GetFullName().ToLower().Contains(searchName)) && (!string.IsNullOrEmpty((emp.QuittingReason).ToString())))
+                    {
+                        FillEmployeeCells(emp);
+                    }
                 }
             }
         }
@@ -519,66 +508,57 @@ namespace LAMN_Software
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
 
-            if (emp.Position == JobPosition.MANAGER)
+            switch (emp.Position)
             {
-                cbxEmployeeAdd_Position.SelectedIndex = 0;
-            }
-            else if (emp.Position == JobPosition.HR)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 1;
-            }
-            else if (emp.Position == JobPosition.SALES)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 2;
-            }
-            else if (emp.Position == JobPosition.DEPOT)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 3;
-            }
-            else
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 4;
+                case JobPosition.MANAGER:
+                    cbxEmployeeAdd_Position.SelectedIndex = 0;
+                    break;
+                case JobPosition.HR:
+                    cbxEmployeeAdd_Position.SelectedIndex = 1;
+                    break;
+                case JobPosition.SALES:
+                    cbxEmployeeAdd_Position.SelectedIndex = 2;
+                    break;
+                case JobPosition.DEPOT:
+                    cbxEmployeeAdd_Position.SelectedIndex = 3;
+                    break;
+                case JobPosition.SECURITY:
+                    cbxEmployeeAdd_Position.SelectedIndex = 4;
+                    break;
             }
 
-            if (emp.IceRelationship == ICERelation.PARTNER)
+            switch (emp.IceRelationship)
             {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
-            }
-            else if (emp.IceRelationship == ICERelation.FATHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
-            }
-            else if (emp.IceRelationship == ICERelation.MOTHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
-            }
-            else if (emp.IceRelationship == ICERelation.BROTHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
-            }
-            else if (emp.IceRelationship == ICERelation.SISTER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
-            }
-            else if (emp.IceRelationship == ICERelation.UNCLE)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
-            }
-            else if (emp.IceRelationship == ICERelation.AUNT)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
-            }
-            else if (emp.IceRelationship == ICERelation.COUSIN)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
-            }
-            else if (emp.IceRelationship == ICERelation.FRIEND)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
-            }
-            else
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+                case ICERelation.PARTNER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
+                    break;
+                case ICERelation.FATHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
+                    break;
+                case ICERelation.MOTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
+                    break;
+                case ICERelation.BROTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
+                    break;
+                case ICERelation.SISTER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
+                    break;
+                case ICERelation.UNCLE:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
+                    break;
+                case ICERelation.AUNT:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
+                    break;
+                case ICERelation.COUSIN:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
+                    break;
+                case ICERelation.FRIEND:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
+                    break;
+                case ICERelation.OTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+                    break;
             }
         }
 
