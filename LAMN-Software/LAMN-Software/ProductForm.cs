@@ -248,13 +248,29 @@ namespace LAMN_Software
             string searchName = tbxSearchStock.Text.ToLower();
 
             int count = 0;
-            foreach (Product p in SH.GetAllProducts())
+            
+            if(cbxStockCurrentlyShowing.SelectedIndex == 0)
             {
-                if (p.Name.ToLower().Contains(searchName))
+                foreach (Product p in SH.GetAllProducts())
                 {
-                    FillDataGridViewStock(p, count);
-                    UpdateStatsComboboxes(p.Name);
-                    count++;
+                    if ((p.Name.ToLower().Contains(searchName)) && (p.Active == 1))
+                    {
+                        FillDataGridViewStock(p, count);
+                        UpdateStatsComboboxes(p.Name);
+                        count++;
+                    }
+                }
+            }
+            else 
+            {
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if ((p.Name.ToLower().Contains(searchName)) && (p.Active == 0))
+                    {
+                        FillDataGridViewStock(p, count);
+                        UpdateStatsComboboxes(p.Name);
+                        count++;
+                    }
                 }
             }
         }
@@ -441,7 +457,7 @@ namespace LAMN_Software
                 }
             }
 
-            else if (cbxActiveInactiveEmployees.SelectedIndex == 1)
+            else 
             {
                 foreach (Employee emp in EH.GetAllEmployees())
                 {
