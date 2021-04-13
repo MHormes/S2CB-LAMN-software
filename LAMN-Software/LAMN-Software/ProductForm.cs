@@ -350,7 +350,6 @@ namespace LAMN_Software
 
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
-
         }
 
 
@@ -363,21 +362,7 @@ namespace LAMN_Software
                 {
                     if(string.IsNullOrEmpty((e.QuittingReason).ToString()))
                     {
-                        DataGridViewRow newRow = new DataGridViewRow();
-                        newRow.CreateCells(dgvEmployees);
-                        newRow.Cells[0].Value = e;
-                        newRow.Cells[1].Value = e.FirstName;
-                        newRow.Cells[2].Value = e.SecondName;
-                        newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
-                        newRow.Cells[5].Value = e.Bsn;
-                        newRow.Cells[6].Value = e.DateOfBirth;
-                        newRow.Cells[7].Value = e.PhoneNumber;
-                        newRow.Cells[8].Value = e.Email;
-                        newRow.Cells[9].Value = e.IceNumber;
-                        newRow.Cells[10].Value = e.IceRelationship;
-                        newRow.Cells[11].Value = e.QuittingReason;
-                        dgvEmployees.Rows.Add(newRow);
+                        FillEmployeeCells(e);
                     }
                 }
                 UpdateEmployeePieChart();
@@ -397,21 +382,7 @@ namespace LAMN_Software
                 {
                     if (!string.IsNullOrEmpty((e.QuittingReason).ToString()))
                     {
-                        DataGridViewRow newRow = new DataGridViewRow();
-                        newRow.CreateCells(dgvEmployees);
-                        newRow.Cells[0].Value = e;
-                        newRow.Cells[1].Value = e.FirstName;
-                        newRow.Cells[2].Value = e.SecondName;
-                        newRow.Cells[3].Value = e.Position;
-                        newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
-                        newRow.Cells[5].Value = e.Bsn;
-                        newRow.Cells[6].Value = e.DateOfBirth;
-                        newRow.Cells[7].Value = e.PhoneNumber;
-                        newRow.Cells[8].Value = e.Email;
-                        newRow.Cells[9].Value = e.IceNumber;
-                        newRow.Cells[10].Value = e.IceRelationship;
-                        newRow.Cells[11].Value = e.QuittingReason;
-                        dgvEmployees.Rows.Add(newRow);
+                        FillEmployeeCells(e);
                     }
                 }
             }
@@ -419,6 +390,25 @@ namespace LAMN_Software
             {
                 MessageBox.Show(EH.GetAllEmployeesFromDB().Message);
             }
+        }
+
+        private void FillEmployeeCells(Employee e)
+        {
+            DataGridViewRow newRow = new DataGridViewRow();
+            newRow.CreateCells(dgvEmployees);
+            newRow.Cells[0].Value = e;
+            newRow.Cells[1].Value = e.FirstName;
+            newRow.Cells[2].Value = e.SecondName;
+            newRow.Cells[3].Value = e.Position;
+            newRow.Cells[4].Value = String.Format("€{0:0.00}", e.SalaryPerHour);
+            newRow.Cells[5].Value = e.Bsn;
+            newRow.Cells[6].Value = e.DateOfBirth;
+            newRow.Cells[7].Value = e.PhoneNumber;
+            newRow.Cells[8].Value = e.Email;
+            newRow.Cells[9].Value = e.IceNumber;
+            newRow.Cells[10].Value = e.IceRelationship;
+            newRow.Cells[11].Value = e.QuittingReason;
+            dgvEmployees.Rows.Add(newRow);
         }
 
 
@@ -437,29 +427,28 @@ namespace LAMN_Software
 
         private void btnSearchEmployee_Click(object sender, EventArgs e)
         {
-
             dgvEmployees.Rows.Clear();
             string searchName = tbxSearchEmployee.Text.ToLower();
 
-            foreach (Employee emp in EH.GetAllEmployees())
+            if (cbxActiveInactiveEmployees.SelectedIndex == 0)
             {
-                if (emp.GetFullName().ToLower().Contains(searchName))
+                foreach (Employee emp in EH.GetAllEmployees())
                 {
-                    DataGridViewRow newRow = new DataGridViewRow();
-                    newRow.CreateCells(dgvEmployees);
-                    newRow.Cells[0].Value = emp;
-                    newRow.Cells[1].Value = emp.FirstName;
-                    newRow.Cells[2].Value = emp.SecondName;
-                    newRow.Cells[3].Value = emp.Position;
-                    newRow.Cells[4].Value = String.Format("€{0:0.00}", emp.SalaryPerHour);
-                    newRow.Cells[5].Value = emp.Bsn;
-                    newRow.Cells[6].Value = emp.DateOfBirth;
-                    newRow.Cells[7].Value = emp.PhoneNumber;
-                    newRow.Cells[8].Value = emp.Email;
-                    newRow.Cells[9].Value = emp.IceNumber;
-                    newRow.Cells[10].Value = emp.IceRelationship;
-                    newRow.Cells[11].Value = emp.QuittingReason;
-                    dgvEmployees.Rows.Add(newRow);
+                    if ((emp.GetFullName().ToLower().Contains(searchName)) && (string.IsNullOrEmpty((emp.QuittingReason).ToString())))
+                    {
+                        FillEmployeeCells(emp);
+                    }
+                }
+            }
+
+            else if (cbxActiveInactiveEmployees.SelectedIndex == 1)
+            {
+                foreach (Employee emp in EH.GetAllEmployees())
+                {
+                    if ((emp.GetFullName().ToLower().Contains(searchName)) && (!string.IsNullOrEmpty((emp.QuittingReason).ToString())))
+                    {
+                        FillEmployeeCells(emp);
+                    }
                 }
             }
         }

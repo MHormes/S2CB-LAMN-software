@@ -47,10 +47,9 @@
             // 
             this.button_login.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.ForeColor = System.Drawing.Color.Indigo;
-            this.button_login.Location = new System.Drawing.Point(402, 629);
-            this.button_login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_login.Location = new System.Drawing.Point(268, 403);
             this.button_login.Name = "button_login";
-            this.button_login.Size = new System.Drawing.Size(184, 54);
+            this.button_login.Size = new System.Drawing.Size(123, 35);
             this.button_login.TabIndex = 0;
             this.button_login.TabStop = false;
             this.button_login.Text = "Login";
@@ -61,10 +60,9 @@
             // 
             this.textBox_accountPassword.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_accountPassword.ForeColor = System.Drawing.Color.Gray;
-            this.textBox_accountPassword.Location = new System.Drawing.Point(294, 496);
-            this.textBox_accountPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_accountPassword.Location = new System.Drawing.Point(196, 317);
             this.textBox_accountPassword.Name = "textBox_accountPassword";
-            this.textBox_accountPassword.Size = new System.Drawing.Size(418, 63);
+            this.textBox_accountPassword.Size = new System.Drawing.Size(280, 42);
             this.textBox_accountPassword.TabIndex = 0;
             this.textBox_accountPassword.TabStop = false;
             this.textBox_accountPassword.Text = "Password";
@@ -78,10 +76,9 @@
             this.label_loginTitle.BackColor = System.Drawing.Color.Transparent;
             this.label_loginTitle.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_loginTitle.ForeColor = System.Drawing.Color.White;
-            this.label_loginTitle.Location = new System.Drawing.Point(298, 289);
-            this.label_loginTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_loginTitle.Location = new System.Drawing.Point(199, 185);
             this.label_loginTitle.Name = "label_loginTitle";
-            this.label_loginTitle.Size = new System.Drawing.Size(442, 53);
+            this.label_loginTitle.Size = new System.Drawing.Size(295, 34);
             this.label_loginTitle.TabIndex = 0;
             this.label_loginTitle.Text = "Media Bazaar";
             // 
@@ -89,10 +86,10 @@
             // 
             this.textBox_accountName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_accountName.ForeColor = System.Drawing.Color.Gray;
-            this.textBox_accountName.Location = new System.Drawing.Point(294, 402);
-            this.textBox_accountName.Margin = new System.Windows.Forms.Padding(44, 44, 44, 44);
+            this.textBox_accountName.Location = new System.Drawing.Point(196, 257);
+            this.textBox_accountName.Margin = new System.Windows.Forms.Padding(29, 28, 29, 28);
             this.textBox_accountName.Name = "textBox_accountName";
-            this.textBox_accountName.Size = new System.Drawing.Size(418, 63);
+            this.textBox_accountName.Size = new System.Drawing.Size(280, 42);
             this.textBox_accountName.TabIndex = 0;
             this.textBox_accountName.TabStop = false;
             this.textBox_accountName.Text = "Account name";
@@ -116,10 +113,11 @@
             this.pnlBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
-            this.pnlBackground.MaximumSize = new System.Drawing.Size(960, 838);
-            this.pnlBackground.MinimumSize = new System.Drawing.Size(960, 838);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBackground.MaximumSize = new System.Drawing.Size(641, 537);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(641, 537);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(960, 838);
+            this.pnlBackground.Size = new System.Drawing.Size(641, 537);
             this.pnlBackground.TabIndex = 8;
             this.pnlBackground.Click += new System.EventHandler(this.pnlBackground_Click);
             this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
@@ -130,15 +128,13 @@
             this.btnDevAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevAccess.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.btnDevAccess.ForeColor = System.Drawing.Color.Indigo;
-            this.btnDevAccess.Location = new System.Drawing.Point(402, 692);
-            this.btnDevAccess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDevAccess.Location = new System.Drawing.Point(268, 443);
             this.btnDevAccess.Name = "btnDevAccess";
-            this.btnDevAccess.Size = new System.Drawing.Size(184, 54);
+            this.btnDevAccess.Size = new System.Drawing.Size(123, 35);
             this.btnDevAccess.TabIndex = 10;
             this.btnDevAccess.TabStop = false;
             this.btnDevAccess.Text = "Dev access";
             this.btnDevAccess.UseVisualStyleBackColor = false;
-            this.btnDevAccess.Visible = false;
             this.btnDevAccess.Click += new System.EventHandler(this.btnDevAccess_Click);
             // 
             // textBox_defocus
@@ -146,8 +142,9 @@
             this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
+            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_defocus.Name = "textBox_defocus";
-            this.textBox_defocus.Size = new System.Drawing.Size(1, 11);
+            this.textBox_defocus.Size = new System.Drawing.Size(2, 9);
             this.textBox_defocus.TabIndex = 0;
             this.textBox_defocus.TabStop = false;
             this.textBox_defocus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_defocus_KeyDown);
@@ -158,9 +155,10 @@
             this.pnlBar.Controls.Add(this.pnlDragBar);
             this.pnlBar.Controls.Add(this.lblClose);
             this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlBar.Location = new System.Drawing.Point(-2, -2);
+            this.pnlBar.Location = new System.Drawing.Point(-1, -1);
+            this.pnlBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlBar.Name = "pnlBar";
-            this.pnlBar.Size = new System.Drawing.Size(957, 61);
+            this.pnlBar.Size = new System.Drawing.Size(638, 39);
             this.pnlBar.TabIndex = 8;
             // 
             // pnlDragBar
@@ -168,9 +166,10 @@
             this.pnlDragBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlDragBar.Location = new System.Drawing.Point(4, 2);
+            this.pnlDragBar.Location = new System.Drawing.Point(3, 1);
+            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlDragBar.Name = "pnlDragBar";
-            this.pnlDragBar.Size = new System.Drawing.Size(891, 59);
+            this.pnlDragBar.Size = new System.Drawing.Size(594, 38);
             this.pnlDragBar.TabIndex = 9;
             this.pnlDragBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseDown);
             this.pnlDragBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseMove);
@@ -180,9 +179,10 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.White;
-            this.lblClose.Location = new System.Drawing.Point(898, 0);
+            this.lblClose.Location = new System.Drawing.Point(599, 0);
+            this.lblClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(54, 54);
+            this.lblClose.Size = new System.Drawing.Size(36, 35);
             this.lblClose.TabIndex = 6;
             this.lblClose.Text = "✖";
             this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,23 +193,23 @@
             this.lblMB.BackColor = System.Drawing.Color.Transparent;
             this.lblMB.Font = new System.Drawing.Font("Arial Black", 75F, System.Drawing.FontStyle.Bold);
             this.lblMB.ForeColor = System.Drawing.Color.White;
-            this.lblMB.Location = new System.Drawing.Point(266, 98);
-            this.lblMB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMB.Location = new System.Drawing.Point(177, 63);
             this.lblMB.Name = "lblMB";
-            this.lblMB.Size = new System.Drawing.Size(492, 221);
+            this.lblMB.Size = new System.Drawing.Size(328, 141);
             this.lblMB.TabIndex = 9;
             this.lblMB.Text = "MB";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(960, 838);
+            this.ClientSize = new System.Drawing.Size(640, 536);
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(960, 838);
-            this.MinimumSize = new System.Drawing.Size(960, 838);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(640, 536);
+            this.MinimumSize = new System.Drawing.Size(640, 536);
             this.Name = "Form1";
             this.Text = "Form1";
             this.pnlBackground.ResumeLayout(false);
