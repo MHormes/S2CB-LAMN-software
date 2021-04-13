@@ -508,66 +508,57 @@ namespace LAMN_Software
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
 
-            if (emp.Position == JobPosition.MANAGER)
+            switch (emp.Position)
             {
-                cbxEmployeeAdd_Position.SelectedIndex = 0;
-            }
-            else if (emp.Position == JobPosition.HR)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 1;
-            }
-            else if (emp.Position == JobPosition.SALES)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 2;
-            }
-            else if (emp.Position == JobPosition.DEPOT)
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 3;
-            }
-            else
-            {
-                cbxEmployeeAdd_Position.SelectedIndex = 4;
+                case JobPosition.MANAGER:
+                    cbxEmployeeAdd_Position.SelectedIndex = 0;
+                    break;
+                case JobPosition.HR:
+                    cbxEmployeeAdd_Position.SelectedIndex = 1;
+                    break;
+                case JobPosition.SALES:
+                    cbxEmployeeAdd_Position.SelectedIndex = 2;
+                    break;
+                case JobPosition.DEPOT:
+                    cbxEmployeeAdd_Position.SelectedIndex = 3;
+                    break;
+                case JobPosition.SECURITY:
+                    cbxEmployeeAdd_Position.SelectedIndex = 4;
+                    break;
             }
 
-            if (emp.IceRelationship == ICERelation.PARTNER)
+            switch (emp.IceRelationship)
             {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
-            }
-            else if (emp.IceRelationship == ICERelation.FATHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
-            }
-            else if (emp.IceRelationship == ICERelation.MOTHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
-            }
-            else if (emp.IceRelationship == ICERelation.BROTHER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
-            }
-            else if (emp.IceRelationship == ICERelation.SISTER)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
-            }
-            else if (emp.IceRelationship == ICERelation.UNCLE)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
-            }
-            else if (emp.IceRelationship == ICERelation.AUNT)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
-            }
-            else if (emp.IceRelationship == ICERelation.COUSIN)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
-            }
-            else if (emp.IceRelationship == ICERelation.FRIEND)
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
-            }
-            else
-            {
-                cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+                case ICERelation.PARTNER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 0;
+                    break;
+                case ICERelation.FATHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 1;
+                    break;
+                case ICERelation.MOTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 2;
+                    break;
+                case ICERelation.BROTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 3;
+                    break;
+                case ICERelation.SISTER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 4;
+                    break;
+                case ICERelation.UNCLE:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 5;
+                    break;
+                case ICERelation.AUNT:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 6;
+                    break;
+                case ICERelation.COUSIN:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 7;
+                    break;
+                case ICERelation.FRIEND:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 8;
+                    break;
+                case ICERelation.OTHER:
+                    cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
+                    break;
             }
         }
 
