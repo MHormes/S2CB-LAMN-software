@@ -42,21 +42,89 @@ if(isset($_POST['btnSelectWeek']))
     <th>Saturday</th>
     <th>Sunday</th>
     </tr>
+
     <?php
     if(isset($_SESSION['started'])){
-        foreach($schedules as $value){ ?>
-            <tr>
-            <td><?php echo $value->FirstName ." " .  $value->SecondName?></td>
-            <td><?php if($value->Day == "MONDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "TUESDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "WEDNESDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "THURDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "FRIDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "SATURDAY"){ echo $value->TimeSlot;}?></td>
-            <td><?php if($value->Day == "SUNDAY"){ echo $value->TimeSlot;}?></td>
-            </tr>
-        <?php } }
+        $LastBSN = "";
+        $NameUser="";
+        $Monday="";
+        $Tuesday="";
+        $Wednesday="";
+        $Thursday="";
+        $Friday="";
+        $Saturday="";
+        $Sunday="";
+        $countSchedules=count($schedules);
+        $count=0;
+
+        foreach($schedules as $value){
+
+            if (($value->EmpBSN==$LastBSN) || ($LastBSN == ""))
+            {
+                if($value->Day == "MONDAY"){$Monday=$value->TimeSlot;}
+                if($value->Day == "TUESDAY"){$Tuesday=$value->TimeSlot;}
+                if($value->Day == "WEDNESDAY"){$Wednesday=$value->TimeSlot;}
+                if($value->Day == "THURDAY"){$Thursday=$value->TimeSlot;}
+                if($value->Day == "FRIDAY"){$Friday=$value->TimeSlot;}
+                if($value->Day == "SATURDAY"){$Saturday=$value->TimeSlot;}
+                if($value->Day == "SUNDAY"){$Sunday=$value->TimeSlot;}
+                $LastBSN=$value->EmpBSN;
+                $NameUser=$value->FirstName ." " .  $value->SecondName;
+                $count++;
+            }
+            if ($value->EmpBSN!=$LastBSN)
+            { ?>
+                <tr>
+                <td><?php  echo $NameUser?></td>
+                <td><?php  echo $Monday;?></td>
+                <td><?php  echo $Tuesday;?></td>
+                <td><?php  echo $Wednesday;?></td>                
+                <td><?php  echo $Thursday;?></td>
+                <td><?php  echo $Friday;?></td>
+                <td><?php  echo $Saturday;?></td>
+                <td><?php  echo $Sunday;?></td>
+                </tr>
+            <?php 
+                
+                $Monday="";
+                $Tuesday="";
+                $Wednesday="";
+                $Thursday="";
+                $Friday="";
+                $Saturday="";
+                $Sunday="";
+                if($value->Day == "MONDAY"){$Monday=$value->TimeSlot;}
+                if($value->Day == "TUESDAY"){$Tuesday=$value->TimeSlot;}
+                if($value->Day == "WEDNESDAY"){$Wednesday=$value->TimeSlot;}
+                if($value->Day == "THURDAY"){$Thursday=$value->TimeSlot;}
+                if($value->Day == "FRIDAY"){$Friday=$value->TimeSlot;}
+                if($value->Day == "SATURDAY"){$Saturday=$value->TimeSlot;}
+                if($value->Day == "SUNDAY"){$Sunday=$value->TimeSlot;}
+                $LastBSN=$value->EmpBSN;
+                $NameUser=$value->FirstName ." " .  $value->SecondName;
+                $count++;
+
+            }
+            if ($count==$countSchedules) //echo last schedule in the list
+            {?>
+                <tr>
+                <td><?php  echo $NameUser?></td>
+                <td><?php  echo $Monday;?></td>
+                <td><?php  echo $Tuesday;?></td>
+                <td><?php  echo $Wednesday;?></td>                
+                <td><?php  echo $Thursday;?></td>
+                <td><?php  echo $Friday;?></td>
+                <td><?php  echo $Saturday;?></td>
+                <td><?php  echo $Sunday;?></td>
+                </tr>
+                <?php 
+            }
+
+        } 
+    }
         ?>
+
+
     </table>
     </div>
     
