@@ -40,6 +40,7 @@ namespace LAMN_Software
             cbxStockCurrentlyShowing.SelectedIndex = 0;
             cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
+            dgvEmployees.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
         }
 
