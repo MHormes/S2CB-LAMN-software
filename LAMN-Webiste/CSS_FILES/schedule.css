@@ -13,5 +13,19 @@ table{
 th, td {
     padding: 10px;
     width: 140px;
+    border: 1px solid black;
   }
 
+.weekCounter{
+    width: 100px;
+    height: 50px;
+    font-size: 24px;
+    
+}
+
+.button{
+    
+    height: 50px;
+    font-size: 15px;  
+    color: purple;
+}
