@@ -246,5 +246,42 @@ namespace LAMN_Software
                 return ex;
             }
         }
+
+        public Exception AddQuantityToProduct(Product product, string quantityS, string quantityWH)
+        {
+            try
+            {
+                if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityS);
+                }
+
+                if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantityWH);
+                }
+
+                product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
+                product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET QuantityS=@quantityS, QuantityWH=@quantityWH WHERE ID=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@id", product.Id);
+                    cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
+                    cmd.Parameters.AddWithValue("@quantityWH", product.QuantityWH);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
     }
 }

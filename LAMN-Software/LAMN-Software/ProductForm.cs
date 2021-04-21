@@ -106,7 +106,7 @@ namespace LAMN_Software
             }
             else
             {
-                FillStockViewInActive();
+                FillStockViewNotActive();
                 btnDeActivateStock.Visible = false;
                 btnStock_ReActivateProduct.Visible = true;
             }
@@ -235,7 +235,7 @@ namespace LAMN_Software
             var reactivate = SH.ReactivateProduct(p);
             if (reactivate == null)
             {
-                FillStockViewInActive();
+                FillStockViewNotActive();
                 MessageBox.Show("Product sucessfully reactivated");
                 return;
             }
@@ -306,7 +306,7 @@ namespace LAMN_Software
         }
 
         //method for updating/filling listbox for stock items that are inactive
-        public void FillStockViewInActive()
+        public void FillStockViewNotActive()
         {
             cbxStats1.Items.Clear();
             cbxStats2.Items.Clear();
@@ -1261,6 +1261,61 @@ namespace LAMN_Software
             //Random r = new Random();
             //int rInt = r.Next(0, cbxStats1.Items.Count); //for ints
             //cbxStats1.SelectedIndex = cbxStats1.SelectedItem[rInt];
+        }
+
+        private void btnSellProduct_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvAllStock.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select one product to sell");
+                return;
+            }
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
+
+            //fill in all fields/disable
+            tcNavigator.SelectedTab = tpNewOrder;
+
+            tbNewOrderID.Text = $"{p.Id.ToString()}";
+            tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+            tbNewOrderName.Text = $"{p.Name}";
+
+
+            tbNewOrderID.Enabled = false;
+            tbNewOrderEAN.Enabled = false;
+            tbNewOrderName.Enabled = false;
+        }
+
+        private void btnAddNewOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Product p = SH.GetProduct(Int32.Parse(tbNewOrderID.Text));
+
+                var newOrder = SH.AddQuantityToProduct(p, tbNewOrderWarehouse.Text, tbNewOrderStore.Text);
+
+                if (newOrder == null)
+                {
+                    FillStockViewActive();
+                    cbxActiveInactiveEmployees.SelectedIndex = 0;
+                    MessageBox.Show("New order correctly done.");
+                    return;
+                }
+                MessageBox.Show(newOrder.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnNewOrderBack_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStock;
         }
     }
 }
