@@ -1345,6 +1345,40 @@ namespace LAMN_Software
 
         private void btnNewOrderBack_Click(object sender, EventArgs e)
         {
+            tbNewOrderStore.Clear();
+            tbNewOrderWarehouse.Clear();
+            //back to stock page
+            tcNavigator.SelectedTab = tpStock;
+        }
+
+        private void btnSellConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //product
+                Product p = SH.GetProduct(Int32.Parse(tbSellID.Text));
+
+                //calculations of quantity and exception returned if it occurs
+                var newOrder = SH.SellProduct(p, tbSellQuantity.Text);
+
+                if (newOrder == null)
+                {
+                    FillStockViewActive();
+                    cbxActiveInactiveEmployees.SelectedIndex = 0;
+                    MessageBox.Show("Sell correctly done.");
+                    return;
+                }
+                MessageBox.Show(newOrder.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSellProdBack_Click(object sender, EventArgs e)
+        {
+            tbSellQuantity.Clear();
             //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }

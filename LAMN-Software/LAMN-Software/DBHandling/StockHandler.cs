@@ -295,18 +295,20 @@ namespace LAMN_Software
 
                 if (Int32.Parse(quantity) > product.QuantityS)
                 {
-                    throw new IncorrectQuantityException(quantity);
+                    throw new IncorrectStockMoreThanStore();
                 }
 
                 product.QuantityS = product.QuantityS - Int32.Parse(quantity);
+                product.TotalSold = product.TotalSold + Int32.Parse(quantity);
 
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE product SET QuantityS=@quantityS WHERE ID=@id;";
+                    string sql = "UPDATE product SET QuantityS=@quantityS, TotalSold=@totalsold WHERE ID=@id;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
                     cmd.Parameters.AddWithValue("@id", product.Id);
                     cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
+                    cmd.Parameters.AddWithValue("@totalsold", product.TotalSold);
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
