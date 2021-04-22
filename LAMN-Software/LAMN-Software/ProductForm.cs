@@ -1271,7 +1271,26 @@ namespace LAMN_Software
 
         private void btnSellProduct_Click(object sender, EventArgs e)
         {
-            
+            //select one item
+            if (dgvAllStock.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select one product to sell.");
+                return;
+            }
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
+
+            //fill in all fields/disable
+            tcNavigator.SelectedTab = tpSellProduct;
+
+            //textboxes filled with data
+            tbSellID.Text = $"{p.Id.ToString()}";
+            tbSellEAN.Text = $"{p.Ean.ToString()}";
+            tbSellName.Text = $"{p.Name}";
+
+            //fields disabled
+            tbNewOrderID.Enabled = false;
+            tbNewOrderEAN.Enabled = false;
+            tbNewOrderName.Enabled = false;
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -1279,7 +1298,7 @@ namespace LAMN_Software
             //select one item
             if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select one product to order");
+                MessageBox.Show("Please select one product to order.");
                 return;
             }
             Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;

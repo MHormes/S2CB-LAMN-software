@@ -283,5 +283,40 @@ namespace LAMN_Software
                 return ex;
             }
         }
+
+        public Exception SellProduct(Product product, string quantity)
+        {
+            try
+            {
+                if (!Regex.IsMatch(quantity, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantity);
+                }
+
+                if (Int32.Parse(quantity) > product.QuantityS)
+                {
+                    throw new IncorrectQuantityException(quantity);
+                }
+
+                product.QuantityS = product.QuantityS - Int32.Parse(quantity);
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET QuantityS=@quantityS WHERE ID=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@id", product.Id);
+                    cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
     }
 }
