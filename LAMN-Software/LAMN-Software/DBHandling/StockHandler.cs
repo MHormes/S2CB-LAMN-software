@@ -251,18 +251,26 @@ namespace LAMN_Software
         {
             try
             {
-                if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                //the user can leave the fields empty instead of writing 0
+                if (!string.IsNullOrEmpty(quantityS))
                 {
-                    throw new IncorrectQuantityException(quantityS);
+                    if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                    {
+                        throw new IncorrectQuantityException(quantityS);
+                    }
+                }
+                if (!string.IsNullOrEmpty(quantityWH))
+                {
+                    if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
+                    {
+                        throw new IncorrectQuantityException(quantityWH);
+                    }
                 }
 
-                if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
-                {
-                    throw new IncorrectQuantityException(quantityWH);
-                }
-
-                product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
-                product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
+                if (!string.IsNullOrEmpty(quantityS))
+                    product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
+                if (!string.IsNullOrEmpty(quantityWH))
+                    product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
 
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {

@@ -1288,9 +1288,9 @@ namespace LAMN_Software
             tbSellName.Text = $"{p.Name}";
 
             //fields disabled
-            tbNewOrderID.Enabled = false;
-            tbNewOrderEAN.Enabled = false;
-            tbNewOrderName.Enabled = false;
+            tbSellID.Enabled = false;
+            tbSellEAN.Enabled = false;
+            tbSellName.Enabled = false;
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -1359,16 +1359,39 @@ namespace LAMN_Software
                 Product p = SH.GetProduct(Int32.Parse(tbSellID.Text));
 
                 //calculations of quantity and exception returned if it occurs
-                var newOrder = SH.SellProduct(p, tbSellQuantity.Text);
+                var sellProduct = SH.SellProduct(p, tbSellQuantity.Text);
 
-                if (newOrder == null)
+                if (sellProduct == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
                     MessageBox.Show("Sell correctly done.");
-                    return;
+
+                    //if the quantity of the item is below then show the messagebox
+                    if (p.QuantityS < p.MinimumStockRequired)
+                    {
+                        string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                        string title = "Quantity warning";
+                        MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                        DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            tcNavigator.SelectedTab = tpNewOrder;
+
+                            //textboxes filled with data
+                            tbNewOrderID.Text = $"{p.Id.ToString()}";
+                            tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                            tbNewOrderName.Text = $"{p.Name}";
+
+                            //fields disabled
+                            tbNewOrderID.Enabled = false;
+                            tbNewOrderEAN.Enabled = false;
+                            tbNewOrderName.Enabled = false;
+                        }
+                    }
+                        return;
                 }
-                MessageBox.Show(newOrder.Message);
+                MessageBox.Show(sellProduct.Message);
             }
             catch (Exception ex)
             {
