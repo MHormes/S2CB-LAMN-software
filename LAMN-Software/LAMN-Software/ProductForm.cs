@@ -1276,9 +1276,10 @@ namespace LAMN_Software
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            //select one item
             if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select one product to sell");
+                MessageBox.Show("Please select one product to order");
                 return;
             }
             Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
@@ -1286,22 +1287,26 @@ namespace LAMN_Software
             //fill in all fields/disable
             tcNavigator.SelectedTab = tpNewOrder;
 
+            //textboxes filled with data
             tbNewOrderID.Text = $"{p.Id.ToString()}";
             tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
             tbNewOrderName.Text = $"{p.Name}";
 
-
+            //fields disabled
             tbNewOrderID.Enabled = false;
             tbNewOrderEAN.Enabled = false;
             tbNewOrderName.Enabled = false;
         }
 
+        //make a new order of a product
         private void btnAddNewOrder_Click(object sender, EventArgs e)
         {
             try
             {
+                //product
                 Product p = SH.GetProduct(Int32.Parse(tbNewOrderID.Text));
 
+                //calculations of quantity and exception returned if it occurs
                 var newOrder = SH.AddQuantityToProduct(p, tbNewOrderWarehouse.Text, tbNewOrderStore.Text);
 
                 if (newOrder == null)
@@ -1321,9 +1326,8 @@ namespace LAMN_Software
 
         private void btnNewOrderBack_Click(object sender, EventArgs e)
         {
+            //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }
-
-        
     }
 }

@@ -13,7 +13,7 @@ namespace LAMN_Software.DataClasses
         List<ScheduleTemplate> weekScheduleTemplate;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
-        //method to get all the stock items from the DB. Get all items from specific week.
+        //method to get all the schedules from the DB. Get all items from specific week.
         public Exception GetWeekScheduleFromDB()
         {
             weekScheduleTemplate = new List<ScheduleTemplate>();
