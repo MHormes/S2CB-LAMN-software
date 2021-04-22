@@ -883,6 +883,12 @@ namespace LAMN_Software
             }
         }
 
+        //Button click for minimum amount of people per shift
+        private void btnUpdateMinimumPeople_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpScheduleMin;
+        }
+
         private void clearGrid()
         {
             for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
@@ -1317,5 +1323,7 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpStock;
         }
+
+        
     }
 }

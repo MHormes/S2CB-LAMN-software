@@ -140,6 +140,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBHandling\StockHandler.cs" />
     <Compile Include="ENUMS\TimeSlot.cs" />
+    <Compile Include="DataClasses\SchedulesMinimum.cs" />
+    <Compile Include="DBHandling\ScheduleMinimumHandler.cs" />
     <EmbeddedResource Include="EmploymentTermination.resx">
       <DependentUpon>EmploymentTermination.cs</DependentUpon>
     </EmbeddedResource>
