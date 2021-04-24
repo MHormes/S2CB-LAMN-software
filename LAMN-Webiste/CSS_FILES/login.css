@@ -1,64 +1,203 @@
-* {
+/* .css-selector {
+    background: linear-gradient(270deg, #6e32ff, #4f89ff, #c04fff, #6d4b96);
+    background-size: 800% 800%;
+
+    -webkit-animation: background-color-animation 30s ease infinite;
+    -moz-animation: background-color-animation 30s ease infinite;
+    animation: background-color-animation 30s ease infinite;
+}
+
+@-webkit-keyframes background-color-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes background-color-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes background-color-animation { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+} */
+
+body {
+    background-image: linear-gradient(#6E32FF, #4318A9);
+    height: 810px;
+    margin-left: auto;
+    margin-right:aut;
+}
+
+img {
+    margin-top: 50px;
+    padding-top: 150px;
+    width: 80%;
+    max-width: 250px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+.button {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    border-radius: 20px;
+    background-image: linear-gradient(#451CA5, #431CA4);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button:hover {
+    /* background-image: linear-gradient(#6144a5, #5f44a3); */
+    opacity: 65%;
+}
+
+/* .logo {
+    width: fit-content;
+    margin: auto;
+    height: 270px;
+    padding-top: 00px;
+    padding-bottom: 75px;
+} */
+
+.login {
+    height: 200px;
+    width: 300px;
+    color: #FFF;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="password"], input[type="text"] {
+    border-style: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #696969;
+    height: 40px;
+    margin: 21px 0 0 29px;
+    padding-left: 37px;
+    transition: box-shadow 0.3s;
+    width: 240px;
+    font-size: 20px;
+  }
+
+  .login .button {
+    margin-top: 30px;
+    margin-left: 100px;
+  }
+
+  input[type="submit"] {
+    display: inline-block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100px;
+    height: 40px;
+    border-style: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 20px;
+    background-image: linear-gradient(#451CA5, #431CA4);
+    margin-top: 20px;
+    font-size: 15px;
+    text-align: center;
+    padding-left: 8px;
+    margin-left: 22px;
+}
+
+input[type="submit"]:hover {
+    opacity: 65%;
+}
+
+/* .back .button {
+    text-align: center;    
+    background-image: linear-gradient(#5827ca, #4c2ba0);
+    color: #FFF;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 20px;
+    float: left;
+} */
+/* 
+.back {
+    padding-top: 5px;
+    padding-left: 10px;
+    height: 40px;
+    width: 300px;
+    margin: auto;
+} */
+/* 
+.divider{
+    width:5px;
+    height:40px;
+    display:inline-block;
+} */
+
+.button-container {
+    padding: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --------------------------------------------- */
+
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #33658A;
 }
 
-
-.grid-container {
-    display: grid;
-    grid-template-areas:
-        'header header header header';
-    grid-template-rows: auto;
-    grid-gap: 10px;
-    background-color: #33658A;
-    text-align: center;
-    padding: 20px;
-}
-
-
-.header{
-    grid-area: header;
-    background-color: #2F4858;
-    color: #86BBD8;
-    padding: 30px;
-    font-size: 4vw;
-    text-align: center;
-}
-
-
-.navi{
-    background-color: #2F4858;
-    color: #86BBD8;
-    padding: 25px;
-    font-size: 1.5vw;
-}
-
 .row {
-    max-width: 500px;
+    max-width: 200px;
     margin: 0 auto;
     display: inline;
+    text-align: center;
 }
 
 section {
-    padding: 80px 0;
+    padding-left: 0px;
+    padding-right: 10px;
 }
 
 
 /* Login form */
 .login-form {
-    width: 60%;
-    margin: 0 auto;
+    width:fit-content;
+    margin-right: auto;
+    margin-left: auto;
     color: white;
+    text-align: center;
+
 }
 
 /* style contract form - text box */
-input[type=password],
+/* input[type=password],
 input[type=text],
 select,
 textarea {
@@ -71,9 +210,9 @@ textarea {
 }
 label{
     font-size: 2vw;
-}
+} */
 
-input[type=submit] {
+/* input[type=submit] {
     background-color: #FFFFFF;
     color: black;
     padding: 10px;
@@ -84,8 +223,10 @@ input[type=submit] {
     width: 100px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1vw;
-}
+} */
 
+
+/* 
 input[type=button] {
     background-color: #FFFFFF;
     color: black;
@@ -98,24 +239,23 @@ input[type=button] {
     font-family: Arial, Helvetica, sans-serif;
     float: right;
     font-size: 1vw;
-}
+} */
 
 
 h2 {
-    font-size: 3vw;
-    word-spacing: 2px;
+    size: 20px;
+    font-size: 20px;
+    margin:auto;
     text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
     color: white;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 @media screen and (max-width: 750px){
-    .grid-container {
+    /* .grid-container {
         display: grid;
         grid-template-areas:
             'header header'
@@ -125,24 +265,6 @@ a{
         background-color: #33658A;
         text-align: center;
         padding: 20px;
-    }
-
-
-    .header{
-        grid-area: header;
-        background-color: #2F4858;
-        color: #86BBD8;
-        padding: 30px;
-        font-size: 4vw;
-    }
-
-
-    .navi{
-        grid-area: navi;
-        background-color: #2F4858;
-        color: #86BBD8;
-        padding: 15px;
-        font-size: 2vw;
     }
 
     h2{
@@ -163,5 +285,5 @@ a{
     select,
     textarea{
         font-size: 2vw;
-    }
+    } */
 }

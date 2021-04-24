@@ -50,32 +50,40 @@ if(isset($_POST['btnLogin']))
         <link rel="stylesheet" type="text/css" href="../CSS_FILES/login.css">
     </head>
     <body>
+        <div class="css-selector">
         <!-- contact form -->
+        <div class="logo">
+            <img src="../IMG/MB-logo.png" alt="">
+        </div>  
+        
         <section class="login-form">
-            <div class="row">
-                <h2>Media Bazaar Employee Portal</h2>
-            </div>
-            <div class="row">
+                <h2>Employee Portal</h2>
+                
+                <br><br>
+                <div class="center">
+
                 <form method="post" action="#" class="login-form">
                     <!-- inserting username, password -->
                     <div class="row">
-                        <label for="username">Username</label>
+                        <!-- <label for="username">Username</label> -->
                         <input type="text" name="username" id="username" placeholder="Enter username" required>
-                    </div>
+                    </div><br>
                     <div class="row">
-                        <label for="pwd">Password</label>
+                        <!-- <label for="pwd">Password</label> -->
                         <input type="password" name="password" id="password" placeholder="Enter password" required>
-                    </div>
+                    </div><br>
                     <div class="row">
                         <input type="submit" value="Login" name="btnLogin">
                     </div>
                 </form>
+
+                </div>
                 <?php
                 if(isset($_COOKIE["loginMessage"])){
                     echo $_COOKIE["loginMessage"];
                 }
                 ?>
-            </div>
         </section>
+        </div>
     </body>
 </html>
