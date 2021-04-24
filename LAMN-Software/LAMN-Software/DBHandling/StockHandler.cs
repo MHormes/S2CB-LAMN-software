@@ -251,18 +251,26 @@ namespace LAMN_Software
         {
             try
             {
-                if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                //the user can leave the fields empty instead of writing 0
+                if (!string.IsNullOrEmpty(quantityS))
                 {
-                    throw new IncorrectQuantityException(quantityS);
+                    if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                    {
+                        throw new IncorrectQuantityException(quantityS);
+                    }
+                }
+                if (!string.IsNullOrEmpty(quantityWH))
+                {
+                    if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
+                    {
+                        throw new IncorrectQuantityException(quantityWH);
+                    }
                 }
 
-                if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
-                {
-                    throw new IncorrectQuantityException(quantityWH);
-                }
-
-                product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
-                product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
+                if (!string.IsNullOrEmpty(quantityS))
+                    product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
+                if (!string.IsNullOrEmpty(quantityWH))
+                    product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
 
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
@@ -272,6 +280,43 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@id", product.Id);
                     cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
                     cmd.Parameters.AddWithValue("@quantityWH", product.QuantityWH);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception SellProduct(Product product, string quantity)
+        {
+            try
+            {
+                if (!Regex.IsMatch(quantity, @"^[0-9]*$"))
+                {
+                    throw new IncorrectQuantityException(quantity);
+                }
+
+                if (Int32.Parse(quantity) > product.QuantityS)
+                {
+                    throw new IncorrectStockMoreThanStore();
+                }
+
+                product.QuantityS = product.QuantityS - Int32.Parse(quantity);
+                product.TotalSold = product.TotalSold + Int32.Parse(quantity);
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET QuantityS=@quantityS, TotalSold=@totalsold WHERE ID=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@id", product.Id);
+                    cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
+                    cmd.Parameters.AddWithValue("@totalsold", product.TotalSold);
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();

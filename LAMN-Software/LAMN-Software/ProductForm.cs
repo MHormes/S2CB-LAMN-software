@@ -1271,7 +1271,26 @@ namespace LAMN_Software
 
         private void btnSellProduct_Click(object sender, EventArgs e)
         {
-            
+            //select one item
+            if (dgvAllStock.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select one product to sell.");
+                return;
+            }
+            Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
+
+            //fill in all fields/disable
+            tcNavigator.SelectedTab = tpSellProduct;
+
+            //textboxes filled with data
+            tbSellID.Text = $"{p.Id.ToString()}";
+            tbSellEAN.Text = $"{p.Ean.ToString()}";
+            tbSellName.Text = $"{p.Name}";
+
+            //fields disabled
+            tbSellID.Enabled = false;
+            tbSellEAN.Enabled = false;
+            tbSellName.Enabled = false;
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -1279,7 +1298,7 @@ namespace LAMN_Software
             //select one item
             if (dgvAllStock.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please select one product to order");
+                MessageBox.Show("Please select one product to order.");
                 return;
             }
             Product p = (Product)dgvAllStock.CurrentRow.Cells[0].Value;
@@ -1326,6 +1345,63 @@ namespace LAMN_Software
 
         private void btnNewOrderBack_Click(object sender, EventArgs e)
         {
+            tbNewOrderStore.Clear();
+            tbNewOrderWarehouse.Clear();
+            //back to stock page
+            tcNavigator.SelectedTab = tpStock;
+        }
+
+        private void btnSellConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //product
+                Product p = SH.GetProduct(Int32.Parse(tbSellID.Text));
+
+                //calculations of quantity and exception returned if it occurs
+                var sellProduct = SH.SellProduct(p, tbSellQuantity.Text);
+
+                if (sellProduct == null)
+                {
+                    FillStockViewActive();
+                    cbxActiveInactiveEmployees.SelectedIndex = 0;
+                    MessageBox.Show("Sell correctly done.");
+
+                    //if the quantity of the item is below then show the messagebox
+                    if (p.QuantityS < p.MinimumStockRequired)
+                    {
+                        string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                        string title = "Quantity warning";
+                        MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                        DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            tcNavigator.SelectedTab = tpNewOrder;
+
+                            //textboxes filled with data
+                            tbNewOrderID.Text = $"{p.Id.ToString()}";
+                            tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                            tbNewOrderName.Text = $"{p.Name}";
+
+                            //fields disabled
+                            tbNewOrderID.Enabled = false;
+                            tbNewOrderEAN.Enabled = false;
+                            tbNewOrderName.Enabled = false;
+                        }
+                    }
+                        return;
+                }
+                MessageBox.Show(sellProduct.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSellProdBack_Click(object sender, EventArgs e)
+        {
+            tbSellQuantity.Clear();
             //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }
