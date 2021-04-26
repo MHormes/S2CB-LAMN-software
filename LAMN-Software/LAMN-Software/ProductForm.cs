@@ -640,12 +640,12 @@ namespace LAMN_Software
         //METHOD FOR FILLING THE SCHEDULES
         public void FillScheduleGridView()
         {
-            dgvSchedules.Rows.Clear();
+            dgvSchedulesEmp.Rows.Clear();
             if (EH.GetAllEmployeesFromDB() == null)
             {
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
-                    dgvSchedules.Rows.Add(employee);
+                    dgvSchedulesEmp.Rows.Add(employee);
                 }
             }
             else
@@ -654,23 +654,23 @@ namespace LAMN_Software
             }
 
             //Assign correct enum value to comboboxes
-            schedulesMonday.ValueType = typeof(TimeSlot);
-            schedulesMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesTuesday.ValueType = typeof(TimeSlot);
-            schedulesTuesday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesWednesday.ValueType = typeof(TimeSlot);
-            schedulesWednesday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesThursday.ValueType = typeof(TimeSlot);
-            schedulesThursday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesFriday.ValueType = typeof(TimeSlot);
-            schedulesFriday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesSaturday.ValueType = typeof(TimeSlot);
-            schedulesSaturday.DataSource = Enum.GetValues(typeof(TimeSlot));
-            schedulesSunday.ValueType = typeof(TimeSlot);
-            schedulesSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpMonday.ValueType = typeof(TimeSlot);
+            schedulesEmpMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpTuesday.ValueType = typeof(TimeSlot);
+            schedulesEmpTuesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpWednesday.ValueType = typeof(TimeSlot);
+            schedulesEmpWednesday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpThursday.ValueType = typeof(TimeSlot);
+            schedulesEmpThursday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpFriday.ValueType = typeof(TimeSlot);
+            schedulesEmpFriday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpSaturday.ValueType = typeof(TimeSlot);
+            schedulesEmpSaturday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            schedulesEmpSunday.ValueType = typeof(TimeSlot);
+            schedulesEmpSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
         }
 
-        //Navigation button to schedule page
+        //Navigation button to schedule choise menu
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpScheduleChoise;
@@ -692,6 +692,7 @@ namespace LAMN_Software
         private void btnSchedulesChoiseViewEmp_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedulesEmp;
+            
         }
 
         //button for creating the schedules in schedule choise menu
@@ -700,11 +701,17 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpSchedulesCreate;
         }
 
-        //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
-        private void btnSchedulesShowWeek_Click(object sender, EventArgs e)
+        //button for searching a specific employee in the view employee schedule page
+        private void btnScheduleEmpSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK IN VIEW EMP SCHEDULE VIEW
+        private void btnSchedulesEmpShowWeek_Click(object sender, EventArgs e)
         {
             FillScheduleGridView();
-            int weekNmr = Convert.ToInt32(Math.Round(nudScheduleWeek.Value));
+            int weekNmr = Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
                 lblScheduleCurrentWeek.Text = $"Currently showing week: {weekNmr}";
@@ -714,23 +721,23 @@ namespace LAMN_Software
                     for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
                     {
                         //create temp emp object based on the state of the for loop
-                        Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
+                        Employee emp = (Employee)dgvSchedulesEmp.Rows[i].Cells[0].Value;
                         if (emp.Bsn == schedule.EmployeeBSN)
                         {
                             if (schedule.Day == Day.MONDAY)
-                                dgvSchedules.Rows[i].Cells[1].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[1].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.TUESDAY)
-                                dgvSchedules.Rows[i].Cells[2].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[2].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.WEDNESDAY)
-                                dgvSchedules.Rows[i].Cells[3].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[3].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.THURDAY)
-                                dgvSchedules.Rows[i].Cells[4].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[4].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.FRIDAY)
-                                dgvSchedules.Rows[i].Cells[5].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[5].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SATURDAY)
-                                dgvSchedules.Rows[i].Cells[6].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[6].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SUNDAY)
-                                dgvSchedules.Rows[i].Cells[7].Value = schedule.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[7].Value = schedule.TimeSlot;
                         }
                     }
 
@@ -742,52 +749,52 @@ namespace LAMN_Software
             }
         }
 
-        //Method for saving the schedule for the week you are viewing in its current state
-        private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
+        //Method for saving the schedule for the week you are viewing in the view emp schedule tab.
+        private void btnScheduleEmpSaveCurrentWeek_Click(object sender, EventArgs e)
         {
-            SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
+            SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)));
 
             try
             {
-                for (int rows = 0; rows < dgvSchedules.Rows.Count; rows++)
+                for (int rows = 0; rows < dgvSchedulesEmp.Rows.Count; rows++)
                 {
-                    for (int col = 1; col < dgvSchedules.Rows[rows].Cells.Count; col++)
+                    for (int col = 1; col < dgvSchedulesEmp.Rows[rows].Cells.Count; col++)
                     {
-                        Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
+                        Employee emp = (Employee)dgvSchedulesEmp.Rows[rows].Cells[0].Value;
 
                         string slot = null;
-                        if (dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (dgvSchedulesEmp.Rows[rows].Cells[col].Value != null)
                         {
-                            slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                            slot = dgvSchedulesEmp.Rows[rows].Cells[col].Value.ToString();
                         }
 
                         if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.MONDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.MONDAY, emp.Bsn, slot);
                         }
                         if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.TUESDAY, emp.Bsn, slot);
                         }
                         if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.WEDNESDAY, emp.Bsn, slot);
                         }
                         if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.THURDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.THURDAY, emp.Bsn, slot);
                         }
                         if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.FRIDAY, emp.Bsn, slot);
                         }
                         if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.SATURDAY, emp.Bsn, slot);
                         }
                         else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
-                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
+                            SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value)), Day.SUNDAY, emp.Bsn, slot);
                         }
                     }
                 }
@@ -798,8 +805,8 @@ namespace LAMN_Software
             }
         }
 
-        //button for saving the current schedule as the template
-        private void button_saveAsTemplate_Click(object sender, EventArgs e)
+        //button for saving the current schedule as the template NEEDS TO BE REFACTORED TO THE OTHER PAGE
+        private void btnSchedulesCreateSaveTempalte_Click(object sender, EventArgs e)
         {
             //foreach edited combox push to the DB.
             //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
@@ -809,16 +816,16 @@ namespace LAMN_Software
 
             try
             {
-                for (int rows = 0; rows < dgvSchedules.Rows.Count; rows++)
+                for (int rows = 0; rows < dgvSchedulesEmp.Rows.Count; rows++)
                 {
-                    for (int col = 1; col < dgvSchedules.Rows[rows].Cells.Count; col++)
+                    for (int col = 1; col < dgvSchedulesEmp.Rows[rows].Cells.Count; col++)
                     {
-                        Employee emp = (Employee)dgvSchedules.Rows[rows].Cells[0].Value;
+                        Employee emp = (Employee)dgvSchedulesEmp.Rows[rows].Cells[0].Value;
 
                         string slot = null;
-                        if (dgvSchedules.Rows[rows].Cells[col].Value != null)
+                        if (dgvSchedulesEmp.Rows[rows].Cells[col].Value != null)
                         {
-                            slot = dgvSchedules.Rows[rows].Cells[col].Value.ToString();
+                            slot = dgvSchedulesEmp.Rows[rows].Cells[col].Value.ToString();
                         }
 
                         if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
@@ -858,8 +865,8 @@ namespace LAMN_Software
             }
         }
 
-        //button for inserting the template in the current showing week
-        private void button_loadTemplate_Click(object sender, EventArgs e)
+        //button for inserting the template in the current showing week NEEDS TO BE REFACTORED INTO THE NEW TAB
+        private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
         {
             if (SCTH.GetWeekScheduleFromDB() == null)
             {
@@ -870,23 +877,23 @@ namespace LAMN_Software
                     for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
                     {
                         //create temp emp object based on the state of the for loop
-                        Employee emp = (Employee)dgvSchedules.Rows[i].Cells[0].Value;
+                        Employee emp = (Employee)dgvSchedulesEmp.Rows[i].Cells[0].Value;
                         if (emp.Bsn == scheduleTemplate.EmployeeBSN)
                         {
                             if (scheduleTemplate.Day == Day.MONDAY)
-                                dgvSchedules.Rows[i].Cells[1].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[1].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.TUESDAY)
-                                dgvSchedules.Rows[i].Cells[2].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[2].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.WEDNESDAY)
-                                dgvSchedules.Rows[i].Cells[3].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[3].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.THURDAY)
-                                dgvSchedules.Rows[i].Cells[4].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[4].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.FRIDAY)
-                                dgvSchedules.Rows[i].Cells[5].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[5].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.SATURDAY)
-                                dgvSchedules.Rows[i].Cells[6].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[6].Value = scheduleTemplate.TimeSlot;
                             else if (scheduleTemplate.Day == Day.SUNDAY)
-                                dgvSchedules.Rows[i].Cells[7].Value = scheduleTemplate.TimeSlot;
+                                dgvSchedulesEmp.Rows[i].Cells[7].Value = scheduleTemplate.TimeSlot;
                         }
                     }
 
@@ -899,7 +906,7 @@ namespace LAMN_Software
         }
 
         //Button click for minimum amount of people per shift
-        private void btnUpdateMinimumPeople_Click(object sender, EventArgs e)
+        private void btnScheduleCreateMinimumPeople_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpScheduleMin;
         }
@@ -910,13 +917,13 @@ namespace LAMN_Software
         {
             for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
             {
-                dgvSchedules.Rows[i].Cells[1].Value = null;
-                dgvSchedules.Rows[i].Cells[2].Value = null;
-                dgvSchedules.Rows[i].Cells[3].Value = null;
-                dgvSchedules.Rows[i].Cells[4].Value = null;
-                dgvSchedules.Rows[i].Cells[5].Value = null;
-                dgvSchedules.Rows[i].Cells[6].Value = null;
-                dgvSchedules.Rows[i].Cells[7].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[1].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[2].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[3].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[4].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[5].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[6].Value = null;
+                dgvSchedulesEmp.Rows[i].Cells[7].Value = null;
             }
         }
 
@@ -1195,15 +1202,15 @@ namespace LAMN_Software
 
         public void AdjustColumnWidthSchedules()
         {
-            dgvSchedules.RowHeadersWidth = 4;
-            dgvSchedules.Columns[0].Width = 198; // Name
-            dgvSchedules.Columns[1].Width = 130; // M
-            dgvSchedules.Columns[2].Width = 130; // T
-            dgvSchedules.Columns[3].Width = 130; // W
-            dgvSchedules.Columns[4].Width = 130; // T
-            dgvSchedules.Columns[5].Width = 130; // F
-            dgvSchedules.Columns[6].Width = 130; // S
-            dgvSchedules.Columns[7].Width = 130; // S
+            dgvSchedulesEmp.RowHeadersWidth = 4;
+            dgvSchedulesEmp.Columns[0].Width = 198; // Name
+            dgvSchedulesEmp.Columns[1].Width = 130; // M
+            dgvSchedulesEmp.Columns[2].Width = 130; // T
+            dgvSchedulesEmp.Columns[3].Width = 130; // W
+            dgvSchedulesEmp.Columns[4].Width = 130; // T
+            dgvSchedulesEmp.Columns[5].Width = 130; // F
+            dgvSchedulesEmp.Columns[6].Width = 130; // S
+            dgvSchedulesEmp.Columns[7].Width = 130; // S
         }
 
         public void AdjustColumnWidthEmployees()
