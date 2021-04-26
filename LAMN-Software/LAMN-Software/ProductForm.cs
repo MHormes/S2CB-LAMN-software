@@ -689,18 +689,30 @@ namespace LAMN_Software
             gpnlStatsType.Visible = false;
         }
 
+
         //button for viewing emp schedules in schedule choise menu
-        private void btnSchedulesChoiseViewEmp_Click(object sender, EventArgs e)
+        private void gpnlViewSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedulesEmp;
-            
+        }
+
+        private void lblViewSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedulesEmp;
         }
 
         //button for creating the schedules in schedule choise menu
-        private void btnScheduleChoiseCreate_Click(object sender, EventArgs e)
+        private void gpnlCreateSchedules_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpSchedulesCreate;
         }
+
+        private void lblCreateSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedulesCreate;
+        }
+
+
 
         //button for searching a specific employee in the view employee schedule page
         private void btnScheduleEmpSearch_Click(object sender, EventArgs e)
@@ -1444,6 +1456,29 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpStock;
         }
 
-        
+        private void gpnlCreateSchedules_MouseEnter(object sender, EventArgs e)
+        {
+            lblCreateSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
+            pbxAddSchedules.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void gpnlCreateSchedules_MouseLeave(object sender, EventArgs e)
+        {
+            lblCreateSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            pbxAddSchedules.SizeMode = PictureBoxSizeMode.Zoom;
+
+        }
+
+        private void gpnlViewSchedules_MouseEnter(object sender, EventArgs e)
+        {
+            lblViewSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
+            pbxViewSchedules.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void gpnlViewSchedules_MouseLeave(object sender, EventArgs e)
+        {
+            lblViewSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
+            pbxViewSchedules.SizeMode = PictureBoxSizeMode.Zoom;
+        }
     }
 }
