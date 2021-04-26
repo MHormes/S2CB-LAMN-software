@@ -646,6 +646,7 @@ namespace LAMN_Software
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
                     dgvSchedulesEmp.Rows.Add(employee);
+                    
                 }
             }
             else
@@ -704,10 +705,20 @@ namespace LAMN_Software
         //button for searching a specific employee in the view employee schedule page
         private void btnScheduleEmpSearch_Click(object sender, EventArgs e)
         {
-
+            dgvSchedulesEmp.CurrentCell = null;
+            //check for each emp in the schedule dgv if searched name is included 
+            for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
+            {
+                //create temp emp object based on the state of the for loop
+                Employee emp = (Employee)dgvSchedulesEmp.Rows[i].Cells[0].Value;
+                if (emp.FirstName.Contains(tbxScheduleEmpSearch.Text))
+                {
+                    dgvSchedulesEmp.Rows[i].Selected = true;
+                }
+            }
         }
 
-        //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK IN VIEW EMP SCHEDULE VIEW
+        //Button to load schedule of chosen week in view emp schedule tab.
         private void btnSchedulesEmpShowWeek_Click(object sender, EventArgs e)
         {
             FillScheduleGridView();
@@ -721,9 +732,10 @@ namespace LAMN_Software
                     for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
                     {
                         //create temp emp object based on the state of the for loop
-                        Employee emp = (Employee)dgvSchedulesEmp.Rows[i].Cells[0].Value;
+                        Employee emp = EH.GetAllEmployees()[i];
                         if (emp.Bsn == schedule.EmployeeBSN)
                         {
+                            emp.FTE += 8;
                             if (schedule.Day == Day.MONDAY)
                                 dgvSchedulesEmp.Rows[i].Cells[1].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.TUESDAY)
@@ -738,6 +750,8 @@ namespace LAMN_Software
                                 dgvSchedulesEmp.Rows[i].Cells[6].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.SUNDAY)
                                 dgvSchedulesEmp.Rows[i].Cells[7].Value = schedule.TimeSlot;
+
+                            dgvSchedulesEmp.Rows[i].Cells[8].Value = EH.GetAllEmployees()[i].FTE;
                         }
                     }
 

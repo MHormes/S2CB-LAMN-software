@@ -29,13 +29,13 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
@@ -85,14 +85,6 @@ namespace LAMN_Software
             this.nudScheduleEmpWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesEmpShowWeek = new System.Windows.Forms.Button();
             this.dgvSchedulesEmp = new System.Windows.Forms.DataGridView();
-            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tpSchedulesCreate = new System.Windows.Forms.TabPage();
             this.btnScheduleCreateMinimumPeople = new System.Windows.Forms.Button();
             this.btnSchedulesCreateLoadTemplate = new System.Windows.Forms.Button();
@@ -240,6 +232,15 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
+            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -813,6 +814,7 @@ namespace LAMN_Software
             // 
             // tbxScheduleEmpSearch
             // 
+            this.tbxScheduleEmpSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tbxScheduleEmpSearch.Location = new System.Drawing.Point(824, 509);
             this.tbxScheduleEmpSearch.Multiline = true;
             this.tbxScheduleEmpSearch.Name = "tbxScheduleEmpSearch";
@@ -897,75 +899,14 @@ namespace LAMN_Software
             this.schedulesEmpThursday,
             this.schedulesEmpFriday,
             this.schedulesEmpSaturday,
-            this.schedulesEmpSunday});
+            this.schedulesEmpSunday,
+            this.schedulesEmpFTE});
             this.dgvSchedulesEmp.Location = new System.Drawing.Point(0, 26);
             this.dgvSchedulesEmp.Name = "dgvSchedulesEmp";
             this.dgvSchedulesEmp.RowHeadersWidth = 51;
             this.dgvSchedulesEmp.RowTemplate.Height = 30;
-            this.dgvSchedulesEmp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSchedulesEmp.Size = new System.Drawing.Size(1113, 449);
             this.dgvSchedulesEmp.TabIndex = 13;
-            // 
-            // schedulesEmpFirstName
-            // 
-            this.schedulesEmpFirstName.HeaderText = "First Name";
-            this.schedulesEmpFirstName.MinimumWidth = 6;
-            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
-            this.schedulesEmpFirstName.ReadOnly = true;
-            this.schedulesEmpFirstName.Width = 125;
-            // 
-            // schedulesEmpMonday
-            // 
-            this.schedulesEmpMonday.HeaderText = "Monday";
-            this.schedulesEmpMonday.Items.AddRange(new object[] {
-            "M",
-            "A",
-            "E"});
-            this.schedulesEmpMonday.MinimumWidth = 6;
-            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
-            this.schedulesEmpMonday.Width = 125;
-            // 
-            // schedulesEmpTuesday
-            // 
-            this.schedulesEmpTuesday.HeaderText = "Tuesday";
-            this.schedulesEmpTuesday.MinimumWidth = 6;
-            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
-            this.schedulesEmpTuesday.Width = 125;
-            // 
-            // schedulesEmpWednesday
-            // 
-            this.schedulesEmpWednesday.HeaderText = "Wednesday";
-            this.schedulesEmpWednesday.MinimumWidth = 6;
-            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
-            this.schedulesEmpWednesday.Width = 125;
-            // 
-            // schedulesEmpThursday
-            // 
-            this.schedulesEmpThursday.HeaderText = "Thursday";
-            this.schedulesEmpThursday.MinimumWidth = 6;
-            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
-            this.schedulesEmpThursday.Width = 125;
-            // 
-            // schedulesEmpFriday
-            // 
-            this.schedulesEmpFriday.HeaderText = "Friday";
-            this.schedulesEmpFriday.MinimumWidth = 6;
-            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
-            this.schedulesEmpFriday.Width = 125;
-            // 
-            // schedulesEmpSaturday
-            // 
-            this.schedulesEmpSaturday.HeaderText = "Saturday";
-            this.schedulesEmpSaturday.MinimumWidth = 6;
-            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
-            this.schedulesEmpSaturday.Width = 125;
-            // 
-            // schedulesEmpSunday
-            // 
-            this.schedulesEmpSunday.HeaderText = "Sunday";
-            this.schedulesEmpSunday.MinimumWidth = 6;
-            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
-            this.schedulesEmpSunday.Width = 125;
             // 
             // tpSchedulesCreate
             // 
@@ -985,7 +926,7 @@ namespace LAMN_Software
             // 
             // btnScheduleCreateMinimumPeople
             // 
-            this.btnScheduleCreateMinimumPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnScheduleCreateMinimumPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnScheduleCreateMinimumPeople.Location = new System.Drawing.Point(722, 490);
             this.btnScheduleCreateMinimumPeople.Name = "btnScheduleCreateMinimumPeople";
             this.btnScheduleCreateMinimumPeople.Size = new System.Drawing.Size(141, 62);
@@ -996,7 +937,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateLoadTemplate
             // 
-            this.btnSchedulesCreateLoadTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSchedulesCreateLoadTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnSchedulesCreateLoadTemplate.Location = new System.Drawing.Point(869, 491);
             this.btnSchedulesCreateLoadTemplate.Name = "btnSchedulesCreateLoadTemplate";
             this.btnSchedulesCreateLoadTemplate.Size = new System.Drawing.Size(122, 60);
@@ -1007,7 +948,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateSaveTempalte
             // 
-            this.btnSchedulesCreateSaveTempalte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSchedulesCreateSaveTempalte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnSchedulesCreateSaveTempalte.Location = new System.Drawing.Point(997, 490);
             this.btnSchedulesCreateSaveTempalte.Name = "btnSchedulesCreateSaveTempalte";
             this.btnSchedulesCreateSaveTempalte.Size = new System.Drawing.Size(122, 62);
@@ -1018,7 +959,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateSaveCurrent
             // 
-            this.btnSchedulesCreateSaveCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSchedulesCreateSaveCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnSchedulesCreateSaveCurrent.Location = new System.Drawing.Point(136, 487);
             this.btnSchedulesCreateSaveCurrent.Name = "btnSchedulesCreateSaveCurrent";
             this.btnSchedulesCreateSaveCurrent.Size = new System.Drawing.Size(119, 70);
@@ -1051,7 +992,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateShowWeek
             // 
-            this.btnSchedulesCreateShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSchedulesCreateShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnSchedulesCreateShowWeek.Location = new System.Drawing.Point(8, 511);
             this.btnSchedulesCreateShowWeek.Name = "btnSchedulesCreateShowWeek";
             this.btnSchedulesCreateShowWeek.Size = new System.Drawing.Size(122, 46);
@@ -1073,7 +1014,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesSaveMinPeople
             // 
-            this.btnSchedulesSaveMinPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSchedulesSaveMinPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
             this.btnSchedulesSaveMinPeople.Location = new System.Drawing.Point(980, 461);
             this.btnSchedulesSaveMinPeople.Name = "btnSchedulesSaveMinPeople";
             this.btnSchedulesSaveMinPeople.Size = new System.Drawing.Size(137, 93);
@@ -1565,23 +1506,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartStock.Legends.Add(legend3);
+            chartArea11.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartStock.Legends.Add(legend11);
             this.chartStock.Location = new System.Drawing.Point(141, 19);
             this.chartStock.Margin = new System.Windows.Forms.Padding(1);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Store Stock Total";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Warehouse Stock Total";
-            series5.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series4);
-            this.chartStock.Series.Add(series5);
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Store Stock Total";
+            series17.ChartArea = "ChartArea1";
+            series17.Legend = "Legend1";
+            series17.Name = "Warehouse Stock Total";
+            series17.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series16);
+            this.chartStock.Series.Add(series17);
             this.chartStock.Size = new System.Drawing.Size(581, 204);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -2317,19 +2258,19 @@ namespace LAMN_Software
             // 
             // chartEmployeesPosition
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend4);
+            chartArea12.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend12);
             this.chartEmployeesPosition.Location = new System.Drawing.Point(2, 0);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(2);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series6.Legend = "Legend1";
-            series6.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series6);
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series18.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series18.Legend = "Legend1";
+            series18.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series18);
             this.chartEmployeesPosition.Size = new System.Drawing.Size(488, 394);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
@@ -2696,6 +2637,73 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
+            // schedulesEmpFirstName
+            // 
+            this.schedulesEmpFirstName.HeaderText = "First Name";
+            this.schedulesEmpFirstName.MinimumWidth = 6;
+            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
+            this.schedulesEmpFirstName.ReadOnly = true;
+            this.schedulesEmpFirstName.Width = 125;
+            // 
+            // schedulesEmpMonday
+            // 
+            this.schedulesEmpMonday.HeaderText = "Monday";
+            this.schedulesEmpMonday.Items.AddRange(new object[] {
+            "M",
+            "A",
+            "E"});
+            this.schedulesEmpMonday.MinimumWidth = 6;
+            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
+            this.schedulesEmpMonday.Width = 125;
+            // 
+            // schedulesEmpTuesday
+            // 
+            this.schedulesEmpTuesday.HeaderText = "Tuesday";
+            this.schedulesEmpTuesday.MinimumWidth = 6;
+            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
+            this.schedulesEmpTuesday.Width = 125;
+            // 
+            // schedulesEmpWednesday
+            // 
+            this.schedulesEmpWednesday.HeaderText = "Wednesday";
+            this.schedulesEmpWednesday.MinimumWidth = 6;
+            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
+            this.schedulesEmpWednesday.Width = 125;
+            // 
+            // schedulesEmpThursday
+            // 
+            this.schedulesEmpThursday.HeaderText = "Thursday";
+            this.schedulesEmpThursday.MinimumWidth = 6;
+            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
+            this.schedulesEmpThursday.Width = 125;
+            // 
+            // schedulesEmpFriday
+            // 
+            this.schedulesEmpFriday.HeaderText = "Friday";
+            this.schedulesEmpFriday.MinimumWidth = 6;
+            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
+            this.schedulesEmpFriday.Width = 125;
+            // 
+            // schedulesEmpSaturday
+            // 
+            this.schedulesEmpSaturday.HeaderText = "Saturday";
+            this.schedulesEmpSaturday.MinimumWidth = 6;
+            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
+            this.schedulesEmpSaturday.Width = 125;
+            // 
+            // schedulesEmpSunday
+            // 
+            this.schedulesEmpSunday.HeaderText = "Sunday";
+            this.schedulesEmpSunday.MinimumWidth = 6;
+            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
+            this.schedulesEmpSunday.Width = 125;
+            // 
+            // schedulesEmpFTE
+            // 
+            this.schedulesEmpFTE.HeaderText = "FTE";
+            this.schedulesEmpFTE.Name = "schedulesEmpFTE";
+            this.schedulesEmpFTE.ReadOnly = true;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2944,14 +2952,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnScheduleCreateMinimumPeople;
         private System.Windows.Forms.Button btnSchedulesCreateLoadTemplate;
         private System.Windows.Forms.Button btnSchedulesCreateSaveTempalte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScheduleMinShift;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleMinMonday;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleMinTuesday;
@@ -2960,5 +2960,14 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleMinFriday;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleMinSaturday;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScheduleMinSunday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFTE;
     }
 }
