@@ -673,7 +673,7 @@ namespace LAMN_Software
         //Navigation button to schedule page
         private void btnSchedules_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpSchedules;
+            tcNavigator.SelectedTab = tpScheduleChoise;
             btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
             btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
             btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
@@ -686,6 +686,18 @@ namespace LAMN_Software
 
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
+        }
+
+        //button for viewing emp schedules in schedule choise menu
+        private void btnSchedulesChoiseViewEmp_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedulesEmp;
+        }
+
+        //button for creating the schedules in schedule choise menu
+        private void btnScheduleChoiseCreate_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSchedulesCreate;
         }
 
         //BUTTON TO LOAD SCHEDULE FOR CHOSEN WEEK
@@ -730,6 +742,7 @@ namespace LAMN_Software
             }
         }
 
+        //Method for saving the schedule for the week you are viewing in its current state
         private void btnScheduleSaveCurrentWeek_Click(object sender, EventArgs e)
         {
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudScheduleWeek.Value)));
@@ -785,6 +798,7 @@ namespace LAMN_Software
             }
         }
 
+        //button for saving the current schedule as the template
         private void button_saveAsTemplate_Click(object sender, EventArgs e)
         {
             //foreach edited combox push to the DB.
@@ -844,6 +858,7 @@ namespace LAMN_Software
             }
         }
 
+        //button for inserting the template in the current showing week
         private void button_loadTemplate_Click(object sender, EventArgs e)
         {
             if (SCTH.GetWeekScheduleFromDB() == null)
@@ -889,6 +904,8 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpScheduleMin;
         }
 
+
+        //method for clearing the schedule view grid.
         private void clearGrid()
         {
             for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
@@ -1405,5 +1422,7 @@ namespace LAMN_Software
             //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }
+
+        
     }
 }
