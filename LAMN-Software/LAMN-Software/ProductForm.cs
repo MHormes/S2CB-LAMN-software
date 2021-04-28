@@ -1055,6 +1055,7 @@ namespace LAMN_Software
             cbxStats3.Items.Add(name);
         }
 
+    
         public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
