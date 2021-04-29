@@ -32,7 +32,7 @@ namespace LAMN_Software
                         Day day = Day.MONDAY;
                         
                         string DayReturn = dr[0].ToString();
-                        string TimeReturn = dr[2].ToString();
+                        string TimeReturn = dr[1].ToString();
 
                         if (TimeReturn == "MORNING")
                             time = TimeSlot.MORNING;
@@ -56,7 +56,7 @@ namespace LAMN_Software
                         else if (DayReturn == "SUNDAY")
                             day = Day.SUNDAY;
 
-                        scheduleMinimum.Add(new SchedulesMinimum(day, time, Convert.ToInt32(dr[4])));
+                        scheduleMinimum.Add(new SchedulesMinimum(day, time, Convert.ToInt32(dr[2])));
                     }
                 }
                 return null;

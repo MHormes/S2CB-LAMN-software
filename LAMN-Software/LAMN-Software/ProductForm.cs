@@ -650,7 +650,6 @@ namespace LAMN_Software
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
                     dgvSchedulesEmp.Rows.Add(employee);
-                    
                 }
             }
             else
@@ -686,9 +685,35 @@ namespace LAMN_Software
                 dgvScheduleMinP.Rows.Add(timeSlot);
             }
 
-            //Assign correct enum value to comboboxes
-            //schedulesEmpMonday.ValueType = typeof(TimeSlot);
-            //schedulesEmpMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+            if (SCMH.GetMinimumPeopleFromDB() == null)
+            {
+                foreach (SchedulesMinimum schedulesMinimum in SCMH.GetSchedulesMinimum())
+                {
+                    int i = 0;
+
+                    if (schedulesMinimum.TimeSlot == TimeSlot.MORNING)
+                        i = 0;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.AFTERNOON)
+                        i = 1;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.EVENING)
+                        i = 2;
+
+                    if (schedulesMinimum.Day == Day.MONDAY)
+                        dgvScheduleMinP.Rows[i].Cells[1].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.TUESDAY)
+                        dgvScheduleMinP.Rows[i].Cells[2].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.WEDNESDAY)
+                        dgvScheduleMinP.Rows[i].Cells[3].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.THURDAY)
+                        dgvScheduleMinP.Rows[i].Cells[4].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.FRIDAY)
+                        dgvScheduleMinP.Rows[i].Cells[5].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SATURDAY)
+                        dgvScheduleMinP.Rows[i].Cells[6].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SUNDAY)
+                        dgvScheduleMinP.Rows[i].Cells[7].Value = schedulesMinimum.MinimumPeople;
+                }
+            }
         }
 
         //Navigation button to schedule choise menu
@@ -914,21 +939,13 @@ namespace LAMN_Software
         private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
         {
             SCMH.DeleteMinimumPeople();
-
             try
             {
                 for (int rows = 0; rows < dgvScheduleMinP.Rows.Count; rows++)
                 {
                     for (int col = 1; col < dgvScheduleMinP.Rows[rows].Cells.Count; col++)
                     {
-                        TimeSlot timeSlot = TimeSlot.MORNING;
-
-                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "MORNING")
-                            timeSlot = TimeSlot.MORNING;
-                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "AFTERNOON")
-                            timeSlot = TimeSlot.AFTERNOON;
-                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "EVENING")
-                            timeSlot = TimeSlot.EVENING;
+                        TimeSlot timeSlot = (TimeSlot)dgvScheduleMinP.Rows[rows].Cells[0].Value;
 
                         string slot = null;
                         if (dgvScheduleMinP.Rows[rows].Cells[col].Value != null)
@@ -1032,6 +1049,26 @@ namespace LAMN_Software
                 dgvSchedulesEmp.Rows[i].Cells[5].Value = null;
                 dgvSchedulesEmp.Rows[i].Cells[6].Value = null;
                 dgvSchedulesEmp.Rows[i].Cells[7].Value = null;
+            }
+        }
+
+        //method for clearing the schedule minimum view grid.
+        private void clearMinimumGrid()
+        {
+            int i = 0;
+            foreach (TimeSlot timeSlot in (TimeSlot[])Enum.GetValues(typeof(TimeSlot)))
+            {
+                if (timeSlot == TimeSlot.NO_SHIFT)
+                    continue;
+
+                dgvScheduleMinP.Rows[i].Cells[1].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[2].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[3].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[4].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[5].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[6].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[7].Value = null;
+                i++;
             }
         }
 
