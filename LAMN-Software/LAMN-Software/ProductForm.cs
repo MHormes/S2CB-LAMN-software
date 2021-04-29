@@ -40,7 +40,7 @@ namespace LAMN_Software
             cbxStockCurrentlyShowing.SelectedIndex = 0;
             cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
-            dgvEmployees.Font = new Font("Arial", 11);
+            dgvEmployees.Font = new Font("Arial", 8);
             updateTabWithPosition(position);
         }
 
@@ -1055,6 +1055,7 @@ namespace LAMN_Software
             cbxStats3.Items.Add(name);
         }
 
+    
         public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
@@ -1237,6 +1238,21 @@ namespace LAMN_Software
             dgvSchedulesEmp.Columns[5].Width = 130; // F
             dgvSchedulesEmp.Columns[6].Width = 130; // S
             dgvSchedulesEmp.Columns[7].Width = 130; // S
+            dgvSchedulesEmp.Columns[8].Width = 1; // FTE
+        }
+
+        public void AdjustColumnWidthSchedulesFTE()
+        {
+            dgvSchedulesEmp.RowHeadersWidth = 4;
+            dgvSchedulesEmp.Columns[0].Width = 198; // Name
+            dgvSchedulesEmp.Columns[1].Width = 114; // M
+            dgvSchedulesEmp.Columns[2].Width = 114; // T
+            dgvSchedulesEmp.Columns[3].Width = 114; // W
+            dgvSchedulesEmp.Columns[4].Width = 114; // T
+            dgvSchedulesEmp.Columns[5].Width = 114; // F
+            dgvSchedulesEmp.Columns[6].Width = 113; // S
+            dgvSchedulesEmp.Columns[7].Width = 113; // S
+            dgvSchedulesEmp.Columns[8].Width = 113; // FTE
         }
 
         public void AdjustColumnWidthEmployees()
@@ -1479,6 +1495,23 @@ namespace LAMN_Software
         {
             lblViewSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
             pbxViewSchedules.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void btnStockAdjustColumnWidth_Click(object sender, EventArgs e)
+        {
+            AdjustColumnWidthStock();
+        }
+
+        private void chkShowFTE_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkShowFTE.Checked)
+            {
+                AdjustColumnWidthSchedulesFTE();
+            }
+            else
+            {
+                AdjustColumnWidthSchedules();
+            }
         }
     }
 }

@@ -241,5 +241,15 @@ namespace LAMN_Software
             pf.ShowDialog();
             this.Close();
         }
+
+        private void lblClose_MouseEnter(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.Gray;
+        }
+
+        private void lblClose_MouseLeave(object sender, EventArgs e)
+        {
+            lblClose.ForeColor = Color.White;
+        }
     }
 }
