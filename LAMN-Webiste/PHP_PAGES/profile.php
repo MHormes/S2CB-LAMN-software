@@ -13,8 +13,12 @@ $FirstName=$row["FirstName"];
 $SecondName=$row["SecondName"];
 $PhoneNumber=$row["PhoneNumber"];
 $IceRelationship=$row["ICErelation"];
+$IceRelationship=strtolower($IceRelationship);
+$IceRelationship=ucfirst($IceRelationship);
 $IceNumber=$row["ICEnumber"];
 $BSN=$row["BSN"];
+
+$relationships=array("Partner", "Father", "Mother", "Brother", "Sister", "Uncle", "Aunt", "Cousin", "Friend", "Other");
 
 if(isset($_REQUEST['btnRequestChanges']))
 {
@@ -56,23 +60,32 @@ if(isset($_REQUEST['btnRequestChanges']))
              
             if(!isset($errorMsg))
             {
-                
-                $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelatiion)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindValue(':uBSN', $BSN);
-                $stmt->bindValue(':uUserName', $username);
-                $stmt->bindValue(':uFirstName', $firstName);
-                $stmt->bindValue(':uSecondName', $secondName);
-                $stmt->bindValue(':uPhoneNumber', $phoneNumber);
-                $stmt->bindValue(':uICEnumber', $iceNumber);
-                $stmt->bindValue(':uICErelatiion', $iceRelationship);
-            
-                $result = $stmt->execute();
-                echo 'I am here';
+                $select_stmt =$conn->prepare("SELECT * FROM employeechange WHERE UserName=:uUserName");
+                $select_stmt->execute(array(':uUserName'=>$username));
+                $row=$select_stmt->fetch(PDO::FETCH_ASSOC);
 
-                if($result){
-                    echo 'Change requested successfully';
-                    //header("refresh:1; login.php");
+                if($select_stmt->rowCount()<1)
+                {
+                    $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelatiion)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindValue(':uBSN', $BSN);
+                    $stmt->bindValue(':uUserName', $username);
+                    $stmt->bindValue(':uFirstName', $firstName);
+                    $stmt->bindValue(':uSecondName', $secondName);
+                    $stmt->bindValue(':uPhoneNumber', $phoneNumber);
+                    $stmt->bindValue(':uICEnumber', $iceNumber);
+                    $stmt->bindValue(':uICErelatiion', $iceRelationship);
+                
+                    $result = $stmt->execute();
+    
+                    if($result){
+                        echo 'Change requested successfully';
+                        header("refresh:1; schedules.php");
+                    }
+                }
+                else
+                {
+                    $errorMsg[] = "You already requested change";
                 }
             }
         }
@@ -139,19 +152,17 @@ if(isset($errorMsg)){
             <label>ICE relationship</label>
 
             <select name="ICE_relationship" id="ICE_relationship">
-            <option value="Blank"></option>
-            <option value="Partner">Partner</option>
-            <option value="Father">Father</option>
-            <option value="Mother">Mother</option>
-            <option value="Brother">Brother</option>
-            <option value="Sister">Sister</option>
-            <option value="Uncle">Uncle</option>
-            <option value="Aunt">Aunt</option>
-            <option value="Cousin">Cousin</option>
-            <option value="Friend">Friend</option>
-            <option value="Other">Other</option>
+            <option value="Blank"><?php echo $IceRelationship ?></option>
+            <?php
+                foreach($relationships as $value)
+                {
+                    if ($value!=$IceRelationship)
+                    {
+                        ?><option value='$value'><?php echo $value?></option><?php                    
+                    }
+                }
+            ?>
             </select>
-
 
             <label>ICE number</label>
             <input id="ICE_number" placeholder="" type="text" value="<?php echo $IceNumber ?>" name ="ICE_number">
