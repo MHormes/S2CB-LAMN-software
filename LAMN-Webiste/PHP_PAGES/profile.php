@@ -56,23 +56,32 @@ if(isset($_REQUEST['btnRequestChanges']))
              
             if(!isset($errorMsg))
             {
-                
-                $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelatiion)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindValue(':uBSN', $BSN);
-                $stmt->bindValue(':uUserName', $username);
-                $stmt->bindValue(':uFirstName', $firstName);
-                $stmt->bindValue(':uSecondName', $secondName);
-                $stmt->bindValue(':uPhoneNumber', $phoneNumber);
-                $stmt->bindValue(':uICEnumber', $iceNumber);
-                $stmt->bindValue(':uICErelatiion', $iceRelationship);
-            
-                $result = $stmt->execute();
-                echo 'I am here';
+                $select_stmt =$conn->prepare("SELECT * FROM employeechange WHERE UserName=:uUserName");
+                $select_stmt->execute(array(':uUserName'=>$username));
+                $row=$select_stmt->fetch(PDO::FETCH_ASSOC);
 
-                if($result){
-                    echo 'Change requested successfully';
-                    //header("refresh:1; login.php");
+                if($select_stmt->rowCount()<1)
+                {
+                    $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelatiion)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindValue(':uBSN', $BSN);
+                    $stmt->bindValue(':uUserName', $username);
+                    $stmt->bindValue(':uFirstName', $firstName);
+                    $stmt->bindValue(':uSecondName', $secondName);
+                    $stmt->bindValue(':uPhoneNumber', $phoneNumber);
+                    $stmt->bindValue(':uICEnumber', $iceNumber);
+                    $stmt->bindValue(':uICErelatiion', $iceRelationship);
+                
+                    $result = $stmt->execute();
+    
+                    if($result){
+                        echo 'Change requested successfully';
+                        header("refresh:1; schedules.php");
+                    }
+                }
+                else
+                {
+                    $errorMsg[] = "You already requested change";
                 }
             }
         }

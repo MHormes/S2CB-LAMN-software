@@ -55,7 +55,7 @@ require_once "../DatabaseConn/connection.php";
                             if($result)
                             {
                                 echo 'Password changed succesfully';
-                                //header("refresh:1; profile.php");
+                                header("refresh:1; profile.php");
                             }
                         }
                         else{
