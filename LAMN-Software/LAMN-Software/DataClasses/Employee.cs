@@ -21,6 +21,7 @@ namespace LAMN_Software
         public string QuittingReason { get; set; }
         public double SalaryPerHour { get; set; }
 
+        public double FTE { get; set; }
         private string fullName;
 
         public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason, double salaryPerHour)

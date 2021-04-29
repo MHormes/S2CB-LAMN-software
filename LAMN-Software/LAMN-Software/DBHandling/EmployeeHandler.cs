@@ -96,11 +96,7 @@ namespace LAMN_Software
 
         public List<Employee> GetAllEmployees()
         {
-            if (GetAllEmployeesFromDB() == null)
-            {
-                return this.allEmployees;
-            }
-            return null;
+           return this.allEmployees;
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
