@@ -13,8 +13,11 @@ $FirstName=$row["FirstName"];
 $SecondName=$row["SecondName"];
 $PhoneNumber=$row["PhoneNumber"];
 $IceRelationship=$row["ICErelation"];
+$IceRelationship=strtolower($IceRelationship);
 $IceNumber=$row["ICEnumber"];
 $BSN=$row["BSN"];
+
+$relationships=array("partner", "father", "mother", "brother", "sister", "uncle", "aunt", "cousin", "friend", "other");
 
 if(isset($_REQUEST['btnRequestChanges']))
 {
@@ -148,6 +151,19 @@ if(isset($errorMsg)){
             <label>ICE relationship</label>
 
             <select name="ICE_relationship" id="ICE_relationship">
+            <option value="Blank"><?php echo $IceRelationship ?></option>
+            <?php
+                foreach($relationships as $value)
+                {
+                    if ($value!=$IceRelationship)
+                    {
+                        ?><option value='$value'><?php echo $value?></option><?php                    
+                    }
+                }
+            ?>
+            </select>
+
+            <!-- <select name="ICE_relationship" id="ICE_relationship">
             <option value="Blank"></option>
             <option value="Partner">Partner</option>
             <option value="Father">Father</option>
@@ -159,7 +175,7 @@ if(isset($errorMsg)){
             <option value="Cousin">Cousin</option>
             <option value="Friend">Friend</option>
             <option value="Other">Other</option>
-            </select>
+            </select> -->
 
 
             <label>ICE number</label>
