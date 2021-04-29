@@ -19,6 +19,7 @@ namespace LAMN_Software
         ScheduleHandler SCH;
         ScheduleTemplateHandler SCTH;
         LoginHandler LH;
+        ScheduleMinimumHandler SCMH;
 
         public ProductForm(JobPosition position)
         {
@@ -28,8 +29,11 @@ namespace LAMN_Software
             SCH = new ScheduleHandler();
             SCTH = new ScheduleTemplateHandler();
             LH = new LoginHandler();
+            SCMH = new ScheduleMinimumHandler();
+
             FillStockViewActive();
             FillScheduleGridView();
+            FillScheduleMinimumGridView();
             FillActiveEmployees();
             UpdateEmployeePieChart();
             AdjustColumnWidthStock();
@@ -671,6 +675,22 @@ namespace LAMN_Software
             schedulesEmpSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
         }
 
+        //METHOD FOR FILLING THE SCHEDULES
+        public void FillScheduleMinimumGridView()
+        {
+            dgvScheduleMinP.Rows.Clear();
+            foreach (TimeSlot timeSlot in (TimeSlot[])Enum.GetValues(typeof(TimeSlot)))
+            {
+                if (timeSlot == TimeSlot.NO_SHIFT)
+                    continue;
+                dgvScheduleMinP.Rows.Add(timeSlot);
+            }
+
+            //Assign correct enum value to comboboxes
+            //schedulesEmpMonday.ValueType = typeof(TimeSlot);
+            //schedulesEmpMonday.DataSource = Enum.GetValues(typeof(TimeSlot));
+        }
+
         //Navigation button to schedule choise menu
         private void btnSchedules_Click(object sender, EventArgs e)
         {
@@ -881,6 +901,68 @@ namespace LAMN_Software
                         else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
                         {
                             SCTH.SaveCurrentWeek(Day.SUNDAY, emp.Bsn, slot);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
+        {
+            SCMH.DeleteMinimumPeople();
+
+            try
+            {
+                for (int rows = 0; rows < dgvScheduleMinP.Rows.Count; rows++)
+                {
+                    for (int col = 1; col < dgvScheduleMinP.Rows[rows].Cells.Count; col++)
+                    {
+                        TimeSlot timeSlot = TimeSlot.MORNING;
+
+                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "MORNING")
+                            timeSlot = TimeSlot.MORNING;
+                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "AFTERNOON")
+                            timeSlot = TimeSlot.AFTERNOON;
+                        if ((dgvScheduleMinP.Rows[rows].Cells[0].ToString()) == "EVENING")
+                            timeSlot = TimeSlot.EVENING;
+
+                        string slot = null;
+                        if (dgvScheduleMinP.Rows[rows].Cells[col].Value != null)
+                        {
+                            slot = dgvScheduleMinP.Rows[rows].Cells[col].Value.ToString();
+                        }
+
+                        if (col == 1 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.MONDAY, timeSlot, slot);
+                        }
+                        if (col == 2 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.TUESDAY, timeSlot, slot);
+                        }
+                        if (col == 3 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.WEDNESDAY, timeSlot, slot);
+                        }
+                        if (col == 4 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.THURDAY, timeSlot, slot);
+                        }
+                        if (col == 5 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.FRIDAY, timeSlot, slot);
+                        }
+                        if (col == 6 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.SATURDAY, timeSlot, slot);
+                        }
+                        else if (col == 7 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.SUNDAY, timeSlot, slot);
                         }
                     }
                 }

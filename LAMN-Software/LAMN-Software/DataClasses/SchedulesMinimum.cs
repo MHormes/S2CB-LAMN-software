@@ -17,15 +17,11 @@ namespace LAMN_Software
         public int MinimumPeople
         { get; set; }
 
-        public JobPosition JobPosition
-        { get; set; }
-
-        public SchedulesMinimum(Day day, TimeSlot timeSlot, int minimumPeople, JobPosition jobPosition)
+        public SchedulesMinimum(Day day, TimeSlot timeSlot, int minimumPeople)
         {
             Day = day;
             TimeSlot = timeSlot;
             MinimumPeople = minimumPeople;
-            JobPosition = jobPosition;
         }
     }
 }
