@@ -12,7 +12,6 @@ namespace LAMN_Software
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
         public string IceNumber { get; set; }
         public ICERelation IceRelationship { get; set; }
         public JobPosition Position { get; set; }

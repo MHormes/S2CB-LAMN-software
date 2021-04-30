@@ -69,7 +69,7 @@ namespace LAMN_Software
                         else if (positionReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[11].ToString(), dr[12].ToString(), Convert.ToDouble(dr[13])));
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[10].ToString(), dr[11].ToString(), Convert.ToDouble(dr[12])));
                     }
                 }
                 return null;

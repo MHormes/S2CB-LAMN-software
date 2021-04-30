@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
+using LAMN_Software.DBHandling;
 
 namespace LAMN_Software
 {
@@ -20,6 +21,8 @@ namespace LAMN_Software
         ScheduleTemplateHandler SCTH;
         LoginHandler LH;
         ScheduleMinimumHandler SCMH;
+        SellTrackerHandler STH;
+        
 
         public ProductForm(JobPosition position)
         {
@@ -30,6 +33,7 @@ namespace LAMN_Software
             SCTH = new ScheduleTemplateHandler();
             LH = new LoginHandler();
             SCMH = new ScheduleMinimumHandler();
+            STH = new SellTrackerHandler();
 
             FillStockViewActive();
             FillScheduleGridView();
@@ -1545,8 +1549,10 @@ namespace LAMN_Software
 
                 //calculations of quantity and exception returned if it occurs
                 var sellProduct = SH.SellProduct(p, tbSellQuantity.Text);
+                DateTime dateTime = DateTime.Now;
+                var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), tbSellQuantity.Text);
 
-                if (sellProduct == null)
+                if (sellProduct == null && sellTracker == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
@@ -1576,7 +1582,10 @@ namespace LAMN_Software
                     }
                         return;
                 }
-                MessageBox.Show(sellProduct.Message);
+                if(sellProduct != null)
+                    MessageBox.Show(sellProduct.Message);
+                else if(sellTracker != null)
+                    MessageBox.Show(sellTracker.Message);
             }
             catch (Exception ex)
             {

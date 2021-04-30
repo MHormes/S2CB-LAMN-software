@@ -95,10 +95,12 @@
   <ItemGroup>
     <Compile Include="DataClasses\Schedule.cs" />
     <Compile Include="DataClasses\ScheduleTemplate.cs" />
+    <Compile Include="DataClasses\SellTracker.cs" />
     <Compile Include="DataClasses\Statistics.cs" />
     <Compile Include="DBHandling\ScheduleHandler.cs" />
     <Compile Include="DBHandling\LoginHandler.cs" />
     <Compile Include="DBHandling\ScheduleTemplateHandler.cs" />
+    <Compile Include="DBHandling\SellTrackerHandler.cs" />
     <Compile Include="EmploymentTermination.cs">
       <SubType>Form</SubType>
     </Compile>
