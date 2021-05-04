@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
+using LAMN_Software.DBHandling;
 
 namespace LAMN_Software
 {
@@ -19,6 +20,9 @@ namespace LAMN_Software
         ScheduleHandler SCH;
         ScheduleTemplateHandler SCTH;
         LoginHandler LH;
+        ScheduleMinimumHandler SCMH;
+        SellTrackerHandler STH;
+        
 
         public ProductForm(JobPosition position)
         {
@@ -28,9 +32,14 @@ namespace LAMN_Software
             SCH = new ScheduleHandler();
             SCTH = new ScheduleTemplateHandler();
             LH = new LoginHandler();
+            SCMH = new ScheduleMinimumHandler();
+            STH = new SellTrackerHandler();
+
             FillStockViewActive();
             FillScheduleGridViewEmp();
             FillSchedulesGridViewCreate();
+            FillScheduleGridView();
+            FillScheduleMinimumGridView();
             FillActiveEmployees();
             UpdateEmployeePieChart();
             AdjustColumnWidthStock();
@@ -673,6 +682,48 @@ namespace LAMN_Software
 
         }
 
+        //METHOD FOR FILLING THE SCHEDULES
+        public void FillScheduleMinimumGridView()
+        {
+            dgvScheduleMinP.Rows.Clear();
+            foreach (TimeSlot timeSlot in (TimeSlot[])Enum.GetValues(typeof(TimeSlot)))
+            {
+                if (timeSlot == TimeSlot.NO_SHIFT)
+                    continue;
+                dgvScheduleMinP.Rows.Add(timeSlot);
+            }
+
+            if (SCMH.GetMinimumPeopleFromDB() == null)
+            {
+                foreach (SchedulesMinimum schedulesMinimum in SCMH.GetSchedulesMinimum())
+                {
+                    int i = 0;
+
+                    if (schedulesMinimum.TimeSlot == TimeSlot.MORNING)
+                        i = 0;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.AFTERNOON)
+                        i = 1;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.EVENING)
+                        i = 2;
+
+                    if (schedulesMinimum.Day == Day.MONDAY)
+                        dgvScheduleMinP.Rows[i].Cells[1].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.TUESDAY)
+                        dgvScheduleMinP.Rows[i].Cells[2].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.WEDNESDAY)
+                        dgvScheduleMinP.Rows[i].Cells[3].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.THURDAY)
+                        dgvScheduleMinP.Rows[i].Cells[4].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.FRIDAY)
+                        dgvScheduleMinP.Rows[i].Cells[5].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SATURDAY)
+                        dgvScheduleMinP.Rows[i].Cells[6].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SUNDAY)
+                        dgvScheduleMinP.Rows[i].Cells[7].Value = schedulesMinimum.MinimumPeople;
+                }
+            }
+        }
+
         //method for fillingg the schedules for creating schedules
         public void FillSchedulesGridViewCreate()
         {
@@ -1013,6 +1064,60 @@ namespace LAMN_Software
             }
         }
 
+        private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
+        {
+            SCMH.DeleteMinimumPeople();
+            try
+            {
+                for (int rows = 0; rows < dgvScheduleMinP.Rows.Count; rows++)
+                {
+                    for (int col = 1; col < dgvScheduleMinP.Rows[rows].Cells.Count; col++)
+                    {
+                        TimeSlot timeSlot = (TimeSlot)dgvScheduleMinP.Rows[rows].Cells[0].Value;
+
+                        string slot = null;
+                        if (dgvScheduleMinP.Rows[rows].Cells[col].Value != null)
+                        {
+                            slot = dgvScheduleMinP.Rows[rows].Cells[col].Value.ToString();
+                        }
+
+                        if (col == 1 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.MONDAY, timeSlot, slot);
+                        }
+                        if (col == 2 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.TUESDAY, timeSlot, slot);
+                        }
+                        if (col == 3 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.WEDNESDAY, timeSlot, slot);
+                        }
+                        if (col == 4 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.THURDAY, timeSlot, slot);
+                        }
+                        if (col == 5 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.FRIDAY, timeSlot, slot);
+                        }
+                        if (col == 6 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.SATURDAY, timeSlot, slot);
+                        }
+                        else if (col == 7 && !string.IsNullOrEmpty(slot))
+                        {
+                            SCMH.SaveNewMinimumPeople(Day.SUNDAY, timeSlot, slot);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         //button for inserting the template in the current showing week for creating schedule view
         private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
         {
@@ -1113,8 +1218,25 @@ namespace LAMN_Software
             }
         }
 
-        
+        //method for clearing the schedule minimum view grid.
+        private void clearMinimumGrid()
+        {
+            int i = 0;
+            foreach (TimeSlot timeSlot in (TimeSlot[])Enum.GetValues(typeof(TimeSlot)))
+            {
+                if (timeSlot == TimeSlot.NO_SHIFT)
+                    continue;
 
+                dgvScheduleMinP.Rows[i].Cells[1].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[2].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[3].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[4].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[5].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[6].Value = null;
+                dgvScheduleMinP.Rows[i].Cells[7].Value = null;
+                i++;
+            }
+        }
 
         //STATISTICS
 
@@ -1589,8 +1711,10 @@ namespace LAMN_Software
 
                 //calculations of quantity and exception returned if it occurs
                 var sellProduct = SH.SellProduct(p, tbSellQuantity.Text);
+                DateTime dateTime = DateTime.Now;
+                var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), tbSellQuantity.Text);
 
-                if (sellProduct == null)
+                if (sellProduct == null && sellTracker == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
@@ -1620,7 +1744,10 @@ namespace LAMN_Software
                     }
                     return;
                 }
-                MessageBox.Show(sellProduct.Message);
+                if(sellProduct != null)
+                    MessageBox.Show(sellProduct.Message);
+                else if(sellTracker != null)
+                    MessageBox.Show(sellTracker.Message);
             }
             catch (Exception ex)
             {

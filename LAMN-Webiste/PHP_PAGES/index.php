@@ -2,9 +2,10 @@
 session_start();
 function loginAccount()
 {
-    include '../DatabaseConn/connection.php';
+    //include '../DatabaseConn/connection.php';
+    require_once "../DatabaseConn/connection.php";
     try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
+        //$conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
         $sql = 'SELECT * FROM logindetails WHERE Username = :username AND Password = :password';
         $sth = $conn->prepare($sql);
 

@@ -10,8 +10,6 @@ namespace LAMN_Software
 {
     public class ScheduleMinimumHandler
     {
-
-
         List<SchedulesMinimum> scheduleMinimum;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
@@ -32,10 +30,9 @@ namespace LAMN_Software
                     {
                         TimeSlot time = TimeSlot.MORNING;
                         Day day = Day.MONDAY;
-                        JobPosition posistion = JobPosition.MANAGER;
-
+                        
                         string DayReturn = dr[0].ToString();
-                        string TimeReturn = dr[2].ToString();
+                        string TimeReturn = dr[1].ToString();
 
                         if (TimeReturn == "MORNING")
                             time = TimeSlot.MORNING;
@@ -59,7 +56,7 @@ namespace LAMN_Software
                         else if (DayReturn == "SUNDAY")
                             day = Day.SUNDAY;
 
-                        scheduleMinimum.Add(new SchedulesMinimum(day, time, Convert.ToInt32(dr[4]), posistion));
+                        scheduleMinimum.Add(new SchedulesMinimum(day, time, Convert.ToInt32(dr[2])));
                     }
                 }
                 return null;
@@ -75,20 +72,19 @@ namespace LAMN_Software
             return this.scheduleMinimum;
         }
 
-        public Exception SaveNewMinimumPeople(Day day, TimeSlot timeSlot, int minimumPeople, JobPosition position)
+        public Exception SaveNewMinimumPeople(Day day, TimeSlot timeSlot, string minimumPeople)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO schedulesminimum (Day, TimeSlot, MinPoeple, Department) VALUES (@day, @timeSlot, @people, @position)";
+                    string sql = "INSERT INTO schedulesminimum (Day, TimeSlot, MinPeople) VALUES (@day, @timeSlot, @people)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@day", day.ToString());
                     cmd.Parameters.AddWithValue("@timeSlot", timeSlot.ToString());
                     cmd.Parameters.AddWithValue("@people", minimumPeople);
-                    cmd.Parameters.AddWithValue("@position", position.ToString());
                     cmd.Prepare();
 
                     cmd.ExecuteNonQuery();
