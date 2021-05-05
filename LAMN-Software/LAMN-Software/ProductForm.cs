@@ -38,7 +38,6 @@ namespace LAMN_Software
             FillStockViewActive();
             FillScheduleGridViewEmp();
             FillSchedulesGridViewCreate();
-            FillScheduleGridView();
             FillScheduleMinimumGridView();
             FillActiveEmployees();
             UpdateEmployeePieChart();
