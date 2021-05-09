@@ -29,13 +29,13 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
@@ -1792,23 +1792,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartStock.Legends.Add(legend5);
+            chartArea7.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartStock.Legends.Add(legend7);
             this.chartStock.Location = new System.Drawing.Point(752, 88);
             this.chartStock.Margin = new System.Windows.Forms.Padding(5);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Store Stock Total";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Warehouse Stock Total";
-            series8.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series7);
-            this.chartStock.Series.Add(series8);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Store Stock Total";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Warehouse Stock Total";
+            series11.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series10);
+            this.chartStock.Series.Add(series11);
             this.chartStock.Size = new System.Drawing.Size(3099, 935);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -2722,19 +2722,19 @@ namespace LAMN_Software
             // 
             // chartEmployeesPosition
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend6);
+            chartArea8.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend8);
             this.chartEmployeesPosition.Location = new System.Drawing.Point(11, 0);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series9.Legend = "Legend1";
-            series9.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series9);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series12.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series12.Legend = "Legend1";
+            series12.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series12);
             this.chartEmployeesPosition.Size = new System.Drawing.Size(2603, 1808);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
@@ -3315,9 +3315,8 @@ namespace LAMN_Software
             this.lblNewInfo_iceRelation_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_iceRelation_input.Location = new System.Drawing.Point(389, 370);
             this.lblNewInfo_iceRelation_input.Name = "lblNewInfo_iceRelation_input";
-            this.lblNewInfo_iceRelation_input.Size = new System.Drawing.Size(317, 65);
+            this.lblNewInfo_iceRelation_input.Size = new System.Drawing.Size(0, 65);
             this.lblNewInfo_iceRelation_input.TabIndex = 26;
-            this.lblNewInfo_iceRelation_input.Text = "ICE relation";
             // 
             // lblNewInfo_iceNumber_input
             // 
@@ -3325,9 +3324,8 @@ namespace LAMN_Software
             this.lblNewInfo_iceNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_iceNumber_input.Location = new System.Drawing.Point(389, 298);
             this.lblNewInfo_iceNumber_input.Name = "lblNewInfo_iceNumber_input";
-            this.lblNewInfo_iceNumber_input.Size = new System.Drawing.Size(325, 65);
+            this.lblNewInfo_iceNumber_input.Size = new System.Drawing.Size(0, 65);
             this.lblNewInfo_iceNumber_input.TabIndex = 25;
-            this.lblNewInfo_iceNumber_input.Text = "ICE number";
             // 
             // lblNewInfo_PhoneNumber_input
             // 
@@ -3335,9 +3333,8 @@ namespace LAMN_Software
             this.lblNewInfo_PhoneNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_PhoneNumber_input.Location = new System.Drawing.Point(389, 227);
             this.lblNewInfo_PhoneNumber_input.Name = "lblNewInfo_PhoneNumber_input";
-            this.lblNewInfo_PhoneNumber_input.Size = new System.Drawing.Size(402, 65);
+            this.lblNewInfo_PhoneNumber_input.Size = new System.Drawing.Size(0, 65);
             this.lblNewInfo_PhoneNumber_input.TabIndex = 24;
-            this.lblNewInfo_PhoneNumber_input.Text = "Phone Number";
             // 
             // lblNewInfo_SecondName_input
             // 
@@ -3345,9 +3342,8 @@ namespace LAMN_Software
             this.lblNewInfo_SecondName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_SecondName_input.Location = new System.Drawing.Point(389, 159);
             this.lblNewInfo_SecondName_input.Name = "lblNewInfo_SecondName_input";
-            this.lblNewInfo_SecondName_input.Size = new System.Drawing.Size(368, 65);
+            this.lblNewInfo_SecondName_input.Size = new System.Drawing.Size(0, 65);
             this.lblNewInfo_SecondName_input.TabIndex = 23;
-            this.lblNewInfo_SecondName_input.Text = "Second name";
             // 
             // lblNewInfo_FirstName_input
             // 
@@ -3355,9 +3351,8 @@ namespace LAMN_Software
             this.lblNewInfo_FirstName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_FirstName_input.Location = new System.Drawing.Point(389, 95);
             this.lblNewInfo_FirstName_input.Name = "lblNewInfo_FirstName_input";
-            this.lblNewInfo_FirstName_input.Size = new System.Drawing.Size(288, 65);
+            this.lblNewInfo_FirstName_input.Size = new System.Drawing.Size(0, 65);
             this.lblNewInfo_FirstName_input.TabIndex = 22;
-            this.lblNewInfo_FirstName_input.Text = "First name";
             // 
             // lblNewInfo_ICErelation
             // 
