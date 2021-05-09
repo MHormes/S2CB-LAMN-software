@@ -29,13 +29,13 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
@@ -262,18 +262,18 @@ namespace LAMN_Software
             this.tbSellName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tpRequestChangeInfo = new System.Windows.Forms.TabPage();
-            this.label27 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.lblChangeInfo = new System.Windows.Forms.Label();
+            this.lbChangeInfo = new System.Windows.Forms.ListBox();
+            this.gbOldInfo = new System.Windows.Forms.GroupBox();
+            this.lblOldInfo_ICErelation = new System.Windows.Forms.Label();
+            this.lblOldInfo_ICEnumber = new System.Windows.Forms.Label();
+            this.lblOldInfo_PhoneNumber = new System.Windows.Forms.Label();
+            this.lblOldInfo_SecondName = new System.Windows.Forms.Label();
+            this.lblOldInfo_FirstName = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.gbNewInfo = new System.Windows.Forms.GroupBox();
+            this.btnDeclineInfoChanges = new System.Windows.Forms.Button();
+            this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.textBox_defocus = new System.Windows.Forms.TextBox();
             this.pnlBar = new System.Windows.Forms.Panel();
@@ -289,11 +289,11 @@ namespace LAMN_Software
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
+            this.lblNewInfo_ICErelation = new System.Windows.Forms.Label();
+            this.lblNewInfo_ICEnumber = new System.Windows.Forms.Label();
+            this.lblNewInfo_PhoneNumber = new System.Windows.Forms.Label();
+            this.lblNewInfo_SecondName = new System.Windows.Forms.Label();
+            this.lblNewInfo_FirstName = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -327,8 +327,8 @@ namespace LAMN_Software
             this.tpNewOrder.SuspendLayout();
             this.tpSellProduct.SuspendLayout();
             this.tpRequestChangeInfo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbOldInfo.SuspendLayout();
+            this.gbNewInfo.SuspendLayout();
             this.pnlBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1792,23 +1792,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartStock.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartStock.Legends.Add(legend5);
             this.chartStock.Location = new System.Drawing.Point(752, 88);
             this.chartStock.Margin = new System.Windows.Forms.Padding(5);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Store Stock Total";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Warehouse Stock Total";
-            series2.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series1);
-            this.chartStock.Series.Add(series2);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Store Stock Total";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Warehouse Stock Total";
+            series8.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series7);
+            this.chartStock.Series.Add(series8);
             this.chartStock.Size = new System.Drawing.Size(3099, 935);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -2722,19 +2722,19 @@ namespace LAMN_Software
             // 
             // chartEmployeesPosition
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend6);
             this.chartEmployeesPosition.Location = new System.Drawing.Point(11, 0);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.Legend = "Legend1";
-            series3.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series3);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series9.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series9.Legend = "Legend1";
+            series9.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series9);
             this.chartEmployeesPosition.Size = new System.Drawing.Size(2603, 1808);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
@@ -3042,10 +3042,10 @@ namespace LAMN_Software
             // 
             // tpRequestChangeInfo
             // 
-            this.tpRequestChangeInfo.Controls.Add(this.label27);
-            this.tpRequestChangeInfo.Controls.Add(this.listBox1);
-            this.tpRequestChangeInfo.Controls.Add(this.groupBox1);
-            this.tpRequestChangeInfo.Controls.Add(this.groupBox2);
+            this.tpRequestChangeInfo.Controls.Add(this.lblChangeInfo);
+            this.tpRequestChangeInfo.Controls.Add(this.lbChangeInfo);
+            this.tpRequestChangeInfo.Controls.Add(this.gbOldInfo);
+            this.tpRequestChangeInfo.Controls.Add(this.gbNewInfo);
             this.tpRequestChangeInfo.Controls.Add(this.label22);
             this.tpRequestChangeInfo.Location = new System.Drawing.Point(10, 42);
             this.tpRequestChangeInfo.Name = "tpRequestChangeInfo";
@@ -3055,97 +3055,97 @@ namespace LAMN_Software
             this.tpRequestChangeInfo.Text = "RequestChangeInfo";
             this.tpRequestChangeInfo.UseVisualStyleBackColor = true;
             // 
-            // label27
+            // lblChangeInfo
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(83, 53);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(341, 44);
-            this.label27.TabIndex = 5;
-            this.label27.Text = "Choose employee";
+            this.lblChangeInfo.AutoSize = true;
+            this.lblChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChangeInfo.Location = new System.Drawing.Point(83, 53);
+            this.lblChangeInfo.Name = "lblChangeInfo";
+            this.lblChangeInfo.Size = new System.Drawing.Size(341, 44);
+            this.lblChangeInfo.TabIndex = 5;
+            this.lblChangeInfo.Text = "Choose employee";
             // 
-            // listBox1
+            // lbChangeInfo
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 36;
-            this.listBox1.Location = new System.Drawing.Point(85, 118);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(1363, 1156);
-            this.listBox1.TabIndex = 4;
+            this.lbChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbChangeInfo.FormattingEnabled = true;
+            this.lbChangeInfo.ItemHeight = 42;
+            this.lbChangeInfo.Location = new System.Drawing.Point(82, 118);
+            this.lbChangeInfo.Name = "lbChangeInfo";
+            this.lbChangeInfo.Size = new System.Drawing.Size(1660, 1138);
+            this.lbChangeInfo.TabIndex = 4;
             // 
-            // groupBox1
+            // gbOldInfo
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label42);
-            this.groupBox1.Controls.Add(this.label41);
-            this.groupBox1.Controls.Add(this.label40);
-            this.groupBox1.Controls.Add(this.label39);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.label32);
-            this.groupBox1.Controls.Add(this.label31);
-            this.groupBox1.Controls.Add(this.label30);
-            this.groupBox1.Controls.Add(this.label29);
-            this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(1710, 118);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1016, 511);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Old info";
+            this.gbOldInfo.BackColor = System.Drawing.Color.Transparent;
+            this.gbOldInfo.Controls.Add(this.label42);
+            this.gbOldInfo.Controls.Add(this.label41);
+            this.gbOldInfo.Controls.Add(this.label40);
+            this.gbOldInfo.Controls.Add(this.label39);
+            this.gbOldInfo.Controls.Add(this.label38);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_ICErelation);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_ICEnumber);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_PhoneNumber);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_SecondName);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_FirstName);
+            this.gbOldInfo.Controls.Add(this.label26);
+            this.gbOldInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbOldInfo.Location = new System.Drawing.Point(1828, 118);
+            this.gbOldInfo.Name = "gbOldInfo";
+            this.gbOldInfo.Size = new System.Drawing.Size(1016, 511);
+            this.gbOldInfo.TabIndex = 2;
+            this.gbOldInfo.TabStop = false;
+            this.gbOldInfo.Text = "Old info";
             // 
-            // label32
+            // lblOldInfo_ICErelation
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(41, 381);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(218, 39);
-            this.label32.TabIndex = 5;
-            this.label32.Text = "ICE relation:";
+            this.lblOldInfo_ICErelation.AutoSize = true;
+            this.lblOldInfo_ICErelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_ICErelation.Location = new System.Drawing.Point(41, 381);
+            this.lblOldInfo_ICErelation.Name = "lblOldInfo_ICErelation";
+            this.lblOldInfo_ICErelation.Size = new System.Drawing.Size(218, 39);
+            this.lblOldInfo_ICErelation.TabIndex = 5;
+            this.lblOldInfo_ICErelation.Text = "ICE relation:";
             // 
-            // label31
+            // lblOldInfo_ICEnumber
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(41, 309);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(219, 39);
-            this.label31.TabIndex = 4;
-            this.label31.Text = "ICE number:";
+            this.lblOldInfo_ICEnumber.AutoSize = true;
+            this.lblOldInfo_ICEnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_ICEnumber.Location = new System.Drawing.Point(41, 309);
+            this.lblOldInfo_ICEnumber.Name = "lblOldInfo_ICEnumber";
+            this.lblOldInfo_ICEnumber.Size = new System.Drawing.Size(219, 39);
+            this.lblOldInfo_ICEnumber.TabIndex = 4;
+            this.lblOldInfo_ICEnumber.Text = "ICE number:";
             // 
-            // label30
+            // lblOldInfo_PhoneNumber
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(41, 238);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(268, 39);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "Phone Number:";
+            this.lblOldInfo_PhoneNumber.AutoSize = true;
+            this.lblOldInfo_PhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_PhoneNumber.Location = new System.Drawing.Point(41, 238);
+            this.lblOldInfo_PhoneNumber.Name = "lblOldInfo_PhoneNumber";
+            this.lblOldInfo_PhoneNumber.Size = new System.Drawing.Size(268, 39);
+            this.lblOldInfo_PhoneNumber.TabIndex = 4;
+            this.lblOldInfo_PhoneNumber.Text = "Phone Number:";
             // 
-            // label29
+            // lblOldInfo_SecondName
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(41, 170);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(248, 39);
-            this.label29.TabIndex = 4;
-            this.label29.Text = "Second name:";
+            this.lblOldInfo_SecondName.AutoSize = true;
+            this.lblOldInfo_SecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_SecondName.Location = new System.Drawing.Point(41, 170);
+            this.lblOldInfo_SecondName.Name = "lblOldInfo_SecondName";
+            this.lblOldInfo_SecondName.Size = new System.Drawing.Size(248, 39);
+            this.lblOldInfo_SecondName.TabIndex = 4;
+            this.lblOldInfo_SecondName.Text = "Second name:";
             // 
-            // label28
+            // lblOldInfo_FirstName
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(41, 106);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(207, 39);
-            this.label28.TabIndex = 2;
-            this.label28.Text = "First name: ";
+            this.lblOldInfo_FirstName.AutoSize = true;
+            this.lblOldInfo_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_FirstName.Location = new System.Drawing.Point(41, 106);
+            this.lblOldInfo_FirstName.Name = "lblOldInfo_FirstName";
+            this.lblOldInfo_FirstName.Size = new System.Drawing.Size(207, 39);
+            this.lblOldInfo_FirstName.TabIndex = 2;
+            this.lblOldInfo_FirstName.Text = "First name: ";
             // 
             // label26
             // 
@@ -3155,49 +3155,49 @@ namespace LAMN_Software
             this.label26.Size = new System.Drawing.Size(0, 44);
             this.label26.TabIndex = 0;
             // 
-            // groupBox2
+            // gbNewInfo
             // 
-            this.groupBox2.Controls.Add(this.label33);
-            this.groupBox2.Controls.Add(this.label34);
-            this.groupBox2.Controls.Add(this.label35);
-            this.groupBox2.Controls.Add(this.label36);
-            this.groupBox2.Controls.Add(this.label37);
-            this.groupBox2.Controls.Add(this.label43);
-            this.groupBox2.Controls.Add(this.label44);
-            this.groupBox2.Controls.Add(this.label45);
-            this.groupBox2.Controls.Add(this.label46);
-            this.groupBox2.Controls.Add(this.label47);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(1710, 673);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1016, 599);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "New info";
+            this.gbNewInfo.Controls.Add(this.label33);
+            this.gbNewInfo.Controls.Add(this.label34);
+            this.gbNewInfo.Controls.Add(this.label35);
+            this.gbNewInfo.Controls.Add(this.label36);
+            this.gbNewInfo.Controls.Add(this.label37);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_ICErelation);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_ICEnumber);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_PhoneNumber);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_SecondName);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_FirstName);
+            this.gbNewInfo.Controls.Add(this.btnDeclineInfoChanges);
+            this.gbNewInfo.Controls.Add(this.btnApproveInfoChanges);
+            this.gbNewInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbNewInfo.Location = new System.Drawing.Point(1828, 673);
+            this.gbNewInfo.Name = "gbNewInfo";
+            this.gbNewInfo.Size = new System.Drawing.Size(1016, 599);
+            this.gbNewInfo.TabIndex = 3;
+            this.gbNewInfo.TabStop = false;
+            this.gbNewInfo.Text = "New info";
             // 
-            // button2
+            // btnDeclineInfoChanges
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 12F);
-            this.button2.Location = new System.Drawing.Point(538, 474);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(426, 83);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Decline changes";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDeclineInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
+            this.btnDeclineInfoChanges.Location = new System.Drawing.Point(538, 474);
+            this.btnDeclineInfoChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeclineInfoChanges.Name = "btnDeclineInfoChanges";
+            this.btnDeclineInfoChanges.Size = new System.Drawing.Size(426, 83);
+            this.btnDeclineInfoChanges.TabIndex = 16;
+            this.btnDeclineInfoChanges.Text = "❌ Decline changes";
+            this.btnDeclineInfoChanges.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnApproveInfoChanges
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 12F);
-            this.button1.Location = new System.Drawing.Point(48, 474);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(426, 83);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Approve changes";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnApproveInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
+            this.btnApproveInfoChanges.Location = new System.Drawing.Point(48, 474);
+            this.btnApproveInfoChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnApproveInfoChanges.Name = "btnApproveInfoChanges";
+            this.btnApproveInfoChanges.Size = new System.Drawing.Size(426, 83);
+            this.btnApproveInfoChanges.TabIndex = 15;
+            this.btnApproveInfoChanges.Text = "✔️ Approve changes";
+            this.btnApproveInfoChanges.UseVisualStyleBackColor = true;
             // 
             // label22
             // 
@@ -3361,55 +3361,55 @@ namespace LAMN_Software
             this.label37.TabIndex = 22;
             this.label37.Text = "First name";
             // 
-            // label43
+            // lblNewInfo_ICErelation
             // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(41, 370);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(218, 39);
-            this.label43.TabIndex = 21;
-            this.label43.Text = "ICE relation:";
+            this.lblNewInfo_ICErelation.AutoSize = true;
+            this.lblNewInfo_ICErelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_ICErelation.Location = new System.Drawing.Point(41, 370);
+            this.lblNewInfo_ICErelation.Name = "lblNewInfo_ICErelation";
+            this.lblNewInfo_ICErelation.Size = new System.Drawing.Size(218, 39);
+            this.lblNewInfo_ICErelation.TabIndex = 21;
+            this.lblNewInfo_ICErelation.Text = "ICE relation:";
             // 
-            // label44
+            // lblNewInfo_ICEnumber
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(41, 298);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(219, 39);
-            this.label44.TabIndex = 18;
-            this.label44.Text = "ICE number:";
+            this.lblNewInfo_ICEnumber.AutoSize = true;
+            this.lblNewInfo_ICEnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_ICEnumber.Location = new System.Drawing.Point(41, 298);
+            this.lblNewInfo_ICEnumber.Name = "lblNewInfo_ICEnumber";
+            this.lblNewInfo_ICEnumber.Size = new System.Drawing.Size(219, 39);
+            this.lblNewInfo_ICEnumber.TabIndex = 18;
+            this.lblNewInfo_ICEnumber.Text = "ICE number:";
             // 
-            // label45
+            // lblNewInfo_PhoneNumber
             // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(41, 227);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(268, 39);
-            this.label45.TabIndex = 19;
-            this.label45.Text = "Phone Number:";
+            this.lblNewInfo_PhoneNumber.AutoSize = true;
+            this.lblNewInfo_PhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_PhoneNumber.Location = new System.Drawing.Point(41, 227);
+            this.lblNewInfo_PhoneNumber.Name = "lblNewInfo_PhoneNumber";
+            this.lblNewInfo_PhoneNumber.Size = new System.Drawing.Size(268, 39);
+            this.lblNewInfo_PhoneNumber.TabIndex = 19;
+            this.lblNewInfo_PhoneNumber.Text = "Phone Number:";
             // 
-            // label46
+            // lblNewInfo_SecondName
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(41, 159);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(248, 39);
-            this.label46.TabIndex = 20;
-            this.label46.Text = "Second name:";
+            this.lblNewInfo_SecondName.AutoSize = true;
+            this.lblNewInfo_SecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_SecondName.Location = new System.Drawing.Point(41, 159);
+            this.lblNewInfo_SecondName.Name = "lblNewInfo_SecondName";
+            this.lblNewInfo_SecondName.Size = new System.Drawing.Size(248, 39);
+            this.lblNewInfo_SecondName.TabIndex = 20;
+            this.lblNewInfo_SecondName.Text = "Second name:";
             // 
-            // label47
+            // lblNewInfo_FirstName
             // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(41, 95);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(207, 39);
-            this.label47.TabIndex = 17;
-            this.label47.Text = "First name: ";
+            this.lblNewInfo_FirstName.AutoSize = true;
+            this.lblNewInfo_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_FirstName.Location = new System.Drawing.Point(41, 95);
+            this.lblNewInfo_FirstName.Name = "lblNewInfo_FirstName";
+            this.lblNewInfo_FirstName.Size = new System.Drawing.Size(207, 39);
+            this.lblNewInfo_FirstName.TabIndex = 17;
+            this.lblNewInfo_FirstName.Text = "First name: ";
             // 
             // ProductForm
             // 
@@ -3467,10 +3467,10 @@ namespace LAMN_Software
             this.tpSellProduct.PerformLayout();
             this.tpRequestChangeInfo.ResumeLayout(false);
             this.tpRequestChangeInfo.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbOldInfo.ResumeLayout(false);
+            this.gbOldInfo.PerformLayout();
+            this.gbNewInfo.ResumeLayout(false);
+            this.gbNewInfo.PerformLayout();
             this.pnlBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -3709,18 +3709,18 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnInfoChangeRequest;
         private System.Windows.Forms.TabPage tpRequestChangeInfo;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.GroupBox gbNewInfo;
+        private System.Windows.Forms.GroupBox gbOldInfo;
+        private System.Windows.Forms.Label lblOldInfo_ICErelation;
+        private System.Windows.Forms.Label lblOldInfo_ICEnumber;
+        private System.Windows.Forms.Label lblOldInfo_PhoneNumber;
+        private System.Windows.Forms.Label lblOldInfo_SecondName;
+        private System.Windows.Forms.Label lblOldInfo_FirstName;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnDeclineInfoChanges;
+        private System.Windows.Forms.Button btnApproveInfoChanges;
+        private System.Windows.Forms.ListBox lbChangeInfo;
+        private System.Windows.Forms.Label lblChangeInfo;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
@@ -3731,10 +3731,10 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label lblNewInfo_ICErelation;
+        private System.Windows.Forms.Label lblNewInfo_ICEnumber;
+        private System.Windows.Forms.Label lblNewInfo_PhoneNumber;
+        private System.Windows.Forms.Label lblNewInfo_SecondName;
+        private System.Windows.Forms.Label lblNewInfo_FirstName;
     }
 }

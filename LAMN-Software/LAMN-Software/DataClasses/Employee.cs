@@ -55,7 +55,7 @@ namespace LAMN_Software
 
         public override string ToString()
         {
-            return $"{FirstName} {SecondName}. BSN:{Bsn}. Position:{Position.ToString()}";
+            return $"FULL NAME: {FirstName} {SecondName}{"\t"}BSN:{Bsn}{"\t"}POSITION: {Position.ToString()}";
         }
 
         public string GetFullName()

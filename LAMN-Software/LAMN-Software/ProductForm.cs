@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
+using LAMN_Software.DBHandling;
 
 namespace LAMN_Software
 {
@@ -20,6 +21,7 @@ namespace LAMN_Software
         ScheduleTemplateHandler SCTH;
         LoginHandler LH;
         ScheduleMinimumHandler SCMH;
+        EmployeeChangeHandler ECH;
 
         public ProductForm(JobPosition position)
         {
@@ -30,6 +32,7 @@ namespace LAMN_Software
             SCTH = new ScheduleTemplateHandler();
             LH = new LoginHandler();
             SCMH = new ScheduleMinimumHandler();
+            ECH = new EmployeeChangeHandler();
 
             FillStockViewActive();
             FillScheduleGridView();
@@ -46,6 +49,7 @@ namespace LAMN_Software
             dgvAllStock.Font = new Font("Arial", 11);
             dgvEmployees.Font = new Font("Arial", 8);
             updateTabWithPosition(position);
+            FillChangeEmployeeListBox();
         }
 
         //Method to show correct buttons based on the user permission
@@ -1639,5 +1643,27 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpRequestChangeInfo;
         }
+
+        public void FillChangeEmployeeListBox()
+        {
+            lbChangeInfo.Items.Clear();
+
+            if (ECH.GetAllEmployeesFromDB() == null)
+            {
+                foreach (Employee e in ECH.GetAllChangedEmployees())
+                {
+                    lbChangeInfo.Items.Add(e);
+                }
+            }
+            else
+            {
+                MessageBox.Show(ECH.GetAllEmployeesFromDB().Message);
+            }
+        }
+
+     
+
+
+
     }
 }
