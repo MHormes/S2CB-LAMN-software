@@ -1633,5 +1633,11 @@ namespace LAMN_Software
                 AdjustColumnWidthSchedules();
             }
         }
+
+
+        private void btnInfoChangeRequest_Click_1(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpRequestChangeInfo;
+        }
     }
 }
