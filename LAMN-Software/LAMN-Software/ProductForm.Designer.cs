@@ -279,16 +279,16 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
+            this.lblOldInfo_FirstName_input = new System.Windows.Forms.Label();
+            this.lblOldInfo_SecondName_input = new System.Windows.Forms.Label();
+            this.lblOldInfo_PhoneNumber_input = new System.Windows.Forms.Label();
+            this.lblOldInfo_iceNumber_input = new System.Windows.Forms.Label();
+            this.lblOldInfo_iceRelation_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_iceRelation_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_iceNumber_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_PhoneNumber_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_SecondName_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_FirstName_input = new System.Windows.Forms.Label();
             this.lblNewInfo_ICErelation = new System.Windows.Forms.Label();
             this.lblNewInfo_ICEnumber = new System.Windows.Forms.Label();
             this.lblNewInfo_PhoneNumber = new System.Windows.Forms.Label();
@@ -3058,38 +3058,39 @@ namespace LAMN_Software
             // lblChangeInfo
             // 
             this.lblChangeInfo.AutoSize = true;
-            this.lblChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChangeInfo.Location = new System.Drawing.Point(83, 53);
+            this.lblChangeInfo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChangeInfo.Location = new System.Drawing.Point(83, 61);
             this.lblChangeInfo.Name = "lblChangeInfo";
-            this.lblChangeInfo.Size = new System.Drawing.Size(341, 44);
+            this.lblChangeInfo.Size = new System.Drawing.Size(358, 46);
             this.lblChangeInfo.TabIndex = 5;
             this.lblChangeInfo.Text = "Choose employee";
             // 
             // lbChangeInfo
             // 
-            this.lbChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbChangeInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbChangeInfo.FormattingEnabled = true;
             this.lbChangeInfo.ItemHeight = 42;
-            this.lbChangeInfo.Location = new System.Drawing.Point(82, 118);
+            this.lbChangeInfo.Location = new System.Drawing.Point(91, 133);
             this.lbChangeInfo.Name = "lbChangeInfo";
-            this.lbChangeInfo.Size = new System.Drawing.Size(1660, 1138);
+            this.lbChangeInfo.Size = new System.Drawing.Size(1652, 1138);
             this.lbChangeInfo.TabIndex = 4;
+            this.lbChangeInfo.SelectedIndexChanged += new System.EventHandler(this.lbChangeInfo_SelectedIndexChanged);
             // 
             // gbOldInfo
             // 
             this.gbOldInfo.BackColor = System.Drawing.Color.Transparent;
-            this.gbOldInfo.Controls.Add(this.label42);
-            this.gbOldInfo.Controls.Add(this.label41);
-            this.gbOldInfo.Controls.Add(this.label40);
-            this.gbOldInfo.Controls.Add(this.label39);
-            this.gbOldInfo.Controls.Add(this.label38);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_iceRelation_input);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_iceNumber_input);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_PhoneNumber_input);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_SecondName_input);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_FirstName_input);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_ICErelation);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_ICEnumber);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_PhoneNumber);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_SecondName);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_FirstName);
             this.gbOldInfo.Controls.Add(this.label26);
-            this.gbOldInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbOldInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbOldInfo.Location = new System.Drawing.Point(1828, 118);
             this.gbOldInfo.Name = "gbOldInfo";
             this.gbOldInfo.Size = new System.Drawing.Size(1016, 511);
@@ -3100,50 +3101,50 @@ namespace LAMN_Software
             // lblOldInfo_ICErelation
             // 
             this.lblOldInfo_ICErelation.AutoSize = true;
-            this.lblOldInfo_ICErelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_ICErelation.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOldInfo_ICErelation.Location = new System.Drawing.Point(41, 381);
             this.lblOldInfo_ICErelation.Name = "lblOldInfo_ICErelation";
-            this.lblOldInfo_ICErelation.Size = new System.Drawing.Size(218, 39);
+            this.lblOldInfo_ICErelation.Size = new System.Drawing.Size(216, 40);
             this.lblOldInfo_ICErelation.TabIndex = 5;
             this.lblOldInfo_ICErelation.Text = "ICE relation:";
             // 
             // lblOldInfo_ICEnumber
             // 
             this.lblOldInfo_ICEnumber.AutoSize = true;
-            this.lblOldInfo_ICEnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_ICEnumber.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOldInfo_ICEnumber.Location = new System.Drawing.Point(41, 309);
             this.lblOldInfo_ICEnumber.Name = "lblOldInfo_ICEnumber";
-            this.lblOldInfo_ICEnumber.Size = new System.Drawing.Size(219, 39);
+            this.lblOldInfo_ICEnumber.Size = new System.Drawing.Size(219, 40);
             this.lblOldInfo_ICEnumber.TabIndex = 4;
             this.lblOldInfo_ICEnumber.Text = "ICE number:";
             // 
             // lblOldInfo_PhoneNumber
             // 
             this.lblOldInfo_PhoneNumber.AutoSize = true;
-            this.lblOldInfo_PhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_PhoneNumber.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOldInfo_PhoneNumber.Location = new System.Drawing.Point(41, 238);
             this.lblOldInfo_PhoneNumber.Name = "lblOldInfo_PhoneNumber";
-            this.lblOldInfo_PhoneNumber.Size = new System.Drawing.Size(268, 39);
+            this.lblOldInfo_PhoneNumber.Size = new System.Drawing.Size(270, 40);
             this.lblOldInfo_PhoneNumber.TabIndex = 4;
             this.lblOldInfo_PhoneNumber.Text = "Phone Number:";
             // 
             // lblOldInfo_SecondName
             // 
             this.lblOldInfo_SecondName.AutoSize = true;
-            this.lblOldInfo_SecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_SecondName.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOldInfo_SecondName.Location = new System.Drawing.Point(41, 170);
             this.lblOldInfo_SecondName.Name = "lblOldInfo_SecondName";
-            this.lblOldInfo_SecondName.Size = new System.Drawing.Size(248, 39);
+            this.lblOldInfo_SecondName.Size = new System.Drawing.Size(249, 40);
             this.lblOldInfo_SecondName.TabIndex = 4;
             this.lblOldInfo_SecondName.Text = "Second name:";
             // 
             // lblOldInfo_FirstName
             // 
             this.lblOldInfo_FirstName.AutoSize = true;
-            this.lblOldInfo_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_FirstName.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOldInfo_FirstName.Location = new System.Drawing.Point(41, 106);
             this.lblOldInfo_FirstName.Name = "lblOldInfo_FirstName";
-            this.lblOldInfo_FirstName.Size = new System.Drawing.Size(207, 39);
+            this.lblOldInfo_FirstName.Size = new System.Drawing.Size(209, 40);
             this.lblOldInfo_FirstName.TabIndex = 2;
             this.lblOldInfo_FirstName.Text = "First name: ";
             // 
@@ -3152,16 +3153,16 @@ namespace LAMN_Software
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(58, 65);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 44);
+            this.label26.Size = new System.Drawing.Size(0, 45);
             this.label26.TabIndex = 0;
             // 
             // gbNewInfo
             // 
-            this.gbNewInfo.Controls.Add(this.label33);
-            this.gbNewInfo.Controls.Add(this.label34);
-            this.gbNewInfo.Controls.Add(this.label35);
-            this.gbNewInfo.Controls.Add(this.label36);
-            this.gbNewInfo.Controls.Add(this.label37);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_iceRelation_input);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_iceNumber_input);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_PhoneNumber_input);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_SecondName_input);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_FirstName_input);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_ICErelation);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_ICEnumber);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_PhoneNumber);
@@ -3169,7 +3170,7 @@ namespace LAMN_Software
             this.gbNewInfo.Controls.Add(this.lblNewInfo_FirstName);
             this.gbNewInfo.Controls.Add(this.btnDeclineInfoChanges);
             this.gbNewInfo.Controls.Add(this.btnApproveInfoChanges);
-            this.gbNewInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbNewInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNewInfo.Location = new System.Drawing.Point(1828, 673);
             this.gbNewInfo.Name = "gbNewInfo";
             this.gbNewInfo.Size = new System.Drawing.Size(1016, 599);
@@ -3187,6 +3188,7 @@ namespace LAMN_Software
             this.btnDeclineInfoChanges.TabIndex = 16;
             this.btnDeclineInfoChanges.Text = "❌ Decline changes";
             this.btnDeclineInfoChanges.UseVisualStyleBackColor = true;
+            this.btnDeclineInfoChanges.Click += new System.EventHandler(this.btnDeclineInfoChanges_Click);
             // 
             // btnApproveInfoChanges
             // 
@@ -3198,6 +3200,7 @@ namespace LAMN_Software
             this.btnApproveInfoChanges.TabIndex = 15;
             this.btnApproveInfoChanges.Text = "✔️ Approve changes";
             this.btnApproveInfoChanges.UseVisualStyleBackColor = true;
+            this.btnApproveInfoChanges.Click += new System.EventHandler(this.btnApproveInfoChanges_Click);
             // 
             // label22
             // 
@@ -3261,153 +3264,148 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
-            // label38
+            // lblOldInfo_FirstName_input
             // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(389, 106);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(187, 39);
-            this.label38.TabIndex = 6;
-            this.label38.Text = "First name";
+            this.lblOldInfo_FirstName_input.AutoSize = true;
+            this.lblOldInfo_FirstName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_FirstName_input.Location = new System.Drawing.Point(389, 106);
+            this.lblOldInfo_FirstName_input.Name = "lblOldInfo_FirstName_input";
+            this.lblOldInfo_FirstName_input.Size = new System.Drawing.Size(0, 39);
+            this.lblOldInfo_FirstName_input.TabIndex = 6;
             // 
-            // label39
+            // lblOldInfo_SecondName_input
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(389, 170);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(238, 39);
-            this.label39.TabIndex = 7;
-            this.label39.Text = "Second name";
+            this.lblOldInfo_SecondName_input.AutoSize = true;
+            this.lblOldInfo_SecondName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_SecondName_input.Location = new System.Drawing.Point(389, 170);
+            this.lblOldInfo_SecondName_input.Name = "lblOldInfo_SecondName_input";
+            this.lblOldInfo_SecondName_input.Size = new System.Drawing.Size(0, 39);
+            this.lblOldInfo_SecondName_input.TabIndex = 7;
             // 
-            // label40
+            // lblOldInfo_PhoneNumber_input
             // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(389, 238);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(258, 39);
-            this.label40.TabIndex = 8;
-            this.label40.Text = "Phone Number";
+            this.lblOldInfo_PhoneNumber_input.AutoSize = true;
+            this.lblOldInfo_PhoneNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_PhoneNumber_input.Location = new System.Drawing.Point(389, 238);
+            this.lblOldInfo_PhoneNumber_input.Name = "lblOldInfo_PhoneNumber_input";
+            this.lblOldInfo_PhoneNumber_input.Size = new System.Drawing.Size(0, 39);
+            this.lblOldInfo_PhoneNumber_input.TabIndex = 8;
             // 
-            // label41
+            // lblOldInfo_iceNumber_input
             // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(389, 309);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(209, 39);
-            this.label41.TabIndex = 9;
-            this.label41.Text = "ICE number";
+            this.lblOldInfo_iceNumber_input.AutoSize = true;
+            this.lblOldInfo_iceNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_iceNumber_input.Location = new System.Drawing.Point(389, 309);
+            this.lblOldInfo_iceNumber_input.Name = "lblOldInfo_iceNumber_input";
+            this.lblOldInfo_iceNumber_input.Size = new System.Drawing.Size(0, 39);
+            this.lblOldInfo_iceNumber_input.TabIndex = 9;
             // 
-            // label42
+            // lblOldInfo_iceRelation_input
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(389, 381);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(208, 39);
-            this.label42.TabIndex = 10;
-            this.label42.Text = "ICE relation";
+            this.lblOldInfo_iceRelation_input.AutoSize = true;
+            this.lblOldInfo_iceRelation_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_iceRelation_input.Location = new System.Drawing.Point(389, 381);
+            this.lblOldInfo_iceRelation_input.Name = "lblOldInfo_iceRelation_input";
+            this.lblOldInfo_iceRelation_input.Size = new System.Drawing.Size(0, 39);
+            this.lblOldInfo_iceRelation_input.TabIndex = 10;
             // 
-            // label33
+            // lblNewInfo_iceRelation_input
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(389, 370);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(208, 39);
-            this.label33.TabIndex = 26;
-            this.label33.Text = "ICE relation";
+            this.lblNewInfo_iceRelation_input.AutoSize = true;
+            this.lblNewInfo_iceRelation_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_iceRelation_input.Location = new System.Drawing.Point(389, 370);
+            this.lblNewInfo_iceRelation_input.Name = "lblNewInfo_iceRelation_input";
+            this.lblNewInfo_iceRelation_input.Size = new System.Drawing.Size(317, 65);
+            this.lblNewInfo_iceRelation_input.TabIndex = 26;
+            this.lblNewInfo_iceRelation_input.Text = "ICE relation";
             // 
-            // label34
+            // lblNewInfo_iceNumber_input
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(389, 298);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(209, 39);
-            this.label34.TabIndex = 25;
-            this.label34.Text = "ICE number";
+            this.lblNewInfo_iceNumber_input.AutoSize = true;
+            this.lblNewInfo_iceNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_iceNumber_input.Location = new System.Drawing.Point(389, 298);
+            this.lblNewInfo_iceNumber_input.Name = "lblNewInfo_iceNumber_input";
+            this.lblNewInfo_iceNumber_input.Size = new System.Drawing.Size(325, 65);
+            this.lblNewInfo_iceNumber_input.TabIndex = 25;
+            this.lblNewInfo_iceNumber_input.Text = "ICE number";
             // 
-            // label35
+            // lblNewInfo_PhoneNumber_input
             // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(389, 227);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(258, 39);
-            this.label35.TabIndex = 24;
-            this.label35.Text = "Phone Number";
+            this.lblNewInfo_PhoneNumber_input.AutoSize = true;
+            this.lblNewInfo_PhoneNumber_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_PhoneNumber_input.Location = new System.Drawing.Point(389, 227);
+            this.lblNewInfo_PhoneNumber_input.Name = "lblNewInfo_PhoneNumber_input";
+            this.lblNewInfo_PhoneNumber_input.Size = new System.Drawing.Size(402, 65);
+            this.lblNewInfo_PhoneNumber_input.TabIndex = 24;
+            this.lblNewInfo_PhoneNumber_input.Text = "Phone Number";
             // 
-            // label36
+            // lblNewInfo_SecondName_input
             // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(389, 159);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(238, 39);
-            this.label36.TabIndex = 23;
-            this.label36.Text = "Second name";
+            this.lblNewInfo_SecondName_input.AutoSize = true;
+            this.lblNewInfo_SecondName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_SecondName_input.Location = new System.Drawing.Point(389, 159);
+            this.lblNewInfo_SecondName_input.Name = "lblNewInfo_SecondName_input";
+            this.lblNewInfo_SecondName_input.Size = new System.Drawing.Size(368, 65);
+            this.lblNewInfo_SecondName_input.TabIndex = 23;
+            this.lblNewInfo_SecondName_input.Text = "Second name";
             // 
-            // label37
+            // lblNewInfo_FirstName_input
             // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(389, 95);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(187, 39);
-            this.label37.TabIndex = 22;
-            this.label37.Text = "First name";
+            this.lblNewInfo_FirstName_input.AutoSize = true;
+            this.lblNewInfo_FirstName_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_FirstName_input.Location = new System.Drawing.Point(389, 95);
+            this.lblNewInfo_FirstName_input.Name = "lblNewInfo_FirstName_input";
+            this.lblNewInfo_FirstName_input.Size = new System.Drawing.Size(288, 65);
+            this.lblNewInfo_FirstName_input.TabIndex = 22;
+            this.lblNewInfo_FirstName_input.Text = "First name";
             // 
             // lblNewInfo_ICErelation
             // 
             this.lblNewInfo_ICErelation.AutoSize = true;
-            this.lblNewInfo_ICErelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_ICErelation.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_ICErelation.Location = new System.Drawing.Point(41, 370);
             this.lblNewInfo_ICErelation.Name = "lblNewInfo_ICErelation";
-            this.lblNewInfo_ICErelation.Size = new System.Drawing.Size(218, 39);
+            this.lblNewInfo_ICErelation.Size = new System.Drawing.Size(360, 67);
             this.lblNewInfo_ICErelation.TabIndex = 21;
             this.lblNewInfo_ICErelation.Text = "ICE relation:";
             // 
             // lblNewInfo_ICEnumber
             // 
             this.lblNewInfo_ICEnumber.AutoSize = true;
-            this.lblNewInfo_ICEnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_ICEnumber.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_ICEnumber.Location = new System.Drawing.Point(41, 298);
             this.lblNewInfo_ICEnumber.Name = "lblNewInfo_ICEnumber";
-            this.lblNewInfo_ICEnumber.Size = new System.Drawing.Size(219, 39);
+            this.lblNewInfo_ICEnumber.Size = new System.Drawing.Size(365, 67);
             this.lblNewInfo_ICEnumber.TabIndex = 18;
             this.lblNewInfo_ICEnumber.Text = "ICE number:";
             // 
             // lblNewInfo_PhoneNumber
             // 
             this.lblNewInfo_PhoneNumber.AutoSize = true;
-            this.lblNewInfo_PhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_PhoneNumber.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_PhoneNumber.Location = new System.Drawing.Point(41, 227);
             this.lblNewInfo_PhoneNumber.Name = "lblNewInfo_PhoneNumber";
-            this.lblNewInfo_PhoneNumber.Size = new System.Drawing.Size(268, 39);
+            this.lblNewInfo_PhoneNumber.Size = new System.Drawing.Size(450, 67);
             this.lblNewInfo_PhoneNumber.TabIndex = 19;
             this.lblNewInfo_PhoneNumber.Text = "Phone Number:";
             // 
             // lblNewInfo_SecondName
             // 
             this.lblNewInfo_SecondName.AutoSize = true;
-            this.lblNewInfo_SecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_SecondName.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_SecondName.Location = new System.Drawing.Point(41, 159);
             this.lblNewInfo_SecondName.Name = "lblNewInfo_SecondName";
-            this.lblNewInfo_SecondName.Size = new System.Drawing.Size(248, 39);
+            this.lblNewInfo_SecondName.Size = new System.Drawing.Size(415, 67);
             this.lblNewInfo_SecondName.TabIndex = 20;
             this.lblNewInfo_SecondName.Text = "Second name:";
             // 
             // lblNewInfo_FirstName
             // 
             this.lblNewInfo_FirstName.AutoSize = true;
-            this.lblNewInfo_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_FirstName.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewInfo_FirstName.Location = new System.Drawing.Point(41, 95);
             this.lblNewInfo_FirstName.Name = "lblNewInfo_FirstName";
-            this.lblNewInfo_FirstName.Size = new System.Drawing.Size(207, 39);
+            this.lblNewInfo_FirstName.Size = new System.Drawing.Size(348, 67);
             this.lblNewInfo_FirstName.TabIndex = 17;
             this.lblNewInfo_FirstName.Text = "First name: ";
             // 
@@ -3721,16 +3719,16 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnApproveInfoChanges;
         private System.Windows.Forms.ListBox lbChangeInfo;
         private System.Windows.Forms.Label lblChangeInfo;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label lblOldInfo_iceRelation_input;
+        private System.Windows.Forms.Label lblOldInfo_iceNumber_input;
+        private System.Windows.Forms.Label lblOldInfo_PhoneNumber_input;
+        private System.Windows.Forms.Label lblOldInfo_SecondName_input;
+        private System.Windows.Forms.Label lblOldInfo_FirstName_input;
+        private System.Windows.Forms.Label lblNewInfo_iceRelation_input;
+        private System.Windows.Forms.Label lblNewInfo_iceNumber_input;
+        private System.Windows.Forms.Label lblNewInfo_PhoneNumber_input;
+        private System.Windows.Forms.Label lblNewInfo_SecondName_input;
+        private System.Windows.Forms.Label lblNewInfo_FirstName_input;
         private System.Windows.Forms.Label lblNewInfo_ICErelation;
         private System.Windows.Forms.Label lblNewInfo_ICEnumber;
         private System.Windows.Forms.Label lblNewInfo_PhoneNumber;

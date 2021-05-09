@@ -287,5 +287,62 @@ namespace LAMN_Software
                 return ex;
             }
         }
+
+
+        public Exception ApproveEmployeeChange(string bsn, string firstName, string secondName, string phoneNumber, string iceNumber, string iceRelationship)
+        {
+            if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
+            {
+                throw new IncorrectBSNException(bsn);
+            }
+
+            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(phoneNumber);
+            }
+
+            if (!Regex.IsMatch(iceNumber, @"^[0-9]{10}$"))
+            {
+                throw new IncorrectPhoneNumberException(iceNumber);
+            }
+
+            if (!Regex.IsMatch(firstName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(firstName);
+            }
+
+            if (!Regex.IsMatch(secondName, @"^[A-z]*$"))
+            {
+                throw new IncorrectNameException(secondName);
+            }
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation WHERE BSN=@bsn;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@secondName", secondName);
+                    cmd.Parameters.AddWithValue("@bsn", bsn);
+                    cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
+                    cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
+                    cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
+
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
     }
 }

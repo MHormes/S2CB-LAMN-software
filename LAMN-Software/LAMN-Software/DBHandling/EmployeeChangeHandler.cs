@@ -115,6 +115,21 @@ namespace LAMN_Software.DBHandling
         }
 
 
+        public EmployeeChange GetEmployeeChange(string BSN)
+        {
+            foreach(EmployeeChange e in allChangedEmployees)
+            {
+                if(BSN==e.Bsn)
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
+
+
+
 
     }
 }

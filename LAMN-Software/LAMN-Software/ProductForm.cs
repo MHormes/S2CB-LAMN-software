@@ -1661,9 +1661,60 @@ namespace LAMN_Software
             }
         }
 
-     
+        private void lbChangeInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Employee E = (Employee)lbChangeInfo.SelectedItem;
 
+            lblOldInfo_FirstName_input.Text = E.FirstName;
+            lblOldInfo_SecondName_input.Text = E.SecondName;
+            lblOldInfo_PhoneNumber_input.Text = E.PhoneNumber;
+            lblOldInfo_iceNumber_input.Text = E.IceNumber;
+            lblOldInfo_iceRelation_input.Text = (E.IceRelationship).ToString();
 
+            EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
 
+            lblNewInfo_FirstName_input.Text = empChange.FirstName;
+            lblNewInfo_SecondName_input.Text = empChange.SecondName;
+            lblNewInfo_PhoneNumber_input.Text = empChange.PhoneNumber;
+            lblNewInfo_iceNumber_input.Text = empChange.IceNumber;
+            lblNewInfo_iceRelation_input.Text = (empChange.IceRelationship).ToString();
+        }
+
+        private void btnDeclineInfoChanges_Click(object sender, EventArgs e)
+        {
+            Employee E = (Employee)lbChangeInfo.SelectedItem;
+            EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
+
+            if (ECH.DeleteEmployee(empChange)==null)
+            {
+                MessageBox.Show("Employee deleted succesfully");
+                FillChangeEmployeeListBox();
+            }
+        }
+
+        private void btnApproveInfoChanges_Click(object sender, EventArgs e)
+        {
+            Employee E = (Employee)lbChangeInfo.SelectedItem;
+            EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
+
+            try
+            {
+                var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text);
+
+                if ((update == null) && (ECH.DeleteEmployee(empChange) == null))
+                {
+                    FillChangeEmployeeListBox();
+                    MessageBox.Show("Succesfully approved");
+                }
+                else
+                {
+                    MessageBox.Show(update.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
