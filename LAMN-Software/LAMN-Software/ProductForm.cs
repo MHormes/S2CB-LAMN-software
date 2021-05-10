@@ -35,7 +35,8 @@ namespace LAMN_Software
             ECH = new EmployeeChangeHandler();
 
             FillStockViewActive();
-            FillScheduleGridView();
+            FillScheduleGridViewEmp();
+            FillScheduleGridViewCreate();
             FillScheduleMinimumGridView();
             FillActiveEmployees();
             UpdateEmployeePieChart();
@@ -645,9 +646,8 @@ namespace LAMN_Software
 
 
         //SCHEDULES
-
-        //METHOD FOR FILLING THE SCHEDULES
-        public void FillScheduleGridView()
+        //method for filling schedule grid view for viewing emp
+        public void FillScheduleGridViewEmp()
         {
             dgvSchedulesEmp.Rows.Clear();
             if (EH.GetAllEmployeesFromDB() == null)
@@ -679,7 +679,15 @@ namespace LAMN_Software
             schedulesEmpSunday.DataSource = Enum.GetValues(typeof(TimeSlot));
         }
 
-        //METHOD FOR FILLING THE SCHEDULES
+        public void FillScheduleGridViewCreate()
+        {
+            foreach (Day day in (Day[])Enum.GetValues(typeof(Day)))
+            {
+                dgvSchedulesCreate.Rows.Add(day);
+            }
+        }
+
+        //Method for filling dgv minumum people per shift page
         public void FillScheduleMinimumGridView()
         {
             dgvScheduleMinP.Rows.Clear();
@@ -783,7 +791,7 @@ namespace LAMN_Software
         //Button to load schedule of chosen week in view emp schedule tab.
         private void btnSchedulesEmpShowWeek_Click(object sender, EventArgs e)
         {
-            FillScheduleGridView();
+            FillScheduleGridViewEmp();
             int weekNmr = Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
@@ -939,6 +947,18 @@ namespace LAMN_Software
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        //method for showing the schedule of the chosen week in the create view
+        private void btnSchedulesCreateShowWeek_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //method for saving the schedule of the chosen week in the create view
+        private void btnSchedulesCreateSaveCurrent_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
@@ -1716,5 +1736,7 @@ namespace LAMN_Software
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 }
