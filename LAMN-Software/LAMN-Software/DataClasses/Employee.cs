@@ -12,6 +12,7 @@ namespace LAMN_Software
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+
         public string IceNumber { get; set; }
         public ICERelation IceRelationship { get; set; }
         public JobPosition Position { get; set; }
@@ -19,11 +20,16 @@ namespace LAMN_Software
         public string AddInformation { get; set; }
         public string QuittingReason { get; set; }
         public double SalaryPerHour { get; set; }
-
+        public DateTime StartingDate { get; set; }
+        public DateTime EndingDate { get; set; }
+        public string ContractType { get; set; }
+        public string Gender { get; set; }
+        public string Degree { get; set; }
+        public string Nationality { get; set; }
         public double FTE { get; set; }
         private string fullName;
 
-        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason, double salaryPerHour)
+        public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason, double salaryPerHour, DateTime startingDate, DateTime endingDate, string contractType, string gender, string degree, string nationality)
         {
             FirstName = firstName;
             SecondName = secondName;
@@ -39,11 +45,17 @@ namespace LAMN_Software
             fullName = FirstName + " " + SecondName;
             QuittingReason = quittingReason;
             SalaryPerHour = salaryPerHour;
+            StartingDate = startingDate;
+            EndingDate = endingDate;
+            ContractType = contractType;
+            Gender = gender;
+            Degree = degree;
+            Nationality = nationality;
         }
 
         public override string ToString()
         {
-            return $"{FirstName} {SecondName}. BSN:{Bsn}. Position:{Position.ToString()}";
+            return $"FULL NAME: {FirstName} {SecondName}{"\t"}BSN:{Bsn}{"\t"}POSITION: {Position.ToString()}";
         }
 
         public string GetFullName()
