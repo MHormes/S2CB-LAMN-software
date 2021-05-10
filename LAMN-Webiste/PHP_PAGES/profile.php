@@ -158,7 +158,7 @@ if(isset($errorMsg)){
                 {
                     if ($value!=$IceRelationship)
                     {
-                        ?><option value='$value'><?php echo $value?></option><?php                    
+                        ?><option value=<?php echo $value?>><?php echo $value?></option><?php                    
                     }
                 }
             ?>
