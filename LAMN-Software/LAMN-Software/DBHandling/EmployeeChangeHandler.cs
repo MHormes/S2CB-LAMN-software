@@ -36,6 +36,7 @@ namespace LAMN_Software.DBHandling
                         ICERelation ice = ICERelation.OTHER;
 
                         string relationReturn = dr[6].ToString();
+                        relationReturn = relationReturn.ToUpper();
 
                         if (relationReturn == "PARTNER")
                             ice = ICERelation.PARTNER;
