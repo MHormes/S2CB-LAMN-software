@@ -49,6 +49,7 @@ namespace LAMN_Software
             cbxActiveInactiveEmployees.SelectedIndex = 0;
             dgvAllStock.Font = new Font("Arial", 11);
             dgvEmployees.Font = new Font("Arial", 8);
+            dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
             FillChangeEmployeeListBox();
         }
@@ -258,8 +259,8 @@ namespace LAMN_Software
             string searchName = tbxSearchStock.Text.ToLower();
 
             int count = 0;
-            
-            if(cbxStockCurrentlyShowing.SelectedIndex == 0)
+
+            if (cbxStockCurrentlyShowing.SelectedIndex == 0)
             {
                 foreach (Product p in SH.GetAllProducts())
                 {
@@ -271,7 +272,7 @@ namespace LAMN_Software
                     }
                 }
             }
-            else 
+            else
             {
                 foreach (Product p in SH.GetAllProducts())
                 {
@@ -386,7 +387,7 @@ namespace LAMN_Software
             {
                 foreach (Employee e in EH.GetAllEmployees())
                 {
-                    if(string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                    if (string.IsNullOrEmpty((e.QuittingReason).ToString()))
                     {
                         FillEmployeeCells(e);
                     }
@@ -467,7 +468,7 @@ namespace LAMN_Software
                 }
             }
 
-            else 
+            else
             {
                 foreach (Employee emp in EH.GetAllEmployees())
                 {
@@ -596,7 +597,7 @@ namespace LAMN_Software
                 string username = tbxEmployeeAdd_FirstName.Text.Substring(0, 3).ToLower() + tbxEmployeeAdd_SecondName.Text.Substring(0, 3).ToLower();
                 string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
                 string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
-                
+
                 EH = new EmployeeHandler();
                 var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "", Convert.ToDouble(tbxSalary.Text), dtpEmployeeAdd_StartingDate.Value.Date, dtpEmployeeAdd_EndingDate.Value.Date, cbxEmployeeAdd_ContractType.SelectedItem.ToString(), cbxEmployeeAdd_Gender.SelectedItem.ToString(), tbxEmployeeAdd_Degree.Text, tbxEmployeeAdd_Nationality.Text);
 
@@ -646,6 +647,7 @@ namespace LAMN_Software
 
 
         //SCHEDULES
+
         //method for filling schedule grid view for viewing emp
         public void FillScheduleGridViewEmp()
         {
@@ -681,9 +683,40 @@ namespace LAMN_Software
 
         public void FillScheduleGridViewCreate()
         {
+            dgvSchedulesCreate.Rows.Clear();
             foreach (Day day in (Day[])Enum.GetValues(typeof(Day)))
             {
                 dgvSchedulesCreate.Rows.Add(day);
+            }
+
+            if (SCMH.GetMinimumPeopleFromDB() == null)
+            {
+                foreach (SchedulesMinimum schedulesMinimum in SCMH.GetSchedulesMinimum())
+                {
+                    int i = 0;
+
+                    if (schedulesMinimum.TimeSlot == TimeSlot.MORNING)
+                        i = 4;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.AFTERNOON)
+                        i = 5;
+                    else if (schedulesMinimum.TimeSlot == TimeSlot.EVENING)
+                        i = 6;
+
+                    if (schedulesMinimum.Day == Day.MONDAY)
+                        dgvSchedulesCreate.Rows[0].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.TUESDAY)
+                        dgvSchedulesCreate.Rows[1].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.WEDNESDAY)
+                        dgvSchedulesCreate.Rows[2].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.THURDAY)
+                        dgvSchedulesCreate.Rows[3].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.FRIDAY)
+                        dgvSchedulesCreate.Rows[4].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SATURDAY)
+                        dgvSchedulesCreate.Rows[5].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                    else if (schedulesMinimum.Day == Day.SUNDAY)
+                        dgvSchedulesCreate.Rows[6].Cells[i].Value = schedulesMinimum.MinimumPeople;
+                }
             }
         }
 
@@ -795,7 +828,7 @@ namespace LAMN_Software
             int weekNmr = Convert.ToInt32(Math.Round(nudScheduleEmpWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
-                lblScheduleCurrentWeek.Text = $"Currently showing week: {weekNmr}";
+                lblScheduleCurrentWeekEmp.Text = $"Currently showing week: {weekNmr}";
                 foreach (Schedule schedule in SCH.GetAllSchedules())
                 {
                     //check for each schedule object if any of the employeeBsn's are the same. 
@@ -952,7 +985,34 @@ namespace LAMN_Software
         //method for showing the schedule of the chosen week in the create view
         private void btnSchedulesCreateShowWeek_Click(object sender, EventArgs e)
         {
+            FillScheduleGridViewCreate();
+            int weekNmr = Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value));
+            if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
+            {
+                lblScheduleCurrentWeekCreate.Text = $"Currently showing week: {weekNmr}";
+                foreach (Schedule schedule in SCH.GetAllSchedules())
+                {
+                    int i = 0;
+                    if (schedule.TimeSlot == TimeSlot.MORNING) { i = 1; }
+                    else if (schedule.TimeSlot == TimeSlot.EVENING) { i = 2; }
+                    else { i = 3; }
 
+                    switch (schedule.Day)
+                    {
+                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(SCH.GetAllSchedulesFromDB(weekNmr).Message);
+            }
         }
 
         //method for saving the schedule of the chosen week in the create view
@@ -1015,36 +1075,28 @@ namespace LAMN_Software
             }
         }
 
-        //button for inserting the template in the current showing week NEEDS TO BE REFACTORED INTO THE NEW TAB
+        //button for inserting the template in the currently showing week in the create schedule view
         private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
         {
             if (SCTH.GetWeekScheduleFromDB() == null)
             {
-                clearGrid();
+                FillScheduleGridViewCreate();
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
-                    //check for each schedule object if any of the employeeBsn's are the same. 
-                    for (int i = 0; i < EH.GetAllEmployees().Count(); i++)
+                    int i = 0;
+                    if (scheduleTemplate.TimeSlot == TimeSlot.MORNING) { i = 1; }
+                    else if (scheduleTemplate.TimeSlot == TimeSlot.EVENING) { i = 2; }
+                    else { i = 3; }
+
+                    switch (scheduleTemplate.Day)
                     {
-                        //create temp emp object based on the state of the for loop
-                        Employee emp = (Employee)dgvSchedulesEmp.Rows[i].Cells[0].Value;
-                        if (emp.Bsn == scheduleTemplate.EmployeeBSN)
-                        {
-                            if (scheduleTemplate.Day == Day.MONDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[1].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.TUESDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[2].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.WEDNESDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[3].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.THURDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[4].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.FRIDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[5].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.SATURDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[6].Value = scheduleTemplate.TimeSlot;
-                            else if (scheduleTemplate.Day == Day.SUNDAY)
-                                dgvSchedulesEmp.Rows[i].Cells[7].Value = scheduleTemplate.TimeSlot;
-                        }
+                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
                     }
 
                 }
@@ -1199,7 +1251,7 @@ namespace LAMN_Software
             cbxStats3.Items.Add(name);
         }
 
-    
+
         public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
@@ -1279,7 +1331,7 @@ namespace LAMN_Software
 
             int totalCount = depotCount + hrCount + managerCount + salesCount + securityCount;
 
-            if(depotCount > 0)
+            if (depotCount > 0)
             {
                 this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Depot\n[{depotCount}/{totalCount}]", depotCount);
             }
@@ -1343,12 +1395,12 @@ namespace LAMN_Software
 
         private void cbxActiveInactiveEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbxActiveInactiveEmployees.SelectedIndex==0)
+            if (cbxActiveInactiveEmployees.SelectedIndex == 0)
             {
                 btnDeleteEmployee.Visible = true;
                 FillActiveEmployees();
             }
-            else 
+            else
             {
                 btnDeleteEmployee.Visible = false;
                 FillTerminatedEmployees();
@@ -1431,7 +1483,7 @@ namespace LAMN_Software
 
         private void cbxStatsType_SelectedIndexChanged(object sender, EventArgs e)
         {
-           StatsTypeCheck();
+            StatsTypeCheck();
         }
 
         private void btnEmpStats_Click(object sender, EventArgs e)
@@ -1599,7 +1651,7 @@ namespace LAMN_Software
                             tbNewOrderName.Enabled = false;
                         }
                     }
-                        return;
+                    return;
                 }
                 MessageBox.Show(sellProduct.Message);
             }
@@ -1648,7 +1700,7 @@ namespace LAMN_Software
 
         private void chkShowFTE_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkShowFTE.Checked)
+            if (chkShowFTE.Checked)
             {
                 AdjustColumnWidthSchedulesFTE();
             }
@@ -1705,7 +1757,7 @@ namespace LAMN_Software
             Employee E = (Employee)lbChangeInfo.SelectedItem;
             EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
 
-            if (ECH.DeleteEmployee(empChange)==null)
+            if (ECH.DeleteEmployee(empChange) == null)
             {
                 MessageBox.Show("Employee deleted succesfully");
                 FillChangeEmployeeListBox();
@@ -1737,6 +1789,6 @@ namespace LAMN_Software
             }
         }
 
-        
+
     }
 }

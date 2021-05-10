@@ -82,7 +82,7 @@ namespace LAMN_Software
             this.btnScheduleEmpSearch = new System.Windows.Forms.Button();
             this.tbxScheduleEmpSearch = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.lblScheduleCurrentWeek = new System.Windows.Forms.Label();
+            this.lblScheduleCurrentWeekEmp = new System.Windows.Forms.Label();
             this.btnScheduleEmpSaveCurrentWeek = new System.Windows.Forms.Button();
             this.nudScheduleEmpWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesEmpShowWeek = new System.Windows.Forms.Button();
@@ -302,6 +302,7 @@ namespace LAMN_Software
             this.SchedulesCreateMinMorning = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SchedulesCreateMinAfternoon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SchedulesCreateMinEvening = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblScheduleCurrentWeekCreate = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -869,7 +870,7 @@ namespace LAMN_Software
             this.tpSchedulesEmp.Controls.Add(this.btnScheduleEmpSearch);
             this.tpSchedulesEmp.Controls.Add(this.tbxScheduleEmpSearch);
             this.tpSchedulesEmp.Controls.Add(this.label18);
-            this.tpSchedulesEmp.Controls.Add(this.lblScheduleCurrentWeek);
+            this.tpSchedulesEmp.Controls.Add(this.lblScheduleCurrentWeekEmp);
             this.tpSchedulesEmp.Controls.Add(this.btnScheduleEmpSaveCurrentWeek);
             this.tpSchedulesEmp.Controls.Add(this.nudScheduleEmpWeek);
             this.tpSchedulesEmp.Controls.Add(this.btnSchedulesEmpShowWeek);
@@ -925,15 +926,15 @@ namespace LAMN_Software
             this.label18.TabIndex = 21;
             this.label18.Text = "Search for an employee:";
             // 
-            // lblScheduleCurrentWeek
+            // lblScheduleCurrentWeekEmp
             // 
-            this.lblScheduleCurrentWeek.AutoSize = true;
-            this.lblScheduleCurrentWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblScheduleCurrentWeek.Location = new System.Drawing.Point(5, 5);
-            this.lblScheduleCurrentWeek.Name = "lblScheduleCurrentWeek";
-            this.lblScheduleCurrentWeek.Size = new System.Drawing.Size(179, 20);
-            this.lblScheduleCurrentWeek.TabIndex = 17;
-            this.lblScheduleCurrentWeek.Text = "Currently showing week:";
+            this.lblScheduleCurrentWeekEmp.AutoSize = true;
+            this.lblScheduleCurrentWeekEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblScheduleCurrentWeekEmp.Location = new System.Drawing.Point(5, 5);
+            this.lblScheduleCurrentWeekEmp.Name = "lblScheduleCurrentWeekEmp";
+            this.lblScheduleCurrentWeekEmp.Size = new System.Drawing.Size(179, 20);
+            this.lblScheduleCurrentWeekEmp.TabIndex = 17;
+            this.lblScheduleCurrentWeekEmp.Text = "Currently showing week:";
             // 
             // btnScheduleEmpSaveCurrentWeek
             // 
@@ -1073,6 +1074,7 @@ namespace LAMN_Software
             // 
             // tpSchedulesCreate
             // 
+            this.tpSchedulesCreate.Controls.Add(this.lblScheduleCurrentWeekCreate);
             this.tpSchedulesCreate.Controls.Add(this.dgvSchedulesCreate);
             this.tpSchedulesCreate.Controls.Add(this.btnScheduleCreateMinimumPeople);
             this.tpSchedulesCreate.Controls.Add(this.btnSchedulesCreateLoadTemplate);
@@ -1101,7 +1103,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateLoadTemplate
             // 
-            this.btnSchedulesCreateLoadTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
+            this.btnSchedulesCreateLoadTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesCreateLoadTemplate.Location = new System.Drawing.Point(869, 491);
             this.btnSchedulesCreateLoadTemplate.Name = "btnSchedulesCreateLoadTemplate";
             this.btnSchedulesCreateLoadTemplate.Size = new System.Drawing.Size(122, 60);
@@ -1157,7 +1159,7 @@ namespace LAMN_Software
             // 
             // btnSchedulesCreateShowWeek
             // 
-            this.btnSchedulesCreateShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
+            this.btnSchedulesCreateShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesCreateShowWeek.Location = new System.Drawing.Point(8, 511);
             this.btnSchedulesCreateShowWeek.Name = "btnSchedulesCreateShowWeek";
             this.btnSchedulesCreateShowWeek.Size = new System.Drawing.Size(122, 46);
@@ -3440,9 +3442,9 @@ namespace LAMN_Software
             this.SchedulesCreateMinMorning,
             this.SchedulesCreateMinAfternoon,
             this.SchedulesCreateMinEvening});
-            this.dgvSchedulesCreate.Location = new System.Drawing.Point(7, 4);
+            this.dgvSchedulesCreate.Location = new System.Drawing.Point(7, 26);
             this.dgvSchedulesCreate.Name = "dgvSchedulesCreate";
-            this.dgvSchedulesCreate.Size = new System.Drawing.Size(1110, 477);
+            this.dgvSchedulesCreate.Size = new System.Drawing.Size(1110, 455);
             this.dgvSchedulesCreate.TabIndex = 24;
             // 
             // SchedulesCreateDay
@@ -3484,6 +3486,16 @@ namespace LAMN_Software
             this.SchedulesCreateMinEvening.Name = "SchedulesCreateMinEvening";
             this.SchedulesCreateMinEvening.ReadOnly = true;
             // 
+            // lblScheduleCurrentWeekCreate
+            // 
+            this.lblScheduleCurrentWeekCreate.AutoSize = true;
+            this.lblScheduleCurrentWeekCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblScheduleCurrentWeekCreate.Location = new System.Drawing.Point(6, 3);
+            this.lblScheduleCurrentWeekCreate.Name = "lblScheduleCurrentWeekCreate";
+            this.lblScheduleCurrentWeekCreate.Size = new System.Drawing.Size(179, 20);
+            this.lblScheduleCurrentWeekCreate.TabIndex = 25;
+            this.lblScheduleCurrentWeekCreate.Text = "Currently showing week:";
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3515,6 +3527,7 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.nudScheduleEmpWeek)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedulesEmp)).EndInit();
             this.tpSchedulesCreate.ResumeLayout(false);
+            this.tpSchedulesCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSchedulesCreateWeek)).EndInit();
             this.tpScheduleMin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvScheduleMinP)).EndInit();
@@ -3644,7 +3657,7 @@ namespace LAMN_Software
         private System.Windows.Forms.NumericUpDown nudScheduleEmpWeek;
         private System.Windows.Forms.Button btnScheduleEmpSaveCurrentWeek;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label lblScheduleCurrentWeek;
+        private System.Windows.Forms.Label lblScheduleCurrentWeekEmp;
         private GradientPanel gpnlStatistics;
         private System.Windows.Forms.Button btnStatistics;
         private GradientPanel gpnlStatsType;
@@ -3818,5 +3831,6 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesCreateMinMorning;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesCreateMinAfternoon;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesCreateMinEvening;
+        private System.Windows.Forms.Label lblScheduleCurrentWeekCreate;
     }
 }
