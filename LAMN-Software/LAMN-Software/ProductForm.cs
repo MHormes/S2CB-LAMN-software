@@ -1005,15 +1005,15 @@ namespace LAMN_Software
             try
             {
                 //for everyday
-                for(int d = 0; d < 7; d++)
+                for (int d = 0; d < 7; d++)
                 {
                     //for every timeslot
-                    for(int s = 1; s < 4; s++)
+                    for (int s = 1; s < 4; s++)
                     {
                         //take all bsns and split them up
                         string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
                         //check if there are any people scheduled
-                        if(allBsn != null)
+                        if (allBsn != null)
                         {
                             string[] bsnArray = allBsn.Split('.');
 
@@ -1024,7 +1024,7 @@ namespace LAMN_Software
                                 SCH.SaveCurrentWeek(weeknmr, (Day)d, bsn, slot.ToString());
                             }
                         }
-                        
+
                     }
                 }
 
@@ -1127,6 +1127,16 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpScheduleMin;
         }
 
+        //button click for assigning shifts
+        private void dgvSchedulesCreate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex);
+                SCAE.ShowDialog();
+            }
+        }
 
         //method for clearing the schedule view grid.
         private void clearGrid()
@@ -1803,6 +1813,6 @@ namespace LAMN_Software
             }
         }
 
-
+        
     }
 }

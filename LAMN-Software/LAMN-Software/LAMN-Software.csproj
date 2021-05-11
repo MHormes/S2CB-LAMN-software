@@ -145,6 +145,12 @@
     <Compile Include="ENUMS\TimeSlot.cs" />
     <Compile Include="DataClasses\SchedulesMinimum.cs" />
     <Compile Include="DBHandling\ScheduleMinimumHandler.cs" />
+    <Compile Include="ScheduleCreateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleCreateAddEmployee.Designer.cs">
+      <DependentUpon>ScheduleCreateAddEmployee.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EmploymentTermination.resx">
       <DependentUpon>EmploymentTermination.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +170,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScheduleCreateAddEmployee.resx">
+      <DependentUpon>ScheduleCreateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

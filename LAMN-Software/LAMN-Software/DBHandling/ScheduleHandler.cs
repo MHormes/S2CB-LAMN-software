@@ -11,6 +11,7 @@ namespace LAMN_Software.DataClasses
     public class ScheduleHandler
     {
         List<Schedule> allSchedules;
+        List<Schedule> specificSchedule;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
         //method to get all the stock items from the DB. Get all items from specific week.
@@ -43,7 +44,7 @@ namespace LAMN_Software.DataClasses
                         else if (TimeReturn == "EVENING")
                             time = TimeSlot.EVENING;
 
-                        
+
 
                         if (DayReturn == "MONDAY")
                             day = Day.MONDAY;
@@ -113,6 +114,94 @@ namespace LAMN_Software.DataClasses
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@weekNmr", weekNmr);
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception GetSpecificShiftFromDB(int weekNmr, Day Sday, TimeSlot timeSlot)
+        {
+            specificSchedule = new List<Schedule>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "SELECT * FROM schedules WHERE Week = @weekNmr AND Day = @day AND TimeSlot = @timeSlot";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weekNmr", weekNmr);
+                    cmd.Parameters.AddWithValue("@day", Sday.ToString());
+                    cmd.Parameters.AddWithValue("@timeSlot", timeSlot.ToString());
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        TimeSlot time = TimeSlot.MORNING;
+                        Day day = Day.MONDAY;
+
+                        string DayReturn = dr[1].ToString();
+                        string TimeReturn = dr[3].ToString();
+
+                        if (TimeReturn == "MORNING")
+                            time = TimeSlot.MORNING;
+                        else if (TimeReturn == "AFTERNOON")
+                            time = TimeSlot.AFTERNOON;
+                        else if (TimeReturn == "EVENING")
+                            time = TimeSlot.EVENING;
+
+
+
+                        if (DayReturn == "MONDAY")
+                            day = Day.MONDAY;
+                        else if (DayReturn == "TUESDAY")
+                            day = Day.TUESDAY;
+                        else if (DayReturn == "WEDNESDAY")
+                            day = Day.WEDNESDAY;
+                        else if (DayReturn == "THURDAY")
+                            day = Day.THURDAY;
+                        else if (DayReturn == "FRIDAY")
+                            day = Day.FRIDAY;
+                        else if (DayReturn == "SATURDAY")
+                            day = Day.SATURDAY;
+                        else if (DayReturn == "SUNDAY")
+                            day = Day.SUNDAY;
+
+                        specificSchedule.Add(new Schedule(Convert.ToInt32(dr[0]), day, dr[2].ToString(), time));
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public List<Schedule> GetSpecificShift()
+        {
+            return this.specificSchedule;
+        }
+
+        public Exception DeleteSpecificShift(int weekNmr, Day day, TimeSlot timeSlot)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "DELETE FROM schedules WHERE Week = @weekNmr AND Day = @day AND TimeSlot = @timeSlot";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weekNmr", weekNmr);
+                    cmd.Parameters.AddWithValue("@day", day.ToString());
+                    cmd.Parameters.AddWithValue("@timeSlot", timeSlot.ToString());
 
                     cmd.ExecuteNonQuery();
                 }
