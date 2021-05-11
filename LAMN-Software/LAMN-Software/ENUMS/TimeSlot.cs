@@ -8,9 +8,9 @@ namespace LAMN_Software
 {
     public enum TimeSlot
     {
+        NO_SHIFT,
         MORNING,
         AFTERNOON,
-        EVENING,
-        NO_SHIFT
+        EVENING
     }
 }

@@ -928,57 +928,33 @@ namespace LAMN_Software
             }
         }
 
-        //button for saving the current schedule as the template NEEDS TO BE REFACTORED TO THE OTHER PAGE
+        //button for saving the current schedule as the template
         private void btnSchedulesCreateSaveTempalte_Click(object sender, EventArgs e)
         {
-            //foreach edited combox push to the DB.
-            //Possible to delete the week from the DB, and Add it again. This way there is no need to only push updated.
-            //Easier syntax but the semantics could be optimalized.
-
-            SCTH.DeleteWeekSchedule();
-
+            SCTH.DeleteWeekScheduleTemplate();
             try
             {
-                for (int rows = 0; rows < dgvSchedulesEmp.Rows.Count; rows++)
+                //for everyday
+                for (int d = 0; d < 7; d++)
                 {
-                    for (int col = 1; col < dgvSchedulesEmp.Rows[rows].Cells.Count; col++)
+                    //for every timeslot
+                    for (int s = 1; s < 4; s++)
                     {
-                        Employee emp = (Employee)dgvSchedulesEmp.Rows[rows].Cells[0].Value;
+                        //take all bsns and split them up
+                        string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
+                        //check if there are any people scheduled
+                        if (allBsn != null)
+                        {
+                            string[] bsnArray = allBsn.Split('.');
 
-                        string slot = null;
-                        if (dgvSchedulesEmp.Rows[rows].Cells[col].Value != null)
-                        {
-                            slot = dgvSchedulesEmp.Rows[rows].Cells[col].Value.ToString();
+                            //foreach bsn add to the db
+                            foreach (string bsn in bsnArray)
+                            {
+                                TimeSlot slot = (TimeSlot)s;
+                                SCTH.SaveCurrentWeekTemplate((Day)d, bsn, slot.ToString());
+                            }
                         }
 
-                        if (col == 1 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.MONDAY, emp.Bsn, slot);
-                        }
-                        if (col == 2 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.TUESDAY, emp.Bsn, slot);
-                        }
-                        if (col == 3 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.WEDNESDAY, emp.Bsn, slot);
-                        }
-                        if (col == 4 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.THURDAY, emp.Bsn, slot);
-                        }
-                        if (col == 5 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.FRIDAY, emp.Bsn, slot);
-                        }
-                        if (col == 6 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.SATURDAY, emp.Bsn, slot);
-                        }
-                        else if (col == 7 && !string.IsNullOrEmpty(slot) && (slot != TimeSlot.NO_SHIFT.ToString()))
-                        {
-                            SCTH.SaveCurrentWeek(Day.SUNDAY, emp.Bsn, slot);
-                        }
                     }
                 }
             }
@@ -1000,18 +976,18 @@ namespace LAMN_Software
                 {
                     int i = 0;
                     if (schedule.TimeSlot == TimeSlot.MORNING) { i = 1; }
-                    else if (schedule.TimeSlot == TimeSlot.EVENING) { i = 2; }
+                    else if (schedule.TimeSlot == TimeSlot.AFTERNOON) { i = 2; }
                     else { i = 3; }
 
                     switch (schedule.Day)
                     {
-                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
-                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).FirstName; break;
+                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
                     }
                 }
             }
@@ -1024,7 +1000,39 @@ namespace LAMN_Software
         //method for saving the schedule of the chosen week in the create view
         private void btnSchedulesCreateSaveCurrent_Click(object sender, EventArgs e)
         {
+            int weeknmr = Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value));
+            SCH.DeleteWeekSchedule(weeknmr);
+            try
+            {
+                //for everyday
+                for(int d = 0; d < 7; d++)
+                {
+                    //for every timeslot
+                    for(int s = 1; s < 4; s++)
+                    {
+                        //take all bsns and split them up
+                        string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
+                        //check if there are any people scheduled
+                        if(allBsn != null)
+                        {
+                            string[] bsnArray = allBsn.Split('.');
 
+                            //foreach bsn add to the db
+                            foreach (string bsn in bsnArray)
+                            {
+                                TimeSlot slot = (TimeSlot)s;
+                                SCH.SaveCurrentWeek(weeknmr, (Day)d, bsn, slot.ToString());
+                            }
+                        }
+                        
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
@@ -1084,25 +1092,25 @@ namespace LAMN_Software
         //button for inserting the template in the currently showing week in the create schedule view
         private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
         {
-            if (SCTH.GetWeekScheduleFromDB() == null)
+            if (SCTH.GetWeekScheduleTemplateFromDB() == null)
             {
                 FillScheduleGridViewCreate();
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
                     int i = 0;
                     if (scheduleTemplate.TimeSlot == TimeSlot.MORNING) { i = 1; }
-                    else if (scheduleTemplate.TimeSlot == TimeSlot.EVENING) { i = 2; }
+                    else if (scheduleTemplate.TimeSlot == TimeSlot.AFTERNOON) { i = 2; }
                     else { i = 3; }
 
                     switch (scheduleTemplate.Day)
                     {
-                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
-                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).FirstName; break;
+                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
                     }
 
                 }
