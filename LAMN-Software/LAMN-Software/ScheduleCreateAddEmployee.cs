@@ -21,6 +21,9 @@ namespace LAMN_Software
         List<Schedule> specificShift;
         List<Employee> allEmployees;
 
+        public delegate void RefreshingSchedulePage(object sender, EventArgs e);
+        public event RefreshingSchedulePage RefreshPageEvent;
+
         public ScheduleCreateAddEmployee(EmployeeHandler givenEmpHandler, ScheduleHandler givenSchHandler, int givenWeekNmr, Day selectedDay, TimeSlot chosenTime)
         {
             InitializeComponent();
@@ -81,6 +84,11 @@ namespace LAMN_Software
                 {
                     Employee emp = (Employee)v;
                     Shandler.SaveCurrentWeek(weekNmr, day, emp.Bsn, timeSlot.ToString());
+                }
+
+                if(RefreshPageEvent != null)
+                {
+                    RefreshPageEvent(sender, e);
                 }
                 this.Close();
             }

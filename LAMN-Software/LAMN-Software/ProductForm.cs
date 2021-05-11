@@ -997,44 +997,7 @@ namespace LAMN_Software
             }
         }
 
-        //method for saving the schedule of the chosen week in the create view
-        private void btnSchedulesCreateSaveCurrent_Click(object sender, EventArgs e)
-        {
-            int weeknmr = Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value));
-            SCH.DeleteWeekSchedule(weeknmr);
-            try
-            {
-                //for everyday
-                for (int d = 0; d < 7; d++)
-                {
-                    //for every timeslot
-                    for (int s = 1; s < 4; s++)
-                    {
-                        //take all bsns and split them up
-                        string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
-                        //check if there are any people scheduled
-                        if (allBsn != null)
-                        {
-                            string[] bsnArray = allBsn.Split('.');
-
-                            //foreach bsn add to the db
-                            foreach (string bsn in bsnArray)
-                            {
-                                TimeSlot slot = (TimeSlot)s;
-                                SCH.SaveCurrentWeek(weeknmr, (Day)d, bsn, slot.ToString());
-                            }
-                        }
-
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+        
         private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
         {
             SCMH.DeleteMinimumPeople();
@@ -1126,6 +1089,7 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpScheduleMin;
         }
+  
 
         //button click for assigning shifts
         private void dgvSchedulesCreate_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1134,6 +1098,8 @@ namespace LAMN_Software
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex);
+                SCAE.RefreshPageEvent -= new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
+                SCAE.RefreshPageEvent += new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
                 SCAE.ShowDialog();
             }
         }
