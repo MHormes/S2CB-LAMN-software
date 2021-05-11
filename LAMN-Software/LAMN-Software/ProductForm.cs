@@ -435,6 +435,12 @@ namespace LAMN_Software
             newRow.Cells[9].Value = e.IceNumber;
             newRow.Cells[10].Value = e.IceRelationship;
             newRow.Cells[11].Value = e.QuittingReason;
+            newRow.Cells[12].Value = e.StartingDate;
+            newRow.Cells[13].Value = e.EndingDate;
+            newRow.Cells[14].Value = e.ContractType;
+            newRow.Cells[15].Value = e.Gender;
+            newRow.Cells[16].Value = e.Degree;
+            newRow.Cells[17].Value = e.Nationality;
             dgvEmployees.Rows.Add(newRow);
         }
 
