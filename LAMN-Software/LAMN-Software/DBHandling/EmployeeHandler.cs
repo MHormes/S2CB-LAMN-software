@@ -69,7 +69,7 @@ namespace LAMN_Software
                         else if (positionReturn == "SECURITY")
                             position = JobPosition.SECURITY;
 
-                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[10].ToString(), dr[11].ToString(),Convert.ToDouble(dr[12]),Convert.ToDateTime(dr[13]), Convert.ToDateTime(dr[14]), dr[15].ToString(), dr[16].ToString(), dr[17].ToString(), dr[18].ToString()));
+                        allEmployees.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToDateTime(dr[4]), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), ice, position, dr[10].ToString(), dr[11].ToString(),Convert.ToDouble(dr[12]),Convert.ToDateTime(dr[13]), Convert.ToDateTime(dr[14]), dr[15].ToString(), dr[16].ToString(), dr[17].ToString(), dr[18].ToString(), Convert.ToInt32(dr[19])));
                     }
                 }
                 return null;
@@ -100,7 +100,7 @@ namespace LAMN_Software
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, string quittingReason, double salaryPerHour, DateTime startingDate, DateTime endingDate, string contractType, string gender, string degree, string nationality) 
+        public Exception AddEmployee(string firstName, string secondName, string userName, string bsn, DateTime dateOfBirth, string email, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, string quittingReason, double salaryPerHour, DateTime startingDate, DateTime endingDate, string contractType, string gender, string degree, string nationality, int contractHours) 
         {
             try
             {
@@ -131,7 +131,7 @@ namespace LAMN_Software
 
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation, QuittingReason, SalaryPerHour, contractStartingDate, contractEndingDate, contractType, Gender, Degree, Nationality) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation, @quittingReason, @salaryPerHour, @startingDate, @endingDate, @contractType, @gender, @degree, @nationality);";
+                    string sql = "INSERT INTO employee(FirstName, SecondName, UserName, BSN, DateOfBirth, PhoneNumber, Email, ICEnumber, ICErelation, Position, AddInformation, QuittingReason, SalaryPerHour, contractStartingDate, contractEndingDate, contractType, Gender, Degree, Nationality, ContractHours) VALUES (@firstName, @secondName, @userName, @bsn, @dateOfBirth, @phoneNumber, @email, @iceNumber, @iceRelation, @position, @addInformation, @quittingReason, @salaryPerHour, @startingDate, @endingDate, @contractType, @gender, @degree, @nationality,@contractHours);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -162,6 +162,7 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@gender", gender);
                     cmd.Parameters.AddWithValue("@degree", degree);
                     cmd.Parameters.AddWithValue("@nationality", nationality);
+                    cmd.Parameters.AddWithValue("@contractHours", contractHours);
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
