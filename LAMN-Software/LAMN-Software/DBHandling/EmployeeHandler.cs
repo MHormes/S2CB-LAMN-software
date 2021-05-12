@@ -177,7 +177,7 @@ namespace LAMN_Software
 
 
         //method for change an employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
-        public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, double salaryPerHour)
+        public Exception ChangeEmployee(string firstName, string secondName, string bsn, DateTime dateOfBirth, string phoneNumber, string iceNumber, string iceRelationship, string position, string addInformation, double salaryPerHour, DateTime startingDate, DateTime endingDate, string contractType, string gender, string degree, string nationality, int contractHours)
         {
             if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
             {
@@ -208,7 +208,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation, SalaryPerHour=@salaryPerHour WHERE BSN=@bsn;";
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation, SalaryPerHour=@salaryPerHour, contractStartingDate=@startingDate, contractEndingDate=@endingDate, ContractType=@contractType, Gender=gender, Degree=@degree, Nationality=@nationality, ContractHours=@contractHours WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -226,6 +226,13 @@ namespace LAMN_Software
                     { cmd.Parameters.AddWithValue("@addInformation", addInformation); }
                     else { cmd.Parameters.AddWithValue("@addInformation", null); }
 
+                    cmd.Parameters.AddWithValue("@startingDate", startingDate);
+                    cmd.Parameters.AddWithValue("@endingDate", endingDate);
+                    cmd.Parameters.AddWithValue("@contractType", contractType);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@degree", degree);
+                    cmd.Parameters.AddWithValue("@nationality", nationality);
+                    cmd.Parameters.AddWithValue("@contractHours", contractHours);
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
                 }
