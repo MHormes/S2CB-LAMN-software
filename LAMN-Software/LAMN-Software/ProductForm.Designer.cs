@@ -87,15 +87,6 @@ namespace LAMN_Software
             this.nudScheduleEmpWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesEmpShowWeek = new System.Windows.Forms.Button();
             this.dgvSchedulesEmp = new System.Windows.Forms.DataGridView();
-            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpSchedulesCreate = new System.Windows.Forms.TabPage();
             this.lblScheduleCurrentWeekCreate = new System.Windows.Forms.Label();
             this.dgvSchedulesCreate = new System.Windows.Forms.DataGridView();
@@ -136,6 +127,25 @@ namespace LAMN_Software
             this.cbxActiveInactiveEmployees = new System.Windows.Forms.ComboBox();
             this.lblActiveInactiveEmployees = new System.Windows.Forms.Label();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.dgvEmployeeObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSalaryPerHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvBsn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvIceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvIceRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvQuittingReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStartingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEndingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDegree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbxSearchEmployee = new System.Windows.Forms.TextBox();
             this.btnDeleteEmployee = new System.Windows.Forms.Button();
             this.btnEditEmployee = new System.Windows.Forms.Button();
@@ -184,6 +194,8 @@ namespace LAMN_Software
             this.tbxStockAdd_ProductName = new System.Windows.Forms.TextBox();
             this.lblProductAdd_StockName = new System.Windows.Forms.Label();
             this.tpEmployeeAdd = new System.Windows.Forms.TabPage();
+            this.tbxEmployeeAdd_ContractHours = new System.Windows.Forms.TextBox();
+            this.lblContractHours = new System.Windows.Forms.Label();
             this.tbxEmployeeAdd_Nationality = new System.Windows.Forms.TextBox();
             this.tbxEmployeeAdd_Degree = new System.Windows.Forms.TextBox();
             this.cbxEmployeeAdd_Gender = new System.Windows.Forms.ComboBox();
@@ -284,27 +296,16 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
-            this.dgvEmployeeObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvSalaryPerHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvBsn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvIceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvIceRelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvQuittingReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStartingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEndingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDegree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dvgContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblContractHours = new System.Windows.Forms.Label();
-            this.tbxEmployeeAdd_ContractHours = new System.Windows.Forms.TextBox();
+            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchedulesEmpContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -890,11 +891,11 @@ namespace LAMN_Software
             // 
             this.chkShowFTE.AutoSize = true;
             this.chkShowFTE.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowFTE.Location = new System.Drawing.Point(1020, 3);
+            this.chkShowFTE.Location = new System.Drawing.Point(914, 3);
             this.chkShowFTE.Name = "chkShowFTE";
-            this.chkShowFTE.Size = new System.Drawing.Size(100, 22);
+            this.chkShowFTE.Size = new System.Drawing.Size(205, 22);
             this.chkShowFTE.TabIndex = 24;
-            this.chkShowFTE.Text = "Show FTE";
+            this.chkShowFTE.Text = "Show FTE/Contract hours";
             this.chkShowFTE.UseVisualStyleBackColor = true;
             this.chkShowFTE.CheckedChanged += new System.EventHandler(this.chkShowFTE_CheckedChanged);
             // 
@@ -997,82 +998,14 @@ namespace LAMN_Software
             this.schedulesEmpFriday,
             this.schedulesEmpSaturday,
             this.schedulesEmpSunday,
-            this.schedulesEmpFTE});
+            this.schedulesEmpFTE,
+            this.SchedulesEmpContractHours});
             this.dgvSchedulesEmp.Location = new System.Drawing.Point(0, 26);
             this.dgvSchedulesEmp.Name = "dgvSchedulesEmp";
             this.dgvSchedulesEmp.RowHeadersWidth = 51;
             this.dgvSchedulesEmp.RowTemplate.Height = 30;
             this.dgvSchedulesEmp.Size = new System.Drawing.Size(1113, 449);
             this.dgvSchedulesEmp.TabIndex = 13;
-            // 
-            // schedulesEmpFirstName
-            // 
-            this.schedulesEmpFirstName.HeaderText = "First Name";
-            this.schedulesEmpFirstName.MinimumWidth = 6;
-            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
-            this.schedulesEmpFirstName.ReadOnly = true;
-            this.schedulesEmpFirstName.Width = 125;
-            // 
-            // schedulesEmpMonday
-            // 
-            this.schedulesEmpMonday.HeaderText = "Monday";
-            this.schedulesEmpMonday.Items.AddRange(new object[] {
-            "M",
-            "A",
-            "E"});
-            this.schedulesEmpMonday.MinimumWidth = 6;
-            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
-            this.schedulesEmpMonday.Width = 125;
-            // 
-            // schedulesEmpTuesday
-            // 
-            this.schedulesEmpTuesday.HeaderText = "Tuesday";
-            this.schedulesEmpTuesday.MinimumWidth = 6;
-            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
-            this.schedulesEmpTuesday.Width = 125;
-            // 
-            // schedulesEmpWednesday
-            // 
-            this.schedulesEmpWednesday.HeaderText = "Wednesday";
-            this.schedulesEmpWednesday.MinimumWidth = 6;
-            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
-            this.schedulesEmpWednesday.Width = 125;
-            // 
-            // schedulesEmpThursday
-            // 
-            this.schedulesEmpThursday.HeaderText = "Thursday";
-            this.schedulesEmpThursday.MinimumWidth = 6;
-            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
-            this.schedulesEmpThursday.Width = 125;
-            // 
-            // schedulesEmpFriday
-            // 
-            this.schedulesEmpFriday.HeaderText = "Friday";
-            this.schedulesEmpFriday.MinimumWidth = 6;
-            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
-            this.schedulesEmpFriday.Width = 125;
-            // 
-            // schedulesEmpSaturday
-            // 
-            this.schedulesEmpSaturday.HeaderText = "Saturday";
-            this.schedulesEmpSaturday.MinimumWidth = 6;
-            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
-            this.schedulesEmpSaturday.Width = 125;
-            // 
-            // schedulesEmpSunday
-            // 
-            this.schedulesEmpSunday.HeaderText = "Sunday";
-            this.schedulesEmpSunday.MinimumWidth = 6;
-            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
-            this.schedulesEmpSunday.Width = 125;
-            // 
-            // schedulesEmpFTE
-            // 
-            this.schedulesEmpFTE.HeaderText = "FTE";
-            this.schedulesEmpFTE.MinimumWidth = 10;
-            this.schedulesEmpFTE.Name = "schedulesEmpFTE";
-            this.schedulesEmpFTE.ReadOnly = true;
-            this.schedulesEmpFTE.Width = 200;
             // 
             // tpSchedulesCreate
             // 
@@ -1550,6 +1483,157 @@ namespace LAMN_Software
             this.dgvEmployees.RowHeadersWidth = 102;
             this.dgvEmployees.Size = new System.Drawing.Size(1114, 468);
             this.dgvEmployees.TabIndex = 19;
+            // 
+            // dgvEmployeeObj
+            // 
+            this.dgvEmployeeObj.HeaderText = "Employee Object";
+            this.dgvEmployeeObj.MinimumWidth = 12;
+            this.dgvEmployeeObj.Name = "dgvEmployeeObj";
+            this.dgvEmployeeObj.ReadOnly = true;
+            this.dgvEmployeeObj.Visible = false;
+            this.dgvEmployeeObj.Width = 250;
+            // 
+            // dgvFirstName
+            // 
+            this.dgvFirstName.HeaderText = "First name";
+            this.dgvFirstName.MinimumWidth = 12;
+            this.dgvFirstName.Name = "dgvFirstName";
+            this.dgvFirstName.ReadOnly = true;
+            this.dgvFirstName.Width = 250;
+            // 
+            // dgvSecondName
+            // 
+            this.dgvSecondName.HeaderText = "Second name";
+            this.dgvSecondName.MinimumWidth = 12;
+            this.dgvSecondName.Name = "dgvSecondName";
+            this.dgvSecondName.ReadOnly = true;
+            this.dgvSecondName.Width = 250;
+            // 
+            // dgvPosition
+            // 
+            this.dgvPosition.HeaderText = "Position";
+            this.dgvPosition.MinimumWidth = 12;
+            this.dgvPosition.Name = "dgvPosition";
+            this.dgvPosition.ReadOnly = true;
+            this.dgvPosition.Width = 250;
+            // 
+            // dgvSalaryPerHour
+            // 
+            this.dgvSalaryPerHour.HeaderText = "Salary per hour ";
+            this.dgvSalaryPerHour.MinimumWidth = 12;
+            this.dgvSalaryPerHour.Name = "dgvSalaryPerHour";
+            this.dgvSalaryPerHour.ReadOnly = true;
+            this.dgvSalaryPerHour.Width = 250;
+            // 
+            // dgvBsn
+            // 
+            this.dgvBsn.HeaderText = "BSN";
+            this.dgvBsn.MinimumWidth = 12;
+            this.dgvBsn.Name = "dgvBsn";
+            this.dgvBsn.ReadOnly = true;
+            this.dgvBsn.Width = 250;
+            // 
+            // dgvDateOfBirth
+            // 
+            this.dgvDateOfBirth.HeaderText = "Date of birth";
+            this.dgvDateOfBirth.MinimumWidth = 12;
+            this.dgvDateOfBirth.Name = "dgvDateOfBirth";
+            this.dgvDateOfBirth.ReadOnly = true;
+            this.dgvDateOfBirth.Width = 250;
+            // 
+            // dgvPhoneNumber
+            // 
+            this.dgvPhoneNumber.HeaderText = "Phone number";
+            this.dgvPhoneNumber.MinimumWidth = 12;
+            this.dgvPhoneNumber.Name = "dgvPhoneNumber";
+            this.dgvPhoneNumber.ReadOnly = true;
+            this.dgvPhoneNumber.Width = 250;
+            // 
+            // dgvEmail
+            // 
+            this.dgvEmail.HeaderText = "Email";
+            this.dgvEmail.MinimumWidth = 12;
+            this.dgvEmail.Name = "dgvEmail";
+            this.dgvEmail.ReadOnly = true;
+            this.dgvEmail.Width = 250;
+            // 
+            // dgvIceNumber
+            // 
+            this.dgvIceNumber.HeaderText = "ICE number";
+            this.dgvIceNumber.MinimumWidth = 12;
+            this.dgvIceNumber.Name = "dgvIceNumber";
+            this.dgvIceNumber.ReadOnly = true;
+            this.dgvIceNumber.Width = 250;
+            // 
+            // dgvIceRelation
+            // 
+            this.dgvIceRelation.HeaderText = "ICE relation";
+            this.dgvIceRelation.MinimumWidth = 12;
+            this.dgvIceRelation.Name = "dgvIceRelation";
+            this.dgvIceRelation.ReadOnly = true;
+            this.dgvIceRelation.Width = 250;
+            // 
+            // dgvQuittingReason
+            // 
+            this.dgvQuittingReason.HeaderText = "Quitting reason";
+            this.dgvQuittingReason.MinimumWidth = 12;
+            this.dgvQuittingReason.Name = "dgvQuittingReason";
+            this.dgvQuittingReason.ReadOnly = true;
+            this.dgvQuittingReason.Width = 250;
+            // 
+            // dgvStartingDate
+            // 
+            this.dgvStartingDate.HeaderText = "Starting Date";
+            this.dgvStartingDate.MinimumWidth = 12;
+            this.dgvStartingDate.Name = "dgvStartingDate";
+            this.dgvStartingDate.ReadOnly = true;
+            this.dgvStartingDate.Width = 250;
+            // 
+            // dgvEndingDate
+            // 
+            this.dgvEndingDate.HeaderText = "Ending Date";
+            this.dgvEndingDate.MinimumWidth = 12;
+            this.dgvEndingDate.Name = "dgvEndingDate";
+            this.dgvEndingDate.ReadOnly = true;
+            this.dgvEndingDate.Width = 250;
+            // 
+            // dgvContractType
+            // 
+            this.dgvContractType.HeaderText = "Contract Type";
+            this.dgvContractType.MinimumWidth = 12;
+            this.dgvContractType.Name = "dgvContractType";
+            this.dgvContractType.ReadOnly = true;
+            this.dgvContractType.Width = 250;
+            // 
+            // dgvGender
+            // 
+            this.dgvGender.HeaderText = "Gender";
+            this.dgvGender.MinimumWidth = 12;
+            this.dgvGender.Name = "dgvGender";
+            this.dgvGender.ReadOnly = true;
+            this.dgvGender.Width = 250;
+            // 
+            // dgvDegree
+            // 
+            this.dgvDegree.HeaderText = "Degree";
+            this.dgvDegree.MinimumWidth = 12;
+            this.dgvDegree.Name = "dgvDegree";
+            this.dgvDegree.ReadOnly = true;
+            this.dgvDegree.Width = 250;
+            // 
+            // dgvNationality
+            // 
+            this.dgvNationality.HeaderText = "Nationality";
+            this.dgvNationality.MinimumWidth = 12;
+            this.dgvNationality.Name = "dgvNationality";
+            this.dgvNationality.ReadOnly = true;
+            this.dgvNationality.Width = 250;
+            // 
+            // dvgContractHours
+            // 
+            this.dvgContractHours.HeaderText = "Contract Hours";
+            this.dvgContractHours.Name = "dvgContractHours";
+            this.dvgContractHours.ReadOnly = true;
             // 
             // tbxSearchEmployee
             // 
@@ -2182,6 +2266,26 @@ namespace LAMN_Software
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
             this.tpEmployeeAdd.UseVisualStyleBackColor = true;
+            // 
+            // tbxEmployeeAdd_ContractHours
+            // 
+            this.tbxEmployeeAdd_ContractHours.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxEmployeeAdd_ContractHours.Location = new System.Drawing.Point(232, 504);
+            this.tbxEmployeeAdd_ContractHours.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxEmployeeAdd_ContractHours.Name = "tbxEmployeeAdd_ContractHours";
+            this.tbxEmployeeAdd_ContractHours.Size = new System.Drawing.Size(235, 29);
+            this.tbxEmployeeAdd_ContractHours.TabIndex = 68;
+            // 
+            // lblContractHours
+            // 
+            this.lblContractHours.AutoSize = true;
+            this.lblContractHours.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblContractHours.Location = new System.Drawing.Point(2, 507);
+            this.lblContractHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblContractHours.Name = "lblContractHours";
+            this.lblContractHours.Size = new System.Drawing.Size(136, 22);
+            this.lblContractHours.TabIndex = 67;
+            this.lblContractHours.Text = "Contract Hours";
             // 
             // tbxEmployeeAdd_Nationality
             // 
@@ -3345,176 +3449,80 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
-            // dgvEmployeeObj
+            // schedulesEmpFirstName
             // 
-            this.dgvEmployeeObj.HeaderText = "Employee Object";
-            this.dgvEmployeeObj.MinimumWidth = 12;
-            this.dgvEmployeeObj.Name = "dgvEmployeeObj";
-            this.dgvEmployeeObj.ReadOnly = true;
-            this.dgvEmployeeObj.Visible = false;
-            this.dgvEmployeeObj.Width = 250;
+            this.schedulesEmpFirstName.HeaderText = "First Name";
+            this.schedulesEmpFirstName.MinimumWidth = 6;
+            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
+            this.schedulesEmpFirstName.ReadOnly = true;
+            this.schedulesEmpFirstName.Width = 125;
             // 
-            // dgvFirstName
+            // schedulesEmpMonday
             // 
-            this.dgvFirstName.HeaderText = "First name";
-            this.dgvFirstName.MinimumWidth = 12;
-            this.dgvFirstName.Name = "dgvFirstName";
-            this.dgvFirstName.ReadOnly = true;
-            this.dgvFirstName.Width = 250;
+            this.schedulesEmpMonday.HeaderText = "Monday";
+            this.schedulesEmpMonday.Items.AddRange(new object[] {
+            "M",
+            "A",
+            "E"});
+            this.schedulesEmpMonday.MinimumWidth = 6;
+            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
+            this.schedulesEmpMonday.Width = 125;
             // 
-            // dgvSecondName
+            // schedulesEmpTuesday
             // 
-            this.dgvSecondName.HeaderText = "Second name";
-            this.dgvSecondName.MinimumWidth = 12;
-            this.dgvSecondName.Name = "dgvSecondName";
-            this.dgvSecondName.ReadOnly = true;
-            this.dgvSecondName.Width = 250;
+            this.schedulesEmpTuesday.HeaderText = "Tuesday";
+            this.schedulesEmpTuesday.MinimumWidth = 6;
+            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
+            this.schedulesEmpTuesday.Width = 125;
             // 
-            // dgvPosition
+            // schedulesEmpWednesday
             // 
-            this.dgvPosition.HeaderText = "Position";
-            this.dgvPosition.MinimumWidth = 12;
-            this.dgvPosition.Name = "dgvPosition";
-            this.dgvPosition.ReadOnly = true;
-            this.dgvPosition.Width = 250;
+            this.schedulesEmpWednesday.HeaderText = "Wednesday";
+            this.schedulesEmpWednesday.MinimumWidth = 6;
+            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
+            this.schedulesEmpWednesday.Width = 125;
             // 
-            // dgvSalaryPerHour
+            // schedulesEmpThursday
             // 
-            this.dgvSalaryPerHour.HeaderText = "Salary per hour ";
-            this.dgvSalaryPerHour.MinimumWidth = 12;
-            this.dgvSalaryPerHour.Name = "dgvSalaryPerHour";
-            this.dgvSalaryPerHour.ReadOnly = true;
-            this.dgvSalaryPerHour.Width = 250;
+            this.schedulesEmpThursday.HeaderText = "Thursday";
+            this.schedulesEmpThursday.MinimumWidth = 6;
+            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
+            this.schedulesEmpThursday.Width = 125;
             // 
-            // dgvBsn
+            // schedulesEmpFriday
             // 
-            this.dgvBsn.HeaderText = "BSN";
-            this.dgvBsn.MinimumWidth = 12;
-            this.dgvBsn.Name = "dgvBsn";
-            this.dgvBsn.ReadOnly = true;
-            this.dgvBsn.Width = 250;
+            this.schedulesEmpFriday.HeaderText = "Friday";
+            this.schedulesEmpFriday.MinimumWidth = 6;
+            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
+            this.schedulesEmpFriday.Width = 125;
             // 
-            // dgvDateOfBirth
+            // schedulesEmpSaturday
             // 
-            this.dgvDateOfBirth.HeaderText = "Date of birth";
-            this.dgvDateOfBirth.MinimumWidth = 12;
-            this.dgvDateOfBirth.Name = "dgvDateOfBirth";
-            this.dgvDateOfBirth.ReadOnly = true;
-            this.dgvDateOfBirth.Width = 250;
+            this.schedulesEmpSaturday.HeaderText = "Saturday";
+            this.schedulesEmpSaturday.MinimumWidth = 6;
+            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
+            this.schedulesEmpSaturday.Width = 125;
             // 
-            // dgvPhoneNumber
+            // schedulesEmpSunday
             // 
-            this.dgvPhoneNumber.HeaderText = "Phone number";
-            this.dgvPhoneNumber.MinimumWidth = 12;
-            this.dgvPhoneNumber.Name = "dgvPhoneNumber";
-            this.dgvPhoneNumber.ReadOnly = true;
-            this.dgvPhoneNumber.Width = 250;
+            this.schedulesEmpSunday.HeaderText = "Sunday";
+            this.schedulesEmpSunday.MinimumWidth = 6;
+            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
+            this.schedulesEmpSunday.Width = 125;
             // 
-            // dgvEmail
+            // schedulesEmpFTE
             // 
-            this.dgvEmail.HeaderText = "Email";
-            this.dgvEmail.MinimumWidth = 12;
-            this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.ReadOnly = true;
-            this.dgvEmail.Width = 250;
+            this.schedulesEmpFTE.HeaderText = "FTE";
+            this.schedulesEmpFTE.MinimumWidth = 10;
+            this.schedulesEmpFTE.Name = "schedulesEmpFTE";
+            this.schedulesEmpFTE.ReadOnly = true;
+            this.schedulesEmpFTE.Width = 200;
             // 
-            // dgvIceNumber
+            // SchedulesEmpContractHours
             // 
-            this.dgvIceNumber.HeaderText = "ICE number";
-            this.dgvIceNumber.MinimumWidth = 12;
-            this.dgvIceNumber.Name = "dgvIceNumber";
-            this.dgvIceNumber.ReadOnly = true;
-            this.dgvIceNumber.Width = 250;
-            // 
-            // dgvIceRelation
-            // 
-            this.dgvIceRelation.HeaderText = "ICE relation";
-            this.dgvIceRelation.MinimumWidth = 12;
-            this.dgvIceRelation.Name = "dgvIceRelation";
-            this.dgvIceRelation.ReadOnly = true;
-            this.dgvIceRelation.Width = 250;
-            // 
-            // dgvQuittingReason
-            // 
-            this.dgvQuittingReason.HeaderText = "Quitting reason";
-            this.dgvQuittingReason.MinimumWidth = 12;
-            this.dgvQuittingReason.Name = "dgvQuittingReason";
-            this.dgvQuittingReason.ReadOnly = true;
-            this.dgvQuittingReason.Width = 250;
-            // 
-            // dgvStartingDate
-            // 
-            this.dgvStartingDate.HeaderText = "Starting Date";
-            this.dgvStartingDate.MinimumWidth = 12;
-            this.dgvStartingDate.Name = "dgvStartingDate";
-            this.dgvStartingDate.ReadOnly = true;
-            this.dgvStartingDate.Width = 250;
-            // 
-            // dgvEndingDate
-            // 
-            this.dgvEndingDate.HeaderText = "Ending Date";
-            this.dgvEndingDate.MinimumWidth = 12;
-            this.dgvEndingDate.Name = "dgvEndingDate";
-            this.dgvEndingDate.ReadOnly = true;
-            this.dgvEndingDate.Width = 250;
-            // 
-            // dgvContractType
-            // 
-            this.dgvContractType.HeaderText = "Contract Type";
-            this.dgvContractType.MinimumWidth = 12;
-            this.dgvContractType.Name = "dgvContractType";
-            this.dgvContractType.ReadOnly = true;
-            this.dgvContractType.Width = 250;
-            // 
-            // dgvGender
-            // 
-            this.dgvGender.HeaderText = "Gender";
-            this.dgvGender.MinimumWidth = 12;
-            this.dgvGender.Name = "dgvGender";
-            this.dgvGender.ReadOnly = true;
-            this.dgvGender.Width = 250;
-            // 
-            // dgvDegree
-            // 
-            this.dgvDegree.HeaderText = "Degree";
-            this.dgvDegree.MinimumWidth = 12;
-            this.dgvDegree.Name = "dgvDegree";
-            this.dgvDegree.ReadOnly = true;
-            this.dgvDegree.Width = 250;
-            // 
-            // dgvNationality
-            // 
-            this.dgvNationality.HeaderText = "Nationality";
-            this.dgvNationality.MinimumWidth = 12;
-            this.dgvNationality.Name = "dgvNationality";
-            this.dgvNationality.ReadOnly = true;
-            this.dgvNationality.Width = 250;
-            // 
-            // dvgContractHours
-            // 
-            this.dvgContractHours.HeaderText = "Contract Hours";
-            this.dvgContractHours.Name = "dvgContractHours";
-            this.dvgContractHours.ReadOnly = true;
-            // 
-            // lblContractHours
-            // 
-            this.lblContractHours.AutoSize = true;
-            this.lblContractHours.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblContractHours.Location = new System.Drawing.Point(2, 507);
-            this.lblContractHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblContractHours.Name = "lblContractHours";
-            this.lblContractHours.Size = new System.Drawing.Size(136, 22);
-            this.lblContractHours.TabIndex = 67;
-            this.lblContractHours.Text = "Contract Hours";
-            // 
-            // tbxEmployeeAdd_ContractHours
-            // 
-            this.tbxEmployeeAdd_ContractHours.Font = new System.Drawing.Font("Arial", 14F);
-            this.tbxEmployeeAdd_ContractHours.Location = new System.Drawing.Point(232, 504);
-            this.tbxEmployeeAdd_ContractHours.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxEmployeeAdd_ContractHours.Name = "tbxEmployeeAdd_ContractHours";
-            this.tbxEmployeeAdd_ContractHours.Size = new System.Drawing.Size(235, 29);
-            this.tbxEmployeeAdd_ContractHours.TabIndex = 68;
+            this.SchedulesEmpContractHours.HeaderText = "Contract hours";
+            this.SchedulesEmpContractHours.Name = "SchedulesEmpContractHours";
+            this.SchedulesEmpContractHours.ReadOnly = true;
             // 
             // ProductForm
             // 
@@ -3757,15 +3765,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnScheduleCreateMinimumPeople;
         private System.Windows.Forms.Button btnSchedulesCreateLoadTemplate;
         private System.Windows.Forms.Button btnSchedulesCreateSaveTempalte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFTE;
         private System.Windows.Forms.PictureBox pbxAddSchedules;
         private System.Windows.Forms.PictureBox pbxViewSchedules;
         private System.Windows.Forms.Label lblCreateSchedules;
@@ -3854,5 +3853,15 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn dvgContractHours;
         private System.Windows.Forms.TextBox tbxEmployeeAdd_ContractHours;
         private System.Windows.Forms.Label lblContractHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesEmpContractHours;
     }
 }
