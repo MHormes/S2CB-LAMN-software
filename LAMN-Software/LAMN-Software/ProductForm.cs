@@ -501,13 +501,15 @@ namespace LAMN_Software
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
             tbxEmployeeAdd_BSN.Enabled = true;
-
+            cbxEmployeeAdd_ContractType.SelectedIndex = 0;
+            cbxEmployeeAdd_Gender.SelectedIndex = 0;
             //buttons
             btnEmployeeAdd_Confirm.Visible = true;
             btnEmployeeAdd_ConfirmEdit.Visible = false;
 
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
+            
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
@@ -537,6 +539,7 @@ namespace LAMN_Software
             tbxSalary.Text = $"{emp.SalaryPerHour}";
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
+            
 
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
@@ -593,6 +596,27 @@ namespace LAMN_Software
                 case ICERelation.OTHER:
                     cbxEmployeeAdd_ICERelationship.SelectedIndex = 9;
                     break;
+            }
+
+            switch (emp.ContractType)
+            {
+                case "Full Time":
+                    cbxEmployeeAdd_ContractType.SelectedIndex = 0;
+                    break;
+                case "Part Time":
+                    cbxEmployeeAdd_ContractType.SelectedIndex = 1;
+                    break;
+            }
+
+            switch (emp.Gender)
+            {
+                case "Male":
+                    cbxEmployeeAdd_Gender.SelectedIndex = 0;
+                    break;
+                case "Female":
+                    cbxEmployeeAdd_Gender.SelectedIndex = 1;
+                    break;
+
             }
         }
 
@@ -1465,6 +1489,15 @@ namespace LAMN_Software
             dgvEmployees.Columns[9].Width = 70; // ICE number
             dgvEmployees.Columns[10].Width = 65; // ICE relation
             dgvEmployees.Columns[11].Width = 202; // Quiting reason
+            dgvEmployees.Columns[12].Width = 130; // Starting Date
+            dgvEmployees.Columns[13].Width = 130; // Ending Date
+            dgvEmployees.Columns[14].Width = 65; // Contract Type
+            dgvEmployees.Columns[15].Width = 65; // Gender
+            dgvEmployees.Columns[16].Width = 130; // Degree
+            dgvEmployees.Columns[17].Width = 80; // Nationality
+            dgvEmployees.Columns[18].Width = 60; // Contract Hours
+
+
         }
 
         public void StatsTypeCheck()
