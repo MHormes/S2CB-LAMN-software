@@ -629,7 +629,7 @@ namespace LAMN_Software
                 string email = tbxEmployeeAdd_FirstName.Text.ToLower() + tbxEmployeeAdd_SecondName.Text.ToLower() + "@mediabazaar.nl";
                 string password = tbxEmployeeAdd_FirstName.Text + tbxEmployeeAdd_BSN.Text.Substring(0, 1) + tbxEmployeeAdd_BSN.Text.Substring(tbxEmployeeAdd_BSN.Text.Length - 1, 1);
                 int contractHours;
-                if(cbxEmployeeAdd_ContractType.SelectedItem.ToString() == "Full Time")
+                if (cbxEmployeeAdd_ContractType.SelectedItem.ToString() == "Full Time")
                 {
                     contractHours = 40;
                 }
@@ -694,9 +694,12 @@ namespace LAMN_Software
             dgvSchedulesEmp.Rows.Clear();
             if (EH.GetAllEmployeesFromDB() == null)
             {
+                int i = 0;
                 foreach (Employee employee in EH.GetAllEmployees())
                 {
                     dgvSchedulesEmp.Rows.Add(employee);
+                    dgvSchedulesEmp.Rows[i].Cells[9].Value = employee.ContractHours.ToString();
+                    i++;
                 }
             }
             else
@@ -756,6 +759,8 @@ namespace LAMN_Software
                         dgvSchedulesCreate.Rows[5].Cells[i].Value = schedulesMinimum.MinimumPeople;
                     else if (schedulesMinimum.Day == Day.SUNDAY)
                         dgvSchedulesCreate.Rows[6].Cells[i].Value = schedulesMinimum.MinimumPeople;
+
+
                 }
             }
         }
@@ -1005,6 +1010,11 @@ namespace LAMN_Software
             int weekNmr = Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value));
             if (SCH.GetAllSchedulesFromDB(weekNmr) == null)
             {
+                List<int> peopleCount = new List<int>();
+                for (int i = 0; i <= 21; i++)
+                {
+                    peopleCount.Add(0);
+                }
                 lblScheduleCurrentWeekCreate.Text = $"Currently showing week: {weekNmr}";
                 foreach (Schedule schedule in SCH.GetAllSchedules())
                 {
@@ -1013,17 +1023,19 @@ namespace LAMN_Software
                     else if (schedule.TimeSlot == TimeSlot.AFTERNOON) { i = 2; }
                     else { i = 3; }
 
+
                     switch (schedule.Day)
                     {
-                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
                     }
                 }
+                CheckForMinPeopleMet(peopleCount);
             }
             else
             {
@@ -1031,7 +1043,105 @@ namespace LAMN_Software
             }
         }
 
-        
+
+        //method to check if the min people per shift is met
+        private void CheckForMinPeopleMet(List<int> peopleCount)
+        {
+            SetScheduleCreateColorsToRed();
+
+            //change to green if min people is met
+            if ((int)dgvSchedulesCreate.Rows[0].Cells[4].Value <= peopleCount[1])
+            {
+                dgvSchedulesCreate.Rows[0].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[0].Cells[5].Value <= peopleCount[2])
+            {
+                dgvSchedulesCreate.Rows[0].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[0].Cells[6].Value <= peopleCount[3])
+            {
+                dgvSchedulesCreate.Rows[0].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[1].Cells[4].Value <= peopleCount[4])
+            {
+                dgvSchedulesCreate.Rows[1].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[1].Cells[5].Value <= peopleCount[5])
+            {
+                dgvSchedulesCreate.Rows[1].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[1].Cells[6].Value <= peopleCount[6])
+            {
+                dgvSchedulesCreate.Rows[1].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[2].Cells[4].Value <= peopleCount[7])
+            {
+                dgvSchedulesCreate.Rows[2].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[2].Cells[5].Value <= peopleCount[8])
+            {
+                dgvSchedulesCreate.Rows[2].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[2].Cells[6].Value <= peopleCount[9])
+            {
+                dgvSchedulesCreate.Rows[2].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[3].Cells[4].Value <= peopleCount[10])
+            {
+                dgvSchedulesCreate.Rows[3].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[3].Cells[5].Value <= peopleCount[11])
+            {
+                dgvSchedulesCreate.Rows[3].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[3].Cells[6].Value <= peopleCount[12])
+            {
+                dgvSchedulesCreate.Rows[3].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[4].Cells[4].Value <= peopleCount[13])
+            {
+                dgvSchedulesCreate.Rows[4].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[4].Cells[5].Value <= peopleCount[14])
+            {
+                dgvSchedulesCreate.Rows[4].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[4].Cells[6].Value <= peopleCount[15])
+            {
+                dgvSchedulesCreate.Rows[4].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[5].Cells[4].Value <= peopleCount[16])
+            {
+                dgvSchedulesCreate.Rows[5].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[5].Cells[5].Value <= peopleCount[17])
+            {
+                dgvSchedulesCreate.Rows[5].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[5].Cells[6].Value <= peopleCount[18])
+            {
+                dgvSchedulesCreate.Rows[5].Cells[6].Style.BackColor = Color.Green;
+            }
+
+            if ((int)dgvSchedulesCreate.Rows[6].Cells[4].Value <= peopleCount[19])
+            {
+                dgvSchedulesCreate.Rows[6].Cells[4].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[6].Cells[5].Value <= peopleCount[20])
+            {
+                dgvSchedulesCreate.Rows[6].Cells[5].Style.BackColor = Color.Green;
+            }
+            if ((int)dgvSchedulesCreate.Rows[6].Cells[6].Value <= peopleCount[21])
+            {
+                dgvSchedulesCreate.Rows[6].Cells[6].Style.BackColor = Color.Green;
+            }
+        }
+
         private void btnSchedulesSaveMinPeople_Click(object sender, EventArgs e)
         {
             SCMH.DeleteMinimumPeople();
@@ -1123,7 +1233,7 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpScheduleMin;
         }
-  
+
 
         //button click for assigning shifts
         private void dgvSchedulesCreate_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1459,6 +1569,7 @@ namespace LAMN_Software
             dgvSchedulesEmp.Columns[6].Width = 130; // S
             dgvSchedulesEmp.Columns[7].Width = 130; // S
             dgvSchedulesEmp.Columns[8].Width = 1; // FTE
+            dgvSchedulesEmp.Columns[9].Width = 1; // Contract hours
         }
 
         public void AdjustColumnWidthSchedulesFTE()
@@ -1473,6 +1584,7 @@ namespace LAMN_Software
             dgvSchedulesEmp.Columns[6].Width = 113; // S
             dgvSchedulesEmp.Columns[7].Width = 113; // S
             dgvSchedulesEmp.Columns[8].Width = 113; // FTE
+            dgvSchedulesEmp.Columns[9].Width = 113; //Contrat hours
         }
 
         public void AdjustColumnWidthEmployees()
@@ -1822,6 +1934,36 @@ namespace LAMN_Software
             }
         }
 
-        
+        private void SetScheduleCreateColorsToRed()
+        {
+            //set all backgrounds to red
+            dgvSchedulesCreate.Rows[0].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[0].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[0].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[1].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[1].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[1].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[2].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[2].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[2].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[3].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[3].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[3].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[4].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[4].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[4].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[5].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[5].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[5].Cells[6].Style.BackColor = Color.Red;
+
+            dgvSchedulesCreate.Rows[6].Cells[4].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[6].Cells[5].Style.BackColor = Color.Red;
+            dgvSchedulesCreate.Rows[6].Cells[6].Style.BackColor = Color.Red;
+        }
     }
 }

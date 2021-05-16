@@ -87,15 +87,6 @@ namespace LAMN_Software
             this.nudScheduleEmpWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesEmpShowWeek = new System.Windows.Forms.Button();
             this.dgvSchedulesEmp = new System.Windows.Forms.DataGridView();
-            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpSchedulesCreate = new System.Windows.Forms.TabPage();
             this.lblScheduleCurrentWeekCreate = new System.Windows.Forms.Label();
             this.dgvSchedulesCreate = new System.Windows.Forms.DataGridView();
@@ -305,6 +296,16 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
+            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchedulesEmpContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
@@ -892,11 +893,11 @@ namespace LAMN_Software
             // 
             this.chkShowFTE.AutoSize = true;
             this.chkShowFTE.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowFTE.Location = new System.Drawing.Point(1020, 3);
+            this.chkShowFTE.Location = new System.Drawing.Point(914, 3);
             this.chkShowFTE.Name = "chkShowFTE";
-            this.chkShowFTE.Size = new System.Drawing.Size(100, 22);
+            this.chkShowFTE.Size = new System.Drawing.Size(205, 22);
             this.chkShowFTE.TabIndex = 24;
-            this.chkShowFTE.Text = "Show FTE";
+            this.chkShowFTE.Text = "Show FTE/Contract hours";
             this.chkShowFTE.UseVisualStyleBackColor = true;
             this.chkShowFTE.CheckedChanged += new System.EventHandler(this.chkShowFTE_CheckedChanged);
             // 
@@ -999,82 +1000,14 @@ namespace LAMN_Software
             this.schedulesEmpFriday,
             this.schedulesEmpSaturday,
             this.schedulesEmpSunday,
-            this.schedulesEmpFTE});
+            this.schedulesEmpFTE,
+            this.SchedulesEmpContractHours});
             this.dgvSchedulesEmp.Location = new System.Drawing.Point(0, 26);
             this.dgvSchedulesEmp.Name = "dgvSchedulesEmp";
             this.dgvSchedulesEmp.RowHeadersWidth = 51;
             this.dgvSchedulesEmp.RowTemplate.Height = 30;
             this.dgvSchedulesEmp.Size = new System.Drawing.Size(1113, 449);
             this.dgvSchedulesEmp.TabIndex = 13;
-            // 
-            // schedulesEmpFirstName
-            // 
-            this.schedulesEmpFirstName.HeaderText = "First Name";
-            this.schedulesEmpFirstName.MinimumWidth = 6;
-            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
-            this.schedulesEmpFirstName.ReadOnly = true;
-            this.schedulesEmpFirstName.Width = 125;
-            // 
-            // schedulesEmpMonday
-            // 
-            this.schedulesEmpMonday.HeaderText = "Monday";
-            this.schedulesEmpMonday.Items.AddRange(new object[] {
-            "M",
-            "A",
-            "E"});
-            this.schedulesEmpMonday.MinimumWidth = 6;
-            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
-            this.schedulesEmpMonday.Width = 125;
-            // 
-            // schedulesEmpTuesday
-            // 
-            this.schedulesEmpTuesday.HeaderText = "Tuesday";
-            this.schedulesEmpTuesday.MinimumWidth = 6;
-            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
-            this.schedulesEmpTuesday.Width = 125;
-            // 
-            // schedulesEmpWednesday
-            // 
-            this.schedulesEmpWednesday.HeaderText = "Wednesday";
-            this.schedulesEmpWednesday.MinimumWidth = 6;
-            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
-            this.schedulesEmpWednesday.Width = 125;
-            // 
-            // schedulesEmpThursday
-            // 
-            this.schedulesEmpThursday.HeaderText = "Thursday";
-            this.schedulesEmpThursday.MinimumWidth = 6;
-            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
-            this.schedulesEmpThursday.Width = 125;
-            // 
-            // schedulesEmpFriday
-            // 
-            this.schedulesEmpFriday.HeaderText = "Friday";
-            this.schedulesEmpFriday.MinimumWidth = 6;
-            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
-            this.schedulesEmpFriday.Width = 125;
-            // 
-            // schedulesEmpSaturday
-            // 
-            this.schedulesEmpSaturday.HeaderText = "Saturday";
-            this.schedulesEmpSaturday.MinimumWidth = 6;
-            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
-            this.schedulesEmpSaturday.Width = 125;
-            // 
-            // schedulesEmpSunday
-            // 
-            this.schedulesEmpSunday.HeaderText = "Sunday";
-            this.schedulesEmpSunday.MinimumWidth = 6;
-            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
-            this.schedulesEmpSunday.Width = 125;
-            // 
-            // schedulesEmpFTE
-            // 
-            this.schedulesEmpFTE.HeaderText = "FTE";
-            this.schedulesEmpFTE.MinimumWidth = 10;
-            this.schedulesEmpFTE.Name = "schedulesEmpFTE";
-            this.schedulesEmpFTE.ReadOnly = true;
-            this.schedulesEmpFTE.Width = 200;
             // 
             // tpSchedulesCreate
             // 
@@ -3520,6 +3453,81 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
+            // schedulesEmpFirstName
+            // 
+            this.schedulesEmpFirstName.HeaderText = "First Name";
+            this.schedulesEmpFirstName.MinimumWidth = 6;
+            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
+            this.schedulesEmpFirstName.ReadOnly = true;
+            this.schedulesEmpFirstName.Width = 125;
+            // 
+            // schedulesEmpMonday
+            // 
+            this.schedulesEmpMonday.HeaderText = "Monday";
+            this.schedulesEmpMonday.Items.AddRange(new object[] {
+            "M",
+            "A",
+            "E"});
+            this.schedulesEmpMonday.MinimumWidth = 6;
+            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
+            this.schedulesEmpMonday.Width = 125;
+            // 
+            // schedulesEmpTuesday
+            // 
+            this.schedulesEmpTuesday.HeaderText = "Tuesday";
+            this.schedulesEmpTuesday.MinimumWidth = 6;
+            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
+            this.schedulesEmpTuesday.Width = 125;
+            // 
+            // schedulesEmpWednesday
+            // 
+            this.schedulesEmpWednesday.HeaderText = "Wednesday";
+            this.schedulesEmpWednesday.MinimumWidth = 6;
+            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
+            this.schedulesEmpWednesday.Width = 125;
+            // 
+            // schedulesEmpThursday
+            // 
+            this.schedulesEmpThursday.HeaderText = "Thursday";
+            this.schedulesEmpThursday.MinimumWidth = 6;
+            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
+            this.schedulesEmpThursday.Width = 125;
+            // 
+            // schedulesEmpFriday
+            // 
+            this.schedulesEmpFriday.HeaderText = "Friday";
+            this.schedulesEmpFriday.MinimumWidth = 6;
+            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
+            this.schedulesEmpFriday.Width = 125;
+            // 
+            // schedulesEmpSaturday
+            // 
+            this.schedulesEmpSaturday.HeaderText = "Saturday";
+            this.schedulesEmpSaturday.MinimumWidth = 6;
+            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
+            this.schedulesEmpSaturday.Width = 125;
+            // 
+            // schedulesEmpSunday
+            // 
+            this.schedulesEmpSunday.HeaderText = "Sunday";
+            this.schedulesEmpSunday.MinimumWidth = 6;
+            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
+            this.schedulesEmpSunday.Width = 125;
+            // 
+            // schedulesEmpFTE
+            // 
+            this.schedulesEmpFTE.HeaderText = "FTE";
+            this.schedulesEmpFTE.MinimumWidth = 10;
+            this.schedulesEmpFTE.Name = "schedulesEmpFTE";
+            this.schedulesEmpFTE.ReadOnly = true;
+            this.schedulesEmpFTE.Width = 200;
+            // 
+            // SchedulesEmpContractHours
+            // 
+            this.SchedulesEmpContractHours.HeaderText = "Contract hours";
+            this.SchedulesEmpContractHours.Name = "SchedulesEmpContractHours";
+            this.SchedulesEmpContractHours.ReadOnly = true;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3761,15 +3769,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnScheduleCreateMinimumPeople;
         private System.Windows.Forms.Button btnSchedulesCreateLoadTemplate;
         private System.Windows.Forms.Button btnSchedulesCreateSaveTempalte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
-        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFTE;
         private System.Windows.Forms.PictureBox pbxAddSchedules;
         private System.Windows.Forms.PictureBox pbxViewSchedules;
         private System.Windows.Forms.Label lblCreateSchedules;
@@ -3858,5 +3857,15 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn dvgContractHours;
         private System.Windows.Forms.TextBox tbxEmployeeAdd_ContractHours;
         private System.Windows.Forms.Label lblContractHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFirstName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpMonday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpTuesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpWednesday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpThursday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpFriday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSaturday;
+        private System.Windows.Forms.DataGridViewComboBoxColumn schedulesEmpSunday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpFTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesEmpContractHours;
     }
 }
