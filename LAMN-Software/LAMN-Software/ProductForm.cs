@@ -1803,6 +1803,7 @@ namespace LAMN_Software
             tbSellID.Text = $"{p.Id.ToString()}";
             tbSellEAN.Text = $"{p.Ean.ToString()}";
             tbSellName.Text = $"{p.Name}";
+            tbSellQuantity.Text = "";
 
             //fields disabled
             tbSellID.Enabled = false;
@@ -1850,6 +1851,7 @@ namespace LAMN_Software
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
                     MessageBox.Show("New order correctly done.");
+                    tcNavigator.SelectedTab = tpStock;
                     return;
                 }
                 MessageBox.Show(newOrder.Message);
@@ -1905,6 +1907,10 @@ namespace LAMN_Software
                             tbNewOrderEAN.Enabled = false;
                             tbNewOrderName.Enabled = false;
                         }
+                    }
+                    else
+                    {
+                        tcNavigator.SelectedTab = tpStock;
                     }
                     return;
                 }
