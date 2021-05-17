@@ -43,7 +43,7 @@ namespace LAMN_Software
             UpdateEmployeeChartPositions();
             UpdateEmployeeChartGender();
             UpdateEmployeeChartContractType();
-            UpdateAverageSalaryPerHour();
+            UpdateEmployeeAverageSalaryPerHour();
 
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
@@ -1588,7 +1588,7 @@ namespace LAMN_Software
             }
         }
 
-        public void UpdateAverageSalaryPerHour()
+        public void UpdateEmployeeAverageSalaryPerHour()
         {
             int counter = 0;
             double total = 0;
@@ -1605,6 +1605,8 @@ namespace LAMN_Software
             double average = Math.Round((total / counter),2);
             lblStatsEmployee_AverageSalary.Text = $"€{average}";
         }
+
+   
 
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1663,7 +1665,7 @@ namespace LAMN_Software
         {
             dgvAllStock.RowHeadersWidth = 30;
             dgvAllStock.Columns[0].Width = 30; // ID
-            dgvAllStock.Columns[1].Width = 115; // EAN
+            dgvAllStock.Columns[1].Width = 123; // EAN
             dgvAllStock.Columns[2].Width = 247; // Name
             dgvAllStock.Columns[3].Width = 80; // Quantity in store
             dgvAllStock.Columns[4].Width = 80; // Location in store
@@ -2086,6 +2088,11 @@ namespace LAMN_Software
             dgvSchedulesCreate.Rows[6].Cells[4].Style.BackColor = Color.Red;
             dgvSchedulesCreate.Rows[6].Cells[5].Style.BackColor = Color.Red;
             dgvSchedulesCreate.Rows[6].Cells[6].Style.BackColor = Color.Red;
+        }
+
+        private void tpStatsStock_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

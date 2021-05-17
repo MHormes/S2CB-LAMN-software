@@ -301,6 +301,8 @@ namespace LAMN_Software
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
             this.cbxStatsType = new System.Windows.Forms.ComboBox();
             this.gpnlStatistics = new LAMN_Software.GradientPanel();
@@ -317,10 +319,20 @@ namespace LAMN_Software
             this.gpnlCreateSchedules = new LAMN_Software.GradientPanel();
             this.lblCreateSchedules = new System.Windows.Forms.Label();
             this.pbxAddSchedules = new System.Windows.Forms.PictureBox();
+            this.gradientPanel2 = new LAMN_Software.GradientPanel();
+            this.gradientPanel3 = new LAMN_Software.GradientPanel();
+            this.gradientPanel4 = new LAMN_Software.GradientPanel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new LAMN_Software.GradientPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.lblStatsEmployee_AverageSalary = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.gradientPanel5 = new LAMN_Software.GradientPanel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.tcNavigator.SuspendLayout();
@@ -352,6 +364,7 @@ namespace LAMN_Software
             this.gbNewInfo.SuspendLayout();
             this.pnlBar.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
             this.gpnlStatistics.SuspendLayout();
             this.gpnlSchedules.SuspendLayout();
@@ -361,7 +374,12 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).BeginInit();
             this.gpnlCreateSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).BeginInit();
+            this.gradientPanel2.SuspendLayout();
+            this.gradientPanel3.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.gradientPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -542,6 +560,7 @@ namespace LAMN_Software
             // 
             this.dgvAllStock.AllowUserToAddRows = false;
             this.dgvAllStock.AllowUserToDeleteRows = false;
+            this.dgvAllStock.AllowUserToResizeRows = false;
             this.dgvAllStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -1615,13 +1634,14 @@ namespace LAMN_Software
             // 
             // tpStatsStock
             // 
+            this.tpStatsStock.Controls.Add(this.panel3);
             this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock3);
             this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock2);
             this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock1);
-            this.tpStatsStock.Controls.Add(this.chartStock);
             this.tpStatsStock.Controls.Add(this.cbxStats3);
             this.tpStatsStock.Controls.Add(this.cbxStats2);
             this.tpStatsStock.Controls.Add(this.cbxStats1);
+            this.tpStatsStock.Controls.Add(this.chartStock);
             this.tpStatsStock.Location = new System.Drawing.Point(8, 34);
             this.tpStatsStock.Margin = new System.Windows.Forms.Padding(2);
             this.tpStatsStock.Name = "tpStatsStock";
@@ -1630,6 +1650,7 @@ namespace LAMN_Software
             this.tpStatsStock.TabIndex = 3;
             this.tpStatsStock.Text = "StatsStock";
             this.tpStatsStock.UseVisualStyleBackColor = true;
+            this.tpStatsStock.Click += new System.EventHandler(this.tpStatsStock_Click);
             // 
             // btnDeselectStatsStock3
             // 
@@ -1688,7 +1709,7 @@ namespace LAMN_Software
             this.chartStock.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartStock.Legends.Add(legend1);
-            this.chartStock.Location = new System.Drawing.Point(564, 71);
+            this.chartStock.Location = new System.Drawing.Point(581, 107);
             this.chartStock.Margin = new System.Windows.Forms.Padding(4);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
@@ -1701,7 +1722,7 @@ namespace LAMN_Software
             series2.YValuesPerPoint = 6;
             this.chartStock.Series.Add(series1);
             this.chartStock.Series.Add(series2);
-            this.chartStock.Size = new System.Drawing.Size(2324, 754);
+            this.chartStock.Size = new System.Drawing.Size(1441, 742);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
             this.chartStock.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
@@ -1713,7 +1734,7 @@ namespace LAMN_Software
             this.cbxStats3.Location = new System.Drawing.Point(62, 269);
             this.cbxStats3.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats3.Name = "cbxStats3";
-            this.cbxStats3.Size = new System.Drawing.Size(190, 53);
+            this.cbxStats3.Size = new System.Drawing.Size(550, 53);
             this.cbxStats3.TabIndex = 1;
             this.cbxStats3.Text = "Stock 3";
             this.cbxStats3.SelectedIndexChanged += new System.EventHandler(this.cbxStats3_SelectedIndexChanged);
@@ -1725,7 +1746,7 @@ namespace LAMN_Software
             this.cbxStats2.Location = new System.Drawing.Point(62, 196);
             this.cbxStats2.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats2.Name = "cbxStats2";
-            this.cbxStats2.Size = new System.Drawing.Size(190, 53);
+            this.cbxStats2.Size = new System.Drawing.Size(550, 53);
             this.cbxStats2.TabIndex = 1;
             this.cbxStats2.Text = "Stock 2";
             this.cbxStats2.SelectedIndexChanged += new System.EventHandler(this.cbxStats2_SelectedIndexChanged);
@@ -1737,7 +1758,7 @@ namespace LAMN_Software
             this.cbxStats1.Location = new System.Drawing.Point(62, 123);
             this.cbxStats1.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats1.Name = "cbxStats1";
-            this.cbxStats1.Size = new System.Drawing.Size(190, 53);
+            this.cbxStats1.Size = new System.Drawing.Size(550, 53);
             this.cbxStats1.TabIndex = 1;
             this.cbxStats1.Text = "Stock 1";
             this.cbxStats1.SelectedValueChanged += new System.EventHandler(this.cbxStats1_SelectedValueChanged);
@@ -2624,6 +2645,8 @@ namespace LAMN_Software
             // 
             // tpStatsEmployee
             // 
+            this.tpStatsEmployee.Controls.Add(this.panel2);
+            this.tpStatsEmployee.Controls.Add(this.label32);
             this.tpStatsEmployee.Controls.Add(this.label29);
             this.tpStatsEmployee.Controls.Add(this.chartEmployeesPosition);
             this.tpStatsEmployee.Controls.Add(this.panel1);
@@ -2688,7 +2711,7 @@ namespace LAMN_Software
             this.chartEmployeesPosition.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartEmployeesPosition.Legends.Add(legend2);
-            this.chartEmployeesPosition.Location = new System.Drawing.Point(786, 12);
+            this.chartEmployeesPosition.Location = new System.Drawing.Point(794, 12);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(8);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
             series3.ChartArea = "ChartArea1";
@@ -2698,7 +2721,7 @@ namespace LAMN_Software
             series3.Legend = "Legend1";
             series3.Name = "Positions";
             this.chartEmployeesPosition.Series.Add(series3);
-            this.chartEmployeesPosition.Size = new System.Drawing.Size(751, 635);
+            this.chartEmployeesPosition.Size = new System.Drawing.Size(743, 638);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
             // 
@@ -3410,7 +3433,7 @@ namespace LAMN_Software
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Arial", 15F);
-            this.label27.Location = new System.Drawing.Point(1619, 488);
+            this.label27.Location = new System.Drawing.Point(1585, 488);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(348, 45);
             this.label27.TabIndex = 3;
@@ -3420,7 +3443,7 @@ namespace LAMN_Software
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Arial", 15F);
-            this.label28.Location = new System.Drawing.Point(1651, 1017);
+            this.label28.Location = new System.Drawing.Point(1618, 1017);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(273, 45);
             this.label28.TabIndex = 4;
@@ -3430,7 +3453,7 @@ namespace LAMN_Software
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Arial", 15F);
-            this.label29.Location = new System.Drawing.Point(984, 625);
+            this.label29.Location = new System.Drawing.Point(986, 605);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(177, 45);
             this.label29.TabIndex = 3;
@@ -3440,10 +3463,29 @@ namespace LAMN_Software
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.gradientPanel1);
-            this.panel1.Location = new System.Drawing.Point(963, 721);
+            this.panel1.Location = new System.Drawing.Point(944, 693);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 301);
             this.panel1.TabIndex = 5;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Arial", 15F);
+            this.label32.Location = new System.Drawing.Point(259, 949);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(231, 45);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "Nationalities";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.Controls.Add(this.gradientPanel2);
+            this.panel2.Location = new System.Drawing.Point(100, 74);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(556, 822);
+            this.panel2.TabIndex = 7;
             // 
             // gpnlStatsType
             // 
@@ -3671,6 +3713,59 @@ namespace LAMN_Software
             this.pbxAddSchedules.TabIndex = 16;
             this.pbxAddSchedules.TabStop = false;
             // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel2.Controls.Add(this.gradientPanel3);
+            this.gradientPanel2.Location = new System.Drawing.Point(15, 14);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(524, 795);
+            this.gradientPanel2.TabIndex = 6;
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.ColorBottom = System.Drawing.SystemColors.Desktop;
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gradientPanel3.Controls.Add(this.gradientPanel4);
+            this.gradientPanel3.Location = new System.Drawing.Point(28, 159);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(451, 310);
+            this.gradientPanel3.TabIndex = 7;
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.Yellow;
+            this.gradientPanel4.ColorTop = System.Drawing.Color.PaleGoldenrod;
+            this.gradientPanel4.Controls.Add(this.label35);
+            this.gradientPanel4.Controls.Add(this.label36);
+            this.gradientPanel4.Location = new System.Drawing.Point(6, 5);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(440, 299);
+            this.gradientPanel4.TabIndex = 9;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Arial", 15F);
+            this.label35.Location = new System.Drawing.Point(49, 178);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(347, 45);
+            this.label35.TabIndex = 8;
+            this.label35.Text = "Under construction";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Arial", 35F);
+            this.label36.Location = new System.Drawing.Point(154, 63);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(147, 104);
+            this.label36.TabIndex = 8;
+            this.label36.Text = "🚧";
+            // 
             // gradientPanel1
             // 
             this.gradientPanel1.ColorBottom = System.Drawing.Color.Silver;
@@ -3678,9 +3773,9 @@ namespace LAMN_Software
             this.gradientPanel1.Controls.Add(this.label31);
             this.gradientPanel1.Controls.Add(this.lblStatsEmployee_AverageSalary);
             this.gradientPanel1.Controls.Add(this.label30);
-            this.gradientPanel1.Location = new System.Drawing.Point(8, 8);
+            this.gradientPanel1.Location = new System.Drawing.Point(13, 13);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(344, 285);
+            this.gradientPanel1.Size = new System.Drawing.Size(331, 275);
             this.gradientPanel1.TabIndex = 6;
             // 
             // label31
@@ -3700,7 +3795,7 @@ namespace LAMN_Software
             this.lblStatsEmployee_AverageSalary.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatsEmployee_AverageSalary.Location = new System.Drawing.Point(3, 51);
             this.lblStatsEmployee_AverageSalary.Name = "lblStatsEmployee_AverageSalary";
-            this.lblStatsEmployee_AverageSalary.Size = new System.Drawing.Size(338, 116);
+            this.lblStatsEmployee_AverageSalary.Size = new System.Drawing.Size(325, 116);
             this.lblStatsEmployee_AverageSalary.TabIndex = 1;
             this.lblStatsEmployee_AverageSalary.Text = "€99";
             this.lblStatsEmployee_AverageSalary.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3715,6 +3810,60 @@ namespace LAMN_Software
             this.label30.Size = new System.Drawing.Size(310, 49);
             this.label30.TabIndex = 0;
             this.label30.Text = "Average salary";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.gradientPanel5);
+            this.panel3.Location = new System.Drawing.Point(62, 716);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(498, 301);
+            this.panel3.TabIndex = 6;
+            // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel5.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel5.Controls.Add(this.label33);
+            this.gradientPanel5.Controls.Add(this.label34);
+            this.gradientPanel5.Controls.Add(this.label37);
+            this.gradientPanel5.Location = new System.Drawing.Point(13, 13);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(469, 275);
+            this.gradientPanel5.TabIndex = 6;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Arial", 12F);
+            this.label33.Location = new System.Drawing.Point(172, 227);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(120, 36);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "product";
+            // 
+            // label34
+            // 
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(3, 51);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(463, 116);
+            this.label34.TabIndex = 1;
+            this.label34.Text = "Stock item";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(131, 191);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(197, 36);
+            this.label37.TabIndex = 0;
+            this.label37.Text = "Most popular";
             // 
             // ProductForm
             // 
@@ -3774,6 +3923,7 @@ namespace LAMN_Software
             this.gbNewInfo.PerformLayout();
             this.pnlBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.gpnlStatsType.ResumeLayout(false);
             this.gpnlStatistics.ResumeLayout(false);
             this.gpnlSchedules.ResumeLayout(false);
@@ -3783,8 +3933,15 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).EndInit();
             this.gpnlCreateSchedules.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).EndInit();
+            this.gradientPanel2.ResumeLayout(false);
+            this.gradientPanel3.ResumeLayout(false);
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel4.PerformLayout();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.gradientPanel5.ResumeLayout(false);
+            this.gradientPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4070,5 +4227,17 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label30;
         private GradientPanel gradientPanel1;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Panel panel2;
+        private GradientPanel gradientPanel2;
+        private GradientPanel gradientPanel3;
+        private GradientPanel gradientPanel4;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Panel panel3;
+        private GradientPanel gradientPanel5;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label37;
     }
 }
