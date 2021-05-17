@@ -39,7 +39,10 @@ namespace LAMN_Software
             FillScheduleGridViewCreate();
             FillScheduleMinimumGridView();
             FillActiveEmployees();
-            UpdateEmployeePieChart();
+
+            UpdateEmployeeChartPositions();
+            UpdateEmployeeChartGender();
+
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
@@ -392,7 +395,7 @@ namespace LAMN_Software
                         FillEmployeeCells(e);
                     }
                 }
-                UpdateEmployeePieChart();
+                UpdateEmployeeChartPositions();
             }
             else
             {
@@ -539,6 +542,11 @@ namespace LAMN_Software
             tbxSalary.Text = $"{emp.SalaryPerHour}";
             cbxEmployeeAdd_ICERelationship.SelectedIndex = -1;
             cbxEmployeeAdd_Position.SelectedIndex = -1;
+            cbxEmployeeAdd_Gender.Text = emp.Gender;
+            tbxEmployeeAdd_Degree.Text = emp.Degree;
+            tbxEmployeeAdd_Nationality.Text = emp.Nationality;
+            tbxEmployeeAdd_ContractHours.Text = emp.ContractHours.ToString();
+
             
 
             //populating combobox with enums
@@ -616,7 +624,9 @@ namespace LAMN_Software
                 case "Female":
                     cbxEmployeeAdd_Gender.SelectedIndex = 1;
                     break;
-
+                case "Other":
+                    cbxEmployeeAdd_Gender.SelectedIndex = 2;
+                    break;
             }
         }
 
@@ -1426,7 +1436,7 @@ namespace LAMN_Software
             }
         }
 
-        public void UpdateEmployeePieChart()
+        public void UpdateEmployeeChartPositions()
         {
             int depotCount = 0;
             int hrCount = 0;
@@ -1484,6 +1494,108 @@ namespace LAMN_Software
             if (securityCount > 0)
             {
                 this.chartEmployeesPosition.Series["Positions"].Points.AddXY($"Security\n[{securityCount}/{totalCount}]", securityCount);
+            }
+        }
+
+        public void UpdateEmployeeChartGender()
+        {
+            int maleCount = 0;
+            int femaleCount = 0;
+            int otherCount = 0;
+
+            foreach (var series in chartEmployeesGender.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                {
+                    switch (e.Gender)
+                    {
+                        case "Male":
+                            maleCount++;
+                            break;
+                        case "Female":
+                            femaleCount++;
+                            break;
+                        case "Other":
+                            otherCount++;
+                            break;
+                    }
+                }
+            }
+
+            int totalCount = maleCount + femaleCount + otherCount;
+            double malePercentage = Math.Ceiling(Convert.ToDouble(maleCount / totalCount));
+            double femalePercentage = Math.Ceiling(Convert.ToDouble(femaleCount / totalCount));
+            double otherPercentage = Math.Ceiling(Convert.ToDouble(otherCount / totalCount));
+
+            //if (maleCount > 0)
+            //{
+            //    this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Male\n{malePercentage}", malePercentage);
+            //}
+            //if (femaleCount > 0)
+            //{
+            //    this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Female\n{femalePercentage}", femalePercentage);
+            //}
+            //if (otherCount > 0)
+            //{
+            //    this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Other\n{otherPercentage}", otherPercentage);
+            //}
+            if (maleCount > 0)
+            {
+                this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Male\n[{maleCount}/{totalCount}]", maleCount);
+                //this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Male\n[{maleCount}/{totalCount}]", maleCount);
+            }
+            if (femaleCount > 0)
+            {
+                this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Female\n[{femaleCount}/{totalCount}]", femaleCount);
+                //this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Female\n[{femaleCount}/{totalCount}]", femaleCount);
+            }
+            if (otherCount > 0)
+            {
+                this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Other\n[{otherCount}/{totalCount}]", otherCount);
+                //this.chartEmployeesGender.Series["Genders"].Points.AddXY($"Other\n[{otherCount}/{totalCount}]", otherCount);
+            }
+        }
+
+        public void UpdateEmployeeChartContractType()
+        {
+            int fullTimeCount = 0;
+            int partTimeCount = 0;
+
+            foreach (var series in chartEmployeesContractType.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (string.IsNullOrEmpty((e.QuittingReason).ToString()))
+                {
+                    switch (e.ContractType)
+                    {
+                        case "Full Time":
+                            fullTimeCount++;
+                            break;
+                        case "Part Time":
+                            partTimeCount++;
+                            break;
+                    }
+                }
+            }
+
+            int totalCount = fullTimeCount + partTimeCount;
+            int fullTimePercentage = fullTimeCount / totalCount * 100;
+            int partTimePercentage = partTimeCount / totalCount * 100;
+
+            if (fullTimeCount > 0)
+            {
+                this.chartEmployeesContractType.Series["ChartType"].Points.AddXY($"Full Time\n{fullTimePercentage}%", fullTimeCount);
+            }
+            if (partTimeCount > 0)
+            {
+                this.chartEmployeesContractType.Series["ChartType"].Points.AddXY($"Part Time\n{partTimePercentage}%", partTimeCount);
             }
         }
 
@@ -1671,9 +1783,7 @@ namespace LAMN_Software
 
         private void btnStockStatsRandomize_Click(object sender, EventArgs e)
         {
-            //Random r = new Random();
-            //int rInt = r.Next(0, cbxStats1.Items.Count); //for ints
-            //cbxStats1.SelectedIndex = cbxStats1.SelectedItem[rInt];
+
         }
 
         private void btnSellProduct_Click(object sender, EventArgs e)
