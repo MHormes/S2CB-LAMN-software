@@ -682,7 +682,9 @@ namespace LAMN_Software
             this.dgvAllStock.Location = new System.Drawing.Point(5, 31);
             this.dgvAllStock.Name = "dgvAllStock";
             this.dgvAllStock.ReadOnly = true;
+            this.dgvAllStock.RowHeadersVisible = false;
             this.dgvAllStock.RowHeadersWidth = 102;
+            this.dgvAllStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllStock.Size = new System.Drawing.Size(1114, 486);
             this.dgvAllStock.TabIndex = 15;
             // 
@@ -1557,7 +1559,9 @@ namespace LAMN_Software
             this.dgvEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
+            this.dgvEmployees.RowHeadersVisible = false;
             this.dgvEmployees.RowHeadersWidth = 102;
+            this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployees.Size = new System.Drawing.Size(1114, 468);
             this.dgvEmployees.TabIndex = 19;
             // 
