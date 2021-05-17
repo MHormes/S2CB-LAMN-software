@@ -33,12 +33,12 @@ namespace LAMN_Software
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -234,6 +234,8 @@ namespace LAMN_Software
             this.tbxEmployeeAdd_SecondName = new System.Windows.Forms.TextBox();
             this.lblEmployeeAdd_SecondName = new System.Windows.Forms.Label();
             this.tpStatsEmployee = new System.Windows.Forms.TabPage();
+            this.chartEmployeesContractType = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartEmployeesGender = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartEmployeesPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tpNewOrder = new System.Windows.Forms.TabPage();
             this.btnNewOrderBack = new System.Windows.Forms.Button();
@@ -295,8 +297,10 @@ namespace LAMN_Software
             this.pnlBar = new System.Windows.Forms.Panel();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
-            this.chartEmployeesGender = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartEmployeesContractType = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gpnlStatsType = new LAMN_Software.GradientPanel();
             this.cbxStatsType = new System.Windows.Forms.ComboBox();
             this.gpnlStatistics = new LAMN_Software.GradientPanel();
@@ -313,6 +317,10 @@ namespace LAMN_Software
             this.gpnlCreateSchedules = new LAMN_Software.GradientPanel();
             this.lblCreateSchedules = new System.Windows.Forms.Label();
             this.pbxAddSchedules = new System.Windows.Forms.PictureBox();
+            this.gradientPanel1 = new LAMN_Software.GradientPanel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblStatsEmployee_AverageSalary = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.tcNavigator.SuspendLayout();
@@ -334,6 +342,8 @@ namespace LAMN_Software
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
             this.tpStatsEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).BeginInit();
             this.tpNewOrder.SuspendLayout();
             this.tpSellProduct.SuspendLayout();
@@ -341,8 +351,7 @@ namespace LAMN_Software
             this.gbOldInfo.SuspendLayout();
             this.gbNewInfo.SuspendLayout();
             this.pnlBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).BeginInit();
+            this.panel1.SuspendLayout();
             this.gpnlStatsType.SuspendLayout();
             this.gpnlStatistics.SuspendLayout();
             this.gpnlSchedules.SuspendLayout();
@@ -352,6 +361,7 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).BeginInit();
             this.gpnlCreateSchedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).BeginInit();
+            this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -365,7 +375,7 @@ namespace LAMN_Software
             this.pnlBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
-            this.pnlBackground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBackground.MaximumSize = new System.Drawing.Size(2306, 1325);
             this.pnlBackground.MinimumSize = new System.Drawing.Size(2306, 1325);
             this.pnlBackground.Name = "pnlBackground";
@@ -385,7 +395,7 @@ namespace LAMN_Software
             this.pnlTabCover.Controls.Add(this.gpnlStock);
             this.pnlTabCover.Controls.Add(this.gpnlEmployees);
             this.pnlTabCover.Location = new System.Drawing.Point(2, 56);
-            this.pnlTabCover.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTabCover.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTabCover.Name = "pnlTabCover";
             this.pnlTabCover.Size = new System.Drawing.Size(2300, 140);
             this.pnlTabCover.TabIndex = 11;
@@ -399,7 +409,7 @@ namespace LAMN_Software
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(2076, 17);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(192, 75);
             this.btnLogout.TabIndex = 15;
@@ -447,7 +457,7 @@ namespace LAMN_Software
             this.tcNavigator.Controls.Add(this.tpSellProduct);
             this.tcNavigator.Controls.Add(this.tpRequestChangeInfo);
             this.tcNavigator.Location = new System.Drawing.Point(24, 200);
-            this.tcNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.tcNavigator.MaximumSize = new System.Drawing.Size(2308, 1327);
             this.tcNavigator.MinimumSize = new System.Drawing.Size(2308, 1327);
             this.tcNavigator.Name = "tcNavigator";
@@ -471,9 +481,9 @@ namespace LAMN_Software
             this.tpStock.Controls.Add(this.btnSearchStock);
             this.tpStock.Controls.Add(this.btnAddStock);
             this.tpStock.Location = new System.Drawing.Point(8, 34);
-            this.tpStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStock.Margin = new System.Windows.Forms.Padding(2);
             this.tpStock.Name = "tpStock";
-            this.tpStock.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStock.Padding = new System.Windows.Forms.Padding(2);
             this.tpStock.Size = new System.Drawing.Size(2292, 1285);
             this.tpStock.TabIndex = 0;
             this.tpStock.Text = "Stock";
@@ -484,7 +494,7 @@ namespace LAMN_Software
             this.btnStockAdjustColumnWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnStockAdjustColumnWidth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockAdjustColumnWidth.Location = new System.Drawing.Point(1534, -1217);
-            this.btnStockAdjustColumnWidth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnStockAdjustColumnWidth.Margin = new System.Windows.Forms.Padding(6);
             this.btnStockAdjustColumnWidth.Name = "btnStockAdjustColumnWidth";
             this.btnStockAdjustColumnWidth.Size = new System.Drawing.Size(642, 98);
             this.btnStockAdjustColumnWidth.TabIndex = 26;
@@ -496,7 +506,7 @@ namespace LAMN_Software
             // 
             this.btnOrder.Font = new System.Drawing.Font("Arial", 12F);
             this.btnOrder.Location = new System.Drawing.Point(1464, 1010);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(206, 67);
             this.btnOrder.TabIndex = 25;
@@ -508,7 +518,7 @@ namespace LAMN_Software
             // 
             this.btnSellProduct.Font = new System.Drawing.Font("Arial", 12F);
             this.btnSellProduct.Location = new System.Drawing.Point(1256, 1010);
-            this.btnSellProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSellProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnSellProduct.Name = "btnSellProduct";
             this.btnSellProduct.Size = new System.Drawing.Size(206, 67);
             this.btnSellProduct.TabIndex = 24;
@@ -520,7 +530,7 @@ namespace LAMN_Software
             // 
             this.btnStockStats.Font = new System.Drawing.Font("Arial", 12F);
             this.btnStockStats.Location = new System.Drawing.Point(1672, 1012);
-            this.btnStockStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStockStats.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockStats.Name = "btnStockStats";
             this.btnStockStats.Size = new System.Drawing.Size(206, 67);
             this.btnStockStats.TabIndex = 23;
@@ -546,7 +556,7 @@ namespace LAMN_Software
             this.MinimumStock,
             this.TotalSold});
             this.dgvAllStock.Location = new System.Drawing.Point(10, 60);
-            this.dgvAllStock.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvAllStock.Margin = new System.Windows.Forms.Padding(6);
             this.dgvAllStock.Name = "dgvAllStock";
             this.dgvAllStock.ReadOnly = true;
             this.dgvAllStock.RowHeadersVisible = false;
@@ -647,7 +657,7 @@ namespace LAMN_Software
             // 
             this.btnStock_ReActivateProduct.Font = new System.Drawing.Font("Arial", 12F);
             this.btnStock_ReActivateProduct.Location = new System.Drawing.Point(770, 1010);
-            this.btnStock_ReActivateProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStock_ReActivateProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnStock_ReActivateProduct.Name = "btnStock_ReActivateProduct";
             this.btnStock_ReActivateProduct.Size = new System.Drawing.Size(484, 67);
             this.btnStock_ReActivateProduct.TabIndex = 14;
@@ -664,7 +674,7 @@ namespace LAMN_Software
             "Active",
             "Inactive"});
             this.cbxStockCurrentlyShowing.Location = new System.Drawing.Point(610, 8);
-            this.cbxStockCurrentlyShowing.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbxStockCurrentlyShowing.Margin = new System.Windows.Forms.Padding(6);
             this.cbxStockCurrentlyShowing.Name = "cbxStockCurrentlyShowing";
             this.cbxStockCurrentlyShowing.Size = new System.Drawing.Size(238, 47);
             this.cbxStockCurrentlyShowing.TabIndex = 13;
@@ -685,7 +695,7 @@ namespace LAMN_Software
             // 
             this.tbxSearchStock.Font = new System.Drawing.Font("Arial", 15F);
             this.tbxSearchStock.Location = new System.Drawing.Point(1880, 1013);
-            this.tbxSearchStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxSearchStock.Margin = new System.Windows.Forms.Padding(2);
             this.tbxSearchStock.Name = "tbxSearchStock";
             this.tbxSearchStock.Size = new System.Drawing.Size(274, 53);
             this.tbxSearchStock.TabIndex = 11;
@@ -696,7 +706,7 @@ namespace LAMN_Software
             // 
             this.btnDeActivateStock.Font = new System.Drawing.Font("Arial", 12F);
             this.btnDeActivateStock.Location = new System.Drawing.Point(770, 1010);
-            this.btnDeActivateStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeActivateStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeActivateStock.Name = "btnDeActivateStock";
             this.btnDeActivateStock.Size = new System.Drawing.Size(484, 67);
             this.btnDeActivateStock.TabIndex = 10;
@@ -708,7 +718,7 @@ namespace LAMN_Software
             // 
             this.btnEditStock.Font = new System.Drawing.Font("Arial", 12F);
             this.btnEditStock.Location = new System.Drawing.Point(342, 1010);
-            this.btnEditStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditStock.Name = "btnEditStock";
             this.btnEditStock.Size = new System.Drawing.Size(424, 67);
             this.btnEditStock.TabIndex = 10;
@@ -720,7 +730,7 @@ namespace LAMN_Software
             // 
             this.btnSearchStock.Font = new System.Drawing.Font("Arial", 13F);
             this.btnSearchStock.Location = new System.Drawing.Point(2166, 1010);
-            this.btnSearchStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchStock.Name = "btnSearchStock";
             this.btnSearchStock.Size = new System.Drawing.Size(72, 67);
             this.btnSearchStock.TabIndex = 10;
@@ -732,7 +742,7 @@ namespace LAMN_Software
             // 
             this.btnAddStock.Font = new System.Drawing.Font("Arial", 12F);
             this.btnAddStock.Location = new System.Drawing.Point(10, 1012);
-            this.btnAddStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddStock.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddStock.Name = "btnAddStock";
             this.btnAddStock.Size = new System.Drawing.Size(328, 67);
             this.btnAddStock.TabIndex = 10;
@@ -752,9 +762,9 @@ namespace LAMN_Software
             this.tpSchedulesEmp.Controls.Add(this.btnSchedulesEmpShowWeek);
             this.tpSchedulesEmp.Controls.Add(this.dgvSchedulesEmp);
             this.tpSchedulesEmp.Location = new System.Drawing.Point(8, 34);
-            this.tpSchedulesEmp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpSchedulesEmp.Margin = new System.Windows.Forms.Padding(2);
             this.tpSchedulesEmp.Name = "tpSchedulesEmp";
-            this.tpSchedulesEmp.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpSchedulesEmp.Padding = new System.Windows.Forms.Padding(2);
             this.tpSchedulesEmp.Size = new System.Drawing.Size(2292, 1285);
             this.tpSchedulesEmp.TabIndex = 1;
             this.tpSchedulesEmp.Text = "SchedulesEmp";
@@ -765,7 +775,7 @@ namespace LAMN_Software
             this.chkShowFTE.AutoSize = true;
             this.chkShowFTE.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkShowFTE.Location = new System.Drawing.Point(1828, 6);
-            this.chkShowFTE.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chkShowFTE.Margin = new System.Windows.Forms.Padding(6);
             this.chkShowFTE.Name = "chkShowFTE";
             this.chkShowFTE.Size = new System.Drawing.Size(413, 40);
             this.chkShowFTE.TabIndex = 24;
@@ -777,7 +787,7 @@ namespace LAMN_Software
             // 
             this.btnScheduleEmpSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnScheduleEmpSearch.Location = new System.Drawing.Point(1980, 937);
-            this.btnScheduleEmpSearch.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnScheduleEmpSearch.Margin = new System.Windows.Forms.Padding(6);
             this.btnScheduleEmpSearch.Name = "btnScheduleEmpSearch";
             this.btnScheduleEmpSearch.Size = new System.Drawing.Size(246, 115);
             this.btnScheduleEmpSearch.TabIndex = 23;
@@ -789,7 +799,7 @@ namespace LAMN_Software
             // 
             this.tbxScheduleEmpSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tbxScheduleEmpSearch.Location = new System.Drawing.Point(1648, 979);
-            this.tbxScheduleEmpSearch.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbxScheduleEmpSearch.Margin = new System.Windows.Forms.Padding(6);
             this.tbxScheduleEmpSearch.Multiline = true;
             this.tbxScheduleEmpSearch.Name = "tbxScheduleEmpSearch";
             this.tbxScheduleEmpSearch.Size = new System.Drawing.Size(316, 71);
@@ -821,7 +831,7 @@ namespace LAMN_Software
             // 
             this.btnScheduleEmpSaveCurrentWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnScheduleEmpSaveCurrentWeek.Location = new System.Drawing.Point(264, 933);
-            this.btnScheduleEmpSaveCurrentWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnScheduleEmpSaveCurrentWeek.Margin = new System.Windows.Forms.Padding(6);
             this.btnScheduleEmpSaveCurrentWeek.Name = "btnScheduleEmpSaveCurrentWeek";
             this.btnScheduleEmpSaveCurrentWeek.Size = new System.Drawing.Size(238, 135);
             this.btnScheduleEmpSaveCurrentWeek.TabIndex = 16;
@@ -833,7 +843,7 @@ namespace LAMN_Software
             // 
             this.nudScheduleEmpWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.nudScheduleEmpWeek.Location = new System.Drawing.Point(12, 935);
-            this.nudScheduleEmpWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nudScheduleEmpWeek.Margin = new System.Windows.Forms.Padding(6);
             this.nudScheduleEmpWeek.Maximum = new decimal(new int[] {
             52,
             0,
@@ -857,7 +867,7 @@ namespace LAMN_Software
             // 
             this.btnSchedulesEmpShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesEmpShowWeek.Location = new System.Drawing.Point(8, 979);
-            this.btnSchedulesEmpShowWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSchedulesEmpShowWeek.Margin = new System.Windows.Forms.Padding(6);
             this.btnSchedulesEmpShowWeek.Name = "btnSchedulesEmpShowWeek";
             this.btnSchedulesEmpShowWeek.Size = new System.Drawing.Size(244, 88);
             this.btnSchedulesEmpShowWeek.TabIndex = 14;
@@ -882,7 +892,7 @@ namespace LAMN_Software
             this.schedulesEmpFTE,
             this.SchedulesEmpContractHours});
             this.dgvSchedulesEmp.Location = new System.Drawing.Point(0, 50);
-            this.dgvSchedulesEmp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvSchedulesEmp.Margin = new System.Windows.Forms.Padding(6);
             this.dgvSchedulesEmp.Name = "dgvSchedulesEmp";
             this.dgvSchedulesEmp.RowHeadersWidth = 51;
             this.dgvSchedulesEmp.RowTemplate.Height = 30;
@@ -976,9 +986,9 @@ namespace LAMN_Software
             this.tpSchedulesCreate.Controls.Add(this.nudSchedulesCreateWeek);
             this.tpSchedulesCreate.Controls.Add(this.btnSchedulesCreateShowWeek);
             this.tpSchedulesCreate.Location = new System.Drawing.Point(8, 34);
-            this.tpSchedulesCreate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpSchedulesCreate.Margin = new System.Windows.Forms.Padding(6);
             this.tpSchedulesCreate.Name = "tpSchedulesCreate";
-            this.tpSchedulesCreate.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpSchedulesCreate.Padding = new System.Windows.Forms.Padding(6);
             this.tpSchedulesCreate.Size = new System.Drawing.Size(2292, 1285);
             this.tpSchedulesCreate.TabIndex = 11;
             this.tpSchedulesCreate.Text = "SchedulesCreate";
@@ -1008,7 +1018,7 @@ namespace LAMN_Software
             this.SchedulesCreateMinAfternoon,
             this.SchedulesCreateMinEvening});
             this.dgvSchedulesCreate.Location = new System.Drawing.Point(14, 50);
-            this.dgvSchedulesCreate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvSchedulesCreate.Margin = new System.Windows.Forms.Padding(6);
             this.dgvSchedulesCreate.Name = "dgvSchedulesCreate";
             this.dgvSchedulesCreate.RowHeadersWidth = 82;
             this.dgvSchedulesCreate.Size = new System.Drawing.Size(2220, 875);
@@ -1072,7 +1082,7 @@ namespace LAMN_Software
             // 
             this.btnScheduleCreateMinimumPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnScheduleCreateMinimumPeople.Location = new System.Drawing.Point(1444, 942);
-            this.btnScheduleCreateMinimumPeople.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnScheduleCreateMinimumPeople.Margin = new System.Windows.Forms.Padding(6);
             this.btnScheduleCreateMinimumPeople.Name = "btnScheduleCreateMinimumPeople";
             this.btnScheduleCreateMinimumPeople.Size = new System.Drawing.Size(282, 119);
             this.btnScheduleCreateMinimumPeople.TabIndex = 23;
@@ -1084,7 +1094,7 @@ namespace LAMN_Software
             // 
             this.btnSchedulesCreateLoadTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesCreateLoadTemplate.Location = new System.Drawing.Point(1738, 944);
-            this.btnSchedulesCreateLoadTemplate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSchedulesCreateLoadTemplate.Margin = new System.Windows.Forms.Padding(6);
             this.btnSchedulesCreateLoadTemplate.Name = "btnSchedulesCreateLoadTemplate";
             this.btnSchedulesCreateLoadTemplate.Size = new System.Drawing.Size(244, 115);
             this.btnSchedulesCreateLoadTemplate.TabIndex = 22;
@@ -1096,7 +1106,7 @@ namespace LAMN_Software
             // 
             this.btnSchedulesCreateSaveTempalte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesCreateSaveTempalte.Location = new System.Drawing.Point(1994, 942);
-            this.btnSchedulesCreateSaveTempalte.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSchedulesCreateSaveTempalte.Margin = new System.Windows.Forms.Padding(6);
             this.btnSchedulesCreateSaveTempalte.Name = "btnSchedulesCreateSaveTempalte";
             this.btnSchedulesCreateSaveTempalte.Size = new System.Drawing.Size(244, 119);
             this.btnSchedulesCreateSaveTempalte.TabIndex = 21;
@@ -1108,7 +1118,7 @@ namespace LAMN_Software
             // 
             this.nudSchedulesCreateWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.nudSchedulesCreateWeek.Location = new System.Drawing.Point(20, 938);
-            this.nudSchedulesCreateWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nudSchedulesCreateWeek.Margin = new System.Windows.Forms.Padding(6);
             this.nudSchedulesCreateWeek.Maximum = new decimal(new int[] {
             52,
             0,
@@ -1132,7 +1142,7 @@ namespace LAMN_Software
             // 
             this.btnSchedulesCreateShowWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesCreateShowWeek.Location = new System.Drawing.Point(16, 983);
-            this.btnSchedulesCreateShowWeek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSchedulesCreateShowWeek.Margin = new System.Windows.Forms.Padding(6);
             this.btnSchedulesCreateShowWeek.Name = "btnSchedulesCreateShowWeek";
             this.btnSchedulesCreateShowWeek.Size = new System.Drawing.Size(244, 88);
             this.btnSchedulesCreateShowWeek.TabIndex = 17;
@@ -1145,9 +1155,9 @@ namespace LAMN_Software
             this.tpScheduleMin.Controls.Add(this.btnSchedulesSaveMinPeople);
             this.tpScheduleMin.Controls.Add(this.dgvScheduleMinP);
             this.tpScheduleMin.Location = new System.Drawing.Point(8, 34);
-            this.tpScheduleMin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpScheduleMin.Margin = new System.Windows.Forms.Padding(6);
             this.tpScheduleMin.Name = "tpScheduleMin";
-            this.tpScheduleMin.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpScheduleMin.Padding = new System.Windows.Forms.Padding(6);
             this.tpScheduleMin.Size = new System.Drawing.Size(2292, 1285);
             this.tpScheduleMin.TabIndex = 9;
             this.tpScheduleMin.Text = "SchedulesMin";
@@ -1157,7 +1167,7 @@ namespace LAMN_Software
             // 
             this.btnSchedulesSaveMinPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnSchedulesSaveMinPeople.Location = new System.Drawing.Point(1960, 887);
-            this.btnSchedulesSaveMinPeople.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSchedulesSaveMinPeople.Margin = new System.Windows.Forms.Padding(6);
             this.btnSchedulesSaveMinPeople.Name = "btnSchedulesSaveMinPeople";
             this.btnSchedulesSaveMinPeople.Size = new System.Drawing.Size(274, 179);
             this.btnSchedulesSaveMinPeople.TabIndex = 15;
@@ -1180,7 +1190,7 @@ namespace LAMN_Software
             this.ScheduleMinSaturday,
             this.ScheduleMinSunday});
             this.dgvScheduleMinP.Location = new System.Drawing.Point(12, 12);
-            this.dgvScheduleMinP.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvScheduleMinP.Margin = new System.Windows.Forms.Padding(6);
             this.dgvScheduleMinP.Name = "dgvScheduleMinP";
             this.dgvScheduleMinP.RowHeadersWidth = 51;
             this.dgvScheduleMinP.RowTemplate.Height = 30;
@@ -1263,9 +1273,9 @@ namespace LAMN_Software
             this.tpScheduleChoise.Controls.Add(this.gpnlViewSchedules);
             this.tpScheduleChoise.Controls.Add(this.gpnlCreateSchedules);
             this.tpScheduleChoise.Location = new System.Drawing.Point(8, 34);
-            this.tpScheduleChoise.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpScheduleChoise.Margin = new System.Windows.Forms.Padding(6);
             this.tpScheduleChoise.Name = "tpScheduleChoise";
-            this.tpScheduleChoise.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpScheduleChoise.Padding = new System.Windows.Forms.Padding(6);
             this.tpScheduleChoise.Size = new System.Drawing.Size(2292, 1285);
             this.tpScheduleChoise.TabIndex = 10;
             this.tpScheduleChoise.Text = "ScheduleChoise";
@@ -1285,9 +1295,9 @@ namespace LAMN_Software
             this.tpEmployees.Controls.Add(this.btnSearchEmployee);
             this.tpEmployees.Controls.Add(this.btnAddEmployee);
             this.tpEmployees.Location = new System.Drawing.Point(8, 34);
-            this.tpEmployees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.tpEmployees.Name = "tpEmployees";
-            this.tpEmployees.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpEmployees.Padding = new System.Windows.Forms.Padding(2);
             this.tpEmployees.Size = new System.Drawing.Size(2292, 1285);
             this.tpEmployees.TabIndex = 2;
             this.tpEmployees.Text = "Employees";
@@ -1311,7 +1321,7 @@ namespace LAMN_Software
             // 
             this.btnInfoChangeRequest.Font = new System.Drawing.Font("Arial", 12F);
             this.btnInfoChangeRequest.Location = new System.Drawing.Point(1414, 1000);
-            this.btnInfoChangeRequest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnInfoChangeRequest.Margin = new System.Windows.Forms.Padding(2);
             this.btnInfoChangeRequest.Name = "btnInfoChangeRequest";
             this.btnInfoChangeRequest.Size = new System.Drawing.Size(372, 67);
             this.btnInfoChangeRequest.TabIndex = 23;
@@ -1323,7 +1333,7 @@ namespace LAMN_Software
             // 
             this.btnEmpStats.Font = new System.Drawing.Font("Arial", 12F);
             this.btnEmpStats.Location = new System.Drawing.Point(1194, 1000);
-            this.btnEmpStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmpStats.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpStats.Name = "btnEmpStats";
             this.btnEmpStats.Size = new System.Drawing.Size(208, 67);
             this.btnEmpStats.TabIndex = 22;
@@ -1340,7 +1350,7 @@ namespace LAMN_Software
             "Active",
             "Terminated"});
             this.cbxActiveInactiveEmployees.Location = new System.Drawing.Point(740, 15);
-            this.cbxActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbxActiveInactiveEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.cbxActiveInactiveEmployees.Name = "cbxActiveInactiveEmployees";
             this.cbxActiveInactiveEmployees.Size = new System.Drawing.Size(238, 47);
             this.cbxActiveInactiveEmployees.TabIndex = 21;
@@ -1383,7 +1393,7 @@ namespace LAMN_Software
             this.dgvNationality,
             this.dvgContractHours});
             this.dgvEmployees.Location = new System.Drawing.Point(4, 92);
-            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(12);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
@@ -1549,7 +1559,7 @@ namespace LAMN_Software
             // 
             this.tbxSearchEmployee.Font = new System.Drawing.Font("Arial", 15F);
             this.tbxSearchEmployee.Location = new System.Drawing.Point(1804, 1006);
-            this.tbxSearchEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxSearchEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.tbxSearchEmployee.Name = "tbxSearchEmployee";
             this.tbxSearchEmployee.Size = new System.Drawing.Size(356, 53);
             this.tbxSearchEmployee.TabIndex = 17;
@@ -1559,7 +1569,7 @@ namespace LAMN_Software
             // 
             this.btnDeleteEmployee.Font = new System.Drawing.Font("Arial", 12F);
             this.btnDeleteEmployee.Location = new System.Drawing.Point(764, 1002);
-            this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteEmployee.Name = "btnDeleteEmployee";
             this.btnDeleteEmployee.Size = new System.Drawing.Size(414, 67);
             this.btnDeleteEmployee.TabIndex = 13;
@@ -1571,7 +1581,7 @@ namespace LAMN_Software
             // 
             this.btnEditEmployee.Font = new System.Drawing.Font("Arial", 12F);
             this.btnEditEmployee.Location = new System.Drawing.Point(354, 1002);
-            this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditEmployee.Name = "btnEditEmployee";
             this.btnEditEmployee.Size = new System.Drawing.Size(400, 67);
             this.btnEditEmployee.TabIndex = 14;
@@ -1583,7 +1593,7 @@ namespace LAMN_Software
             // 
             this.btnSearchEmployee.Font = new System.Drawing.Font("Arial", 13F);
             this.btnSearchEmployee.Location = new System.Drawing.Point(2170, 1002);
-            this.btnSearchEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchEmployee.Name = "btnSearchEmployee";
             this.btnSearchEmployee.Size = new System.Drawing.Size(72, 67);
             this.btnSearchEmployee.TabIndex = 15;
@@ -1595,7 +1605,7 @@ namespace LAMN_Software
             // 
             this.btnAddEmployee.Font = new System.Drawing.Font("Arial", 12F);
             this.btnAddEmployee.Location = new System.Drawing.Point(4, 1002);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(336, 67);
             this.btnAddEmployee.TabIndex = 16;
@@ -1613,9 +1623,9 @@ namespace LAMN_Software
             this.tpStatsStock.Controls.Add(this.cbxStats2);
             this.tpStatsStock.Controls.Add(this.cbxStats1);
             this.tpStatsStock.Location = new System.Drawing.Point(8, 34);
-            this.tpStatsStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStatsStock.Margin = new System.Windows.Forms.Padding(2);
             this.tpStatsStock.Name = "tpStatsStock";
-            this.tpStatsStock.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStatsStock.Padding = new System.Windows.Forms.Padding(2);
             this.tpStatsStock.Size = new System.Drawing.Size(2292, 1285);
             this.tpStatsStock.TabIndex = 3;
             this.tpStatsStock.Text = "StatsStock";
@@ -1629,7 +1639,7 @@ namespace LAMN_Software
             this.btnDeselectStatsStock3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeselectStatsStock3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnDeselectStatsStock3.Location = new System.Drawing.Point(26, 269);
-            this.btnDeselectStatsStock3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeselectStatsStock3.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeselectStatsStock3.Name = "btnDeselectStatsStock3";
             this.btnDeselectStatsStock3.Size = new System.Drawing.Size(34, 50);
             this.btnDeselectStatsStock3.TabIndex = 5;
@@ -1646,7 +1656,7 @@ namespace LAMN_Software
             this.btnDeselectStatsStock2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeselectStatsStock2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnDeselectStatsStock2.Location = new System.Drawing.Point(26, 196);
-            this.btnDeselectStatsStock2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeselectStatsStock2.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeselectStatsStock2.Name = "btnDeselectStatsStock2";
             this.btnDeselectStatsStock2.Size = new System.Drawing.Size(34, 50);
             this.btnDeselectStatsStock2.TabIndex = 5;
@@ -1663,7 +1673,7 @@ namespace LAMN_Software
             this.btnDeselectStatsStock1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeselectStatsStock1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnDeselectStatsStock1.Location = new System.Drawing.Point(26, 123);
-            this.btnDeselectStatsStock1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeselectStatsStock1.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeselectStatsStock1.Name = "btnDeselectStatsStock1";
             this.btnDeselectStatsStock1.Size = new System.Drawing.Size(34, 50);
             this.btnDeselectStatsStock1.TabIndex = 5;
@@ -1679,7 +1689,7 @@ namespace LAMN_Software
             legend1.Name = "Legend1";
             this.chartStock.Legends.Add(legend1);
             this.chartStock.Location = new System.Drawing.Point(564, 71);
-            this.chartStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartStock.Margin = new System.Windows.Forms.Padding(4);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
@@ -1701,7 +1711,7 @@ namespace LAMN_Software
             this.cbxStats3.Font = new System.Drawing.Font("Arial", 15F);
             this.cbxStats3.FormattingEnabled = true;
             this.cbxStats3.Location = new System.Drawing.Point(62, 269);
-            this.cbxStats3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxStats3.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats3.Name = "cbxStats3";
             this.cbxStats3.Size = new System.Drawing.Size(190, 53);
             this.cbxStats3.TabIndex = 1;
@@ -1713,7 +1723,7 @@ namespace LAMN_Software
             this.cbxStats2.Font = new System.Drawing.Font("Arial", 15F);
             this.cbxStats2.FormattingEnabled = true;
             this.cbxStats2.Location = new System.Drawing.Point(62, 196);
-            this.cbxStats2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxStats2.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats2.Name = "cbxStats2";
             this.cbxStats2.Size = new System.Drawing.Size(190, 53);
             this.cbxStats2.TabIndex = 1;
@@ -1725,7 +1735,7 @@ namespace LAMN_Software
             this.cbxStats1.Font = new System.Drawing.Font("Arial", 15F);
             this.cbxStats1.FormattingEnabled = true;
             this.cbxStats1.Location = new System.Drawing.Point(62, 123);
-            this.cbxStats1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxStats1.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStats1.Name = "cbxStats1";
             this.cbxStats1.Size = new System.Drawing.Size(190, 53);
             this.cbxStats1.TabIndex = 1;
@@ -1790,7 +1800,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_EANCode.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_EANCode.Location = new System.Drawing.Point(408, 185);
-            this.tbxStockAdd_EANCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_EANCode.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_EANCode.Name = "tbxStockAdd_EANCode";
             this.tbxStockAdd_EANCode.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_EANCode.TabIndex = 1;
@@ -1810,7 +1820,7 @@ namespace LAMN_Software
             // 
             this.btnBackToStockPage.Font = new System.Drawing.Font("Arial", 13F);
             this.btnBackToStockPage.Location = new System.Drawing.Point(2, 1004);
-            this.btnBackToStockPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackToStockPage.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToStockPage.Name = "btnBackToStockPage";
             this.btnBackToStockPage.Size = new System.Drawing.Size(316, 67);
             this.btnBackToStockPage.TabIndex = 20;
@@ -1822,7 +1832,7 @@ namespace LAMN_Software
             // 
             this.btnStockAdd_ConfirmEdit.Font = new System.Drawing.Font("Arial", 13F);
             this.btnStockAdd_ConfirmEdit.Location = new System.Drawing.Point(1908, 1004);
-            this.btnStockAdd_ConfirmEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStockAdd_ConfirmEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockAdd_ConfirmEdit.Name = "btnStockAdd_ConfirmEdit";
             this.btnStockAdd_ConfirmEdit.Size = new System.Drawing.Size(308, 67);
             this.btnStockAdd_ConfirmEdit.TabIndex = 19;
@@ -1834,7 +1844,7 @@ namespace LAMN_Software
             // 
             this.btnStockAdd_ConfirmAdd.Font = new System.Drawing.Font("Arial", 13F);
             this.btnStockAdd_ConfirmAdd.Location = new System.Drawing.Point(1900, 1004);
-            this.btnStockAdd_ConfirmAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStockAdd_ConfirmAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockAdd_ConfirmAdd.Name = "btnStockAdd_ConfirmAdd";
             this.btnStockAdd_ConfirmAdd.Size = new System.Drawing.Size(316, 67);
             this.btnStockAdd_ConfirmAdd.TabIndex = 18;
@@ -1846,7 +1856,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_TotalSold.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_TotalSold.Location = new System.Drawing.Point(1574, 733);
-            this.tbxStockAdd_TotalSold.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_TotalSold.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_TotalSold.Name = "tbxStockAdd_TotalSold";
             this.tbxStockAdd_TotalSold.Size = new System.Drawing.Size(588, 50);
             this.tbxStockAdd_TotalSold.TabIndex = 11;
@@ -1877,7 +1887,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_ID.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_ID.Location = new System.Drawing.Point(408, 81);
-            this.tbxStockAdd_ID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_ID.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_ID.Name = "tbxStockAdd_ID";
             this.tbxStockAdd_ID.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_ID.TabIndex = 13;
@@ -1886,7 +1896,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_Sell.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_Sell.Location = new System.Drawing.Point(1418, 181);
-            this.tbxStockAdd_Sell.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_Sell.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_Sell.Name = "tbxStockAdd_Sell";
             this.tbxStockAdd_Sell.Size = new System.Drawing.Size(744, 50);
             this.tbxStockAdd_Sell.TabIndex = 8;
@@ -1895,7 +1905,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_AddInfo.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_AddInfo.Location = new System.Drawing.Point(1574, 590);
-            this.tbxStockAdd_AddInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_AddInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_AddInfo.Multiline = true;
             this.tbxStockAdd_AddInfo.Name = "tbxStockAdd_AddInfo";
             this.tbxStockAdd_AddInfo.Size = new System.Drawing.Size(588, 114);
@@ -1940,7 +1950,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_MinimumStock.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_MinimumStock.Location = new System.Drawing.Point(1574, 477);
-            this.tbxStockAdd_MinimumStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_MinimumStock.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_MinimumStock.Name = "tbxStockAdd_MinimumStock";
             this.tbxStockAdd_MinimumStock.Size = new System.Drawing.Size(588, 50);
             this.tbxStockAdd_MinimumStock.TabIndex = 9;
@@ -1971,7 +1981,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_Cost.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_Cost.Location = new System.Drawing.Point(1418, 79);
-            this.tbxStockAdd_Cost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_Cost.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_Cost.Name = "tbxStockAdd_Cost";
             this.tbxStockAdd_Cost.Size = new System.Drawing.Size(744, 50);
             this.tbxStockAdd_Cost.TabIndex = 7;
@@ -1991,7 +2001,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_WarehouseLocation.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_WarehouseLocation.Location = new System.Drawing.Point(408, 554);
-            this.tbxStockAdd_WarehouseLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_WarehouseLocation.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_WarehouseLocation.Name = "tbxStockAdd_WarehouseLocation";
             this.tbxStockAdd_WarehouseLocation.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_WarehouseLocation.TabIndex = 4;
@@ -2000,7 +2010,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_StoreLocation.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_StoreLocation.Location = new System.Drawing.Point(408, 765);
-            this.tbxStockAdd_StoreLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_StoreLocation.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_StoreLocation.Name = "tbxStockAdd_StoreLocation";
             this.tbxStockAdd_StoreLocation.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_StoreLocation.TabIndex = 6;
@@ -2044,7 +2054,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_StoreQuantity.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_StoreQuantity.Location = new System.Drawing.Point(408, 696);
-            this.tbxStockAdd_StoreQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_StoreQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_StoreQuantity.Name = "tbxStockAdd_StoreQuantity";
             this.tbxStockAdd_StoreQuantity.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_StoreQuantity.TabIndex = 5;
@@ -2075,7 +2085,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_WarehouseQuantity.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_WarehouseQuantity.Location = new System.Drawing.Point(408, 454);
-            this.tbxStockAdd_WarehouseQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_WarehouseQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_WarehouseQuantity.Name = "tbxStockAdd_WarehouseQuantity";
             this.tbxStockAdd_WarehouseQuantity.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_WarehouseQuantity.TabIndex = 3;
@@ -2095,7 +2105,7 @@ namespace LAMN_Software
             // 
             this.tbxStockAdd_ProductName.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxStockAdd_ProductName.Location = new System.Drawing.Point(408, 283);
-            this.tbxStockAdd_ProductName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxStockAdd_ProductName.Margin = new System.Windows.Forms.Padding(4);
             this.tbxStockAdd_ProductName.Name = "tbxStockAdd_ProductName";
             this.tbxStockAdd_ProductName.Size = new System.Drawing.Size(672, 50);
             this.tbxStockAdd_ProductName.TabIndex = 2;
@@ -2154,9 +2164,9 @@ namespace LAMN_Software
             this.tpEmployeeAdd.Controls.Add(this.tbxEmployeeAdd_SecondName);
             this.tpEmployeeAdd.Controls.Add(this.lblEmployeeAdd_SecondName);
             this.tpEmployeeAdd.Location = new System.Drawing.Point(8, 34);
-            this.tpEmployeeAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpEmployeeAdd.Margin = new System.Windows.Forms.Padding(2);
             this.tpEmployeeAdd.Name = "tpEmployeeAdd";
-            this.tpEmployeeAdd.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpEmployeeAdd.Padding = new System.Windows.Forms.Padding(2);
             this.tpEmployeeAdd.Size = new System.Drawing.Size(2292, 1285);
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
@@ -2166,7 +2176,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_ContractHours.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_ContractHours.Location = new System.Drawing.Point(464, 969);
-            this.tbxEmployeeAdd_ContractHours.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_ContractHours.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_ContractHours.Name = "tbxEmployeeAdd_ContractHours";
             this.tbxEmployeeAdd_ContractHours.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_ContractHours.TabIndex = 68;
@@ -2186,7 +2196,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_Nationality.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_Nationality.Location = new System.Drawing.Point(464, 915);
-            this.tbxEmployeeAdd_Nationality.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_Nationality.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_Nationality.Name = "tbxEmployeeAdd_Nationality";
             this.tbxEmployeeAdd_Nationality.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_Nationality.TabIndex = 66;
@@ -2195,7 +2205,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_Degree.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_Degree.Location = new System.Drawing.Point(464, 860);
-            this.tbxEmployeeAdd_Degree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_Degree.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_Degree.Name = "tbxEmployeeAdd_Degree";
             this.tbxEmployeeAdd_Degree.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_Degree.TabIndex = 65;
@@ -2210,7 +2220,7 @@ namespace LAMN_Software
             "Female",
             "Other"});
             this.cbxEmployeeAdd_Gender.Location = new System.Drawing.Point(464, 802);
-            this.cbxEmployeeAdd_Gender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeAdd_Gender.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeAdd_Gender.Name = "cbxEmployeeAdd_Gender";
             this.cbxEmployeeAdd_Gender.Size = new System.Drawing.Size(466, 50);
             this.cbxEmployeeAdd_Gender.TabIndex = 64;
@@ -2268,7 +2278,7 @@ namespace LAMN_Software
             "Full Time",
             "Part Time"});
             this.cbxEmployeeAdd_ContractType.Location = new System.Drawing.Point(464, 744);
-            this.cbxEmployeeAdd_ContractType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeAdd_ContractType.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeAdd_ContractType.Name = "cbxEmployeeAdd_ContractType";
             this.cbxEmployeeAdd_ContractType.Size = new System.Drawing.Size(466, 50);
             this.cbxEmployeeAdd_ContractType.TabIndex = 59;
@@ -2289,7 +2299,7 @@ namespace LAMN_Software
             this.dtpEmployeeAdd_EndingDate.CalendarFont = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_EndingDate.Font = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_EndingDate.Location = new System.Drawing.Point(464, 700);
-            this.dtpEmployeeAdd_EndingDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEmployeeAdd_EndingDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEmployeeAdd_EndingDate.Name = "dtpEmployeeAdd_EndingDate";
             this.dtpEmployeeAdd_EndingDate.Size = new System.Drawing.Size(466, 38);
             this.dtpEmployeeAdd_EndingDate.TabIndex = 57;
@@ -2300,7 +2310,7 @@ namespace LAMN_Software
             this.dtpEmployeeAdd_StartingDate.CalendarFont = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_StartingDate.Font = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_StartingDate.Location = new System.Drawing.Point(464, 656);
-            this.dtpEmployeeAdd_StartingDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEmployeeAdd_StartingDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEmployeeAdd_StartingDate.Name = "dtpEmployeeAdd_StartingDate";
             this.dtpEmployeeAdd_StartingDate.Size = new System.Drawing.Size(466, 38);
             this.dtpEmployeeAdd_StartingDate.TabIndex = 56;
@@ -2332,7 +2342,7 @@ namespace LAMN_Software
             // 
             this.tbxSalary.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxSalary.Location = new System.Drawing.Point(464, 600);
-            this.tbxSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxSalary.Margin = new System.Windows.Forms.Padding(4);
             this.tbxSalary.Name = "tbxSalary";
             this.tbxSalary.Size = new System.Drawing.Size(466, 50);
             this.tbxSalary.TabIndex = 53;
@@ -2341,7 +2351,7 @@ namespace LAMN_Software
             // 
             this.btnEmployeeAdd_ConfirmEdit.Font = new System.Drawing.Font("Arial", 13F);
             this.btnEmployeeAdd_ConfirmEdit.Location = new System.Drawing.Point(1922, 1004);
-            this.btnEmployeeAdd_ConfirmEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmployeeAdd_ConfirmEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployeeAdd_ConfirmEdit.Name = "btnEmployeeAdd_ConfirmEdit";
             this.btnEmployeeAdd_ConfirmEdit.Size = new System.Drawing.Size(316, 67);
             this.btnEmployeeAdd_ConfirmEdit.TabIndex = 49;
@@ -2373,7 +2383,7 @@ namespace LAMN_Software
             "DEPOT",
             "SECURITY"});
             this.cbxEmployeeAdd_Position.Location = new System.Drawing.Point(464, 542);
-            this.cbxEmployeeAdd_Position.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeAdd_Position.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeAdd_Position.Name = "cbxEmployeeAdd_Position";
             this.cbxEmployeeAdd_Position.Size = new System.Drawing.Size(466, 50);
             this.cbxEmployeeAdd_Position.TabIndex = 45;
@@ -2394,7 +2404,7 @@ namespace LAMN_Software
             "FRIEND",
             "OTHER"});
             this.cbxEmployeeAdd_ICERelationship.Location = new System.Drawing.Point(1424, 367);
-            this.cbxEmployeeAdd_ICERelationship.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEmployeeAdd_ICERelationship.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEmployeeAdd_ICERelationship.Name = "cbxEmployeeAdd_ICERelationship";
             this.cbxEmployeeAdd_ICERelationship.Size = new System.Drawing.Size(386, 50);
             this.cbxEmployeeAdd_ICERelationship.TabIndex = 47;
@@ -2404,7 +2414,7 @@ namespace LAMN_Software
             this.dtpEmployeeAdd_DateOfBirth.CalendarFont = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_DateOfBirth.Font = new System.Drawing.Font("Arial", 10F);
             this.dtpEmployeeAdd_DateOfBirth.Location = new System.Drawing.Point(464, 440);
-            this.dtpEmployeeAdd_DateOfBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEmployeeAdd_DateOfBirth.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEmployeeAdd_DateOfBirth.Name = "dtpEmployeeAdd_DateOfBirth";
             this.dtpEmployeeAdd_DateOfBirth.Size = new System.Drawing.Size(466, 38);
             this.dtpEmployeeAdd_DateOfBirth.TabIndex = 43;
@@ -2414,7 +2424,7 @@ namespace LAMN_Software
             // 
             this.btnBackToEmpPage.Font = new System.Drawing.Font("Arial", 13F);
             this.btnBackToEmpPage.Location = new System.Drawing.Point(-484, 575);
-            this.btnBackToEmpPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackToEmpPage.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToEmpPage.Name = "btnBackToEmpPage";
             this.btnBackToEmpPage.Size = new System.Drawing.Size(316, 67);
             this.btnBackToEmpPage.TabIndex = 50;
@@ -2426,7 +2436,7 @@ namespace LAMN_Software
             // 
             this.btnEmployeeAdd_Confirm.Font = new System.Drawing.Font("Arial", 13F);
             this.btnEmployeeAdd_Confirm.Location = new System.Drawing.Point(1602, 1004);
-            this.btnEmployeeAdd_Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmployeeAdd_Confirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployeeAdd_Confirm.Name = "btnEmployeeAdd_Confirm";
             this.btnEmployeeAdd_Confirm.Size = new System.Drawing.Size(316, 67);
             this.btnEmployeeAdd_Confirm.TabIndex = 49;
@@ -2449,7 +2459,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_FirstName.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_FirstName.Location = new System.Drawing.Point(464, 158);
-            this.tbxEmployeeAdd_FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_FirstName.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_FirstName.Name = "tbxEmployeeAdd_FirstName";
             this.tbxEmployeeAdd_FirstName.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_FirstName.TabIndex = 40;
@@ -2458,7 +2468,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_AdditonalInfo.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_AdditonalInfo.Location = new System.Drawing.Point(1444, 658);
-            this.tbxEmployeeAdd_AdditonalInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_AdditonalInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_AdditonalInfo.Multiline = true;
             this.tbxEmployeeAdd_AdditonalInfo.Name = "tbxEmployeeAdd_AdditonalInfo";
             this.tbxEmployeeAdd_AdditonalInfo.Size = new System.Drawing.Size(740, 148);
@@ -2502,7 +2512,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_ICENumber.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_ICENumber.Location = new System.Drawing.Point(1432, 258);
-            this.tbxEmployeeAdd_ICENumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_ICENumber.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_ICENumber.Name = "tbxEmployeeAdd_ICENumber";
             this.tbxEmployeeAdd_ICENumber.Size = new System.Drawing.Size(386, 50);
             this.tbxEmployeeAdd_ICENumber.TabIndex = 46;
@@ -2545,7 +2555,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_PhoneNumber.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_PhoneNumber.Location = new System.Drawing.Point(464, 487);
-            this.tbxEmployeeAdd_PhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_PhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_PhoneNumber.Name = "tbxEmployeeAdd_PhoneNumber";
             this.tbxEmployeeAdd_PhoneNumber.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_PhoneNumber.TabIndex = 44;
@@ -2576,7 +2586,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_BSN.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_BSN.Location = new System.Drawing.Point(464, 385);
-            this.tbxEmployeeAdd_BSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_BSN.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_BSN.Name = "tbxEmployeeAdd_BSN";
             this.tbxEmployeeAdd_BSN.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_BSN.TabIndex = 42;
@@ -2596,7 +2606,7 @@ namespace LAMN_Software
             // 
             this.tbxEmployeeAdd_SecondName.Font = new System.Drawing.Font("Arial", 14F);
             this.tbxEmployeeAdd_SecondName.Location = new System.Drawing.Point(464, 262);
-            this.tbxEmployeeAdd_SecondName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxEmployeeAdd_SecondName.Margin = new System.Windows.Forms.Padding(4);
             this.tbxEmployeeAdd_SecondName.Name = "tbxEmployeeAdd_SecondName";
             this.tbxEmployeeAdd_SecondName.Size = new System.Drawing.Size(466, 50);
             this.tbxEmployeeAdd_SecondName.TabIndex = 41;
@@ -2614,34 +2624,81 @@ namespace LAMN_Software
             // 
             // tpStatsEmployee
             // 
+            this.tpStatsEmployee.Controls.Add(this.label29);
+            this.tpStatsEmployee.Controls.Add(this.chartEmployeesPosition);
+            this.tpStatsEmployee.Controls.Add(this.panel1);
+            this.tpStatsEmployee.Controls.Add(this.label28);
+            this.tpStatsEmployee.Controls.Add(this.label27);
             this.tpStatsEmployee.Controls.Add(this.chartEmployeesContractType);
             this.tpStatsEmployee.Controls.Add(this.chartEmployeesGender);
-            this.tpStatsEmployee.Controls.Add(this.chartEmployeesPosition);
             this.tpStatsEmployee.Location = new System.Drawing.Point(8, 34);
-            this.tpStatsEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpStatsEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.tpStatsEmployee.Name = "tpStatsEmployee";
-            this.tpStatsEmployee.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpStatsEmployee.Padding = new System.Windows.Forms.Padding(4);
             this.tpStatsEmployee.Size = new System.Drawing.Size(2292, 1285);
             this.tpStatsEmployee.TabIndex = 6;
             this.tpStatsEmployee.Text = "StatsEmp";
             this.tpStatsEmployee.UseVisualStyleBackColor = true;
             // 
-            // chartEmployeesPosition
+            // chartEmployeesContractType
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartEmployeesContractType.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartEmployeesContractType.Legends.Add(legend3);
+            this.chartEmployeesContractType.Location = new System.Drawing.Point(1504, 553);
+            this.chartEmployeesContractType.Margin = new System.Windows.Forms.Padding(8);
+            this.chartEmployeesContractType.Name = "chartEmployeesContractType";
+            this.chartEmployeesContractType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series4.LabelForeColor = System.Drawing.Color.White;
+            series4.Legend = "Legend1";
+            series4.Name = "ContractType";
+            this.chartEmployeesContractType.Series.Add(series4);
+            this.chartEmployeesContractType.Size = new System.Drawing.Size(760, 456);
+            this.chartEmployeesContractType.TabIndex = 2;
+            this.chartEmployeesContractType.Text = "chart1";
+            // 
+            // chartEmployeesGender
             // 
             chartArea4.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea4);
+            this.chartEmployeesGender.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend4);
-            this.chartEmployeesPosition.Location = new System.Drawing.Point(52, 62);
-            this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.chartEmployeesPosition.Name = "chartEmployeesPosition";
+            this.chartEmployeesGender.Legends.Add(legend4);
+            this.chartEmployeesGender.Location = new System.Drawing.Point(1475, -1);
+            this.chartEmployeesGender.Margin = new System.Windows.Forms.Padding(8);
+            this.chartEmployeesGender.Name = "chartEmployeesGender";
+            this.chartEmployeesGender.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Font = new System.Drawing.Font("Arial", 10F);
+            series5.Font = new System.Drawing.Font("Arial", 12F);
+            series5.LabelForeColor = System.Drawing.Color.White;
             series5.Legend = "Legend1";
-            series5.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series5);
-            this.chartEmployeesPosition.Size = new System.Drawing.Size(711, 544);
+            series5.Name = "Genders";
+            this.chartEmployeesGender.Series.Add(series5);
+            this.chartEmployeesGender.Size = new System.Drawing.Size(783, 491);
+            this.chartEmployeesGender.TabIndex = 1;
+            this.chartEmployeesGender.Text = "chart1";
+            // 
+            // chartEmployeesPosition
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend2);
+            this.chartEmployeesPosition.Location = new System.Drawing.Point(786, 12);
+            this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(8);
+            this.chartEmployeesPosition.Name = "chartEmployeesPosition";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Font = new System.Drawing.Font("Arial", 10F);
+            series3.LabelForeColor = System.Drawing.Color.White;
+            series3.Legend = "Legend1";
+            series3.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series3);
+            this.chartEmployeesPosition.Size = new System.Drawing.Size(751, 635);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
             // 
@@ -2662,9 +2719,9 @@ namespace LAMN_Software
             this.tpNewOrder.Controls.Add(this.tbNewOrderName);
             this.tpNewOrder.Controls.Add(this.label25);
             this.tpNewOrder.Location = new System.Drawing.Point(8, 34);
-            this.tpNewOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpNewOrder.Margin = new System.Windows.Forms.Padding(4);
             this.tpNewOrder.Name = "tpNewOrder";
-            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(4);
             this.tpNewOrder.Size = new System.Drawing.Size(2292, 1285);
             this.tpNewOrder.TabIndex = 7;
             this.tpNewOrder.Text = "NewOrder";
@@ -2674,7 +2731,7 @@ namespace LAMN_Software
             // 
             this.btnNewOrderBack.Font = new System.Drawing.Font("Arial", 13F);
             this.btnNewOrderBack.Location = new System.Drawing.Point(4, 1006);
-            this.btnNewOrderBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewOrderBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewOrderBack.Name = "btnNewOrderBack";
             this.btnNewOrderBack.Size = new System.Drawing.Size(316, 67);
             this.btnNewOrderBack.TabIndex = 50;
@@ -2686,7 +2743,7 @@ namespace LAMN_Software
             // 
             this.btnAddNewOrder.Font = new System.Drawing.Font("Arial", 13F);
             this.btnAddNewOrder.Location = new System.Drawing.Point(1934, 1006);
-            this.btnAddNewOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewOrder.Name = "btnAddNewOrder";
             this.btnAddNewOrder.Size = new System.Drawing.Size(308, 67);
             this.btnAddNewOrder.TabIndex = 49;
@@ -2698,7 +2755,7 @@ namespace LAMN_Software
             // 
             this.tbNewOrderEAN.Font = new System.Drawing.Font("Arial", 14F);
             this.tbNewOrderEAN.Location = new System.Drawing.Point(1170, 204);
-            this.tbNewOrderEAN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNewOrderEAN.Margin = new System.Windows.Forms.Padding(2);
             this.tbNewOrderEAN.Name = "tbNewOrderEAN";
             this.tbNewOrderEAN.Size = new System.Drawing.Size(354, 50);
             this.tbNewOrderEAN.TabIndex = 29;
@@ -2729,7 +2786,7 @@ namespace LAMN_Software
             // 
             this.tbNewOrderID.Font = new System.Drawing.Font("Arial", 14F);
             this.tbNewOrderID.Location = new System.Drawing.Point(1170, 150);
-            this.tbNewOrderID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNewOrderID.Margin = new System.Windows.Forms.Padding(2);
             this.tbNewOrderID.Name = "tbNewOrderID";
             this.tbNewOrderID.Size = new System.Drawing.Size(354, 50);
             this.tbNewOrderID.TabIndex = 45;
@@ -2762,7 +2819,7 @@ namespace LAMN_Software
             // 
             this.tbNewOrderWarehouse.Font = new System.Drawing.Font("Arial", 14F);
             this.tbNewOrderWarehouse.Location = new System.Drawing.Point(1232, 562);
-            this.tbNewOrderWarehouse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNewOrderWarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.tbNewOrderWarehouse.Name = "tbNewOrderWarehouse";
             this.tbNewOrderWarehouse.Size = new System.Drawing.Size(354, 50);
             this.tbNewOrderWarehouse.TabIndex = 36;
@@ -2782,7 +2839,7 @@ namespace LAMN_Software
             // 
             this.tbNewOrderStore.Font = new System.Drawing.Font("Arial", 14F);
             this.tbNewOrderStore.Location = new System.Drawing.Point(1232, 460);
-            this.tbNewOrderStore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNewOrderStore.Margin = new System.Windows.Forms.Padding(2);
             this.tbNewOrderStore.Name = "tbNewOrderStore";
             this.tbNewOrderStore.Size = new System.Drawing.Size(354, 50);
             this.tbNewOrderStore.TabIndex = 32;
@@ -2802,7 +2859,7 @@ namespace LAMN_Software
             // 
             this.tbNewOrderName.Font = new System.Drawing.Font("Arial", 14F);
             this.tbNewOrderName.Location = new System.Drawing.Point(1170, 254);
-            this.tbNewOrderName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNewOrderName.Margin = new System.Windows.Forms.Padding(2);
             this.tbNewOrderName.Name = "tbNewOrderName";
             this.tbNewOrderName.Size = new System.Drawing.Size(354, 50);
             this.tbNewOrderName.TabIndex = 31;
@@ -2832,9 +2889,9 @@ namespace LAMN_Software
             this.tpSellProduct.Controls.Add(this.tbSellName);
             this.tpSellProduct.Controls.Add(this.label21);
             this.tpSellProduct.Location = new System.Drawing.Point(8, 34);
-            this.tpSellProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSellProduct.Margin = new System.Windows.Forms.Padding(4);
             this.tpSellProduct.Name = "tpSellProduct";
-            this.tpSellProduct.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSellProduct.Padding = new System.Windows.Forms.Padding(4);
             this.tpSellProduct.Size = new System.Drawing.Size(2292, 1285);
             this.tpSellProduct.TabIndex = 8;
             this.tpSellProduct.Text = "SellProduct";
@@ -2844,7 +2901,7 @@ namespace LAMN_Software
             // 
             this.btnSellConfirm.Font = new System.Drawing.Font("Arial", 13F);
             this.btnSellConfirm.Location = new System.Drawing.Point(1934, 1006);
-            this.btnSellConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSellConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnSellConfirm.Name = "btnSellConfirm";
             this.btnSellConfirm.Size = new System.Drawing.Size(308, 67);
             this.btnSellConfirm.TabIndex = 62;
@@ -2856,7 +2913,7 @@ namespace LAMN_Software
             // 
             this.btnSellProdBack.Font = new System.Drawing.Font("Arial", 13F);
             this.btnSellProdBack.Location = new System.Drawing.Point(4, 1006);
-            this.btnSellProdBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSellProdBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnSellProdBack.Name = "btnSellProdBack";
             this.btnSellProdBack.Size = new System.Drawing.Size(316, 67);
             this.btnSellProdBack.TabIndex = 61;
@@ -2868,7 +2925,7 @@ namespace LAMN_Software
             // 
             this.tbSellEAN.Font = new System.Drawing.Font("Arial", 14F);
             this.tbSellEAN.Location = new System.Drawing.Point(1170, 204);
-            this.tbSellEAN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSellEAN.Margin = new System.Windows.Forms.Padding(2);
             this.tbSellEAN.Name = "tbSellEAN";
             this.tbSellEAN.Size = new System.Drawing.Size(354, 50);
             this.tbSellEAN.TabIndex = 54;
@@ -2899,7 +2956,7 @@ namespace LAMN_Software
             // 
             this.tbSellID.Font = new System.Drawing.Font("Arial", 14F);
             this.tbSellID.Location = new System.Drawing.Point(1170, 150);
-            this.tbSellID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSellID.Margin = new System.Windows.Forms.Padding(2);
             this.tbSellID.Name = "tbSellID";
             this.tbSellID.Size = new System.Drawing.Size(354, 50);
             this.tbSellID.TabIndex = 58;
@@ -2920,7 +2977,7 @@ namespace LAMN_Software
             // 
             this.tbSellQuantity.Font = new System.Drawing.Font("Arial", 14F);
             this.tbSellQuantity.Location = new System.Drawing.Point(1170, 479);
-            this.tbSellQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSellQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.tbSellQuantity.Name = "tbSellQuantity";
             this.tbSellQuantity.Size = new System.Drawing.Size(354, 50);
             this.tbSellQuantity.TabIndex = 57;
@@ -2940,7 +2997,7 @@ namespace LAMN_Software
             // 
             this.tbSellName.Font = new System.Drawing.Font("Arial", 14F);
             this.tbSellName.Location = new System.Drawing.Point(1170, 254);
-            this.tbSellName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSellName.Margin = new System.Windows.Forms.Padding(2);
             this.tbSellName.Name = "tbSellName";
             this.tbSellName.Size = new System.Drawing.Size(354, 50);
             this.tbSellName.TabIndex = 55;
@@ -2964,9 +3021,9 @@ namespace LAMN_Software
             this.tpRequestChangeInfo.Controls.Add(this.gbNewInfo);
             this.tpRequestChangeInfo.Controls.Add(this.label22);
             this.tpRequestChangeInfo.Location = new System.Drawing.Point(8, 34);
-            this.tpRequestChangeInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpRequestChangeInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tpRequestChangeInfo.Name = "tpRequestChangeInfo";
-            this.tpRequestChangeInfo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpRequestChangeInfo.Padding = new System.Windows.Forms.Padding(2);
             this.tpRequestChangeInfo.Size = new System.Drawing.Size(2292, 1285);
             this.tpRequestChangeInfo.TabIndex = 12;
             this.tpRequestChangeInfo.Text = "RequestChangeInfo";
@@ -2989,7 +3046,7 @@ namespace LAMN_Software
             this.lbChangeInfo.FormattingEnabled = true;
             this.lbChangeInfo.ItemHeight = 35;
             this.lbChangeInfo.Location = new System.Drawing.Point(68, 108);
-            this.lbChangeInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbChangeInfo.Margin = new System.Windows.Forms.Padding(2);
             this.lbChangeInfo.Name = "lbChangeInfo";
             this.lbChangeInfo.Size = new System.Drawing.Size(39680, 914);
             this.lbChangeInfo.TabIndex = 4;
@@ -3011,9 +3068,9 @@ namespace LAMN_Software
             this.gbOldInfo.Controls.Add(this.label26);
             this.gbOldInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbOldInfo.Location = new System.Drawing.Point(1372, 94);
-            this.gbOldInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbOldInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbOldInfo.Name = "gbOldInfo";
-            this.gbOldInfo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbOldInfo.Padding = new System.Windows.Forms.Padding(2);
             this.gbOldInfo.Size = new System.Drawing.Size(762, 412);
             this.gbOldInfo.TabIndex = 2;
             this.gbOldInfo.TabStop = false;
@@ -3149,9 +3206,9 @@ namespace LAMN_Software
             this.gbNewInfo.Controls.Add(this.btnApproveInfoChanges);
             this.gbNewInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNewInfo.Location = new System.Drawing.Point(1372, 542);
-            this.gbNewInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbNewInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbNewInfo.Name = "gbNewInfo";
-            this.gbNewInfo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbNewInfo.Padding = new System.Windows.Forms.Padding(2);
             this.gbNewInfo.Size = new System.Drawing.Size(762, 483);
             this.gbNewInfo.TabIndex = 3;
             this.gbNewInfo.TabStop = false;
@@ -3266,7 +3323,7 @@ namespace LAMN_Software
             // 
             this.btnDeclineInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
             this.btnDeclineInfoChanges.Location = new System.Drawing.Point(404, 383);
-            this.btnDeclineInfoChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeclineInfoChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeclineInfoChanges.Name = "btnDeclineInfoChanges";
             this.btnDeclineInfoChanges.Size = new System.Drawing.Size(320, 67);
             this.btnDeclineInfoChanges.TabIndex = 16;
@@ -3278,7 +3335,7 @@ namespace LAMN_Software
             // 
             this.btnApproveInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
             this.btnApproveInfoChanges.Location = new System.Drawing.Point(36, 383);
-            this.btnApproveInfoChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApproveInfoChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnApproveInfoChanges.Name = "btnApproveInfoChanges";
             this.btnApproveInfoChanges.Size = new System.Drawing.Size(320, 67);
             this.btnApproveInfoChanges.TabIndex = 15;
@@ -3301,7 +3358,7 @@ namespace LAMN_Software
             this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
-            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_defocus.Name = "textBox_defocus";
             this.textBox_defocus.Size = new System.Drawing.Size(0, 11);
             this.textBox_defocus.TabIndex = 0;
@@ -3314,7 +3371,7 @@ namespace LAMN_Software
             this.pnlBar.Controls.Add(this.lblClose);
             this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBar.Location = new System.Drawing.Point(-2, -2);
-            this.pnlBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBar.Name = "pnlBar";
             this.pnlBar.Size = new System.Drawing.Size(2308, 62);
             this.pnlBar.TabIndex = 8;
@@ -3325,7 +3382,7 @@ namespace LAMN_Software
             this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlDragBar.Location = new System.Drawing.Point(6, 0);
-            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDragBar.Name = "pnlDragBar";
             this.pnlDragBar.Size = new System.Drawing.Size(2244, 60);
             this.pnlDragBar.TabIndex = 9;
@@ -3349,45 +3406,44 @@ namespace LAMN_Software
             this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
             this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
             // 
-            // chartEmployeesGender
+            // label27
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartEmployeesGender.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartEmployeesGender.Legends.Add(legend3);
-            this.chartEmployeesGender.Location = new System.Drawing.Point(787, 63);
-            this.chartEmployeesGender.Margin = new System.Windows.Forms.Padding(8);
-            this.chartEmployeesGender.Name = "chartEmployeesGender";
-            this.chartEmployeesGender.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Arial", 10F);
-            series4.Legend = "Legend1";
-            series4.Name = "Genders";
-            this.chartEmployeesGender.Series.Add(series4);
-            this.chartEmployeesGender.Size = new System.Drawing.Size(562, 420);
-            this.chartEmployeesGender.TabIndex = 1;
-            this.chartEmployeesGender.Text = "chart1";
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial", 15F);
+            this.label27.Location = new System.Drawing.Point(1619, 488);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(348, 45);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "Gender distribution";
             // 
-            // chartEmployeesContractType
+            // label28
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartEmployeesContractType.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmployeesContractType.Legends.Add(legend2);
-            this.chartEmployeesContractType.Location = new System.Drawing.Point(1401, 62);
-            this.chartEmployeesContractType.Margin = new System.Windows.Forms.Padding(8);
-            this.chartEmployeesContractType.Name = "chartEmployeesContractType";
-            this.chartEmployeesContractType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Arial", 10F);
-            series3.Legend = "Legend1";
-            series3.Name = "ContractType";
-            this.chartEmployeesContractType.Series.Add(series3);
-            this.chartEmployeesContractType.Size = new System.Drawing.Size(483, 417);
-            this.chartEmployeesContractType.TabIndex = 2;
-            this.chartEmployeesContractType.Text = "chart1";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Arial", 15F);
+            this.label28.Location = new System.Drawing.Point(1651, 1017);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(273, 45);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Contract types";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 15F);
+            this.label29.Location = new System.Drawing.Point(984, 625);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(177, 45);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Positions";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.gradientPanel1);
+            this.panel1.Location = new System.Drawing.Point(963, 721);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(360, 301);
+            this.panel1.TabIndex = 5;
             // 
             // gpnlStatsType
             // 
@@ -3615,6 +3671,51 @@ namespace LAMN_Software
             this.pbxAddSchedules.TabIndex = 16;
             this.pbxAddSchedules.TabStop = false;
             // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel1.Controls.Add(this.label31);
+            this.gradientPanel1.Controls.Add(this.lblStatsEmployee_AverageSalary);
+            this.gradientPanel1.Controls.Add(this.label30);
+            this.gradientPanel1.Location = new System.Drawing.Point(8, 8);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(344, 285);
+            this.gradientPanel1.TabIndex = 6;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Arial", 10F);
+            this.label31.Location = new System.Drawing.Point(102, 230);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(136, 32);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "(Per hour)";
+            // 
+            // lblStatsEmployee_AverageSalary
+            // 
+            this.lblStatsEmployee_AverageSalary.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsEmployee_AverageSalary.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatsEmployee_AverageSalary.Location = new System.Drawing.Point(3, 51);
+            this.lblStatsEmployee_AverageSalary.Name = "lblStatsEmployee_AverageSalary";
+            this.lblStatsEmployee_AverageSalary.Size = new System.Drawing.Size(338, 116);
+            this.lblStatsEmployee_AverageSalary.TabIndex = 1;
+            this.lblStatsEmployee_AverageSalary.Text = "€99";
+            this.lblStatsEmployee_AverageSalary.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(12, 181);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(310, 49);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Average salary";
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -3624,7 +3725,7 @@ namespace LAMN_Software
             this.ControlBox = false;
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(2308, 1327);
             this.MinimumSize = new System.Drawing.Size(1438, 837);
             this.Name = "ProductForm";
@@ -3657,6 +3758,9 @@ namespace LAMN_Software
             this.tpEmployeeAdd.ResumeLayout(false);
             this.tpEmployeeAdd.PerformLayout();
             this.tpStatsEmployee.ResumeLayout(false);
+            this.tpStatsEmployee.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).EndInit();
             this.tpNewOrder.ResumeLayout(false);
             this.tpNewOrder.PerformLayout();
@@ -3669,8 +3773,7 @@ namespace LAMN_Software
             this.gbNewInfo.ResumeLayout(false);
             this.gbNewInfo.PerformLayout();
             this.pnlBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.gpnlStatsType.ResumeLayout(false);
             this.gpnlStatistics.ResumeLayout(false);
             this.gpnlSchedules.ResumeLayout(false);
@@ -3680,6 +3783,8 @@ namespace LAMN_Software
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).EndInit();
             this.gpnlCreateSchedules.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).EndInit();
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3957,5 +4062,13 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesEmpContractHours;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesGender;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesContractType;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblStatsEmployee_AverageSalary;
+        private System.Windows.Forms.Label label30;
+        private GradientPanel gradientPanel1;
+        private System.Windows.Forms.Label label31;
     }
 }
