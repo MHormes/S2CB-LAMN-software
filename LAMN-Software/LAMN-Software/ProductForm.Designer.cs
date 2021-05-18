@@ -1761,7 +1761,7 @@ namespace LAMN_Software
             this.chartStock.Location = new System.Drawing.Point(388, 69);
             this.chartStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chartStock.Name = "chartStock";
-            this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Store Stock Total";
@@ -1771,7 +1771,7 @@ namespace LAMN_Software
             series2.YValuesPerPoint = 6;
             this.chartStock.Series.Add(series1);
             this.chartStock.Series.Add(series2);
-            this.chartStock.Size = new System.Drawing.Size(1118, 542);
+            this.chartStock.Size = new System.Drawing.Size(1118, 629);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
             this.chartStock.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
