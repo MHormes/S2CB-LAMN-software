@@ -44,6 +44,11 @@ namespace LAMN_Software
             UpdateEmployeeChartGender();
             UpdateEmployeeChartContractType();
             UpdateEmployeeAverageSalaryPerHour();
+            UpdateMostPopularStock();
+
+            cbxStats1.SelectedIndex = 1;
+            cbxStats2.SelectedIndex = 2;
+            cbxStats3.SelectedIndex = 3;
 
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
@@ -1398,7 +1403,27 @@ namespace LAMN_Software
         }
 
 
-        public void UpdateStockGraph()
+        public void UpdateMostPopularStock()
+        {
+            Product winner;
+            float mostStockMax = 0.0f;
+            foreach (Product p in SH.GetAllProducts())
+            {
+                if (p.Active == 1)
+                { 
+                    if (p.TotalSold > mostStockMax)
+                    {
+                        mostStockMax = p.TotalSold;
+                        winner = p;
+                        lblStatsStock_MostPopular.Text = $"{winner.Name}";
+                        lblStatsStock_MostPopularAmount.Text = $"{winner.TotalSold} total items sold";
+                    }
+                }
+            }
+            
+        }
+
+            public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
             {
@@ -1845,7 +1870,7 @@ namespace LAMN_Software
 
         //make a new order of a product
         private void btnAddNewOrder_Click(object sender, EventArgs e)
-        {
+        {       
             try
             {
                 //product
@@ -2095,5 +2120,43 @@ namespace LAMN_Software
             lblNewInfo_iceNumber_input.Text = empChange.IceNumber;
             lblNewInfo_iceRelation_input.Text = (empChange.IceRelationship).ToString();
         }
+
+        public void StatsStockRandom()
+        {
+            Random rnd = new Random();
+            int number1 = 0;
+            int number2 = 0;
+            int number3 = 0;
+
+            while (number1 == number2 && number2 == number3 && number1 == number3)
+            {
+                int counter = 0;
+
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 1)
+                    {
+                        counter++;
+                    }
+                }
+                number1 = rnd.Next(0, counter);
+                number2 = rnd.Next(0, counter);
+                number3 = rnd.Next(0, counter);
+            }
+
+
+
+
+            cbxStats1.SelectedIndex = number1;
+            cbxStats2.SelectedIndex = number2;
+            cbxStats3.SelectedIndex = number3;
+        }
+
+        private void btnStatsStockRandom_Click(object sender, EventArgs e)
+        {
+            StatsStockRandom();
+        }
     }
+
+    
 }
