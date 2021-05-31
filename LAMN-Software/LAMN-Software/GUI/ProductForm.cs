@@ -519,7 +519,7 @@ namespace LAMN_Software
 
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
-            
+
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
@@ -554,7 +554,7 @@ namespace LAMN_Software
             tbxEmployeeAdd_Nationality.Text = emp.Nationality;
             tbxEmployeeAdd_ContractHours.Text = emp.ContractHours.ToString();
 
-            
+
 
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
@@ -1003,18 +1003,26 @@ namespace LAMN_Software
                     //for every timeslot
                     for (int s = 1; s < 4; s++)
                     {
-                        //take all bsns and split them up
-                        string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
+                        //take all names and split them up
+                        string allEmp = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
                         //check if there are any people scheduled
-                        if (allBsn != null)
+                        if (allEmp != null)
                         {
-                            string[] bsnArray = allBsn.Split('.');
-
+                            string[] bsnArray = allEmp.Split('.');
+                            List<Employee> empList = new List<Employee>();
+                            foreach (string empName in bsnArray)
+                            {
+                                Employee emp = EH.GetEmployeeByName(empName);
+                                if(emp != null)
+                                {
+                                    empList.Add(emp);
+                                }
+                            }
                             //foreach bsn add to the db
-                            foreach (string bsn in bsnArray)
+                            foreach (Employee emp in empList)
                             {
                                 TimeSlot slot = (TimeSlot)s;
-                                SCTH.SaveCurrentWeekTemplate((Day)d, bsn, slot.ToString());
+                                SCTH.SaveCurrentWeekTemplate((Day)d, emp.Bsn, slot.ToString());
                             }
                         }
 
@@ -1050,13 +1058,13 @@ namespace LAMN_Software
 
                     switch (schedule.Day)
                     {
-                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
                     }
                 }
                 CheckForMinPeopleMet(peopleCount);
@@ -1226,6 +1234,11 @@ namespace LAMN_Software
             if (SCTH.GetWeekScheduleTemplateFromDB() == null)
             {
                 FillScheduleGridViewCreate();
+                List<int> peopleCount = new List<int>();
+                for (int i = 0; i <= 21; i++)
+                {
+                    peopleCount.Add(0);
+                }
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
                     int i = 0;
@@ -1235,21 +1248,23 @@ namespace LAMN_Software
 
                     switch (scheduleTemplate.Day)
                     {
-                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
                     }
 
                 }
+                CheckForMinPeopleMet(peopleCount);
             }
             else
             {
                 MessageBox.Show("Template not present in database.");
             }
+
         }
 
         //Button click for minimum amount of people per shift
@@ -1265,7 +1280,7 @@ namespace LAMN_Software
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex, (int)dgvSchedulesCreate.Rows[e.RowIndex].Cells[e.ColumnIndex+3].Value);
+                ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex, (int)dgvSchedulesCreate.Rows[e.RowIndex].Cells[e.ColumnIndex + 3].Value);
                 SCAE.RefreshPageEvent -= new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
                 SCAE.RefreshPageEvent += new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
                 SCAE.ShowDialog();
@@ -1397,7 +1412,7 @@ namespace LAMN_Software
             foreach (Product p in SH.GetAllProducts())
             {
                 if (p.Active == 1)
-                { 
+                {
                     if (p.TotalSold > mostStockMax)
                     {
                         mostStockMax = p.TotalSold;
@@ -1407,10 +1422,10 @@ namespace LAMN_Software
                     }
                 }
             }
-            
+
         }
 
-            public void UpdateStockGraph()
+        public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
             {
@@ -1614,11 +1629,11 @@ namespace LAMN_Software
                 }
             }
 
-            double average = Math.Round((total / counter),2);
+            double average = Math.Round((total / counter), 2);
             lblStatsEmployee_AverageSalary.Text = $"€{average}";
         }
 
-   
+
 
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1859,7 +1874,7 @@ namespace LAMN_Software
 
         //make a new order of a product
         private void btnAddNewOrder_Click(object sender, EventArgs e)
-        {       
+        {
             try
             {
                 //product
@@ -2147,5 +2162,5 @@ namespace LAMN_Software
         }
     }
 
-    
+
 }

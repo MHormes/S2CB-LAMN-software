@@ -94,6 +94,18 @@ namespace LAMN_Software
             return null;
         }
 
+        public Employee GetEmployeeByName(string FullName)
+        {
+            foreach(Employee employee in allEmployees)
+            {
+                if(employee.GetFullName() == FullName)
+                {
+                    return employee;
+                }
+            }
+            return null;
+        }
+
         public List<Employee> GetAllEmployees()
         {
            return this.allEmployees;
