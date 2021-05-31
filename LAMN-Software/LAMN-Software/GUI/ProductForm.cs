@@ -519,7 +519,7 @@ namespace LAMN_Software
 
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
             cbxEmployeeAdd_Position.DataSource = Enum.GetNames(typeof(JobPosition));
-            
+
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
@@ -554,7 +554,7 @@ namespace LAMN_Software
             tbxEmployeeAdd_Nationality.Text = emp.Nationality;
             tbxEmployeeAdd_ContractHours.Text = emp.ContractHours.ToString();
 
-            
+
 
             //populating combobox with enums
             cbxEmployeeAdd_ICERelationship.DataSource = Enum.GetNames(typeof(ICERelation));
@@ -716,6 +716,7 @@ namespace LAMN_Software
                 {
                     dgvSchedulesEmp.Rows.Add(employee);
                     dgvSchedulesEmp.Rows[i].Cells[9].Value = employee.ContractHours.ToString();
+                    dgvSchedulesEmp.Rows[i].Cells[10].Value = (employee.ContractHours / 40.00).ToString(); ;
                     i++;
                 }
             }
@@ -900,7 +901,7 @@ namespace LAMN_Software
                         Employee emp = EH.GetAllEmployees()[i];
                         if (emp.Bsn == schedule.EmployeeBSN)
                         {
-                            emp.FTE += 8;
+                            emp.WorkedHours += 8;
                             if (schedule.Day == Day.MONDAY)
                                 dgvSchedulesEmp.Rows[i].Cells[1].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.TUESDAY)
@@ -916,7 +917,12 @@ namespace LAMN_Software
                             else if (schedule.Day == Day.SUNDAY)
                                 dgvSchedulesEmp.Rows[i].Cells[7].Value = schedule.TimeSlot;
 
-                            dgvSchedulesEmp.Rows[i].Cells[8].Value = EH.GetAllEmployees()[i].FTE;
+                            dgvSchedulesEmp.Rows[i].Cells[8].Value = emp.WorkedHours;
+                            if (emp.WorkedHours < emp.ContractHours - 2 || emp.WorkedHours > emp.ContractHours + 2)
+                            {
+                                dgvSchedulesEmp.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                            }
+                            else { dgvSchedulesEmp.Rows[i].Cells[8].Style.BackColor = Color.Green; }
                         }
                     }
 
@@ -977,6 +983,7 @@ namespace LAMN_Software
                         }
                     }
                 }
+                btnSchedulesEmpShowWeek.PerformClick();
             }
             catch (Exception ex)
             {
@@ -996,18 +1003,26 @@ namespace LAMN_Software
                     //for every timeslot
                     for (int s = 1; s < 4; s++)
                     {
-                        //take all bsns and split them up
-                        string allBsn = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
+                        //take all names and split them up
+                        string allEmp = (string)dgvSchedulesCreate.Rows[d].Cells[s].Value;
                         //check if there are any people scheduled
-                        if (allBsn != null)
+                        if (allEmp != null)
                         {
-                            string[] bsnArray = allBsn.Split('.');
-
+                            string[] bsnArray = allEmp.Split('.');
+                            List<Employee> empList = new List<Employee>();
+                            foreach (string empName in bsnArray)
+                            {
+                                Employee emp = EH.GetEmployeeByName(empName);
+                                if(emp != null)
+                                {
+                                    empList.Add(emp);
+                                }
+                            }
                             //foreach bsn add to the db
-                            foreach (string bsn in bsnArray)
+                            foreach (Employee emp in empList)
                             {
                                 TimeSlot slot = (TimeSlot)s;
-                                SCTH.SaveCurrentWeekTemplate((Day)d, bsn, slot.ToString());
+                                SCTH.SaveCurrentWeekTemplate((Day)d, emp.Bsn, slot.ToString());
                             }
                         }
 
@@ -1043,13 +1058,13 @@ namespace LAMN_Software
 
                     switch (schedule.Day)
                     {
-                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
-                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN).Bsn + "."; break;
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(schedule.EmployeeBSN) + "."; break;
                     }
                 }
                 CheckForMinPeopleMet(peopleCount);
@@ -1219,6 +1234,11 @@ namespace LAMN_Software
             if (SCTH.GetWeekScheduleTemplateFromDB() == null)
             {
                 FillScheduleGridViewCreate();
+                List<int> peopleCount = new List<int>();
+                for (int i = 0; i <= 21; i++)
+                {
+                    peopleCount.Add(0);
+                }
                 foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
                 {
                     int i = 0;
@@ -1228,21 +1248,23 @@ namespace LAMN_Software
 
                     switch (scheduleTemplate.Day)
                     {
-                        case Day.MONDAY: dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.TUESDAY: dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.WEDNESDAY: dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.THURDAY: dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.FRIDAY: dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.SATURDAY: dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
-                        case Day.SUNDAY: dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN).Bsn; break;
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
                     }
 
                 }
+                CheckForMinPeopleMet(peopleCount);
             }
             else
             {
                 MessageBox.Show("Template not present in database.");
             }
+
         }
 
         //Button click for minimum amount of people per shift
@@ -1258,7 +1280,7 @@ namespace LAMN_Software
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex);
+                ScheduleCreateAddEmployee SCAE = new ScheduleCreateAddEmployee(EH, SCH, Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), (Day)e.RowIndex, (TimeSlot)e.ColumnIndex, (int)dgvSchedulesCreate.Rows[e.RowIndex].Cells[e.ColumnIndex + 3].Value);
                 SCAE.RefreshPageEvent -= new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
                 SCAE.RefreshPageEvent += new ScheduleCreateAddEmployee.RefreshingSchedulePage(btnSchedulesCreateShowWeek_Click);
                 SCAE.ShowDialog();
@@ -1277,26 +1299,6 @@ namespace LAMN_Software
                 dgvSchedulesEmp.Rows[i].Cells[5].Value = null;
                 dgvSchedulesEmp.Rows[i].Cells[6].Value = null;
                 dgvSchedulesEmp.Rows[i].Cells[7].Value = null;
-            }
-        }
-
-        //method for clearing the schedule minimum view grid.
-        private void clearMinimumGrid()
-        {
-            int i = 0;
-            foreach (TimeSlot timeSlot in (TimeSlot[])Enum.GetValues(typeof(TimeSlot)))
-            {
-                if (timeSlot == TimeSlot.NO_SHIFT)
-                    continue;
-
-                dgvScheduleMinP.Rows[i].Cells[1].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[2].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[3].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[4].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[5].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[6].Value = null;
-                dgvScheduleMinP.Rows[i].Cells[7].Value = null;
-                i++;
             }
         }
 
@@ -1410,7 +1412,7 @@ namespace LAMN_Software
             foreach (Product p in SH.GetAllProducts())
             {
                 if (p.Active == 1)
-                { 
+                {
                     if (p.TotalSold > mostStockMax)
                     {
                         mostStockMax = p.TotalSold;
@@ -1420,10 +1422,10 @@ namespace LAMN_Software
                     }
                 }
             }
-            
+
         }
 
-            public void UpdateStockGraph()
+        public void UpdateStockGraph()
         {
             foreach (var series in chartStock.Series)
             {
@@ -1627,11 +1629,11 @@ namespace LAMN_Software
                 }
             }
 
-            double average = Math.Round((total / counter),2);
+            double average = Math.Round((total / counter), 2);
             lblStatsEmployee_AverageSalary.Text = $"€{average}";
         }
 
-   
+
 
         private void cbxStats1_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1705,7 +1707,7 @@ namespace LAMN_Software
         public void AdjustColumnWidthSchedules()
         {
             dgvSchedulesEmp.RowHeadersWidth = 4;
-            dgvSchedulesEmp.Columns[0].Width = 198; // Name
+            dgvSchedulesEmp.Columns[0].Width = 130; // Name
             dgvSchedulesEmp.Columns[1].Width = 130; // M
             dgvSchedulesEmp.Columns[2].Width = 130; // T
             dgvSchedulesEmp.Columns[3].Width = 130; // W
@@ -1713,14 +1715,15 @@ namespace LAMN_Software
             dgvSchedulesEmp.Columns[5].Width = 130; // F
             dgvSchedulesEmp.Columns[6].Width = 130; // S
             dgvSchedulesEmp.Columns[7].Width = 130; // S
-            dgvSchedulesEmp.Columns[8].Width = 1; // FTE
-            dgvSchedulesEmp.Columns[9].Width = 1; // Contract hours
+            dgvSchedulesEmp.Columns[8].Width = 0; // WorkedHours
+            dgvSchedulesEmp.Columns[9].Width = 0; // Contract hours
+            dgvSchedulesEmp.Columns[10].Width = 0; //FTE
         }
 
         public void AdjustColumnWidthSchedulesFTE()
         {
             dgvSchedulesEmp.RowHeadersWidth = 4;
-            dgvSchedulesEmp.Columns[0].Width = 198; // Name
+            dgvSchedulesEmp.Columns[0].Width = 130; // Name
             dgvSchedulesEmp.Columns[1].Width = 114; // M
             dgvSchedulesEmp.Columns[2].Width = 114; // T
             dgvSchedulesEmp.Columns[3].Width = 114; // W
@@ -1728,8 +1731,9 @@ namespace LAMN_Software
             dgvSchedulesEmp.Columns[5].Width = 114; // F
             dgvSchedulesEmp.Columns[6].Width = 113; // S
             dgvSchedulesEmp.Columns[7].Width = 113; // S
-            dgvSchedulesEmp.Columns[8].Width = 113; // FTE
-            dgvSchedulesEmp.Columns[9].Width = 113; //Contrat hours
+            dgvSchedulesEmp.Columns[8].Width = 60; // WorkedHours
+            dgvSchedulesEmp.Columns[9].Width = 60; //Contrat hours
+            dgvSchedulesEmp.Columns[10].Width = 60; // FTE
         }
 
         public void AdjustColumnWidthEmployees()
@@ -1870,7 +1874,7 @@ namespace LAMN_Software
 
         //make a new order of a product
         private void btnAddNewOrder_Click(object sender, EventArgs e)
-        {       
+        {
             try
             {
                 //product
@@ -2158,5 +2162,5 @@ namespace LAMN_Software
         }
     }
 
-    
+
 }

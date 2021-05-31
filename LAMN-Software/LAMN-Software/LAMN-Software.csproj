@@ -101,10 +101,10 @@
     <Compile Include="DBHandling\ScheduleHandler.cs" />
     <Compile Include="DBHandling\LoginHandler.cs" />
     <Compile Include="DBHandling\ScheduleTemplateHandler.cs" />
-    <Compile Include="EmploymentTermination.cs">
+    <Compile Include="GUI\EmploymentTermination.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmploymentTermination.Designer.cs">
+    <Compile Include="GUI\EmploymentTermination.Designer.cs">
       <DependentUpon>EmploymentTermination.cs</DependentUpon>
     </Compile>
     <Compile Include="ENUMS\Day.cs" />
@@ -114,10 +114,10 @@
     <Compile Include="Exceptions\IncorrectSalaryException.cs" />
     <Compile Include="Exceptions\IncorrectStockMoreThanStore.cs" />
     <Compile Include="Exceptions\IncorrectStockNameException.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="GUI\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ENUMS\ICERelation.cs" />
@@ -133,10 +133,10 @@
     <Compile Include="Exceptions\IncorrectPhoneNumberException.cs" />
     <Compile Include="Exceptions\IncorrectQuantityException.cs" />
     <Compile Include="Exceptions\IncorrectEANException.cs" />
-    <Compile Include="ProductForm.cs">
+    <Compile Include="GUI\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductForm.Designer.cs">
+    <Compile Include="GUI\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -145,19 +145,19 @@
     <Compile Include="ENUMS\TimeSlot.cs" />
     <Compile Include="DataClasses\SchedulesMinimum.cs" />
     <Compile Include="DBHandling\ScheduleMinimumHandler.cs" />
-    <Compile Include="ScheduleCreateAddEmployee.cs">
+    <Compile Include="GUI\ScheduleCreateAddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScheduleCreateAddEmployee.Designer.cs">
+    <Compile Include="GUI\ScheduleCreateAddEmployee.Designer.cs">
       <DependentUpon>ScheduleCreateAddEmployee.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EmploymentTermination.resx">
+    <EmbeddedResource Include="GUI\EmploymentTermination.resx">
       <DependentUpon>EmploymentTermination.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductForm.resx">
+    <EmbeddedResource Include="GUI\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -170,7 +170,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScheduleCreateAddEmployee.resx">
+    <EmbeddedResource Include="GUI\ScheduleCreateAddEmployee.resx">
       <DependentUpon>ScheduleCreateAddEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

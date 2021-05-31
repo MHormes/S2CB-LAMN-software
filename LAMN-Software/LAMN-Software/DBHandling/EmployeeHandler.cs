@@ -94,6 +94,18 @@ namespace LAMN_Software
             return null;
         }
 
+        public Employee GetEmployeeByName(string FullName)
+        {
+            foreach(Employee employee in allEmployees)
+            {
+                if(employee.GetFullName() == FullName)
+                {
+                    return employee;
+                }
+            }
+            return null;
+        }
+
         public List<Employee> GetAllEmployees()
         {
            return this.allEmployees;
@@ -208,7 +220,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation, SalaryPerHour=@salaryPerHour, contractStartingDate=@startingDate, contractEndingDate=@endingDate, ContractType=@contractType, Gender=gender, Degree=@degree, Nationality=@nationality, ContractHours=@contractHours WHERE BSN=@bsn;";
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, DateOfBirth=@dateOfBirth, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Position=@position, AddInformation=@addInformation, SalaryPerHour=@salaryPerHour, contractStartingDate=@startingDate, contractEndingDate=@endingDate, ContractType=@contractType, Gender=@gender, Degree=@degree, Nationality=@nationality, ContractHours=@contractHours WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 

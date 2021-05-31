@@ -148,9 +148,12 @@ namespace LAMN_Software
         {
             //creates a color gradient as the background to make the form more visually appealing
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                                                           Color.FromArgb(84, 50, 168),
-                                                           Color.FromArgb(58, 34, 117),
+                                                           Color.FromArgb(255, 158, 0),
+                                                           Color.FromArgb(212, 95, 0),
                                                            90F))
+                                                           // Color.FromArgb(84, 50, 168),
+                                                           //Color.FromArgb(58, 34, 117),
+                                                           //90F)) 
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }

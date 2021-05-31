@@ -27,7 +27,7 @@ namespace LAMN_Software
         public string Degree { get; set; }
         public string Nationality { get; set; }
         public int ContractHours { get; set; }
-        public double FTE { get; set; }
+        public double WorkedHours { get; set; }
         private string fullName;
 
         public Employee(string firstName, string secondName, string username, string bsn, DateTime dateOfBirth, string phoneNumber, string email, string iceNumber, ICERelation iceRelationship, JobPosition position, string addInformation, string quittingReason, double salaryPerHour, DateTime startingDate, DateTime endingDate, string contractType, string gender, string degree, string nationality, int contracthours)
@@ -57,7 +57,8 @@ namespace LAMN_Software
 
         public override string ToString()
         {
-            return $"FULL NAME: {FirstName} {SecondName}{"\t"}BSN:{Bsn}{"\t"}POSITION: {Position.ToString()}";
+            //return $"FULL NAME: {FirstName} {SecondName}{"\t"}BSN:{Bsn}{"\t"}POSITION: {Position.ToString()}";
+            return FirstName + " " + SecondName;
         }
 
         public string GetFullName()
