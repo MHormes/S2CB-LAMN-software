@@ -23,7 +23,7 @@ function loginAccount()
             $_SESSION['Password'] = $_POST["password"];
             $_SESSION['Username'] = $_POST["username"];
             setcookie('loginMessage', "", 1);
-            header('Location: schedules.php');
+            header('Location: personalSchedules.php');
         } 
         else {
             setcookie('loginMessage', "User not found");

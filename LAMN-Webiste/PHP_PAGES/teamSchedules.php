@@ -7,7 +7,7 @@ if(isset($_POST['btnSelectWeek']))
 {
     $weekNmr = $_POST['weekSelecter'];
     $schedules = GetSchedulesFromWeek($_POST['weekSelecter']);
-    $_SESSION['started'] = true;
+    $_SESSION['startedTeam'] = true;
 }
 ?>
 
@@ -25,8 +25,9 @@ if(isset($_POST['btnSelectWeek']))
     <body>
 
     
-    <div class="header">Schedules</div>
+    <div class="header">Team schedules</div>
     <li><a href="../PHP_PAGES/profile.php">Profile</a></li>
+    <li><a href="../PHP_PAGES/personalSchedules.php">Personal schedule</a></li>
     <form method="post" action="#">
     <input class="weekCounter" type="number" name="weekSelecter" min="0" max="52" step="1" value="<?php echo $weekNmr?>">
     <input class="button" type="submit" name="btnSelectWeek" value="Show">
@@ -45,7 +46,7 @@ if(isset($_POST['btnSelectWeek']))
     </tr>
 
     <?php
-    if(isset($_SESSION['started'])){
+    if(isset($_SESSION['startedTeam'])){
         $LastBSN = "";
         $NameUser="";
         $Monday="";
@@ -122,6 +123,7 @@ if(isset($_POST['btnSelectWeek']))
             }
 
         } 
+        unset($_SESSION['startedTeam']);
     }
         ?>
 
