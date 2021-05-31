@@ -18,13 +18,14 @@ namespace LAMN_Software
         int weekNmr;
         Day day;
         TimeSlot timeSlot;
+        int minPeople;
         List<Schedule> specificShift;
         List<Employee> allEmployees;
 
         public delegate void RefreshingSchedulePage(object sender, EventArgs e);
         public event RefreshingSchedulePage RefreshPageEvent;
 
-        public ScheduleCreateAddEmployee(EmployeeHandler givenEmpHandler, ScheduleHandler givenSchHandler, int givenWeekNmr, Day selectedDay, TimeSlot chosenTime)
+        public ScheduleCreateAddEmployee(EmployeeHandler givenEmpHandler, ScheduleHandler givenSchHandler, int givenWeekNmr, Day selectedDay, TimeSlot chosenTime, int minPeople)
         {
             InitializeComponent();
             Shandler = givenSchHandler;
@@ -32,7 +33,8 @@ namespace LAMN_Software
             weekNmr = givenWeekNmr;
             day = selectedDay;
             timeSlot = chosenTime;
-            lblShiftInformation.Text = $"Assigning employees to the {day} {timeSlot} shift of week {weekNmr}";
+            this.minPeople = minPeople;
+            lblShiftInformation.Text = $"Assigning employees to the {day} {timeSlot} shift of week {weekNmr} (Minimum set for this shift: {this.minPeople})";
             GetShift();
         }
 
