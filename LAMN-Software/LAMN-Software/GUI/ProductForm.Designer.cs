@@ -346,6 +346,9 @@ namespace LAMN_Software
             this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.tpSales = new System.Windows.Forms.TabPage();
+            this.gradientPanel7 = new LAMN_Software.GradientPanel();
+            this.lblSales_TotalPrice = new System.Windows.Forms.Label();
+            this.lblSales_TotalLabel = new System.Windows.Forms.Label();
             this.dgvSales_Reciept = new System.Windows.Forms.DataGridView();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -353,6 +356,10 @@ namespace LAMN_Software
             this.gradientPanel6 = new LAMN_Software.GradientPanel();
             this.tbxSales_Barcode = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlSales.SuspendLayout();
@@ -403,7 +410,9 @@ namespace LAMN_Software
             this.gbOldInfo.SuspendLayout();
             this.gbNewInfo.SuspendLayout();
             this.tpSales.SuspendLayout();
+            this.gradientPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).BeginInit();
+            this.gradientPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -4066,8 +4075,9 @@ namespace LAMN_Software
             // 
             // tpSales
             // 
-            this.tpSales.Controls.Add(this.dgvSales_Reciept);
             this.tpSales.Controls.Add(this.gradientPanel6);
+            this.tpSales.Controls.Add(this.gradientPanel7);
+            this.tpSales.Controls.Add(this.dgvSales_Reciept);
             this.tpSales.Controls.Add(this.tbxSales_Barcode);
             this.tpSales.Location = new System.Drawing.Point(8, 34);
             this.tpSales.Margin = new System.Windows.Forms.Padding(4);
@@ -4078,30 +4088,57 @@ namespace LAMN_Software
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
             // 
+            // gradientPanel7
+            // 
+            this.gradientPanel7.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel7.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel7.Controls.Add(this.lblSales_TotalPrice);
+            this.gradientPanel7.Controls.Add(this.lblSales_TotalLabel);
+            this.gradientPanel7.Location = new System.Drawing.Point(1408, 1094);
+            this.gradientPanel7.Name = "gradientPanel7";
+            this.gradientPanel7.Size = new System.Drawing.Size(668, 70);
+            this.gradientPanel7.TabIndex = 2;
+            // 
+            // lblSales_TotalPrice
+            // 
+            this.lblSales_TotalPrice.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblSales_TotalPrice.Location = new System.Drawing.Point(231, 3);
+            this.lblSales_TotalPrice.Name = "lblSales_TotalPrice";
+            this.lblSales_TotalPrice.Size = new System.Drawing.Size(437, 61);
+            this.lblSales_TotalPrice.TabIndex = 3;
+            this.lblSales_TotalPrice.Text = "€0.00";
+            this.lblSales_TotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSales_TotalLabel
+            // 
+            this.lblSales_TotalLabel.AutoSize = true;
+            this.lblSales_TotalLabel.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblSales_TotalLabel.Location = new System.Drawing.Point(3, 3);
+            this.lblSales_TotalLabel.Name = "lblSales_TotalLabel";
+            this.lblSales_TotalLabel.Size = new System.Drawing.Size(157, 61);
+            this.lblSales_TotalLabel.TabIndex = 3;
+            this.lblSales_TotalLabel.Text = "Total:";
+            // 
             // dgvSales_Reciept
             // 
             this.dgvSales_Reciept.AllowUserToAddRows = false;
             this.dgvSales_Reciept.AllowUserToDeleteRows = false;
             this.dgvSales_Reciept.AllowUserToResizeColumns = false;
             this.dgvSales_Reciept.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales_Reciept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSales_Reciept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Quantity,
             this.Name,
             this.Price});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSales_Reciept.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales_Reciept.Location = new System.Drawing.Point(1408, 498);
             this.dgvSales_Reciept.Name = "dgvSales_Reciept";
+            this.dgvSales_Reciept.ReadOnly = true;
             this.dgvSales_Reciept.RowHeadersVisible = false;
             this.dgvSales_Reciept.RowHeadersWidth = 82;
             this.dgvSales_Reciept.RowTemplate.Height = 33;
+            this.dgvSales_Reciept.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSales_Reciept.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSales_Reciept.Size = new System.Drawing.Size(668, 596);
             this.dgvSales_Reciept.TabIndex = 2;
@@ -4111,6 +4148,7 @@ namespace LAMN_Software
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.MinimumWidth = 2;
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             this.Quantity.Width = 70;
             // 
             // Name
@@ -4118,6 +4156,7 @@ namespace LAMN_Software
             this.Name.HeaderText = "Name";
             this.Name.MinimumWidth = 2;
             this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
             this.Name.Width = 500;
             // 
             // Price
@@ -4125,15 +4164,20 @@ namespace LAMN_Software
             this.Price.HeaderText = "Price";
             this.Price.MinimumWidth = 2;
             this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             this.Price.Width = 200;
             // 
             // gradientPanel6
             // 
             this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gradientPanel6.ColorTop = System.Drawing.Color.Empty;
+            this.gradientPanel6.Controls.Add(this.label41);
+            this.gradientPanel6.Controls.Add(this.label39);
+            this.gradientPanel6.Controls.Add(this.label40);
+            this.gradientPanel6.Controls.Add(this.label38);
             this.gradientPanel6.Location = new System.Drawing.Point(1408, 206);
             this.gradientPanel6.Name = "gradientPanel6";
-            this.gradientPanel6.Size = new System.Drawing.Size(668, 286);
+            this.gradientPanel6.Size = new System.Drawing.Size(668, 319);
             this.gradientPanel6.TabIndex = 1;
             // 
             // tbxSales_Barcode
@@ -4144,6 +4188,46 @@ namespace LAMN_Software
             this.tbxSales_Barcode.Size = new System.Drawing.Size(648, 69);
             this.tbxSales_Barcode.TabIndex = 0;
             this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Arial", 20F);
+            this.label38.Location = new System.Drawing.Point(49, 122);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(354, 61);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "JBL Charge 4";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Arial", 15F);
+            this.label39.Location = new System.Drawing.Point(51, 183);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(306, 45);
+            this.label39.TabIndex = 4;
+            this.label39.Text = "4251032610620";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Arial", 20F);
+            this.label40.Location = new System.Drawing.Point(443, 122);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(222, 61);
+            this.label40.TabIndex = 3;
+            this.label40.Text = "€150.00";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Arial", 15F);
+            this.label41.Location = new System.Drawing.Point(544, 171);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(105, 45);
+            this.label41.TabIndex = 4;
+            this.label41.Text = "each";
             // 
             // ProductForm
             // 
@@ -4157,7 +4241,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximumSize = new System.Drawing.Size(2336, 1450);
             this.MinimumSize = new System.Drawing.Size(2336, 1450);
-            
+            this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -4227,7 +4311,11 @@ namespace LAMN_Software
             this.gbNewInfo.PerformLayout();
             this.tpSales.ResumeLayout(false);
             this.tpSales.PerformLayout();
+            this.gradientPanel7.ResumeLayout(false);
+            this.gradientPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).EndInit();
+            this.gradientPanel6.ResumeLayout(false);
+            this.gradientPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4543,5 +4631,12 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.Label lblSales_TotalPrice;
+        private System.Windows.Forms.Label lblSales_TotalLabel;
+        private GradientPanel gradientPanel7;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label38;
     }
 }

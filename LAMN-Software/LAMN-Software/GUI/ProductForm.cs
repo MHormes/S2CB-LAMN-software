@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
 using LAMN_Software.DBHandling;
+using System.Linq;
 
 namespace LAMN_Software
 {
@@ -59,6 +60,11 @@ namespace LAMN_Software
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
             AdjustColumnWidthSales();
+            this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 12);
+            this.dgvSales_Reciept.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvSales_Reciept.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 224, 140);
+            dgvSales_Reciept.DefaultCellStyle.SelectionForeColor = Color.Black;
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
@@ -1856,8 +1862,8 @@ namespace LAMN_Software
         public void AdjustColumnWidthSales()
         {
             dgvSales_Reciept.Columns[0].Width = 35; // Quantity
-            dgvSales_Reciept.Columns[1].Width = 200; // Name
-            dgvSales_Reciept.Columns[2].Width = 50; // Price
+            dgvSales_Reciept.Columns[1].Width = 225; // Name
+            dgvSales_Reciept.Columns[2].Width = 70; // Price
         }
 
     public void StatsTypeCheck()
@@ -2223,7 +2229,7 @@ namespace LAMN_Software
 
         private void tbxSales_Barcode_KeyDown(object sender, KeyEventArgs e)
         {
-         //   bool barcodeScannerSuccess = false;
+            bool isDuplicate = false;
 
             if (tbxSales_Barcode.TextLength == 13)
             {
@@ -2233,11 +2239,26 @@ namespace LAMN_Software
                     {
                         if (p.Ean == tbxSales_Barcode.Text)
                         {
-                            itemsToBePurchased.Add(p);
-                            FillSalesDGV();
-                            
-                            
+                            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                            {
+                                //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
+                                if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
+                                {
+                                    dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
+                                    dgvSales_Reciept.Rows[i].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * (p.SellPrice - 0.01);
+                                    isDuplicate = true;
+                                    break;
+                                }
+                            }
+                            if(!isDuplicate)
+                            {
+                                dgvSales_Reciept.Rows.Add(p);
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = 1;
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = (p.SellPrice - 0.01);
+                            }
                             tbxSales_Barcode.Clear();
+                            CalculateSalesTotal();
                             return;
                         }
                     }
@@ -2260,15 +2281,43 @@ namespace LAMN_Software
             //    dgvSales_Reciept.Rows[i].Cells[1].Value = itemsToBePurchased[i].Name;
             //    dgvSales_Reciept.Rows[i].Cells[2].Value = itemsToBePurchased[i].SellPrice;
             //}
-            foreach(Product p in itemsToBePurchased)
+
+
+            //if (itemsToBePurchased.Count > 1)
+            //{
+            //    if (itemsToBePurchased.Count > 0)
+            //    {
+            //        var item = itemsToBePurchased[itemsToBePurchased.Count - 1];
+            //    }
+            //    foreach (Product p in itemsToBePurchased)
+            //    {
+            //        if(p.Ean == itemsToBePurchased[itemsToBePurchased.Count].Ean)
+            //        {
+
+            //        }
+            //    }
+            //}
+
+            foreach (Product p in itemsToBePurchased)
             {
-                MessageBox.Show(p.Name + p.SellPrice);
+                //MessageBox.Show(p.Name + p.SellPrice);
                 dgvSales_Reciept.Rows.Add(p);
                 dgvSales_Reciept.Rows[index].Cells[0].Value = 1;
                 dgvSales_Reciept.Rows[index].Cells[1].Value = p.Name;
-                dgvSales_Reciept.Rows[index].Cells[2].Value = p.SellPrice;
+                dgvSales_Reciept.Rows[index].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice;
                 index++;
             }
+            
+        }
+
+        public void CalculateSalesTotal()
+        {
+            decimal total = 0;
+            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+            {
+                total += Convert.ToDecimal(dgvSales_Reciept.Rows[i].Cells[2].Value);
+            }
+            lblSales_TotalPrice.Text = $"€{String.Format("{0:0.00}", total)}";
         }
     }
 
