@@ -19,6 +19,7 @@ namespace LAMN_Software
         EmployeeHandler EH;
         ScheduleHandler SCH;
         ScheduleTemplateHandler SCTH;
+        ScheduleAutomaticHandler SCHAH;
         LoginHandler LH;
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
@@ -30,6 +31,7 @@ namespace LAMN_Software
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
             SCTH = new ScheduleTemplateHandler();
+            SCHAH = new ScheduleAutomaticHandler();
             LH = new LoginHandler();
             SCMH = new ScheduleMinimumHandler();
             ECH = new EmployeeChangeHandler();
@@ -1211,7 +1213,7 @@ namespace LAMN_Software
         //method for auto creating a schedule for the selected week
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
-            //do some magic shit
+            SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
         }
 
 

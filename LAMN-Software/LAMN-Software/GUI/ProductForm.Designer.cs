@@ -30,19 +30,19 @@ namespace LAMN_Software
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -431,7 +431,7 @@ namespace LAMN_Software
             this.pnlTabCover.Location = new System.Drawing.Point(2, 31);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1164, 73);
+            this.pnlTabCover.Size = new System.Drawing.Size(1164, 51);
             this.pnlTabCover.TabIndex = 11;
             // 
             // btnLogout
@@ -1871,23 +1871,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartStock.Legends.Add(legend5);
+            chartArea9.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartStock.Legends.Add(legend9);
             this.chartStock.Location = new System.Drawing.Point(291, 56);
             this.chartStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Store Stock Total";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Warehouse Stock Total";
-            series7.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series6);
-            this.chartStock.Series.Add(series7);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Store Stock Total";
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Warehouse Stock Total";
+            series12.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series11);
+            this.chartStock.Series.Add(series12);
             this.chartStock.Size = new System.Drawing.Size(838, 511);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -2849,20 +2849,20 @@ namespace LAMN_Software
             // 
             // chartEmployeesPosition
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend6);
+            chartArea10.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend10);
             this.chartEmployeesPosition.Location = new System.Drawing.Point(398, 6);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Font = new System.Drawing.Font("Arial", 10F);
-            series8.LabelForeColor = System.Drawing.Color.White;
-            series8.Legend = "Legend1";
-            series8.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series8);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series13.Font = new System.Drawing.Font("Arial", 10F);
+            series13.LabelForeColor = System.Drawing.Color.White;
+            series13.Legend = "Legend1";
+            series13.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series13);
             this.chartEmployeesPosition.Size = new System.Drawing.Size(372, 332);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
@@ -2901,42 +2901,42 @@ namespace LAMN_Software
             // 
             // chartEmployeesContractType
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartEmployeesContractType.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartEmployeesContractType.Legends.Add(legend7);
+            chartArea11.Name = "ChartArea1";
+            this.chartEmployeesContractType.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartEmployeesContractType.Legends.Add(legend11);
             this.chartEmployeesContractType.Location = new System.Drawing.Point(752, 288);
             this.chartEmployeesContractType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartEmployeesContractType.Name = "chartEmployeesContractType";
             this.chartEmployeesContractType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series9.LabelForeColor = System.Drawing.Color.White;
-            series9.Legend = "Legend1";
-            series9.Name = "ContractType";
-            this.chartEmployeesContractType.Series.Add(series9);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series14.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series14.LabelForeColor = System.Drawing.Color.White;
+            series14.Legend = "Legend1";
+            series14.Name = "ContractType";
+            this.chartEmployeesContractType.Series.Add(series14);
             this.chartEmployeesContractType.Size = new System.Drawing.Size(380, 237);
             this.chartEmployeesContractType.TabIndex = 2;
             this.chartEmployeesContractType.Text = "chart1";
             // 
             // chartEmployeesGender
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chartEmployeesGender.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartEmployeesGender.Legends.Add(legend8);
+            chartArea12.Name = "ChartArea1";
+            this.chartEmployeesGender.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chartEmployeesGender.Legends.Add(legend12);
             this.chartEmployeesGender.Location = new System.Drawing.Point(738, -1);
             this.chartEmployeesGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartEmployeesGender.Name = "chartEmployeesGender";
             this.chartEmployeesGender.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.Font = new System.Drawing.Font("Arial", 12F);
-            series10.LabelForeColor = System.Drawing.Color.White;
-            series10.Legend = "Legend1";
-            series10.Name = "Genders";
-            this.chartEmployeesGender.Series.Add(series10);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series15.Font = new System.Drawing.Font("Arial", 12F);
+            series15.LabelForeColor = System.Drawing.Color.White;
+            series15.Legend = "Legend1";
+            series15.Name = "Genders";
+            this.chartEmployeesGender.Series.Add(series15);
             this.chartEmployeesGender.Size = new System.Drawing.Size(392, 255);
             this.chartEmployeesGender.TabIndex = 1;
             this.chartEmployeesGender.Text = "chart1";
