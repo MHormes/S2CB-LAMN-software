@@ -1126,6 +1126,48 @@ namespace LAMN_Software
             }
         }
 
+        //button for inserting the template in the currently showing week in the create schedule view
+        private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
+        {
+            if (SCTH.GetWeekScheduleTemplateFromDB() == null)
+            {
+                FillScheduleGridViewCreate();
+                SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+                List<int> peopleCount = new List<int>();
+                for (int i = 0; i <= 21; i++)
+                {
+                    peopleCount.Add(0);
+                }
+                foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
+                {
+                    SCH.SaveCurrentWeek(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), scheduleTemplate.Day, scheduleTemplate.EmployeeBSN, scheduleTemplate.TimeSlot.ToString());
+
+                    int i = 0;
+                    if (scheduleTemplate.TimeSlot == TimeSlot.MORNING) { i = 1; }
+                    else if (scheduleTemplate.TimeSlot == TimeSlot.AFTERNOON) { i = 2; }
+                    else { i = 3; }
+
+                    switch (scheduleTemplate.Day)
+                    {
+                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
+                    }
+
+                }
+                CheckForMinPeopleMet(peopleCount);
+            }
+            else
+            {
+                MessageBox.Show("Template not present in database.");
+            }
+
+        }
+
         //method for showing the schedule of the chosen week in the create view
         private void btnSchedulesCreateShowWeek_Click(object sender, EventArgs e)
         {
@@ -1164,6 +1206,12 @@ namespace LAMN_Software
             {
                 MessageBox.Show(SCH.GetAllSchedulesFromDB(weekNmr).Message);
             }
+        }
+
+        //method for auto creating a schedule for the selected week
+        private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
+        {
+            //do some magic shit
         }
 
 
@@ -1319,44 +1367,7 @@ namespace LAMN_Software
             }
         }
 
-        //button for inserting the template in the currently showing week in the create schedule view
-        private void btnSchedulesCreateLoadTemplate_Click(object sender, EventArgs e)
-        {
-            if (SCTH.GetWeekScheduleTemplateFromDB() == null)
-            {
-                FillScheduleGridViewCreate();
-                List<int> peopleCount = new List<int>();
-                for (int i = 0; i <= 21; i++)
-                {
-                    peopleCount.Add(0);
-                }
-                foreach (ScheduleTemplate scheduleTemplate in SCTH.GetScheduleTemplate())
-                {
-                    int i = 0;
-                    if (scheduleTemplate.TimeSlot == TimeSlot.MORNING) { i = 1; }
-                    else if (scheduleTemplate.TimeSlot == TimeSlot.AFTERNOON) { i = 2; }
-                    else { i = 3; }
-
-                    switch (scheduleTemplate.Day)
-                    {
-                        case Day.MONDAY: peopleCount[i] += 1; dgvSchedulesCreate.Rows[0].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.TUESDAY: peopleCount[i + 3] += 1; dgvSchedulesCreate.Rows[1].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.WEDNESDAY: peopleCount[i + 6] += 1; dgvSchedulesCreate.Rows[2].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.THURDAY: peopleCount[i + 9] += 1; dgvSchedulesCreate.Rows[3].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.FRIDAY: peopleCount[i + 12] += 1; dgvSchedulesCreate.Rows[4].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.SATURDAY: peopleCount[i + 15] += 1; dgvSchedulesCreate.Rows[5].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                        case Day.SUNDAY: peopleCount[i + 18] += 1; dgvSchedulesCreate.Rows[6].Cells[i].Value += EH.GetEmployee(scheduleTemplate.EmployeeBSN) + "."; break;
-                    }
-
-                }
-                CheckForMinPeopleMet(peopleCount);
-            }
-            else
-            {
-                MessageBox.Show("Template not present in database.");
-            }
-
-        }
+        
 
         //Button click for minimum amount of people per shift
         private void btnScheduleCreateMinimumPeople_Click(object sender, EventArgs e)
@@ -2201,7 +2212,7 @@ namespace LAMN_Software
             StatsStockRandom();
         }
 
-        
+
     }
 
 
