@@ -24,9 +24,12 @@ namespace LAMN_Software
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
 
+        List<Product> itemsToBePurchased = new List<Product>();
+
         public ProductForm(JobPosition position)
         {
             InitializeComponent();
+
             SH = new StockHandler();
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
@@ -55,6 +58,7 @@ namespace LAMN_Software
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
+            AdjustColumnWidthSales();
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
@@ -1849,8 +1853,14 @@ namespace LAMN_Software
 
 
         }
+        public void AdjustColumnWidthSales()
+        {
+            dgvSales_Reciept.Columns[0].Width = 35; // Quantity
+            dgvSales_Reciept.Columns[1].Width = 200; // Name
+            dgvSales_Reciept.Columns[2].Width = 50; // Price
+        }
 
-        public void StatsTypeCheck()
+    public void StatsTypeCheck()
         {
             if (cbxStatsType.SelectedItem.ToString() == "Stock")
             {
@@ -2201,9 +2211,6 @@ namespace LAMN_Software
                 number3 = rnd.Next(0, counter);
             }
 
-
-
-
             cbxStats1.SelectedIndex = number1;
             cbxStats2.SelectedIndex = number2;
             cbxStats3.SelectedIndex = number3;
@@ -2226,12 +2233,41 @@ namespace LAMN_Software
                     {
                         if (p.Ean == tbxSales_Barcode.Text)
                         {
-                            MessageBox.Show(p.Name);
-                           // barcodeScannerSuccess = true;
+                            itemsToBePurchased.Add(p);
+                            FillSalesDGV();
+                            
+                            
+                            tbxSales_Barcode.Clear();
+                            return;
                         }
                     }
                 }
+                MessageBox.Show($"The EAN {tbxSales_Barcode.Text} is invalid.");
                 tbxSales_Barcode.Clear();
+            }
+        }
+
+
+        public void FillSalesDGV()
+        {
+            dgvSales_Reciept.Rows.Clear();
+            int index = 0;
+            //for (int i = 0; i < itemsToBePurchased.Count; i++)
+            //{
+            //    MessageBox.Show(itemsToBePurchased[i].Name + itemsToBePurchased[i].SellPrice);
+            //    dgvSales_Reciept.Rows.Add(i);
+            //    dgvSales_Reciept.Rows[i].Cells[0].Value = 1;
+            //    dgvSales_Reciept.Rows[i].Cells[1].Value = itemsToBePurchased[i].Name;
+            //    dgvSales_Reciept.Rows[i].Cells[2].Value = itemsToBePurchased[i].SellPrice;
+            //}
+            foreach(Product p in itemsToBePurchased)
+            {
+                MessageBox.Show(p.Name + p.SellPrice);
+                dgvSales_Reciept.Rows.Add(p);
+                dgvSales_Reciept.Rows[index].Cells[0].Value = 1;
+                dgvSales_Reciept.Rows[index].Cells[1].Value = p.Name;
+                dgvSales_Reciept.Rows[index].Cells[2].Value = p.SellPrice;
+                index++;
             }
         }
     }
