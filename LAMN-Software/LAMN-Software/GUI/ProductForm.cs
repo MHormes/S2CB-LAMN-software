@@ -496,7 +496,7 @@ namespace LAMN_Software
 
         //EMPLOYEE MANAGEMENT
 
-      
+
 
 
         public void FillActiveEmployees()
@@ -1106,7 +1106,7 @@ namespace LAMN_Software
                             foreach (string empName in bsnArray)
                             {
                                 Employee emp = EH.GetEmployeeByName(empName);
-                                if(emp != null)
+                                if (emp != null)
                                 {
                                     empList.Add(emp);
                                 }
@@ -1369,7 +1369,7 @@ namespace LAMN_Software
             }
         }
 
-        
+
 
         //Button click for minimum amount of people per shift
         private void btnScheduleCreateMinimumPeople_Click(object sender, EventArgs e)
@@ -1408,7 +1408,7 @@ namespace LAMN_Software
 
         //STATISTICS
 
-     
+
 
         //DESIGN
 
@@ -1869,7 +1869,7 @@ namespace LAMN_Software
             StatsTypeCheck();
         }
 
-     
+
 
         private void btnStockStatsRandomize_Click(object sender, EventArgs e)
         {
@@ -2214,7 +2214,26 @@ namespace LAMN_Software
             StatsStockRandom();
         }
 
+        private void tbxSales_Barcode_KeyDown(object sender, KeyEventArgs e)
+        {
+         //   bool barcodeScannerSuccess = false;
 
+            if (tbxSales_Barcode.TextLength == 13)
+            {
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 1)
+                    {
+                        if (p.Ean == tbxSales_Barcode.Text)
+                        {
+                            MessageBox.Show(p.Name);
+                           // barcodeScannerSuccess = true;
+                        }
+                    }
+                }
+                tbxSales_Barcode.Clear();
+            }
+        }
     }
 
 
