@@ -90,24 +90,146 @@ namespace LAMN_Software
 
         //STOCK MANAGEMENT
 
-        //Navigation Stock button click
+        #region Navbar -----------------
         private void btnStock_Click(object sender, EventArgs e)
         {
             // Changes tab
             tcNavigator.SelectedTab = tpStock;
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
 
             btnStock.ForeColor = Color.White;
-            btnSchedules.ForeColor = Color.LightGray;
-            btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.LightGray;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
 
             cbxStatsType.Visible = false;
             gpnlStatsType.Visible = false;
         }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpSales;
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.White;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpEmployees;
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnStatistics.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.White;
+            btnStatistics.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            StatsTypeCheck();
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+        }
+
+        private void btnEmpStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+
+            cbxStatsType.SelectedItem = "Employees";
+        }
+
+        private void btnStockStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsStock;
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.WhiteSmoke;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.White;
+
+            cbxStatsType.Visible = true;
+            gpnlStatsType.Visible = true;
+
+            cbxStatsType.SelectedItem = "Stock";
+        }
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpScheduleChoise;
+            btnStock.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
+            btnEmployees.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnStatistics.Font = new Font("Arial", 16, FontStyle.Regular);
+            btnSales.Font = new Font("Arial", 16, FontStyle.Regular);
+
+            btnStock.ForeColor = Color.WhiteSmoke;
+            btnSchedules.ForeColor = Color.White;
+            btnEmployees.ForeColor = Color.WhiteSmoke;
+            btnStatistics.ForeColor = Color.WhiteSmoke;
+            btnSales.ForeColor = Color.WhiteSmoke;
+
+            cbxStatsType.Visible = false;
+            gpnlStatsType.Visible = false;
+        }
+
+        #endregion
 
         //Back to stock button in edit/add page
         private void btnBackToStockPage_click(object sender, EventArgs e)
@@ -372,22 +494,7 @@ namespace LAMN_Software
 
         //EMPLOYEE MANAGEMENT
 
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpEmployees;
-            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Bold);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
-
-            btnStock.ForeColor = Color.LightGray;
-            btnSchedules.ForeColor = Color.LightGray;
-            btnEmployees.ForeColor = Color.White;
-            btnStatistics.ForeColor = Color.LightGray;
-
-            cbxStatsType.Visible = false;
-            gpnlStatsType.Visible = false;
-        }
+      
 
 
         public void FillActiveEmployees()
@@ -826,23 +933,6 @@ namespace LAMN_Software
             }
         }
 
-        //Navigation button to schedule choise menu
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpScheduleChoise;
-            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Bold);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Regular);
-
-            btnStock.ForeColor = Color.LightGray;
-            btnSchedules.ForeColor = Color.White;
-            btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.LightGray;
-
-            cbxStatsType.Visible = false;
-            gpnlStatsType.Visible = false;
-        }
 
 
         //button for viewing emp schedules in schedule choise menu
@@ -1305,22 +1395,7 @@ namespace LAMN_Software
 
         //STATISTICS
 
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            StatsTypeCheck();
-            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
-
-            btnStock.ForeColor = Color.LightGray;
-            btnSchedules.ForeColor = Color.LightGray;
-            btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.White;
-
-            cbxStatsType.Visible = true;
-            gpnlStatsType.Visible = true;
-        }
+     
 
         //DESIGN
 
@@ -1781,43 +1856,7 @@ namespace LAMN_Software
             StatsTypeCheck();
         }
 
-        private void btnEmpStats_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStatsEmployee;
-            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
-
-            btnStock.ForeColor = Color.LightGray;
-            btnSchedules.ForeColor = Color.LightGray;
-            btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.White;
-
-            cbxStatsType.Visible = true;
-            gpnlStatsType.Visible = true;
-
-            cbxStatsType.SelectedItem = "Employees";
-        }
-
-        private void btnStockStats_Click(object sender, EventArgs e)
-        {
-            tcNavigator.SelectedTab = tpStatsStock;
-            btnStock.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnSchedules.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnEmployees.Font = new Font("Arial", 18, FontStyle.Regular);
-            btnStatistics.Font = new Font("Arial", 18, FontStyle.Bold);
-
-            btnStock.ForeColor = Color.LightGray;
-            btnSchedules.ForeColor = Color.LightGray;
-            btnEmployees.ForeColor = Color.LightGray;
-            btnStatistics.ForeColor = Color.White;
-
-            cbxStatsType.Visible = true;
-            gpnlStatsType.Visible = true;
-
-            cbxStatsType.SelectedItem = "Stock";
-        }
+     
 
         private void btnStockStatsRandomize_Click(object sender, EventArgs e)
         {
@@ -2161,6 +2200,8 @@ namespace LAMN_Software
         {
             StatsStockRandom();
         }
+
+        
     }
 
 
