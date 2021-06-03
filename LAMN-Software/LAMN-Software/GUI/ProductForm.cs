@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
 using LAMN_Software.DBHandling;
+using System.Linq;
 
 namespace LAMN_Software
 {
@@ -24,9 +25,12 @@ namespace LAMN_Software
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
 
+        List<Product> itemsToBePurchased = new List<Product>();
+
         public ProductForm(JobPosition position)
         {
             InitializeComponent();
+
             SH = new StockHandler();
             EH = new EmployeeHandler();
             SCH = new ScheduleHandler();
@@ -55,6 +59,12 @@ namespace LAMN_Software
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
+            AdjustColumnWidthSales();
+            this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 12);
+            this.dgvSales_Reciept.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvSales_Reciept.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 224, 140);
+            dgvSales_Reciept.DefaultCellStyle.SelectionForeColor = Color.Black;
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
             cbxStockCurrentlyShowing.SelectedIndex = 0;
@@ -496,7 +506,7 @@ namespace LAMN_Software
 
         //EMPLOYEE MANAGEMENT
 
-      
+
 
 
         public void FillActiveEmployees()
@@ -1106,7 +1116,7 @@ namespace LAMN_Software
                             foreach (string empName in bsnArray)
                             {
                                 Employee emp = EH.GetEmployeeByName(empName);
-                                if(emp != null)
+                                if (emp != null)
                                 {
                                     empList.Add(emp);
                                 }
@@ -1374,7 +1384,7 @@ namespace LAMN_Software
             }
         }
 
-        
+
 
         //Button click for minimum amount of people per shift
         private void btnScheduleCreateMinimumPeople_Click(object sender, EventArgs e)
@@ -1413,7 +1423,7 @@ namespace LAMN_Software
 
         //STATISTICS
 
-     
+
 
         //DESIGN
 
@@ -1854,8 +1864,14 @@ namespace LAMN_Software
 
 
         }
+        public void AdjustColumnWidthSales()
+        {
+            dgvSales_Reciept.Columns[0].Width = 35; // Quantity
+            dgvSales_Reciept.Columns[1].Width = 225; // Name
+            dgvSales_Reciept.Columns[2].Width = 70; // Price
+        }
 
-        public void StatsTypeCheck()
+    public void StatsTypeCheck()
         {
             if (cbxStatsType.SelectedItem.ToString() == "Stock")
             {
@@ -1874,7 +1890,7 @@ namespace LAMN_Software
             StatsTypeCheck();
         }
 
-     
+
 
         private void btnStockStatsRandomize_Click(object sender, EventArgs e)
         {
@@ -2109,7 +2125,7 @@ namespace LAMN_Software
 
             try
             {
-                var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text);
+                var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text, lblNewInfo_Address_input.Text);
 
                 if ((update == null) && (ECH.DeleteEmployee(empChange) == null))
                 {
@@ -2173,6 +2189,7 @@ namespace LAMN_Software
             lblOldInfo_PhoneNumber_input.Text = E.PhoneNumber;
             lblOldInfo_iceNumber_input.Text = E.IceNumber;
             lblOldInfo_iceRelation_input.Text = (E.IceRelationship).ToString();
+            lblOldInfo_Address_input.Text = E.Adress;
 
             EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
 
@@ -2181,6 +2198,7 @@ namespace LAMN_Software
             lblNewInfo_PhoneNumber_input.Text = empChange.PhoneNumber;
             lblNewInfo_iceNumber_input.Text = empChange.IceNumber;
             lblNewInfo_iceRelation_input.Text = (empChange.IceRelationship).ToString();
+            lblNewInfo_Address_input.Text = empChange.Address;
         }
 
         public void StatsStockRandom()
@@ -2206,9 +2224,6 @@ namespace LAMN_Software
                 number3 = rnd.Next(0, counter);
             }
 
-
-
-
             cbxStats1.SelectedIndex = number1;
             cbxStats2.SelectedIndex = number2;
             cbxStats3.SelectedIndex = number3;
@@ -2219,7 +2234,98 @@ namespace LAMN_Software
             StatsStockRandom();
         }
 
+        private void tbxSales_Barcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool isDuplicate = false;
 
+            if (tbxSales_Barcode.TextLength == 13)
+            {
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 1)
+                    {
+                        if (p.Ean == tbxSales_Barcode.Text)
+                        {
+                            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                            {
+                                //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
+                                if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
+                                {
+                                    dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
+                                    dgvSales_Reciept.Rows[i].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * (p.SellPrice - 0.01);
+                                    isDuplicate = true;
+                                    break;
+                                }
+                            }
+                            if(!isDuplicate)
+                            {
+                                dgvSales_Reciept.Rows.Add(p);
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = 1;
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = (p.SellPrice - 0.01);
+                            }
+                            tbxSales_Barcode.Clear();
+                            CalculateSalesTotal();
+                            return;
+                        }
+                    }
+                }
+                MessageBox.Show($"The EAN {tbxSales_Barcode.Text} is invalid.");
+                tbxSales_Barcode.Clear();
+            }
+        }
+
+
+        public void FillSalesDGV()
+        {
+            dgvSales_Reciept.Rows.Clear();
+            int index = 0;
+            //for (int i = 0; i < itemsToBePurchased.Count; i++)
+            //{
+            //    MessageBox.Show(itemsToBePurchased[i].Name + itemsToBePurchased[i].SellPrice);
+            //    dgvSales_Reciept.Rows.Add(i);
+            //    dgvSales_Reciept.Rows[i].Cells[0].Value = 1;
+            //    dgvSales_Reciept.Rows[i].Cells[1].Value = itemsToBePurchased[i].Name;
+            //    dgvSales_Reciept.Rows[i].Cells[2].Value = itemsToBePurchased[i].SellPrice;
+            //}
+
+
+            //if (itemsToBePurchased.Count > 1)
+            //{
+            //    if (itemsToBePurchased.Count > 0)
+            //    {
+            //        var item = itemsToBePurchased[itemsToBePurchased.Count - 1];
+            //    }
+            //    foreach (Product p in itemsToBePurchased)
+            //    {
+            //        if(p.Ean == itemsToBePurchased[itemsToBePurchased.Count].Ean)
+            //        {
+
+            //        }
+            //    }
+            //}
+
+            foreach (Product p in itemsToBePurchased)
+            {
+                //MessageBox.Show(p.Name + p.SellPrice);
+                dgvSales_Reciept.Rows.Add(p);
+                dgvSales_Reciept.Rows[index].Cells[0].Value = 1;
+                dgvSales_Reciept.Rows[index].Cells[1].Value = p.Name;
+                dgvSales_Reciept.Rows[index].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice;
+                index++;
+            }
+            
+        }
+
+        public void CalculateSalesTotal()
+        {
+            decimal total = 0;
+            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+            {
+                total += Convert.ToDecimal(dgvSales_Reciept.Rows[i].Cells[2].Value);
+            }
+            lblSales_TotalPrice.Text = $"€{String.Format("{0:0.00}", total)}";
+        }
     }
 
 
