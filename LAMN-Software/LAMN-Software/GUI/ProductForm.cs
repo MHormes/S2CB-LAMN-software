@@ -2232,6 +2232,7 @@ namespace LAMN_Software
         private void tbxSales_Barcode_KeyDown(object sender, KeyEventArgs e)
         {
             bool isDuplicate = false;
+            bool isEnoughStock = true;
 
             if (tbxSales_Barcode.TextLength == 13)
             {
@@ -2246,18 +2247,29 @@ namespace LAMN_Software
                                 //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
                                 if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
                                 {
-                                    dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
-                                    dgvSales_Reciept.Rows[i].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * (p.SellPrice - 0.01);
-                                    isDuplicate = true;
-                                    break;
+                                    if(Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
+                                    {
+                                        isEnoughStock = false;
+                                        MessageBox.Show("Not enough stock", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                    else
+                                    {
+                                        dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
+                                        dgvSales_Reciept.Rows[i].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * (p.SellPrice - 0.01);
+                                        //dgvSales_Reciept.Rows[i].Selected = true;
+                                        
+                                        isDuplicate = true;
+                                        break;
+                                    }
                                 }
                             }
-                            if(!isDuplicate)
+                            if(!isDuplicate && isEnoughStock)
                             {
                                 dgvSales_Reciept.Rows.Add(p);
                                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = 1;
                                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
                                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = (p.SellPrice - 0.01);
+                               // dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
                             }
                             tbxSales_Barcode.Clear();
                             CalculateSalesTotal();
@@ -2320,6 +2332,25 @@ namespace LAMN_Software
                 total += Convert.ToDecimal(dgvSales_Reciept.Rows[i].Cells[2].Value);
             }
             lblSales_TotalPrice.Text = $"€{String.Format("{0:0.00}", total)}";
+        }
+
+        private void dgvSales_Reciept_SelectionChanged(object sender, EventArgs e)
+        {
+            //int index = dgvSales_Reciept.CurrentCell.RowIndex;
+            //bool cell1 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[0].Value.ToString());
+            //bool cell2 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
+            //bool cell3 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[2].Value.ToString());
+            //if (index > -1)
+            //{
+            //    MessageBox.Show(index.ToString());
+            //    //string productName = dgvSales_Reciept.Rows[index].Cells[1].Value.ToString();
+            //    string productName = dgvSales_Reciept.SelectedRows[index].Cells[1].Value.ToString();
+            //    Product p = SH.GetProductByName(productName);
+            //    lblSales_ItemShowcaseName.Text = p.Name;
+            //    lblSales_ItemShowcaseEAN.Text = p.Ean;
+            //    lblSales_ItemShowcaseQuantity.Text = p.QuantityS.ToString();
+            //    lblSales_ItemShowcasePriceEach.Text = p.SellPrice.ToString();
+            //}
         }
     }
 
