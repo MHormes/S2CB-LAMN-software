@@ -170,7 +170,7 @@ if(isset($errorMsg)){
             <label>ICE relationship</label>
 
             <select name="ICE_relationship" id="ICE_relationship">
-            <option value="Blank"><?php echo $IceRelationship ?></option>
+            <option value=<?php echo $IceRelationship ?>><?php echo $IceRelationship ?></option>
             <?php
                 foreach($relationships as $value)
                 {
