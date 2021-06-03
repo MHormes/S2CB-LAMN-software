@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace LAMN_Software
 {
-    public class Employee
+    public class Employee: IComparable<Employee>
     {
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -66,6 +66,12 @@ namespace LAMN_Software
         public string GetFullName()
         {
             return fullName;
+        }
+
+        public int CompareTo(Employee other)
+        {
+            if(other.ContractHours >= this.ContractHours) { return 1; }
+            else { return -1; }
         }
     }
 }
