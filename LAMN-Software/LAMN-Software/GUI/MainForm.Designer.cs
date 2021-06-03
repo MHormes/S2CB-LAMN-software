@@ -44,6 +44,7 @@ namespace LAMN_Software
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlSales = new LAMN_Software.GradientPanel();
@@ -350,6 +351,12 @@ namespace LAMN_Software
             this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.tpSales = new System.Windows.Forms.TabPage();
+            this.pnlSales_Search = new System.Windows.Forms.Panel();
+            this.tbxSales_Search = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.dgvSales_ManualInfo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradientPanel6 = new LAMN_Software.GradientPanel();
             this.label41 = new System.Windows.Forms.Label();
             this.lblSales_ItemShowcaseEAN = new System.Windows.Forms.Label();
@@ -364,7 +371,10 @@ namespace LAMN_Software
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbxSales_Barcode = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlSales.SuspendLayout();
@@ -415,9 +425,12 @@ namespace LAMN_Software
             this.gbOldInfo.SuspendLayout();
             this.gbNewInfo.SuspendLayout();
             this.tpSales.SuspendLayout();
+            this.pnlSales_Search.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_ManualInfo)).BeginInit();
             this.gradientPanel6.SuspendLayout();
             this.gradientPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -454,7 +467,7 @@ namespace LAMN_Software
             this.pnlTabCover.Location = new System.Drawing.Point(4, 60);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(2328, 140);
+            this.pnlTabCover.Size = new System.Drawing.Size(2328, 107);
             this.pnlTabCover.TabIndex = 11;
             // 
             // gpnlSales
@@ -4126,10 +4139,14 @@ namespace LAMN_Software
             // 
             // tpSales
             // 
+            this.tpSales.Controls.Add(this.panel4);
+            this.tpSales.Controls.Add(this.pnlSales_Search);
+            this.tpSales.Controls.Add(this.dgvSales_ManualInfo);
             this.tpSales.Controls.Add(this.gradientPanel6);
             this.tpSales.Controls.Add(this.gradientPanel7);
             this.tpSales.Controls.Add(this.dgvSales_Reciept);
             this.tpSales.Controls.Add(this.tbxSales_Barcode);
+            this.tpSales.Controls.Add(this.label38);
             this.tpSales.Location = new System.Drawing.Point(8, 34);
             this.tpSales.Margin = new System.Windows.Forms.Padding(4);
             this.tpSales.Name = "tpSales";
@@ -4138,6 +4155,79 @@ namespace LAMN_Software
             this.tpSales.TabIndex = 13;
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
+            // 
+            // pnlSales_Search
+            // 
+            this.pnlSales_Search.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlSales_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSales_Search.Controls.Add(this.tbxSales_Search);
+            this.pnlSales_Search.Controls.Add(this.label39);
+            this.pnlSales_Search.Location = new System.Drawing.Point(149, 331);
+            this.pnlSales_Search.Name = "pnlSales_Search";
+            this.pnlSales_Search.Size = new System.Drawing.Size(881, 90);
+            this.pnlSales_Search.TabIndex = 5;
+            // 
+            // tbxSales_Search
+            // 
+            this.tbxSales_Search.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbxSales_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxSales_Search.Font = new System.Drawing.Font("Arial", 20F);
+            this.tbxSales_Search.Location = new System.Drawing.Point(91, 15);
+            this.tbxSales_Search.Name = "tbxSales_Search";
+            this.tbxSales_Search.Size = new System.Drawing.Size(782, 62);
+            this.tbxSales_Search.TabIndex = 0;
+            this.tbxSales_Search.Click += new System.EventHandler(this.tbxSales_Search_Click);
+            this.tbxSales_Search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
+            // 
+            // label39
+            // 
+            this.label39.Font = new System.Drawing.Font("Arial", 20F);
+            this.label39.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label39.Location = new System.Drawing.Point(3, 1);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(90, 85);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "🔍";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvSales_ManualInfo
+            // 
+            this.dgvSales_ManualInfo.AllowUserToAddRows = false;
+            this.dgvSales_ManualInfo.AllowUserToDeleteRows = false;
+            this.dgvSales_ManualInfo.AllowUserToResizeColumns = false;
+            this.dgvSales_ManualInfo.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSales_ManualInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSales_ManualInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales_ManualInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgvSales_ManualInfo.Location = new System.Drawing.Point(989, 560);
+            this.dgvSales_ManualInfo.Name = "dgvSales_ManualInfo";
+            this.dgvSales_ManualInfo.ReadOnly = true;
+            this.dgvSales_ManualInfo.RowHeadersVisible = false;
+            this.dgvSales_ManualInfo.RowHeadersWidth = 82;
+            this.dgvSales_ManualInfo.RowTemplate.Height = 33;
+            this.dgvSales_ManualInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvSales_ManualInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSales_ManualInfo.Size = new System.Drawing.Size(413, 405);
+            this.dgvSales_ManualInfo.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Heading";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 500;
             // 
             // gradientPanel6
             // 
@@ -4246,8 +4336,8 @@ namespace LAMN_Software
             this.dgvSales_Reciept.AllowUserToDeleteRows = false;
             this.dgvSales_Reciept.AllowUserToResizeColumns = false;
             this.dgvSales_Reciept.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSales_Reciept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSales_Reciept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Quantity,
@@ -4292,11 +4382,40 @@ namespace LAMN_Software
             // tbxSales_Barcode
             // 
             this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 20F);
-            this.tbxSales_Barcode.Location = new System.Drawing.Point(398, 175);
+            this.tbxSales_Barcode.Location = new System.Drawing.Point(659, 75);
             this.tbxSales_Barcode.Name = "tbxSales_Barcode";
             this.tbxSales_Barcode.Size = new System.Drawing.Size(648, 69);
             this.tbxSales_Barcode.TabIndex = 0;
             this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
+            // 
+            // label38
+            // 
+            this.label38.Font = new System.Drawing.Font("Arial", 20F);
+            this.label38.Location = new System.Drawing.Point(470, 258);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(316, 85);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Scan mode";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label38.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.listBox1);
+            this.panel4.Location = new System.Drawing.Point(149, 421);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(881, 369);
+            this.panel4.TabIndex = 6;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Arial", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 42;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(881, 340);
+            this.listBox1.TabIndex = 0;
             // 
             // ProductForm
             // 
@@ -4310,6 +4429,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximumSize = new System.Drawing.Size(2336, 1450);
             this.MinimumSize = new System.Drawing.Size(2334, 1448);
+            this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -4379,11 +4499,15 @@ namespace LAMN_Software
             this.gbNewInfo.PerformLayout();
             this.tpSales.ResumeLayout(false);
             this.tpSales.PerformLayout();
+            this.pnlSales_Search.ResumeLayout(false);
+            this.pnlSales_Search.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_ManualInfo)).EndInit();
             this.gradientPanel6.ResumeLayout(false);
             this.gradientPanel6.PerformLayout();
             this.gradientPanel7.ResumeLayout(false);
             this.gradientPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4711,5 +4835,14 @@ namespace LAMN_Software
         private System.Windows.Forms.Label lblNewInfo_Address_input;
         private System.Windows.Forms.Label lblNewInfo_Address;
         private System.Windows.Forms.Label lblSales_ItemShowcaseQuantity;
+        private System.Windows.Forms.DataGridView dgvSales_ManualInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TextBox tbxSales_Search;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel pnlSales_Search;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

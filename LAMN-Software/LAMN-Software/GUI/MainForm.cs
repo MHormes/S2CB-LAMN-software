@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
 using LAMN_Software.DBHandling;
-using System.Linq;
 
 namespace LAMN_Software
 {
@@ -2343,7 +2342,6 @@ namespace LAMN_Software
         {
             //int index = dgvSales_Reciept.CurrentCell.RowIndex;
             //bool cell1 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[0].Value.ToString());
-            //bool cell2 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
             //bool cell3 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[2].Value.ToString());
             //if (index > -1)
             //{
@@ -2356,6 +2354,11 @@ namespace LAMN_Software
             //    lblSales_ItemShowcaseQuantity.Text = p.QuantityS.ToString();
             //    lblSales_ItemShowcasePriceEach.Text = p.SellPrice.ToString();
             //}
+        }
+
+        private void tbxSales_Search_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
