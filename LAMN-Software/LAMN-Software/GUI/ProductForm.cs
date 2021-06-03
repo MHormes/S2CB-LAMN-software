@@ -1213,7 +1213,12 @@ namespace LAMN_Software
         //method for auto creating a schedule for the selected week
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
-            SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+            SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+            foreach(Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            {
+                SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
+            }
+            btnSchedulesCreateShowWeek.PerformClick();
         }
 
 
