@@ -17,9 +17,10 @@ namespace LAMN_Software.DataClasses
 
         public string IceNumber { get; private set; }
         public ICERelation IceRelationship { get; private set; }
+        public string Address { get; private set; }
 
 
-        public EmployeeChange(string bsn, string username, string firstName, string secondName, string phoneNumber, string iceNumber, ICERelation iceRelationship)
+        public EmployeeChange(string bsn, string username, string firstName, string secondName, string phoneNumber, string iceNumber, ICERelation iceRelationship, string address)
         {
             FirstName = firstName;
             SecondName = secondName;
@@ -28,6 +29,7 @@ namespace LAMN_Software.DataClasses
             PhoneNumber = phoneNumber;
             IceNumber = iceNumber;
             IceRelationship = iceRelationship;
+            Address = address;
         }
 
     }

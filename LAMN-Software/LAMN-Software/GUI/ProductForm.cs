@@ -2120,7 +2120,7 @@ namespace LAMN_Software
 
             try
             {
-                var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text);
+                var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text, lblNewInfo_Address_input.Text);
 
                 if ((update == null) && (ECH.DeleteEmployee(empChange) == null))
                 {
@@ -2184,6 +2184,7 @@ namespace LAMN_Software
             lblOldInfo_PhoneNumber_input.Text = E.PhoneNumber;
             lblOldInfo_iceNumber_input.Text = E.IceNumber;
             lblOldInfo_iceRelation_input.Text = (E.IceRelationship).ToString();
+            lblOldInfo_Address_input.Text = E.Adress;
 
             EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
 
@@ -2192,6 +2193,7 @@ namespace LAMN_Software
             lblNewInfo_PhoneNumber_input.Text = empChange.PhoneNumber;
             lblNewInfo_iceNumber_input.Text = empChange.IceNumber;
             lblNewInfo_iceRelation_input.Text = (empChange.IceRelationship).ToString();
+            lblNewInfo_Address_input.Text = empChange.Address;
         }
 
         public void StatsStockRandom()

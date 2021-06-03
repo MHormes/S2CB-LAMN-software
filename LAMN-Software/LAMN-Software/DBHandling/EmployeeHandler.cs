@@ -338,7 +338,7 @@ namespace LAMN_Software
         }
 
 
-        public Exception ApproveEmployeeChange(string bsn, string firstName, string secondName, string phoneNumber, string iceNumber, string iceRelationship)
+        public Exception ApproveEmployeeChange(string bsn, string firstName, string secondName, string phoneNumber, string iceNumber, string iceRelationship, string address)
         {
             if (!Regex.IsMatch(bsn, @"^[0-9]{9}$"))
             {
@@ -369,7 +369,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation WHERE BSN=@bsn;";
+                    string sql = "UPDATE employee SET FirstName=@firstName, SecondName=@secondName, BSN=@bsn, PhoneNumber=@phoneNumber, IceNumber=@iceNumber, IceRelation=@iceRelation, Adress=@address  WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -379,6 +379,7 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
                     cmd.Parameters.AddWithValue("@iceNumber", iceNumber);
                     cmd.Parameters.AddWithValue("@iceRelation", iceRelationship);
+                    cmd.Parameters.AddWithValue("@address", address);
 
 
                     cmd.Prepare();
