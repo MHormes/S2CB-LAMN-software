@@ -57,11 +57,6 @@ namespace LAMN_Software
             cbxStats2.SelectedIndex = 2;
             cbxStats3.SelectedIndex = 3;
 
-
-            cbxStatsPeriod1.SelectedIndex = 1;
-            cbxStatsPeriod2.SelectedIndex = 2;
-            cbxStatsPeriod3.SelectedIndex = 3;
-
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
@@ -1603,7 +1598,7 @@ namespace LAMN_Software
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
                                 sold += sell.QuantitySold;
                         }
 
@@ -2483,6 +2478,16 @@ namespace LAMN_Software
             cbxStatsPeriod3.Text = "Stock 3";
             UpdateStockPeriodGraph();
             btnDeselectStatsPeriodStock3.Visible = false;
+        }
+
+        private void dtStartTime_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateStockPeriodGraph();
+        }
+
+        private void dtEndTime_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateStockPeriodGraph();
         }
     }
 
