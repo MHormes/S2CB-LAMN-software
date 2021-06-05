@@ -443,6 +443,10 @@ namespace LAMN_Software
             cbxStats2.Items.Clear();
             cbxStats3.Items.Clear();
 
+            cbxStatsPeriod1.Items.Clear();
+            cbxStatsPeriod2.Items.Clear();
+            cbxStatsPeriod3.Items.Clear();
+
             dgvAllStock.Rows.Clear();
             //Check if connection is successfull
             if (SH.GetAllStockFromDB() == null)
@@ -471,6 +475,10 @@ namespace LAMN_Software
             cbxStats1.Items.Clear();
             cbxStats2.Items.Clear();
             cbxStats3.Items.Clear();
+
+            cbxStatsPeriod1.Items.Clear();
+            cbxStatsPeriod2.Items.Clear();
+            cbxStatsPeriod3.Items.Clear();
 
             dgvAllStock.Rows.Clear();
             //Check if connection is successfull
@@ -1512,6 +1520,10 @@ namespace LAMN_Software
             cbxStats1.Items.Add(name);
             cbxStats2.Items.Add(name);
             cbxStats3.Items.Add(name);
+
+            cbxStatsPeriod1.Items.Add(name);
+            cbxStatsPeriod2.Items.Add(name);
+            cbxStatsPeriod3.Items.Add(name);
         }
 
 
@@ -2434,32 +2446,6 @@ namespace LAMN_Software
 
         }
 
-
-
-        private void btnDeselectStatsPeriodStock1_Click(object sender, EventArgs e)
-        {
-            cbxStatsPeriod1.SelectedIndex = -1;
-            cbxStatsPeriod1.Text = "Stock 3";
-            UpdateStockPeriodGraph();
-            btnDeselectStatsPeriodStock1.Visible = false;
-        }
-
-        private void btnDeselectStatsPeriodStock2_Click(object sender, EventArgs e)
-        {
-            cbxStatsPeriod2.SelectedIndex = -1;
-            cbxStatsPeriod2.Text = "Stock 3";
-            UpdateStockPeriodGraph();
-            btnDeselectStatsPeriodStock1.Visible = false;
-        }
-
-        private void btnDeselectStatsPeriodStock3_Click(object sender, EventArgs e)
-        {
-            cbxStatsPeriod3.SelectedIndex = -1;
-            cbxStatsPeriod3.Text = "Stock 3";
-            UpdateStockPeriodGraph();
-            btnDeselectStatsPeriodStock1.Visible = false;
-        }
-
         private void cbxStatsPeriod1_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateStockPeriodGraph();
@@ -2473,6 +2459,30 @@ namespace LAMN_Software
         private void cbxStatsPeriod3_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateStockPeriodGraph();
+        }
+
+        private void btnDeselectStatsPeriodStock1_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod1.SelectedIndex = -1;
+            cbxStatsPeriod1.Text = "Stock 1";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock1.Visible = false;
+        }
+
+        private void btnDeselectStatsPeriodStock2_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod2.SelectedIndex = -1;
+            cbxStatsPeriod2.Text = "Stock 2";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock2.Visible = false;
+        }
+
+        private void btnDeselectStatsPeriodStock3_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod3.SelectedIndex = -1;
+            cbxStatsPeriod3.Text = "Stock 3";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock3.Visible = false;
         }
     }
 
