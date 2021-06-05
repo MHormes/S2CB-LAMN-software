@@ -11,15 +11,15 @@ using LAMN_Software.DataClasses;
 
 namespace LAMN_Software.DBHandling
 {
-    public class SellTrackerHandler
+    public class SellingTrackerHandler
     {
-        List<SellTracker> allSellings;
+        List<SellingTracker> allSellings;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
 
         //method to get all the stock items from the DB
         public Exception GetAllSellingsFromDB()
         {
-            allSellings = new List<SellTracker>();
+            allSellings = new List<SellingTracker>();
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -31,7 +31,7 @@ namespace LAMN_Software.DBHandling
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        allSellings.Add(new SellTracker(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToInt32(dr[4])));
+                        allSellings.Add(new SellingTracker(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Convert.ToInt32(dr[4])));
                     }
                 }
                 return null;
@@ -43,10 +43,10 @@ namespace LAMN_Software.DBHandling
         }
 
         //method to get a specific product from the list
-        public List<SellTracker> GetSellings(string name)
+        public List<SellingTracker> GetSellings(string name)
         {
-            List<SellTracker> sellings = new List<SellTracker>();
-            foreach (SellTracker sellTracker in allSellings)
+            List<SellingTracker> sellings = new List<SellingTracker>();
+            foreach (SellingTracker sellTracker in allSellings)
             {
                 if (sellTracker.Name == name)
                 {
@@ -58,7 +58,7 @@ namespace LAMN_Software.DBHandling
             return null;
         }
 
-        public List<SellTracker> GetAllSellings()
+        public List<SellingTracker> GetAllSellings()
         {
             if (GetAllSellingsFromDB() == null)
             {

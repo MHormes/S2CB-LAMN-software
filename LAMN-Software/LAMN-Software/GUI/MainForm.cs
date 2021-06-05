@@ -23,7 +23,7 @@ namespace LAMN_Software
         LoginHandler LH;
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
-        SellTrackerHandler STH;
+        SellingTrackerHandler STH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -39,7 +39,7 @@ namespace LAMN_Software
             LH = new LoginHandler();
             SCMH = new ScheduleMinimumHandler();
             ECH = new EmployeeChangeHandler();
-            STH = new SellTrackerHandler();
+            STH = new SellingTrackerHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
@@ -1581,7 +1581,7 @@ namespace LAMN_Software
             {
                 series.Points.Clear();
             }
-            foreach (SellTracker s in STH.GetAllSellings())
+            foreach (SellingTracker s in STH.GetAllSellings())
             {
                 if (cbxStatsPeriod1.SelectedIndex > -1)
                 {
@@ -1589,7 +1589,7 @@ namespace LAMN_Software
                     {
                         int sold = 0;
 
-                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
                             if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
                                 sold += sell.QuantitySold;
@@ -1607,7 +1607,7 @@ namespace LAMN_Software
                     {
                         int sold = 0;
 
-                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
                             if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
                                 sold += sell.QuantitySold;
@@ -1625,7 +1625,7 @@ namespace LAMN_Software
                     {
                         int sold = 0;
 
-                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
                             if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
                                 sold += sell.QuantitySold;

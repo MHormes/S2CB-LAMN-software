@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software.DataClasses
 {
-    public class SellTracker
+    public class SellingTracker
     {
         public int Id { get; set; }
         public string Ean { get; set; }
@@ -15,7 +15,7 @@ namespace LAMN_Software.DataClasses
         public int QuantitySold { get; set; }
 
 
-        public SellTracker(int id, string ean, string name, string dateAndTime, int quantity)
+        public SellingTracker(int id, string ean, string name, string dateAndTime, int quantity)
         {
             Id = id;
             Ean = ean;
