@@ -23,6 +23,7 @@ namespace LAMN_Software
         LoginHandler LH;
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
+        SellTrackerHandler STH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -38,6 +39,7 @@ namespace LAMN_Software
             LH = new LoginHandler();
             SCMH = new ScheduleMinimumHandler();
             ECH = new EmployeeChangeHandler();
+            STH = new SellTrackerHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
@@ -54,6 +56,11 @@ namespace LAMN_Software
             cbxStats1.SelectedIndex = 1;
             cbxStats2.SelectedIndex = 2;
             cbxStats3.SelectedIndex = 3;
+
+
+            cbxStatsPeriod1.SelectedIndex = 1;
+            cbxStatsPeriod2.SelectedIndex = 2;
+            cbxStatsPeriod3.SelectedIndex = 3;
 
             AdjustColumnWidthStock();
             AdjustColumnWidthSchedules();
@@ -1568,6 +1575,70 @@ namespace LAMN_Software
             }
         }
 
+        public void UpdateStockPeriodGraph()
+        {
+            foreach (var series in chartStockSoldPeriod.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (SellTracker s in STH.GetAllSellings())
+            {
+                if (cbxStatsPeriod1.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
+                    {
+                        int sold = 0;
+
+                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                sold += sell.QuantitySold;
+                        }
+
+                        this.chartStockSoldPeriod.Series["Store stock sold"].Points.AddXY(s.Name, sold.ToString());
+                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsPeriodStock1.Visible = true;
+                    }
+                }
+
+                if (cbxStatsPeriod2.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
+                    {
+                        int sold = 0;
+
+                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                sold += sell.QuantitySold;
+                        }
+
+                        this.chartStockSoldPeriod.Series["Store stock sold"].Points.AddXY(s.Name, sold.ToString());
+                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsPeriodStock2.Visible = true;
+                    }
+                }
+
+                if (cbxStatsPeriod3.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
+                    {
+                        int sold = 0;
+
+                        foreach (SellTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                sold += sell.QuantitySold;
+                        }
+
+                        this.chartStockSoldPeriod.Series["Store stock sold"].Points.AddXY(s.Name, sold.ToString());
+                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsPeriodStock3.Visible = true;
+                    }
+                }
+            }
+        }
+
         public void UpdateEmployeeChartPositions()
         {
             int depotCount = 0;
@@ -1989,8 +2060,10 @@ namespace LAMN_Software
 
                 //calculations of quantity and exception returned if it occurs
                 var sellProduct = SH.SellProduct(p, tbSellQuantity.Text);
+                DateTime dateTime = DateTime.Now;
+                var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), tbSellQuantity.Text);
 
-                if (sellProduct == null)
+                if (sellProduct == null && sellTracker == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
@@ -2359,6 +2432,47 @@ namespace LAMN_Software
         private void tbxSales_Search_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        private void btnDeselectStatsPeriodStock1_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod1.SelectedIndex = -1;
+            cbxStatsPeriod1.Text = "Stock 3";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock1.Visible = false;
+        }
+
+        private void btnDeselectStatsPeriodStock2_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod2.SelectedIndex = -1;
+            cbxStatsPeriod2.Text = "Stock 3";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock1.Visible = false;
+        }
+
+        private void btnDeselectStatsPeriodStock3_Click(object sender, EventArgs e)
+        {
+            cbxStatsPeriod3.SelectedIndex = -1;
+            cbxStatsPeriod3.Text = "Stock 3";
+            UpdateStockPeriodGraph();
+            btnDeselectStatsPeriodStock1.Visible = false;
+        }
+
+        private void cbxStatsPeriod1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockPeriodGraph();
+        }
+
+        private void cbxStatsPeriod2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockPeriodGraph();
+        }
+
+        private void cbxStatsPeriod3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockPeriodGraph();
         }
     }
 
