@@ -67,6 +67,19 @@ namespace LAMN_Software
             return null;
         }
 
+        //method to get a specific product from the list 2
+        public Product GetProductByEAN(string ean)
+        {
+            foreach (Product pd in allStock)
+            {
+                if (pd.Ean == ean)
+                {
+                    return pd;
+                }
+            }
+            return null;
+        }
+
         public List<Product> GetAllProducts()
         {
             if (GetAllStockFromDB() == null)

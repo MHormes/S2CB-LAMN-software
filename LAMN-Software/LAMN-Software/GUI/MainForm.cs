@@ -61,7 +61,10 @@ namespace LAMN_Software
             AdjustColumnWidthSchedules();
             AdjustColumnWidthEmployees();
             AdjustColumnWidthSales();
-            this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 12);
+            AdjustColumnWidthSalesInfo();
+
+            this.dgvSales_ManualInfo.DefaultCellStyle.Font = new Font("Arial", 10);
+            this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 10);
             this.dgvSales_Reciept.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvSales_Reciept.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 224, 140);
@@ -1948,6 +1951,12 @@ namespace LAMN_Software
             dgvSales_Reciept.Columns[2].Width = 70; // Price
         }
 
+        public void AdjustColumnWidthSalesInfo()
+        {
+            dgvSales_ManualInfo.Columns[0].Width = 80; // Heading
+            dgvSales_ManualInfo.Columns[1].Width = 300; // Value
+        }
+
     public void StatsTypeCheck()
         {
             if (cbxStatsType.SelectedItem.ToString() == "Stock")
@@ -2436,10 +2445,6 @@ namespace LAMN_Software
             //}
         }
 
-        private void tbxSales_Search_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void cbxStatsPeriod1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2488,6 +2493,140 @@ namespace LAMN_Software
         private void dtEndTime_ValueChanged(object sender, EventArgs e)
         {
             UpdateStockPeriodGraph();
+        }
+
+        private void tbxSales_Search_TextChanged(object sender, EventArgs e)
+        {
+            lbxSales_SearchBox.Items.Clear();
+            string search = tbxSales_Search.Text;
+            if(String.IsNullOrEmpty(tbxSales_Search.Text))
+            {
+                pnlSales_Search2.Visible = false;
+            }
+            else
+            {
+                pnlSales_Search2.Visible = true;
+
+                foreach (Product p in SH.GetAllProducts())
+                {
+                    if (p.Active == 1)
+                    {
+                        if (p.Name.ToLower().Contains(search.ToLower()) || p.Ean.ToLower().Contains(search.ToLower()))
+                        {
+                            lbxSales_SearchBox.Items.Add($"     {p.Name} [{p.Ean}]");
+                        }
+                    }
+                }
+            }
+            
+
+            switch (lbxSales_SearchBox.Items.Count)
+            {
+                case 0:
+                    lbxSales_SearchBox.Items.Add("     No items found");
+                    lbxSales_SearchBox.Size = new Size(916, 30);
+                    pnlSales_Search2.Size = new Size(496, 30);
+                    break;
+                case 1:
+                    lbxSales_SearchBox.Size = new Size(916, 30);
+                    pnlSales_Search2.Size = new Size(496, 30);
+                    break;
+                case 2:
+                    lbxSales_SearchBox.Size = new Size(916, 60);
+                    pnlSales_Search2.Size = new Size(496, 55);
+                    break;
+                case 3:
+                    lbxSales_SearchBox.Size = new Size(916, 90);
+                    pnlSales_Search2.Size = new Size(496, 75);
+                    break;
+                case 4:
+                    lbxSales_SearchBox.Size = new Size(916, 120);
+                    pnlSales_Search2.Size = new Size(496, 105);
+                    break;
+                case 5:
+                    lbxSales_SearchBox.Size = new Size(916, 150);
+                    pnlSales_Search2.Size = new Size(496, 115);
+                    break;
+                case 6:
+                    lbxSales_SearchBox.Size = new Size(916, 180);
+                    pnlSales_Search2.Size = new Size(496, 140);
+                    break;
+                case 7:
+                    lbxSales_SearchBox.Size = new Size(916, 210);
+                    pnlSales_Search2.Size = new Size(496, 160);
+                    break;
+                case 8:
+                    lbxSales_SearchBox.Size = new Size(916, 240);
+                    pnlSales_Search2.Size = new Size(496, 180);
+                    break;
+                case 9:
+                    lbxSales_SearchBox.Size = new Size(916, 270);
+                    pnlSales_Search2.Size = new Size(496, 200);
+                    break;
+                case 10:
+                    lbxSales_SearchBox.Size = new Size(916, 300);
+                    pnlSales_Search2.Size = new Size(496, 225);
+                    break;
+                    if (lbxSales_SearchBox.Items.Count > 10)
+                    {
+                        lbxSales_SearchBox.ScrollAlwaysVisible = true;
+                    }
+                    else
+                    {
+                        lbxSales_SearchBox.ScrollAlwaysVisible = false;
+                    }
+            }
+        }
+
+        private void tpSales_Click(object sender, EventArgs e)
+        {
+            pnlSales_Search2.Visible = false;
+            tbxSales_Defocus.Focus();
+        }
+
+        private void lbxSales_SearchBox_MouseHover(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void lbxSales_SearchBox_Click(object sender, EventArgs e)
+        {
+            string selectedItem = lbxSales_SearchBox.SelectedItem.ToString();
+            string ean = selectedItem.Split('[', ']')[1];
+            Product p = SH.GetProductByEAN(ean);
+            pnlSales_Search2.Visible = false;
+
+            dgvSales_ManualInfo.RowCount = 5;
+            dgvSales_ManualInfo.Rows[0].Cells[0].Value = "EAN";
+            dgvSales_ManualInfo.Rows[0].Cells[1].Value = p.Ean;
+            dgvSales_ManualInfo.Rows[1].Cells[0].Value = "Name";
+            dgvSales_ManualInfo.Rows[1].Cells[1].Value = p.Name;
+            dgvSales_ManualInfo.Rows[2].Cells[0].Value = "Price";
+            dgvSales_ManualInfo.Rows[2].Cells[1].Value = p.CostPrice;
+            dgvSales_ManualInfo.Rows[3].Cells[0].Value = "Stock";
+            dgvSales_ManualInfo.Rows[3].Cells[1].Value = p.QuantityS;
+            dgvSales_ManualInfo.Rows[4].Cells[0].Value = "Info";
+
+            if(String.IsNullOrEmpty(p.AddInformation))
+            {
+                dgvSales_ManualInfo.Rows[4].Cells[1].Value = "No additional information";
+            }
+            else
+            {
+                dgvSales_ManualInfo.Rows[4].Cells[1].Value = p.AddInformation;
+            }
+        }
+
+        private void tbxSales_Search_Click(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(tbxSales_Search.Text))
+            {
+                pnlSales_Search2.Visible = false;
+            }
+            else
+            {
+                pnlSales_Search2.Visible = true;
+            }
         }
     }
 
