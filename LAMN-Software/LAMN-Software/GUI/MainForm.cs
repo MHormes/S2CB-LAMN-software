@@ -2615,6 +2615,12 @@ namespace LAMN_Software
             {
                 dgvSales_ManualInfo.Rows[4].Cells[1].Value = p.AddInformation;
             }
+
+            tbxSales_ManualQuantity.Enabled = true;
+            btnSales_ManualQuantityUp.Enabled = true;
+            btnSales_ManualQuantityDown.Enabled = true;
+            btnSales_ManualAddToList.Enabled = true;
+            btnSales_ManualCancel.Visible = true;
         }
 
         private void tbxSales_Search_Click(object sender, EventArgs e)
@@ -2627,6 +2633,15 @@ namespace LAMN_Software
             {
                 pnlSales_Search2.Visible = true;
             }
+        }
+
+        private void btnSales_ManualCancel_Click(object sender, EventArgs e)
+        {
+            tbxSales_ManualQuantity.Enabled = false;
+            btnSales_ManualQuantityUp.Enabled = false;
+            btnSales_ManualQuantityDown.Enabled = false;
+            btnSales_ManualAddToList.Enabled = false;
+            btnSales_ManualCancel.Visible = false;
         }
     }
 
