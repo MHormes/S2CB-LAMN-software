@@ -446,6 +446,10 @@ namespace LAMN_Software
             cbxStatsPeriod2.Items.Clear();
             cbxStatsPeriod3.Items.Clear();
 
+            cbxStatsProfit1.Items.Clear();
+            cbxStatsProfit2.Items.Clear();
+            cbxStatsProfit3.Items.Clear();
+
             dgvAllStock.Rows.Clear();
             //Check if connection is successfull
             if (SH.GetAllStockFromDB() == null)
@@ -1523,6 +1527,10 @@ namespace LAMN_Software
             cbxStatsPeriod1.Items.Add(name);
             cbxStatsPeriod2.Items.Add(name);
             cbxStatsPeriod3.Items.Add(name);
+
+            cbxStatsProfit1.Items.Add(name);
+            cbxStatsProfit2.Items.Add(name);
+            cbxStatsProfit3.Items.Add(name);
         }
 
 
@@ -1588,6 +1596,11 @@ namespace LAMN_Software
 
         public void UpdateStockPeriodGraph()
         {
+            if (cbxStatsPeriod1.Text == "Stock 1" && cbxStatsPeriod2.Text == "Stock 2" && cbxStatsPeriod3.Text == "Stock 3")
+                lbStatsNotAvailable1.Visible = true;
+            else
+                lbStatsNotAvailable1.Visible = false;
+
             foreach (var series in chartStockSoldPeriod.Series)
             {
                 series.Points.Clear();
@@ -2349,7 +2362,7 @@ namespace LAMN_Software
                                     else
                                     {
                                         dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
-                                        dgvSales_Reciept.Rows[i].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * p.SellPrice))}"; 
+                                        dgvSales_Reciept.Rows[i].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * p.SellPrice))}";
 
                                         //dgvSales_Reciept.Rows[i].Selected = true;
 
@@ -2747,7 +2760,7 @@ namespace LAMN_Software
                 dgvSales_Reciept.Rows.Add(p);
                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = tbxSales_ManualQuantity.Text;
                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
-                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = $"€{String.Format("{0:0.00}", (p.SellPrice*Convert.ToDouble(tbxSales_ManualQuantity.Text)))}";
+                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = $"€{String.Format("{0:0.00}", (p.SellPrice * Convert.ToDouble(tbxSales_ManualQuantity.Text)))}";
 
                 // dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
             }
@@ -2802,7 +2815,133 @@ namespace LAMN_Software
             DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
             CalculateSalesTotal();
         }
+
+        private void cbxStatsProfit1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockProfitGraph();
+        }
+
+        private void cbxStatsProfit2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockProfitGraph();
+        }
+
+        private void cbxStatsProfit3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateStockProfitGraph();
+        }
+
+        private void btnDeselectStatsProfitStock1_Click(object sender, EventArgs e)
+        {
+            cbxStatsProfit1.SelectedIndex = -1;
+            cbxStatsProfit1.Text = "Stock 1";
+            UpdateStockProfitGraph();
+            btnDeselectStatsProfitStock1.Visible = false;
+        }
+
+        private void btnDeselectStatsProfitStock2_Click(object sender, EventArgs e)
+        {
+            cbxStatsProfit2.SelectedIndex = -1;
+            cbxStatsProfit2.Text = "Stock 2";
+            UpdateStockProfitGraph();
+            btnDeselectStatsProfitStock2.Visible = false;
+        }
+
+        private void btnDeselectStatsProfitStock3_Click(object sender, EventArgs e)
+        {
+            cbxStatsProfit3.SelectedIndex = -1;
+            cbxStatsProfit3.Text = "Stock 3";
+            UpdateStockProfitGraph();
+            btnDeselectStatsProfitStock3.Visible = false;
+        }
+
+        public void UpdateStockProfitGraph()
+        {
+            if (cbxStatsProfit1.Text == "Stock 1" && cbxStatsProfit2.Text == "Stock 2" && cbxStatsProfit3.Text == "Stock 3")
+                lbStatsProfit.Visible = true;
+            else
+                lbStatsProfit.Visible = false;
+
+            foreach (var series in chartStockProfit.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (SellingTracker s in STH.GetAllSellings())
+            {
+                if (cbxStatsProfit1.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsProfit1.SelectedItem.ToString()))
+                    {
+                        double profit = 0;
+                        Product p = null;
+                        p = SH.GetProduct(s.Id);
+
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            {
+                                profit = sell.QuantitySold * (p.SellPrice - p.CostPrice);
+                            }
+                        }
+
+                        this.chartStockProfit.Series["Profit"].Points.AddXY(s.Name, profit.ToString());
+                        this.chartStockProfit.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsProfitStock1.Visible = true;
+                    }
+                }
+
+                if (cbxStatsProfit2.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsProfit2.SelectedItem.ToString()))
+                    {
+                        double profit = 0;
+                        Product p = SH.GetProduct(s.Id);
+
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            {
+                                profit = sell.QuantitySold * (p.SellPrice - p.CostPrice);
+                            }
+                        }
+
+                        this.chartStockProfit.Series["Profit"].Points.AddXY(s.Name, profit.ToString());
+                        this.chartStockProfit.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsProfitStock2.Visible = true;
+                    }
+                }
+
+                if (cbxStatsProfit3.SelectedIndex > -1)
+                {
+                    if (s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString()))
+                    {
+                        double profit = 0;
+                        Product p = SH.GetProduct(s.Id);
+
+                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                        {
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            {
+                                profit = sell.QuantitySold * (p.SellPrice - p.CostPrice);
+                            }
+                        }
+
+                        this.chartStockProfit.Series["Profit"].Points.AddXY(s.Name, profit.ToString());
+                        this.chartStockProfit.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                        btnDeselectStatsProfitStock3.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void dtStartTimeProfit_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateStockProfitGraph();
+        }
+
+        private void dtEndTimeProfit_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateStockProfitGraph();
+        }
     }
-
-
 }
