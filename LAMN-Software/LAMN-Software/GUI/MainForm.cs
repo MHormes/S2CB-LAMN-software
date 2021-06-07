@@ -2774,7 +2774,7 @@ namespace LAMN_Software
         {
             lblSales_ItemShowcaseName.Text = name;
             lblSales_ItemShowcaseEAN.Text = ean;
-            lblSales_ItemShowcasePriceEach.Text = $"€{String.Format("{0:0.00}", price)}";
+
             String quantity = "";
             for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
             {
@@ -2784,17 +2784,14 @@ namespace LAMN_Software
                     break;
                 }
             }
-            lblSales_ItemShowcaseQuantity.Text = $"{quantity}x";
-            lblSales_ItemShowcaseEach.Text = "each";
+            lblSales_ItemShowcaseQuantityPrice.Text = $"{quantity}x  €{ String.Format("{0:0.00}", price)} each";
         }
 
         public void ResetSalesShowcase()
         {
             lblSales_ItemShowcaseName.Text = "";
             lblSales_ItemShowcaseEAN.Text = "";
-            lblSales_ItemShowcasePriceEach.Text = "";
-            lblSales_ItemShowcaseQuantity.Text = "";
-            lblSales_ItemShowcaseEach.Text = "";
+            lblSales_ItemShowcaseQuantityPrice.Text = "";
         }
 
         private void btnSales_Remove1Quantity_Click(object sender, EventArgs e)

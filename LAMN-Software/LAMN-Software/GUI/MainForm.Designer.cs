@@ -30,30 +30,30 @@ namespace LAMN_Software
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
             this.gpnlSales = new LAMN_Software.GradientPanel();
@@ -369,10 +369,8 @@ namespace LAMN_Software
             this.tbxSales_Search = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.gradientPanel6 = new LAMN_Software.GradientPanel();
-            this.lblSales_ItemShowcaseEach = new System.Windows.Forms.Label();
             this.lblSales_ItemShowcaseEAN = new System.Windows.Forms.Label();
-            this.lblSales_ItemShowcaseQuantity = new System.Windows.Forms.Label();
-            this.lblSales_ItemShowcasePriceEach = new System.Windows.Forms.Label();
+            this.lblSales_ItemShowcaseQuantityPrice = new System.Windows.Forms.Label();
             this.lblSales_ItemShowcaseName = new System.Windows.Forms.Label();
             this.gradientPanel7 = new LAMN_Software.GradientPanel();
             this.lblSales_TotalPrice = new System.Windows.Forms.Label();
@@ -2316,23 +2314,23 @@ namespace LAMN_Software
             // 
             // chartStock
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartStock.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartStock.Legends.Add(legend1);
+            chartArea7.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartStock.Legends.Add(legend7);
             this.chartStock.Location = new System.Drawing.Point(582, 108);
             this.chartStock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartStock.Name = "chartStock";
             this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Store Stock Total";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Warehouse Stock Total";
-            series2.YValuesPerPoint = 6;
-            this.chartStock.Series.Add(series1);
-            this.chartStock.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Store Stock Total";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Warehouse Stock Total";
+            series11.YValuesPerPoint = 6;
+            this.chartStock.Series.Add(series10);
+            this.chartStock.Series.Add(series11);
             this.chartStock.Size = new System.Drawing.Size(1676, 983);
             this.chartStock.TabIndex = 3;
             this.chartStock.Text = "Stock Chart";
@@ -3352,20 +3350,20 @@ namespace LAMN_Software
             // 
             // chartEmployeesPosition
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartEmployeesPosition.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmployeesPosition.Legends.Add(legend2);
+            chartArea8.Name = "ChartArea1";
+            this.chartEmployeesPosition.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartEmployeesPosition.Legends.Add(legend8);
             this.chartEmployeesPosition.Location = new System.Drawing.Point(796, 12);
             this.chartEmployeesPosition.Margin = new System.Windows.Forms.Padding(8);
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Arial", 10F);
-            series3.LabelForeColor = System.Drawing.Color.White;
-            series3.Legend = "Legend1";
-            series3.Name = "Positions";
-            this.chartEmployeesPosition.Series.Add(series3);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series12.Font = new System.Drawing.Font("Arial", 10F);
+            series12.LabelForeColor = System.Drawing.Color.White;
+            series12.Legend = "Legend1";
+            series12.Name = "Positions";
+            this.chartEmployeesPosition.Series.Add(series12);
             this.chartEmployeesPosition.Size = new System.Drawing.Size(744, 638);
             this.chartEmployeesPosition.TabIndex = 0;
             this.chartEmployeesPosition.Text = "chart1";
@@ -3453,42 +3451,42 @@ namespace LAMN_Software
             // 
             // chartEmployeesContractType
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartEmployeesContractType.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartEmployeesContractType.Legends.Add(legend3);
+            chartArea9.Name = "ChartArea1";
+            this.chartEmployeesContractType.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartEmployeesContractType.Legends.Add(legend9);
             this.chartEmployeesContractType.Location = new System.Drawing.Point(1504, 555);
             this.chartEmployeesContractType.Margin = new System.Windows.Forms.Padding(8);
             this.chartEmployeesContractType.Name = "chartEmployeesContractType";
             this.chartEmployeesContractType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series4.LabelForeColor = System.Drawing.Color.White;
-            series4.Legend = "Legend1";
-            series4.Name = "ContractType";
-            this.chartEmployeesContractType.Series.Add(series4);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series13.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series13.LabelForeColor = System.Drawing.Color.White;
+            series13.Legend = "Legend1";
+            series13.Name = "ContractType";
+            this.chartEmployeesContractType.Series.Add(series13);
             this.chartEmployeesContractType.Size = new System.Drawing.Size(760, 456);
             this.chartEmployeesContractType.TabIndex = 2;
             this.chartEmployeesContractType.Text = "chart1";
             // 
             // chartEmployeesGender
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartEmployeesGender.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartEmployeesGender.Legends.Add(legend4);
+            chartArea10.Name = "ChartArea1";
+            this.chartEmployeesGender.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chartEmployeesGender.Legends.Add(legend10);
             this.chartEmployeesGender.Location = new System.Drawing.Point(1476, -2);
             this.chartEmployeesGender.Margin = new System.Windows.Forms.Padding(8);
             this.chartEmployeesGender.Name = "chartEmployeesGender";
             this.chartEmployeesGender.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Font = new System.Drawing.Font("Arial", 12F);
-            series5.LabelForeColor = System.Drawing.Color.White;
-            series5.Legend = "Legend1";
-            series5.Name = "Genders";
-            this.chartEmployeesGender.Series.Add(series5);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series14.Font = new System.Drawing.Font("Arial", 12F);
+            series14.LabelForeColor = System.Drawing.Color.White;
+            series14.Legend = "Legend1";
+            series14.Name = "Genders";
+            this.chartEmployeesGender.Series.Add(series14);
             this.chartEmployeesGender.Size = new System.Drawing.Size(784, 491);
             this.chartEmployeesGender.TabIndex = 1;
             this.chartEmployeesGender.Text = "chart1";
@@ -4217,20 +4215,20 @@ namespace LAMN_Software
             this.pnlSales_QuantityControl.BackColor = System.Drawing.Color.DarkGray;
             this.pnlSales_QuantityControl.Controls.Add(this.btnSales_Remove1Quantity);
             this.pnlSales_QuantityControl.Controls.Add(this.btnSales_RemoveAllQuantity);
-            this.pnlSales_QuantityControl.Location = new System.Drawing.Point(2076, 530);
+            this.pnlSales_QuantityControl.Location = new System.Drawing.Point(2074, 539);
             this.pnlSales_QuantityControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlSales_QuantityControl.Name = "pnlSales_QuantityControl";
-            this.pnlSales_QuantityControl.Size = new System.Drawing.Size(182, 350);
+            this.pnlSales_QuantityControl.Size = new System.Drawing.Size(128, 257);
             this.pnlSales_QuantityControl.TabIndex = 8;
             this.pnlSales_QuantityControl.Visible = false;
             // 
             // btnSales_Remove1Quantity
             // 
             this.btnSales_Remove1Quantity.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnSales_Remove1Quantity.Location = new System.Drawing.Point(26, 181);
+            this.btnSales_Remove1Quantity.Location = new System.Drawing.Point(18, 138);
             this.btnSales_Remove1Quantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSales_Remove1Quantity.Name = "btnSales_Remove1Quantity";
-            this.btnSales_Remove1Quantity.Size = new System.Drawing.Size(129, 131);
+            this.btnSales_Remove1Quantity.Size = new System.Drawing.Size(90, 90);
             this.btnSales_Remove1Quantity.TabIndex = 10;
             this.btnSales_Remove1Quantity.Text = "-1";
             this.toolTip1.SetToolTip(this.btnSales_Remove1Quantity, "Remove a single quantity from selected item");
@@ -4240,10 +4238,10 @@ namespace LAMN_Software
             // btnSales_RemoveAllQuantity
             // 
             this.btnSales_RemoveAllQuantity.Font = new System.Drawing.Font("Arial", 20F);
-            this.btnSales_RemoveAllQuantity.Location = new System.Drawing.Point(28, 30);
+            this.btnSales_RemoveAllQuantity.Location = new System.Drawing.Point(18, 27);
             this.btnSales_RemoveAllQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSales_RemoveAllQuantity.Name = "btnSales_RemoveAllQuantity";
-            this.btnSales_RemoveAllQuantity.Size = new System.Drawing.Size(129, 131);
+            this.btnSales_RemoveAllQuantity.Size = new System.Drawing.Size(90, 90);
             this.btnSales_RemoveAllQuantity.TabIndex = 9;
             this.btnSales_RemoveAllQuantity.Text = "✕";
             this.toolTip1.SetToolTip(this.btnSales_RemoveAllQuantity, "Remove full quantity of selected item");
@@ -4311,27 +4309,14 @@ namespace LAMN_Software
             // gradientPanel6
             // 
             this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel6.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseEach);
+            this.gradientPanel6.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseEAN);
-            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseQuantity);
-            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcasePriceEach);
+            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseQuantityPrice);
             this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseName);
             this.gradientPanel6.Location = new System.Drawing.Point(1408, 212);
             this.gradientPanel6.Name = "gradientPanel6";
             this.gradientPanel6.Size = new System.Drawing.Size(668, 319);
             this.gradientPanel6.TabIndex = 1;
-            // 
-            // lblSales_ItemShowcaseEach
-            // 
-            this.lblSales_ItemShowcaseEach.AutoSize = true;
-            this.lblSales_ItemShowcaseEach.Font = new System.Drawing.Font("Arial", 15F);
-            this.lblSales_ItemShowcaseEach.Location = new System.Drawing.Point(624, 342);
-            this.lblSales_ItemShowcaseEach.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSales_ItemShowcaseEach.Name = "lblSales_ItemShowcaseEach";
-            this.lblSales_ItemShowcaseEach.Size = new System.Drawing.Size(105, 45);
-            this.lblSales_ItemShowcaseEach.TabIndex = 4;
-            this.lblSales_ItemShowcaseEach.Text = "each";
             // 
             // lblSales_ItemShowcaseEAN
             // 
@@ -4343,26 +4328,15 @@ namespace LAMN_Software
             this.lblSales_ItemShowcaseEAN.Text = "4251032610620";
             this.lblSales_ItemShowcaseEAN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblSales_ItemShowcaseQuantity
+            // lblSales_ItemShowcaseQuantityPrice
             // 
-            this.lblSales_ItemShowcaseQuantity.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblSales_ItemShowcaseQuantity.Location = new System.Drawing.Point(111, 209);
-            this.lblSales_ItemShowcaseQuantity.Name = "lblSales_ItemShowcaseQuantity";
-            this.lblSales_ItemShowcaseQuantity.Size = new System.Drawing.Size(132, 61);
-            this.lblSales_ItemShowcaseQuantity.TabIndex = 3;
-            this.lblSales_ItemShowcaseQuantity.Text = "1x";
-            this.lblSales_ItemShowcaseQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblSales_ItemShowcasePriceEach
-            // 
-            this.lblSales_ItemShowcasePriceEach.AutoSize = true;
-            this.lblSales_ItemShowcasePriceEach.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblSales_ItemShowcasePriceEach.Location = new System.Drawing.Point(249, 216);
-            this.lblSales_ItemShowcasePriceEach.Name = "lblSales_ItemShowcasePriceEach";
-            this.lblSales_ItemShowcasePriceEach.Size = new System.Drawing.Size(178, 49);
-            this.lblSales_ItemShowcasePriceEach.TabIndex = 3;
-            this.lblSales_ItemShowcasePriceEach.Text = "€150.00";
-            this.lblSales_ItemShowcasePriceEach.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSales_ItemShowcaseQuantityPrice.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblSales_ItemShowcaseQuantityPrice.Location = new System.Drawing.Point(111, 209);
+            this.lblSales_ItemShowcaseQuantityPrice.Name = "lblSales_ItemShowcaseQuantityPrice";
+            this.lblSales_ItemShowcaseQuantityPrice.Size = new System.Drawing.Size(401, 61);
+            this.lblSales_ItemShowcaseQuantityPrice.TabIndex = 3;
+            this.lblSales_ItemShowcaseQuantityPrice.Text = "1x";
+            this.lblSales_ItemShowcaseQuantityPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSales_ItemShowcaseName
             // 
@@ -4411,8 +4385,8 @@ namespace LAMN_Software
             this.dgvSales_Reciept.AllowUserToDeleteRows = false;
             this.dgvSales_Reciept.AllowUserToResizeColumns = false;
             this.dgvSales_Reciept.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSales_Reciept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSales_Reciept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Quantity,
@@ -4465,10 +4439,11 @@ namespace LAMN_Software
             // tbxSales_Barcode
             // 
             this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 20F);
-            this.tbxSales_Barcode.Location = new System.Drawing.Point(658, 75);
+            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.Orange;
+            this.tbxSales_Barcode.Location = new System.Drawing.Point(375, 196);
             this.tbxSales_Barcode.Name = "tbxSales_Barcode";
             this.tbxSales_Barcode.PasswordChar = '▇';
-            this.tbxSales_Barcode.Size = new System.Drawing.Size(648, 69);
+            this.tbxSales_Barcode.Size = new System.Drawing.Size(502, 69);
             this.tbxSales_Barcode.TabIndex = 0;
             this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
             // 
@@ -4564,22 +4539,22 @@ namespace LAMN_Software
             this.dgvSales_ManualInfo.AllowUserToDeleteRows = false;
             this.dgvSales_ManualInfo.AllowUserToResizeColumns = false;
             this.dgvSales_ManualInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
-            this.dgvSales_ManualInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 10F);
+            this.dgvSales_ManualInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvSales_ManualInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSales_ManualInfo.ColumnHeadersVisible = false;
             this.dgvSales_ManualInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSales_ManualInfo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSales_ManualInfo.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvSales_ManualInfo.Location = new System.Drawing.Point(15, 138);
             this.dgvSales_ManualInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvSales_ManualInfo.Name = "dgvSales_ManualInfo";
@@ -4774,23 +4749,23 @@ namespace LAMN_Software
             // 
             // chartStockSoldPeriod
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartStockSoldPeriod.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartStockSoldPeriod.Legends.Add(legend5);
+            chartArea11.Name = "ChartArea1";
+            this.chartStockSoldPeriod.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartStockSoldPeriod.Legends.Add(legend11);
             this.chartStockSoldPeriod.Location = new System.Drawing.Point(591, 127);
             this.chartStockSoldPeriod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chartStockSoldPeriod.Name = "chartStockSoldPeriod";
             this.chartStockSoldPeriod.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Store stock sold";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Current stock in store";
-            series7.YValuesPerPoint = 6;
-            this.chartStockSoldPeriod.Series.Add(series6);
-            this.chartStockSoldPeriod.Series.Add(series7);
+            series15.ChartArea = "ChartArea1";
+            series15.Legend = "Legend1";
+            series15.Name = "Store stock sold";
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Current stock in store";
+            series16.YValuesPerPoint = 6;
+            this.chartStockSoldPeriod.Series.Add(series15);
+            this.chartStockSoldPeriod.Series.Add(series16);
             this.chartStockSoldPeriod.Size = new System.Drawing.Size(1676, 983);
             this.chartStockSoldPeriod.TabIndex = 22;
             this.chartStockSoldPeriod.Text = "Stock sold chart";
@@ -4960,23 +4935,23 @@ namespace LAMN_Software
             // 
             // chartStockProfit
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartStockProfit.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartStockProfit.Legends.Add(legend6);
+            chartArea12.Name = "ChartArea1";
+            this.chartStockProfit.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chartStockProfit.Legends.Add(legend12);
             this.chartStockProfit.Location = new System.Drawing.Point(591, 150);
             this.chartStockProfit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chartStockProfit.Name = "chartStockProfit";
             this.chartStockProfit.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Profit";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Current stock in store";
-            series9.YValuesPerPoint = 6;
-            this.chartStockProfit.Series.Add(series8);
-            this.chartStockProfit.Series.Add(series9);
+            series17.ChartArea = "ChartArea1";
+            series17.Legend = "Legend1";
+            series17.Name = "Profit";
+            series18.ChartArea = "ChartArea1";
+            series18.Legend = "Legend1";
+            series18.Name = "Current stock in store";
+            series18.YValuesPerPoint = 6;
+            this.chartStockProfit.Series.Add(series17);
+            this.chartStockProfit.Series.Add(series18);
             this.chartStockProfit.Size = new System.Drawing.Size(1676, 983);
             this.chartStockProfit.TabIndex = 34;
             this.chartStockProfit.Text = "Stock sold chart";
@@ -5068,7 +5043,6 @@ namespace LAMN_Software
             this.pnlSales_Search.ResumeLayout(false);
             this.pnlSales_Search.PerformLayout();
             this.gradientPanel6.ResumeLayout(false);
-            this.gradientPanel6.PerformLayout();
             this.gradientPanel7.ResumeLayout(false);
             this.gradientPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).EndInit();
@@ -5399,15 +5373,13 @@ namespace LAMN_Software
         private System.Windows.Forms.Label lblSales_TotalPrice;
         private System.Windows.Forms.Label lblSales_TotalLabel;
         private GradientPanel gradientPanel7;
-        private System.Windows.Forms.Label lblSales_ItemShowcaseEach;
         private System.Windows.Forms.Label lblSales_ItemShowcaseEAN;
-        private System.Windows.Forms.Label lblSales_ItemShowcasePriceEach;
         private System.Windows.Forms.Label lblSales_ItemShowcaseName;
         private System.Windows.Forms.Label lblOldInfo_Address;
         private System.Windows.Forms.Label lblOldInfo_Address_input;
         private System.Windows.Forms.Label lblNewInfo_Address_input;
         private System.Windows.Forms.Label lblNewInfo_Address;
-        private System.Windows.Forms.Label lblSales_ItemShowcaseQuantity;
+        private System.Windows.Forms.Label lblSales_ItemShowcaseQuantityPrice;
         private System.Windows.Forms.DataGridView dgvSales_ManualInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
