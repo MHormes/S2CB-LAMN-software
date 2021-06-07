@@ -52,6 +52,7 @@ namespace LAMN_Software
             UpdateEmployeeChartContractType();
             UpdateEmployeeAverageSalaryPerHour();
             UpdateMostPopularStock();
+            ResetSalesShowcase();
 
             cbxStats1.SelectedIndex = 1;
             cbxStats2.SelectedIndex = 2;
@@ -2434,20 +2435,16 @@ namespace LAMN_Software
 
         private void dgvSales_Reciept_SelectionChanged(object sender, EventArgs e)
         {
-            //int index = dgvSales_Reciept.CurrentCell.RowIndex;
-            //bool cell1 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[0].Value.ToString());
-            //bool cell3 = String.IsNullOrEmpty(dgvSales_Reciept.Rows[index].Cells[2].Value.ToString());
-            //if (index > -1)
-            //{
-            //    MessageBox.Show(index.ToString());
-            //    //string productName = dgvSales_Reciept.Rows[index].Cells[1].Value.ToString();
-            //    string productName = dgvSales_Reciept.SelectedRows[index].Cells[1].Value.ToString();
-            //    Product p = SH.GetProductByName(productName);
-            //    lblSales_ItemShowcaseName.Text = p.Name;
-            //    lblSales_ItemShowcaseEAN.Text = p.Ean;
-            //    lblSales_ItemShowcaseQuantity.Text = p.QuantityS.ToString();
-            //    lblSales_ItemShowcasePriceEach.Text = p.SellPrice.ToString();
-            //}
+            int index = dgvSales_Reciept.CurrentCell.RowIndex;
+            pnlSales_QuantityControl.Visible = true;
+            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            {
+                btnSales_Remove1Quantity.Enabled = false;
+            }
+            else
+            {
+                btnSales_Remove1Quantity.Enabled = true;
+            }
         }
 
 
@@ -2587,6 +2584,9 @@ namespace LAMN_Software
         {
             pnlSales_Search2.Visible = false;
             tbxSales_Defocus.Focus();
+            pnlSales_QuantityControl.Visible = false;
+            dgvSales_Reciept.ClearSelection();
+            ResetSalesShowcase();
         }
 
         private void lbxSales_SearchBox_MouseHover(object sender, EventArgs e)
@@ -2730,7 +2730,9 @@ namespace LAMN_Software
                     }
                     else
                     {
-                        dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + tbxSales_ManualQuantity.Text;
+                        int quantityCurrent = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
+                        int quantityNew = Convert.ToInt32(tbxSales_ManualQuantity.Text);
+                        dgvSales_Reciept.Rows[i].Cells[0].Value = quantityCurrent + quantityNew;
                         dgvSales_Reciept.Rows[i].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * p.SellPrice))}";
 
                         //dgvSales_Reciept.Rows[i].Selected = true;
@@ -2770,6 +2772,35 @@ namespace LAMN_Software
                 }
             }
             lblSales_ItemShowcaseQuantity.Text = $"{quantity}x";
+            lblSales_ItemShowcaseEach.Text = "each";
+        }
+
+        public void ResetSalesShowcase()
+        {
+            lblSales_ItemShowcaseName.Text = "";
+            lblSales_ItemShowcaseEAN.Text = "";
+            lblSales_ItemShowcasePriceEach.Text = "";
+            lblSales_ItemShowcaseQuantity.Text = "";
+            lblSales_ItemShowcaseEach.Text = "";
+        }
+
+        private void btnSales_Remove1Quantity_Click(object sender, EventArgs e)
+        {
+            int index = dgvSales_Reciept.CurrentCell.RowIndex;
+            Product p = SH.GetProductByName(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
+            dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value)-1;
+            dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
+
+            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            {
+                btnSales_Remove1Quantity.Enabled = false;
+            }
+            else
+            {
+                btnSales_Remove1Quantity.Enabled = true;
+            }
+            DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+            CalculateSalesTotal();
         }
     }
 
