@@ -1236,7 +1236,7 @@ namespace LAMN_Software
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
-            foreach(Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
             {
                 SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
             }
@@ -1957,7 +1957,7 @@ namespace LAMN_Software
             dgvSales_ManualInfo.Columns[1].Width = 300; // Value
         }
 
-    public void StatsTypeCheck()
+        public void StatsTypeCheck()
         {
             if (cbxStatsType.SelectedItem.ToString() == "Stock")
             {
@@ -2340,7 +2340,7 @@ namespace LAMN_Software
                                 //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
                                 if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
                                 {
-                                    if(Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
+                                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
                                     {
                                         isEnoughStock = false;
                                         MessageBox.Show("Not enough stock", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -2348,22 +2348,25 @@ namespace LAMN_Software
                                     else
                                     {
                                         dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + 1;
-                                        dgvSales_Reciept.Rows[i].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * (p.SellPrice - 0.01);
+                                        dgvSales_Reciept.Rows[i].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * p.SellPrice))}"; 
+
                                         //dgvSales_Reciept.Rows[i].Selected = true;
-                                        
+
                                         isDuplicate = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!isDuplicate && isEnoughStock)
+                            if (!isDuplicate && isEnoughStock)
                             {
                                 dgvSales_Reciept.Rows.Add(p);
                                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = 1;
                                 dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
-                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = (p.SellPrice - 0.01);
-                               // dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
+                                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = $"€{String.Format("{0:0.00}", p.SellPrice)}";
+
+                                // dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
                             }
+                            DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
                             tbxSales_Barcode.Clear();
                             CalculateSalesTotal();
                             return;
@@ -2414,7 +2417,7 @@ namespace LAMN_Software
                 dgvSales_Reciept.Rows[index].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice;
                 index++;
             }
-            
+
         }
 
         public void CalculateSalesTotal()
@@ -2422,7 +2425,9 @@ namespace LAMN_Software
             decimal total = 0;
             for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
             {
-                total += Convert.ToDecimal(dgvSales_Reciept.Rows[i].Cells[2].Value);
+                String number = Convert.ToString(dgvSales_Reciept.Rows[i].Cells[2].Value).Replace("€", String.Empty);
+                total += Convert.ToDecimal(number);
+                //total += Convert.ToDecimal(dgvSales_Reciept.Rows[i].Cells[2].Value);
             }
             lblSales_TotalPrice.Text = $"€{String.Format("{0:0.00}", total)}";
         }
@@ -2499,7 +2504,7 @@ namespace LAMN_Software
         {
             lbxSales_SearchBox.Items.Clear();
             string search = tbxSales_Search.Text;
-            if(String.IsNullOrEmpty(tbxSales_Search.Text))
+            if (String.IsNullOrEmpty(tbxSales_Search.Text))
             {
                 pnlSales_Search2.Visible = false;
             }
@@ -2518,7 +2523,7 @@ namespace LAMN_Software
                     }
                 }
             }
-            
+
 
             switch (lbxSales_SearchBox.Items.Count)
             {
@@ -2586,7 +2591,7 @@ namespace LAMN_Software
 
         private void lbxSales_SearchBox_MouseHover(object sender, EventArgs e)
         {
- 
+
         }
 
         private void lbxSales_SearchBox_Click(object sender, EventArgs e)
@@ -2602,12 +2607,12 @@ namespace LAMN_Software
             dgvSales_ManualInfo.Rows[1].Cells[0].Value = "Name";
             dgvSales_ManualInfo.Rows[1].Cells[1].Value = p.Name;
             dgvSales_ManualInfo.Rows[2].Cells[0].Value = "Price";
-            dgvSales_ManualInfo.Rows[2].Cells[1].Value = p.CostPrice;
+            dgvSales_ManualInfo.Rows[2].Cells[1].Value = $"€{String.Format("{0:0.00}", p.SellPrice)}";
             dgvSales_ManualInfo.Rows[3].Cells[0].Value = "Stock";
             dgvSales_ManualInfo.Rows[3].Cells[1].Value = p.QuantityS;
             dgvSales_ManualInfo.Rows[4].Cells[0].Value = "Info";
 
-            if(String.IsNullOrEmpty(p.AddInformation))
+            if (String.IsNullOrEmpty(p.AddInformation))
             {
                 dgvSales_ManualInfo.Rows[4].Cells[1].Value = "No additional information";
             }
@@ -2616,16 +2621,17 @@ namespace LAMN_Software
                 dgvSales_ManualInfo.Rows[4].Cells[1].Value = p.AddInformation;
             }
 
+            tbxSales_ManualQuantity.Text = "1";
             tbxSales_ManualQuantity.Enabled = true;
             btnSales_ManualQuantityUp.Enabled = true;
-            btnSales_ManualQuantityDown.Enabled = true;
+            btnSales_ManualQuantityDown.Enabled = false;
             btnSales_ManualAddToList.Enabled = true;
             btnSales_ManualCancel.Visible = true;
         }
 
         private void tbxSales_Search_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(tbxSales_Search.Text))
+            if (String.IsNullOrEmpty(tbxSales_Search.Text))
             {
                 pnlSales_Search2.Visible = false;
             }
@@ -2641,7 +2647,129 @@ namespace LAMN_Software
             btnSales_ManualQuantityUp.Enabled = false;
             btnSales_ManualQuantityDown.Enabled = false;
             btnSales_ManualAddToList.Enabled = false;
+            tbxSales_ManualQuantity.Text = "";
             btnSales_ManualCancel.Visible = false;
+            dgvSales_ManualInfo.Rows.Clear();
+            tbxSales_Search.Clear();
+        }
+
+        private void tbxSales_ManualQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) //(e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+        }
+
+        private void btnSales_ManualQuantityUp_Click(object sender, EventArgs e)
+        {
+            int quantity = Convert.ToInt32(tbxSales_ManualQuantity.Text);
+            quantity++;
+            tbxSales_ManualQuantity.Text = quantity.ToString();
+        }
+
+        private void btnSales_ManualQuantityDown_Click(object sender, EventArgs e)
+        {
+            int quantity = Convert.ToInt32(tbxSales_ManualQuantity.Text);
+            quantity--;
+            tbxSales_ManualQuantity.Text = quantity.ToString();
+        }
+
+        private void tbxSales_ManualQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (btnSales_ManualAddToList.Enabled)
+            {
+                if (tbxSales_ManualQuantity.Text == "1")
+                {
+                    btnSales_ManualQuantityDown.Enabled = false;
+                }
+                else
+                {
+                    btnSales_ManualQuantityDown.Enabled = true;
+                }
+
+                if (Convert.ToInt32(tbxSales_ManualQuantity.Text) >= Convert.ToInt32(dgvSales_ManualInfo.Rows[3].Cells[1].Value))
+                {
+                    btnSales_ManualQuantityUp.Enabled = false;
+                    tbxSales_ManualQuantity.Text = dgvSales_ManualInfo.Rows[3].Cells[1].Value.ToString();
+                }
+                else
+                {
+                    btnSales_ManualQuantityUp.Enabled = true;
+                }
+            }
+
+        }
+
+        private void dgvSales_ManualInfo_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvSales_ManualInfo.ClearSelection();
+        }
+
+        private void btnSales_ManualAddToList_Click(object sender, EventArgs e)
+        {
+            bool isDuplicate = false;
+            bool isEnoughStock = true;
+            Product p = SH.GetProductByEAN(dgvSales_ManualInfo.Rows[0].Cells[1].Value.ToString());
+
+            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+            {
+                //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
+                if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
+                {
+                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
+                    {
+                        isEnoughStock = false;
+                        MessageBox.Show("Not enough stock", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        dgvSales_Reciept.Rows[i].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + tbxSales_ManualQuantity.Text;
+                        dgvSales_Reciept.Rows[i].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[i].Cells[0].Value) * p.SellPrice))}";
+
+                        //dgvSales_Reciept.Rows[i].Selected = true;
+
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+            }
+            if (!isDuplicate && isEnoughStock)
+            {
+                dgvSales_Reciept.Rows.Add(p);
+                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[0].Value = tbxSales_ManualQuantity.Text;
+                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[1].Value = p.Name;
+                dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Cells[2].Value = $"€{String.Format("{0:0.00}", (p.SellPrice*Convert.ToDouble(tbxSales_ManualQuantity.Text)))}";
+
+                // dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
+            }
+            DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+            tbxSales_Barcode.Clear();
+            CalculateSalesTotal();
+            return;
+        }
+
+        public void DisplaySalesShowcase(string name, string ean, double price)
+        {
+            lblSales_ItemShowcaseName.Text = name;
+            lblSales_ItemShowcaseEAN.Text = ean;
+            lblSales_ItemShowcasePriceEach.Text = $"€{String.Format("{0:0.00}", price)}";
+            String quantity = "";
+            for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+            {
+                if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(name))
+                {
+                    quantity = dgvSales_Reciept.Rows[i].Cells[0].Value.ToString();
+                    break;
+                }
+            }
+            lblSales_ItemShowcaseQuantity.Text = $"{quantity}x";
         }
     }
 
