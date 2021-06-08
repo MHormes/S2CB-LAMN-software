@@ -72,6 +72,8 @@ namespace LAMN_Software
         {
             if(other.ContractHours >= this.ContractHours) { return 1; }
             else { return -1; }
+
+
         }
     }
 }
