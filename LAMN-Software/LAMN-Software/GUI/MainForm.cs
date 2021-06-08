@@ -697,7 +697,7 @@ namespace LAMN_Software
             cbxEmployeeAdd_Gender.Text = emp.Gender;
             tbxEmployeeAdd_Degree.Text = emp.Degree;
             tbxEmployeeAdd_Nationality.Text = emp.Nationality;
-            tbxEmployeeAdd_ContractHours.Text = emp.ContractHours.ToString();
+            nudEmpContractHours.Value = emp.ContractHours;
 
 
 
@@ -797,7 +797,7 @@ namespace LAMN_Software
                 }
                 else
                 {
-                    contractHours = Convert.ToInt32(tbxEmployeeAdd_ContractHours.Text);
+                    contractHours = Convert.ToInt32(Convert.ToInt32(Math.Round(nudEmpContractHours.Value)));
                 }
                 EH = new EmployeeHandler();
                 var add = EH.AddEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, username, tbxEmployeeAdd_BSN.Text.ToString(), dtpEmployeeAdd_DateOfBirth.Value.Date, email, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, "", Convert.ToDouble(tbxSalary.Text), dtpEmployeeAdd_StartingDate.Value.Date, dtpEmployeeAdd_EndingDate.Value.Date, cbxEmployeeAdd_ContractType.SelectedItem.ToString(), cbxEmployeeAdd_Gender.SelectedItem.ToString(), tbxEmployeeAdd_Degree.Text, tbxEmployeeAdd_Nationality.Text, contractHours, tbxEmployeeAdd_Adress.Text);
@@ -830,7 +830,7 @@ namespace LAMN_Software
             try
             {
                 EH = new EmployeeHandler();
-                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text), Convert.ToDateTime(dtpEmployeeAdd_StartingDate.Value.Date), Convert.ToDateTime(dtpEmployeeAdd_EndingDate.Value.Date), cbxEmployeeAdd_ContractType.SelectedItem.ToString(), cbxEmployeeAdd_Gender.SelectedItem.ToString(), tbxEmployeeAdd_Degree.Text, tbxEmployeeAdd_Nationality.Text, Convert.ToInt32(tbxEmployeeAdd_ContractHours.Text), tbxEmployeeAdd_Adress.Text); ;
+                var update = EH.ChangeEmployee(tbxEmployeeAdd_FirstName.Text, tbxEmployeeAdd_SecondName.Text, tbxEmployeeAdd_BSN.Text, dtpEmployeeAdd_DateOfBirth.Value.Date, tbxEmployeeAdd_PhoneNumber.Text, tbxEmployeeAdd_ICENumber.Text, cbxEmployeeAdd_ICERelationship.SelectedItem.ToString(), cbxEmployeeAdd_Position.SelectedItem.ToString(), tbxEmployeeAdd_AdditonalInfo.Text, Convert.ToDouble(tbxSalary.Text), Convert.ToDateTime(dtpEmployeeAdd_StartingDate.Value.Date), Convert.ToDateTime(dtpEmployeeAdd_EndingDate.Value.Date), cbxEmployeeAdd_ContractType.SelectedItem.ToString(), cbxEmployeeAdd_Gender.SelectedItem.ToString(), tbxEmployeeAdd_Degree.Text, tbxEmployeeAdd_Nationality.Text, Convert.ToInt32(Math.Round(nudEmpContractHours.Value)), tbxEmployeeAdd_Adress.Text); ;
 
                 if (update == null)
                 {
