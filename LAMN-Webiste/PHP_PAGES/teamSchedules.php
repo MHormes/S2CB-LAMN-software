@@ -28,8 +28,8 @@ if(isset($_POST['btnSelectWeek']))
 
     
     <div class="header">Team schedules</div>
-    <li><a href="../PHP_PAGES/profile.php">Profile</a></li>
-    <li><a href="../PHP_PAGES/personalSchedules.php">Personal schedule</a></li>
+
+    <?php include '../navigationBar.php'; ?>
     <form method="post" action="#">
     <input class="weekCounter" type="number" name="weekSelecter" min="0" max="52" step="1" value="<?php echo $weekNmr?>">
     <input class="button" type="submit" name="btnSelectWeek" value="Show">

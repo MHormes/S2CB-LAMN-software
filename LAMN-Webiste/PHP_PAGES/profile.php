@@ -152,9 +152,9 @@ if(isset($errorMsg)){
 
     </head>
     <body>
-    <div class="header">Schedules</div>
+    <div class="header">Profile</div>
 
-
+    <?php include '../navigationBar.php'; ?>
 
          <!-- User profile -->
          <form method="post">
