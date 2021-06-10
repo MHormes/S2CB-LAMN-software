@@ -3,10 +3,12 @@ session_start();
 include "../DatabaseConn/get_schedules_template.php";
 $weekNmr = 1;
 
+
 if(isset($_POST['btnSelectWeek']))
 {
+    $userName=$_SESSION['Username'];
     $weekNmr = $_POST['weekSelecter'];
-    $schedules = GetSchedulesFromWeek($_POST['weekSelecter']);
+    $schedules = GetSchedulesFromWeek($_POST['weekSelecter'], $userName);
     $_SESSION['startedTeam'] = true;
 }
 ?>

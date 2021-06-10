@@ -29,6 +29,7 @@ namespace LAMN_Software
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -42,11 +43,43 @@ namespace LAMN_Software
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBackground = new System.Windows.Forms.Panel();
             this.pnlTabCover = new System.Windows.Forms.Panel();
+            this.gpnlSales = new LAMN_Software.GradientPanel();
+            this.btnSales = new System.Windows.Forms.Button();
+            this.gpnlStatsType = new LAMN_Software.GradientPanel();
+            this.cbxStatsType = new System.Windows.Forms.ComboBox();
+            this.gpnlStatistics = new LAMN_Software.GradientPanel();
+            this.btnStatistics = new System.Windows.Forms.Button();
+            this.gpnlSchedules = new LAMN_Software.GradientPanel();
+            this.btnSchedules = new System.Windows.Forms.Button();
+            this.gpnlStock = new LAMN_Software.GradientPanel();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.gpnlEmployees = new LAMN_Software.GradientPanel();
+            this.btnEmployees = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblMediaBazaar = new System.Windows.Forms.Label();
             this.lblMB = new System.Windows.Forms.Label();
+            this.textBox_defocus = new System.Windows.Forms.TextBox();
+            this.pnlBar = new System.Windows.Forms.Panel();
+            this.pnlDragBar = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.lblClose = new System.Windows.Forms.Label();
             this.tcNavigator = new System.Windows.Forms.TabControl();
             this.tpStock = new System.Windows.Forms.TabPage();
             this.btnStockAdjustColumnWidth = new System.Windows.Forms.Button();
@@ -83,7 +116,19 @@ namespace LAMN_Software
             this.nudScheduleEmpWeek = new System.Windows.Forms.NumericUpDown();
             this.btnSchedulesEmpShowWeek = new System.Windows.Forms.Button();
             this.dgvSchedulesEmp = new System.Windows.Forms.DataGridView();
+            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.schedulesEmpWorkedHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchedulesEmpContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScheduleEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpSchedulesCreate = new System.Windows.Forms.TabPage();
+            this.btnScheduleCreateAutoGenerate = new System.Windows.Forms.Button();
             this.lblScheduleCurrentWeekCreate = new System.Windows.Forms.Label();
             this.dgvSchedulesCreate = new System.Windows.Forms.DataGridView();
             this.SchedulesCreateDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +155,12 @@ namespace LAMN_Software
             this.ScheduleMinSaturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScheduleMinSunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpScheduleChoise = new System.Windows.Forms.TabPage();
+            this.gpnlViewSchedules = new LAMN_Software.GradientPanel();
+            this.lblViewSchedules = new System.Windows.Forms.Label();
+            this.pbxViewSchedules = new System.Windows.Forms.PictureBox();
+            this.gpnlCreateSchedules = new LAMN_Software.GradientPanel();
+            this.lblCreateSchedules = new System.Windows.Forms.Label();
+            this.pbxAddSchedules = new System.Windows.Forms.PictureBox();
             this.tpEmployees = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.btnInfoChangeRequest = new System.Windows.Forms.Button();
@@ -136,14 +187,23 @@ namespace LAMN_Software
             this.dgvDegree = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dvgContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgAdress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbxSearchEmployee = new System.Windows.Forms.TextBox();
             this.btnDeleteEmployee = new System.Windows.Forms.Button();
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.btnSearchEmployee = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.tpStatsStock = new System.Windows.Forms.TabPage();
+            this.btnToRevenueStats = new System.Windows.Forms.Button();
+            this.btnToProfitStats = new System.Windows.Forms.Button();
+            this.btnToSellingStats = new System.Windows.Forms.Button();
             this.btnStatsStockRandom = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.gradientPanel5 = new LAMN_Software.GradientPanel();
+            this.lblStatsStock_MostPopular = new System.Windows.Forms.Label();
+            this.lblStatsStock_MostPopularAmount = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.btnDeselectStatsStock3 = new System.Windows.Forms.Button();
             this.btnDeselectStatsStock2 = new System.Windows.Forms.Button();
             this.btnDeselectStatsStock1 = new System.Windows.Forms.Button();
@@ -185,7 +245,8 @@ namespace LAMN_Software
             this.tbxStockAdd_ProductName = new System.Windows.Forms.TextBox();
             this.lblProductAdd_StockName = new System.Windows.Forms.Label();
             this.tpEmployeeAdd = new System.Windows.Forms.TabPage();
-            this.tbxEmployeeAdd_ContractHours = new System.Windows.Forms.TextBox();
+            this.tbxEmployeeAdd_Adress = new System.Windows.Forms.TextBox();
+            this.lblAdress = new System.Windows.Forms.Label();
             this.lblContractHours = new System.Windows.Forms.Label();
             this.tbxEmployeeAdd_Nationality = new System.Windows.Forms.TextBox();
             this.tbxEmployeeAdd_Degree = new System.Windows.Forms.TextBox();
@@ -227,10 +288,19 @@ namespace LAMN_Software
             this.lblEmployeeAdd_SecondName = new System.Windows.Forms.Label();
             this.tpStatsEmployee = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.gradientPanel2 = new LAMN_Software.GradientPanel();
+            this.gradientPanel3 = new LAMN_Software.GradientPanel();
+            this.gradientPanel4 = new LAMN_Software.GradientPanel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.chartEmployeesPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gradientPanel1 = new LAMN_Software.GradientPanel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblStatsEmployee_AverageSalary = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.chartEmployeesContractType = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -266,6 +336,8 @@ namespace LAMN_Software
             this.lbChangeInfo = new System.Windows.Forms.ListBox();
             this.lblChangeInfo = new System.Windows.Forms.Label();
             this.gbOldInfo = new System.Windows.Forms.GroupBox();
+            this.lblOldInfo_Address_input = new System.Windows.Forms.Label();
+            this.lblOldInfo_Address = new System.Windows.Forms.Label();
             this.lblOldInfo_iceRelation_input = new System.Windows.Forms.Label();
             this.lblOldInfo_iceNumber_input = new System.Windows.Forms.Label();
             this.lblOldInfo_PhoneNumber_input = new System.Windows.Forms.Label();
@@ -278,6 +350,8 @@ namespace LAMN_Software
             this.lblOldInfo_FirstName = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.gbNewInfo = new System.Windows.Forms.GroupBox();
+            this.lblNewInfo_Address_input = new System.Windows.Forms.Label();
+            this.lblNewInfo_Address = new System.Windows.Forms.Label();
             this.lblNewInfo_iceRelation_input = new System.Windows.Forms.Label();
             this.lblNewInfo_iceNumber_input = new System.Windows.Forms.Label();
             this.lblNewInfo_PhoneNumber_input = new System.Windows.Forms.Label();
@@ -291,53 +365,98 @@ namespace LAMN_Software
             this.btnDeclineInfoChanges = new System.Windows.Forms.Button();
             this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox_defocus = new System.Windows.Forms.TextBox();
-            this.pnlBar = new System.Windows.Forms.Panel();
-            this.pnlDragBar = new System.Windows.Forms.Panel();
-            this.lblClose = new System.Windows.Forms.Label();
-            this.gpnlStatsType = new LAMN_Software.GradientPanel();
-            this.cbxStatsType = new System.Windows.Forms.ComboBox();
-            this.gpnlStatistics = new LAMN_Software.GradientPanel();
-            this.btnStatistics = new System.Windows.Forms.Button();
-            this.gpnlSchedules = new LAMN_Software.GradientPanel();
-            this.btnSchedules = new System.Windows.Forms.Button();
-            this.gpnlStock = new LAMN_Software.GradientPanel();
-            this.btnStock = new System.Windows.Forms.Button();
-            this.gpnlEmployees = new LAMN_Software.GradientPanel();
-            this.btnEmployees = new System.Windows.Forms.Button();
-            this.gpnlViewSchedules = new LAMN_Software.GradientPanel();
-            this.lblViewSchedules = new System.Windows.Forms.Label();
-            this.pbxViewSchedules = new System.Windows.Forms.PictureBox();
-            this.gpnlCreateSchedules = new LAMN_Software.GradientPanel();
-            this.lblCreateSchedules = new System.Windows.Forms.Label();
-            this.pbxAddSchedules = new System.Windows.Forms.PictureBox();
-            this.gradientPanel5 = new LAMN_Software.GradientPanel();
-            this.lblStatsStock_MostPopular = new System.Windows.Forms.Label();
-            this.lblStatsStock_MostPopularAmount = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.gradientPanel2 = new LAMN_Software.GradientPanel();
-            this.gradientPanel3 = new LAMN_Software.GradientPanel();
-            this.gradientPanel4 = new LAMN_Software.GradientPanel();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new LAMN_Software.GradientPanel();
-            this.label31 = new System.Windows.Forms.Label();
-            this.lblStatsEmployee_AverageSalary = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.schedulesEmpFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schedulesEmpMonday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpTuesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpWednesday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpThursday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpFriday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSaturday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpSunday = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.schedulesEmpWorkedHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SchedulesEmpContractHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScheduleEmpFTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpSales = new System.Windows.Forms.TabPage();
+            this.pnlSales_QuantityControl = new System.Windows.Forms.Panel();
+            this.btnSales_Remove1Quantity = new System.Windows.Forms.Button();
+            this.btnSales_RemoveAllQuantity = new System.Windows.Forms.Button();
+            this.pnlSales_Search2 = new System.Windows.Forms.Panel();
+            this.lbxSales_SearchBox = new System.Windows.Forms.ListBox();
+            this.pnlSales_Search = new System.Windows.Forms.Panel();
+            this.tbxSales_Search = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.gradientPanel6 = new LAMN_Software.GradientPanel();
+            this.lblSales_ItemShowcaseEAN = new System.Windows.Forms.Label();
+            this.lblSales_ItemShowcaseQuantityPrice = new System.Windows.Forms.Label();
+            this.lblSales_ItemShowcaseName = new System.Windows.Forms.Label();
+            this.gradientPanel7 = new LAMN_Software.GradientPanel();
+            this.lblSales_TotalPrice = new System.Windows.Forms.Label();
+            this.lblSales_TotalLabel = new System.Windows.Forms.Label();
+            this.dgvSales_Reciept = new System.Windows.Forms.DataGridView();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbxSales_Defocus = new System.Windows.Forms.TextBox();
+            this.tbxSales_Barcode = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSales_ManualCancel = new System.Windows.Forms.Button();
+            this.tbxSales_ManualQuantity = new System.Windows.Forms.TextBox();
+            this.btnSales_ManualQuantityDown = new System.Windows.Forms.Button();
+            this.btnSales_ManualQuantityUp = new System.Windows.Forms.Button();
+            this.btnSales_ManualAddToList = new System.Windows.Forms.Button();
+            this.dgvSales_ManualInfo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpStatsPeriod = new System.Windows.Forms.TabPage();
+            this.btnToRevenueStats1 = new System.Windows.Forms.Button();
+            this.btnToProfitStats1 = new System.Windows.Forms.Button();
+            this.btnToStockStats1 = new System.Windows.Forms.Button();
+            this.lbStatsNotAvailable1 = new System.Windows.Forms.Label();
+            this.label_endingDate = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.dtEndTime = new System.Windows.Forms.DateTimePicker();
+            this.dtStartTime = new System.Windows.Forms.DateTimePicker();
+            this.btnDeselectStatsPeriodStock3 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsPeriodStock2 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsPeriodStock1 = new System.Windows.Forms.Button();
+            this.cbxStatsPeriod3 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsPeriod2 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsPeriod1 = new System.Windows.Forms.ComboBox();
+            this.chartStockSoldPeriod = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tpStatsProfit = new System.Windows.Forms.TabPage();
+            this.btnToRevenueStats2 = new System.Windows.Forms.Button();
+            this.btnToSellingStats2 = new System.Windows.Forms.Button();
+            this.btnToStockStats2 = new System.Windows.Forms.Button();
+            this.lbStatsProfit = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.dtEndTimeProfit = new System.Windows.Forms.DateTimePicker();
+            this.dtStartTimeProfit = new System.Windows.Forms.DateTimePicker();
+            this.btnDeselectStatsProfitStock3 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsProfitStock2 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsProfitStock1 = new System.Windows.Forms.Button();
+            this.cbxStatsProfit3 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsProfit2 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsProfit1 = new System.Windows.Forms.ComboBox();
+            this.chartStockProfit = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tpStatsRevenue = new System.Windows.Forms.TabPage();
+            this.btnToProfitStats3 = new System.Windows.Forms.Button();
+            this.btnToSellingStats3 = new System.Windows.Forms.Button();
+            this.btnToStockStats3 = new System.Windows.Forms.Button();
+            this.lbStatsRevenue = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.dtEndTimeRevenue = new System.Windows.Forms.DateTimePicker();
+            this.dtStartTimeRevenue = new System.Windows.Forms.DateTimePicker();
+            this.btnDeselectStatsRevenueStock3 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsRevenueStock2 = new System.Windows.Forms.Button();
+            this.btnDeselectStatsRevenueStock1 = new System.Windows.Forms.Button();
+            this.cbxStatsRevenue3 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsRevenue2 = new System.Windows.Forms.ComboBox();
+            this.cbxStatsRevenue1 = new System.Windows.Forms.ComboBox();
+            this.chartStockRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.nudEmpContractHours = new System.Windows.Forms.NumericUpDown();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
+            this.gpnlSales.SuspendLayout();
+            this.gpnlStatsType.SuspendLayout();
+            this.gpnlStatistics.SuspendLayout();
+            this.gpnlSchedules.SuspendLayout();
+            this.gpnlStock.SuspendLayout();
+            this.gpnlEmployees.SuspendLayout();
+            this.pnlBar.SuspendLayout();
+            this.pnlDragBar.SuspendLayout();
             this.tcNavigator.SuspendLayout();
             this.tpStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
@@ -350,17 +469,26 @@ namespace LAMN_Software
             this.tpScheduleMin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScheduleMinP)).BeginInit();
             this.tpScheduleChoise.SuspendLayout();
+            this.gpnlViewSchedules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).BeginInit();
+            this.gpnlCreateSchedules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).BeginInit();
             this.tpEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tpStatsStock.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.gradientPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).BeginInit();
             this.tpStockAdd.SuspendLayout();
             this.tpEmployeeAdd.SuspendLayout();
             this.tpStatsEmployee.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.gradientPanel2.SuspendLayout();
+            this.gradientPanel3.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).BeginInit();
             this.panel1.SuspendLayout();
+            this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).BeginInit();
             this.tpNewOrder.SuspendLayout();
@@ -368,21 +496,22 @@ namespace LAMN_Software
             this.tpRequestChangeInfo.SuspendLayout();
             this.gbOldInfo.SuspendLayout();
             this.gbNewInfo.SuspendLayout();
-            this.pnlBar.SuspendLayout();
-            this.gpnlStatsType.SuspendLayout();
-            this.gpnlStatistics.SuspendLayout();
-            this.gpnlSchedules.SuspendLayout();
-            this.gpnlStock.SuspendLayout();
-            this.gpnlEmployees.SuspendLayout();
-            this.gpnlViewSchedules.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).BeginInit();
-            this.gpnlCreateSchedules.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).BeginInit();
-            this.gradientPanel5.SuspendLayout();
-            this.gradientPanel2.SuspendLayout();
-            this.gradientPanel3.SuspendLayout();
-            this.gradientPanel4.SuspendLayout();
-            this.gradientPanel1.SuspendLayout();
+            this.tpSales.SuspendLayout();
+            this.pnlSales_QuantityControl.SuspendLayout();
+            this.pnlSales_Search2.SuspendLayout();
+            this.pnlSales_Search.SuspendLayout();
+            this.gradientPanel6.SuspendLayout();
+            this.gradientPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_ManualInfo)).BeginInit();
+            this.tpStatsPeriod.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockSoldPeriod)).BeginInit();
+            this.tpStatsProfit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockProfit)).BeginInit();
+            this.tpStatsRevenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockRevenue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEmpContractHours)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -390,23 +519,24 @@ namespace LAMN_Software
             this.pnlBackground.BackColor = System.Drawing.Color.Gray;
             this.pnlBackground.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlBackground.Controls.Add(this.pnlTabCover);
-            this.pnlBackground.Controls.Add(this.tcNavigator);
             this.pnlBackground.Controls.Add(this.textBox_defocus);
             this.pnlBackground.Controls.Add(this.pnlBar);
+            this.pnlBackground.Controls.Add(this.tcNavigator);
             this.pnlBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlBackground.MaximumSize = new System.Drawing.Size(1154, 690);
-            this.pnlBackground.MinimumSize = new System.Drawing.Size(1154, 690);
+            this.pnlBackground.MaximumSize = new System.Drawing.Size(1168, 754);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(1168, 754);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(1154, 690);
+            this.pnlBackground.Size = new System.Drawing.Size(1168, 754);
             this.pnlBackground.TabIndex = 9;
             this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
             // 
             // pnlTabCover
             // 
             this.pnlTabCover.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTabCover.Controls.Add(this.gpnlSales);
             this.pnlTabCover.Controls.Add(this.gpnlStatsType);
             this.pnlTabCover.Controls.Add(this.gpnlStatistics);
             this.pnlTabCover.Controls.Add(this.gpnlSchedules);
@@ -415,15 +545,188 @@ namespace LAMN_Software
             this.pnlTabCover.Controls.Add(this.btnLogout);
             this.pnlTabCover.Controls.Add(this.lblMediaBazaar);
             this.pnlTabCover.Controls.Add(this.lblMB);
-            this.pnlTabCover.Location = new System.Drawing.Point(2, 29);
+            this.pnlTabCover.Location = new System.Drawing.Point(2, 31);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1150, 53);
+            this.pnlTabCover.Size = new System.Drawing.Size(1164, 55);
             this.pnlTabCover.TabIndex = 11;
+            // 
+            // gpnlSales
+            // 
+            this.gpnlSales.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlSales.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlSales.Controls.Add(this.btnSales);
+            this.gpnlSales.Location = new System.Drawing.Point(232, 0);
+            this.gpnlSales.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlSales.Name = "gpnlSales";
+            this.gpnlSales.Size = new System.Drawing.Size(131, 91);
+            this.gpnlSales.TabIndex = 12;
+            // 
+            // btnSales
+            // 
+            this.btnSales.BackColor = System.Drawing.Color.Transparent;
+            this.btnSales.FlatAppearance.BorderSize = 0;
+            this.btnSales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.btnSales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnSales.ForeColor = System.Drawing.Color.White;
+            this.btnSales.Location = new System.Drawing.Point(0, 8);
+            this.btnSales.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(132, 63);
+            this.btnSales.TabIndex = 10;
+            this.btnSales.Text = "Sales";
+            this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
+            // 
+            // gpnlStatsType
+            // 
+            this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlStatsType.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlStatsType.Controls.Add(this.cbxStatsType);
+            this.gpnlStatsType.Location = new System.Drawing.Point(826, 0);
+            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlStatsType.Name = "gpnlStatsType";
+            this.gpnlStatsType.Size = new System.Drawing.Size(140, 91);
+            this.gpnlStatsType.TabIndex = 14;
+            this.gpnlStatsType.Visible = false;
+            // 
+            // cbxStatsType
+            // 
+            this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbxStatsType.FormattingEnabled = true;
+            this.cbxStatsType.Items.AddRange(new object[] {
+            "Stock",
+            "Employees"});
+            this.cbxStatsType.Location = new System.Drawing.Point(0, 28);
+            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsType.Name = "cbxStatsType";
+            this.cbxStatsType.Size = new System.Drawing.Size(118, 30);
+            this.cbxStatsType.TabIndex = 0;
+            this.cbxStatsType.Text = "Stock";
+            this.cbxStatsType.Visible = false;
+            this.cbxStatsType.SelectedIndexChanged += new System.EventHandler(this.cbxStatsType_SelectedIndexChanged);
+            // 
+            // gpnlStatistics
+            // 
+            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlStatistics.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlStatistics.Controls.Add(this.btnStatistics);
+            this.gpnlStatistics.Location = new System.Drawing.Point(668, 0);
+            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlStatistics.Name = "gpnlStatistics";
+            this.gpnlStatistics.Size = new System.Drawing.Size(158, 91);
+            this.gpnlStatistics.TabIndex = 13;
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(-4, 8);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(156, 63);
+            this.btnStatistics.TabIndex = 10;
+            this.btnStatistics.Text = "Statistics";
+            this.btnStatistics.UseVisualStyleBackColor = false;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
+            // gpnlSchedules
+            // 
+            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlSchedules.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlSchedules.Controls.Add(this.btnSchedules);
+            this.gpnlSchedules.Location = new System.Drawing.Point(364, 0);
+            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlSchedules.Name = "gpnlSchedules";
+            this.gpnlSchedules.Size = new System.Drawing.Size(148, 91);
+            this.gpnlSchedules.TabIndex = 12;
+            // 
+            // btnSchedules
+            // 
+            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
+            this.btnSchedules.FlatAppearance.BorderSize = 0;
+            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedules.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnSchedules.ForeColor = System.Drawing.Color.White;
+            this.btnSchedules.Location = new System.Drawing.Point(-2, 6);
+            this.btnSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(146, 63);
+            this.btnSchedules.TabIndex = 10;
+            this.btnSchedules.Text = "Schedules";
+            this.btnSchedules.UseVisualStyleBackColor = false;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
+            // 
+            // gpnlStock
+            // 
+            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlStock.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlStock.Controls.Add(this.btnStock);
+            this.gpnlStock.Location = new System.Drawing.Point(142, 0);
+            this.gpnlStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlStock.Name = "gpnlStock";
+            this.gpnlStock.Size = new System.Drawing.Size(92, 91);
+            this.gpnlStock.TabIndex = 11;
+            // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnStock.ForeColor = System.Drawing.Color.White;
+            this.btnStock.Location = new System.Drawing.Point(3, 10);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(89, 63);
+            this.btnStock.TabIndex = 10;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
+            // gpnlEmployees
+            // 
+            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gpnlEmployees.ColorTop = System.Drawing.Color.Orange;
+            this.gpnlEmployees.Controls.Add(this.btnEmployees);
+            this.gpnlEmployees.Location = new System.Drawing.Point(510, 0);
+            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlEmployees.Name = "gpnlEmployees";
+            this.gpnlEmployees.Size = new System.Drawing.Size(158, 91);
+            this.gpnlEmployees.TabIndex = 12;
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Chocolate;
+            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployees.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Location = new System.Drawing.Point(0, 8);
+            this.btnEmployees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(158, 63);
+            this.btnEmployees.TabIndex = 10;
+            this.btnEmployees.Text = "Employees";
+            this.btnEmployees.UseVisualStyleBackColor = false;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -462,6 +765,73 @@ namespace LAMN_Software
             this.lblMB.TabIndex = 11;
             this.lblMB.Text = "MB";
             // 
+            // textBox_defocus
+            // 
+            this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
+            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_defocus.Name = "textBox_defocus";
+            this.textBox_defocus.Size = new System.Drawing.Size(2, 9);
+            this.textBox_defocus.TabIndex = 0;
+            this.textBox_defocus.TabStop = false;
+            // 
+            // pnlBar
+            // 
+            this.pnlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pnlBar.Controls.Add(this.pnlDragBar);
+            this.pnlBar.Controls.Add(this.lblClose);
+            this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pnlBar.Location = new System.Drawing.Point(-2, -1);
+            this.pnlBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBar.Name = "pnlBar";
+            this.pnlBar.Size = new System.Drawing.Size(1168, 32);
+            this.pnlBar.TabIndex = 8;
+            // 
+            // pnlDragBar
+            // 
+            this.pnlDragBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pnlDragBar.Controls.Add(this.label34);
+            this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pnlDragBar.Location = new System.Drawing.Point(3, 0);
+            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlDragBar.Name = "pnlDragBar";
+            this.pnlDragBar.Size = new System.Drawing.Size(1136, 31);
+            this.pnlDragBar.TabIndex = 9;
+            this.pnlDragBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseDown);
+            this.pnlDragBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseMove);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.DimGray;
+            this.label34.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(10, 6);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(457, 18);
+            this.label34.TabIndex = 27;
+            this.label34.Text = "To cover, size: [2300, 140]              To show tabs, size: [2300, 107]\r\n";
+            this.label34.Visible = false;
+            // 
+            // lblClose
+            // 
+            this.lblClose.BackColor = System.Drawing.Color.Transparent;
+            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClose.ForeColor = System.Drawing.Color.White;
+            this.lblClose.Location = new System.Drawing.Point(1142, 0);
+            this.lblClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(27, 28);
+            this.lblClose.TabIndex = 6;
+            this.lblClose.Text = "✖";
+            this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
+            this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
+            // 
             // tcNavigator
             // 
             this.tcNavigator.Controls.Add(this.tpStock);
@@ -477,13 +847,17 @@ namespace LAMN_Software
             this.tcNavigator.Controls.Add(this.tpNewOrder);
             this.tcNavigator.Controls.Add(this.tpSellProduct);
             this.tcNavigator.Controls.Add(this.tpRequestChangeInfo);
-            this.tcNavigator.Location = new System.Drawing.Point(12, 84);
+            this.tcNavigator.Controls.Add(this.tpSales);
+            this.tcNavigator.Controls.Add(this.tpStatsPeriod);
+            this.tcNavigator.Controls.Add(this.tpStatsProfit);
+            this.tcNavigator.Controls.Add(this.tpStatsRevenue);
+            this.tcNavigator.Location = new System.Drawing.Point(4, 84);
             this.tcNavigator.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tcNavigator.MaximumSize = new System.Drawing.Size(1154, 690);
-            this.tcNavigator.MinimumSize = new System.Drawing.Size(1154, 690);
+            this.tcNavigator.MaximumSize = new System.Drawing.Size(1158, 664);
+            this.tcNavigator.MinimumSize = new System.Drawing.Size(1158, 664);
             this.tcNavigator.Name = "tcNavigator";
             this.tcNavigator.SelectedIndex = 0;
-            this.tcNavigator.Size = new System.Drawing.Size(1154, 690);
+            this.tcNavigator.Size = new System.Drawing.Size(1158, 664);
             this.tcNavigator.TabIndex = 9;
             // 
             // tpStock
@@ -505,7 +879,7 @@ namespace LAMN_Software
             this.tpStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpStock.Name = "tpStock";
             this.tpStock.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpStock.Size = new System.Drawing.Size(1146, 668);
+            this.tpStock.Size = new System.Drawing.Size(1150, 642);
             this.tpStock.TabIndex = 0;
             this.tpStock.Text = "Stock";
             this.tpStock.UseVisualStyleBackColor = true;
@@ -514,7 +888,7 @@ namespace LAMN_Software
             // 
             this.btnStockAdjustColumnWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnStockAdjustColumnWidth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockAdjustColumnWidth.Location = new System.Drawing.Point(766, -633);
+            this.btnStockAdjustColumnWidth.Location = new System.Drawing.Point(768, -594);
             this.btnStockAdjustColumnWidth.Name = "btnStockAdjustColumnWidth";
             this.btnStockAdjustColumnWidth.Size = new System.Drawing.Size(321, 51);
             this.btnStockAdjustColumnWidth.TabIndex = 26;
@@ -524,38 +898,50 @@ namespace LAMN_Software
             // 
             // btnOrder
             // 
-            this.btnOrder.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnOrder.Location = new System.Drawing.Point(732, 525);
+            this.btnOrder.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnOrder.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrder.Font = new System.Drawing.Font("Arial", 18F);
+            this.btnOrder.Location = new System.Drawing.Point(366, 571);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(104, 35);
+            this.btnOrder.Size = new System.Drawing.Size(140, 68);
             this.btnOrder.TabIndex = 25;
             this.btnOrder.Text = "New order";
-            this.btnOrder.UseVisualStyleBackColor = true;
+            this.toolTip1.SetToolTip(this.btnOrder, "Make a new order");
+            this.btnOrder.UseVisualStyleBackColor = false;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnSellProduct
             // 
-            this.btnSellProduct.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnSellProduct.Location = new System.Drawing.Point(628, 525);
+            this.btnSellProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSellProduct.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnSellProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSellProduct.Font = new System.Drawing.Font("Arial", 18F);
+            this.btnSellProduct.Location = new System.Drawing.Point(286, 571);
             this.btnSellProduct.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSellProduct.Name = "btnSellProduct";
-            this.btnSellProduct.Size = new System.Drawing.Size(104, 35);
+            this.btnSellProduct.Size = new System.Drawing.Size(82, 68);
             this.btnSellProduct.TabIndex = 24;
-            this.btnSellProduct.Text = "Sell product";
-            this.btnSellProduct.UseVisualStyleBackColor = true;
+            this.btnSellProduct.Text = "Sell";
+            this.toolTip1.SetToolTip(this.btnSellProduct, "Sell selected product");
+            this.btnSellProduct.UseVisualStyleBackColor = false;
             this.btnSellProduct.Click += new System.EventHandler(this.btnSellProduct_Click);
             // 
             // btnStockStats
             // 
-            this.btnStockStats.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnStockStats.Location = new System.Drawing.Point(836, 526);
+            this.btnStockStats.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnStockStats.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnStockStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockStats.Font = new System.Drawing.Font("Arial", 28F);
+            this.btnStockStats.Location = new System.Drawing.Point(505, 571);
             this.btnStockStats.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnStockStats.Name = "btnStockStats";
-            this.btnStockStats.Size = new System.Drawing.Size(104, 35);
+            this.btnStockStats.Size = new System.Drawing.Size(65, 68);
             this.btnStockStats.TabIndex = 23;
-            this.btnStockStats.Text = "📊 Statistics";
-            this.btnStockStats.UseVisualStyleBackColor = true;
+            this.btnStockStats.Text = "📊";
+            this.toolTip1.SetToolTip(this.btnStockStats, " Statistics");
+            this.btnStockStats.UseVisualStyleBackColor = false;
             this.btnStockStats.Click += new System.EventHandler(this.btnStockStats_Click);
             // 
             // dgvAllStock
@@ -576,13 +962,13 @@ namespace LAMN_Software
             this.SellPrice,
             this.MinimumStock,
             this.TotalSold});
-            this.dgvAllStock.Location = new System.Drawing.Point(4, 31);
+            this.dgvAllStock.Location = new System.Drawing.Point(4, 58);
             this.dgvAllStock.Name = "dgvAllStock";
             this.dgvAllStock.ReadOnly = true;
             this.dgvAllStock.RowHeadersVisible = false;
             this.dgvAllStock.RowHeadersWidth = 102;
             this.dgvAllStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllStock.Size = new System.Drawing.Size(1114, 486);
+            this.dgvAllStock.Size = new System.Drawing.Size(1132, 500);
             this.dgvAllStock.TabIndex = 15;
             // 
             // ID
@@ -675,14 +1061,18 @@ namespace LAMN_Software
             // 
             // btnStock_ReActivateProduct
             // 
-            this.btnStock_ReActivateProduct.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnStock_ReActivateProduct.Location = new System.Drawing.Point(386, 525);
+            this.btnStock_ReActivateProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnStock_ReActivateProduct.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnStock_ReActivateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock_ReActivateProduct.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock_ReActivateProduct.Location = new System.Drawing.Point(154, 571);
             this.btnStock_ReActivateProduct.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnStock_ReActivateProduct.Name = "btnStock_ReActivateProduct";
-            this.btnStock_ReActivateProduct.Size = new System.Drawing.Size(242, 35);
+            this.btnStock_ReActivateProduct.Size = new System.Drawing.Size(134, 68);
             this.btnStock_ReActivateProduct.TabIndex = 14;
-            this.btnStock_ReActivateProduct.Text = "Reactivate selected product";
-            this.btnStock_ReActivateProduct.UseVisualStyleBackColor = true;
+            this.btnStock_ReActivateProduct.Text = "Reactivate";
+            this.toolTip1.SetToolTip(this.btnStock_ReActivateProduct, "Reactivate selected product");
+            this.btnStock_ReActivateProduct.UseVisualStyleBackColor = false;
             this.btnStock_ReActivateProduct.Click += new System.EventHandler(this.btnStock_ReActivateProduct_Click);
             // 
             // cbxStockCurrentlyShowing
@@ -693,7 +1083,7 @@ namespace LAMN_Software
             this.cbxStockCurrentlyShowing.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.cbxStockCurrentlyShowing.Location = new System.Drawing.Point(304, 4);
+            this.cbxStockCurrentlyShowing.Location = new System.Drawing.Point(122, 22);
             this.cbxStockCurrentlyShowing.Name = "cbxStockCurrentlyShowing";
             this.cbxStockCurrentlyShowing.Size = new System.Drawing.Size(121, 28);
             this.cbxStockCurrentlyShowing.TabIndex = 13;
@@ -703,69 +1093,84 @@ namespace LAMN_Software
             // 
             this.lblStockCurrentlyShowing.AutoSize = true;
             this.lblStockCurrentlyShowing.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblStockCurrentlyShowing.Location = new System.Drawing.Point(4, 5);
+            this.lblStockCurrentlyShowing.Location = new System.Drawing.Point(22, 24);
             this.lblStockCurrentlyShowing.Name = "lblStockCurrentlyShowing";
-            this.lblStockCurrentlyShowing.Size = new System.Drawing.Size(295, 22);
+            this.lblStockCurrentlyShowing.Size = new System.Drawing.Size(99, 22);
             this.lblStockCurrentlyShowing.TabIndex = 12;
-            this.lblStockCurrentlyShowing.Text = "Curerntly showing all items that are:";
+            this.lblStockCurrentlyShowing.Text = "Filtered by:";
             // 
             // tbxSearchStock
             // 
-            this.tbxSearchStock.Font = new System.Drawing.Font("Arial", 15F);
-            this.tbxSearchStock.Location = new System.Drawing.Point(940, 526);
+            this.tbxSearchStock.Font = new System.Drawing.Font("Arial", 18F);
+            this.tbxSearchStock.Location = new System.Drawing.Point(885, 587);
             this.tbxSearchStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tbxSearchStock.Name = "tbxSearchStock";
-            this.tbxSearchStock.Size = new System.Drawing.Size(139, 30);
+            this.tbxSearchStock.Size = new System.Drawing.Size(211, 35);
             this.tbxSearchStock.TabIndex = 11;
             this.tbxSearchStock.TabStop = false;
             this.tbxSearchStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearchStock_KeyPress);
             // 
             // btnDeActivateStock
             // 
-            this.btnDeActivateStock.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnDeActivateStock.Location = new System.Drawing.Point(386, 525);
+            this.btnDeActivateStock.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeActivateStock.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnDeActivateStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeActivateStock.Font = new System.Drawing.Font("Arial", 18F);
+            this.btnDeActivateStock.Location = new System.Drawing.Point(154, 571);
             this.btnDeActivateStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnDeActivateStock.Name = "btnDeActivateStock";
-            this.btnDeActivateStock.Size = new System.Drawing.Size(242, 35);
+            this.btnDeActivateStock.Size = new System.Drawing.Size(134, 68);
             this.btnDeActivateStock.TabIndex = 10;
-            this.btnDeActivateStock.Text = "🗑️ Deactivate selected product";
-            this.btnDeActivateStock.UseVisualStyleBackColor = true;
+            this.btnDeActivateStock.Text = "Deactivate";
+            this.toolTip1.SetToolTip(this.btnDeActivateStock, "Deactivate selected product");
+            this.btnDeActivateStock.UseVisualStyleBackColor = false;
             this.btnDeActivateStock.Click += new System.EventHandler(this.btnDeActivateStock_Click);
             // 
             // btnEditStock
             // 
-            this.btnEditStock.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnEditStock.Location = new System.Drawing.Point(171, 525);
+            this.btnEditStock.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEditStock.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnEditStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditStock.Location = new System.Drawing.Point(66, 571);
             this.btnEditStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnEditStock.Name = "btnEditStock";
-            this.btnEditStock.Size = new System.Drawing.Size(212, 35);
+            this.btnEditStock.Size = new System.Drawing.Size(90, 68);
             this.btnEditStock.TabIndex = 10;
-            this.btnEditStock.Text = "✎ Edit selected product";
-            this.btnEditStock.UseVisualStyleBackColor = true;
+            this.btnEditStock.Text = "Edit";
+            this.toolTip1.SetToolTip(this.btnEditStock, "Edit selected product");
+            this.btnEditStock.UseVisualStyleBackColor = false;
             this.btnEditStock.Click += new System.EventHandler(this.btnEditStock_Click);
             // 
             // btnSearchStock
             // 
-            this.btnSearchStock.Font = new System.Drawing.Font("Arial", 13F);
-            this.btnSearchStock.Location = new System.Drawing.Point(1083, 525);
+            this.btnSearchStock.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSearchStock.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnSearchStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchStock.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnSearchStock.Location = new System.Drawing.Point(1098, 587);
             this.btnSearchStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSearchStock.Name = "btnSearchStock";
-            this.btnSearchStock.Size = new System.Drawing.Size(36, 35);
+            this.btnSearchStock.Size = new System.Drawing.Size(32, 34);
             this.btnSearchStock.TabIndex = 10;
             this.btnSearchStock.Text = "🔍";
-            this.btnSearchStock.UseVisualStyleBackColor = true;
+            this.btnSearchStock.UseVisualStyleBackColor = false;
             this.btnSearchStock.Click += new System.EventHandler(this.btnSearchStock_Click);
             // 
             // btnAddStock
             // 
-            this.btnAddStock.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnAddStock.Location = new System.Drawing.Point(4, 526);
+            this.btnAddStock.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddStock.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnAddStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddStock.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddStock.Location = new System.Drawing.Point(3, 571);
             this.btnAddStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnAddStock.Name = "btnAddStock";
-            this.btnAddStock.Size = new System.Drawing.Size(164, 35);
+            this.btnAddStock.Size = new System.Drawing.Size(65, 68);
             this.btnAddStock.TabIndex = 10;
-            this.btnAddStock.Text = "+ Add new product";
-            this.btnAddStock.UseVisualStyleBackColor = true;
+            this.btnAddStock.Text = "+";
+            this.toolTip1.SetToolTip(this.btnAddStock, "Add new product");
+            this.btnAddStock.UseVisualStyleBackColor = false;
             this.btnAddStock.Click += new System.EventHandler(this.btnAddStock_Click);
             // 
             // tpSchedulesEmp
@@ -783,7 +1188,7 @@ namespace LAMN_Software
             this.tpSchedulesEmp.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpSchedulesEmp.Name = "tpSchedulesEmp";
             this.tpSchedulesEmp.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpSchedulesEmp.Size = new System.Drawing.Size(1146, 668);
+            this.tpSchedulesEmp.Size = new System.Drawing.Size(1150, 642);
             this.tpSchedulesEmp.TabIndex = 1;
             this.tpSchedulesEmp.Text = "SchedulesEmp";
             this.tpSchedulesEmp.UseVisualStyleBackColor = true;
@@ -909,8 +1314,94 @@ namespace LAMN_Software
             this.dgvSchedulesEmp.Size = new System.Drawing.Size(1113, 448);
             this.dgvSchedulesEmp.TabIndex = 13;
             // 
+            // schedulesEmpFirstName
+            // 
+            this.schedulesEmpFirstName.HeaderText = "First Name";
+            this.schedulesEmpFirstName.MinimumWidth = 6;
+            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
+            this.schedulesEmpFirstName.ReadOnly = true;
+            this.schedulesEmpFirstName.Width = 125;
+            // 
+            // schedulesEmpMonday
+            // 
+            this.schedulesEmpMonday.HeaderText = "Monday";
+            this.schedulesEmpMonday.Items.AddRange(new object[] {
+            "M",
+            "A",
+            "E"});
+            this.schedulesEmpMonday.MinimumWidth = 6;
+            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
+            this.schedulesEmpMonday.Width = 125;
+            // 
+            // schedulesEmpTuesday
+            // 
+            this.schedulesEmpTuesday.HeaderText = "Tuesday";
+            this.schedulesEmpTuesday.MinimumWidth = 6;
+            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
+            this.schedulesEmpTuesday.Width = 125;
+            // 
+            // schedulesEmpWednesday
+            // 
+            this.schedulesEmpWednesday.HeaderText = "Wednesday";
+            this.schedulesEmpWednesday.MinimumWidth = 6;
+            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
+            this.schedulesEmpWednesday.Width = 125;
+            // 
+            // schedulesEmpThursday
+            // 
+            this.schedulesEmpThursday.HeaderText = "Thursday";
+            this.schedulesEmpThursday.MinimumWidth = 6;
+            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
+            this.schedulesEmpThursday.Width = 125;
+            // 
+            // schedulesEmpFriday
+            // 
+            this.schedulesEmpFriday.HeaderText = "Friday";
+            this.schedulesEmpFriday.MinimumWidth = 6;
+            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
+            this.schedulesEmpFriday.Width = 125;
+            // 
+            // schedulesEmpSaturday
+            // 
+            this.schedulesEmpSaturday.HeaderText = "Saturday";
+            this.schedulesEmpSaturday.MinimumWidth = 6;
+            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
+            this.schedulesEmpSaturday.Width = 125;
+            // 
+            // schedulesEmpSunday
+            // 
+            this.schedulesEmpSunday.HeaderText = "Sunday";
+            this.schedulesEmpSunday.MinimumWidth = 6;
+            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
+            this.schedulesEmpSunday.Width = 125;
+            // 
+            // schedulesEmpWorkedHours
+            // 
+            this.schedulesEmpWorkedHours.HeaderText = "WorkedHours";
+            this.schedulesEmpWorkedHours.MinimumWidth = 10;
+            this.schedulesEmpWorkedHours.Name = "schedulesEmpWorkedHours";
+            this.schedulesEmpWorkedHours.ReadOnly = true;
+            this.schedulesEmpWorkedHours.Width = 200;
+            // 
+            // SchedulesEmpContractHours
+            // 
+            this.SchedulesEmpContractHours.HeaderText = "Contract hours";
+            this.SchedulesEmpContractHours.MinimumWidth = 10;
+            this.SchedulesEmpContractHours.Name = "SchedulesEmpContractHours";
+            this.SchedulesEmpContractHours.ReadOnly = true;
+            this.SchedulesEmpContractHours.Width = 200;
+            // 
+            // ScheduleEmpFTE
+            // 
+            this.ScheduleEmpFTE.HeaderText = "FTE";
+            this.ScheduleEmpFTE.MinimumWidth = 10;
+            this.ScheduleEmpFTE.Name = "ScheduleEmpFTE";
+            this.ScheduleEmpFTE.ReadOnly = true;
+            this.ScheduleEmpFTE.Width = 200;
+            // 
             // tpSchedulesCreate
             // 
+            this.tpSchedulesCreate.Controls.Add(this.btnScheduleCreateAutoGenerate);
             this.tpSchedulesCreate.Controls.Add(this.lblScheduleCurrentWeekCreate);
             this.tpSchedulesCreate.Controls.Add(this.dgvSchedulesCreate);
             this.tpSchedulesCreate.Controls.Add(this.btnScheduleCreateMinimumPeople);
@@ -921,10 +1412,21 @@ namespace LAMN_Software
             this.tpSchedulesCreate.Location = new System.Drawing.Point(4, 18);
             this.tpSchedulesCreate.Name = "tpSchedulesCreate";
             this.tpSchedulesCreate.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tpSchedulesCreate.Size = new System.Drawing.Size(1146, 668);
+            this.tpSchedulesCreate.Size = new System.Drawing.Size(1150, 642);
             this.tpSchedulesCreate.TabIndex = 11;
             this.tpSchedulesCreate.Text = "SchedulesCreate";
             this.tpSchedulesCreate.UseVisualStyleBackColor = true;
+            // 
+            // btnScheduleCreateAutoGenerate
+            // 
+            this.btnScheduleCreateAutoGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnScheduleCreateAutoGenerate.Location = new System.Drawing.Point(314, 492);
+            this.btnScheduleCreateAutoGenerate.Name = "btnScheduleCreateAutoGenerate";
+            this.btnScheduleCreateAutoGenerate.Size = new System.Drawing.Size(209, 65);
+            this.btnScheduleCreateAutoGenerate.TabIndex = 26;
+            this.btnScheduleCreateAutoGenerate.Text = "Magical button for auto generating the schedule of the selected week";
+            this.btnScheduleCreateAutoGenerate.UseVisualStyleBackColor = true;
+            this.btnScheduleCreateAutoGenerate.Click += new System.EventHandler(this.btnScheduleCreateAutoGenerate_Click);
             // 
             // lblScheduleCurrentWeekCreate
             // 
@@ -1082,7 +1584,7 @@ namespace LAMN_Software
             this.tpScheduleMin.Location = new System.Drawing.Point(4, 18);
             this.tpScheduleMin.Name = "tpScheduleMin";
             this.tpScheduleMin.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tpScheduleMin.Size = new System.Drawing.Size(1146, 668);
+            this.tpScheduleMin.Size = new System.Drawing.Size(1150, 642);
             this.tpScheduleMin.TabIndex = 9;
             this.tpScheduleMin.Text = "SchedulesMin";
             this.tpScheduleMin.UseVisualStyleBackColor = true;
@@ -1197,10 +1699,92 @@ namespace LAMN_Software
             this.tpScheduleChoise.Location = new System.Drawing.Point(4, 18);
             this.tpScheduleChoise.Name = "tpScheduleChoise";
             this.tpScheduleChoise.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tpScheduleChoise.Size = new System.Drawing.Size(1146, 668);
+            this.tpScheduleChoise.Size = new System.Drawing.Size(1150, 642);
             this.tpScheduleChoise.TabIndex = 10;
-            this.tpScheduleChoise.Text = "ScheduleChoise";
+            this.tpScheduleChoise.Text = "ScheduleChoice";
             this.tpScheduleChoise.UseVisualStyleBackColor = true;
+            // 
+            // gpnlViewSchedules
+            // 
+            this.gpnlViewSchedules.ColorBottom = System.Drawing.Color.Orange;
+            this.gpnlViewSchedules.ColorTop = System.Drawing.Color.DarkOrange;
+            this.gpnlViewSchedules.Controls.Add(this.lblViewSchedules);
+            this.gpnlViewSchedules.Controls.Add(this.pbxViewSchedules);
+            this.gpnlViewSchedules.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gpnlViewSchedules.Location = new System.Drawing.Point(580, 122);
+            this.gpnlViewSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlViewSchedules.Name = "gpnlViewSchedules";
+            this.gpnlViewSchedules.Size = new System.Drawing.Size(386, 301);
+            this.gpnlViewSchedules.TabIndex = 14;
+            this.gpnlViewSchedules.Click += new System.EventHandler(this.gpnlViewSchedules_Click);
+            this.gpnlViewSchedules.MouseEnter += new System.EventHandler(this.gpnlViewSchedules_MouseEnter);
+            this.gpnlViewSchedules.MouseLeave += new System.EventHandler(this.gpnlViewSchedules_MouseLeave);
+            // 
+            // lblViewSchedules
+            // 
+            this.lblViewSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblViewSchedules.ForeColor = System.Drawing.Color.White;
+            this.lblViewSchedules.Location = new System.Drawing.Point(81, 207);
+            this.lblViewSchedules.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblViewSchedules.Name = "lblViewSchedules";
+            this.lblViewSchedules.Size = new System.Drawing.Size(231, 61);
+            this.lblViewSchedules.TabIndex = 0;
+            this.lblViewSchedules.Text = "View schedule for an employee";
+            this.lblViewSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblViewSchedules.Click += new System.EventHandler(this.lblViewSchedules_Click);
+            // 
+            // pbxViewSchedules
+            // 
+            this.pbxViewSchedules.Enabled = false;
+            this.pbxViewSchedules.Image = global::LAMN_Software.Properties.Resources.AllSchedules;
+            this.pbxViewSchedules.Location = new System.Drawing.Point(76, 28);
+            this.pbxViewSchedules.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxViewSchedules.Name = "pbxViewSchedules";
+            this.pbxViewSchedules.Size = new System.Drawing.Size(238, 162);
+            this.pbxViewSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxViewSchedules.TabIndex = 17;
+            this.pbxViewSchedules.TabStop = false;
+            // 
+            // gpnlCreateSchedules
+            // 
+            this.gpnlCreateSchedules.ColorBottom = System.Drawing.Color.Orange;
+            this.gpnlCreateSchedules.ColorTop = System.Drawing.Color.DarkOrange;
+            this.gpnlCreateSchedules.Controls.Add(this.lblCreateSchedules);
+            this.gpnlCreateSchedules.Controls.Add(this.pbxAddSchedules);
+            this.gpnlCreateSchedules.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gpnlCreateSchedules.Location = new System.Drawing.Point(140, 121);
+            this.gpnlCreateSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.gpnlCreateSchedules.Name = "gpnlCreateSchedules";
+            this.gpnlCreateSchedules.Size = new System.Drawing.Size(386, 302);
+            this.gpnlCreateSchedules.TabIndex = 13;
+            this.gpnlCreateSchedules.Click += new System.EventHandler(this.gpnlCreateSchedules_Click);
+            this.gpnlCreateSchedules.MouseEnter += new System.EventHandler(this.gpnlCreateSchedules_MouseEnter);
+            this.gpnlCreateSchedules.MouseLeave += new System.EventHandler(this.gpnlCreateSchedules_MouseLeave);
+            // 
+            // lblCreateSchedules
+            // 
+            this.lblCreateSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreateSchedules.ForeColor = System.Drawing.Color.White;
+            this.lblCreateSchedules.Location = new System.Drawing.Point(88, 219);
+            this.lblCreateSchedules.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCreateSchedules.Name = "lblCreateSchedules";
+            this.lblCreateSchedules.Size = new System.Drawing.Size(214, 38);
+            this.lblCreateSchedules.TabIndex = 0;
+            this.lblCreateSchedules.Text = "Add schedules";
+            this.lblCreateSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCreateSchedules.Click += new System.EventHandler(this.lblCreateSchedules_Click);
+            // 
+            // pbxAddSchedules
+            // 
+            this.pbxAddSchedules.Enabled = false;
+            this.pbxAddSchedules.Image = global::LAMN_Software.Properties.Resources.AddSchedule;
+            this.pbxAddSchedules.Location = new System.Drawing.Point(72, 28);
+            this.pbxAddSchedules.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxAddSchedules.Name = "pbxAddSchedules";
+            this.pbxAddSchedules.Size = new System.Drawing.Size(238, 162);
+            this.pbxAddSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxAddSchedules.TabIndex = 16;
+            this.pbxAddSchedules.TabStop = false;
             // 
             // tpEmployees
             // 
@@ -1219,7 +1803,7 @@ namespace LAMN_Software
             this.tpEmployees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpEmployees.Name = "tpEmployees";
             this.tpEmployees.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpEmployees.Size = new System.Drawing.Size(1146, 668);
+            this.tpEmployees.Size = new System.Drawing.Size(1150, 642);
             this.tpEmployees.TabIndex = 2;
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
@@ -1310,7 +1894,8 @@ namespace LAMN_Software
             this.dgvGender,
             this.dgvDegree,
             this.dgvNationality,
-            this.dvgContractHours});
+            this.dvgContractHours,
+            this.dvgAdress});
             this.dgvEmployees.Location = new System.Drawing.Point(2, 48);
             this.dgvEmployees.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dgvEmployees.Name = "dgvEmployees";
@@ -1474,6 +2059,14 @@ namespace LAMN_Software
             this.dvgContractHours.ReadOnly = true;
             this.dvgContractHours.Width = 200;
             // 
+            // dvgAdress
+            // 
+            this.dvgAdress.HeaderText = "Adress";
+            this.dvgAdress.MinimumWidth = 10;
+            this.dvgAdress.Name = "dvgAdress";
+            this.dvgAdress.ReadOnly = true;
+            this.dvgAdress.Width = 200;
+            // 
             // tbxSearchEmployee
             // 
             this.tbxSearchEmployee.Font = new System.Drawing.Font("Arial", 15F);
@@ -1534,6 +2127,9 @@ namespace LAMN_Software
             // 
             // tpStatsStock
             // 
+            this.tpStatsStock.Controls.Add(this.btnToRevenueStats);
+            this.tpStatsStock.Controls.Add(this.btnToProfitStats);
+            this.tpStatsStock.Controls.Add(this.btnToSellingStats);
             this.tpStatsStock.Controls.Add(this.btnStatsStockRandom);
             this.tpStatsStock.Controls.Add(this.panel3);
             this.tpStatsStock.Controls.Add(this.btnDeselectStatsStock3);
@@ -1547,11 +2143,47 @@ namespace LAMN_Software
             this.tpStatsStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpStatsStock.Name = "tpStatsStock";
             this.tpStatsStock.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpStatsStock.Size = new System.Drawing.Size(1146, 668);
+            this.tpStatsStock.Size = new System.Drawing.Size(1150, 642);
             this.tpStatsStock.TabIndex = 3;
             this.tpStatsStock.Text = "StatsStock";
             this.tpStatsStock.UseVisualStyleBackColor = true;
             this.tpStatsStock.Click += new System.EventHandler(this.tpStatsStock_Click);
+            // 
+            // btnToRevenueStats
+            // 
+            this.btnToRevenueStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToRevenueStats.Location = new System.Drawing.Point(364, 15);
+            this.btnToRevenueStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToRevenueStats.Name = "btnToRevenueStats";
+            this.btnToRevenueStats.Size = new System.Drawing.Size(200, 34);
+            this.btnToRevenueStats.TabIndex = 10;
+            this.btnToRevenueStats.Text = "TO REVENUES STATS";
+            this.btnToRevenueStats.UseVisualStyleBackColor = true;
+            this.btnToRevenueStats.Click += new System.EventHandler(this.btnToRevenueStats_Click);
+            // 
+            // btnToProfitStats
+            // 
+            this.btnToProfitStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToProfitStats.Location = new System.Drawing.Point(189, 15);
+            this.btnToProfitStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToProfitStats.Name = "btnToProfitStats";
+            this.btnToProfitStats.Size = new System.Drawing.Size(170, 34);
+            this.btnToProfitStats.TabIndex = 9;
+            this.btnToProfitStats.Text = "TO PROFITS STATS";
+            this.btnToProfitStats.UseVisualStyleBackColor = true;
+            this.btnToProfitStats.Click += new System.EventHandler(this.btnToProfitStats_Click);
+            // 
+            // btnToSellingStats
+            // 
+            this.btnToSellingStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToSellingStats.Location = new System.Drawing.Point(32, 15);
+            this.btnToSellingStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToSellingStats.Name = "btnToSellingStats";
+            this.btnToSellingStats.Size = new System.Drawing.Size(152, 34);
+            this.btnToSellingStats.TabIndex = 8;
+            this.btnToSellingStats.Text = "TO SALES STATS";
+            this.btnToSellingStats.UseVisualStyleBackColor = true;
+            this.btnToSellingStats.Click += new System.EventHandler(this.btnToSellingStats_Click);
             // 
             // btnStatsStockRandom
             // 
@@ -1570,10 +2202,72 @@ namespace LAMN_Software
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Controls.Add(this.gradientPanel5);
             this.panel3.Location = new System.Drawing.Point(32, 372);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 157);
             this.panel3.TabIndex = 6;
+            // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel5.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel5.Controls.Add(this.lblStatsStock_MostPopular);
+            this.gradientPanel5.Controls.Add(this.lblStatsStock_MostPopularAmount);
+            this.gradientPanel5.Controls.Add(this.label33);
+            this.gradientPanel5.Controls.Add(this.label37);
+            this.gradientPanel5.Location = new System.Drawing.Point(6, 6);
+            this.gradientPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(285, 143);
+            this.gradientPanel5.TabIndex = 6;
+            // 
+            // lblStatsStock_MostPopular
+            // 
+            this.lblStatsStock_MostPopular.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsStock_MostPopular.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblStatsStock_MostPopular.Location = new System.Drawing.Point(3, 35);
+            this.lblStatsStock_MostPopular.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatsStock_MostPopular.Name = "lblStatsStock_MostPopular";
+            this.lblStatsStock_MostPopular.Size = new System.Drawing.Size(274, 27);
+            this.lblStatsStock_MostPopular.TabIndex = 1;
+            this.lblStatsStock_MostPopular.Text = "Stock item";
+            this.lblStatsStock_MostPopular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblStatsStock_MostPopularAmount
+            // 
+            this.lblStatsStock_MostPopularAmount.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsStock_MostPopularAmount.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblStatsStock_MostPopularAmount.Location = new System.Drawing.Point(5, 58);
+            this.lblStatsStock_MostPopularAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatsStock_MostPopularAmount.Name = "lblStatsStock_MostPopularAmount";
+            this.lblStatsStock_MostPopularAmount.Size = new System.Drawing.Size(274, 27);
+            this.lblStatsStock_MostPopularAmount.TabIndex = 3;
+            this.lblStatsStock_MostPopularAmount.Text = "Stock item";
+            this.lblStatsStock_MostPopularAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Arial", 10F);
+            this.label33.Location = new System.Drawing.Point(123, 119);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(56, 16);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "product";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Arial", 10F);
+            this.label37.Location = new System.Drawing.Point(105, 105);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(90, 16);
+            this.label37.TabIndex = 0;
+            this.label37.Text = "Most popular";
             // 
             // btnDeselectStatsStock3
             // 
@@ -1723,7 +2417,7 @@ namespace LAMN_Software
             this.tpStockAdd.Location = new System.Drawing.Point(4, 18);
             this.tpStockAdd.Margin = new System.Windows.Forms.Padding(0);
             this.tpStockAdd.Name = "tpStockAdd";
-            this.tpStockAdd.Size = new System.Drawing.Size(1146, 668);
+            this.tpStockAdd.Size = new System.Drawing.Size(1150, 642);
             this.tpStockAdd.TabIndex = 4;
             this.tpStockAdd.Text = "StockAdd";
             this.tpStockAdd.UseVisualStyleBackColor = true;
@@ -2067,7 +2761,9 @@ namespace LAMN_Software
             // 
             // tpEmployeeAdd
             // 
-            this.tpEmployeeAdd.Controls.Add(this.tbxEmployeeAdd_ContractHours);
+            this.tpEmployeeAdd.Controls.Add(this.nudEmpContractHours);
+            this.tpEmployeeAdd.Controls.Add(this.tbxEmployeeAdd_Adress);
+            this.tpEmployeeAdd.Controls.Add(this.lblAdress);
             this.tpEmployeeAdd.Controls.Add(this.lblContractHours);
             this.tpEmployeeAdd.Controls.Add(this.tbxEmployeeAdd_Nationality);
             this.tpEmployeeAdd.Controls.Add(this.tbxEmployeeAdd_Degree);
@@ -2111,19 +2807,30 @@ namespace LAMN_Software
             this.tpEmployeeAdd.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpEmployeeAdd.Name = "tpEmployeeAdd";
             this.tpEmployeeAdd.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpEmployeeAdd.Size = new System.Drawing.Size(1146, 668);
+            this.tpEmployeeAdd.Size = new System.Drawing.Size(1150, 642);
             this.tpEmployeeAdd.TabIndex = 5;
             this.tpEmployeeAdd.Text = "EmployeeAdd";
             this.tpEmployeeAdd.UseVisualStyleBackColor = true;
             // 
-            // tbxEmployeeAdd_ContractHours
+            // tbxEmployeeAdd_Adress
             // 
-            this.tbxEmployeeAdd_ContractHours.Font = new System.Drawing.Font("Arial", 14F);
-            this.tbxEmployeeAdd_ContractHours.Location = new System.Drawing.Point(232, 504);
-            this.tbxEmployeeAdd_ContractHours.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tbxEmployeeAdd_ContractHours.Name = "tbxEmployeeAdd_ContractHours";
-            this.tbxEmployeeAdd_ContractHours.Size = new System.Drawing.Size(235, 29);
-            this.tbxEmployeeAdd_ContractHours.TabIndex = 68;
+            this.tbxEmployeeAdd_Adress.Font = new System.Drawing.Font("Arial", 14F);
+            this.tbxEmployeeAdd_Adress.Location = new System.Drawing.Point(232, 528);
+            this.tbxEmployeeAdd_Adress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxEmployeeAdd_Adress.Name = "tbxEmployeeAdd_Adress";
+            this.tbxEmployeeAdd_Adress.Size = new System.Drawing.Size(235, 29);
+            this.tbxEmployeeAdd_Adress.TabIndex = 70;
+            // 
+            // lblAdress
+            // 
+            this.lblAdress.AutoSize = true;
+            this.lblAdress.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblAdress.Location = new System.Drawing.Point(2, 531);
+            this.lblAdress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAdress.Name = "lblAdress";
+            this.lblAdress.Size = new System.Drawing.Size(71, 22);
+            this.lblAdress.TabIndex = 69;
+            this.lblAdress.Text = "Adress";
             // 
             // lblContractHours
             // 
@@ -2581,7 +3288,7 @@ namespace LAMN_Software
             this.tpStatsEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpStatsEmployee.Name = "tpStatsEmployee";
             this.tpStatsEmployee.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpStatsEmployee.Size = new System.Drawing.Size(1146, 668);
+            this.tpStatsEmployee.Size = new System.Drawing.Size(1150, 642);
             this.tpStatsEmployee.TabIndex = 6;
             this.tpStatsEmployee.Text = "StatsEmp";
             this.tpStatsEmployee.UseVisualStyleBackColor = true;
@@ -2591,10 +3298,68 @@ namespace LAMN_Software
             this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.Controls.Add(this.gradientPanel2);
             this.panel2.Location = new System.Drawing.Point(50, 38);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(278, 427);
             this.panel2.TabIndex = 7;
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel2.Controls.Add(this.gradientPanel3);
+            this.gradientPanel2.Location = new System.Drawing.Point(8, 6);
+            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(262, 414);
+            this.gradientPanel2.TabIndex = 6;
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.ColorBottom = System.Drawing.SystemColors.Desktop;
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gradientPanel3.Controls.Add(this.gradientPanel4);
+            this.gradientPanel3.Location = new System.Drawing.Point(14, 83);
+            this.gradientPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(225, 161);
+            this.gradientPanel3.TabIndex = 7;
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.Yellow;
+            this.gradientPanel4.ColorTop = System.Drawing.Color.PaleGoldenrod;
+            this.gradientPanel4.Controls.Add(this.label35);
+            this.gradientPanel4.Controls.Add(this.label36);
+            this.gradientPanel4.Location = new System.Drawing.Point(3, 2);
+            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(220, 155);
+            this.gradientPanel4.TabIndex = 9;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Arial", 15F);
+            this.label35.Location = new System.Drawing.Point(24, 93);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(173, 23);
+            this.label35.TabIndex = 8;
+            this.label35.Text = "Under construction";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Arial", 35F);
+            this.label36.Location = new System.Drawing.Point(76, 32);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(75, 53);
+            this.label36.TabIndex = 8;
+            this.label36.Text = "🚧";
             // 
             // label32
             // 
@@ -2643,10 +3408,59 @@ namespace LAMN_Software
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.gradientPanel1);
             this.panel1.Location = new System.Drawing.Point(472, 360);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 157);
             this.panel1.TabIndex = 5;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.Silver;
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel1.Controls.Add(this.label31);
+            this.gradientPanel1.Controls.Add(this.lblStatsEmployee_AverageSalary);
+            this.gradientPanel1.Controls.Add(this.label30);
+            this.gradientPanel1.Location = new System.Drawing.Point(6, 6);
+            this.gradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(165, 143);
+            this.gradientPanel1.TabIndex = 6;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Arial", 10F);
+            this.label31.Location = new System.Drawing.Point(51, 119);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(73, 16);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "(Per hour)";
+            // 
+            // lblStatsEmployee_AverageSalary
+            // 
+            this.lblStatsEmployee_AverageSalary.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsEmployee_AverageSalary.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatsEmployee_AverageSalary.Location = new System.Drawing.Point(2, 27);
+            this.lblStatsEmployee_AverageSalary.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatsEmployee_AverageSalary.Name = "lblStatsEmployee_AverageSalary";
+            this.lblStatsEmployee_AverageSalary.Size = new System.Drawing.Size(162, 60);
+            this.lblStatsEmployee_AverageSalary.TabIndex = 1;
+            this.lblStatsEmployee_AverageSalary.Text = "€99";
+            this.lblStatsEmployee_AverageSalary.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(6, 94);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(156, 25);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Average salary";
             // 
             // label28
             // 
@@ -2732,7 +3546,7 @@ namespace LAMN_Software
             this.tpNewOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpNewOrder.Name = "tpNewOrder";
             this.tpNewOrder.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpNewOrder.Size = new System.Drawing.Size(1146, 668);
+            this.tpNewOrder.Size = new System.Drawing.Size(1150, 642);
             this.tpNewOrder.TabIndex = 7;
             this.tpNewOrder.Text = "NewOrder";
             this.tpNewOrder.UseVisualStyleBackColor = true;
@@ -2901,7 +3715,7 @@ namespace LAMN_Software
             this.tpSellProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpSellProduct.Name = "tpSellProduct";
             this.tpSellProduct.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpSellProduct.Size = new System.Drawing.Size(1146, 668);
+            this.tpSellProduct.Size = new System.Drawing.Size(1150, 642);
             this.tpSellProduct.TabIndex = 8;
             this.tpSellProduct.Text = "SellProduct";
             this.tpSellProduct.UseVisualStyleBackColor = true;
@@ -3032,7 +3846,7 @@ namespace LAMN_Software
             this.tpRequestChangeInfo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tpRequestChangeInfo.Name = "tpRequestChangeInfo";
             this.tpRequestChangeInfo.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tpRequestChangeInfo.Size = new System.Drawing.Size(1146, 668);
+            this.tpRequestChangeInfo.Size = new System.Drawing.Size(1150, 642);
             this.tpRequestChangeInfo.TabIndex = 12;
             this.tpRequestChangeInfo.Text = "RequestChangeInfo";
             this.tpRequestChangeInfo.UseVisualStyleBackColor = true;
@@ -3043,9 +3857,9 @@ namespace LAMN_Software
             this.lbChangeInfo.FormattingEnabled = true;
             this.lbChangeInfo.ItemHeight = 20;
             this.lbChangeInfo.Location = new System.Drawing.Point(36, 47);
-            this.lbChangeInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.lbChangeInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbChangeInfo.Name = "lbChangeInfo";
-            this.lbChangeInfo.Size = new System.Drawing.Size(625, 464);
+            this.lbChangeInfo.Size = new System.Drawing.Size(625, 364);
             this.lbChangeInfo.TabIndex = 6;
             this.lbChangeInfo.SelectedIndexChanged += new System.EventHandler(this.lbChangeInfo_SelectedIndexChanged_1);
             // 
@@ -3063,6 +3877,8 @@ namespace LAMN_Software
             // gbOldInfo
             // 
             this.gbOldInfo.BackColor = System.Drawing.Color.Transparent;
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_Address_input);
+            this.gbOldInfo.Controls.Add(this.lblOldInfo_Address);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_iceRelation_input);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_iceNumber_input);
             this.gbOldInfo.Controls.Add(this.lblOldInfo_PhoneNumber_input);
@@ -3079,10 +3895,31 @@ namespace LAMN_Software
             this.gbOldInfo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbOldInfo.Name = "gbOldInfo";
             this.gbOldInfo.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbOldInfo.Size = new System.Drawing.Size(381, 214);
+            this.gbOldInfo.Size = new System.Drawing.Size(381, 234);
             this.gbOldInfo.TabIndex = 2;
             this.gbOldInfo.TabStop = false;
             this.gbOldInfo.Text = "Old info";
+            // 
+            // lblOldInfo_Address_input
+            // 
+            this.lblOldInfo_Address_input.AutoSize = true;
+            this.lblOldInfo_Address_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_Address_input.Location = new System.Drawing.Point(146, 190);
+            this.lblOldInfo_Address_input.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOldInfo_Address_input.Name = "lblOldInfo_Address_input";
+            this.lblOldInfo_Address_input.Size = new System.Drawing.Size(0, 16);
+            this.lblOldInfo_Address_input.TabIndex = 12;
+            // 
+            // lblOldInfo_Address
+            // 
+            this.lblOldInfo_Address.AutoSize = true;
+            this.lblOldInfo_Address.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldInfo_Address.Location = new System.Drawing.Point(16, 190);
+            this.lblOldInfo_Address.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOldInfo_Address.Name = "lblOldInfo_Address";
+            this.lblOldInfo_Address.Size = new System.Drawing.Size(74, 16);
+            this.lblOldInfo_Address.TabIndex = 11;
+            this.lblOldInfo_Address.Text = "Address: ";
             // 
             // lblOldInfo_iceRelation_input
             // 
@@ -3200,6 +4037,8 @@ namespace LAMN_Software
             // 
             // gbNewInfo
             // 
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_Address_input);
+            this.gbNewInfo.Controls.Add(this.lblNewInfo_Address);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_iceRelation_input);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_iceNumber_input);
             this.gbNewInfo.Controls.Add(this.lblNewInfo_PhoneNumber_input);
@@ -3213,14 +4052,35 @@ namespace LAMN_Software
             this.gbNewInfo.Controls.Add(this.btnDeclineInfoChanges);
             this.gbNewInfo.Controls.Add(this.btnApproveInfoChanges);
             this.gbNewInfo.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbNewInfo.Location = new System.Drawing.Point(686, 282);
+            this.gbNewInfo.Location = new System.Drawing.Point(686, 310);
             this.gbNewInfo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.gbNewInfo.Name = "gbNewInfo";
             this.gbNewInfo.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gbNewInfo.Size = new System.Drawing.Size(381, 251);
+            this.gbNewInfo.Size = new System.Drawing.Size(381, 276);
             this.gbNewInfo.TabIndex = 3;
             this.gbNewInfo.TabStop = false;
             this.gbNewInfo.Text = "New info";
+            // 
+            // lblNewInfo_Address_input
+            // 
+            this.lblNewInfo_Address_input.AutoSize = true;
+            this.lblNewInfo_Address_input.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_Address_input.Location = new System.Drawing.Point(146, 185);
+            this.lblNewInfo_Address_input.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewInfo_Address_input.Name = "lblNewInfo_Address_input";
+            this.lblNewInfo_Address_input.Size = new System.Drawing.Size(0, 16);
+            this.lblNewInfo_Address_input.TabIndex = 28;
+            // 
+            // lblNewInfo_Address
+            // 
+            this.lblNewInfo_Address.AutoSize = true;
+            this.lblNewInfo_Address.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewInfo_Address.Location = new System.Drawing.Point(16, 185);
+            this.lblNewInfo_Address.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNewInfo_Address.Name = "lblNewInfo_Address";
+            this.lblNewInfo_Address.Size = new System.Drawing.Size(74, 16);
+            this.lblNewInfo_Address.TabIndex = 27;
+            this.lblNewInfo_Address.Text = "Address: ";
             // 
             // lblNewInfo_iceRelation_input
             // 
@@ -3330,7 +4190,7 @@ namespace LAMN_Software
             // btnDeclineInfoChanges
             // 
             this.btnDeclineInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnDeclineInfoChanges.Location = new System.Drawing.Point(202, 199);
+            this.btnDeclineInfoChanges.Location = new System.Drawing.Point(202, 223);
             this.btnDeclineInfoChanges.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnDeclineInfoChanges.Name = "btnDeclineInfoChanges";
             this.btnDeclineInfoChanges.Size = new System.Drawing.Size(160, 35);
@@ -3342,7 +4202,7 @@ namespace LAMN_Software
             // btnApproveInfoChanges
             // 
             this.btnApproveInfoChanges.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnApproveInfoChanges.Location = new System.Drawing.Point(18, 199);
+            this.btnApproveInfoChanges.Location = new System.Drawing.Point(17, 223);
             this.btnApproveInfoChanges.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnApproveInfoChanges.Name = "btnApproveInfoChanges";
             this.btnApproveInfoChanges.Size = new System.Drawing.Size(160, 35);
@@ -3361,554 +4221,1125 @@ namespace LAMN_Software
             this.label22.Size = new System.Drawing.Size(0, 15);
             this.label22.TabIndex = 0;
             // 
-            // textBox_defocus
-            // 
-            this.textBox_defocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.textBox_defocus.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_defocus.Location = new System.Drawing.Point(0, 0);
-            this.textBox_defocus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_defocus.Name = "textBox_defocus";
-            this.textBox_defocus.Size = new System.Drawing.Size(2, 9);
-            this.textBox_defocus.TabIndex = 0;
-            this.textBox_defocus.TabStop = false;
-            // 
-            // pnlBar
-            // 
-            this.pnlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.pnlBar.Controls.Add(this.pnlDragBar);
-            this.pnlBar.Controls.Add(this.lblClose);
-            this.pnlBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlBar.Location = new System.Drawing.Point(-2, -1);
-            this.pnlBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlBar.Name = "pnlBar";
-            this.pnlBar.Size = new System.Drawing.Size(1154, 32);
-            this.pnlBar.TabIndex = 8;
-            // 
-            // pnlDragBar
-            // 
-            this.pnlDragBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.pnlDragBar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pnlDragBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlDragBar.Location = new System.Drawing.Point(3, 0);
-            this.pnlDragBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlDragBar.Name = "pnlDragBar";
-            this.pnlDragBar.Size = new System.Drawing.Size(1122, 31);
-            this.pnlDragBar.TabIndex = 9;
-            this.pnlDragBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseDown);
-            this.pnlDragBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDragBar_MouseMove);
-            // 
-            // lblClose
-            // 
-            this.lblClose.BackColor = System.Drawing.Color.Transparent;
-            this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClose.ForeColor = System.Drawing.Color.White;
-            this.lblClose.Location = new System.Drawing.Point(1125, 0);
-            this.lblClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(27, 28);
-            this.lblClose.TabIndex = 6;
-            this.lblClose.Text = "✖";
-            this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
-            this.lblClose.MouseEnter += new System.EventHandler(this.lblClose_MouseEnter);
-            this.lblClose.MouseLeave += new System.EventHandler(this.lblClose_MouseLeave);
-            // 
-            // gpnlStatsType
-            // 
-            this.gpnlStatsType.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatsType.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatsType.Controls.Add(this.cbxStatsType);
-            this.gpnlStatsType.Location = new System.Drawing.Point(700, 0);
-            this.gpnlStatsType.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlStatsType.Name = "gpnlStatsType";
-            this.gpnlStatsType.Size = new System.Drawing.Size(140, 91);
-            this.gpnlStatsType.TabIndex = 14;
-            this.gpnlStatsType.Visible = false;
-            // 
-            // cbxStatsType
-            // 
-            this.cbxStatsType.Font = new System.Drawing.Font("Arial", 14F);
-            this.cbxStatsType.FormattingEnabled = true;
-            this.cbxStatsType.Items.AddRange(new object[] {
-            "Stock",
-            "Employees"});
-            this.cbxStatsType.Location = new System.Drawing.Point(0, 28);
-            this.cbxStatsType.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.cbxStatsType.Name = "cbxStatsType";
-            this.cbxStatsType.Size = new System.Drawing.Size(118, 30);
-            this.cbxStatsType.TabIndex = 0;
-            this.cbxStatsType.Text = "Stock";
-            this.cbxStatsType.Visible = false;
-            this.cbxStatsType.SelectedIndexChanged += new System.EventHandler(this.cbxStatsType_SelectedIndexChanged);
-            // 
-            // gpnlStatistics
-            // 
-            this.gpnlStatistics.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStatistics.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStatistics.Controls.Add(this.btnStatistics);
-            this.gpnlStatistics.Location = new System.Drawing.Point(543, -1);
-            this.gpnlStatistics.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlStatistics.Name = "gpnlStatistics";
-            this.gpnlStatistics.Size = new System.Drawing.Size(158, 91);
-            this.gpnlStatistics.TabIndex = 13;
-            // 
-            // btnStatistics
-            // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Transparent;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStatistics.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(-2, 10);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(158, 63);
-            this.btnStatistics.TabIndex = 10;
-            this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.UseVisualStyleBackColor = false;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
-            // 
-            // gpnlSchedules
-            // 
-            this.gpnlSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlSchedules.Controls.Add(this.btnSchedules);
-            this.gpnlSchedules.Location = new System.Drawing.Point(234, -1);
-            this.gpnlSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlSchedules.Name = "gpnlSchedules";
-            this.gpnlSchedules.Size = new System.Drawing.Size(148, 91);
-            this.gpnlSchedules.TabIndex = 12;
-            // 
-            // btnSchedules
-            // 
-            this.btnSchedules.BackColor = System.Drawing.Color.Transparent;
-            this.btnSchedules.FlatAppearance.BorderSize = 0;
-            this.btnSchedules.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnSchedules.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedules.ForeColor = System.Drawing.Color.White;
-            this.btnSchedules.Location = new System.Drawing.Point(2, 10);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Size = new System.Drawing.Size(147, 63);
-            this.btnSchedules.TabIndex = 10;
-            this.btnSchedules.Text = "Schedules";
-            this.btnSchedules.UseVisualStyleBackColor = false;
-            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
-            // 
-            // gpnlStock
-            // 
-            this.gpnlStock.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlStock.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlStock.Controls.Add(this.btnStock);
-            this.gpnlStock.Location = new System.Drawing.Point(141, 0);
-            this.gpnlStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlStock.Name = "gpnlStock";
-            this.gpnlStock.Size = new System.Drawing.Size(92, 91);
-            this.gpnlStock.TabIndex = 11;
-            // 
-            // btnStock
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Transparent;
-            this.btnStock.FlatAppearance.BorderSize = 0;
-            this.btnStock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnStock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.ForeColor = System.Drawing.Color.White;
-            this.btnStock.Location = new System.Drawing.Point(2, 10);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(92, 63);
-            this.btnStock.TabIndex = 10;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
-            // 
-            // gpnlEmployees
-            // 
-            this.gpnlEmployees.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlEmployees.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlEmployees.Controls.Add(this.btnEmployees);
-            this.gpnlEmployees.Location = new System.Drawing.Point(386, 0);
-            this.gpnlEmployees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlEmployees.Name = "gpnlEmployees";
-            this.gpnlEmployees.Size = new System.Drawing.Size(158, 91);
-            this.gpnlEmployees.TabIndex = 12;
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmployees.FlatAppearance.BorderSize = 0;
-            this.btnEmployees.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(14)))), ((int)(((byte)(97)))));
-            this.btnEmployees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(-2, 10);
-            this.btnEmployees.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(158, 63);
-            this.btnEmployees.TabIndex = 10;
-            this.btnEmployees.Text = "Employees";
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
-            // 
-            // gpnlViewSchedules
-            // 
-            this.gpnlViewSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlViewSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlViewSchedules.Controls.Add(this.lblViewSchedules);
-            this.gpnlViewSchedules.Controls.Add(this.pbxViewSchedules);
-            this.gpnlViewSchedules.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpnlViewSchedules.Location = new System.Drawing.Point(580, 122);
-            this.gpnlViewSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlViewSchedules.Name = "gpnlViewSchedules";
-            this.gpnlViewSchedules.Size = new System.Drawing.Size(386, 301);
-            this.gpnlViewSchedules.TabIndex = 14;
-            this.gpnlViewSchedules.Click += new System.EventHandler(this.gpnlViewSchedules_Click);
-            this.gpnlViewSchedules.MouseEnter += new System.EventHandler(this.gpnlViewSchedules_MouseEnter);
-            this.gpnlViewSchedules.MouseLeave += new System.EventHandler(this.gpnlViewSchedules_MouseLeave);
-            // 
-            // lblViewSchedules
-            // 
-            this.lblViewSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblViewSchedules.ForeColor = System.Drawing.Color.White;
-            this.lblViewSchedules.Location = new System.Drawing.Point(81, 207);
-            this.lblViewSchedules.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblViewSchedules.Name = "lblViewSchedules";
-            this.lblViewSchedules.Size = new System.Drawing.Size(231, 61);
-            this.lblViewSchedules.TabIndex = 0;
-            this.lblViewSchedules.Text = "View schedule for an employee";
-            this.lblViewSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblViewSchedules.Click += new System.EventHandler(this.lblViewSchedules_Click);
-            // 
-            // pbxViewSchedules
-            // 
-            this.pbxViewSchedules.Enabled = false;
-            this.pbxViewSchedules.Image = global::LAMN_Software.Properties.Resources.AllSchedules;
-            this.pbxViewSchedules.Location = new System.Drawing.Point(76, 28);
-            this.pbxViewSchedules.Margin = new System.Windows.Forms.Padding(2);
-            this.pbxViewSchedules.Name = "pbxViewSchedules";
-            this.pbxViewSchedules.Size = new System.Drawing.Size(238, 162);
-            this.pbxViewSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxViewSchedules.TabIndex = 17;
-            this.pbxViewSchedules.TabStop = false;
-            // 
-            // gpnlCreateSchedules
-            // 
-            this.gpnlCreateSchedules.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.gpnlCreateSchedules.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(34)))), ((int)(((byte)(117)))));
-            this.gpnlCreateSchedules.Controls.Add(this.lblCreateSchedules);
-            this.gpnlCreateSchedules.Controls.Add(this.pbxAddSchedules);
-            this.gpnlCreateSchedules.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpnlCreateSchedules.Location = new System.Drawing.Point(140, 121);
-            this.gpnlCreateSchedules.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.gpnlCreateSchedules.Name = "gpnlCreateSchedules";
-            this.gpnlCreateSchedules.Size = new System.Drawing.Size(386, 302);
-            this.gpnlCreateSchedules.TabIndex = 13;
-            this.gpnlCreateSchedules.Click += new System.EventHandler(this.gpnlCreateSchedules_Click);
-            this.gpnlCreateSchedules.MouseEnter += new System.EventHandler(this.gpnlCreateSchedules_MouseEnter);
-            this.gpnlCreateSchedules.MouseLeave += new System.EventHandler(this.gpnlCreateSchedules_MouseLeave);
-            // 
-            // lblCreateSchedules
-            // 
-            this.lblCreateSchedules.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreateSchedules.ForeColor = System.Drawing.Color.White;
-            this.lblCreateSchedules.Location = new System.Drawing.Point(88, 219);
-            this.lblCreateSchedules.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCreateSchedules.Name = "lblCreateSchedules";
-            this.lblCreateSchedules.Size = new System.Drawing.Size(214, 38);
-            this.lblCreateSchedules.TabIndex = 0;
-            this.lblCreateSchedules.Text = "Add schedules";
-            this.lblCreateSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCreateSchedules.Click += new System.EventHandler(this.lblCreateSchedules_Click);
-            // 
-            // pbxAddSchedules
-            // 
-            this.pbxAddSchedules.Enabled = false;
-            this.pbxAddSchedules.Image = global::LAMN_Software.Properties.Resources.AddSchedule;
-            this.pbxAddSchedules.Location = new System.Drawing.Point(72, 28);
-            this.pbxAddSchedules.Margin = new System.Windows.Forms.Padding(2);
-            this.pbxAddSchedules.Name = "pbxAddSchedules";
-            this.pbxAddSchedules.Size = new System.Drawing.Size(238, 162);
-            this.pbxAddSchedules.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxAddSchedules.TabIndex = 16;
-            this.pbxAddSchedules.TabStop = false;
-            // 
-            // gradientPanel5
-            // 
-            this.gradientPanel5.ColorBottom = System.Drawing.Color.Silver;
-            this.gradientPanel5.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel5.Controls.Add(this.lblStatsStock_MostPopular);
-            this.gradientPanel5.Controls.Add(this.lblStatsStock_MostPopularAmount);
-            this.gradientPanel5.Controls.Add(this.label33);
-            this.gradientPanel5.Controls.Add(this.label37);
-            this.gradientPanel5.Location = new System.Drawing.Point(6, 6);
-            this.gradientPanel5.Margin = new System.Windows.Forms.Padding(2);
-            this.gradientPanel5.Name = "gradientPanel5";
-            this.gradientPanel5.Size = new System.Drawing.Size(285, 143);
-            this.gradientPanel5.TabIndex = 6;
-            // 
-            // lblStatsStock_MostPopular
-            // 
-            this.lblStatsStock_MostPopular.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatsStock_MostPopular.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblStatsStock_MostPopular.Location = new System.Drawing.Point(3, 35);
-            this.lblStatsStock_MostPopular.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblStatsStock_MostPopular.Name = "lblStatsStock_MostPopular";
-            this.lblStatsStock_MostPopular.Size = new System.Drawing.Size(274, 27);
-            this.lblStatsStock_MostPopular.TabIndex = 1;
-            this.lblStatsStock_MostPopular.Text = "Stock item";
-            this.lblStatsStock_MostPopular.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblStatsStock_MostPopularAmount
-            // 
-            this.lblStatsStock_MostPopularAmount.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatsStock_MostPopularAmount.Font = new System.Drawing.Font("Arial", 12F);
-            this.lblStatsStock_MostPopularAmount.Location = new System.Drawing.Point(5, 58);
-            this.lblStatsStock_MostPopularAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblStatsStock_MostPopularAmount.Name = "lblStatsStock_MostPopularAmount";
-            this.lblStatsStock_MostPopularAmount.Size = new System.Drawing.Size(274, 27);
-            this.lblStatsStock_MostPopularAmount.TabIndex = 3;
-            this.lblStatsStock_MostPopularAmount.Text = "Stock item";
-            this.lblStatsStock_MostPopularAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Arial", 10F);
-            this.label33.Location = new System.Drawing.Point(123, 119);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(56, 16);
-            this.label33.TabIndex = 2;
-            this.label33.Text = "product";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("Arial", 10F);
-            this.label37.Location = new System.Drawing.Point(105, 105);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(90, 16);
-            this.label37.TabIndex = 0;
-            this.label37.Text = "Most popular";
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.Silver;
-            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel2.Controls.Add(this.gradientPanel3);
-            this.gradientPanel2.Location = new System.Drawing.Point(8, 7);
-            this.gradientPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(262, 414);
-            this.gradientPanel2.TabIndex = 6;
-            // 
-            // gradientPanel3
-            // 
-            this.gradientPanel3.ColorBottom = System.Drawing.SystemColors.Desktop;
-            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gradientPanel3.Controls.Add(this.gradientPanel4);
-            this.gradientPanel3.Location = new System.Drawing.Point(14, 83);
-            this.gradientPanel3.Margin = new System.Windows.Forms.Padding(2);
-            this.gradientPanel3.Name = "gradientPanel3";
-            this.gradientPanel3.Size = new System.Drawing.Size(225, 161);
-            this.gradientPanel3.TabIndex = 7;
-            // 
-            // gradientPanel4
-            // 
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.Yellow;
-            this.gradientPanel4.ColorTop = System.Drawing.Color.PaleGoldenrod;
-            this.gradientPanel4.Controls.Add(this.label35);
-            this.gradientPanel4.Controls.Add(this.label36);
-            this.gradientPanel4.Location = new System.Drawing.Point(3, 2);
-            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(2);
-            this.gradientPanel4.Name = "gradientPanel4";
-            this.gradientPanel4.Size = new System.Drawing.Size(220, 155);
-            this.gradientPanel4.TabIndex = 9;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Arial", 15F);
-            this.label35.Location = new System.Drawing.Point(24, 93);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(173, 23);
-            this.label35.TabIndex = 8;
-            this.label35.Text = "Under construction";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Font = new System.Drawing.Font("Arial", 35F);
-            this.label36.Location = new System.Drawing.Point(76, 32);
-            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(75, 53);
-            this.label36.TabIndex = 8;
-            this.label36.Text = "🚧";
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.Silver;
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel1.Controls.Add(this.label31);
-            this.gradientPanel1.Controls.Add(this.lblStatsEmployee_AverageSalary);
-            this.gradientPanel1.Controls.Add(this.label30);
-            this.gradientPanel1.Location = new System.Drawing.Point(6, 6);
-            this.gradientPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(165, 143);
-            this.gradientPanel1.TabIndex = 6;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Arial", 10F);
-            this.label31.Location = new System.Drawing.Point(51, 119);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(73, 16);
-            this.label31.TabIndex = 2;
-            this.label31.Text = "(Per hour)";
-            // 
-            // lblStatsEmployee_AverageSalary
-            // 
-            this.lblStatsEmployee_AverageSalary.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatsEmployee_AverageSalary.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatsEmployee_AverageSalary.Location = new System.Drawing.Point(2, 27);
-            this.lblStatsEmployee_AverageSalary.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblStatsEmployee_AverageSalary.Name = "lblStatsEmployee_AverageSalary";
-            this.lblStatsEmployee_AverageSalary.Size = new System.Drawing.Size(162, 60);
-            this.lblStatsEmployee_AverageSalary.TabIndex = 1;
-            this.lblStatsEmployee_AverageSalary.Text = "€99";
-            this.lblStatsEmployee_AverageSalary.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(6, 94);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(156, 25);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Average salary";
-            // 
-            // schedulesEmpFirstName
-            // 
-            this.schedulesEmpFirstName.HeaderText = "First Name";
-            this.schedulesEmpFirstName.MinimumWidth = 6;
-            this.schedulesEmpFirstName.Name = "schedulesEmpFirstName";
-            this.schedulesEmpFirstName.ReadOnly = true;
-            this.schedulesEmpFirstName.Width = 125;
-            // 
-            // schedulesEmpMonday
-            // 
-            this.schedulesEmpMonday.HeaderText = "Monday";
-            this.schedulesEmpMonday.Items.AddRange(new object[] {
-            "M",
-            "A",
-            "E"});
-            this.schedulesEmpMonday.MinimumWidth = 6;
-            this.schedulesEmpMonday.Name = "schedulesEmpMonday";
-            this.schedulesEmpMonday.Width = 125;
-            // 
-            // schedulesEmpTuesday
-            // 
-            this.schedulesEmpTuesday.HeaderText = "Tuesday";
-            this.schedulesEmpTuesday.MinimumWidth = 6;
-            this.schedulesEmpTuesday.Name = "schedulesEmpTuesday";
-            this.schedulesEmpTuesday.Width = 125;
-            // 
-            // schedulesEmpWednesday
-            // 
-            this.schedulesEmpWednesday.HeaderText = "Wednesday";
-            this.schedulesEmpWednesday.MinimumWidth = 6;
-            this.schedulesEmpWednesday.Name = "schedulesEmpWednesday";
-            this.schedulesEmpWednesday.Width = 125;
-            // 
-            // schedulesEmpThursday
-            // 
-            this.schedulesEmpThursday.HeaderText = "Thursday";
-            this.schedulesEmpThursday.MinimumWidth = 6;
-            this.schedulesEmpThursday.Name = "schedulesEmpThursday";
-            this.schedulesEmpThursday.Width = 125;
-            // 
-            // schedulesEmpFriday
-            // 
-            this.schedulesEmpFriday.HeaderText = "Friday";
-            this.schedulesEmpFriday.MinimumWidth = 6;
-            this.schedulesEmpFriday.Name = "schedulesEmpFriday";
-            this.schedulesEmpFriday.Width = 125;
-            // 
-            // schedulesEmpSaturday
-            // 
-            this.schedulesEmpSaturday.HeaderText = "Saturday";
-            this.schedulesEmpSaturday.MinimumWidth = 6;
-            this.schedulesEmpSaturday.Name = "schedulesEmpSaturday";
-            this.schedulesEmpSaturday.Width = 125;
-            // 
-            // schedulesEmpSunday
-            // 
-            this.schedulesEmpSunday.HeaderText = "Sunday";
-            this.schedulesEmpSunday.MinimumWidth = 6;
-            this.schedulesEmpSunday.Name = "schedulesEmpSunday";
-            this.schedulesEmpSunday.Width = 125;
-            // 
-            // schedulesEmpWorkedHours
-            // 
-            this.schedulesEmpWorkedHours.HeaderText = "WorkedHours";
-            this.schedulesEmpWorkedHours.MinimumWidth = 10;
-            this.schedulesEmpWorkedHours.Name = "schedulesEmpWorkedHours";
-            this.schedulesEmpWorkedHours.ReadOnly = true;
-            this.schedulesEmpWorkedHours.Width = 200;
-            // 
-            // SchedulesEmpContractHours
-            // 
-            this.SchedulesEmpContractHours.HeaderText = "Contract hours";
-            this.SchedulesEmpContractHours.MinimumWidth = 10;
-            this.SchedulesEmpContractHours.Name = "SchedulesEmpContractHours";
-            this.SchedulesEmpContractHours.ReadOnly = true;
-            this.SchedulesEmpContractHours.Width = 200;
-            // 
-            // ScheduleEmpFTE
-            // 
-            this.ScheduleEmpFTE.HeaderText = "FTE";
-            this.ScheduleEmpFTE.Name = "ScheduleEmpFTE";
-            this.ScheduleEmpFTE.ReadOnly = true;
+            // tpSales
+            // 
+            this.tpSales.Controls.Add(this.pnlSales_QuantityControl);
+            this.tpSales.Controls.Add(this.pnlSales_Search2);
+            this.tpSales.Controls.Add(this.pnlSales_Search);
+            this.tpSales.Controls.Add(this.gradientPanel6);
+            this.tpSales.Controls.Add(this.gradientPanel7);
+            this.tpSales.Controls.Add(this.dgvSales_Reciept);
+            this.tpSales.Controls.Add(this.tbxSales_Defocus);
+            this.tpSales.Controls.Add(this.tbxSales_Barcode);
+            this.tpSales.Controls.Add(this.label38);
+            this.tpSales.Controls.Add(this.panel4);
+            this.tpSales.Location = new System.Drawing.Point(4, 18);
+            this.tpSales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpSales.Name = "tpSales";
+            this.tpSales.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpSales.Size = new System.Drawing.Size(1150, 642);
+            this.tpSales.TabIndex = 13;
+            this.tpSales.Text = "Sales";
+            this.tpSales.UseVisualStyleBackColor = true;
+            this.tpSales.Click += new System.EventHandler(this.tpSales_Click);
+            // 
+            // pnlSales_QuantityControl
+            // 
+            this.pnlSales_QuantityControl.BackColor = System.Drawing.Color.DarkGray;
+            this.pnlSales_QuantityControl.Controls.Add(this.btnSales_Remove1Quantity);
+            this.pnlSales_QuantityControl.Controls.Add(this.btnSales_RemoveAllQuantity);
+            this.pnlSales_QuantityControl.Location = new System.Drawing.Point(1037, 280);
+            this.pnlSales_QuantityControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSales_QuantityControl.Name = "pnlSales_QuantityControl";
+            this.pnlSales_QuantityControl.Size = new System.Drawing.Size(64, 133);
+            this.pnlSales_QuantityControl.TabIndex = 8;
+            this.pnlSales_QuantityControl.Visible = false;
+            // 
+            // btnSales_Remove1Quantity
+            // 
+            this.btnSales_Remove1Quantity.Font = new System.Drawing.Font("Arial", 16F);
+            this.btnSales_Remove1Quantity.Location = new System.Drawing.Point(9, 72);
+            this.btnSales_Remove1Quantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSales_Remove1Quantity.Name = "btnSales_Remove1Quantity";
+            this.btnSales_Remove1Quantity.Size = new System.Drawing.Size(45, 47);
+            this.btnSales_Remove1Quantity.TabIndex = 10;
+            this.btnSales_Remove1Quantity.Text = "-1";
+            this.toolTip1.SetToolTip(this.btnSales_Remove1Quantity, "Remove a single quantity from selected item");
+            this.btnSales_Remove1Quantity.UseVisualStyleBackColor = true;
+            this.btnSales_Remove1Quantity.Click += new System.EventHandler(this.btnSales_Remove1Quantity_Click);
+            // 
+            // btnSales_RemoveAllQuantity
+            // 
+            this.btnSales_RemoveAllQuantity.Font = new System.Drawing.Font("Arial", 20F);
+            this.btnSales_RemoveAllQuantity.Location = new System.Drawing.Point(9, 14);
+            this.btnSales_RemoveAllQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSales_RemoveAllQuantity.Name = "btnSales_RemoveAllQuantity";
+            this.btnSales_RemoveAllQuantity.Size = new System.Drawing.Size(45, 47);
+            this.btnSales_RemoveAllQuantity.TabIndex = 9;
+            this.btnSales_RemoveAllQuantity.Text = "✕";
+            this.toolTip1.SetToolTip(this.btnSales_RemoveAllQuantity, "Remove full quantity of selected item");
+            this.btnSales_RemoveAllQuantity.UseVisualStyleBackColor = true;
+            // 
+            // pnlSales_Search2
+            // 
+            this.pnlSales_Search2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.pnlSales_Search2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSales_Search2.Controls.Add(this.lbxSales_SearchBox);
+            this.pnlSales_Search2.Location = new System.Drawing.Point(97, 353);
+            this.pnlSales_Search2.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlSales_Search2.Name = "pnlSales_Search2";
+            this.pnlSales_Search2.Size = new System.Drawing.Size(496, 48);
+            this.pnlSales_Search2.TabIndex = 6;
+            this.pnlSales_Search2.Visible = false;
+            // 
+            // lbxSales_SearchBox
+            // 
+            this.lbxSales_SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.lbxSales_SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxSales_SearchBox.Font = new System.Drawing.Font("Arial", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxSales_SearchBox.FormattingEnabled = true;
+            this.lbxSales_SearchBox.ItemHeight = 21;
+            this.lbxSales_SearchBox.Location = new System.Drawing.Point(7, 3);
+            this.lbxSales_SearchBox.Margin = new System.Windows.Forms.Padding(2);
+            this.lbxSales_SearchBox.Name = "lbxSales_SearchBox";
+            this.lbxSales_SearchBox.Size = new System.Drawing.Size(480, 105);
+            this.lbxSales_SearchBox.TabIndex = 0;
+            this.lbxSales_SearchBox.Click += new System.EventHandler(this.lbxSales_SearchBox_Click);
+            // 
+            // pnlSales_Search
+            // 
+            this.pnlSales_Search.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlSales_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSales_Search.Controls.Add(this.tbxSales_Search);
+            this.pnlSales_Search.Controls.Add(this.label39);
+            this.pnlSales_Search.Location = new System.Drawing.Point(97, 307);
+            this.pnlSales_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlSales_Search.Name = "pnlSales_Search";
+            this.pnlSales_Search.Size = new System.Drawing.Size(496, 48);
+            this.pnlSales_Search.TabIndex = 5;
+            // 
+            // tbxSales_Search
+            // 
+            this.tbxSales_Search.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbxSales_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxSales_Search.Font = new System.Drawing.Font("Arial", 20F);
+            this.tbxSales_Search.Location = new System.Drawing.Point(46, 8);
+            this.tbxSales_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSales_Search.Name = "tbxSales_Search";
+            this.tbxSales_Search.Size = new System.Drawing.Size(446, 31);
+            this.tbxSales_Search.TabIndex = 0;
+            this.tbxSales_Search.Click += new System.EventHandler(this.tbxSales_Search_Click);
+            this.tbxSales_Search.TextChanged += new System.EventHandler(this.tbxSales_Search_TextChanged);
+            this.tbxSales_Search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
+            // 
+            // label39
+            // 
+            this.label39.Font = new System.Drawing.Font("Arial", 20F);
+            this.label39.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label39.Location = new System.Drawing.Point(2, 1);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(45, 44);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "🔍";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gradientPanel6
+            // 
+            this.gradientPanel6.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel6.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseEAN);
+            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseQuantityPrice);
+            this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseName);
+            this.gradientPanel6.Location = new System.Drawing.Point(704, 110);
+            this.gradientPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.gradientPanel6.Name = "gradientPanel6";
+            this.gradientPanel6.Size = new System.Drawing.Size(334, 166);
+            this.gradientPanel6.TabIndex = 1;
+            // 
+            // lblSales_ItemShowcaseEAN
+            // 
+            this.lblSales_ItemShowcaseEAN.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSales_ItemShowcaseEAN.Location = new System.Drawing.Point(0, 63);
+            this.lblSales_ItemShowcaseEAN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSales_ItemShowcaseEAN.Name = "lblSales_ItemShowcaseEAN";
+            this.lblSales_ItemShowcaseEAN.Size = new System.Drawing.Size(334, 24);
+            this.lblSales_ItemShowcaseEAN.TabIndex = 4;
+            this.lblSales_ItemShowcaseEAN.Text = "4251032610620";
+            this.lblSales_ItemShowcaseEAN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSales_ItemShowcaseQuantityPrice
+            // 
+            this.lblSales_ItemShowcaseQuantityPrice.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblSales_ItemShowcaseQuantityPrice.Location = new System.Drawing.Point(56, 109);
+            this.lblSales_ItemShowcaseQuantityPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSales_ItemShowcaseQuantityPrice.Name = "lblSales_ItemShowcaseQuantityPrice";
+            this.lblSales_ItemShowcaseQuantityPrice.Size = new System.Drawing.Size(200, 32);
+            this.lblSales_ItemShowcaseQuantityPrice.TabIndex = 3;
+            this.lblSales_ItemShowcaseQuantityPrice.Text = "1x";
+            this.lblSales_ItemShowcaseQuantityPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSales_ItemShowcaseName
+            // 
+            this.lblSales_ItemShowcaseName.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblSales_ItemShowcaseName.Location = new System.Drawing.Point(0, 24);
+            this.lblSales_ItemShowcaseName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSales_ItemShowcaseName.Name = "lblSales_ItemShowcaseName";
+            this.lblSales_ItemShowcaseName.Size = new System.Drawing.Size(334, 44);
+            this.lblSales_ItemShowcaseName.TabIndex = 3;
+            this.lblSales_ItemShowcaseName.Text = "JBL Charge 4";
+            this.lblSales_ItemShowcaseName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gradientPanel7
+            // 
+            this.gradientPanel7.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel7.ColorTop = System.Drawing.Color.Silver;
+            this.gradientPanel7.Controls.Add(this.lblSales_TotalPrice);
+            this.gradientPanel7.Controls.Add(this.lblSales_TotalLabel);
+            this.gradientPanel7.Location = new System.Drawing.Point(704, 569);
+            this.gradientPanel7.Margin = new System.Windows.Forms.Padding(2);
+            this.gradientPanel7.Name = "gradientPanel7";
+            this.gradientPanel7.Size = new System.Drawing.Size(334, 37);
+            this.gradientPanel7.TabIndex = 2;
+            // 
+            // lblSales_TotalPrice
+            // 
+            this.lblSales_TotalPrice.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblSales_TotalPrice.Location = new System.Drawing.Point(116, 2);
+            this.lblSales_TotalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSales_TotalPrice.Name = "lblSales_TotalPrice";
+            this.lblSales_TotalPrice.Size = new System.Drawing.Size(218, 32);
+            this.lblSales_TotalPrice.TabIndex = 3;
+            this.lblSales_TotalPrice.Text = "€0.00";
+            this.lblSales_TotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSales_TotalLabel
+            // 
+            this.lblSales_TotalLabel.AutoSize = true;
+            this.lblSales_TotalLabel.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblSales_TotalLabel.Location = new System.Drawing.Point(2, 2);
+            this.lblSales_TotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSales_TotalLabel.Name = "lblSales_TotalLabel";
+            this.lblSales_TotalLabel.Size = new System.Drawing.Size(80, 32);
+            this.lblSales_TotalLabel.TabIndex = 3;
+            this.lblSales_TotalLabel.Text = "Total:";
+            // 
+            // dgvSales_Reciept
+            // 
+            this.dgvSales_Reciept.AllowUserToAddRows = false;
+            this.dgvSales_Reciept.AllowUserToDeleteRows = false;
+            this.dgvSales_Reciept.AllowUserToResizeColumns = false;
+            this.dgvSales_Reciept.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSales_Reciept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSales_Reciept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales_Reciept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Quantity,
+            this.Name,
+            this.Price});
+            this.dgvSales_Reciept.Location = new System.Drawing.Point(704, 259);
+            this.dgvSales_Reciept.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvSales_Reciept.Name = "dgvSales_Reciept";
+            this.dgvSales_Reciept.ReadOnly = true;
+            this.dgvSales_Reciept.RowHeadersVisible = false;
+            this.dgvSales_Reciept.RowHeadersWidth = 82;
+            this.dgvSales_Reciept.RowTemplate.Height = 33;
+            this.dgvSales_Reciept.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvSales_Reciept.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSales_Reciept.Size = new System.Drawing.Size(334, 310);
+            this.dgvSales_Reciept.TabIndex = 2;
+            this.dgvSales_Reciept.SelectionChanged += new System.EventHandler(this.dgvSales_Reciept_SelectionChanged);
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 2;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 70;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.MinimumWidth = 2;
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            this.Name.Width = 500;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 2;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 200;
+            // 
+            // tbxSales_Defocus
+            // 
+            this.tbxSales_Defocus.Font = new System.Drawing.Font("Arial", 1F);
+            this.tbxSales_Defocus.Location = new System.Drawing.Point(0, 0);
+            this.tbxSales_Defocus.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSales_Defocus.Name = "tbxSales_Defocus";
+            this.tbxSales_Defocus.Size = new System.Drawing.Size(2, 9);
+            this.tbxSales_Defocus.TabIndex = 0;
+            // 
+            // tbxSales_Barcode
+            // 
+            this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 20F);
+            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.Orange;
+            this.tbxSales_Barcode.Location = new System.Drawing.Point(188, 102);
+            this.tbxSales_Barcode.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSales_Barcode.Name = "tbxSales_Barcode";
+            this.tbxSales_Barcode.PasswordChar = '▇';
+            this.tbxSales_Barcode.Size = new System.Drawing.Size(253, 38);
+            this.tbxSales_Barcode.TabIndex = 0;
+            this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
+            // 
+            // label38
+            // 
+            this.label38.Font = new System.Drawing.Font("Arial", 20F);
+            this.label38.Location = new System.Drawing.Point(235, 134);
+            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(158, 44);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Scan mode";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label38.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel4.Controls.Add(this.btnSales_ManualCancel);
+            this.panel4.Controls.Add(this.tbxSales_ManualQuantity);
+            this.panel4.Controls.Add(this.btnSales_ManualQuantityDown);
+            this.panel4.Controls.Add(this.btnSales_ManualQuantityUp);
+            this.panel4.Controls.Add(this.btnSales_ManualAddToList);
+            this.panel4.Controls.Add(this.dgvSales_ManualInfo);
+            this.panel4.Location = new System.Drawing.Point(97, 307);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(496, 254);
+            this.panel4.TabIndex = 7;
+            // 
+            // btnSales_ManualCancel
+            // 
+            this.btnSales_ManualCancel.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnSales_ManualCancel.Location = new System.Drawing.Point(379, 192);
+            this.btnSales_ManualCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSales_ManualCancel.Name = "btnSales_ManualCancel";
+            this.btnSales_ManualCancel.Size = new System.Drawing.Size(113, 28);
+            this.btnSales_ManualCancel.TabIndex = 8;
+            this.btnSales_ManualCancel.Text = "Cancel";
+            this.btnSales_ManualCancel.UseVisualStyleBackColor = true;
+            this.btnSales_ManualCancel.Visible = false;
+            this.btnSales_ManualCancel.Click += new System.EventHandler(this.btnSales_ManualCancel_Click);
+            // 
+            // tbxSales_ManualQuantity
+            // 
+            this.tbxSales_ManualQuantity.Enabled = false;
+            this.tbxSales_ManualQuantity.Font = new System.Drawing.Font("Arial", 20F);
+            this.tbxSales_ManualQuantity.Location = new System.Drawing.Point(410, 95);
+            this.tbxSales_ManualQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSales_ManualQuantity.MaxLength = 2;
+            this.tbxSales_ManualQuantity.Name = "tbxSales_ManualQuantity";
+            this.tbxSales_ManualQuantity.Size = new System.Drawing.Size(54, 38);
+            this.tbxSales_ManualQuantity.TabIndex = 7;
+            this.tbxSales_ManualQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxSales_ManualQuantity.TextChanged += new System.EventHandler(this.tbxSales_ManualQuantity_TextChanged);
+            this.tbxSales_ManualQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSales_ManualQuantity_KeyPress);
+            // 
+            // btnSales_ManualQuantityDown
+            // 
+            this.btnSales_ManualQuantityDown.Enabled = false;
+            this.btnSales_ManualQuantityDown.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnSales_ManualQuantityDown.Location = new System.Drawing.Point(379, 94);
+            this.btnSales_ManualQuantityDown.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSales_ManualQuantityDown.Name = "btnSales_ManualQuantityDown";
+            this.btnSales_ManualQuantityDown.Size = new System.Drawing.Size(32, 40);
+            this.btnSales_ManualQuantityDown.TabIndex = 6;
+            this.btnSales_ManualQuantityDown.Text = "-";
+            this.btnSales_ManualQuantityDown.UseVisualStyleBackColor = true;
+            this.btnSales_ManualQuantityDown.Click += new System.EventHandler(this.btnSales_ManualQuantityDown_Click);
+            // 
+            // btnSales_ManualQuantityUp
+            // 
+            this.btnSales_ManualQuantityUp.Enabled = false;
+            this.btnSales_ManualQuantityUp.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnSales_ManualQuantityUp.Location = new System.Drawing.Point(460, 94);
+            this.btnSales_ManualQuantityUp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSales_ManualQuantityUp.Name = "btnSales_ManualQuantityUp";
+            this.btnSales_ManualQuantityUp.Size = new System.Drawing.Size(32, 40);
+            this.btnSales_ManualQuantityUp.TabIndex = 6;
+            this.btnSales_ManualQuantityUp.Text = "+";
+            this.btnSales_ManualQuantityUp.UseVisualStyleBackColor = true;
+            this.btnSales_ManualQuantityUp.Click += new System.EventHandler(this.btnSales_ManualQuantityUp_Click);
+            // 
+            // btnSales_ManualAddToList
+            // 
+            this.btnSales_ManualAddToList.Enabled = false;
+            this.btnSales_ManualAddToList.Font = new System.Drawing.Font("Arial", 30F);
+            this.btnSales_ManualAddToList.Location = new System.Drawing.Point(379, 135);
+            this.btnSales_ManualAddToList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSales_ManualAddToList.Name = "btnSales_ManualAddToList";
+            this.btnSales_ManualAddToList.Size = new System.Drawing.Size(113, 59);
+            this.btnSales_ManualAddToList.TabIndex = 5;
+            this.btnSales_ManualAddToList.Text = "🛒";
+            this.btnSales_ManualAddToList.UseVisualStyleBackColor = true;
+            this.btnSales_ManualAddToList.Click += new System.EventHandler(this.btnSales_ManualAddToList_Click);
+            // 
+            // dgvSales_ManualInfo
+            // 
+            this.dgvSales_ManualInfo.AllowUserToAddRows = false;
+            this.dgvSales_ManualInfo.AllowUserToDeleteRows = false;
+            this.dgvSales_ManualInfo.AllowUserToResizeColumns = false;
+            this.dgvSales_ManualInfo.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            this.dgvSales_ManualInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSales_ManualInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales_ManualInfo.ColumnHeadersVisible = false;
+            this.dgvSales_ManualInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSales_ManualInfo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvSales_ManualInfo.Location = new System.Drawing.Point(8, 72);
+            this.dgvSales_ManualInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSales_ManualInfo.Name = "dgvSales_ManualInfo";
+            this.dgvSales_ManualInfo.ReadOnly = true;
+            this.dgvSales_ManualInfo.RowHeadersVisible = false;
+            this.dgvSales_ManualInfo.RowHeadersWidth = 82;
+            this.dgvSales_ManualInfo.RowTemplate.Height = 33;
+            this.dgvSales_ManualInfo.RowTemplate.ReadOnly = true;
+            this.dgvSales_ManualInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvSales_ManualInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSales_ManualInfo.Size = new System.Drawing.Size(362, 168);
+            this.dgvSales_ManualInfo.TabIndex = 4;
+            this.dgvSales_ManualInfo.SelectionChanged += new System.EventHandler(this.dgvSales_ManualInfo_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Heading";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 500;
+            // 
+            // tpStatsPeriod
+            // 
+            this.tpStatsPeriod.Controls.Add(this.btnToRevenueStats1);
+            this.tpStatsPeriod.Controls.Add(this.btnToProfitStats1);
+            this.tpStatsPeriod.Controls.Add(this.btnToStockStats1);
+            this.tpStatsPeriod.Controls.Add(this.lbStatsNotAvailable1);
+            this.tpStatsPeriod.Controls.Add(this.label_endingDate);
+            this.tpStatsPeriod.Controls.Add(this.labelStartDate);
+            this.tpStatsPeriod.Controls.Add(this.dtEndTime);
+            this.tpStatsPeriod.Controls.Add(this.dtStartTime);
+            this.tpStatsPeriod.Controls.Add(this.btnDeselectStatsPeriodStock3);
+            this.tpStatsPeriod.Controls.Add(this.btnDeselectStatsPeriodStock2);
+            this.tpStatsPeriod.Controls.Add(this.btnDeselectStatsPeriodStock1);
+            this.tpStatsPeriod.Controls.Add(this.cbxStatsPeriod3);
+            this.tpStatsPeriod.Controls.Add(this.cbxStatsPeriod2);
+            this.tpStatsPeriod.Controls.Add(this.cbxStatsPeriod1);
+            this.tpStatsPeriod.Controls.Add(this.chartStockSoldPeriod);
+            this.tpStatsPeriod.Location = new System.Drawing.Point(4, 18);
+            this.tpStatsPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStatsPeriod.Name = "tpStatsPeriod";
+            this.tpStatsPeriod.Size = new System.Drawing.Size(1150, 642);
+            this.tpStatsPeriod.TabIndex = 14;
+            this.tpStatsPeriod.Text = "Stats period";
+            this.tpStatsPeriod.UseVisualStyleBackColor = true;
+            // 
+            // btnToRevenueStats1
+            // 
+            this.btnToRevenueStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToRevenueStats1.Location = new System.Drawing.Point(364, 23);
+            this.btnToRevenueStats1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToRevenueStats1.Name = "btnToRevenueStats1";
+            this.btnToRevenueStats1.Size = new System.Drawing.Size(194, 34);
+            this.btnToRevenueStats1.TabIndex = 33;
+            this.btnToRevenueStats1.Text = "TO REVENUES STATS";
+            this.btnToRevenueStats1.UseVisualStyleBackColor = true;
+            this.btnToRevenueStats1.Click += new System.EventHandler(this.btnToRevenueStats1_Click);
+            // 
+            // btnToProfitStats1
+            // 
+            this.btnToProfitStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToProfitStats1.Location = new System.Drawing.Point(194, 23);
+            this.btnToProfitStats1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToProfitStats1.Name = "btnToProfitStats1";
+            this.btnToProfitStats1.Size = new System.Drawing.Size(166, 34);
+            this.btnToProfitStats1.TabIndex = 32;
+            this.btnToProfitStats1.Text = "TO PROFITS STATS";
+            this.btnToProfitStats1.UseVisualStyleBackColor = true;
+            this.btnToProfitStats1.Click += new System.EventHandler(this.btnToProfitStats1_Click);
+            // 
+            // btnToStockStats1
+            // 
+            this.btnToStockStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToStockStats1.Location = new System.Drawing.Point(37, 23);
+            this.btnToStockStats1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToStockStats1.Name = "btnToStockStats1";
+            this.btnToStockStats1.Size = new System.Drawing.Size(152, 34);
+            this.btnToStockStats1.TabIndex = 31;
+            this.btnToStockStats1.Text = "TO STOCK STATS";
+            this.btnToStockStats1.UseVisualStyleBackColor = true;
+            this.btnToStockStats1.Click += new System.EventHandler(this.btnToStockStats1_Click);
+            // 
+            // lbStatsNotAvailable1
+            // 
+            this.lbStatsNotAvailable1.AutoSize = true;
+            this.lbStatsNotAvailable1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbStatsNotAvailable1.Location = new System.Drawing.Point(432, 266);
+            this.lbStatsNotAvailable1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStatsNotAvailable1.Name = "lbStatsNotAvailable1";
+            this.lbStatsNotAvailable1.Size = new System.Drawing.Size(427, 25);
+            this.lbStatsNotAvailable1.TabIndex = 30;
+            this.lbStatsNotAvailable1.Text = "Statistics not available. Please insert some data.";
+            // 
+            // label_endingDate
+            // 
+            this.label_endingDate.AutoSize = true;
+            this.label_endingDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label_endingDate.Location = new System.Drawing.Point(112, 313);
+            this.label_endingDate.Name = "label_endingDate";
+            this.label_endingDate.Size = new System.Drawing.Size(116, 25);
+            this.label_endingDate.TabIndex = 29;
+            this.label_endingDate.Text = "Ending date";
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.labelStartDate.Location = new System.Drawing.Point(112, 218);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(122, 25);
+            this.labelStartDate.TabIndex = 28;
+            this.labelStartDate.Text = "Starting date";
+            // 
+            // dtEndTime
+            // 
+            this.dtEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtEndTime.Location = new System.Drawing.Point(73, 345);
+            this.dtEndTime.Name = "dtEndTime";
+            this.dtEndTime.Size = new System.Drawing.Size(200, 30);
+            this.dtEndTime.TabIndex = 27;
+            this.dtEndTime.ValueChanged += new System.EventHandler(this.dtEndTime_ValueChanged);
+            // 
+            // dtStartTime
+            // 
+            this.dtStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtStartTime.Location = new System.Drawing.Point(69, 250);
+            this.dtStartTime.Name = "dtStartTime";
+            this.dtStartTime.Size = new System.Drawing.Size(204, 30);
+            this.dtStartTime.TabIndex = 26;
+            this.dtStartTime.ValueChanged += new System.EventHandler(this.dtStartTime_ValueChanged);
+            // 
+            // btnDeselectStatsPeriodStock3
+            // 
+            this.btnDeselectStatsPeriodStock3.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsPeriodStock3.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsPeriodStock3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsPeriodStock3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsPeriodStock3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsPeriodStock3.Location = new System.Drawing.Point(19, 150);
+            this.btnDeselectStatsPeriodStock3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsPeriodStock3.Name = "btnDeselectStatsPeriodStock3";
+            this.btnDeselectStatsPeriodStock3.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsPeriodStock3.TabIndex = 23;
+            this.btnDeselectStatsPeriodStock3.Text = "✖";
+            this.btnDeselectStatsPeriodStock3.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsPeriodStock3.Visible = false;
+            this.btnDeselectStatsPeriodStock3.Click += new System.EventHandler(this.btnDeselectStatsPeriodStock3_Click);
+            // 
+            // btnDeselectStatsPeriodStock2
+            // 
+            this.btnDeselectStatsPeriodStock2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsPeriodStock2.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsPeriodStock2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsPeriodStock2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsPeriodStock2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsPeriodStock2.Location = new System.Drawing.Point(19, 112);
+            this.btnDeselectStatsPeriodStock2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsPeriodStock2.Name = "btnDeselectStatsPeriodStock2";
+            this.btnDeselectStatsPeriodStock2.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsPeriodStock2.TabIndex = 24;
+            this.btnDeselectStatsPeriodStock2.Text = "✖";
+            this.btnDeselectStatsPeriodStock2.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsPeriodStock2.Visible = false;
+            this.btnDeselectStatsPeriodStock2.Click += new System.EventHandler(this.btnDeselectStatsPeriodStock2_Click);
+            // 
+            // btnDeselectStatsPeriodStock1
+            // 
+            this.btnDeselectStatsPeriodStock1.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsPeriodStock1.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsPeriodStock1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsPeriodStock1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsPeriodStock1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsPeriodStock1.Location = new System.Drawing.Point(19, 74);
+            this.btnDeselectStatsPeriodStock1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsPeriodStock1.Name = "btnDeselectStatsPeriodStock1";
+            this.btnDeselectStatsPeriodStock1.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsPeriodStock1.TabIndex = 25;
+            this.btnDeselectStatsPeriodStock1.Text = "✖";
+            this.btnDeselectStatsPeriodStock1.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsPeriodStock1.Visible = false;
+            this.btnDeselectStatsPeriodStock1.Click += new System.EventHandler(this.btnDeselectStatsPeriodStock1_Click);
+            // 
+            // cbxStatsPeriod3
+            // 
+            this.cbxStatsPeriod3.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsPeriod3.FormattingEnabled = true;
+            this.cbxStatsPeriod3.Location = new System.Drawing.Point(37, 150);
+            this.cbxStatsPeriod3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsPeriod3.Name = "cbxStatsPeriod3";
+            this.cbxStatsPeriod3.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsPeriod3.TabIndex = 19;
+            this.cbxStatsPeriod3.Text = "Stock 3";
+            this.cbxStatsPeriod3.SelectedIndexChanged += new System.EventHandler(this.cbxStatsPeriod3_SelectedIndexChanged);
+            // 
+            // cbxStatsPeriod2
+            // 
+            this.cbxStatsPeriod2.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsPeriod2.FormattingEnabled = true;
+            this.cbxStatsPeriod2.Location = new System.Drawing.Point(37, 112);
+            this.cbxStatsPeriod2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsPeriod2.Name = "cbxStatsPeriod2";
+            this.cbxStatsPeriod2.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsPeriod2.TabIndex = 20;
+            this.cbxStatsPeriod2.Text = "Stock 2";
+            this.cbxStatsPeriod2.SelectedIndexChanged += new System.EventHandler(this.cbxStatsPeriod2_SelectedIndexChanged);
+            // 
+            // cbxStatsPeriod1
+            // 
+            this.cbxStatsPeriod1.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsPeriod1.FormattingEnabled = true;
+            this.cbxStatsPeriod1.Location = new System.Drawing.Point(37, 74);
+            this.cbxStatsPeriod1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsPeriod1.Name = "cbxStatsPeriod1";
+            this.cbxStatsPeriod1.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsPeriod1.TabIndex = 21;
+            this.cbxStatsPeriod1.Text = "Stock 1";
+            this.cbxStatsPeriod1.SelectedIndexChanged += new System.EventHandler(this.cbxStatsPeriod1_SelectedIndexChanged);
+            // 
+            // chartStockSoldPeriod
+            // 
+            chartArea5.Name = "ChartArea1";
+            this.chartStockSoldPeriod.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartStockSoldPeriod.Legends.Add(legend5);
+            this.chartStockSoldPeriod.Location = new System.Drawing.Point(296, 66);
+            this.chartStockSoldPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartStockSoldPeriod.Name = "chartStockSoldPeriod";
+            this.chartStockSoldPeriod.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Store stock sold in the period";
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Current stock in store";
+            series7.YValuesPerPoint = 6;
+            this.chartStockSoldPeriod.Series.Add(series6);
+            this.chartStockSoldPeriod.Series.Add(series7);
+            this.chartStockSoldPeriod.Size = new System.Drawing.Size(838, 511);
+            this.chartStockSoldPeriod.TabIndex = 22;
+            this.chartStockSoldPeriod.Text = "Stock sold chart";
+            this.chartStockSoldPeriod.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
+            // 
+            // tpStatsProfit
+            // 
+            this.tpStatsProfit.Controls.Add(this.btnToRevenueStats2);
+            this.tpStatsProfit.Controls.Add(this.btnToSellingStats2);
+            this.tpStatsProfit.Controls.Add(this.btnToStockStats2);
+            this.tpStatsProfit.Controls.Add(this.lbStatsProfit);
+            this.tpStatsProfit.Controls.Add(this.label42);
+            this.tpStatsProfit.Controls.Add(this.label43);
+            this.tpStatsProfit.Controls.Add(this.dtEndTimeProfit);
+            this.tpStatsProfit.Controls.Add(this.dtStartTimeProfit);
+            this.tpStatsProfit.Controls.Add(this.btnDeselectStatsProfitStock3);
+            this.tpStatsProfit.Controls.Add(this.btnDeselectStatsProfitStock2);
+            this.tpStatsProfit.Controls.Add(this.btnDeselectStatsProfitStock1);
+            this.tpStatsProfit.Controls.Add(this.cbxStatsProfit3);
+            this.tpStatsProfit.Controls.Add(this.cbxStatsProfit2);
+            this.tpStatsProfit.Controls.Add(this.cbxStatsProfit1);
+            this.tpStatsProfit.Controls.Add(this.chartStockProfit);
+            this.tpStatsProfit.Location = new System.Drawing.Point(4, 18);
+            this.tpStatsProfit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStatsProfit.Name = "tpStatsProfit";
+            this.tpStatsProfit.Size = new System.Drawing.Size(1150, 642);
+            this.tpStatsProfit.TabIndex = 15;
+            this.tpStatsProfit.Text = "Stats profit";
+            this.tpStatsProfit.UseVisualStyleBackColor = true;
+            // 
+            // btnToRevenueStats2
+            // 
+            this.btnToRevenueStats2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToRevenueStats2.Location = new System.Drawing.Point(364, 23);
+            this.btnToRevenueStats2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToRevenueStats2.Name = "btnToRevenueStats2";
+            this.btnToRevenueStats2.Size = new System.Drawing.Size(195, 34);
+            this.btnToRevenueStats2.TabIndex = 45;
+            this.btnToRevenueStats2.Text = "TO REVENUES STATS";
+            this.btnToRevenueStats2.UseVisualStyleBackColor = true;
+            this.btnToRevenueStats2.Click += new System.EventHandler(this.btnToRevenueStats2_Click);
+            // 
+            // btnToSellingStats2
+            // 
+            this.btnToSellingStats2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToSellingStats2.Location = new System.Drawing.Point(194, 23);
+            this.btnToSellingStats2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToSellingStats2.Name = "btnToSellingStats2";
+            this.btnToSellingStats2.Size = new System.Drawing.Size(166, 34);
+            this.btnToSellingStats2.TabIndex = 44;
+            this.btnToSellingStats2.Text = "TO SALES STATS";
+            this.btnToSellingStats2.UseVisualStyleBackColor = true;
+            this.btnToSellingStats2.Click += new System.EventHandler(this.btnToSellingStats2_Click);
+            // 
+            // btnToStockStats2
+            // 
+            this.btnToStockStats2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToStockStats2.Location = new System.Drawing.Point(37, 23);
+            this.btnToStockStats2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToStockStats2.Name = "btnToStockStats2";
+            this.btnToStockStats2.Size = new System.Drawing.Size(152, 34);
+            this.btnToStockStats2.TabIndex = 43;
+            this.btnToStockStats2.Text = "TO STOCK STATS";
+            this.btnToStockStats2.UseVisualStyleBackColor = true;
+            this.btnToStockStats2.Click += new System.EventHandler(this.btnToStockStats2_Click);
+            // 
+            // lbStatsProfit
+            // 
+            this.lbStatsProfit.AutoSize = true;
+            this.lbStatsProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbStatsProfit.Location = new System.Drawing.Point(446, 278);
+            this.lbStatsProfit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStatsProfit.Name = "lbStatsProfit";
+            this.lbStatsProfit.Size = new System.Drawing.Size(427, 25);
+            this.lbStatsProfit.TabIndex = 42;
+            this.lbStatsProfit.Text = "Statistics not available. Please insert some data.";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label42.Location = new System.Drawing.Point(112, 325);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(116, 25);
+            this.label42.TabIndex = 41;
+            this.label42.Text = "Ending date";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label43.Location = new System.Drawing.Point(112, 230);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(122, 25);
+            this.label43.TabIndex = 40;
+            this.label43.Text = "Starting date";
+            // 
+            // dtEndTimeProfit
+            // 
+            this.dtEndTimeProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtEndTimeProfit.Location = new System.Drawing.Point(73, 358);
+            this.dtEndTimeProfit.Name = "dtEndTimeProfit";
+            this.dtEndTimeProfit.Size = new System.Drawing.Size(200, 30);
+            this.dtEndTimeProfit.TabIndex = 39;
+            this.dtEndTimeProfit.ValueChanged += new System.EventHandler(this.dtEndTimeProfit_ValueChanged);
+            // 
+            // dtStartTimeProfit
+            // 
+            this.dtStartTimeProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtStartTimeProfit.Location = new System.Drawing.Point(69, 262);
+            this.dtStartTimeProfit.Name = "dtStartTimeProfit";
+            this.dtStartTimeProfit.Size = new System.Drawing.Size(204, 30);
+            this.dtStartTimeProfit.TabIndex = 38;
+            this.dtStartTimeProfit.ValueChanged += new System.EventHandler(this.dtStartTimeProfit_ValueChanged);
+            // 
+            // btnDeselectStatsProfitStock3
+            // 
+            this.btnDeselectStatsProfitStock3.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsProfitStock3.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsProfitStock3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsProfitStock3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsProfitStock3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsProfitStock3.Location = new System.Drawing.Point(19, 162);
+            this.btnDeselectStatsProfitStock3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsProfitStock3.Name = "btnDeselectStatsProfitStock3";
+            this.btnDeselectStatsProfitStock3.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsProfitStock3.TabIndex = 35;
+            this.btnDeselectStatsProfitStock3.Text = "✖";
+            this.btnDeselectStatsProfitStock3.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsProfitStock3.Visible = false;
+            this.btnDeselectStatsProfitStock3.Click += new System.EventHandler(this.btnDeselectStatsProfitStock3_Click);
+            // 
+            // btnDeselectStatsProfitStock2
+            // 
+            this.btnDeselectStatsProfitStock2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsProfitStock2.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsProfitStock2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsProfitStock2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsProfitStock2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsProfitStock2.Location = new System.Drawing.Point(19, 124);
+            this.btnDeselectStatsProfitStock2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsProfitStock2.Name = "btnDeselectStatsProfitStock2";
+            this.btnDeselectStatsProfitStock2.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsProfitStock2.TabIndex = 36;
+            this.btnDeselectStatsProfitStock2.Text = "✖";
+            this.btnDeselectStatsProfitStock2.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsProfitStock2.Visible = false;
+            this.btnDeselectStatsProfitStock2.Click += new System.EventHandler(this.btnDeselectStatsProfitStock2_Click);
+            // 
+            // btnDeselectStatsProfitStock1
+            // 
+            this.btnDeselectStatsProfitStock1.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsProfitStock1.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsProfitStock1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsProfitStock1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsProfitStock1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsProfitStock1.Location = new System.Drawing.Point(19, 86);
+            this.btnDeselectStatsProfitStock1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsProfitStock1.Name = "btnDeselectStatsProfitStock1";
+            this.btnDeselectStatsProfitStock1.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsProfitStock1.TabIndex = 37;
+            this.btnDeselectStatsProfitStock1.Text = "✖";
+            this.btnDeselectStatsProfitStock1.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsProfitStock1.Visible = false;
+            this.btnDeselectStatsProfitStock1.Click += new System.EventHandler(this.btnDeselectStatsProfitStock1_Click);
+            // 
+            // cbxStatsProfit3
+            // 
+            this.cbxStatsProfit3.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsProfit3.FormattingEnabled = true;
+            this.cbxStatsProfit3.Location = new System.Drawing.Point(37, 162);
+            this.cbxStatsProfit3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsProfit3.Name = "cbxStatsProfit3";
+            this.cbxStatsProfit3.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsProfit3.TabIndex = 31;
+            this.cbxStatsProfit3.Text = "Stock 3";
+            this.cbxStatsProfit3.SelectedIndexChanged += new System.EventHandler(this.cbxStatsProfit3_SelectedIndexChanged);
+            // 
+            // cbxStatsProfit2
+            // 
+            this.cbxStatsProfit2.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsProfit2.FormattingEnabled = true;
+            this.cbxStatsProfit2.Location = new System.Drawing.Point(37, 124);
+            this.cbxStatsProfit2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsProfit2.Name = "cbxStatsProfit2";
+            this.cbxStatsProfit2.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsProfit2.TabIndex = 32;
+            this.cbxStatsProfit2.Text = "Stock 2";
+            this.cbxStatsProfit2.SelectedIndexChanged += new System.EventHandler(this.cbxStatsProfit2_SelectedIndexChanged);
+            // 
+            // cbxStatsProfit1
+            // 
+            this.cbxStatsProfit1.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsProfit1.FormattingEnabled = true;
+            this.cbxStatsProfit1.Location = new System.Drawing.Point(37, 86);
+            this.cbxStatsProfit1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsProfit1.Name = "cbxStatsProfit1";
+            this.cbxStatsProfit1.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsProfit1.TabIndex = 33;
+            this.cbxStatsProfit1.Text = "Stock 1";
+            this.cbxStatsProfit1.SelectedIndexChanged += new System.EventHandler(this.cbxStatsProfit1_SelectedIndexChanged);
+            // 
+            // chartStockProfit
+            // 
+            chartArea6.Name = "ChartArea1";
+            this.chartStockProfit.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartStockProfit.Legends.Add(legend6);
+            this.chartStockProfit.Location = new System.Drawing.Point(296, 78);
+            this.chartStockProfit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartStockProfit.Name = "chartStockProfit";
+            this.chartStockProfit.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Profit in the period";
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Current stock in store";
+            series9.YValuesPerPoint = 6;
+            this.chartStockProfit.Series.Add(series8);
+            this.chartStockProfit.Series.Add(series9);
+            this.chartStockProfit.Size = new System.Drawing.Size(838, 511);
+            this.chartStockProfit.TabIndex = 34;
+            this.chartStockProfit.Text = "Stock sold chart";
+            this.chartStockProfit.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
+            // 
+            // tpStatsRevenue
+            // 
+            this.tpStatsRevenue.Controls.Add(this.btnToProfitStats3);
+            this.tpStatsRevenue.Controls.Add(this.btnToSellingStats3);
+            this.tpStatsRevenue.Controls.Add(this.btnToStockStats3);
+            this.tpStatsRevenue.Controls.Add(this.lbStatsRevenue);
+            this.tpStatsRevenue.Controls.Add(this.label40);
+            this.tpStatsRevenue.Controls.Add(this.label44);
+            this.tpStatsRevenue.Controls.Add(this.dtEndTimeRevenue);
+            this.tpStatsRevenue.Controls.Add(this.dtStartTimeRevenue);
+            this.tpStatsRevenue.Controls.Add(this.btnDeselectStatsRevenueStock3);
+            this.tpStatsRevenue.Controls.Add(this.btnDeselectStatsRevenueStock2);
+            this.tpStatsRevenue.Controls.Add(this.btnDeselectStatsRevenueStock1);
+            this.tpStatsRevenue.Controls.Add(this.cbxStatsRevenue3);
+            this.tpStatsRevenue.Controls.Add(this.cbxStatsRevenue2);
+            this.tpStatsRevenue.Controls.Add(this.cbxStatsRevenue1);
+            this.tpStatsRevenue.Controls.Add(this.chartStockRevenue);
+            this.tpStatsRevenue.Location = new System.Drawing.Point(4, 18);
+            this.tpStatsRevenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpStatsRevenue.Name = "tpStatsRevenue";
+            this.tpStatsRevenue.Size = new System.Drawing.Size(1150, 642);
+            this.tpStatsRevenue.TabIndex = 16;
+            this.tpStatsRevenue.Text = "Stats revenue";
+            this.tpStatsRevenue.UseVisualStyleBackColor = true;
+            // 
+            // btnToProfitStats3
+            // 
+            this.btnToProfitStats3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToProfitStats3.Location = new System.Drawing.Point(379, 23);
+            this.btnToProfitStats3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToProfitStats3.Name = "btnToProfitStats3";
+            this.btnToProfitStats3.Size = new System.Drawing.Size(176, 34);
+            this.btnToProfitStats3.TabIndex = 68;
+            this.btnToProfitStats3.Text = "TO PROFITS STATS";
+            this.btnToProfitStats3.UseVisualStyleBackColor = true;
+            this.btnToProfitStats3.Click += new System.EventHandler(this.btnToProfitStats3_Click);
+            // 
+            // btnToSellingStats3
+            // 
+            this.btnToSellingStats3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToSellingStats3.Location = new System.Drawing.Point(194, 23);
+            this.btnToSellingStats3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToSellingStats3.Name = "btnToSellingStats3";
+            this.btnToSellingStats3.Size = new System.Drawing.Size(181, 34);
+            this.btnToSellingStats3.TabIndex = 67;
+            this.btnToSellingStats3.Text = "TO SALES STATS";
+            this.btnToSellingStats3.UseVisualStyleBackColor = true;
+            this.btnToSellingStats3.Click += new System.EventHandler(this.btnToSellingStats3_Click);
+            // 
+            // btnToStockStats3
+            // 
+            this.btnToStockStats3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnToStockStats3.Location = new System.Drawing.Point(37, 23);
+            this.btnToStockStats3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToStockStats3.Name = "btnToStockStats3";
+            this.btnToStockStats3.Size = new System.Drawing.Size(152, 34);
+            this.btnToStockStats3.TabIndex = 66;
+            this.btnToStockStats3.Text = "TO STOCK STATS";
+            this.btnToStockStats3.UseVisualStyleBackColor = true;
+            this.btnToStockStats3.Click += new System.EventHandler(this.btnToStockStats3_Click);
+            // 
+            // lbStatsRevenue
+            // 
+            this.lbStatsRevenue.AutoSize = true;
+            this.lbStatsRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbStatsRevenue.Location = new System.Drawing.Point(447, 279);
+            this.lbStatsRevenue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStatsRevenue.Name = "lbStatsRevenue";
+            this.lbStatsRevenue.Size = new System.Drawing.Size(427, 25);
+            this.lbStatsRevenue.TabIndex = 65;
+            this.lbStatsRevenue.Text = "Statistics not available. Please insert some data.";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label40.Location = new System.Drawing.Point(112, 320);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(116, 25);
+            this.label40.TabIndex = 64;
+            this.label40.Text = "Ending date";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label44.Location = new System.Drawing.Point(112, 225);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(122, 25);
+            this.label44.TabIndex = 63;
+            this.label44.Text = "Starting date";
+            // 
+            // dtEndTimeRevenue
+            // 
+            this.dtEndTimeRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtEndTimeRevenue.Location = new System.Drawing.Point(73, 353);
+            this.dtEndTimeRevenue.Name = "dtEndTimeRevenue";
+            this.dtEndTimeRevenue.Size = new System.Drawing.Size(200, 30);
+            this.dtEndTimeRevenue.TabIndex = 62;
+            this.dtEndTimeRevenue.ValueChanged += new System.EventHandler(this.dtEndTimeRevenue_ValueChanged_1);
+            // 
+            // dtStartTimeRevenue
+            // 
+            this.dtStartTimeRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.dtStartTimeRevenue.Location = new System.Drawing.Point(69, 258);
+            this.dtStartTimeRevenue.Name = "dtStartTimeRevenue";
+            this.dtStartTimeRevenue.Size = new System.Drawing.Size(204, 30);
+            this.dtStartTimeRevenue.TabIndex = 61;
+            this.dtStartTimeRevenue.ValueChanged += new System.EventHandler(this.dtStartTimeRevenue_ValueChanged_1);
+            // 
+            // btnDeselectStatsRevenueStock3
+            // 
+            this.btnDeselectStatsRevenueStock3.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsRevenueStock3.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsRevenueStock3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsRevenueStock3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsRevenueStock3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsRevenueStock3.Location = new System.Drawing.Point(19, 158);
+            this.btnDeselectStatsRevenueStock3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsRevenueStock3.Name = "btnDeselectStatsRevenueStock3";
+            this.btnDeselectStatsRevenueStock3.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsRevenueStock3.TabIndex = 58;
+            this.btnDeselectStatsRevenueStock3.Text = "✖";
+            this.btnDeselectStatsRevenueStock3.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsRevenueStock3.Visible = false;
+            this.btnDeselectStatsRevenueStock3.Click += new System.EventHandler(this.btnDeselectStatsRevenueStock3_Click_1);
+            // 
+            // btnDeselectStatsRevenueStock2
+            // 
+            this.btnDeselectStatsRevenueStock2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsRevenueStock2.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsRevenueStock2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsRevenueStock2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsRevenueStock2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsRevenueStock2.Location = new System.Drawing.Point(19, 119);
+            this.btnDeselectStatsRevenueStock2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsRevenueStock2.Name = "btnDeselectStatsRevenueStock2";
+            this.btnDeselectStatsRevenueStock2.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsRevenueStock2.TabIndex = 59;
+            this.btnDeselectStatsRevenueStock2.Text = "✖";
+            this.btnDeselectStatsRevenueStock2.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsRevenueStock2.Visible = false;
+            this.btnDeselectStatsRevenueStock2.Click += new System.EventHandler(this.btnDeselectStatsRevenueStock2_Click_1);
+            // 
+            // btnDeselectStatsRevenueStock1
+            // 
+            this.btnDeselectStatsRevenueStock1.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeselectStatsRevenueStock1.FlatAppearance.BorderSize = 0;
+            this.btnDeselectStatsRevenueStock1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeselectStatsRevenueStock1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeselectStatsRevenueStock1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnDeselectStatsRevenueStock1.Location = new System.Drawing.Point(19, 81);
+            this.btnDeselectStatsRevenueStock1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnDeselectStatsRevenueStock1.Name = "btnDeselectStatsRevenueStock1";
+            this.btnDeselectStatsRevenueStock1.Size = new System.Drawing.Size(16, 26);
+            this.btnDeselectStatsRevenueStock1.TabIndex = 60;
+            this.btnDeselectStatsRevenueStock1.Text = "✖";
+            this.btnDeselectStatsRevenueStock1.UseVisualStyleBackColor = false;
+            this.btnDeselectStatsRevenueStock1.Visible = false;
+            this.btnDeselectStatsRevenueStock1.Click += new System.EventHandler(this.btnDeselectStatsRevenueStock1_Click_1);
+            // 
+            // cbxStatsRevenue3
+            // 
+            this.cbxStatsRevenue3.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsRevenue3.FormattingEnabled = true;
+            this.cbxStatsRevenue3.Location = new System.Drawing.Point(37, 158);
+            this.cbxStatsRevenue3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsRevenue3.Name = "cbxStatsRevenue3";
+            this.cbxStatsRevenue3.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsRevenue3.TabIndex = 54;
+            this.cbxStatsRevenue3.Text = "Stock 3";
+            this.cbxStatsRevenue3.SelectedIndexChanged += new System.EventHandler(this.cbxStatsRevenue3_SelectedIndexChanged);
+            // 
+            // cbxStatsRevenue2
+            // 
+            this.cbxStatsRevenue2.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsRevenue2.FormattingEnabled = true;
+            this.cbxStatsRevenue2.Location = new System.Drawing.Point(37, 119);
+            this.cbxStatsRevenue2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsRevenue2.Name = "cbxStatsRevenue2";
+            this.cbxStatsRevenue2.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsRevenue2.TabIndex = 55;
+            this.cbxStatsRevenue2.Text = "Stock 2";
+            this.cbxStatsRevenue2.SelectedIndexChanged += new System.EventHandler(this.cbxStatsRevenue2_SelectedIndexChanged);
+            // 
+            // cbxStatsRevenue1
+            // 
+            this.cbxStatsRevenue1.Font = new System.Drawing.Font("Arial", 15F);
+            this.cbxStatsRevenue1.FormattingEnabled = true;
+            this.cbxStatsRevenue1.Location = new System.Drawing.Point(37, 81);
+            this.cbxStatsRevenue1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.cbxStatsRevenue1.Name = "cbxStatsRevenue1";
+            this.cbxStatsRevenue1.Size = new System.Drawing.Size(277, 31);
+            this.cbxStatsRevenue1.TabIndex = 56;
+            this.cbxStatsRevenue1.Text = "Stock 1";
+            this.cbxStatsRevenue1.SelectedIndexChanged += new System.EventHandler(this.cbxStatsRevenue1_SelectedIndexChanged);
+            // 
+            // chartStockRevenue
+            // 
+            chartArea7.Name = "ChartArea1";
+            this.chartStockRevenue.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartStockRevenue.Legends.Add(legend7);
+            this.chartStockRevenue.Location = new System.Drawing.Point(296, 73);
+            this.chartStockRevenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartStockRevenue.Name = "chartStockRevenue";
+            this.chartStockRevenue.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Revenue in the period";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Current stock in store";
+            series11.YValuesPerPoint = 6;
+            this.chartStockRevenue.Series.Add(series10);
+            this.chartStockRevenue.Series.Add(series11);
+            this.chartStockRevenue.Size = new System.Drawing.Size(838, 511);
+            this.chartStockRevenue.TabIndex = 57;
+            this.chartStockRevenue.Text = "Stock sold chart";
+            this.chartStockRevenue.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
+            // 
+            // nudEmpContractHours
+            // 
+            this.nudEmpContractHours.Location = new System.Drawing.Point(232, 506);
+            this.nudEmpContractHours.Maximum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.nudEmpContractHours.Name = "nudEmpContractHours";
+            this.nudEmpContractHours.Size = new System.Drawing.Size(235, 17);
+            this.nudEmpContractHours.TabIndex = 71;
             // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1154, 690);
+            this.ClientSize = new System.Drawing.Size(1168, 754);
             this.ControlBox = false;
             this.Controls.Add(this.pnlBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.MaximumSize = new System.Drawing.Size(1154, 690);
-            this.MinimumSize = new System.Drawing.Size(718, 431);
-            this.Name = "ProductForm";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1750, 1176);
+            this.MinimumSize = new System.Drawing.Size(1168, 754);
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
             this.pnlTabCover.ResumeLayout(false);
+            this.gpnlSales.ResumeLayout(false);
+            this.gpnlStatsType.ResumeLayout(false);
+            this.gpnlStatistics.ResumeLayout(false);
+            this.gpnlSchedules.ResumeLayout(false);
+            this.gpnlStock.ResumeLayout(false);
+            this.gpnlEmployees.ResumeLayout(false);
+            this.pnlBar.ResumeLayout(false);
+            this.pnlDragBar.ResumeLayout(false);
+            this.pnlDragBar.PerformLayout();
             this.tcNavigator.ResumeLayout(false);
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
@@ -3924,11 +5355,17 @@ namespace LAMN_Software
             this.tpScheduleMin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvScheduleMinP)).EndInit();
             this.tpScheduleChoise.ResumeLayout(false);
+            this.gpnlViewSchedules.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).EndInit();
+            this.gpnlCreateSchedules.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).EndInit();
             this.tpEmployees.ResumeLayout(false);
             this.tpEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.tpStatsStock.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.gradientPanel5.ResumeLayout(false);
+            this.gradientPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).EndInit();
             this.tpStockAdd.ResumeLayout(false);
             this.tpStockAdd.PerformLayout();
@@ -3937,8 +5374,14 @@ namespace LAMN_Software
             this.tpStatsEmployee.ResumeLayout(false);
             this.tpStatsEmployee.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.gradientPanel2.ResumeLayout(false);
+            this.gradientPanel3.ResumeLayout(false);
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesPosition)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesGender)).EndInit();
             this.tpNewOrder.ResumeLayout(false);
@@ -3951,24 +5394,29 @@ namespace LAMN_Software
             this.gbOldInfo.PerformLayout();
             this.gbNewInfo.ResumeLayout(false);
             this.gbNewInfo.PerformLayout();
-            this.pnlBar.ResumeLayout(false);
-            this.gpnlStatsType.ResumeLayout(false);
-            this.gpnlStatistics.ResumeLayout(false);
-            this.gpnlSchedules.ResumeLayout(false);
-            this.gpnlStock.ResumeLayout(false);
-            this.gpnlEmployees.ResumeLayout(false);
-            this.gpnlViewSchedules.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxViewSchedules)).EndInit();
-            this.gpnlCreateSchedules.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxAddSchedules)).EndInit();
-            this.gradientPanel5.ResumeLayout(false);
-            this.gradientPanel5.PerformLayout();
-            this.gradientPanel2.ResumeLayout(false);
-            this.gradientPanel3.ResumeLayout(false);
-            this.gradientPanel4.ResumeLayout(false);
-            this.gradientPanel4.PerformLayout();
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
+            this.tpSales.ResumeLayout(false);
+            this.tpSales.PerformLayout();
+            this.pnlSales_QuantityControl.ResumeLayout(false);
+            this.pnlSales_Search2.ResumeLayout(false);
+            this.pnlSales_Search.ResumeLayout(false);
+            this.pnlSales_Search.PerformLayout();
+            this.gradientPanel6.ResumeLayout(false);
+            this.gradientPanel7.ResumeLayout(false);
+            this.gradientPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_Reciept)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales_ManualInfo)).EndInit();
+            this.tpStatsPeriod.ResumeLayout(false);
+            this.tpStatsPeriod.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockSoldPeriod)).EndInit();
+            this.tpStatsProfit.ResumeLayout(false);
+            this.tpStatsProfit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockProfit)).EndInit();
+            this.tpStatsRevenue.ResumeLayout(false);
+            this.tpStatsRevenue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStockRevenue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEmpContractHours)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3981,17 +5429,11 @@ namespace LAMN_Software
         private System.Windows.Forms.Panel pnlDragBar;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.TabControl tcNavigator;
-        private System.Windows.Forms.TabPage tpStock;
         private System.Windows.Forms.TabPage tpSchedulesEmp;
         private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnSchedules;
         private System.Windows.Forms.TabPage tpEmployees;
         private System.Windows.Forms.TabPage tpStatsStock;
-        private System.Windows.Forms.TextBox tbxSearchStock;
-        private System.Windows.Forms.Button btnDeActivateStock;
-        private System.Windows.Forms.Button btnEditStock;
-        private System.Windows.Forms.Button btnSearchStock;
-        private System.Windows.Forms.Button btnAddStock;
         private System.Windows.Forms.TabPage tpStockAdd;
         private System.Windows.Forms.TextBox tbxStockAdd_ProductName;
         private System.Windows.Forms.Label lblProductAdd_StockName;
@@ -4076,34 +5518,16 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnDeselectStatsStock1;
         private System.Windows.Forms.Button btnDeselectStatsStock3;
         private System.Windows.Forms.Button btnDeselectStatsStock2;
-        private System.Windows.Forms.ComboBox cbxStockCurrentlyShowing;
-        private System.Windows.Forms.Label lblStockCurrentlyShowing;
         private System.Windows.Forms.TextBox tbxStockAdd_EANCode;
         private System.Windows.Forms.Label lblStockAddEAN;
-        private System.Windows.Forms.Button btnStock_ReActivateProduct;
-        private System.Windows.Forms.DataGridView dgvAllStock;
         private System.Windows.Forms.DataGridView dgvEmployees;
         private System.Windows.Forms.ComboBox cbxActiveInactiveEmployees;
         private System.Windows.Forms.Label lblActiveInactiveEmployees;
         private System.Windows.Forms.Label lblSalary;
         private System.Windows.Forms.TextBox tbxSalary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EAN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LocationS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityWH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LocationWH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MinimumStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalSold;
         private System.Windows.Forms.TabPage tpStatsEmployee;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesPosition;
         private System.Windows.Forms.Button btnEmpStats;
-        private System.Windows.Forms.Button btnStockStats;
-        private System.Windows.Forms.Button btnOrder;
-        private System.Windows.Forms.Button btnSellProduct;
         private System.Windows.Forms.TabPage tpNewOrder;
         private System.Windows.Forms.TabPage tpSellProduct;
         private System.Windows.Forms.TextBox tbNewOrderEAN;
@@ -4151,7 +5575,6 @@ namespace LAMN_Software
         private System.Windows.Forms.Label lblCreateSchedules;
         private System.Windows.Forms.Label lblViewSchedules;
         private System.Windows.Forms.Label lblStockAdd_Details;
-        private System.Windows.Forms.Button btnStockAdjustColumnWidth;
         private System.Windows.Forms.CheckBox chkShowFTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScheduleMinShift;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScheduleMinMonday;
@@ -4212,26 +5635,6 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesCreateMinAfternoon;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesCreateMinEvening;
         private System.Windows.Forms.Label lblScheduleCurrentWeekCreate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmployeeObj;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSecondName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSalaryPerHour;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvBsn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDateOfBirth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPhoneNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceRelation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvQuittingReason;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStartingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEndingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvContractType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDegree;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvNationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dvgContractHours;
-        private System.Windows.Forms.TextBox tbxEmployeeAdd_ContractHours;
         private System.Windows.Forms.Label lblContractHours;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesGender;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeesContractType;
@@ -4269,5 +5672,145 @@ namespace LAMN_Software
         private System.Windows.Forms.DataGridViewTextBoxColumn schedulesEmpWorkedHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchedulesEmpContractHours;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScheduleEmpFTE;
+        private System.Windows.Forms.TextBox tbxEmployeeAdd_Adress;
+        private System.Windows.Forms.Label lblAdress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmployeeObj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSecondName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvSalaryPerHour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvBsn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDateOfBirth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPhoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvIceRelation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvQuittingReason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStartingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEndingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvContractType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvGender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDegree;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvNationality;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgContractHours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgAdress;
+        private GradientPanel gpnlSales;
+        private System.Windows.Forms.Button btnSales;
+        private System.Windows.Forms.TabPage tpSales;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TabPage tpStock;
+        private System.Windows.Forms.Button btnStockAdjustColumnWidth;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnSellProduct;
+        private System.Windows.Forms.Button btnStockStats;
+        private System.Windows.Forms.DataGridView dgvAllStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EAN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityWH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationWH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinimumStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalSold;
+        private System.Windows.Forms.Button btnStock_ReActivateProduct;
+        private System.Windows.Forms.ComboBox cbxStockCurrentlyShowing;
+        private System.Windows.Forms.Label lblStockCurrentlyShowing;
+        private System.Windows.Forms.TextBox tbxSearchStock;
+        private System.Windows.Forms.Button btnDeActivateStock;
+        private System.Windows.Forms.Button btnEditStock;
+        private System.Windows.Forms.Button btnSearchStock;
+        private System.Windows.Forms.Button btnAddStock;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnScheduleCreateAutoGenerate;
+        private System.Windows.Forms.TextBox tbxSales_Barcode;
+        private GradientPanel gradientPanel6;
+        private System.Windows.Forms.DataGridView dgvSales_Reciept;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.Label lblSales_TotalPrice;
+        private System.Windows.Forms.Label lblSales_TotalLabel;
+        private GradientPanel gradientPanel7;
+        private System.Windows.Forms.Label lblSales_ItemShowcaseEAN;
+        private System.Windows.Forms.Label lblSales_ItemShowcaseName;
+        private System.Windows.Forms.Label lblOldInfo_Address;
+        private System.Windows.Forms.Label lblOldInfo_Address_input;
+        private System.Windows.Forms.Label lblNewInfo_Address_input;
+        private System.Windows.Forms.Label lblNewInfo_Address;
+        private System.Windows.Forms.Label lblSales_ItemShowcaseQuantityPrice;
+        private System.Windows.Forms.DataGridView dgvSales_ManualInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TextBox tbxSales_Search;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel pnlSales_Search;
+        private System.Windows.Forms.Panel pnlSales_Search2;
+        private System.Windows.Forms.ListBox lbxSales_SearchBox;
+        private System.Windows.Forms.TabPage tpStatsPeriod;
+        private System.Windows.Forms.Label label_endingDate;
+        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.DateTimePicker dtEndTime;
+        private System.Windows.Forms.DateTimePicker dtStartTime;
+        private System.Windows.Forms.Button btnDeselectStatsPeriodStock3;
+        private System.Windows.Forms.Button btnDeselectStatsPeriodStock2;
+        private System.Windows.Forms.Button btnDeselectStatsPeriodStock1;
+        private System.Windows.Forms.ComboBox cbxStatsPeriod3;
+        private System.Windows.Forms.ComboBox cbxStatsPeriod2;
+        private System.Windows.Forms.ComboBox cbxStatsPeriod1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartStockSoldPeriod;
+        private System.Windows.Forms.TextBox tbxSales_Defocus;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox tbxSales_ManualQuantity;
+        private System.Windows.Forms.Button btnSales_ManualQuantityDown;
+        private System.Windows.Forms.Button btnSales_ManualQuantityUp;
+        private System.Windows.Forms.Button btnSales_ManualAddToList;
+        private System.Windows.Forms.Button btnSales_ManualCancel;
+        private System.Windows.Forms.Panel pnlSales_QuantityControl;
+        private System.Windows.Forms.Button btnSales_Remove1Quantity;
+        private System.Windows.Forms.Button btnSales_RemoveAllQuantity;
+        private System.Windows.Forms.Label lbStatsNotAvailable1;
+        private System.Windows.Forms.TabPage tpStatsProfit;
+        private System.Windows.Forms.Label lbStatsProfit;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.DateTimePicker dtEndTimeProfit;
+        private System.Windows.Forms.DateTimePicker dtStartTimeProfit;
+        private System.Windows.Forms.Button btnDeselectStatsProfitStock3;
+        private System.Windows.Forms.Button btnDeselectStatsProfitStock2;
+        private System.Windows.Forms.Button btnDeselectStatsProfitStock1;
+        private System.Windows.Forms.ComboBox cbxStatsProfit3;
+        private System.Windows.Forms.ComboBox cbxStatsProfit2;
+        private System.Windows.Forms.ComboBox cbxStatsProfit1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartStockProfit;
+        private System.Windows.Forms.TabPage tpStatsRevenue;
+        private System.Windows.Forms.Label lbStatsRevenue;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.DateTimePicker dtEndTimeRevenue;
+        private System.Windows.Forms.DateTimePicker dtStartTimeRevenue;
+        private System.Windows.Forms.Button btnDeselectStatsRevenueStock3;
+        private System.Windows.Forms.Button btnDeselectStatsRevenueStock2;
+        private System.Windows.Forms.Button btnDeselectStatsRevenueStock1;
+        private System.Windows.Forms.ComboBox cbxStatsRevenue3;
+        private System.Windows.Forms.ComboBox cbxStatsRevenue2;
+        private System.Windows.Forms.ComboBox cbxStatsRevenue1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartStockRevenue;
+        private System.Windows.Forms.Button btnToRevenueStats;
+        private System.Windows.Forms.Button btnToProfitStats;
+        private System.Windows.Forms.Button btnToSellingStats;
+        private System.Windows.Forms.Button btnToRevenueStats1;
+        private System.Windows.Forms.Button btnToProfitStats1;
+        private System.Windows.Forms.Button btnToStockStats1;
+        private System.Windows.Forms.Button btnToRevenueStats2;
+        private System.Windows.Forms.Button btnToSellingStats2;
+        private System.Windows.Forms.Button btnToStockStats2;
+        private System.Windows.Forms.Button btnToProfitStats3;
+        private System.Windows.Forms.Button btnToSellingStats3;
+        private System.Windows.Forms.Button btnToStockStats3;
+        private System.Windows.Forms.NumericUpDown nudEmpContractHours;
     }
 }

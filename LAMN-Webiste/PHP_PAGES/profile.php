@@ -17,6 +17,7 @@ $IceRelationship=strtolower($IceRelationship);
 $IceRelationship=ucfirst($IceRelationship);
 $IceNumber=$row["ICEnumber"];
 $BSN=$row["BSN"];
+$Address=$row["Adress"];
 
 $relationships=array("Partner", "Father", "Mother", "Brother", "Sister", "Uncle", "Aunt", "Cousin", "Friend", "Other");
 
@@ -28,6 +29,7 @@ if(isset($_REQUEST['btnRequestChanges']))
     $phoneNumber=strip_tags($_REQUEST["phone_number"]);
     $iceRelationship=$_POST['ICE_relationship'];
     $iceNumber=strip_tags($_REQUEST["ICE_number"]);
+    $address=strip_tags($_REQUEST["address"]);
 
     if(empty($firstName))
     {
@@ -66,7 +68,7 @@ if(isset($_REQUEST['btnRequestChanges']))
 
                 if($select_stmt->rowCount()<1)
                 {
-                    $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelatiion)";
+                    $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation, Address) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelation, :uAddress)";
                     $stmt = $conn->prepare($sql);
                     $stmt->bindValue(':uBSN', $BSN);
                     $stmt->bindValue(':uUserName', $username);
@@ -74,18 +76,34 @@ if(isset($_REQUEST['btnRequestChanges']))
                     $stmt->bindValue(':uSecondName', $secondName);
                     $stmt->bindValue(':uPhoneNumber', $phoneNumber);
                     $stmt->bindValue(':uICEnumber', $iceNumber);
-                    $stmt->bindValue(':uICErelatiion', $iceRelationship);
+                    $stmt->bindValue(':uICErelation', $iceRelationship);
+                    $stmt->bindValue(':uAddress', $address);
                 
                     $result = $stmt->execute();
     
                     if($result){
                         echo 'Change requested successfully';
-                        header("refresh:1; schedules.php");
+                        header("refresh:1; personalSchedules.php");
                     }
                 }
                 else
                 {
-                    $errorMsg[] = "You already requested change";
+                    $stmt = $conn->prepare("UPDATE employeechange SET FirstName=:uFirstName, SecondName=:uSecondName, PhoneNumber=:uPhoneNumber, ICEnumber=:uICEnumber, ICErelation=:uICErelation, Address=:uAddress WHERE UserName=:uUserName");
+                    //$stmt->bindValue(':uBSN', $BSN);
+                    $stmt->bindValue(':uUserName', $username);
+                    $stmt->bindValue(':uFirstName', $firstName);
+                    $stmt->bindValue(':uSecondName', $secondName);
+                    $stmt->bindValue(':uPhoneNumber', $phoneNumber);
+                    $stmt->bindValue(':uICEnumber', $iceNumber);
+                    $stmt->bindValue(':uICErelation', $iceRelationship);
+                    $stmt->bindValue(':uAddress', $address);
+                
+                    $result = $stmt->execute();
+    
+                    if($result){
+                        echo 'Change requested successfully';
+                        header("refresh:1; personalSchedules.php");
+                    }
                 }
             }
         }
@@ -152,7 +170,7 @@ if(isset($errorMsg)){
             <label>ICE relationship</label>
 
             <select name="ICE_relationship" id="ICE_relationship">
-            <option value="Blank"><?php echo $IceRelationship ?></option>
+            <option value=<?php echo $IceRelationship ?>><?php echo $IceRelationship ?></option>
             <?php
                 foreach($relationships as $value)
                 {
@@ -166,6 +184,8 @@ if(isset($errorMsg)){
 
             <label>ICE number</label>
             <input id="ICE_number" placeholder="" type="text" value="<?php echo $IceNumber ?>" name ="ICE_number">
+            <label>Address</label>
+            <input id="address" placeholder="" type="text" value="<?php echo $Address ?>" name ="address">
             <button type="submit" name="btnRequestChanges" class="btnRequestChanges">Request changes</button>
             <button type="submit" name="btnChangePassword" class="btnChangePassword">Change password</button>
         </div>
