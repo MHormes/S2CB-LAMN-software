@@ -1,6 +1,4 @@
 <?php
-
-
 function GetSchedulesFromWeek($weekNmr, $userName)
 {
     include '../DatabaseConn/connection.php';
@@ -21,7 +19,7 @@ function GetSchedulesFromWeek($weekNmr, $userName)
     }
     catch(PDOException $e)
     {
-        echo $e->getMessage();
+        return false;
     }
 }
 
@@ -36,7 +34,7 @@ function GetSchedulesFromWeekForEmployee($weekNmr, $empUserName){
         $schedules = $sth->fetchAll(PDO::FETCH_OBJ);
         return $schedules;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        return false;
     }
 }
 ?>

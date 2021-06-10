@@ -1,37 +1,42 @@
-table, th{
-    border:3px solid black;
-    border-collapse: collapse;
+table,
+th {
+  border: 3px solid black;
+  border-collapse: collapse;
 }
 
-table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    background-color: antiquewhite;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  background-color: antiquewhite;
 }
 
-th, td {
-    padding: 10px;
-    width: 140px;
-    border: 1px solid black;
-  }
-
-.weekCounter{
-    width: 100px;
-    height: 50px;
-    font-size: 24px;
-    align-content: center;
+th,
+td {
+  padding: 10px;
+  width: 140px;
+  border: 1px solid black;
 }
 
-.button{
-    
-    height: 50px;
-    font-size: 15px;  
-    color: purple;
+.weekCounter {
+  width: 100px;
+  height: 50px;
+  font-size: 24px;
+  margin: auto;
+  display: block;
+  text-align: center;
 }
 
-p{
-    text-align: center;
-    font-size: large;
-    color: white;
+.button {
+  height: 50px;
+  font-size: 15px;
+  color: purple;
+  margin: auto;
+  display: block;
+}
+
+p {
+  text-align: center;
+  font-size: large;
+  color: white;
 }

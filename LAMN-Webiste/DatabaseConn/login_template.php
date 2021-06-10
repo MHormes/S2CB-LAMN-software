@@ -30,6 +30,6 @@ function loginAccount($usernameLogin, $passwordLogin)
         }
 
     }catch(PDOException $e){
-        echo $e->getMessage();
+        return false;
     }
 }
