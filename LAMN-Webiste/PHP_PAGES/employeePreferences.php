@@ -1,10 +1,23 @@
 <?php
 session_start();
-include "../DatabaseConn/get_schedules_template.php";
+include "../DatabaseConn/preferences_template.php";
 
-if (isset($_POST['btnSelectWeek'])) {
+if (isset($_POST['btnSave'])) {
     $user = $_SESSION['Username'];
-    $_SESSION['startedPersonal'] = true;
+    $empBSN = getBSN($user);
+    $isPresent = preferencesPresent($empBSN);
+
+    if($isPresent == true){
+    removePreferences($empBSN);    
+    }
+    
+    addPreference('MONDAY', $empBSN, $_POST['mondayShifts']);
+    addPreference('TUESDAY',  $empBSN, $_POST['tuesdayShifts']);
+    addPreference('WEDNESDAY',  $empBSN, $_POST['wednesdayShifts']);
+    addPreference('THURSDAY',  $empBSN, $_POST['thursdayShifts']);
+    addPreference('FRIDAY',  $empBSN, $_POST['fridayShifts']);
+    addPreference('SATURDAY',  $empBSN, $_POST['saturdayShifts']);
+    addPreference('SUNDAY',  $empBSN, $_POST['sundayShifts']);
 }
 ?>
 
@@ -34,62 +47,69 @@ if (isset($_POST['btnSelectWeek'])) {
                 <form method="post" action="#" class="contact-form">
                     <div class="row">
                         <label for="monday">Monday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="mondayShifts" id="mondayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="tuesday">Tuesday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="tuesdayShifts" id="tuesdayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="wednesday">Wednesday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="wednesdayShifts" id="wednesdayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="thursday">Thursday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="thursdayShifts" id="thursdayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="friday">Friday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="fridayShifts" id="fridayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="saturday">Saturday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="saturdayShifts" id="saturdayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
                         <label for="sunday">Sunday</label>
-                            <select name="shifts" id="shifts">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon">Afternoon</option>
-                            <option value="evening">Evening</option>
+                            <select name="sundayShifts" id="sundayShifts">
+                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value="MORNING">MORNING</option>
+                            <option value="AFTERNOON">AFTERNOON</option>
+                            <option value="EVENING">EVENING</option>
                         </select>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Send" name="btnSend">
+                        <input type="submit" value="Save" name="btnSave">
                     </div>
                 </form>
             </div>
