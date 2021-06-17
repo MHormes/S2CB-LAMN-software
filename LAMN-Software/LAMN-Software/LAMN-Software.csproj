@@ -94,11 +94,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataClasses\EmployeeChange.cs" />
+    <Compile Include="DataClasses\Preference.cs" />
     <Compile Include="DataClasses\Schedule.cs" />
     <Compile Include="DataClasses\ScheduleTemplate.cs" />
     <Compile Include="DataClasses\SellingTracker.cs" />
     <Compile Include="DataClasses\Statistics.cs" />
     <Compile Include="DBHandling\EmployeeChangeHandler.cs" />
+    <Compile Include="DBHandling\PreferenceHandler.cs" />
     <Compile Include="DBHandling\ScheduleAutomaticHandler.cs" />
     <Compile Include="DBHandling\ScheduleHandler.cs" />
     <Compile Include="DBHandling\LoginHandler.cs" />

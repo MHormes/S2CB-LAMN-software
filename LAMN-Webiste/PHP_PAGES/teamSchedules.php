@@ -20,7 +20,7 @@ if (isset($_POST['btnSelectWeek'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MediaBazaar Website">
     <title>Media Bazaar Employee Portal</title>
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/login_old.css">
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/schedule.css">
 
 </head>
