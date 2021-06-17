@@ -14,6 +14,43 @@ namespace LAMN_Software.DBHandling
         List<SchedulesMinimum> shiftList;
         List<Schedule> scheduleList;
 
+
+
+        public List<Schedule> CreateAutomaticSchedule2(int weekNmr, List<SchedulesMinimum> shiftList, List<Employee> employeeList)
+        {
+            this.shiftList = shiftList;             // list of all shifts
+            this.employeeList = employeeList;       // list of all employees
+            scheduleList = new List<Schedule>();    // list of schedules for chosen week - need a list of schedules from the database
+            this.employeeList.Sort();
+
+            //for statement to loop through the shifts
+            for (int i = 0; i < shiftList.Count(); i++)
+            {
+
+
+
+            }
+
+
+
+
+
+
+                return this.scheduleList;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         public List<Schedule> CreateAutomaticSchedule(int weekNmr, List<SchedulesMinimum> shiftList, List<Employee> employeeList)
         {
             this.shiftList = shiftList;
