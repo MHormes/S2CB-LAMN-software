@@ -17,6 +17,25 @@ function getBSN($usernameLogin)
     }
 }
 
+function getShifts($empBSN)
+{
+    include '../DatabaseConn/connection.php';
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
+        $sql = 'SELECT TimeSlot FROM employeepreferences WHERE EmpBSN = :BSN';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':BSN' => $empBSN]);
+
+        $shifts = $sth->fetchAll(PDO::FETCH_OBJ);
+        
+        return $shifts;
+        $conn = null;
+
+    }catch(PDOException $e){
+        return false;
+    }
+}
+
 function preferencesPresent($empBSN)
 {
     include '../DatabaseConn/connection.php';
@@ -60,6 +79,9 @@ function removePreferences($empBSN)
 
 function addPreference($day, $empBSN, $timeSlot)
 {
+    if($timeSlot == ""){
+        return;
+    }
     include '../DatabaseConn/connection.php';
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);

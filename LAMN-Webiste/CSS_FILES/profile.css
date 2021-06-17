@@ -1,55 +1,56 @@
-
-
-.profile{
-    padding: 20px ;
-    background-image: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
-    margin: auto;
-    margin-top: 90px;
-    width: 70%;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 40px;
-    align-content: center;
+.profile {
+  padding: 20px;
+  background-color: #cf6800;
+  margin: auto;
+  margin-top: 90px;
+  width: 70%;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  align-content: center;
 }
 
-
-button{
-    background-color: white;
-    color: #141414;
-    padding: 12px 20px;
-    margin: 45px 8px 30px 8px;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-    border-radius: 4px;
-    width: 40%;
-
-    text-decoration: none;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    /* width: fit-content; */
-    width: 27%;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-
+label {
+  color: white;
 }
 
-button:hover{
-    opacity: 1;
-    background-color: #e4e2e2;
+button {
+  background-color: white;
+  color: #141414;
+  padding: 12px 20px;
+  margin: 45px 8px 30px 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+  width: 40%;
+
+  text-decoration: none;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  /* width: fit-content; */
+  width: 27%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.profile input, select{
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    float: left;
-    width: 60%;
-    margin-top: 20px;
-    transition: box-shadow 0.3s;
+button:hover {
+  opacity: 1;
+  background-color: #e4e2e2;
+}
 
-    /* border-style: none;
+.profile input,
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  float: left;
+  width: 60%;
+  margin-top: 20px;
+  transition: box-shadow 0.3s;
+
+  /* border-style: none;
     border-radius: 20px;
     box-sizing: border-box;
     color: #696969;
@@ -61,56 +62,55 @@ button:hover{
     font-size: 20px; */
 }
 
-.profile label{
-    float: left;
-    width: 30%;
-    margin-top: 27px;
-    padding-left: 0px;
+.profile label {
+  float: left;
+  width: 30%;
+  margin-top: 27px;
+  padding-left: 0px;
 }
-
-
 
 /* Phone screen */
 /* ----------------------------------------------*/
 @media screen and (max-width: 850px) {
-    .profile {
-      width: 95%;
-    }
+  .profile {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 850px) {
-    .profile input, select {
-      width: 100%;
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
+  .profile input,
+  select {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (max-width: 850px) {
-    button {
-      margin-top: 0;
-      width: 40%;
-    }
+  button {
+    margin-top: 0;
+    width: 40%;
+  }
 }
 
 @media screen and (max-width: 850px) {
-    .profile label {
-        margin-top: 0;
-        width: 100%;
-        text-align: left;
-    }
+  .profile label {
+    margin-top: 0;
+    width: 100%;
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    button {
-        margin-top: 0;
-        width: 70%;
-    }
+  button {
+    margin-top: 0;
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 350px) {
-    button {
-        margin-top: 0;
-        width: 94%;
-    }
+  button {
+    margin-top: 0;
+    width: 94%;
+  }
 }

@@ -1029,7 +1029,7 @@ namespace LAMN_Software
                         Employee emp = EH.GetAllEmployees()[i];
                         if (emp.Bsn == schedule.EmployeeBSN)
                         {
-                            emp.WorkedHours += 8;
+                            emp.WorkedHours += 4;
                             if (schedule.Day == Day.MONDAY)
                                 dgvSchedulesEmp.Rows[i].Cells[1].Value = schedule.TimeSlot;
                             else if (schedule.Day == Day.TUESDAY)
