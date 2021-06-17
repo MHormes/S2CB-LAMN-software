@@ -2,9 +2,10 @@
 session_start();
 include "../DatabaseConn/preferences_template.php";
 
+$user = $_SESSION['Username'];
+$empBSN = getBSN($user);
+
 if (isset($_POST['btnSave'])) {
-    $user = $_SESSION['Username'];
-    $empBSN = getBSN($user);
     $isPresent = preferencesPresent($empBSN);
 
     if($isPresent == true){
@@ -18,6 +19,14 @@ if (isset($_POST['btnSave'])) {
     addPreference('FRIDAY',  $empBSN, $_POST['fridayShifts']);
     addPreference('SATURDAY',  $empBSN, $_POST['saturdayShifts']);
     addPreference('SUNDAY',  $empBSN, $_POST['sundayShifts']);
+}
+
+if (isset($_POST['btnDelete'])) {
+    $isPresent = preferencesPresent($empBSN);
+
+    if($isPresent == true){
+    removePreferences($empBSN);    
+    }
 }
 ?>
 
@@ -48,7 +57,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="monday">Monday</label>
                             <select name="mondayShifts" id="mondayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -57,7 +66,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="tuesday">Tuesday</label>
                             <select name="tuesdayShifts" id="tuesdayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -66,7 +75,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="wednesday">Wednesday</label>
                             <select name="wednesdayShifts" id="wednesdayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -75,7 +84,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="thursday">Thursday</label>
                             <select name="thursdayShifts" id="thursdayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -84,7 +93,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="friday">Friday</label>
                             <select name="fridayShifts" id="fridayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -93,7 +102,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="saturday">Saturday</label>
                             <select name="saturdayShifts" id="saturdayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -102,7 +111,7 @@ if (isset($_POST['btnSave'])) {
                     <div class="row">
                         <label for="sunday">Sunday</label>
                             <select name="sundayShifts" id="sundayShifts">
-                            <option value="NO PREFERENCES">NO PREFERENCES</option>
+                            <option value=""></option>
                             <option value="MORNING">MORNING</option>
                             <option value="AFTERNOON">AFTERNOON</option>
                             <option value="EVENING">EVENING</option>
@@ -110,6 +119,9 @@ if (isset($_POST['btnSave'])) {
                     </div>
                     <div class="row">
                         <input type="submit" value="Save" name="btnSave">
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Delete" name="btnDelete">
                     </div>
                 </form>
             </div>
