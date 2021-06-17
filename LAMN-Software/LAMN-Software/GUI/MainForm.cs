@@ -3180,23 +3180,26 @@ namespace LAMN_Software
         {
             if (tbxSales_Barcode.Focused)
             {
-                lblBarcodeActiveIcon.Text = "☑";
-                lblBarcodeActiveInfo.Text = "ON";
-                lblBarcodeActiveInfo.Font = new Font("Arial", 20);
+                lblBarcodeActiveIcon2.Font = new Font("Arial", 18, FontStyle.Regular);
+                lblBarcodeActiveIcon.Font = new Font("Arial", 20, FontStyle.Bold);
                 gpnlSales_BarcodeIndicator2.Visible = false;
                 gpnlSales_BarcodeIndicator.Visible = true;
             }
             else
             {
-                lblBarcodeActiveIcon.Text = "☐";
-                lblBarcodeActiveInfo.Text = "OFF";
-                lblBarcodeActiveInfo.Font = new Font("Arial", 15);
+                lblBarcodeActiveIcon2.Font = new Font("Arial", 20, FontStyle.Bold);
+                lblBarcodeActiveIcon.Font = new Font("Arial", 18, FontStyle.Regular);
                 gpnlSales_BarcodeIndicator2.Visible = true;
                 gpnlSales_BarcodeIndicator.Visible = false;
             }
         }
 
         private void lblBarcodeActiveIcon_Click_1(object sender, EventArgs e)
+        {
+            tbxSales_Barcode.Focus();
+        }
+
+        private void lblBarcodeActiveIcon2_Click(object sender, EventArgs e)
         {
             tbxSales_Barcode.Focus();
         }

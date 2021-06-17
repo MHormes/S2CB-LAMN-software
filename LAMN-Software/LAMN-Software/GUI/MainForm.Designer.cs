@@ -46,6 +46,7 @@ namespace LAMN_Software
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -372,6 +373,7 @@ namespace LAMN_Software
             this.pnlSales_QuantityControl = new System.Windows.Forms.Panel();
             this.btnSales_Remove1Quantity = new System.Windows.Forms.Button();
             this.btnSales_RemoveAllQuantity = new System.Windows.Forms.Button();
+            this.tbxSales_Barcode = new System.Windows.Forms.TextBox();
             this.pnlSales_Search2 = new System.Windows.Forms.Panel();
             this.lbxSales_SearchBox = new System.Windows.Forms.ListBox();
             this.pnlSales_Search = new System.Windows.Forms.Panel();
@@ -390,7 +392,6 @@ namespace LAMN_Software
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbxSales_Defocus = new System.Windows.Forms.TextBox();
-            this.tbxSales_Barcode = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSales_ManualCancel = new System.Windows.Forms.Button();
             this.tbxSales_ManualQuantity = new System.Windows.Forms.TextBox();
@@ -401,7 +402,8 @@ namespace LAMN_Software
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradientPanel8 = new LAMN_Software.GradientPanel();
-            this.lblBarcodeActiveInfo = new System.Windows.Forms.Label();
+            this.lblBarcodeActiveIcon2 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.lblBarcodeActiveIcon = new System.Windows.Forms.Label();
             this.tpStatsPeriod = new System.Windows.Forms.TabPage();
@@ -4277,13 +4279,13 @@ namespace LAMN_Software
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator2);
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator);
             this.tpSales.Controls.Add(this.pnlSales_QuantityControl);
+            this.tpSales.Controls.Add(this.tbxSales_Barcode);
             this.tpSales.Controls.Add(this.pnlSales_Search2);
             this.tpSales.Controls.Add(this.pnlSales_Search);
             this.tpSales.Controls.Add(this.gradientPanel6);
             this.tpSales.Controls.Add(this.gradientPanel7);
             this.tpSales.Controls.Add(this.dgvSales_Reciept);
             this.tpSales.Controls.Add(this.tbxSales_Defocus);
-            this.tpSales.Controls.Add(this.tbxSales_Barcode);
             this.tpSales.Controls.Add(this.panel4);
             this.tpSales.Controls.Add(this.gradientPanel8);
             this.tpSales.Location = new System.Drawing.Point(8, 34);
@@ -4353,6 +4355,21 @@ namespace LAMN_Software
             this.toolTip1.SetToolTip(this.btnSales_RemoveAllQuantity, "Remove full quantity of selected item");
             this.btnSales_RemoveAllQuantity.UseVisualStyleBackColor = true;
             this.btnSales_RemoveAllQuantity.Click += new System.EventHandler(this.btnSales_RemoveAllQuantity_Click);
+            // 
+            // tbxSales_Barcode
+            // 
+            this.tbxSales_Barcode.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.tbxSales_Barcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 1F);
+            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.White;
+            this.tbxSales_Barcode.Location = new System.Drawing.Point(375, 158);
+            this.tbxSales_Barcode.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxSales_Barcode.Multiline = true;
+            this.tbxSales_Barcode.Name = "tbxSales_Barcode";
+            this.tbxSales_Barcode.PasswordChar = '▇';
+            this.tbxSales_Barcode.Size = new System.Drawing.Size(0, 0);
+            this.tbxSales_Barcode.TabIndex = 0;
+            this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
             // 
             // pnlSales_Search2
             // 
@@ -4570,19 +4587,6 @@ namespace LAMN_Software
             this.tbxSales_Defocus.Size = new System.Drawing.Size(0, 11);
             this.tbxSales_Defocus.TabIndex = 0;
             // 
-            // tbxSales_Barcode
-            // 
-            this.tbxSales_Barcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 20F);
-            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.Orange;
-            this.tbxSales_Barcode.Location = new System.Drawing.Point(365, 193);
-            this.tbxSales_Barcode.Margin = new System.Windows.Forms.Padding(4);
-            this.tbxSales_Barcode.Name = "tbxSales_Barcode";
-            this.tbxSales_Barcode.PasswordChar = '▇';
-            this.tbxSales_Barcode.Size = new System.Drawing.Size(502, 62);
-            this.tbxSales_Barcode.TabIndex = 0;
-            this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gainsboro;
@@ -4720,46 +4724,61 @@ namespace LAMN_Software
             // 
             this.gradientPanel8.ColorBottom = System.Drawing.Color.Empty;
             this.gradientPanel8.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gradientPanel8.Controls.Add(this.lblBarcodeActiveInfo);
+            this.gradientPanel8.Controls.Add(this.lblBarcodeActiveIcon2);
+            this.gradientPanel8.Controls.Add(this.label38);
             this.gradientPanel8.Controls.Add(this.label45);
             this.gradientPanel8.Controls.Add(this.lblBarcodeActiveIcon);
-            this.gradientPanel8.Location = new System.Drawing.Point(366, 257);
+            this.gradientPanel8.Location = new System.Drawing.Point(394, 257);
             this.gradientPanel8.Name = "gradientPanel8";
-            this.gradientPanel8.Size = new System.Drawing.Size(461, 198);
+            this.gradientPanel8.Size = new System.Drawing.Size(433, 198);
             this.gradientPanel8.TabIndex = 12;
             // 
-            // lblBarcodeActiveInfo
+            // lblBarcodeActiveIcon2
             // 
-            this.lblBarcodeActiveInfo.Font = new System.Drawing.Font("Arial", 20F);
-            this.lblBarcodeActiveInfo.Location = new System.Drawing.Point(234, 78);
-            this.lblBarcodeActiveInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblBarcodeActiveInfo.Name = "lblBarcodeActiveInfo";
-            this.lblBarcodeActiveInfo.Size = new System.Drawing.Size(179, 90);
-            this.lblBarcodeActiveInfo.TabIndex = 4;
-            this.lblBarcodeActiveInfo.Text = "ON";
-            this.lblBarcodeActiveInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBarcodeActiveIcon2.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblBarcodeActiveIcon2.Location = new System.Drawing.Point(195, 80);
+            this.lblBarcodeActiveIcon2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBarcodeActiveIcon2.Name = "lblBarcodeActiveIcon2";
+            this.lblBarcodeActiveIcon2.Size = new System.Drawing.Size(146, 90);
+            this.lblBarcodeActiveIcon2.TabIndex = 4;
+            this.lblBarcodeActiveIcon2.Text = "OFF";
+            this.lblBarcodeActiveIcon2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBarcodeActiveIcon2.Click += new System.EventHandler(this.lblBarcodeActiveIcon2_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Arial", 20F);
+            this.label38.Location = new System.Drawing.Point(354, 11);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(63, 61);
+            this.label38.TabIndex = 5;
+            this.label38.Text = "ⓘ";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label38, resources.GetString("label38.ToolTip"));
             // 
             // label45
             // 
             this.label45.Font = new System.Drawing.Font("Arial", 15F);
-            this.label45.Location = new System.Drawing.Point(38, 11);
+            this.label45.Location = new System.Drawing.Point(18, 13);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(379, 55);
+            this.label45.Size = new System.Drawing.Size(357, 55);
             this.label45.TabIndex = 5;
             this.label45.Text = "Barcode scanner";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblBarcodeActiveIcon
             // 
-            this.lblBarcodeActiveIcon.Font = new System.Drawing.Font("Arial", 40F);
-            this.lblBarcodeActiveIcon.Location = new System.Drawing.Point(101, 45);
+            this.lblBarcodeActiveIcon.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblBarcodeActiveIcon.Location = new System.Drawing.Point(80, 76);
             this.lblBarcodeActiveIcon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBarcodeActiveIcon.Name = "lblBarcodeActiveIcon";
-            this.lblBarcodeActiveIcon.Size = new System.Drawing.Size(166, 132);
+            this.lblBarcodeActiveIcon.Size = new System.Drawing.Size(132, 99);
             this.lblBarcodeActiveIcon.TabIndex = 4;
-            this.lblBarcodeActiveIcon.Text = "☑";
-            this.lblBarcodeActiveIcon.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblBarcodeActiveIcon.Text = "ON";
+            this.lblBarcodeActiveIcon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBarcodeActiveIcon.Click += new System.EventHandler(this.lblBarcodeActiveIcon_Click_1);
             // 
             // tpStatsPeriod
@@ -5455,6 +5474,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.MaximumSize = new System.Drawing.Size(2336, 1450);
             this.MinimumSize = new System.Drawing.Size(2336, 1450);
+            this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -5538,6 +5558,7 @@ namespace LAMN_Software
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales_ManualInfo)).EndInit();
             this.gradientPanel8.ResumeLayout(false);
+            this.gradientPanel8.PerformLayout();
             this.tpStatsPeriod.ResumeLayout(false);
             this.tpStatsPeriod.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStockSoldPeriod)).EndInit();
@@ -5944,10 +5965,11 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Timer timer1;
         private GradientPanel gradientPanel8;
-        private System.Windows.Forms.Label lblBarcodeActiveInfo;
+        private System.Windows.Forms.Label lblBarcodeActiveIcon2;
         private System.Windows.Forms.Label lblBarcodeActiveIcon;
         private System.Windows.Forms.Label label45;
         private GradientPanel gpnlSales_BarcodeIndicator;
         private GradientPanel gpnlSales_BarcodeIndicator2;
+        private System.Windows.Forms.Label label38;
     }
 }
