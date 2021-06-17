@@ -68,7 +68,7 @@ namespace LAMN_Software
             this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 10);
             this.dgvSales_Reciept.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvSales_Reciept.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 224, 140);
+            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 194, 102);
             dgvSales_Reciept.DefaultCellStyle.SelectionForeColor = Color.Black;
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
@@ -2353,6 +2353,7 @@ namespace LAMN_Software
             bool isDuplicate = false;
             bool isEnoughStock = true;
 
+
             if (tbxSales_Barcode.TextLength == 13)
             {
                 foreach (Product p in SH.GetAllProducts())
@@ -3150,6 +3151,54 @@ namespace LAMN_Software
         private void btnToProfitStats3_Click(object sender, EventArgs e)
         {
             tcNavigator.SelectedTab = tpStatsProfit;
+        }
+
+        private void btnSales_RemoveAllQuantity_Click(object sender, EventArgs e)
+        {
+            int index = dgvSales_Reciept.CurrentCell.RowIndex;
+            Product p = SH.GetProductByName(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
+            //dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) - 1;
+            //dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
+
+            //if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            //{
+            //    btnSales_Remove1Quantity.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnSales_Remove1Quantity.Enabled = true;
+            //}
+
+            dgvSales_Reciept.Rows.RemoveAt(index);
+
+            //DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+            CalculateSalesTotal();
+        }
+
+   
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (tbxSales_Barcode.Focused)
+            {
+                lblBarcodeActiveIcon.Text = "☑";
+                lblBarcodeActiveInfo.Text = "ON";
+                lblBarcodeActiveInfo.Font = new Font("Arial", 20);
+                gpnlSales_BarcodeIndicator2.Visible = false;
+                gpnlSales_BarcodeIndicator.Visible = true;
+            }
+            else
+            {
+                lblBarcodeActiveIcon.Text = "☐";
+                lblBarcodeActiveInfo.Text = "OFF";
+                lblBarcodeActiveInfo.Font = new Font("Arial", 15);
+                gpnlSales_BarcodeIndicator2.Visible = true;
+                gpnlSales_BarcodeIndicator.Visible = false;
+            }
+        }
+
+        private void lblBarcodeActiveIcon_Click_1(object sender, EventArgs e)
+        {
+            tbxSales_Barcode.Focus();
         }
     }
 }
