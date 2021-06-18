@@ -24,6 +24,7 @@ namespace LAMN_Software
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
         SellingTrackerHandler STH;
+        PreferenceHandler PH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -40,6 +41,7 @@ namespace LAMN_Software
             SCMH = new ScheduleMinimumHandler();
             ECH = new EmployeeChangeHandler();
             STH = new SellingTrackerHandler();
+            PH = new PreferenceHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
@@ -1248,12 +1250,21 @@ namespace LAMN_Software
         //method for auto creating a schedule for the selected week
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
-            SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
-            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            //SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+            //foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            //{
+            //    SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
+            //}
+            //btnSchedulesCreateShowWeek.PerformClick();
+
+            PH.GetAllPreferencesFromDB();
+            SCH.GetAllSchedulesFromDB(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees(), SCH.GetAllSchedules() ,PH.GetAllPreferences()))
             {
                 SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
             }
             btnSchedulesCreateShowWeek.PerformClick();
+
         }
 
 
