@@ -1,10 +1,10 @@
-﻿using System;
+﻿using LAMN_Software.DataClasses;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace LAMN_Software.DataClasses
 {
@@ -12,6 +12,9 @@ namespace LAMN_Software.DataClasses
     {
         List<Preference> allPreferences;
         string connStr = "Server=studmysql01.fhict.local;Uid=dbi456806;Database=dbi456806;Pwd=LAMNSoftware;";
+
+
+
 
         public Exception GetAllPreferencesFromDB()
         {
@@ -31,8 +34,8 @@ namespace LAMN_Software.DataClasses
                         TimeSlot time = TimeSlot.MORNING;
                         Day day = Day.MONDAY;
 
-                        string DayReturn = dr[1].ToString();
-                        string TimeReturn = dr[3].ToString();
+                        string DayReturn = dr[0].ToString();
+                        string TimeReturn = dr[2].ToString();
 
                         if (TimeReturn == "MORNING")
                             time = TimeSlot.MORNING;
