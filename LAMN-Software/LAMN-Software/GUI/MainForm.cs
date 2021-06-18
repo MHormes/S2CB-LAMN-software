@@ -2473,15 +2473,28 @@ namespace LAMN_Software
 
         private void dgvSales_Reciept_SelectionChanged(object sender, EventArgs e)
         {
-            int index = dgvSales_Reciept.CurrentCell.RowIndex;
-            pnlSales_QuantityControl.Visible = true;
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            try
             {
-                btnSales_Remove1Quantity.Enabled = false;
+                int index = dgvSales_Reciept.CurrentCell.RowIndex;
+                MessageBox.Show(index.ToString());
+                pnlSales_QuantityControl.Visible = true;
+                if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+                {
+                    btnSales_Remove1Quantity.Enabled = false;
+                }
+                else
+                {
+                    btnSales_Remove1Quantity.Enabled = true;
+                }
+                
+                //if()
+                //{
+                //    DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+                //}
             }
-            else
+            catch (Exception)
             {
-                btnSales_Remove1Quantity.Enabled = true;
+                throw;
             }
         }
 
@@ -2792,6 +2805,9 @@ namespace LAMN_Software
             DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
             tbxSales_Barcode.Clear();
             CalculateSalesTotal();
+            dgvSales_Reciept.ClearSelection();
+            dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
+
             return;
         }
 
@@ -2826,7 +2842,7 @@ namespace LAMN_Software
             dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) - 1;
             dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
 
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            if (Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) <= 1)
             {
                 btnSales_Remove1Quantity.Enabled = false;
             }
@@ -3180,7 +3196,7 @@ namespace LAMN_Software
             //{
             //    btnSales_Remove1Quantity.Enabled = true;
             //}
-
+            dgvSales_Reciept.ClearSelection();
             dgvSales_Reciept.Rows.RemoveAt(index);
 
             //DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
@@ -3224,8 +3240,6 @@ namespace LAMN_Software
                 {
                     Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
                     int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
-                    MessageBox.Show(p.Name, quantity.ToString());
-
 
 
                     //calculations of quantity and exception returned if it occurs
@@ -3237,7 +3251,6 @@ namespace LAMN_Software
                     {
                         FillStockViewActive();
                         cbxActiveInactiveEmployees.SelectedIndex = 0;
-                        MessageBox.Show("Sell correctly done.");
 
                         //if the quantity of the item is below then show the messagebox
                         if (p.QuantityS < p.MinimumStockRequired)
@@ -3265,11 +3278,11 @@ namespace LAMN_Software
                         {
                            // tcNavigator.SelectedTab = tpStock;
                         }
-                        return;
                     }
-                    MessageBox.Show(sellProduct.Message);
-
                 }
+                MessageBox.Show("Sell correctly done.");
+                return;
+
             }
             catch (Exception ex)
             {
