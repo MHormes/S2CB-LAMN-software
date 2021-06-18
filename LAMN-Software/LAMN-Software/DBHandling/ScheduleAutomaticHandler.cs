@@ -42,10 +42,13 @@ namespace LAMN_Software.DBHandling
                     {
                         if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
                         {
-                            automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
-                            if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+                            if(CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
                             {
-                                break;
+                                automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
+                                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
@@ -57,10 +60,13 @@ namespace LAMN_Software.DBHandling
                     {
                         if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
                         {
-                            automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
-                            if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+                            if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
                             {
-                                break;
+                                automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
+                                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
@@ -139,7 +145,27 @@ namespace LAMN_Software.DBHandling
         }
 
 
+        private bool CheckContractHours(Employee e)
+        {
+            int hoursWorked = 0;
 
+            for (int i = 0; i < automaticScheduleList.Count; i++)
+            {
+                if(e.Bsn==automaticScheduleList[i].EmployeeBSN)
+                {
+                    hoursWorked += 4;
+                }
+            }
+
+            if ((hoursWorked + 4) <= e.ContractHours)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 
