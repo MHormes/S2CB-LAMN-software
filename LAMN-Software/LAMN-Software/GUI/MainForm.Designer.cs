@@ -456,6 +456,7 @@ namespace LAMN_Software
             this.chartStockRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlSales.SuspendLayout();
@@ -4276,6 +4277,7 @@ namespace LAMN_Software
             // 
             // tpSales
             // 
+            this.tpSales.Controls.Add(this.button1);
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator2);
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator);
             this.tpSales.Controls.Add(this.pnlSales_QuantityControl);
@@ -4323,7 +4325,7 @@ namespace LAMN_Software
             this.pnlSales_QuantityControl.BackColor = System.Drawing.Color.DarkGray;
             this.pnlSales_QuantityControl.Controls.Add(this.btnSales_Remove1Quantity);
             this.pnlSales_QuantityControl.Controls.Add(this.btnSales_RemoveAllQuantity);
-            this.pnlSales_QuantityControl.Location = new System.Drawing.Point(2075, 539);
+            this.pnlSales_QuantityControl.Location = new System.Drawing.Point(2081, 440);
             this.pnlSales_QuantityControl.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSales_QuantityControl.Name = "pnlSales_QuantityControl";
             this.pnlSales_QuantityControl.Size = new System.Drawing.Size(128, 256);
@@ -4443,7 +4445,7 @@ namespace LAMN_Software
             this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseEAN);
             this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseQuantityPrice);
             this.gradientPanel6.Controls.Add(this.lblSales_ItemShowcaseName);
-            this.gradientPanel6.Location = new System.Drawing.Point(1408, 212);
+            this.gradientPanel6.Location = new System.Drawing.Point(1414, 113);
             this.gradientPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.gradientPanel6.Name = "gradientPanel6";
             this.gradientPanel6.Size = new System.Drawing.Size(668, 319);
@@ -4500,7 +4502,7 @@ namespace LAMN_Software
             this.gradientPanel7.ColorTop = System.Drawing.Color.Silver;
             this.gradientPanel7.Controls.Add(this.lblSales_TotalPrice);
             this.gradientPanel7.Controls.Add(this.lblSales_TotalLabel);
-            this.gradientPanel7.Location = new System.Drawing.Point(1408, 1094);
+            this.gradientPanel7.Location = new System.Drawing.Point(1414, 995);
             this.gradientPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.gradientPanel7.Name = "gradientPanel7";
             this.gradientPanel7.Size = new System.Drawing.Size(668, 71);
@@ -4541,7 +4543,7 @@ namespace LAMN_Software
             this.Quantity,
             this.Name,
             this.Price});
-            this.dgvSales_Reciept.Location = new System.Drawing.Point(1408, 498);
+            this.dgvSales_Reciept.Location = new System.Drawing.Point(1414, 399);
             this.dgvSales_Reciept.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSales_Reciept.Name = "dgvSales_Reciept";
             this.dgvSales_Reciept.ReadOnly = true;
@@ -5462,6 +5464,15 @@ namespace LAMN_Software
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1535, 1121);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 33);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -5970,5 +5981,6 @@ namespace LAMN_Software
         private GradientPanel gpnlSales_BarcodeIndicator;
         private GradientPanel gpnlSales_BarcodeIndicator2;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button1;
     }
 }
