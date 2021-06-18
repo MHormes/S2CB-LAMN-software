@@ -41,7 +41,7 @@ if(isset($_POST['btnLogin']))
                         <input type="password" name="password" id="password" placeholder="Enter password" required>
                     </div><br>
                     <div class="row">
-                        <input type="submit" value="Login" name="btnLogin">
+                        <input type="submit" class="button" value="Login" name="btnLogin">
                     </div>
                 </form>
 
