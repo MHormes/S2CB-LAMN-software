@@ -5,4 +5,5 @@
   <li><a href="../PHP_PAGES/profile.php">Profile</a></li>
   <li><a href="../PHP_PAGES/index.php">Logout</a></li>
   <li><a href="../PHP_PAGES/employeePreferences.php">Prefences</a></li>
+  <li><a href="../PHP_PAGES/employeeHolidays.php">Holidays</a></li>
 </ul>
