@@ -368,6 +368,7 @@ namespace LAMN_Software
             this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.tpSales = new System.Windows.Forms.TabPage();
+            this.btnSales_MakeSale = new System.Windows.Forms.Button();
             this.gpnlSales_BarcodeIndicator2 = new LAMN_Software.GradientPanel();
             this.gpnlSales_BarcodeIndicator = new LAMN_Software.GradientPanel();
             this.pnlSales_QuantityControl = new System.Windows.Forms.Panel();
@@ -456,7 +457,6 @@ namespace LAMN_Software
             this.chartStockRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlSales.SuspendLayout();
@@ -4277,7 +4277,7 @@ namespace LAMN_Software
             // 
             // tpSales
             // 
-            this.tpSales.Controls.Add(this.button1);
+            this.tpSales.Controls.Add(this.btnSales_MakeSale);
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator2);
             this.tpSales.Controls.Add(this.gpnlSales_BarcodeIndicator);
             this.tpSales.Controls.Add(this.pnlSales_QuantityControl);
@@ -4299,6 +4299,19 @@ namespace LAMN_Software
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
             this.tpSales.Click += new System.EventHandler(this.tpSales_Click);
+            // 
+            // btnSales_MakeSale
+            // 
+            this.btnSales_MakeSale.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSales_MakeSale.Font = new System.Drawing.Font("Arial", 15F);
+            this.btnSales_MakeSale.ForeColor = System.Drawing.Color.LawnGreen;
+            this.btnSales_MakeSale.Location = new System.Drawing.Point(1414, 1064);
+            this.btnSales_MakeSale.Name = "btnSales_MakeSale";
+            this.btnSales_MakeSale.Size = new System.Drawing.Size(668, 79);
+            this.btnSales_MakeSale.TabIndex = 15;
+            this.btnSales_MakeSale.Text = "✔️";
+            this.btnSales_MakeSale.UseVisualStyleBackColor = false;
+            this.btnSales_MakeSale.Click += new System.EventHandler(this.btnSales_MakeSale_Click);
             // 
             // gpnlSales_BarcodeIndicator2
             // 
@@ -4724,7 +4737,7 @@ namespace LAMN_Software
             // 
             // gradientPanel8
             // 
-            this.gradientPanel8.ColorBottom = System.Drawing.Color.Empty;
+            this.gradientPanel8.ColorBottom = System.Drawing.Color.WhiteSmoke;
             this.gradientPanel8.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gradientPanel8.Controls.Add(this.lblBarcodeActiveIcon2);
             this.gradientPanel8.Controls.Add(this.label38);
@@ -5464,15 +5477,6 @@ namespace LAMN_Software
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1535, 1121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 33);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -5485,6 +5489,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.MaximumSize = new System.Drawing.Size(2336, 1450);
             this.MinimumSize = new System.Drawing.Size(2336, 1450);
+            this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -5981,6 +5986,6 @@ namespace LAMN_Software
         private GradientPanel gpnlSales_BarcodeIndicator;
         private GradientPanel gpnlSales_BarcodeIndicator2;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSales_MakeSale;
     }
 }

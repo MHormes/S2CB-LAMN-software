@@ -2473,15 +2473,28 @@ namespace LAMN_Software
 
         private void dgvSales_Reciept_SelectionChanged(object sender, EventArgs e)
         {
-            int index = dgvSales_Reciept.CurrentCell.RowIndex;
-            pnlSales_QuantityControl.Visible = true;
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            try
             {
-                btnSales_Remove1Quantity.Enabled = false;
+                int index = dgvSales_Reciept.CurrentCell.RowIndex;
+                MessageBox.Show(index.ToString());
+                pnlSales_QuantityControl.Visible = true;
+                if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+                {
+                    btnSales_Remove1Quantity.Enabled = false;
+                }
+                else
+                {
+                    btnSales_Remove1Quantity.Enabled = true;
+                }
+                
+                //if()
+                //{
+                //    DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+                //}
             }
-            else
+            catch (Exception)
             {
-                btnSales_Remove1Quantity.Enabled = true;
+                throw;
             }
         }
 
@@ -2792,6 +2805,9 @@ namespace LAMN_Software
             DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
             tbxSales_Barcode.Clear();
             CalculateSalesTotal();
+            dgvSales_Reciept.ClearSelection();
+            dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
+
             return;
         }
 
@@ -2823,10 +2839,10 @@ namespace LAMN_Software
         {
             int index = dgvSales_Reciept.CurrentCell.RowIndex;
             Product p = SH.GetProductByName(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
-            dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value)-1;
+            dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) - 1;
             dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
 
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            if (Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) <= 1)
             {
                 btnSales_Remove1Quantity.Enabled = false;
             }
@@ -3180,14 +3196,14 @@ namespace LAMN_Software
             //{
             //    btnSales_Remove1Quantity.Enabled = true;
             //}
-
+            dgvSales_Reciept.ClearSelection();
             dgvSales_Reciept.Rows.RemoveAt(index);
 
             //DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
             CalculateSalesTotal();
         }
 
-   
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (tbxSales_Barcode.Focused)
@@ -3214,6 +3230,64 @@ namespace LAMN_Software
         private void lblBarcodeActiveIcon2_Click(object sender, EventArgs e)
         {
             tbxSales_Barcode.Focus();
+        }
+
+        private void btnSales_MakeSale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                {
+                    Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                    int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
+
+
+                    //calculations of quantity and exception returned if it occurs
+                    var sellProduct = SH.SellProduct(p, quantity.ToString());
+                    DateTime dateTime = DateTime.Now;
+                    var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
+
+                    if (sellProduct == null && sellTracker == null)
+                    {
+                        FillStockViewActive();
+                        cbxActiveInactiveEmployees.SelectedIndex = 0;
+
+                        //if the quantity of the item is below then show the messagebox
+                        if (p.QuantityS < p.MinimumStockRequired)
+                        {
+                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                            string title = "Quantity warning";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                tcNavigator.SelectedTab = tpNewOrder;
+
+                                //textboxes filled with data
+                                //tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                //tbNewOrderName.Text = $"{p.Name}";
+
+                                //fields disabled
+                                //tbNewOrderID.Enabled = false;
+                                //tbNewOrderEAN.Enabled = false;
+                                //tbNewOrderName.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                           // tcNavigator.SelectedTab = tpStock;
+                        }
+                    }
+                }
+                MessageBox.Show("Sell correctly done.");
+                return;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
