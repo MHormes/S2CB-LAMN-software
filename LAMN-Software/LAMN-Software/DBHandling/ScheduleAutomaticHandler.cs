@@ -27,99 +27,76 @@ namespace LAMN_Software.DBHandling
             this.preferenceList = preferenceList;               //list of employees' preferences
             managers = EH.GetManagers();
 
-            employeeList = employeeList.OrderBy(i => Guid.NewGuid()).ToList();
-            shiftList = shiftList.OrderBy(i => Guid.NewGuid()).ToList();
-            preferenceList = preferenceList.OrderBy(i => Guid.NewGuid()).ToList();
 
             for (int i = 0; i < shiftList.Count(); i++) //managers first, then 80%
             {
-                employeeList = employeeList.OrderBy(b => Guid.NewGuid()).ToList();
-                preferenceList = preferenceList.OrderBy(b => Guid.NewGuid()).ToList();
+                //preferenceList = preferenceList.OrderBy(a => Guid.NewGuid()).ToList();
+                //managers = managers.OrderBy(a => Guid.NewGuid()).ToList();
 
-                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
-                {
-                    continue;
-                }
 
-                if (CheckIfManagerAssigned(shiftList[i], EH) == true) //skip iteration if manager is already assigned
-                {
-                    continue;
-                }
+                //if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
+                //{
+                //    continue;
+                //}
 
-                for (int c = 0; c < preferenceList.Count(); c++)
-                {
-                    if (EH.GetEmployee(preferenceList[c].EmployeeBSN).Position == JobPosition.MANAGER)
-                    {
-                        if ((preferenceList[c].Day == shiftList[i].Day) && (preferenceList[c].TimeSlot == shiftList[i].TimeSlot)) //check if preference matches the current shift we are looking for
-                        {
-                            if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
-                            {
-                                if (CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
-                                {
-                                    automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
 
                 if (CheckIfManagerAssigned(shiftList[i], EH) == false)
                 {
-                    for (int c = 0; c < managers.Count(); c++)
+                    for (int c = 0; c < preferenceList.Count(); c++) //assign one manager to a shift according to preferences
                     {
-                        if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
+                        if (EH.GetEmployee(preferenceList[c].EmployeeBSN).Position == JobPosition.MANAGER) //check if employee is a manager
                         {
-                            if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
+                            if (MakeScheduleFromPreferences(preferenceList[c], shiftList[i], EH, weekNmr)) //if manager assigned then break the loop
                             {
-                                automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
                                 break;
                             }
                         }
                     }
                 }
-            }
 
-            shiftList = shiftList.OrderBy(i => Guid.NewGuid()).ToList();
 
-            //for statement to loop through the shifts
-            for (int i = 0; i < shiftList.Count(); i++)
-            {
-                shiftList = shiftList.OrderBy(b => Guid.NewGuid()).ToList();
-
-                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
+                if (CheckIfManagerAssigned(shiftList[i], EH) == false)
                 {
-                    continue;
+                    for (int c = 0; c < managers.Count(); c++) //if no preference for that shift then assign one random manager
+                    {
+                        if (MakeSchedule(managers[c], shiftList[i], EH, weekNmr))
+                        {
+                            break;
+                        }
+                    }
                 }
 
-                for (int c = 0; c < preferenceList.Count(); c++) //first assigning shifts according to preferences
+                //after managers are assigned, assign employees
+                double count = CountPeopleOnShift(shiftList[i], weekNmr) / shiftList[i].MinimumPeople;
+
+                if (count < 0.5)
                 {
-                    if ((preferenceList[c].Day == shiftList[i].Day) && (preferenceList[c].TimeSlot == shiftList[i].TimeSlot)) //check if preference matches the current shift we are looking for
+                    for (int c = 0; c < preferenceList.Count(); c++) //assign one manager to a shift according to preferences
                     {
-                        if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
+                        if (EH.GetEmployee(preferenceList[c].EmployeeBSN).Position != JobPosition.MANAGER) //check if employee is not a manager
                         {
-                            if (CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
+                            MakeScheduleFromPreferences(preferenceList[c], shiftList[i], EH, weekNmr);
+                            count = CountPeopleOnShift(shiftList[i], weekNmr) / shiftList[i].MinimumPeople;
+                            if (count >= 0.5)
                             {
-                                automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
-                                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
-                                {
-                                    break;
-                                }
+                                break;
                             }
                         }
                     }
                 }
 
-                if (shiftList[i].MinimumPeople > CountPeopleOnShift(shiftList[i], weekNmr)) //checking if more people need to be assigned so that minimum amount of people on shift is met
+                count = CountPeopleOnShift(shiftList[i], weekNmr) / shiftList[i].MinimumPeople;
+                if (count < 0.5)
                 {
                     for (int c = 0; c < employeeList.Count(); c++)
                     {
-                        if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
+                        if ((CountPeopleOnShift(shiftList[i], weekNmr) / shiftList[i].MinimumPeople) < 0.5)
                         {
-                            if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
+                            if (employeeList[c].Position != JobPosition.MANAGER) //check if employee is not a manager
                             {
-                                automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
-                                if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+                                MakeSchedule(employeeList[c], shiftList[i], EH, weekNmr);
+                                count = CountPeopleOnShift(shiftList[i], weekNmr) / shiftList[i].MinimumPeople;
+                                if (count >= 0.5)
                                 {
                                     break;
                                 }
@@ -127,9 +104,214 @@ namespace LAMN_Software.DBHandling
                         }
                     }
                 }
+
+
+
+
+
+
             }
+
+
+
+
+
+            //for statement to loop through the shifts
+            //for (int i = 0; i < shiftList.Count(); i++)
+            //{
+
+            //    if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
+            //    {
+            //        continue;
+            //    }
+
+            //    for (int c = 0; c < preferenceList.Count(); c++) //first assigning shifts according to preferences
+            //    {
+            //        if ((preferenceList[c].Day == shiftList[i].Day) && (preferenceList[c].TimeSlot == shiftList[i].TimeSlot)) //check if preference matches the current shift we are looking for
+            //        {
+            //            if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
+            //            {
+            //                if (CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
+            //                {
+            //                    automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
+            //                    if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+            //                    {
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //    if (shiftList[i].MinimumPeople > CountPeopleOnShift(shiftList[i], weekNmr)) //checking if more people need to be assigned so that minimum amount of people on shift is met
+            //    {
+            //        for (int c = 0; c < employeeList.Count(); c++)
+            //        {
+            //            if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
+            //            {
+            //                if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
+            //                {
+            //                    automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
+            //                    if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+            //                    {
+            //                        break;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
             return this.automaticScheduleList;
         }
+
+
+
+        private bool MakeScheduleFromPreferences(Preference p, SchedulesMinimum SM, EmployeeHandler EH, int weekNmr)
+        {
+            if ((p.Day == SM.Day) && (p.TimeSlot == SM.TimeSlot)) //check if preference matches the current shift we are looking for
+            {
+                if (CheckIfEmployeeAvailable(EH.GetEmployee(p.EmployeeBSN), SM)) //method to check if employee can be assigned to this shift
+                {
+                    if (CheckContractHours(EH.GetEmployee(p.EmployeeBSN))) //check contract hours
+                    {
+                        automaticScheduleList.Add(new Schedule(weekNmr, SM.Day, p.EmployeeBSN, SM.TimeSlot));
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool MakeSchedule(Employee e, SchedulesMinimum SM, EmployeeHandler EH, int weekNmr)
+        {
+            if (CheckIfEmployeeAvailable(e, SM)) //method to check if employee can be assigned to this shift
+            {
+                if (CheckContractHours(e)) //check contract hours
+                {
+                    automaticScheduleList.Add(new Schedule(weekNmr, SM.Day, e.Bsn, SM.TimeSlot));
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        //// method that counts the number of people assigned to a shift
+        //public List<Schedule> CreateAutomaticSchedule(int weekNmr, List<SchedulesMinimum> shiftList, List<Employee> employeeList, List<Schedule> currentSchedule, List<Preference> preferenceList, EmployeeHandler EH)
+        //{
+        //    this.shiftList = shiftList;                         //list of shifts with minimum amount of employees required
+        //    this.employeeList = employeeList;                   //list of all employees
+        //    automaticScheduleList = currentSchedule;            //list with all schedules generated by automatic scheduling 
+        //    this.preferenceList = preferenceList;               //list of employees' preferences
+        //    managers = EH.GetManagers();
+
+        //    employeeList = employeeList.OrderBy(i => Guid.NewGuid()).ToList();
+        //    shiftList = shiftList.OrderBy(i => Guid.NewGuid()).ToList();
+        //    preferenceList = preferenceList.OrderBy(i => Guid.NewGuid()).ToList();
+
+
+
+        //    for (int i = 0; i < shiftList.Count(); i++) //managers first, then 80%
+        //    {
+        //        employeeList = employeeList.OrderBy(b => Guid.NewGuid()).ToList();
+        //        preferenceList = preferenceList.OrderBy(b => Guid.NewGuid()).ToList();
+
+        //        if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
+        //        {
+        //            continue;
+        //        }
+
+        //        if (CheckIfManagerAssigned(shiftList[i], EH) == true) //skip iteration if manager is already assigned
+        //        {
+        //            continue;
+        //        }
+
+        //        for (int c = 0; c < preferenceList.Count(); c++)
+        //        {
+        //            if (EH.GetEmployee(preferenceList[c].EmployeeBSN).Position == JobPosition.MANAGER)
+        //            {
+        //                if ((preferenceList[c].Day == shiftList[i].Day) && (preferenceList[c].TimeSlot == shiftList[i].TimeSlot)) //check if preference matches the current shift we are looking for
+        //                {
+        //                    if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
+        //                    {
+        //                        if (CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
+        //                        {
+        //                            automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
+        //                            break;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        if (CheckIfManagerAssigned(shiftList[i], EH) == false)
+        //        {
+        //            for (int c = 0; c < managers.Count(); c++)
+        //            {
+        //                if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
+        //                {
+        //                    if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
+        //                    {
+        //                        automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
+        //                        break;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+
+
+
+        //    //for statement to loop through the shifts
+        //    for (int i = 0; i < shiftList.Count(); i++)
+        //    {
+        //        shiftList = shiftList.OrderBy(b => Guid.NewGuid()).ToList();
+
+        //        if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break one iteration if minimum people has been met
+        //        {
+        //            continue;
+        //        }
+
+        //        for (int c = 0; c < preferenceList.Count(); c++) //first assigning shifts according to preferences
+        //        {
+        //            if ((preferenceList[c].Day == shiftList[i].Day) && (preferenceList[c].TimeSlot == shiftList[i].TimeSlot)) //check if preference matches the current shift we are looking for
+        //            {
+        //                if (CheckIfEmployeeAvailable(EH.GetEmployee(preferenceList[c].EmployeeBSN), shiftList[i])) //method to check if employee can be assigned to this shift
+        //                {
+        //                    if (CheckContractHours(EH.GetEmployee(preferenceList[c].EmployeeBSN))) //check contract hours
+        //                    {
+        //                        automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, preferenceList[c].EmployeeBSN, shiftList[i].TimeSlot));
+        //                        if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+        //                        {
+        //                            break;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        if (shiftList[i].MinimumPeople > CountPeopleOnShift(shiftList[i], weekNmr)) //checking if more people need to be assigned so that minimum amount of people on shift is met
+        //        {
+        //            for (int c = 0; c < employeeList.Count(); c++)
+        //            {
+        //                if (CheckIfEmployeeAvailable(EH.GetEmployee(employeeList[c].Bsn), shiftList[i])) //method to check if employee can be assigned to this shift
+        //                {
+        //                    if (CheckContractHours(EH.GetEmployee(employeeList[c].Bsn))) //check contract hours
+        //                    {
+        //                        automaticScheduleList.Add(new Schedule(weekNmr, shiftList[i].Day, employeeList[c].Bsn, shiftList[i].TimeSlot));
+        //                        if (shiftList[i].MinimumPeople == CountPeopleOnShift(shiftList[i], weekNmr)) //break the loop if minimum people has been met
+        //                        {
+        //                            break;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return this.automaticScheduleList;
+        //}
+
+
 
 
         public bool CheckIfManagerAssigned(SchedulesMinimum SM, EmployeeHandler EH)
