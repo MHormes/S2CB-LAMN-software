@@ -17,12 +17,12 @@ function getBSN($usernameLogin)
     }
 }
 
-function removeHolidays($empBSN)
+function removeSickday($empBSN)
 {
     include '../DatabaseConn/connection.php';
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
-        $sql = 'DELETE FROM holidays WHERE BSN = :BSN';
+        $sql = 'DELETE FROM sickdays WHERE BSN = :BSN';
         $sth = $conn->prepare($sql);
 
         $sth->execute(
@@ -36,23 +36,23 @@ function removeHolidays($empBSN)
     }
 }
 
-function addHolidays($week,$day, $empBSN, $holiday)
+function addSickDay($bsn, $day, $sick)
 {
-    if($holiday == ""){
+    if($sick == ""){
         return;
     }
     include '../DatabaseConn/connection.php';
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
-        $sql = 'INSERT INTO holidays VALUES(:weekNumber, :BSN, :freeDay, :Holiday)';
+        $sql = 'INSERT INTO sickdays VALUES(:BSN, :weekDay, :Sick)';
         $sth = $conn->prepare($sql);
 
         $sth->execute(
             array(
-                ':weekNumber' => $week,
-                ':BSN' => $empBSN,
-                ':freeDay' => $day,
-                ':Holiday' => $holiday
+                
+                ':BSN' => $bsn,
+                ':weekDay' => $day,
+                ':Sick' => $sick
             )
         );
         $empBSN = $sth->fetchAll();
