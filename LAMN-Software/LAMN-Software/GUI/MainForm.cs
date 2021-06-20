@@ -49,6 +49,7 @@ namespace LAMN_Software
             FillScheduleMinimumGridView();
             FillActiveEmployees();
 
+            UpdateEmployeeChartNationalities();
             UpdateEmployeeChartPositions();
             UpdateEmployeeChartGender();
             UpdateEmployeeChartContractType();
@@ -549,6 +550,7 @@ namespace LAMN_Software
                     }
                 }
                 UpdateEmployeeChartPositions();
+                UpdateEmployeeChartNationalities();
             }
             else
             {
@@ -3289,5 +3291,38 @@ namespace LAMN_Software
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnToContractStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmpContract;
+        }
+
+        private void btnToPersStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+        }
+
+        public void UpdateEmployeeChartNationalities()
+        {
+            var nationalities = new Dictionary<string, int>();
+
+            foreach (var series in chartNationalities.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (nationalities.ContainsKey(e.Nationality))
+                    nationalities[e.Nationality]++;
+                else
+                    nationalities.Add(e.Nationality, 1);
+            }
+
+            foreach (KeyValuePair<string, int> nat in nationalities)
+            {
+                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value) ;
+            }
+        }
+
     }
 }
