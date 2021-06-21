@@ -61,18 +61,18 @@
             // tbxTerminationReason
             // 
             this.tbxTerminationReason.Font = new System.Drawing.Font("Arial", 14F);
-            this.tbxTerminationReason.Location = new System.Drawing.Point(152, 335);
+            this.tbxTerminationReason.Location = new System.Drawing.Point(223, 329);
             this.tbxTerminationReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxTerminationReason.Multiline = true;
             this.tbxTerminationReason.Name = "tbxTerminationReason";
-            this.tbxTerminationReason.Size = new System.Drawing.Size(896, 77);
+            this.tbxTerminationReason.Size = new System.Drawing.Size(732, 84);
             this.tbxTerminationReason.TabIndex = 49;
             // 
             // lblTerminationReason
             // 
             this.lblTerminationReason.AutoSize = true;
             this.lblTerminationReason.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerminationReason.Location = new System.Drawing.Point(402, 269);
+            this.lblTerminationReason.Location = new System.Drawing.Point(396, 218);
             this.lblTerminationReason.Name = "lblTerminationReason";
             this.lblTerminationReason.Size = new System.Drawing.Size(392, 43);
             this.lblTerminationReason.TabIndex = 50;
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 795);
+            this.ClientSize = new System.Drawing.Size(1194, 793);
             this.Controls.Add(this.lblTerminationReason);
             this.Controls.Add(this.tbxTerminationReason);
             this.Controls.Add(this.btnConfirmTermination);
