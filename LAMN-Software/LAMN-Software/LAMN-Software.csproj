@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataClasses\EmployeeChange.cs" />
+    <Compile Include="DataClasses\Holiday.cs" />
     <Compile Include="DataClasses\Preference.cs" />
     <Compile Include="DataClasses\Schedule.cs" />
     <Compile Include="DataClasses\ScheduleTemplate.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBHandling\HolidayHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBHandling\StockHandler.cs" />

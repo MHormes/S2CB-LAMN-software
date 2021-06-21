@@ -25,6 +25,7 @@ namespace LAMN_Software
         EmployeeChangeHandler ECH;
         SellingTrackerHandler STH;
         PreferenceHandler PH;
+        HolidayHandler HOH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -42,12 +43,16 @@ namespace LAMN_Software
             ECH = new EmployeeChangeHandler();
             STH = new SellingTrackerHandler();
             PH = new PreferenceHandler();
+            HOH = new HolidayHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
             FillScheduleGridViewCreate();
             FillScheduleMinimumGridView();
             FillActiveEmployees();
+            FillChangeEmployeeListBox();
+            FillHolidayRequestListBox();
+
 
             UpdateEmployeeChartNationalities();
             UpdateEmployeeChartPositions();
@@ -81,7 +86,7 @@ namespace LAMN_Software
             dgvEmployees.Font = new Font("Arial", 8);
             dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
-            FillChangeEmployeeListBox();
+            
         }
 
         //Method to show correct buttons based on the user permission
@@ -2216,6 +2221,28 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpRequestChangeInfo;
         }
 
+        private void btnHolidayRequest_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpRequestChangeInfo;
+        }
+
+        public void FillHolidayRequestListBox()
+        {
+            lbHolidayRequests.Items.Clear();
+
+            if(HOH.GetAllHolidaysFromDB() == null)
+            {
+                foreach(Holiday h  in HOH.GetAllHolidayRequests())
+                {
+                    lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN));
+                }
+            }
+            else
+            {
+                MessageBox.Show(HOH.GetAllHolidaysFromDB().Message);
+            }
+        }
+
         public void FillChangeEmployeeListBox()
         {
             lbChangeInfo.Items.Clear();
@@ -3324,5 +3351,6 @@ namespace LAMN_Software
             }
         }
 
+       
     }
 }
