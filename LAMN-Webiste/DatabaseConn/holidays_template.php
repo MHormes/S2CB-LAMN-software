@@ -76,7 +76,7 @@ function addHolidays($week,$day, $empBSN, $holiday)
                 ':BSN' => $empBSN,
                 ':freeDay' => $day,
                 ':holiday' => $holiday,
-                ':approved' => 'FALSE',
+                ':approved' => 'false',
             )
         );
         $conn = null;
