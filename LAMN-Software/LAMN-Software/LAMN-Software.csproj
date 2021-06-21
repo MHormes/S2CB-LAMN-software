@@ -108,6 +108,12 @@
     <Compile Include="DBHandling\ScheduleTemplateHandler.cs" />
     <Compile Include="DBHandling\SellingTrackerHandler.cs" />
     <Compile Include="Exceptions\IncorrectValueExeption.cs" />
+    <Compile Include="GUI\DeclineChangeOfInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DeclineChangeOfInfo.Designer.cs">
+      <DependentUpon>DeclineChangeOfInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\EmploymentTermination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <Compile Include="GUI\ScheduleCreateAddEmployee.Designer.cs">
       <DependentUpon>ScheduleCreateAddEmployee.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\DeclineChangeOfInfo.resx">
+      <DependentUpon>DeclineChangeOfInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\EmploymentTermination.resx">
       <DependentUpon>EmploymentTermination.cs</DependentUpon>
     </EmbeddedResource>

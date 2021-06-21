@@ -360,6 +360,11 @@ namespace LAMN_Software
             this.btnDeclineInfoChanges = new System.Windows.Forms.Button();
             this.btnApproveInfoChanges = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.tpHolidayRequests = new System.Windows.Forms.TabPage();
+            this.dgvHolidaySchedule = new System.Windows.Forms.DataGridView();
+            this.btnHolidayRequestReject = new System.Windows.Forms.Button();
+            this.btnHolidayRequestApprove = new System.Windows.Forms.Button();
+            this.lbHolidayRequests = new System.Windows.Forms.ListBox();
             this.tpSales = new System.Windows.Forms.TabPage();
             this.btnSales_MakeSale = new System.Windows.Forms.Button();
             this.gpnlSales_BarcodeIndicator2 = new LAMN_Software.GradientPanel();
@@ -459,8 +464,14 @@ namespace LAMN_Software
             this.chartEmployeesContractType = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tpHolidayRequests = new System.Windows.Forms.TabPage();
-            this.lbHolidayRequests = new System.Windows.Forms.ListBox();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBackground.SuspendLayout();
             this.pnlTabCover.SuspendLayout();
             this.gpnlSales.SuspendLayout();
@@ -505,6 +516,8 @@ namespace LAMN_Software
             this.tpRequestChangeInfo.SuspendLayout();
             this.gbOldInfo.SuspendLayout();
             this.gbNewInfo.SuspendLayout();
+            this.tpHolidayRequests.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHolidaySchedule)).BeginInit();
             this.tpSales.SuspendLayout();
             this.pnlSales_QuantityControl.SuspendLayout();
             this.pnlSales_Search2.SuspendLayout();
@@ -525,7 +538,6 @@ namespace LAMN_Software
             this.panel1.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).BeginInit();
-            this.tpHolidayRequests.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBackground
@@ -4134,6 +4146,74 @@ namespace LAMN_Software
             this.label22.Size = new System.Drawing.Size(0, 15);
             this.label22.TabIndex = 0;
             // 
+            // tpHolidayRequests
+            // 
+            this.tpHolidayRequests.Controls.Add(this.dgvHolidaySchedule);
+            this.tpHolidayRequests.Controls.Add(this.btnHolidayRequestReject);
+            this.tpHolidayRequests.Controls.Add(this.btnHolidayRequestApprove);
+            this.tpHolidayRequests.Controls.Add(this.lbHolidayRequests);
+            this.tpHolidayRequests.Location = new System.Drawing.Point(4, 18);
+            this.tpHolidayRequests.Name = "tpHolidayRequests";
+            this.tpHolidayRequests.Padding = new System.Windows.Forms.Padding(3);
+            this.tpHolidayRequests.Size = new System.Drawing.Size(1150, 642);
+            this.tpHolidayRequests.TabIndex = 18;
+            this.tpHolidayRequests.Text = "HolidayRequests";
+            this.tpHolidayRequests.UseVisualStyleBackColor = true;
+            // 
+            // dgvHolidaySchedule
+            // 
+            this.dgvHolidaySchedule.AllowUserToAddRows = false;
+            this.dgvHolidaySchedule.AllowUserToDeleteRows = false;
+            this.dgvHolidaySchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHolidaySchedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewComboBoxColumn1,
+            this.dataGridViewComboBoxColumn2,
+            this.dataGridViewComboBoxColumn3,
+            this.dataGridViewComboBoxColumn4,
+            this.dataGridViewComboBoxColumn5,
+            this.dataGridViewComboBoxColumn6,
+            this.dataGridViewComboBoxColumn7});
+            this.dgvHolidaySchedule.Location = new System.Drawing.Point(17, 204);
+            this.dgvHolidaySchedule.Name = "dgvHolidaySchedule";
+            this.dgvHolidaySchedule.RowHeadersWidth = 51;
+            this.dgvHolidaySchedule.RowTemplate.Height = 30;
+            this.dgvHolidaySchedule.Size = new System.Drawing.Size(1055, 438);
+            this.dgvHolidaySchedule.TabIndex = 14;
+            // 
+            // btnHolidayRequestReject
+            // 
+            this.btnHolidayRequestReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHolidayRequestReject.Location = new System.Drawing.Point(443, 103);
+            this.btnHolidayRequestReject.Name = "btnHolidayRequestReject";
+            this.btnHolidayRequestReject.Size = new System.Drawing.Size(151, 89);
+            this.btnHolidayRequestReject.TabIndex = 2;
+            this.btnHolidayRequestReject.Text = "Reject holiday request";
+            this.btnHolidayRequestReject.UseVisualStyleBackColor = true;
+            this.btnHolidayRequestReject.Click += new System.EventHandler(this.btnHolidayRequestReject_Click);
+            // 
+            // btnHolidayRequestApprove
+            // 
+            this.btnHolidayRequestApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHolidayRequestApprove.Location = new System.Drawing.Point(443, 10);
+            this.btnHolidayRequestApprove.Name = "btnHolidayRequestApprove";
+            this.btnHolidayRequestApprove.Size = new System.Drawing.Size(154, 87);
+            this.btnHolidayRequestApprove.TabIndex = 1;
+            this.btnHolidayRequestApprove.Text = "Approve holiday request";
+            this.btnHolidayRequestApprove.UseVisualStyleBackColor = true;
+            this.btnHolidayRequestApprove.Click += new System.EventHandler(this.btnHolidayRequestApprove_Click);
+            // 
+            // lbHolidayRequests
+            // 
+            this.lbHolidayRequests.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHolidayRequests.FormattingEnabled = true;
+            this.lbHolidayRequests.ItemHeight = 25;
+            this.lbHolidayRequests.Location = new System.Drawing.Point(17, 10);
+            this.lbHolidayRequests.Name = "lbHolidayRequests";
+            this.lbHolidayRequests.Size = new System.Drawing.Size(366, 179);
+            this.lbHolidayRequests.TabIndex = 0;
+            this.lbHolidayRequests.SelectedIndexChanged += new System.EventHandler(this.lbHolidayRequests_SelectedIndexChanged);
+            // 
             // tpSales
             // 
             this.tpSales.Controls.Add(this.btnSales_MakeSale);
@@ -5445,25 +5525,76 @@ namespace LAMN_Software
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tpHolidayRequests
+            // dataGridViewTextBoxColumn3
             // 
-            this.tpHolidayRequests.Controls.Add(this.lbHolidayRequests);
-            this.tpHolidayRequests.Location = new System.Drawing.Point(4, 18);
-            this.tpHolidayRequests.Name = "tpHolidayRequests";
-            this.tpHolidayRequests.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHolidayRequests.Size = new System.Drawing.Size(1150, 642);
-            this.tpHolidayRequests.TabIndex = 18;
-            this.tpHolidayRequests.Text = "HolidayRequests";
-            this.tpHolidayRequests.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "First Name";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 125;
             // 
-            // lbHolidayRequests
+            // dataGridViewComboBoxColumn1
             // 
-            this.lbHolidayRequests.FormattingEnabled = true;
-            this.lbHolidayRequests.ItemHeight = 9;
-            this.lbHolidayRequests.Location = new System.Drawing.Point(7, 7);
-            this.lbHolidayRequests.Name = "lbHolidayRequests";
-            this.lbHolidayRequests.Size = new System.Drawing.Size(453, 139);
-            this.lbHolidayRequests.TabIndex = 0;
+            this.dataGridViewComboBoxColumn1.HeaderText = "Monday";
+            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn1.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn2
+            // 
+            this.dataGridViewComboBoxColumn2.HeaderText = "Tuesday";
+            this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn2.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn3
+            // 
+            this.dataGridViewComboBoxColumn3.HeaderText = "Wednesday";
+            this.dataGridViewComboBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
+            this.dataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn3.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn4
+            // 
+            this.dataGridViewComboBoxColumn4.HeaderText = "Thursday";
+            this.dataGridViewComboBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
+            this.dataGridViewComboBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn4.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn5
+            // 
+            this.dataGridViewComboBoxColumn5.HeaderText = "Friday";
+            this.dataGridViewComboBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn5.Name = "dataGridViewComboBoxColumn5";
+            this.dataGridViewComboBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn5.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn6
+            // 
+            this.dataGridViewComboBoxColumn6.HeaderText = "Saturday";
+            this.dataGridViewComboBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn6.Name = "dataGridViewComboBoxColumn6";
+            this.dataGridViewComboBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn6.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn7
+            // 
+            this.dataGridViewComboBoxColumn7.HeaderText = "Sunday";
+            this.dataGridViewComboBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn7.Name = "dataGridViewComboBoxColumn7";
+            this.dataGridViewComboBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewComboBoxColumn7.Width = 125;
             // 
             // ProductForm
             // 
@@ -5477,7 +5608,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(1168, 753);
             this.MinimumSize = new System.Drawing.Size(1168, 753);
-            this.Name = "ProductForm";
+           
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -5538,6 +5669,8 @@ namespace LAMN_Software
             this.gbOldInfo.PerformLayout();
             this.gbNewInfo.ResumeLayout(false);
             this.gbNewInfo.PerformLayout();
+            this.tpHolidayRequests.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHolidaySchedule)).EndInit();
             this.tpSales.ResumeLayout(false);
             this.tpSales.PerformLayout();
             this.pnlSales_QuantityControl.ResumeLayout(false);
@@ -5569,7 +5702,6 @@ namespace LAMN_Software
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeesContractType)).EndInit();
-            this.tpHolidayRequests.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -5975,5 +6107,16 @@ namespace LAMN_Software
         private System.Windows.Forms.Button btnHolidayRequest;
         private System.Windows.Forms.TabPage tpHolidayRequests;
         private System.Windows.Forms.ListBox lbHolidayRequests;
+        private System.Windows.Forms.Button btnHolidayRequestReject;
+        private System.Windows.Forms.Button btnHolidayRequestApprove;
+        private System.Windows.Forms.DataGridView dgvHolidaySchedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn7;
     }
 }

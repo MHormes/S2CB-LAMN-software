@@ -26,7 +26,7 @@ namespace LAMN_Software.DBHandling
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "SELECT * FROM employeechange";
+                    string sql = "SELECT * FROM employeechange WHERE Handled = 0 ";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -66,6 +66,56 @@ namespace LAMN_Software.DBHandling
                 return null;
             }
 
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
+        public Exception DeclineRequest(string message, EmployeeChange employeeChange)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE employeechange SET Message=@message, Handled=@handled WHERE BSN=@bsn;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@message", message);
+                    cmd.Parameters.AddWithValue("@bsn", employeeChange.Bsn);
+                    cmd.Parameters.AddWithValue("@handled", 1);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception ApproveRequest(EmployeeChange employeeChange)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE employeechange SET Handled=@handled WHERE BSN=@bsn;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@bsn", employeeChange.Bsn);
+                    cmd.Parameters.AddWithValue("@handled", 1);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
             catch (Exception ex)
             {
                 return ex;
