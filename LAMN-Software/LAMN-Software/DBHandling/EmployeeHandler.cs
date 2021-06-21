@@ -106,6 +106,19 @@ namespace LAMN_Software
             return null;
         }
 
+        public List<Employee> GetManagers()
+        {
+            List<Employee> managers = new List<Employee>();
+            foreach(Employee e in allEmployees)
+            {
+                if(e.Position == JobPosition.MANAGER)
+                {
+                    managers.Add(e);
+                }
+            }
+            return managers;
+        }
+
         public List<Employee> GetAllEmployees()
         {
            return this.allEmployees;

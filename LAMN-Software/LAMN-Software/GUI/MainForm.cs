@@ -24,6 +24,7 @@ namespace LAMN_Software
         ScheduleMinimumHandler SCMH;
         EmployeeChangeHandler ECH;
         SellingTrackerHandler STH;
+        PreferenceHandler PH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -40,6 +41,7 @@ namespace LAMN_Software
             SCMH = new ScheduleMinimumHandler();
             ECH = new EmployeeChangeHandler();
             STH = new SellingTrackerHandler();
+            PH = new PreferenceHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
@@ -47,6 +49,7 @@ namespace LAMN_Software
             FillScheduleMinimumGridView();
             FillActiveEmployees();
 
+            UpdateEmployeeChartNationalities();
             UpdateEmployeeChartPositions();
             UpdateEmployeeChartGender();
             UpdateEmployeeChartContractType();
@@ -68,7 +71,7 @@ namespace LAMN_Software
             this.dgvSales_Reciept.DefaultCellStyle.Font = new Font("Arial", 10);
             this.dgvSales_Reciept.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvSales_Reciept.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 224, 140);
+            dgvSales_Reciept.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 194, 102);
             dgvSales_Reciept.DefaultCellStyle.SelectionForeColor = Color.Black;
             btnStock.Font = new Font("Arial", 18, FontStyle.Bold);
             //Method to enable buttons based on indicator
@@ -547,6 +550,7 @@ namespace LAMN_Software
                     }
                 }
                 UpdateEmployeeChartPositions();
+                UpdateEmployeeChartNationalities();
             }
             else
             {
@@ -1248,12 +1252,22 @@ namespace LAMN_Software
         //method for auto creating a schedule for the selected week
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
+            //SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
+            //foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            //{
+            //    SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
+            //}
+            //btnSchedulesCreateShowWeek.PerformClick();
+
+            PH.GetAllPreferencesFromDB();
+            SCH.GetAllSchedulesFromDB(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
-            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
+            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees(), SCH.GetAllSchedules(), PH.GetAllPreferences(), EH))
             {
                 SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
             }
             btnSchedulesCreateShowWeek.PerformClick();
+
         }
 
 
@@ -2353,6 +2367,7 @@ namespace LAMN_Software
             bool isDuplicate = false;
             bool isEnoughStock = true;
 
+
             if (tbxSales_Barcode.TextLength == 13)
             {
                 foreach (Product p in SH.GetAllProducts())
@@ -2460,15 +2475,28 @@ namespace LAMN_Software
 
         private void dgvSales_Reciept_SelectionChanged(object sender, EventArgs e)
         {
-            int index = dgvSales_Reciept.CurrentCell.RowIndex;
-            pnlSales_QuantityControl.Visible = true;
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            try
             {
-                btnSales_Remove1Quantity.Enabled = false;
+                int index = dgvSales_Reciept.CurrentCell.RowIndex;
+                MessageBox.Show(index.ToString());
+                pnlSales_QuantityControl.Visible = true;
+                if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+                {
+                    btnSales_Remove1Quantity.Enabled = false;
+                }
+                else
+                {
+                    btnSales_Remove1Quantity.Enabled = true;
+                }
+                
+                //if()
+                //{
+                //    DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+                //}
             }
-            else
+            catch (Exception)
             {
-                btnSales_Remove1Quantity.Enabled = true;
+                throw;
             }
         }
 
@@ -2779,6 +2807,9 @@ namespace LAMN_Software
             DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
             tbxSales_Barcode.Clear();
             CalculateSalesTotal();
+            dgvSales_Reciept.ClearSelection();
+            dgvSales_Reciept.Rows[dgvSales_Reciept.Rows.Count - 1].Selected = true;
+
             return;
         }
 
@@ -2810,10 +2841,10 @@ namespace LAMN_Software
         {
             int index = dgvSales_Reciept.CurrentCell.RowIndex;
             Product p = SH.GetProductByName(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
-            dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value)-1;
+            dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) - 1;
             dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
 
-            if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            if (Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) <= 1)
             {
                 btnSales_Remove1Quantity.Enabled = false;
             }
@@ -3151,5 +3182,147 @@ namespace LAMN_Software
         {
             tcNavigator.SelectedTab = tpStatsProfit;
         }
+
+        private void btnSales_RemoveAllQuantity_Click(object sender, EventArgs e)
+        {
+            int index = dgvSales_Reciept.CurrentCell.RowIndex;
+            Product p = SH.GetProductByName(dgvSales_Reciept.Rows[index].Cells[1].Value.ToString());
+            //dgvSales_Reciept.Rows[index].Cells[0].Value = Convert.ToInt32(dgvSales_Reciept.Rows[index].Cells[0].Value) - 1;
+            //dgvSales_Reciept.Rows[index].Cells[2].Value = $"€{String.Format("{0:0.00}", (Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice))}";
+
+            //if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
+            //{
+            //    btnSales_Remove1Quantity.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnSales_Remove1Quantity.Enabled = true;
+            //}
+            dgvSales_Reciept.ClearSelection();
+            dgvSales_Reciept.Rows.RemoveAt(index);
+
+            //DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
+            CalculateSalesTotal();
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (tbxSales_Barcode.Focused)
+            {
+                lblBarcodeActiveIcon2.Font = new Font("Arial", 18, FontStyle.Regular);
+                lblBarcodeActiveIcon.Font = new Font("Arial", 20, FontStyle.Bold);
+                gpnlSales_BarcodeIndicator2.Visible = false;
+                gpnlSales_BarcodeIndicator.Visible = true;
+            }
+            else
+            {
+                lblBarcodeActiveIcon2.Font = new Font("Arial", 20, FontStyle.Bold);
+                lblBarcodeActiveIcon.Font = new Font("Arial", 18, FontStyle.Regular);
+                gpnlSales_BarcodeIndicator2.Visible = true;
+                gpnlSales_BarcodeIndicator.Visible = false;
+            }
+        }
+
+        private void lblBarcodeActiveIcon_Click_1(object sender, EventArgs e)
+        {
+            tbxSales_Barcode.Focus();
+        }
+
+        private void lblBarcodeActiveIcon2_Click(object sender, EventArgs e)
+        {
+            tbxSales_Barcode.Focus();
+        }
+
+        private void btnSales_MakeSale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                {
+                    Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                    int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
+
+
+                    //calculations of quantity and exception returned if it occurs
+                    var sellProduct = SH.SellProduct(p, quantity.ToString());
+                    DateTime dateTime = DateTime.Now;
+                    var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
+
+                    if (sellProduct == null && sellTracker == null)
+                    {
+                        FillStockViewActive();
+                        cbxActiveInactiveEmployees.SelectedIndex = 0;
+
+                        //if the quantity of the item is below then show the messagebox
+                        if (p.QuantityS < p.MinimumStockRequired)
+                        {
+                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                            string title = "Quantity warning";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                tcNavigator.SelectedTab = tpNewOrder;
+
+                                //textboxes filled with data
+                                //tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                //tbNewOrderName.Text = $"{p.Name}";
+
+                                //fields disabled
+                                //tbNewOrderID.Enabled = false;
+                                //tbNewOrderEAN.Enabled = false;
+                                //tbNewOrderName.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                           // tcNavigator.SelectedTab = tpStock;
+                        }
+                    }
+                }
+                MessageBox.Show("Sell correctly done.");
+                return;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnToContractStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmpContract;
+        }
+
+        private void btnToPersStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+        }
+
+        public void UpdateEmployeeChartNationalities()
+        {
+            var nationalities = new Dictionary<string, int>();
+
+            foreach (var series in chartNationalities.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (nationalities.ContainsKey(e.Nationality))
+                    nationalities[e.Nationality]++;
+                else
+                    nationalities.Add(e.Nationality, 1);
+            }
+
+            foreach (KeyValuePair<string, int> nat in nationalities)
+            {
+                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value) ;
+            }
+        }
+
     }
 }
