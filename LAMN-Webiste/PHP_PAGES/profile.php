@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once "../DatabaseConn/connection.php";
+// require_once "../DatabaseConn/connection.php";
 include_once "../DatabaseConn/profile_template.php";
 
 $user = $_SESSION['Username'];
@@ -22,7 +22,7 @@ $relationships = array("Partner", "Father", "Mother", "Brother", "Sister", "Uncl
 
 if (isset($_REQUEST['btnRequestChanges'])) {
 
-    include "../DatabaseConn/profile_template.php";
+    include_once "../DatabaseConn/profile_template.php";
 
     $firstName = strip_tags($_REQUEST["first_name"]);
     $secondName = strip_tags($_REQUEST["last_name"]);
@@ -52,13 +52,10 @@ if (isset($_REQUEST['btnRequestChanges'])) {
     }
 }
 
-
 if (isset($_REQUEST['btnChangePassword'])) {
     header("location: changePassword.php");
 }
 ?>
-
-
 
 
 
@@ -73,7 +70,7 @@ if (isset($_REQUEST['btnChangePassword'])) {
     <title>Media Bazaar Employee Portal</title>
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/profile.css">
-
+    <!-- <script src="<https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js>"></script>  -->
 </head>
 
 <body>
@@ -116,9 +113,29 @@ if (isset($_REQUEST['btnChangePassword'])) {
         </div>
     </form>
 
+    <?php
+    include_once "../DatabaseConn/profile_template.php";
+    $user = $_SESSION['Username'];
+    $message = GetMessage($user);
+    if($message != null)
+    {?>
+        <div class='modal' id='modal'>
+            <div class='content'>
+                <span class="close" id='close'>&times;</span>
+                <div class="popUpText">
+                    <h1>Your request has been declined</h1>
+                    <h2>Reason of decline:</h2>
+                    <p><?php echo $message["Message"] ?></p>
+                </div>
+            </div>
+        </div>  
+        <?php
+    }
+    ?>
 
 
-
+<script src="../script.js"></script> 
 
 
 </body>
+</html>
