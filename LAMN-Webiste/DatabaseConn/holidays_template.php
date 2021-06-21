@@ -17,27 +17,6 @@ function getBSN($usernameLogin)
     }
 }
 
-function holidaysPresent($empBSN)
-{
-    include '../DatabaseConn/connection.php';
-    try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
-        $sql = 'SELECT * FROM holidays WHERE EmpBSN = :BSN';
-        $sth = $conn->prepare($sql);
-        $sth->execute([':BSN' => $empBSN]);
-
-        $count = $sth->rowCount();
-        $conn = null;
-        if($count > 0){
-            return true;
-        }
-        
-        return false;
-
-    }catch(PDOException $e){
-        return false;
-    }
-}
 
 function GetHolidays($empBSN, $weekNmr){
     include '../DatabaseConn/connection.php';
@@ -71,12 +50,11 @@ function removeHolidays($empBSN)
         $sth->execute(
             array(
                 ':BSN' => $empBSN
-                
             )
         );
         $conn = null;
     }catch(PDOException $e){
-        return false;
+        echo $e;
     }
 }
 

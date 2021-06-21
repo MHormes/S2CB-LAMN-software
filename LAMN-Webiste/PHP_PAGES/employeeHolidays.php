@@ -7,12 +7,24 @@ $user = $_SESSION['Username'];
 $empBSN = getBSN($user);
 
 if (isset($_POST['btnSave'])) {
+    CallAddHolidays($empBSN);
+}
+if (isset($_POST['btnOverWrite'])) {
+    removeHolidays($empBSN);
+    CallAddHolidays($empBSN);
+    $weekNmr = $_POST['weekSelecter'];
+    $_SESSION['startedHoliday'] = 'true';
+    $holiday = GetHolidays($empBSN, $weekNmr);
+}
 
-    $isPresent = holidaysPresent($empBSN);
+if (isset($_POST['btnSelectWeek']) || isset($_POST['btnSave'])) {
+    $weekNmr = $_POST['weekSelecter'];
+    $_SESSION['startedHoliday'] = 'true';
+    $holiday = GetHolidays($empBSN, $weekNmr);
+}
 
-    if ($isPresent == true) {
-        removeHolidays($empBSN);
-    }
+function CallAddHolidays($empBSN)
+{
     addHolidays($_POST['weekSelecter'], 'MONDAY', $empBSN, $_POST['mondayHolidays']);
     addHolidays($_POST['weekSelecter'], 'TUESDAY',  $empBSN, $_POST['tuesdayHolidays']);
     addHolidays($_POST['weekSelecter'], 'WEDNESDAY',  $empBSN, $_POST['wednesdayHolidays']);
@@ -22,15 +34,6 @@ if (isset($_POST['btnSave'])) {
     addHolidays($_POST['weekSelecter'], 'SUNDAY',  $empBSN, $_POST['sundayHolidays']);
 }
 
-if (isset($_POST['btnSelectWeek']) || isset($_POST['btnSave'])) {
-    $weekNmr = $_POST['weekSelecter'];
-    $_SESSION['startedHoliday'] = 'true';
-    $holiday = GetHolidays($empBSN, $weekNmr);
-}
-
-if (isset($_POST['btnDelete'])) {
-    removeHolidays($empBSN);
-}
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +103,8 @@ if (isset($_POST['btnDelete'])) {
                                         } else {
                                             $Monday = $value->Holiday;
                                         }
-                                    }$Monday = $value->Holiday;
+                                    }
+                                    $Monday = $value->Holiday;
                                 }
                                 if ($value->freeDay == "TUESDAY") {
                                     $Tuesday = $value->Holiday;
@@ -190,10 +194,10 @@ if (isset($_POST['btnDelete'])) {
 
                 </div>
                 <div class="row">
-                    <input type="submit" value="Save" name="btnSave">
+                    <input type="submit" value="Add chosen holiday to holiday status schedule" name="btnSave">
                 </div>
                 <div class="row">
-                    <input type="submit" value="Delete" name="btnDelete">
+                    <input type="submit" value="Overwrite current status with chosen holiday" name="btnOverWrite">
                 </div>
             </form>
         </div>
