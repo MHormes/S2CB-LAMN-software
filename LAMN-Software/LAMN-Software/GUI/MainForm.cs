@@ -3354,53 +3354,59 @@ namespace LAMN_Software
         {
             try
             {
-                for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to make this sale?", "Sale Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.None);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
-                    int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
 
 
-                    //calculations of quantity and exception returned if it occurs
-                    var sellProduct = SH.SellProduct(p, quantity.ToString());
-                    DateTime dateTime = DateTime.Now;
-                    var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
-
-                    if (sellProduct == null && sellTracker == null)
+                    for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
                     {
-                        FillStockViewActive();
-                        cbxActiveInactiveEmployees.SelectedIndex = 0;
+                        Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                        int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
 
-                        //if the quantity of the item is below then show the messagebox
-                        if (p.QuantityS < p.MinimumStockRequired)
+
+                        //calculations of quantity and exception returned if it occurs
+                        var sellProduct = SH.SellProduct(p, quantity.ToString());
+                        DateTime dateTime = DateTime.Now;
+                        var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
+
+                        if (sellProduct == null && sellTracker == null)
                         {
-                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
-                            string title = "Quantity warning";
-                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Yes)
+                            FillStockViewActive();
+                            cbxActiveInactiveEmployees.SelectedIndex = 0;
+
+                            //if the quantity of the item is below then show the messagebox
+                            if (p.QuantityS < p.MinimumStockRequired)
                             {
-                                tcNavigator.SelectedTab = tpNewOrder;
+                                string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                                string title = "Quantity warning";
+                                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                                if (result == DialogResult.Yes)
+                                {
+                                    tcNavigator.SelectedTab = tpNewOrder;
 
-                                //textboxes filled with data
-                                //tbNewOrderID.Text = $"{p.Id.ToString()}";
-                                //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
-                                //tbNewOrderName.Text = $"{p.Name}";
+                                    //textboxes filled with data
+                                    //tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                    //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                    //tbNewOrderName.Text = $"{p.Name}";
 
-                                //fields disabled
-                                //tbNewOrderID.Enabled = false;
-                                //tbNewOrderEAN.Enabled = false;
-                                //tbNewOrderName.Enabled = false;
+                                    //fields disabled
+                                    //tbNewOrderID.Enabled = false;
+                                    //tbNewOrderEAN.Enabled = false;
+                                    //tbNewOrderName.Enabled = false;
+                                }
+                            }
+                            else
+                            {
+                                // tcNavigator.SelectedTab = tpStock;
                             }
                         }
-                        else
-                        {
-                            // tcNavigator.SelectedTab = tpStock;
-                        }
                     }
+                    MessageBox.Show("The sale has successfully been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvSales_Reciept.Rows.Clear();
+                    return;
                 }
-                MessageBox.Show("Sell correctly done.");
-                return;
-
             }
             catch (Exception ex)
             {
