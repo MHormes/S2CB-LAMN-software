@@ -86,7 +86,7 @@ namespace LAMN_Software
             dgvEmployees.Font = new Font("Arial", 8);
             dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
-            
+
         }
 
         //Method to show correct buttons based on the user permission
@@ -2223,23 +2223,117 @@ namespace LAMN_Software
 
         private void btnHolidayRequest_Click(object sender, EventArgs e)
         {
-            tcNavigator.SelectedTab = tpRequestChangeInfo;
+            tcNavigator.SelectedTab = tpHolidayRequests;
         }
 
         public void FillHolidayRequestListBox()
         {
             lbHolidayRequests.Items.Clear();
 
-            if(HOH.GetAllHolidaysFromDB() == null)
+            if (HOH.GetAllHolidaysFromDB() == null)
             {
-                foreach(Holiday h  in HOH.GetAllHolidayRequests())
+                foreach (Holiday h in HOH.GetAllHolidayRequests())
                 {
-                    lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN));
+                    if (h.HolidayStatus == "Request Holiday" && !lbHolidayRequests.Items.Contains(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr))
+                    {
+                        lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr);
+                    }
+
                 }
             }
             else
             {
                 MessageBox.Show(HOH.GetAllHolidaysFromDB().Message);
+            }
+        }
+
+        private void lbHolidayRequests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedRequest = (string)lbHolidayRequests.SelectedItem;
+            string selectedEmpName = selectedRequest.Substring(0, selectedRequest.IndexOf(" For week:"));
+            Employee employeeToHandle = null;
+            foreach (Employee emp in EH.GetAllEmployees())
+            {
+                if (emp.GetFullName() == selectedEmpName)
+                {
+                    employeeToHandle = emp;
+                }
+            }
+
+            for (int i = 0; i < EH.GetAllEmployees().Count; i++)
+            {
+                if (EH.GetAllEmployees()[i].Position == employeeToHandle.Position && EH.GetAllEmployees()[i].Bsn != employeeToHandle.Bsn)
+                {
+                    dgvHolidaySchedule.Rows.Add(EH.GetAllEmployees()[i]);
+                    foreach (Holiday h in HOH.GetAllHolidayRequests())
+                    {
+                        if (h.EmpBSN == EH.GetAllEmployees()[i].Bsn && h.WeekNmr == selectedRequest.Substring(selectedRequest.IndexOf(":") +1) && h.Approved != false)
+                        {
+                            if (h.FreeDay == Day.MONDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[1].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.TUESDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[2].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.WEDNESDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[3].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.THURDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[4].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.FRIDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[5].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.SATURDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[6].Value = h.HolidayStatus;
+                            else if (h.FreeDay == Day.SUNDAY)
+                                dgvHolidaySchedule.Rows[i].Cells[7].Value = h.HolidayStatus;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        private void btnHolidayRequestApprove_Click(object sender, EventArgs e)
+        {
+            string selectedRequest = (string)lbHolidayRequests.SelectedItem;
+            string selectedEmpName = selectedRequest.Substring(0, selectedRequest.IndexOf(" For week:"));
+            Employee employeeToHandle = null;
+            foreach (Employee emp in EH.GetAllEmployees())
+            {
+                if (emp.GetFullName() == selectedEmpName)
+                {
+                    employeeToHandle = emp;
+                }
+            }
+            var approve = HOH.ApproveHolidayRequest(selectedRequest.Substring(selectedRequest.IndexOf(":") +1), employeeToHandle.Bsn);
+            if (approve == null)
+            {
+                FillHolidayRequestListBox();
+            }
+            else
+            {
+                MessageBox.Show(approve.Message);
+            }
+        }
+
+        private void btnHolidayRequestReject_Click(object sender, EventArgs e)
+        {
+            string selectedRequest = (string)lbHolidayRequests.SelectedItem;
+            string selectedEmpName = selectedRequest.Substring(0, selectedRequest.IndexOf(" For week:"));
+            Employee employeeToHandle = null;
+            foreach (Employee emp in EH.GetAllEmployees())
+            {
+                if (emp.GetFullName() == selectedEmpName)
+                {
+                    employeeToHandle = emp;
+                }
+            }
+            var reject = HOH.RejectHolidayRequest(selectedRequest.Substring(selectedRequest.IndexOf(":") + 1), employeeToHandle.Bsn);
+            if (reject == null)
+            {
+                FillHolidayRequestListBox();
+            }
+            else
+            {
+                MessageBox.Show(reject.Message);
             }
         }
 
@@ -2515,7 +2609,7 @@ namespace LAMN_Software
                 {
                     btnSales_Remove1Quantity.Enabled = true;
                 }
-                
+
                 //if()
                 //{
                 //    DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
@@ -3305,7 +3399,7 @@ namespace LAMN_Software
                         }
                         else
                         {
-                           // tcNavigator.SelectedTab = tpStock;
+                            // tcNavigator.SelectedTab = tpStock;
                         }
                     }
                 }
@@ -3347,10 +3441,10 @@ namespace LAMN_Software
 
             foreach (KeyValuePair<string, int> nat in nationalities)
             {
-                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value) ;
+                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value);
             }
         }
 
-       
+
     }
 }

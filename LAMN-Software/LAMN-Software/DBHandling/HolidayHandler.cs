@@ -48,7 +48,7 @@ namespace LAMN_Software
                         else if (DayReturn == "SUNDAY")
                             day = Day.SUNDAY;
 
-                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), (Day)dr[2], (bool)dr[3]));
+                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), day, dr[3].ToString(), (bool)dr[4]));
                     }
                 }
                 return null;
@@ -59,6 +59,53 @@ namespace LAMN_Software
             }
         }
 
+        public Exception ApproveHolidayRequest(string weeknmr, string empBSN)
+        {
+              try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = true WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception RejectHolidayRequest(string weeknmr, string empBSN)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = false WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
 
         public List<Holiday> GetAllHolidayRequests()
         {
