@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LAMN_Software.DataClasses;
 using LAMN_Software.DBHandling;
+using LAMN_Software.GUI;
 
 namespace LAMN_Software
 {
@@ -1257,13 +1258,6 @@ namespace LAMN_Software
         //method for auto creating a schedule for the selected week
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
-            //SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
-            //foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees()))
-            //{
-            //    SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
-            //}
-            //btnSchedulesCreateShowWeek.PerformClick();
-
             PH.GetAllPreferencesFromDB();
             SCH.GetAllSchedulesFromDB(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
@@ -1272,7 +1266,6 @@ namespace LAMN_Software
                 SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
             }
             btnSchedulesCreateShowWeek.PerformClick();
-
         }
 
 
@@ -2357,13 +2350,17 @@ namespace LAMN_Software
 
         private void btnDeclineInfoChanges_Click(object sender, EventArgs e)
         {
-            Employee E = (Employee)lbChangeInfo.SelectedItem;
-            EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
-
-            if (ECH.DeleteEmployee(empChange) == null)
+            if(lbChangeInfo.SelectedIndex == -1)
             {
-                MessageBox.Show("Employee deleted succesfully");
-                FillChangeEmployeeListBox();
+                MessageBox.Show("Please select an employee");
+            }
+            else
+            {
+                Employee E = (Employee)lbChangeInfo.SelectedItem;
+                EmployeeChange empChange = ECH.GetEmployeeChange(E.Bsn);
+                DeclineChangeOfInfo declineForm = new DeclineChangeOfInfo(empChange, ECH);
+                tcNavigator.SelectedTab = tpEmployees;
+                declineForm.Show();
             }
         }
 
@@ -2376,7 +2373,7 @@ namespace LAMN_Software
             {
                 var update = EH.ApproveEmployeeChange(E.Bsn, lblNewInfo_FirstName_input.Text, lblNewInfo_SecondName_input.Text, lblNewInfo_PhoneNumber_input.Text, lblNewInfo_iceNumber_input.Text, lblNewInfo_iceRelation_input.Text, lblNewInfo_Address_input.Text);
 
-                if ((update == null) && (ECH.DeleteEmployee(empChange) == null))
+                if ((update == null) && (ECH.ApproveRequest(empChange) == null))
                 {
                     FillChangeEmployeeListBox();
                     MessageBox.Show("Succesfully approved");

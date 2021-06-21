@@ -44,7 +44,7 @@ function addHolidays($week,$day, $empBSN, $holiday)
     include '../DatabaseConn/connection.php';
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
-        $sql = 'INSERT INTO holidays VALUES(:weekNumber, :BSN, :freeDay, :Holiday)';
+        $sql = 'INSERT INTO holidays VALUES(:weekNumber, :BSN, :freeDay, :holiday)';
         $sth = $conn->prepare($sql);
 
         $sth->execute(
@@ -52,10 +52,9 @@ function addHolidays($week,$day, $empBSN, $holiday)
                 ':weekNumber' => $week,
                 ':BSN' => $empBSN,
                 ':freeDay' => $day,
-                ':Holiday' => $holiday
+                ':holiday' => $holiday
             )
         );
-        $empBSN = $sth->fetchAll();
         $conn = null;
     }catch(PDOException $e){
         return false;
