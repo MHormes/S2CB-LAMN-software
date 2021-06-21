@@ -48,7 +48,7 @@ namespace LAMN_Software
                         else if (DayReturn == "SUNDAY")
                             day = Day.SUNDAY;
 
-                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), day, dr[3].ToString(), (bool)dr[4]));
+                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), day, dr[3].ToString(), dr[4].ToString());
                     }
                 }
                 return null;

@@ -14,13 +14,18 @@ namespace LAMN_Software.DataClasses
         public string HolidayStatus { get; set; }
         public bool Approved { get; set;}
 
-        public Holiday(string weekNmr, string empBSN, Day freeDay, string holidayStatus, bool approved)
+        public Holiday(string weekNmr, string empBSN, Day freeDay, string holidayStatus, string approved)
         {
             WeekNmr = weekNmr;
             EmpBSN = empBSN;
             FreeDay = freeDay;
             HolidayStatus = holidayStatus;
-            Approved = approved;
+            if(approved == "true")
+            {
+                Approved = true;
+            }
+            else { Approved = false; }
+            
         }
     }
 }
