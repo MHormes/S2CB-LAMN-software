@@ -59,7 +59,7 @@ namespace LAMN_Software.DBHandling
                         else if (relationReturn == "OTHER")
                             ice = ICERelation.OTHER;
 
-                        allChangedEmployees.Add(new EmployeeChange(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), ice, dr[7].ToString()));
+                        allChangedEmployees.Add(new EmployeeChange(dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), ice, dr[8].ToString()));
 
                     }
                 }
