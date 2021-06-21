@@ -39,6 +39,26 @@ function holidaysPresent($empBSN)
     }
 }
 
+function GetHolidays($empBSN, $weekNmr){
+    include '../DatabaseConn/connection.php';
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
+        $sql = 'SELECT * FROM holidays WHERE BSN = :BSN AND weekNumber = :weekNmr';
+        $sth = $conn->prepare($sql);
+
+        $sth->execute(
+            array(
+                ':BSN' => $empBSN,
+                ':weekNmr' => $weekNmr
+            )
+        );
+        $holidays = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $holidays;
+        $conn = null;
+    }catch(PDOException $e){
+        return false;
+    }
+}
 
 function removeHolidays($empBSN)
 {
@@ -51,6 +71,7 @@ function removeHolidays($empBSN)
         $sth->execute(
             array(
                 ':BSN' => $empBSN
+                
             )
         );
         $conn = null;

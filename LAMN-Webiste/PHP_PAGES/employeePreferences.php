@@ -6,6 +6,7 @@ $user = $_SESSION['Username'];
 $empBSN = getBSN($user);
 
 $shifts = getShifts($empBSN);
+$preferences = GetPreferences($empBSN);
 
 if (isset($_POST['btnSave'])) {
     $isPresent = preferencesPresent($empBSN);
@@ -20,8 +21,8 @@ if (isset($_POST['btnSave'])) {
     addPreference('TUESDAY',  $empBSN, $_POST['tuesdayShifts2']);
     addPreference('WEDNESDAY',  $empBSN, $_POST['wednesdayShifts1']);
     addPreference('WEDNESDAY',  $empBSN, $_POST['wednesdayShifts2']);
-    addPreference('THURSDAY',  $empBSN, $_POST['thursdayShifts1']);
-    addPreference('THURSDAY',  $empBSN, $_POST['thursdayShifts2']);
+    addPreference('THURDAY',  $empBSN, $_POST['thursdayShifts1']);
+    addPreference('THURDAY',  $empBSN, $_POST['thursdayShifts2']);
     addPreference('FRIDAY',  $empBSN, $_POST['fridayShifts1']);
     addPreference('FRIDAY',  $empBSN, $_POST['fridayShifts2']);
     addPreference('SATURDAY',  $empBSN, $_POST['saturdayShifts1']);
@@ -47,6 +48,8 @@ if (isset($_POST['btnDelete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MediaBazaar Website">
     <title>Media Bazaar Employee Portal</title>
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/schedule.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/login.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/preferences.css">
 
@@ -61,6 +64,72 @@ if (isset($_POST['btnDelete'])) {
         <div class="row">
             <h2>Shift preferences</h2>
         </div>
+
+        <p>Your currently set preferences will be displayed below</p>
+        <div class="schedules_table">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+
+                        <?php
+                        if ($preferences != null) {
+
+                            $NameUser = "";
+                            $Monday = "";
+                            $Tuesday = "";
+                            $Wednesday = "";
+                            $Thursday = "";
+                            $Friday = "";
+                            $Saturday = "";
+                            $Sunday = "";
+
+                            foreach ($preferences as $value) {
+                                if ($value->Day == "MONDAY") {
+                                    $Monday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "TUESDAY") {
+                                    $Tuesday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "WEDNESDAY") {
+                                    $Wednesday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "THURDAY") {
+                                    $Thursday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "FRIDAY") {
+                                    $Friday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "SATURDAY") {
+                                    $Saturday = $value->TimeSlot;
+                                }
+                                if ($value->Day == "SUNDAY") {
+                                    $Sunday = $value->TimeSlot;
+                                }
+                            }
+                        ?>
+                            <tr>
+                                <td><?php echo $NameUser ?></td>
+                                <td><?php echo $Monday; ?></td>
+                                <td><?php echo $Tuesday; ?></td>
+                                <td><?php echo $Wednesday; ?></td>
+                                <td><?php echo $Thursday; ?></td>
+                                <td><?php echo $Friday; ?></td>
+                                <td><?php echo $Saturday; ?></td>
+                                <td><?php echo $Sunday; ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
+                </div>
 
         <div class="row">
             <form method="post" action="#" class="contact-form">
