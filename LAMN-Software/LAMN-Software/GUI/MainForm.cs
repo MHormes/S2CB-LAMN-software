@@ -2595,7 +2595,6 @@ namespace LAMN_Software
             try
             {
                 int index = dgvSales_Reciept.CurrentCell.RowIndex;
-                MessageBox.Show(index.ToString());
                 pnlSales_QuantityControl.Visible = true;
                 if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
                 {
@@ -2893,10 +2892,10 @@ namespace LAMN_Software
                 //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
                 if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
                 {
-                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
+                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS || (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + Convert.ToInt32(tbxSales_ManualQuantity.Text)) > p.QuantityS)
                     {
                         isEnoughStock = false;
-                        MessageBox.Show("Not enough stock", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Not enough stock \nYou're trying to add {tbxSales_ManualQuantity.Text} item(s) when only {p.QuantityS-Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value)} item(s) are available", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -3440,7 +3439,5 @@ namespace LAMN_Software
                 this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value);
             }
         }
-
-
     }
 }
