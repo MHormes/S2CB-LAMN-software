@@ -1620,71 +1620,80 @@ namespace LAMN_Software
 
         public void UpdateStockPeriodGraph()
         {
-            if (cbxStatsPeriod1.Text == "Stock 1" && cbxStatsPeriod2.Text == "Stock 2" && cbxStatsPeriod3.Text == "Stock 3")
-                lbStatsNotAvailable1.Visible = true;
-            else
-                lbStatsNotAvailable1.Visible = false;
-
-            foreach (var series in chartStockSoldPeriod.Series)
+            try
             {
-                series.Points.Clear();
+                if (cbxStatsPeriod1.Text == "Stock 1" && cbxStatsPeriod2.Text == "Stock 2" && cbxStatsPeriod3.Text == "Stock 3")
+                    lbStatsNotAvailable1.Visible = true;
+                else
+                    lbStatsNotAvailable1.Visible = false;
+
+                foreach (var series in chartStockSoldPeriod.Series)
+                {
+                    series.Points.Clear();
+                }
+                foreach (SellingTracker s in STH.GetAllSellings())
+                {
+                    if (cbxStatsPeriod1.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock1.Visible = true;
+                        }
+                    }
+
+                    if (cbxStatsPeriod2.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock2.Visible = true;
+                        }
+                    }
+
+                    if (cbxStatsPeriod3.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock3.Visible = true;
+                        }
+                    }
+                }
             }
-            foreach (SellingTracker s in STH.GetAllSellings())
+            catch (Exception)
             {
-                if (cbxStatsPeriod1.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
 
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock1.Visible = true;
-                    }
-                }
-
-                if (cbxStatsPeriod2.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
-
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock2.Visible = true;
-                    }
-                }
-
-                if (cbxStatsPeriod3.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
-
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock3.Visible = true;
-                    }
-                }
+                throw;
             }
+            
         }
 
         public void UpdateEmployeeChartPositions()
