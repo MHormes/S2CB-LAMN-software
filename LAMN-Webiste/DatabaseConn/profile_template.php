@@ -1,5 +1,31 @@
 <?php
 
+function GetMessage($user)
+{
+    include "../DatabaseConn/connection.php";
+
+    $select_stmt = $conn->prepare("SELECT Message, ChangeID FROM employeechange WHERE UserName=:uUsername AND Handled=:uHandled AND MessageSeen=:uMessageSeen");
+    $select_stmt->execute(array(':uUsername' => $user, ':uHandled' => 1, ':uMessageSeen' => 0));
+    $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($select_stmt->rowCount() < 1)
+    {
+        return null;
+    }
+    else
+    { 
+        $stmt = $conn->prepare("UPDATE employeechange SET MessageSeen=:uMessageSeen WHERE UserName=:uUserName AND Handled=:uHandled AND ChangeID=:uChangeID");
+        $stmt->bindValue(':uMessageSeen', 1);
+        $stmt->bindValue(':uUserName', $user);
+        $stmt->bindValue(':uHandled', 1);
+        $stmt->bindValue(':uChangeID', $row["ChangeID"]);
+        $result = $stmt->execute();
+
+        return $row;
+    }
+}
+
+
 function GetUserInfo($user)
 {
     include "../DatabaseConn/connection.php";
