@@ -1,15 +1,22 @@
 <?php
 session_start();
 include "../DatabaseConn/holidays_template.php";
+$weekNmr = 1;
 
 $user = $_SESSION['Username'];
 $empBSN = getBSN($user);
 
+if (isset($_POST['btnSelectWeek'])) {
+    $weekNmr = $_POST['weekSelecter'];
+}
+
 if (isset($_POST['btnSave'])) {
     
+    $isPresent = holidaysPresent($empBSN);
 
-    
-
+    if ($isPresent == true) {
+        removeHolidays($empBSN);
+    }
     addHolidays($_POST['weekSelecter'],'MONDAY', $empBSN, $_POST['mondayHolidays']);
     addHolidays($_POST['weekSelecter'],'TUESDAY',  $empBSN, $_POST['tuesdayHolidays']);
     addHolidays($_POST['weekSelecter'],'WEDNESDAY',  $empBSN, $_POST['wednesdayHolidays']);
@@ -20,10 +27,7 @@ if (isset($_POST['btnSave'])) {
 }
 
 if (isset($_POST['btnDelete'])) {
-   
-
-        removeHolidays($empBSN);
-    
+    removeHolidays($empBSN);
 }
 ?>
 

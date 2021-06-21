@@ -17,6 +17,29 @@ function getBSN($usernameLogin)
     }
 }
 
+function holidaysPresent($empBSN)
+{
+    include '../DatabaseConn/connection.php';
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
+        $sql = 'SELECT * FROM holidays WHERE EmpBSN = :BSN';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':BSN' => $empBSN]);
+
+        $count = $sth->rowCount();
+        $conn = null;
+        if($count > 0){
+            return true;
+        }
+        
+        return false;
+
+    }catch(PDOException $e){
+        return false;
+    }
+}
+
+
 function removeHolidays($empBSN)
 {
     include '../DatabaseConn/connection.php';
@@ -44,7 +67,7 @@ function addHolidays($week,$day, $empBSN, $holiday)
     include '../DatabaseConn/connection.php';
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
-        $sql = 'INSERT INTO holidays VALUES(:weekNumber, :BSN, :freeDay, :holiday)';
+        $sql = 'INSERT INTO holidays VALUES(:weekNumber, :BSN, :freeDay, :holiday, :approved)';
         $sth = $conn->prepare($sql);
 
         $sth->execute(
@@ -52,7 +75,8 @@ function addHolidays($week,$day, $empBSN, $holiday)
                 ':weekNumber' => $week,
                 ':BSN' => $empBSN,
                 ':freeDay' => $day,
-                ':holiday' => $holiday
+                ':holiday' => $holiday,
+                ':approved' => 'FALSE',
             )
         );
         $conn = null;
