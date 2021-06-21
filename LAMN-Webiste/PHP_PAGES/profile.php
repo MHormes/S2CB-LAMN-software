@@ -2,12 +2,10 @@
 session_start();
 
 require_once "../DatabaseConn/connection.php";
+include_once "../DatabaseConn/profile_template.php";
 
-$username = $_SESSION['Username'];
-
-$select_stmt = $conn->prepare("SELECT * FROM employee WHERE UserName=:uUsername");
-$select_stmt->execute(array(':uUsername' => $username));
-$row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+$user = $_SESSION['Username'];
+$row=GetUserInfo($user);
 
 $FirstName = $row["FirstName"];
 $SecondName = $row["SecondName"];
@@ -21,7 +19,10 @@ $Address = $row["Adress"];
 
 $relationships = array("Partner", "Father", "Mother", "Brother", "Sister", "Uncle", "Aunt", "Cousin", "Friend", "Other");
 
+
 if (isset($_REQUEST['btnRequestChanges'])) {
+
+    include "../DatabaseConn/profile_template.php";
 
     $firstName = strip_tags($_REQUEST["first_name"]);
     $secondName = strip_tags($_REQUEST["last_name"]);
@@ -29,92 +30,34 @@ if (isset($_REQUEST['btnRequestChanges'])) {
     $iceRelationship = $_POST['ICE_relationship'];
     $iceNumber = strip_tags($_REQUEST["ICE_number"]);
     $address = strip_tags($_REQUEST["address"]);
+    $user = $_SESSION['Username'];
 
-    if (empty($firstName)) {
-        $errorMsg[] = "Please enter first name";
-    }
-    if (empty($secondName)) {
-        $errorMsg[] = "Please enter last name";
-    }
-    if (empty($phoneNumber)) {
-        $errorMsg[] = "Please enter phone number";
-    }
-    if (empty($iceRelationship)) {
-        $errorMsg[] = "Please enter ICE relationship";
-    }
-    if (empty($iceNumber)) {
-        $errorMsg[] = "Please enter ICE number";
-    } else if (strlen($phoneNumber) != 10) {
-        $errorMsg[] = "Phone number must be 10 digits long";
-    } else {
-        try {
+    $result = RequestChangeOfInfo($BSN, $user, $firstName, $secondName, $phoneNumber, $iceRelationship, $iceNumber, $address);
 
-            if (!isset($errorMsg)) {
-                $select_stmt = $conn->prepare("SELECT * FROM employeechange WHERE UserName=:uUserName");
-                $select_stmt->execute(array(':uUserName' => $username));
-                $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-
-                if ($select_stmt->rowCount() < 1) {
-                    $sql = "INSERT INTO employeechange (BSN, UserName, FirstName, SecondName, PhoneNumber, ICEnumber, ICErelation, Address) VALUES (:uBSN, :uUserName, :uFirstName, :uSecondName, :uPhoneNumber, :uICEnumber, :uICErelation, :uAddress)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindValue(':uBSN', $BSN);
-                    $stmt->bindValue(':uUserName', $username);
-                    $stmt->bindValue(':uFirstName', $firstName);
-                    $stmt->bindValue(':uSecondName', $secondName);
-                    $stmt->bindValue(':uPhoneNumber', $phoneNumber);
-                    $stmt->bindValue(':uICEnumber', $iceNumber);
-                    $stmt->bindValue(':uICErelation', $iceRelationship);
-                    $stmt->bindValue(':uAddress', $address);
-
-                    $result = $stmt->execute();
-
-                    if ($result) {
-                        echo 'Change requested successfully';
-                        header("refresh:1; personalSchedules.php");
-                    }
-                } else {
-                    $stmt = $conn->prepare("UPDATE employeechange SET FirstName=:uFirstName, SecondName=:uSecondName, PhoneNumber=:uPhoneNumber, ICEnumber=:uICEnumber, ICErelation=:uICErelation, Address=:uAddress WHERE UserName=:uUserName");
-                    //$stmt->bindValue(':uBSN', $BSN);
-                    $stmt->bindValue(':uUserName', $username);
-                    $stmt->bindValue(':uFirstName', $firstName);
-                    $stmt->bindValue(':uSecondName', $secondName);
-                    $stmt->bindValue(':uPhoneNumber', $phoneNumber);
-                    $stmt->bindValue(':uICEnumber', $iceNumber);
-                    $stmt->bindValue(':uICErelation', $iceRelationship);
-                    $stmt->bindValue(':uAddress', $address);
-
-                    $result = $stmt->execute();
-
-                    if ($result) {
-                        echo 'Change requested successfully';
-                        header("refresh:1; personalSchedules.php");
-                    }
-                }
+    if ($result == null)
+    {
+        echo 'Seccusfully changed';
+        header("refresh:0; personalSchedules.php");    }
+    else{
+        if(isset($result)){
+            foreach($result as $error)
+            {
+            ?>
+                <div class="alert alert-danger">
+                <?php echo "<script>alert('$error');</script>"; ?>
+            </div>
+            <?php
             }
-        } catch (PDOException $e) {
-            $e->getMessage();
         }
     }
 }
 
+
 if (isset($_REQUEST['btnChangePassword'])) {
     header("location: changePassword.php");
 }
-
-
 ?>
 
-<?php
-if (isset($errorMsg)) {
-    foreach ($errorMsg as $error) {
-?>
-        <div class="alert alert-danger">
-            <?php echo "<script>alert('$error');</script>"; ?>
-        </div>
-<?php
-    }
-}
-?>
 
 
 
@@ -159,9 +102,9 @@ if (isset($errorMsg)) {
                 foreach ($relationships as $value) {
                     if ($value != $IceRelationship) {
                 ?><option value=<?php echo $value ?>><?php echo $value ?></option><?php
-                                                                                    }
-                                                                                }
-                                                                                        ?>
+                    }
+                }
+                ?>
             </select>
 
             <label>ICE number</label>

@@ -1,2 +1,2 @@
 <option value=""></option>
-<option value="Holiday">Request Holiday</option>
+<option value="Requested Holiday">Request Holiday</option>

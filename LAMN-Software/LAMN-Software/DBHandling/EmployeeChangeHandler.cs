@@ -123,6 +123,8 @@ namespace LAMN_Software.DBHandling
         }
 
 
+  
+
         public List<Employee> GetAllChangedEmployees()
         {
             List<Employee> emp = new List<Employee>();

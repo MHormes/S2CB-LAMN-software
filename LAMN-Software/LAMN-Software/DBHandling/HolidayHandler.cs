@@ -28,10 +28,9 @@ namespace LAMN_Software
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        Day day = Day.MONDAY;
+                        Day day = Day.SUNDAY;
 
-                        string DayReturn = dr[3].ToString();
-                        
+                        string DayReturn = dr[2].ToString();
 
                         if (DayReturn == "MONDAY")
                             day = Day.MONDAY;
@@ -39,7 +38,7 @@ namespace LAMN_Software
                             day = Day.TUESDAY;
                         else if (DayReturn == "WEDNESDAY")
                             day = Day.WEDNESDAY;
-                        else if (DayReturn == "THURDAY")
+                        else if (DayReturn == "THURSDAY")
                             day = Day.THURDAY;
                         else if (DayReturn == "FRIDAY")
                             day = Day.FRIDAY;
@@ -48,7 +47,7 @@ namespace LAMN_Software
                         else if (DayReturn == "SUNDAY")
                             day = Day.SUNDAY;
 
-                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), (Day)dr[2], (bool)dr[3]));
+                        allHolidayRequests.Add(new Holiday(dr[0].ToString(), dr[1].ToString(), day, dr[3].ToString(), dr[4].ToString()));
                     }
                 }
                 return null;
@@ -59,6 +58,53 @@ namespace LAMN_Software
             }
         }
 
+        public Exception ApproveHolidayRequest(string weeknmr, string empBSN)
+        {
+              try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = 'true' WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public Exception RejectHolidayRequest(string weeknmr, string empBSN)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = 'false' WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@weeknmr", weeknmr);
+                    cmd.Parameters.AddWithValue("@empBSN", empBSN);
+                    cmd.Prepare();
+
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
 
         public List<Holiday> GetAllHolidayRequests()
         {

@@ -106,6 +106,7 @@ namespace LAMN_Software
             return null;
         }
 
+        
         public List<Employee> GetManagers()
         {
             List<Employee> managers = new List<Employee>();
@@ -122,6 +123,19 @@ namespace LAMN_Software
         public List<Employee> GetAllEmployees()
         {
            return this.allEmployees;
+        }
+
+        public List<Employee> GetEmployeesWIthRole(JobPosition position)
+        {
+            List<Employee> empToReturn = new List<Employee>();
+            foreach(Employee emp in allEmployees)
+            {
+                if(emp.Position == position)
+                {
+                    empToReturn.Add(emp);
+                }
+            }
+            return empToReturn;
         }
 
         //method for adding new employee. AFTER CALLING THIS METHOD CALL GETALLSTOCKFROMDB!!!
@@ -316,30 +330,6 @@ namespace LAMN_Software
                     cmd.Parameters.AddWithValue("@bsn", bsn);
 
                     cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return ex;
-            }
-        }
-
-
-        //method to delete an employee product from the DB
-        public Exception DeleteProduct(Employee employee)
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-                    string sql = "DELETE FROM employee WHERE BSN = @bsn;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    cmd.Parameters.AddWithValue("@bsn", employee.Bsn);
-
                     cmd.ExecuteNonQuery();
                 }
                 return null;

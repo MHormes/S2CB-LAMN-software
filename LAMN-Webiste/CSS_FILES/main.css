@@ -39,6 +39,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
   display: inline;
+  text-align: center;
 }
 
 section {

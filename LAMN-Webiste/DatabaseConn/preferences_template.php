@@ -36,6 +36,23 @@ function getShifts($empBSN)
     }
 }
 
+
+function GetPreferences($empBSN){
+    include '../DatabaseConn/connection.php';
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
+        $sql = 'SELECT * FROM employeepreferences WHERE BSN = :BSN';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':BSN' => $empBSN]);
+        
+        $preferences = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $preferences;
+        $conn = null;
+    }catch(PDOException $e){
+        return false;
+    }
+}
+
 function preferencesPresent($empBSN)
 {
     include '../DatabaseConn/connection.php';
