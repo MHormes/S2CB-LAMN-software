@@ -28,10 +28,9 @@ namespace LAMN_Software
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        Day day = Day.MONDAY;
+                        Day day = Day.SUNDAY;
 
-                        string DayReturn = dr[3].ToString();
-                        
+                        string DayReturn = dr[2].ToString();
 
                         if (DayReturn == "MONDAY")
                             day = Day.MONDAY;
@@ -39,7 +38,7 @@ namespace LAMN_Software
                             day = Day.TUESDAY;
                         else if (DayReturn == "WEDNESDAY")
                             day = Day.WEDNESDAY;
-                        else if (DayReturn == "THURDAY")
+                        else if (DayReturn == "THURSDAY")
                             day = Day.THURDAY;
                         else if (DayReturn == "FRIDAY")
                             day = Day.FRIDAY;
@@ -65,7 +64,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = true WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = 'true' WHERE BSN = @empBSN AND weekNumber = @weeknmr";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
@@ -89,7 +88,7 @@ namespace LAMN_Software
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = false WHERE BSN = @empBSN AND weekNumber = @weeknmr";
+                    string sql = "UPDATE holidays SET Holiday = 'Holiday', Approved = 'false' WHERE BSN = @empBSN AND weekNumber = @weeknmr";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 

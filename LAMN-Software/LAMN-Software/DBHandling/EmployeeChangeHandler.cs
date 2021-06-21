@@ -123,27 +123,7 @@ namespace LAMN_Software.DBHandling
         }
 
 
-        public Exception DeleteEmployee(EmployeeChange employeeChange)
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-                    string sql = "DELETE FROM employeechange WHERE BSN = @bsn;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    cmd.Parameters.AddWithValue("@bsn", employeeChange.Bsn);
-
-                    cmd.ExecuteNonQuery();
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return ex;
-            }
-        }
+  
 
         public List<Employee> GetAllChangedEmployees()
         {

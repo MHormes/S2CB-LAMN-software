@@ -2242,6 +2242,7 @@ namespace LAMN_Software
 
         private void lbHolidayRequests_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvHolidaySchedule.Rows.Clear();
             string selectedRequest = (string)lbHolidayRequests.SelectedItem;
             string selectedEmpName = selectedRequest.Substring(0, selectedRequest.IndexOf(" For week:"));
             Employee employeeToHandle = null;
@@ -2253,32 +2254,30 @@ namespace LAMN_Software
                 }
             }
 
-            for (int i = 0; i < EH.GetAllEmployees().Count; i++)
+            for (int i = 0; i < EH.GetEmployeesWIthRole(employeeToHandle.Position).Count; i++)
             {
-                if (EH.GetAllEmployees()[i].Position == employeeToHandle.Position && EH.GetAllEmployees()[i].Bsn != employeeToHandle.Bsn)
+                dgvHolidaySchedule.Rows.Add(EH.GetEmployeesWIthRole(employeeToHandle.Position)[i]);
+                foreach (Holiday h in HOH.GetAllHolidayRequests())
                 {
-                    dgvHolidaySchedule.Rows.Add(EH.GetAllEmployees()[i]);
-                    foreach (Holiday h in HOH.GetAllHolidayRequests())
+                    if (h.EmpBSN == EH.GetEmployeesWIthRole(employeeToHandle.Position)[i].Bsn && h.WeekNmr == selectedRequest.Substring(selectedRequest.IndexOf(":") + 1))
                     {
-                        if (h.EmpBSN == EH.GetAllEmployees()[i].Bsn && h.WeekNmr == selectedRequest.Substring(selectedRequest.IndexOf(":") +1) && h.Approved != false)
-                        {
-                            if (h.FreeDay == Day.MONDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[1].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.TUESDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[2].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.WEDNESDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[3].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.THURDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[4].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.FRIDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[5].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.SATURDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[6].Value = h.HolidayStatus;
-                            else if (h.FreeDay == Day.SUNDAY)
-                                dgvHolidaySchedule.Rows[i].Cells[7].Value = h.HolidayStatus;
-                        }
+                        if (h.FreeDay == Day.MONDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[1].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.TUESDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[2].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.WEDNESDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[3].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.THURDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[4].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.FRIDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[5].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.SATURDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[6].Value = h.HolidayStatus;
+                        else if (h.FreeDay == Day.SUNDAY)
+                            dgvHolidaySchedule.Rows[i].Cells[7].Value = h.HolidayStatus;
                     }
                 }
+
             }
 
 
@@ -2296,7 +2295,7 @@ namespace LAMN_Software
                     employeeToHandle = emp;
                 }
             }
-            var approve = HOH.ApproveHolidayRequest(selectedRequest.Substring(selectedRequest.IndexOf(":") +1), employeeToHandle.Bsn);
+            var approve = HOH.ApproveHolidayRequest(selectedRequest.Substring(selectedRequest.IndexOf(":") + 1), employeeToHandle.Bsn);
             if (approve == null)
             {
                 FillHolidayRequestListBox();
@@ -2350,7 +2349,7 @@ namespace LAMN_Software
 
         private void btnDeclineInfoChanges_Click(object sender, EventArgs e)
         {
-            if(lbChangeInfo.SelectedIndex == -1)
+            if (lbChangeInfo.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select an employee");
             }
