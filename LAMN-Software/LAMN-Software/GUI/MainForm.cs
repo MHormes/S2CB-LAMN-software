@@ -26,6 +26,7 @@ namespace LAMN_Software
         EmployeeChangeHandler ECH;
         SellingTrackerHandler STH;
         PreferenceHandler PH;
+        HolidayHandler HOH;
 
         List<Product> itemsToBePurchased = new List<Product>();
 
@@ -43,13 +44,18 @@ namespace LAMN_Software
             ECH = new EmployeeChangeHandler();
             STH = new SellingTrackerHandler();
             PH = new PreferenceHandler();
+            HOH = new HolidayHandler();
 
             FillStockViewActive();
             FillScheduleGridViewEmp();
             FillScheduleGridViewCreate();
             FillScheduleMinimumGridView();
             FillActiveEmployees();
+            FillChangeEmployeeListBox();
+            FillHolidayRequestListBox();
 
+
+            UpdateEmployeeChartNationalities();
             UpdateEmployeeChartPositions();
             UpdateEmployeeChartGender();
             UpdateEmployeeChartContractType();
@@ -81,7 +87,7 @@ namespace LAMN_Software
             dgvEmployees.Font = new Font("Arial", 8);
             dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
-            FillChangeEmployeeListBox();
+            
         }
 
         //Method to show correct buttons based on the user permission
@@ -550,6 +556,7 @@ namespace LAMN_Software
                     }
                 }
                 UpdateEmployeeChartPositions();
+                UpdateEmployeeChartNationalities();
             }
             else
             {
@@ -2207,6 +2214,28 @@ namespace LAMN_Software
             tcNavigator.SelectedTab = tpRequestChangeInfo;
         }
 
+        private void btnHolidayRequest_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpRequestChangeInfo;
+        }
+
+        public void FillHolidayRequestListBox()
+        {
+            lbHolidayRequests.Items.Clear();
+
+            if(HOH.GetAllHolidaysFromDB() == null)
+            {
+                foreach(Holiday h  in HOH.GetAllHolidayRequests())
+                {
+                    lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN));
+                }
+            }
+            else
+            {
+                MessageBox.Show(HOH.GetAllHolidaysFromDB().Message);
+            }
+        }
+
         public void FillChangeEmployeeListBox()
         {
             lbChangeInfo.Items.Clear();
@@ -3286,5 +3315,39 @@ namespace LAMN_Software
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnToContractStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmpContract;
+        }
+
+        private void btnToPersStats_Click(object sender, EventArgs e)
+        {
+            tcNavigator.SelectedTab = tpStatsEmployee;
+        }
+
+        public void UpdateEmployeeChartNationalities()
+        {
+            var nationalities = new Dictionary<string, int>();
+
+            foreach (var series in chartNationalities.Series)
+            {
+                series.Points.Clear();
+            }
+            foreach (Employee e in EH.GetAllEmployees())
+            {
+                if (nationalities.ContainsKey(e.Nationality))
+                    nationalities[e.Nationality]++;
+                else
+                    nationalities.Add(e.Nationality, 1);
+            }
+
+            foreach (KeyValuePair<string, int> nat in nationalities)
+            {
+                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value) ;
+            }
+        }
+
+       
     }
 }
