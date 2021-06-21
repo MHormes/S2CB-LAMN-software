@@ -29,6 +29,8 @@ if (isset($_POST['btnSave'])) {
     addPreference('SATURDAY',  $empBSN, $_POST['saturdayShifts2']);
     addPreference('SUNDAY',  $empBSN, $_POST['sundayShifts1']);
     addPreference('SUNDAY',  $empBSN, $_POST['sundayShifts2']);
+
+    $preferences = GetPreferences($empBSN);
 }
 
 if (isset($_POST['btnDelete'])) {
@@ -37,6 +39,7 @@ if (isset($_POST['btnDelete'])) {
     if ($isPresent == true) {
         removePreferences($empBSN);
     }
+    $preferences = GetPreferences($empBSN);
 }
 ?>
 
@@ -91,27 +94,29 @@ if (isset($_POST['btnDelete'])) {
                             $Saturday = "";
                             $Sunday = "";
 
+                            var_dump($preferences);
+                            
                             foreach ($preferences as $value) {
-                                if ($value->Day == "MONDAY") {
-                                    $Monday = $value->TimeSlot;
+                                if ($value->shiftDay == "MONDAY") {
+                                    $Monday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "TUESDAY") {
-                                    $Tuesday = $value->TimeSlot;
+                                if ($value->shiftDay == "TUESDAY") {
+                                    $Tuesday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "WEDNESDAY") {
-                                    $Wednesday = $value->TimeSlot;
+                                if ($value->shiftDay == "WEDNESDAY") {
+                                    $Wednesday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "THURDAY") {
-                                    $Thursday = $value->TimeSlot;
+                                if ($value->shiftDay == "THURDAY") {
+                                    $Thursday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "FRIDAY") {
-                                    $Friday = $value->TimeSlot;
+                                if ($value->shiftDay == "FRIDAY") {
+                                    $Friday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "SATURDAY") {
-                                    $Saturday = $value->TimeSlot;
+                                if ($value->shiftDay == "SATURDAY") {
+                                    $Saturday = $value->shiftTimeSlot;
                                 }
-                                if ($value->Day == "SUNDAY") {
-                                    $Sunday = $value->TimeSlot;
+                                if ($value->shiftDay == "SUNDAY") {
+                                    $Sunday = $value->shiftTimeSlot;
                                 }
                             }
                         ?>

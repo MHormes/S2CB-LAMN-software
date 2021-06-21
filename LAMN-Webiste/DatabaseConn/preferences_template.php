@@ -43,12 +43,8 @@ function GetPreferences($empBSN){
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi456806",$username, $password);
         $sql = 'SELECT * FROM employeepreferences WHERE BSN = :BSN';
         $sth = $conn->prepare($sql);
-
-        $sth->execute(
-            array(
-                ':BSN' => $empBSN
-            )
-        );
+        $sth->execute([':BSN' => $empBSN]);
+        
         $preferences = $sth->fetchAll(PDO::FETCH_OBJ);
         return $preferences;
         $conn = null;
