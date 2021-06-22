@@ -31,6 +31,10 @@ if (isset($_POST['btnSelectWeek'])) {
 
     <form method="post" action="#">
         </br>
+        </br>
+        </br>
+        </br>
+
         <p>Choose the week you want to see and click 'Show'</p>
         </br>
         <input class="weekCounter" type="number" name="weekSelecter" min="0" max="52" step="1" value="<?php echo $weekNmr ?>">

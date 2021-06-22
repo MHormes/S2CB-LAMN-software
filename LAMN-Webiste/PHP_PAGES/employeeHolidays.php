@@ -60,7 +60,6 @@ function CallAddHolidays($empBSN)
 
         <div class="row">
             <form method="post" action="#" class="contact-form">
-                </br>
                 <p>Choose the week you want to plan your Holiday and click 'Show' to see your current holiday status</p>
                 </br>
                 <input class="weekCounter" type="number" name="weekSelecter" min="0" max="52" step="1" value="<?php echo $weekNmr ?>">
