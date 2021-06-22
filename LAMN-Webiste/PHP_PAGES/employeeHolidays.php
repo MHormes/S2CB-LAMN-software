@@ -73,7 +73,6 @@ function CallAddHolidays($empBSN)
                 <div class="schedules_table">
                     <table>
                         <tr>
-                            <th></th>
                             <th>Monday</th>
                             <th>Tuesday</th>
                             <th>Wednesday</th>
@@ -86,7 +85,6 @@ function CallAddHolidays($empBSN)
                         <?php
                         if (isset($_SESSION['startedHoliday'])) {
 
-                            $NameUser = "";
                             $Monday = "";
                             $Tuesday = "";
                             $Wednesday = "";
@@ -127,7 +125,6 @@ function CallAddHolidays($empBSN)
                             }
                         ?>
                             <tr>
-                                <td><?php echo $NameUser ?></td>
                                 <td><?php echo $Monday; ?></td>
                                 <td><?php echo $Tuesday; ?></td>
                                 <td><?php echo $Wednesday; ?></td>

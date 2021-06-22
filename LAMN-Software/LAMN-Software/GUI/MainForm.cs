@@ -1620,71 +1620,80 @@ namespace LAMN_Software
 
         public void UpdateStockPeriodGraph()
         {
-            if (cbxStatsPeriod1.Text == "Stock 1" && cbxStatsPeriod2.Text == "Stock 2" && cbxStatsPeriod3.Text == "Stock 3")
-                lbStatsNotAvailable1.Visible = true;
-            else
-                lbStatsNotAvailable1.Visible = false;
-
-            foreach (var series in chartStockSoldPeriod.Series)
+            try
             {
-                series.Points.Clear();
+                if (cbxStatsPeriod1.Text == "Stock 1" && cbxStatsPeriod2.Text == "Stock 2" && cbxStatsPeriod3.Text == "Stock 3")
+                    lbStatsNotAvailable1.Visible = true;
+                else
+                    lbStatsNotAvailable1.Visible = false;
+
+                foreach (var series in chartStockSoldPeriod.Series)
+                {
+                    series.Points.Clear();
+                }
+                foreach (SellingTracker s in STH.GetAllSellings())
+                {
+                    if (cbxStatsPeriod1.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock1.Visible = true;
+                        }
+                    }
+
+                    if (cbxStatsPeriod2.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock2.Visible = true;
+                        }
+                    }
+
+                    if (cbxStatsPeriod3.SelectedIndex > -1)
+                    {
+                        if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
+                        {
+                            int sold = 0;
+
+                            foreach (SellingTracker sell in STH.GetSellings(s.Name))
+                            {
+                                if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
+                                    sold += sell.QuantitySold;
+                            }
+
+                            this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
+                            this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
+                            btnDeselectStatsPeriodStock3.Visible = true;
+                        }
+                    }
+                }
             }
-            foreach (SellingTracker s in STH.GetAllSellings())
+            catch (Exception)
             {
-                if (cbxStatsPeriod1.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
 
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock1.Visible = true;
-                    }
-                }
-
-                if (cbxStatsPeriod2.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
-
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock2.Visible = true;
-                    }
-                }
-
-                if (cbxStatsPeriod3.SelectedIndex > -1)
-                {
-                    if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
-                    {
-                        int sold = 0;
-
-                        foreach (SellingTracker sell in STH.GetSellings(s.Name))
-                        {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value) <= 0))
-                                sold += sell.QuantitySold;
-                        }
-
-                        this.chartStockSoldPeriod.Series["Store stock sold in the period"].Points.AddXY(s.Name, sold.ToString());
-                        this.chartStockSoldPeriod.Series["Current stock in store"].Points.AddXY(s.Name, SH.GetProductByName(s.Name).QuantityS);
-                        btnDeselectStatsPeriodStock3.Visible = true;
-                    }
-                }
+                throw;
             }
+            
         }
 
         public void UpdateEmployeeChartPositions()
@@ -2595,7 +2604,6 @@ namespace LAMN_Software
             try
             {
                 int index = dgvSales_Reciept.CurrentCell.RowIndex;
-                MessageBox.Show(index.ToString());
                 pnlSales_QuantityControl.Visible = true;
                 if (dgvSales_Reciept.Rows[index].Cells[0].Value.ToString() == "1")
                 {
@@ -2893,10 +2901,10 @@ namespace LAMN_Software
                 //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
                 if ((dgvSales_Reciept.Rows[i].Cells[1].Value.ToString()).Equals(p.Name))
                 {
-                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS)
+                    if (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) > p.QuantityS || (Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value) + Convert.ToInt32(tbxSales_ManualQuantity.Text)) > p.QuantityS)
                     {
                         isEnoughStock = false;
-                        MessageBox.Show("Not enough stock", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Not enough stock \nYou're trying to add {tbxSales_ManualQuantity.Text} item(s) when only {p.QuantityS-Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value)} item(s) are available", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -3355,53 +3363,59 @@ namespace LAMN_Software
         {
             try
             {
-                for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to make this sale?", "Sale Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.None);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
-                    int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
 
 
-                    //calculations of quantity and exception returned if it occurs
-                    var sellProduct = SH.SellProduct(p, quantity.ToString());
-                    DateTime dateTime = DateTime.Now;
-                    var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
-
-                    if (sellProduct == null && sellTracker == null)
+                    for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
                     {
-                        FillStockViewActive();
-                        cbxActiveInactiveEmployees.SelectedIndex = 0;
+                        Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                        int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
 
-                        //if the quantity of the item is below then show the messagebox
-                        if (p.QuantityS < p.MinimumStockRequired)
+
+                        //calculations of quantity and exception returned if it occurs
+                        var sellProduct = SH.SellProduct(p, quantity.ToString());
+                        DateTime dateTime = DateTime.Now;
+                        var sellTracker = STH.AddSelling(p.Id.ToString(), p.Ean, p.Name, dateTime.ToString(), quantity.ToString());
+
+                        if (sellProduct == null && sellTracker == null)
                         {
-                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
-                            string title = "Quantity warning";
-                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-                            if (result == DialogResult.Yes)
+                            FillStockViewActive();
+                            cbxActiveInactiveEmployees.SelectedIndex = 0;
+
+                            //if the quantity of the item is below then show the messagebox
+                            if (p.QuantityS < p.MinimumStockRequired)
                             {
-                                tcNavigator.SelectedTab = tpNewOrder;
+                                string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
+                                string title = "Quantity warning";
+                                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                                if (result == DialogResult.Yes)
+                                {
+                                    tcNavigator.SelectedTab = tpNewOrder;
 
-                                //textboxes filled with data
-                                //tbNewOrderID.Text = $"{p.Id.ToString()}";
-                                //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
-                                //tbNewOrderName.Text = $"{p.Name}";
+                                    //textboxes filled with data
+                                    //tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                    //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                    //tbNewOrderName.Text = $"{p.Name}";
 
-                                //fields disabled
-                                //tbNewOrderID.Enabled = false;
-                                //tbNewOrderEAN.Enabled = false;
-                                //tbNewOrderName.Enabled = false;
+                                    //fields disabled
+                                    //tbNewOrderID.Enabled = false;
+                                    //tbNewOrderEAN.Enabled = false;
+                                    //tbNewOrderName.Enabled = false;
+                                }
+                            }
+                            else
+                            {
+                                // tcNavigator.SelectedTab = tpStock;
                             }
                         }
-                        else
-                        {
-                            // tcNavigator.SelectedTab = tpStock;
-                        }
                     }
+                    MessageBox.Show("The sale has successfully been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvSales_Reciept.Rows.Clear();
+                    return;
                 }
-                MessageBox.Show("Sell correctly done.");
-                return;
-
             }
             catch (Exception ex)
             {
@@ -3440,7 +3454,5 @@ namespace LAMN_Software
                 this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value);
             }
         }
-
-
     }
 }
