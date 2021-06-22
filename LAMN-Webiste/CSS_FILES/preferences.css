@@ -4,6 +4,11 @@
   display: inline;
 }
 
+.row-sick{
+  max-width: 200px;
+  margin: 0 auto;
+}
+
 section {
   padding: 80px 0;
 }
@@ -14,6 +19,7 @@ section {
   margin: 0 auto;
   color: white;
 }
+
 
 /* style contract form - text box */
 input[type="message"],
@@ -55,4 +61,25 @@ h2 {
 
 a {
   text-decoration: none;
+}
+
+button{
+  background-color: white;
+  color: #141414;
+  padding: 12px 20px;
+  margin: 45px 8px 30px 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+  width: 40%;
+
+  text-decoration: none;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  /* width: fit-content; */
+  width: 27%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }

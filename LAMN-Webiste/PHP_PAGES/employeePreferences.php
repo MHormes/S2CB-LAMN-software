@@ -53,20 +53,16 @@ if (isset($_POST['btnDelete'])) {
     <title>Media Bazaar Employee Portal</title>
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/schedule.css">
-    
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/preferences.css">
 
 </head>
 
 <body>
-    <div class="header">Personal Schedules</div>
+    <div class="header">Shift preferences</div>
 
     <?php include '../navigationBar.php'; ?>
 
     <section class="employeePreferences-form">
-        <div class="row">
-            <h2>Shift preferences</h2>
-        </div>
 
         <p>Your currently set preferences will be displayed below</p>
         <div class="schedules_table">

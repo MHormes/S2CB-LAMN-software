@@ -45,21 +45,18 @@ function CallAddHolidays($empBSN)
     <meta name="description" content="MediaBazaar Website">
     <title>Media Bazaar Employee Portal</title>
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/navigation.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/schedule.css">
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/holidays.css">
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/preferences.css">
 
 </head>
 
 <body>
-    <div class="header">Personal Schedules</div>
+    <div class="header">Holidays</div>
 
     <?php include '../navigationBar.php'; ?>
 
-    <section class="employeeHolidays-form">
-        <div class="row">
-            <h2>Holidays</h2>
-        </div>
+    <section class="employeePreferences-form">
+       
 
         <div class="row">
             <form method="post" action="#" class="contact-form">
@@ -191,10 +188,10 @@ function CallAddHolidays($empBSN)
 
                 </div>
                 <div class="row">
-                    <input type="submit" value="Add chosen holiday to holiday status schedule" name="btnSave">
+                    <input class="button" type="submit" value="Add chosen holiday to holiday status schedule" name="btnSave">
                 </div>
                 <div class="row">
-                    <input type="submit" value="Overwrite current status with chosen holiday" name="btnOverWrite">
+                    <input class="button" type="submit" value="Overwrite current status with chosen holiday" name="btnOverWrite">
                 </div>
             </form>
         </div>

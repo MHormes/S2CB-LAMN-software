@@ -25,25 +25,22 @@ if (isset($_POST['btnRemovesickday'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MediaBazaar Website">
     <title>Media Bazaar Employee Portal</title>
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/login_old.css">
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/sickday.css">
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
+    <link rel="stylesheet" type="text/css" href="../CSS_FILES/preferences.css">
 
 </head>
 
 <body>
-    <div class="header">Personal Schedules</div>
+    <div class="header">Sick Days</div>
 
     <?php include '../navigationBar.php'; ?>
 
     <section class="employeeHolidays-form">
-        <div class="row">
-            <h2>Sick Days</h2>
-        </div>
 
         <div class="row">
             <form method="post" action="#" class="contact-form">
             </br> 
-                    <div class="row">
+                    <div class="row-sick">
                        
                         <input type="text" name="day" id="day" placeholder="Enter day" >
                     </div><br>

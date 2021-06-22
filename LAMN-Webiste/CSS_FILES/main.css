@@ -128,8 +128,8 @@ a {
 
   .header {
     grid-area: header;
-    background-color: #2f4858;
-    color: #86bbd8;
+    background-color: #ffa54a;
+    color: white;
     padding: 30px;
     font-size: 4vw;
   }
