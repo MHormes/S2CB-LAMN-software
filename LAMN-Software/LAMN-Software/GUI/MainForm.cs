@@ -28,8 +28,8 @@ namespace LAMN_Software
         PreferenceHandler PH;
         HolidayHandler HOH;
 
-        List<Product> itemsToBePurchased = new List<Product>();
-
+        bool AutomaticSalesRestock = true;
+            
         public ProductForm(JobPosition position)
         {
             InitializeComponent();
@@ -2494,6 +2494,7 @@ namespace LAMN_Software
             bool isEnoughStock = true;
 
 
+            
             if (tbxSales_Barcode.TextLength == 13)
             {
                 foreach (Product p in SH.GetAllProducts())
@@ -2502,6 +2503,7 @@ namespace LAMN_Software
                     {
                         if (p.Ean == tbxSales_Barcode.Text)
                         {
+                            //MessageBox.Show(tbxSales_Barcode.Text + " Match!");
                             for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
                             {
                                 //MessageBox.Show(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString() + "\n" + p.Name);
@@ -2535,6 +2537,8 @@ namespace LAMN_Software
                             }
                             DisplaySalesShowcase(p.Name, p.Ean, p.SellPrice);
                             tbxSales_Barcode.Clear();
+                            tbxSales_Defocus.Focus();
+                            tbxSales_Barcode.Focus();
                             CalculateSalesTotal();
                             return;
                         }
@@ -2545,47 +2549,6 @@ namespace LAMN_Software
             }
         }
 
-
-        public void FillSalesDGV()
-        {
-            dgvSales_Reciept.Rows.Clear();
-            int index = 0;
-            //for (int i = 0; i < itemsToBePurchased.Count; i++)
-            //{
-            //    MessageBox.Show(itemsToBePurchased[i].Name + itemsToBePurchased[i].SellPrice);
-            //    dgvSales_Reciept.Rows.Add(i);
-            //    dgvSales_Reciept.Rows[i].Cells[0].Value = 1;
-            //    dgvSales_Reciept.Rows[i].Cells[1].Value = itemsToBePurchased[i].Name;
-            //    dgvSales_Reciept.Rows[i].Cells[2].Value = itemsToBePurchased[i].SellPrice;
-            //}
-
-
-            //if (itemsToBePurchased.Count > 1)
-            //{
-            //    if (itemsToBePurchased.Count > 0)
-            //    {
-            //        var item = itemsToBePurchased[itemsToBePurchased.Count - 1];
-            //    }
-            //    foreach (Product p in itemsToBePurchased)
-            //    {
-            //        if(p.Ean == itemsToBePurchased[itemsToBePurchased.Count].Ean)
-            //        {
-
-            //        }
-            //    }
-            //}
-
-            foreach (Product p in itemsToBePurchased)
-            {
-                //MessageBox.Show(p.Name + p.SellPrice);
-                dgvSales_Reciept.Rows.Add(p);
-                dgvSales_Reciept.Rows[index].Cells[0].Value = 1;
-                dgvSales_Reciept.Rows[index].Cells[1].Value = p.Name;
-                dgvSales_Reciept.Rows[index].Cells[2].Value = Convert.ToDouble(dgvSales_Reciept.Rows[index].Cells[0].Value) * p.SellPrice;
-                index++;
-            }
-
-        }
 
         public void CalculateSalesTotal()
         {
@@ -3337,6 +3300,8 @@ namespace LAMN_Software
             {
                 lblBarcodeActiveIcon2.Font = new Font("Arial", 18, FontStyle.Regular);
                 lblBarcodeActiveIcon.Font = new Font("Arial", 20, FontStyle.Bold);
+                lblBarcodeActiveIcon.Cursor = Cursors.Default;
+                lblBarcodeActiveIcon2.Cursor = Cursors.Hand;
                 gpnlSales_BarcodeIndicator2.Visible = false;
                 gpnlSales_BarcodeIndicator.Visible = true;
             }
@@ -3344,8 +3309,29 @@ namespace LAMN_Software
             {
                 lblBarcodeActiveIcon2.Font = new Font("Arial", 20, FontStyle.Bold);
                 lblBarcodeActiveIcon.Font = new Font("Arial", 18, FontStyle.Regular);
+                lblBarcodeActiveIcon2.Cursor = Cursors.Default;
+                lblBarcodeActiveIcon.Cursor = Cursors.Hand;
                 gpnlSales_BarcodeIndicator2.Visible = true;
                 gpnlSales_BarcodeIndicator.Visible = false;
+            }
+
+            if (AutomaticSalesRestock)
+            {
+                lblAutomaticRestockOFF.Font = new Font("Arial", 18, FontStyle.Regular);
+                lblAutomaticRestockON.Font = new Font("Arial", 20, FontStyle.Bold);
+                lblAutomaticRestockON.Cursor = Cursors.Default;
+                lblAutomaticRestockOFF.Cursor = Cursors.Hand;
+                gpnlSales_AutoRestockIndicator2.Visible = false;
+                gpnlSales_AutoRestockIndicator.Visible = true;
+            }
+            else
+            {
+                lblAutomaticRestockON.Font = new Font("Arial", 18, FontStyle.Regular);
+                lblAutomaticRestockOFF.Font = new Font("Arial", 20, FontStyle.Bold);
+                lblAutomaticRestockOFF.Cursor = Cursors.Default;
+                lblAutomaticRestockON.Cursor = Cursors.Hand;
+                gpnlSales_AutoRestockIndicator2.Visible = true;
+                gpnlSales_AutoRestockIndicator.Visible = false;
             }
         }
 
@@ -3356,7 +3342,7 @@ namespace LAMN_Software
 
         private void lblBarcodeActiveIcon2_Click(object sender, EventArgs e)
         {
-            tbxSales_Barcode.Focus();
+            tbxSales_Defocus.Focus();
         }
 
         private void btnSales_MakeSale_Click(object sender, EventArgs e)
@@ -3453,6 +3439,16 @@ namespace LAMN_Software
             {
                 this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value);
             }
+        }
+
+        private void lblAutomaticRestockON_Click(object sender, EventArgs e)
+        {
+            AutomaticSalesRestock = true;
+        }
+
+        private void lblAutomaticRestockOFF_Click(object sender, EventArgs e)
+        {
+            AutomaticSalesRestock = false;
         }
     }
 }

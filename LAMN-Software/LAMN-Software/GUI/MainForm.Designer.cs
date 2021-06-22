@@ -43,10 +43,10 @@ namespace LAMN_Software
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -376,13 +376,20 @@ namespace LAMN_Software
             this.btnHolidayRequestApprove = new System.Windows.Forms.Button();
             this.lbHolidayRequests = new System.Windows.Forms.ListBox();
             this.tpSales = new System.Windows.Forms.TabPage();
+            this.gpnlSales_AutoRestockIndicator2 = new LAMN_Software.GradientPanel();
             this.gradientPanel6 = new LAMN_Software.GradientPanel();
             this.lblSales_ItemShowcaseName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
             this.lblSales_ItemShowcaseEAN = new System.Windows.Forms.Label();
             this.lblSales_ItemShowcaseQuantityPrice = new System.Windows.Forms.Label();
+            this.gpnlSales_AutoRestockIndicator = new LAMN_Software.GradientPanel();
             this.btnSales_MakeSale = new System.Windows.Forms.Button();
+            this.gradientPanel4 = new LAMN_Software.GradientPanel();
+            this.lblAutomaticRestockOFF = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.lblAutomaticRestockON = new System.Windows.Forms.Label();
             this.pnlSales_QuantityControl = new System.Windows.Forms.Panel();
             this.btnSales_Remove1Quantity = new System.Windows.Forms.Button();
             this.btnSales_RemoveAllQuantity = new System.Windows.Forms.Button();
@@ -524,6 +531,7 @@ namespace LAMN_Software
             this.tpSales.SuspendLayout();
             this.gradientPanel6.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
             this.pnlSales_QuantityControl.SuspendLayout();
             this.pnlSales_Search2.SuspendLayout();
             this.pnlSales_Search.SuspendLayout();
@@ -4464,8 +4472,11 @@ namespace LAMN_Software
             // 
             // tpSales
             // 
+            this.tpSales.Controls.Add(this.gpnlSales_AutoRestockIndicator2);
             this.tpSales.Controls.Add(this.gradientPanel6);
+            this.tpSales.Controls.Add(this.gpnlSales_AutoRestockIndicator);
             this.tpSales.Controls.Add(this.btnSales_MakeSale);
+            this.tpSales.Controls.Add(this.gradientPanel4);
             this.tpSales.Controls.Add(this.pnlSales_QuantityControl);
             this.tpSales.Controls.Add(this.tbxSales_Barcode);
             this.tpSales.Controls.Add(this.pnlSales_Search2);
@@ -4486,6 +4497,17 @@ namespace LAMN_Software
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
             this.tpSales.Click += new System.EventHandler(this.tpSales_Click);
+            // 
+            // gpnlSales_AutoRestockIndicator2
+            // 
+            this.gpnlSales_AutoRestockIndicator2.ColorBottom = System.Drawing.Color.Empty;
+            this.gpnlSales_AutoRestockIndicator2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gpnlSales_AutoRestockIndicator2.Location = new System.Drawing.Point(1258, 268);
+            this.gpnlSales_AutoRestockIndicator2.Margin = new System.Windows.Forms.Padding(4);
+            this.gpnlSales_AutoRestockIndicator2.Name = "gpnlSales_AutoRestockIndicator2";
+            this.gpnlSales_AutoRestockIndicator2.Size = new System.Drawing.Size(38, 198);
+            this.gpnlSales_AutoRestockIndicator2.TabIndex = 17;
+            this.gpnlSales_AutoRestockIndicator2.Visible = false;
             // 
             // gradientPanel6
             // 
@@ -4555,6 +4577,17 @@ namespace LAMN_Software
             this.lblSales_ItemShowcaseQuantityPrice.Text = "1x";
             this.lblSales_ItemShowcaseQuantityPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gpnlSales_AutoRestockIndicator
+            // 
+            this.gpnlSales_AutoRestockIndicator.ColorBottom = System.Drawing.Color.Empty;
+            this.gpnlSales_AutoRestockIndicator.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gpnlSales_AutoRestockIndicator.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.gpnlSales_AutoRestockIndicator.Location = new System.Drawing.Point(1258, 268);
+            this.gpnlSales_AutoRestockIndicator.Margin = new System.Windows.Forms.Padding(4);
+            this.gpnlSales_AutoRestockIndicator.Name = "gpnlSales_AutoRestockIndicator";
+            this.gpnlSales_AutoRestockIndicator.Size = new System.Drawing.Size(40, 198);
+            this.gpnlSales_AutoRestockIndicator.TabIndex = 16;
+            // 
             // btnSales_MakeSale
             // 
             this.btnSales_MakeSale.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -4571,6 +4604,70 @@ namespace LAMN_Software
             this.toolTip1.SetToolTip(this.btnSales_MakeSale, "Confirm sale");
             this.btnSales_MakeSale.UseVisualStyleBackColor = false;
             this.btnSales_MakeSale.Click += new System.EventHandler(this.btnSales_MakeSale_Click);
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.WhiteSmoke;
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gradientPanel4.Controls.Add(this.lblAutomaticRestockOFF);
+            this.gradientPanel4.Controls.Add(this.label47);
+            this.gradientPanel4.Controls.Add(this.label48);
+            this.gradientPanel4.Controls.Add(this.lblAutomaticRestockON);
+            this.gradientPanel4.Location = new System.Drawing.Point(828, 268);
+            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(434, 198);
+            this.gradientPanel4.TabIndex = 15;
+            // 
+            // lblAutomaticRestockOFF
+            // 
+            this.lblAutomaticRestockOFF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblAutomaticRestockOFF.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblAutomaticRestockOFF.Location = new System.Drawing.Point(196, 79);
+            this.lblAutomaticRestockOFF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAutomaticRestockOFF.Name = "lblAutomaticRestockOFF";
+            this.lblAutomaticRestockOFF.Size = new System.Drawing.Size(146, 90);
+            this.lblAutomaticRestockOFF.TabIndex = 4;
+            this.lblAutomaticRestockOFF.Text = "OFF";
+            this.lblAutomaticRestockOFF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAutomaticRestockOFF.Click += new System.EventHandler(this.lblAutomaticRestockOFF_Click);
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Arial", 20F);
+            this.label47.Location = new System.Drawing.Point(354, 12);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(63, 61);
+            this.label47.TabIndex = 5;
+            this.label47.Text = "ⓘ";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label47, resources.GetString("label47.ToolTip"));
+            // 
+            // label48
+            // 
+            this.label48.Font = new System.Drawing.Font("Arial", 15F);
+            this.label48.Location = new System.Drawing.Point(18, 16);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(356, 54);
+            this.label48.TabIndex = 5;
+            this.label48.Text = "Automatic restock";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAutomaticRestockON
+            // 
+            this.lblAutomaticRestockON.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblAutomaticRestockON.Font = new System.Drawing.Font("Arial", 20F);
+            this.lblAutomaticRestockON.Location = new System.Drawing.Point(80, 77);
+            this.lblAutomaticRestockON.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAutomaticRestockON.Name = "lblAutomaticRestockON";
+            this.lblAutomaticRestockON.Size = new System.Drawing.Size(132, 98);
+            this.lblAutomaticRestockON.TabIndex = 4;
+            this.lblAutomaticRestockON.Text = "ON";
+            this.lblAutomaticRestockON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAutomaticRestockON.Click += new System.EventHandler(this.lblAutomaticRestockON_Click);
             // 
             // pnlSales_QuantityControl
             // 
@@ -4619,15 +4716,14 @@ namespace LAMN_Software
             // tbxSales_Barcode
             // 
             this.tbxSales_Barcode.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.tbxSales_Barcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 1F);
-            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.White;
-            this.tbxSales_Barcode.Location = new System.Drawing.Point(514, 135);
+            this.tbxSales_Barcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxSales_Barcode.Font = new System.Drawing.Font("Arial", 10F);
+            this.tbxSales_Barcode.ForeColor = System.Drawing.Color.Black;
+            this.tbxSales_Barcode.Location = new System.Drawing.Point(323, 215);
             this.tbxSales_Barcode.Margin = new System.Windows.Forms.Padding(4);
             this.tbxSales_Barcode.Multiline = true;
             this.tbxSales_Barcode.Name = "tbxSales_Barcode";
-            this.tbxSales_Barcode.PasswordChar = '▇';
-            this.tbxSales_Barcode.Size = new System.Drawing.Size(0, 0);
+            this.tbxSales_Barcode.Size = new System.Drawing.Size(468, 45);
             this.tbxSales_Barcode.TabIndex = 0;
             this.tbxSales_Barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSales_Barcode_KeyDown);
             // 
@@ -4893,7 +4989,7 @@ namespace LAMN_Software
             // 
             this.gpnlSales_BarcodeIndicator2.ColorBottom = System.Drawing.Color.Empty;
             this.gpnlSales_BarcodeIndicator2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.gpnlSales_BarcodeIndicator2.Location = new System.Drawing.Point(962, 233);
+            this.gpnlSales_BarcodeIndicator2.Location = new System.Drawing.Point(753, 268);
             this.gpnlSales_BarcodeIndicator2.Margin = new System.Windows.Forms.Padding(4);
             this.gpnlSales_BarcodeIndicator2.Name = "gpnlSales_BarcodeIndicator2";
             this.gpnlSales_BarcodeIndicator2.Size = new System.Drawing.Size(38, 198);
@@ -4905,7 +5001,7 @@ namespace LAMN_Software
             this.gpnlSales_BarcodeIndicator.ColorBottom = System.Drawing.Color.Empty;
             this.gpnlSales_BarcodeIndicator.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.gpnlSales_BarcodeIndicator.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.gpnlSales_BarcodeIndicator.Location = new System.Drawing.Point(962, 233);
+            this.gpnlSales_BarcodeIndicator.Location = new System.Drawing.Point(753, 268);
             this.gpnlSales_BarcodeIndicator.Margin = new System.Windows.Forms.Padding(4);
             this.gpnlSales_BarcodeIndicator.Name = "gpnlSales_BarcodeIndicator";
             this.gpnlSales_BarcodeIndicator.Size = new System.Drawing.Size(40, 198);
@@ -4953,7 +5049,7 @@ namespace LAMN_Software
             this.gradientPanel8.Controls.Add(this.label38);
             this.gradientPanel8.Controls.Add(this.label45);
             this.gradientPanel8.Controls.Add(this.lblBarcodeActiveIcon);
-            this.gradientPanel8.Location = new System.Drawing.Point(532, 233);
+            this.gradientPanel8.Location = new System.Drawing.Point(323, 268);
             this.gradientPanel8.Margin = new System.Windows.Forms.Padding(4);
             this.gradientPanel8.Name = "gradientPanel8";
             this.gradientPanel8.Size = new System.Drawing.Size(434, 198);
@@ -4961,7 +5057,7 @@ namespace LAMN_Software
             // 
             // lblBarcodeActiveIcon2
             // 
-            this.lblBarcodeActiveIcon2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblBarcodeActiveIcon2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBarcodeActiveIcon2.Font = new System.Drawing.Font("Arial", 20F);
             this.lblBarcodeActiveIcon2.Location = new System.Drawing.Point(196, 79);
             this.lblBarcodeActiveIcon2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -5910,6 +6006,8 @@ namespace LAMN_Software
             this.gradientPanel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel4.PerformLayout();
             this.pnlSales_QuantityControl.ResumeLayout(false);
             this.pnlSales_Search2.ResumeLayout(false);
             this.pnlSales_Search.ResumeLayout(false);
@@ -6356,5 +6454,12 @@ namespace LAMN_Software
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Panel panel2;
+        private GradientPanel gpnlSales_AutoRestockIndicator2;
+        private GradientPanel gpnlSales_AutoRestockIndicator;
+        private GradientPanel gradientPanel4;
+        private System.Windows.Forms.Label lblAutomaticRestockOFF;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label lblAutomaticRestockON;
     }
 }
