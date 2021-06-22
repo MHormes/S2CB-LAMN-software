@@ -3371,6 +3371,7 @@ namespace LAMN_Software
                             FillStockViewActive();
                             cbxActiveInactiveEmployees.SelectedIndex = 0;
 
+
                             //if the quantity of the item is below then show the messagebox
                             if (p.QuantityS < p.MinimumStockRequired)
                             {
@@ -3380,6 +3381,7 @@ namespace LAMN_Software
                                 DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
                                 if (result == DialogResult.Yes)
                                 {
+
                                     tcNavigator.SelectedTab = tpNewOrder;
 
                                     //textboxes filled with data
@@ -3399,8 +3401,27 @@ namespace LAMN_Software
                             }
                         }
                     }
-                    MessageBox.Show("The sale has successfully been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string saleMessage;
+                    if (AutomaticSalesRestock == true)
+                    {
+                        saleMessage = "The sale has successfully been made." + Environment.NewLine + "A new order from the supplier has been placed:" + Environment.NewLine;
+                        for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                        {
+                            Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                            int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
+                            saleMessage = saleMessage + p.Name + "- quantity: " + quantity.ToString() + Environment.NewLine;
+
+                            var newOrder = SH.AddQuantityToProduct(p, "0", quantity.ToString());
+                        }
+                    }
+                    else
+                    {
+                        saleMessage = "The sale has successfully been made." + Environment.NewLine + "No order has been placed from the supplier.";
+                    }
+                    MessageBox.Show(saleMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvSales_Reciept.Rows.Clear();
+
+                    FillStockViewActive();
                     return;
                 }
             }
