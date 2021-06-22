@@ -3370,35 +3370,6 @@ namespace LAMN_Software
                         {
                             FillStockViewActive();
                             cbxActiveInactiveEmployees.SelectedIndex = 0;
-
-
-                            //if the quantity of the item is below then show the messagebox
-                            if (p.QuantityS < p.MinimumStockRequired)
-                            {
-                                string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
-                                string title = "Quantity warning";
-                                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-                                if (result == DialogResult.Yes)
-                                {
-
-                                    tcNavigator.SelectedTab = tpNewOrder;
-
-                                    //textboxes filled with data
-                                    //tbNewOrderID.Text = $"{p.Id.ToString()}";
-                                    //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
-                                    //tbNewOrderName.Text = $"{p.Name}";
-
-                                    //fields disabled
-                                    //tbNewOrderID.Enabled = false;
-                                    //tbNewOrderEAN.Enabled = false;
-                                    //tbNewOrderName.Enabled = false;
-                                }
-                            }
-                            else
-                            {
-                                // tcNavigator.SelectedTab = tpStock;
-                            }
                         }
                     }
                     string saleMessage;
@@ -3419,6 +3390,34 @@ namespace LAMN_Software
                         saleMessage = "The sale has successfully been made." + Environment.NewLine + "No order has been placed from the supplier.";
                     }
                     MessageBox.Show(saleMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if(dgvSales_Reciept.Rows.Count == 1)
+                    {
+                        Product p = SH.GetProductByName(dgvSales_Reciept.Rows[0].Cells[1].Value.ToString());
+                        //if the quantity of the item is below then show the messagebox
+                        if (p.QuantityS < p.MinimumStockRequired)
+                        {
+                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order from the warehouse to the store?";
+                            string title = "Quantity warning";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                tcNavigator.SelectedTab = tpNewOrder;
+
+                                //textboxes filled with data
+                                tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                tbNewOrderName.Text = $"{p.Name}";
+
+                                //fields disabled
+                                tbNewOrderID.Enabled = false;
+                                tbNewOrderEAN.Enabled = false;
+                                tbNewOrderName.Enabled = false;
+                            }
+                        }
+                    }
+
                     dgvSales_Reciept.Rows.Clear();
 
                     FillStockViewActive();
