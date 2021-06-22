@@ -187,11 +187,11 @@ function CallAddHolidays($empBSN)
                     </select>
 
                 </div>
-                <div class="row">
-                    <input class="button" type="submit" value="Add chosen holiday to holiday status schedule" name="btnSave">
+                <div class="button">
+                    <input type="submit" value="Add chosen holiday to holiday status schedule" name="btnSave">
                 </div>
-                <div class="row">
-                    <input class="button" type="submit" value="Overwrite current status with chosen holiday" name="btnOverWrite">
+                <div class="button">
+                    <input type="submit" value="Overwrite current status with chosen holiday" name="btnOverWrite">
                 </div>
             </form>
         </div>
