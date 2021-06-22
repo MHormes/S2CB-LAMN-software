@@ -1632,14 +1632,17 @@ namespace LAMN_Software
                 {
                     series.Points.Clear();
                 }
+                bool found1 = false;
+                bool found2 = false;
+                bool found3 = false;
                 foreach (SellingTracker s in STH.GetAllSellings())
                 {
                     if (cbxStatsPeriod1.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString())) && (found1 == false))
                         {
                             int sold = 0;
-
+                            found1 = true;
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
                                 if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
@@ -1654,9 +1657,10 @@ namespace LAMN_Software
 
                     if (cbxStatsPeriod2.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString())) && (found2 == false))
                         {
                             int sold = 0;
+                            found2 = true;
 
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
@@ -1672,9 +1676,10 @@ namespace LAMN_Software
 
                     if (cbxStatsPeriod3.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString())) && (found3 == false))
                         {
                             int sold = 0;
+                            found3 = true;
 
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
@@ -2995,12 +3000,17 @@ namespace LAMN_Software
             {
                 series.Points.Clear();
             }
+
+            bool found1 = false;
+            bool found2 = false;
+            bool found3 = false;
             foreach (SellingTracker s in STH.GetAllSellings())
             {
                 if (cbxStatsProfit1.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit1.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit1.SelectedItem.ToString())) && (found1 == false))
                     {
+                        found1 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3022,8 +3032,9 @@ namespace LAMN_Software
 
                 if (cbxStatsProfit2.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit2.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit2.SelectedItem.ToString())) && (found2 == false))
                     {
+                        found2 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3045,8 +3056,9 @@ namespace LAMN_Software
 
                 if (cbxStatsProfit3.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString())) && (found3 == false))
                     {
+                        found3 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3086,6 +3098,10 @@ namespace LAMN_Software
             else
                 lbStatsRevenue.Visible = false;
 
+            bool found1 = false;
+            bool found2 = false;
+            bool found3 = false;
+
             foreach (var series in chartStockRevenue.Series)
             {
                 series.Points.Clear();
@@ -3094,8 +3110,9 @@ namespace LAMN_Software
             {
                 if (cbxStatsRevenue1.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsRevenue1.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue1.SelectedItem.ToString())) && (found1 == false))
                     {
+                        found1 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3115,15 +3132,16 @@ namespace LAMN_Software
                     }
                 }
 
-                if (cbxStatsProfit2.SelectedIndex > -1)
+                if (cbxStatsRevenue2.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsRevenue2.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue2.SelectedItem.ToString())) && (found2 == false))
                     {
+                        found2 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeRevenue.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeRevenue.Value.Date) <= 0))
                             {
                                 Product p = null;
                                 p = SH.GetProduct(s.Id);
@@ -3138,15 +3156,16 @@ namespace LAMN_Software
                     }
                 }
 
-                if (cbxStatsProfit3.SelectedIndex > -1)
+                if (cbxStatsRevenue3.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue3.SelectedItem.ToString())) && (found3 == false))
                     {
+                        found3 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeRevenue.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeRevenue.Value.Date) <= 0))
                             {
                                 Product p = null;
                                 p = SH.GetProduct(s.Id);
