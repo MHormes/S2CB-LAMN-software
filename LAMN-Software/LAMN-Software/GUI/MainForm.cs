@@ -1259,9 +1259,10 @@ namespace LAMN_Software
         private void btnScheduleCreateAutoGenerate_Click(object sender, EventArgs e)
         {
             PH.GetAllPreferencesFromDB();
+            HOH.GetAllHolidaysForWeek(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
             SCH.GetAllSchedulesFromDB(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
             SCH.DeleteWeekSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)));
-            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees(), SCH.GetAllSchedules(), PH.GetAllPreferences(), EH))
+            foreach (Schedule sch in SCHAH.CreateAutomaticSchedule(Convert.ToInt32(Math.Round(nudSchedulesCreateWeek.Value)), SCMH.GetSchedulesMinimum(), EH.GetAllEmployees(), SCH.GetAllSchedules(), PH.GetAllPreferences(), EH, HOH.GetAllHolidayRequests()))
             {
                 SCH.SaveCurrentWeek(sch.Week, sch.Day, sch.EmployeeBSN, sch.TimeSlot.ToString());
             }
@@ -2236,7 +2237,7 @@ namespace LAMN_Software
             {
                 foreach (Holiday h in HOH.GetAllHolidayRequests())
                 {
-                    if (h.HolidayStatus == "Request Holiday" && !lbHolidayRequests.Items.Contains(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr))
+                    if (h.HolidayStatus == "Requested Holiday" && !lbHolidayRequests.Items.Contains(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr))
                     {
                         lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr);
                     }
