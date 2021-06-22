@@ -246,6 +246,12 @@
   <metadata name="dvgAdress.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>To use the scanning funtionality, make sure to have your USB Barcode Scanner plugged into the computer.
+
+If you wish to turn on the listening of the barcode scanner from the software, click on the ON button inside this box.
+It will stop listening for scans if you have clicked anywhere else on the page.</value>
+  </data>
   <metadata name="Quantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
