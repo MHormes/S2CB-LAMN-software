@@ -2094,13 +2094,14 @@ namespace LAMN_Software
                 Product p = SH.GetProduct(Int32.Parse(tbNewOrderID.Text));
 
                 //calculations of quantity and exception returned if it occurs
-                var newOrder = SH.AddQuantityToProduct(p, tbNewOrderWarehouse.Text, tbNewOrderStore.Text);
+                var newOrder = SH.AddQuantityFromWarehouseToStore(p, tbNewOrderStore.Text);
 
                 if (newOrder == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
-                    MessageBox.Show("New order correctly done.");
+                    MessageBox.Show("New order from the warehouse to the store correctly done.");
+                    tbNewOrderStore.Text = "";
                     tcNavigator.SelectedTab = tpStock;
                     return;
                 }
@@ -2115,7 +2116,6 @@ namespace LAMN_Software
         private void btnNewOrderBack_Click(object sender, EventArgs e)
         {
             tbNewOrderStore.Clear();
-            tbNewOrderWarehouse.Clear();
             //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }
@@ -3401,7 +3401,7 @@ namespace LAMN_Software
                             int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
                             saleMessage = saleMessage + p.Name + "- quantity: " + quantity.ToString() + Environment.NewLine;
 
-                            var newOrder = SH.AddQuantityToProduct(p, "0", quantity.ToString());
+                            var newOrder = SH.AddQuantityToWarehouse(p, quantity.ToString());
                         }
                     }
                     else
