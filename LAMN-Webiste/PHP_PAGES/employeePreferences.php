@@ -50,7 +50,7 @@ if (isset($_POST['btnDelete'])) {
     <title>Media Bazaar Employee Portal</title>
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/main.css">
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/schedule.css">
-    <link rel="stylesheet" type="text/css" href="../CSS_FILES/login.css">
+    
     <link rel="stylesheet" type="text/css" href="../CSS_FILES/preferences.css">
 
 </head>

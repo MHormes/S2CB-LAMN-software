@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../DatabaseConn/holidays_template.php";
-$weekNmr = 1;
+$weekNmr = date("W");
 
 $user = $_SESSION['Username'];
 $empBSN = getBSN($user);

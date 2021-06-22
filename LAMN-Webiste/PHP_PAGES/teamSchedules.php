@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../DatabaseConn/get_schedules_template.php";
-$weekNmr = 1;
+$weekNmr = date("W");
 
 
 if (isset($_POST['btnSelectWeek'])) {
