@@ -2236,7 +2236,7 @@ namespace LAMN_Software
             {
                 foreach (Holiday h in HOH.GetAllHolidayRequests())
                 {
-                    if (h.HolidayStatus == "Request Holiday" && !lbHolidayRequests.Items.Contains(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr))
+                    if (h.HolidayStatus == "Requested Holiday" && !lbHolidayRequests.Items.Contains(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr))
                     {
                         lbHolidayRequests.Items.Add(EH.GetEmployee(h.EmpBSN).ToString() + " For week:" + h.WeekNmr);
                     }
