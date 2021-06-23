@@ -107,6 +107,7 @@
     <Compile Include="DBHandling\LoginHandler.cs" />
     <Compile Include="DBHandling\ScheduleTemplateHandler.cs" />
     <Compile Include="DBHandling\SellingTrackerHandler.cs" />
+    <Compile Include="DBHandling\SickDayHandler.cs" />
     <Compile Include="Exceptions\IncorrectValueExeption.cs" />
     <Compile Include="GUI\DeclineChangeOfInfo.cs">
       <SubType>Form</SubType>

@@ -87,7 +87,7 @@ namespace LAMN_Software
             dgvEmployees.Font = new Font("Arial", 8);
             dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
-
+            CheckSickEmp();
         }
 
         //Method to show correct buttons based on the user permission
@@ -3489,6 +3489,35 @@ namespace LAMN_Software
         private void lblAutomaticRestockOFF_Click(object sender, EventArgs e)
         {
             AutomaticSalesRestock = false;
+        }
+
+        private void CheckSickEmp()
+        {
+            SickDayHandler sdh = new SickDayHandler();
+            sdh.GetSickEmp();
+            if (sdh.GetDetailBSN().Count == 0 && sdh.GetDetailDay().Count == 0)
+            {
+                MessageBox.Show("No Sick Employees");
+            }
+            else
+            {
+                List<string> detailBSN = new List<string>();
+                List<string> detailDay = new List<string>();
+                foreach (string detailBsn in sdh.GetDetailBSN())
+                {
+                    detailBSN.Add(detailBsn);
+                }
+
+                foreach (string detailday in sdh.GetDetailDay())
+                {
+                    detailDay.Add(detailday);
+                }
+
+                for (int i = 0; i < detailBSN.Count; i++)
+                {
+                    MessageBox.Show("Employee with BSN:" + "" + detailBSN[i] + "" + "is sick on day" + "" + detailDay[i]);
+                }
+            }
         }
     }
 }
