@@ -273,30 +273,64 @@ namespace LAMN_Software
             }
         }
 
-        public Exception AddQuantityToProduct(Product product, string quantityS, string quantityWH)
+        public Exception AddQuantityToWarehouse(Product product, string quantity)
         {
             try
             {
                 //the user can leave the fields empty instead of writing 0
-                if (!string.IsNullOrEmpty(quantityS))
+                if (!string.IsNullOrEmpty(quantity))
                 {
-                    if (!Regex.IsMatch(quantityS, @"^[0-9]*$"))
+                    if (!Regex.IsMatch(quantity, @"^[0-9]*$"))
                     {
-                        throw new IncorrectQuantityException(quantityS);
-                    }
-                }
-                if (!string.IsNullOrEmpty(quantityWH))
-                {
-                    if (!Regex.IsMatch(quantityWH, @"^[0-9]*$"))
-                    {
-                        throw new IncorrectQuantityException(quantityWH);
+                        throw new IncorrectQuantityException(quantity);
                     }
                 }
 
-                if (!string.IsNullOrEmpty(quantityS))
-                    product.QuantityS = product.QuantityS + Int32.Parse(quantityS);
-                if (!string.IsNullOrEmpty(quantityWH))
-                    product.QuantityWH = product.QuantityWH + Int32.Parse(quantityWH);
+                if (!string.IsNullOrEmpty(quantity))
+                {
+                    product.QuantityS = product.QuantityS;
+                    product.QuantityWH = product.QuantityWH + Int32.Parse(quantity);
+                }
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "UPDATE product SET QuantityS=@quantityS, QuantityWH=@quantityWH WHERE ID=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@id", product.Id);
+                    cmd.Parameters.AddWithValue("@quantityS", product.QuantityS);
+                    cmd.Parameters.AddWithValue("@quantityWH", product.QuantityWH);
+
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
+        public Exception AddQuantityFromWarehouseToStore(Product product, string quantity)
+        {
+            try
+            {
+                //the user can leave the fields empty instead of writing 0
+                if (!string.IsNullOrEmpty(quantity))
+                {
+                    if (!Regex.IsMatch(quantity, @"^[0-9]*$"))
+                    {
+                        throw new IncorrectQuantityException(quantity);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(quantity))
+                {
+                    product.QuantityS = product.QuantityS + Int32.Parse(quantity);
+                    product.QuantityWH = product.QuantityWH - Int32.Parse(quantity);
+                }
 
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {

@@ -87,7 +87,7 @@ namespace LAMN_Software
             dgvEmployees.Font = new Font("Arial", 8);
             dgvSchedulesCreate.Font = new Font("Arial", 11);
             updateTabWithPosition(position);
-
+            CheckSickEmp();
         }
 
         //Method to show correct buttons based on the user permission
@@ -1632,14 +1632,17 @@ namespace LAMN_Software
                 {
                     series.Points.Clear();
                 }
+                bool found1 = false;
+                bool found2 = false;
+                bool found3 = false;
                 foreach (SellingTracker s in STH.GetAllSellings())
                 {
                     if (cbxStatsPeriod1.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod1.SelectedItem.ToString())) && (found1 == false))
                         {
                             int sold = 0;
-
+                            found1 = true;
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
                                 if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTime.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTime.Value.Date) <= 0))
@@ -1654,9 +1657,10 @@ namespace LAMN_Software
 
                     if (cbxStatsPeriod2.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod2.SelectedItem.ToString())) && (found2 == false))
                         {
                             int sold = 0;
+                            found2 = true;
 
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
@@ -1672,9 +1676,10 @@ namespace LAMN_Software
 
                     if (cbxStatsPeriod3.SelectedIndex > -1)
                     {
-                        if (s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString()))
+                        if ((s.Name.Contains(cbxStatsPeriod3.SelectedItem.ToString())) && (found3 == false))
                         {
                             int sold = 0;
+                            found3 = true;
 
                             foreach (SellingTracker sell in STH.GetSellings(s.Name))
                             {
@@ -2089,13 +2094,14 @@ namespace LAMN_Software
                 Product p = SH.GetProduct(Int32.Parse(tbNewOrderID.Text));
 
                 //calculations of quantity and exception returned if it occurs
-                var newOrder = SH.AddQuantityToProduct(p, tbNewOrderWarehouse.Text, tbNewOrderStore.Text);
+                var newOrder = SH.AddQuantityFromWarehouseToStore(p, tbNewOrderStore.Text);
 
                 if (newOrder == null)
                 {
                     FillStockViewActive();
                     cbxActiveInactiveEmployees.SelectedIndex = 0;
-                    MessageBox.Show("New order correctly done.");
+                    MessageBox.Show("New order from the warehouse to the store correctly done.");
+                    tbNewOrderStore.Text = "";
                     tcNavigator.SelectedTab = tpStock;
                     return;
                 }
@@ -2110,7 +2116,6 @@ namespace LAMN_Software
         private void btnNewOrderBack_Click(object sender, EventArgs e)
         {
             tbNewOrderStore.Clear();
-            tbNewOrderWarehouse.Clear();
             //back to stock page
             tcNavigator.SelectedTab = tpStock;
         }
@@ -2995,12 +3000,17 @@ namespace LAMN_Software
             {
                 series.Points.Clear();
             }
+
+            bool found1 = false;
+            bool found2 = false;
+            bool found3 = false;
             foreach (SellingTracker s in STH.GetAllSellings())
             {
                 if (cbxStatsProfit1.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit1.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit1.SelectedItem.ToString())) && (found1 == false))
                     {
+                        found1 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3022,8 +3032,9 @@ namespace LAMN_Software
 
                 if (cbxStatsProfit2.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit2.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit2.SelectedItem.ToString())) && (found2 == false))
                     {
+                        found2 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3045,8 +3056,9 @@ namespace LAMN_Software
 
                 if (cbxStatsProfit3.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString())) && (found3 == false))
                     {
+                        found3 = true;
                         double profit = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3086,6 +3098,10 @@ namespace LAMN_Software
             else
                 lbStatsRevenue.Visible = false;
 
+            bool found1 = false;
+            bool found2 = false;
+            bool found3 = false;
+
             foreach (var series in chartStockRevenue.Series)
             {
                 series.Points.Clear();
@@ -3094,8 +3110,9 @@ namespace LAMN_Software
             {
                 if (cbxStatsRevenue1.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsRevenue1.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue1.SelectedItem.ToString())) && (found1 == false))
                     {
+                        found1 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
@@ -3115,15 +3132,16 @@ namespace LAMN_Software
                     }
                 }
 
-                if (cbxStatsProfit2.SelectedIndex > -1)
+                if (cbxStatsRevenue2.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsRevenue2.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue2.SelectedItem.ToString())) && (found2 == false))
                     {
+                        found2 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeRevenue.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeRevenue.Value.Date) <= 0))
                             {
                                 Product p = null;
                                 p = SH.GetProduct(s.Id);
@@ -3138,15 +3156,16 @@ namespace LAMN_Software
                     }
                 }
 
-                if (cbxStatsProfit3.SelectedIndex > -1)
+                if (cbxStatsRevenue3.SelectedIndex > -1)
                 {
-                    if (s.Name.Contains(cbxStatsProfit3.SelectedItem.ToString()))
+                    if ((s.Name.Contains(cbxStatsRevenue3.SelectedItem.ToString())) && (found3 == false))
                     {
+                        found3 = true;
                         double revenue = 0;
 
                         foreach (SellingTracker sell in STH.GetSellings(s.Name))
                         {
-                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeProfit.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeProfit.Value.Date) <= 0))
+                            if ((DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtStartTimeRevenue.Value.Date) >= 0) && (DateTime.Compare(Convert.ToDateTime(sell.DateAndTime), dtEndTimeRevenue.Value.Date) <= 0))
                             {
                                 Product p = null;
                                 p = SH.GetProduct(s.Id);
@@ -3370,37 +3389,57 @@ namespace LAMN_Software
                         {
                             FillStockViewActive();
                             cbxActiveInactiveEmployees.SelectedIndex = 0;
+                        }
+                    }
+                    string saleMessage;
+                    if (AutomaticSalesRestock == true)
+                    {
+                        saleMessage = "The sale has successfully been made." + Environment.NewLine + "A new order from the supplier has been placed:" + Environment.NewLine;
+                        for (int i = 0; i < dgvSales_Reciept.Rows.Count; i++)
+                        {
+                            Product p = SH.GetProductByName(dgvSales_Reciept.Rows[i].Cells[1].Value.ToString());
+                            int quantity = Convert.ToInt32(dgvSales_Reciept.Rows[i].Cells[0].Value);
+                            saleMessage = saleMessage + p.Name + "- quantity: " + quantity.ToString() + Environment.NewLine;
 
-                            //if the quantity of the item is below then show the messagebox
-                            if (p.QuantityS < p.MinimumStockRequired)
+                            var newOrder = SH.AddQuantityToWarehouse(p, quantity.ToString());
+                        }
+                    }
+                    else
+                    {
+                        saleMessage = "The sale has successfully been made." + Environment.NewLine + "No order has been placed from the supplier.";
+                    }
+                    MessageBox.Show(saleMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if(dgvSales_Reciept.Rows.Count == 1)
+                    {
+                        Product p = SH.GetProductByName(dgvSales_Reciept.Rows[0].Cells[1].Value.ToString());
+                        //if the quantity of the item is below then show the messagebox
+                        if (p.QuantityS < p.MinimumStockRequired)
+                        {
+                            string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order from the warehouse to the store?";
+                            string title = "Quantity warning";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
                             {
-                                string message = $"The amount of item of {p.Name} in the store is below the minimum. Do you want to make a new order?";
-                                string title = "Quantity warning";
-                                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
-                                if (result == DialogResult.Yes)
-                                {
-                                    tcNavigator.SelectedTab = tpNewOrder;
+                                tcNavigator.SelectedTab = tpNewOrder;
 
-                                    //textboxes filled with data
-                                    //tbNewOrderID.Text = $"{p.Id.ToString()}";
-                                    //tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
-                                    //tbNewOrderName.Text = $"{p.Name}";
+                                //textboxes filled with data
+                                tbNewOrderID.Text = $"{p.Id.ToString()}";
+                                tbNewOrderEAN.Text = $"{p.Ean.ToString()}";
+                                tbNewOrderName.Text = $"{p.Name}";
 
-                                    //fields disabled
-                                    //tbNewOrderID.Enabled = false;
-                                    //tbNewOrderEAN.Enabled = false;
-                                    //tbNewOrderName.Enabled = false;
-                                }
-                            }
-                            else
-                            {
-                                // tcNavigator.SelectedTab = tpStock;
+                                //fields disabled
+                                tbNewOrderID.Enabled = false;
+                                tbNewOrderEAN.Enabled = false;
+                                tbNewOrderName.Enabled = false;
                             }
                         }
                     }
-                    MessageBox.Show("The sale has successfully been made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     dgvSales_Reciept.Rows.Clear();
+
+                    FillStockViewActive();
                     return;
                 }
             }
@@ -3450,6 +3489,35 @@ namespace LAMN_Software
         private void lblAutomaticRestockOFF_Click(object sender, EventArgs e)
         {
             AutomaticSalesRestock = false;
+        }
+
+        private void CheckSickEmp()
+        {
+            SickDayHandler sdh = new SickDayHandler();
+            sdh.GetSickEmp();
+            if (sdh.GetDetailBSN().Count == 0 && sdh.GetDetailDay().Count == 0)
+            {
+                MessageBox.Show("No Sick Employees");
+            }
+            else
+            {
+                List<string> detailBSN = new List<string>();
+                List<string> detailDay = new List<string>();
+                foreach (string detailBsn in sdh.GetDetailBSN())
+                {
+                    detailBSN.Add(detailBsn);
+                }
+
+                foreach (string detailday in sdh.GetDetailDay())
+                {
+                    detailDay.Add(detailday);
+                }
+
+                for (int i = 0; i < detailBSN.Count; i++)
+                {
+                    MessageBox.Show("Employee with BSN:" + "" + detailBSN[i] + "" + "is sick on day" + "" + detailDay[i]);
+                }
+            }
         }
     }
 }
