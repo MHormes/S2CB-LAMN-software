@@ -581,7 +581,7 @@ namespace LAMN_Software
             this.pnlTabCover.Location = new System.Drawing.Point(3, 38);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1552, 68);
+            this.pnlTabCover.Size = new System.Drawing.Size(1552, 90);
             this.pnlTabCover.TabIndex = 11;
             // 
             // gpnlSales
@@ -5687,6 +5687,7 @@ namespace LAMN_Software
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximumSize = new System.Drawing.Size(1557, 927);
             this.MinimumSize = new System.Drawing.Size(1279, 658);
+            this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
