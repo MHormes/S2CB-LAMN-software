@@ -246,6 +246,14 @@
   <metadata name="dvgAdress.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>If Automatic restock is on, stock sold will immediately be
+added to the warehouse to make sure there is enough 
+supply for the demand.
+
+However the store will not be restocked. This is a manual
+process that must be done on the stock screen.</value>
+  </data>
   <metadata name="Quantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAMN_Software.DataClasses
 {
-    class Holiday
+    public class Holiday
     {
         public string WeekNmr { get; set; }
         public string EmpBSN { get; set; }
