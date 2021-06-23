@@ -42,7 +42,7 @@ if (isset($_POST['btnRemovesickday'])) {
             </br> 
                     <div class="row-sick">
                        
-                        <input type="text" name="day" id="day" placeholder="Enter day" >
+                        <input type="date" name="day" id="day" placeholder="Enter day" >
                     </div><br>
                     
                     <div class="row">
