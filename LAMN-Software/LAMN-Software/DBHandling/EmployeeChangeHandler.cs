@@ -104,12 +104,13 @@ namespace LAMN_Software.DBHandling
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = "UPDATE employeechange SET Handled=@handled WHERE BSN=@bsn;";
+                    string sql = "UPDATE employeechange SET Handled=@handled, MessageSeen=@messageSeen WHERE BSN=@bsn;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@bsn", employeeChange.Bsn);
                     cmd.Parameters.AddWithValue("@handled", 1);
+                    cmd.Parameters.AddWithValue("@messageSeen", 1);
 
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
