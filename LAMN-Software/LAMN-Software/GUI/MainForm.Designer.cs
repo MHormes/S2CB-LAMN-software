@@ -581,7 +581,7 @@ namespace LAMN_Software
             this.pnlTabCover.Location = new System.Drawing.Point(3, 38);
             this.pnlTabCover.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pnlTabCover.Name = "pnlTabCover";
-            this.pnlTabCover.Size = new System.Drawing.Size(1552, 68);
+            this.pnlTabCover.Size = new System.Drawing.Size(1552, 92);
             this.pnlTabCover.TabIndex = 11;
             // 
             // gpnlSales
@@ -3401,8 +3401,9 @@ namespace LAMN_Software
             this.chartNationalities.Name = "chartNationalities";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Arial", 10F);
-            series3.LabelForeColor = System.Drawing.Color.White;
+            series3.Font = new System.Drawing.Font("Arial", 0.0001F);
+            series3.LabelBackColor = System.Drawing.Color.Transparent;
+            series3.LabelForeColor = System.Drawing.Color.Transparent;
             series3.Legend = "Legend1";
             series3.Name = "Nationality";
             this.chartNationalities.Series.Add(series3);
@@ -3455,8 +3456,9 @@ namespace LAMN_Software
             this.chartEmployeesPosition.Name = "chartEmployeesPosition";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Arial", 10F);
-            series4.LabelForeColor = System.Drawing.Color.White;
+            series4.Font = new System.Drawing.Font("Arial", 1E-05F);
+            series4.LabelBackColor = System.Drawing.Color.Transparent;
+            series4.LabelForeColor = System.Drawing.Color.Transparent;
             series4.Legend = "Legend1";
             series4.Name = "Positions";
             this.chartEmployeesPosition.Series.Add(series4);
@@ -3486,8 +3488,9 @@ namespace LAMN_Software
             this.chartEmployeesGender.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Font = new System.Drawing.Font("Arial", 12F);
-            series5.LabelForeColor = System.Drawing.Color.White;
+            series5.Font = new System.Drawing.Font("Arial", 0.0001F);
+            series5.LabelBackColor = System.Drawing.Color.Transparent;
+            series5.LabelForeColor = System.Drawing.Color.Transparent;
             series5.Legend = "Legend1";
             series5.Name = "Genders";
             this.chartEmployeesGender.Series.Add(series5);

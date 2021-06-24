@@ -3477,7 +3477,7 @@ namespace LAMN_Software
 
             foreach (KeyValuePair<string, int> nat in nationalities)
             {
-                this.chartNationalities.Series["Nationality"].Points.AddXY(nat.Key, nat.Value);
+                this.chartNationalities.Series["Nationality"].Points.AddXY($"{nat.Key}\n[{nat.Value}]", nat.Value);
             }
         }
 

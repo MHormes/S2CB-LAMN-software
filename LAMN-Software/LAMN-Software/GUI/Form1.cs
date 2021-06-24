@@ -35,6 +35,7 @@ namespace LAMN_Software
             logins = loginHandler.GetAllLogin();
             index = -1;
 
+            employeeHandler.GetAllEmployeesFromDB();
             employees = employeeHandler.GetAllEmployees();
             employeeIndex = -1;
             JobPosition jobPosition = JobPosition.MANAGER;
